@@ -1,0 +1,10 @@
+version=1.0.10
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXv-$version.tar.bz2)
+
+build() {
+cd libXv-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

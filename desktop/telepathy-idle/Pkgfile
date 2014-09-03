@@ -1,0 +1,11 @@
+version=0.1.16
+
+source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/${name%-*} 
+make
+make DESTDIR=$PKG install
+}

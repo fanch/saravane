@@ -1,0 +1,12 @@
+library for access generic PCI
+Librairie pour l'accès générique PCI
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/xorg-libpciaccess/
+
+Packagers:
+
+pierre at nutyx dot org

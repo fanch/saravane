@@ -1,0 +1,11 @@
+Protocol definitions and daemon for D-Bus at-spi
+
+http://www.gtk.org/
+
+Maintainers:
+
+- git.gnome.org/browse/atk/
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,12 @@
+libxcomposite, library Composite extension client
+libXcomposite,  bibliothèque Composite extension client
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXcomposite/
+
+Packagers:
+
+pierre at nutyx dot org

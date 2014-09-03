@@ -1,0 +1,17 @@
+version=0.99.0
+
+source=(ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/$name-agent-1-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/blfs/svn/polkit-kde-agent-1-0.99.0-remember_password-1.patch)
+
+build() {
+cd $name*
+patch -Np1 -i $SRC/polkit-kde-agent-1-0.99.0-remember_password-1.patch
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+      -DKDE4_AUTH_POLICY_FILES_INSTALL_DIR=/usr/share/PolicyKit/policy \
+      -Wno-dev ..
+make
+make DESTDIR=$PKG install
+}
+

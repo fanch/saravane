@@ -1,0 +1,11 @@
+framework for defining and tracking users, login sessions, and seats
+
+http://www.freedesktop.org/wiki/Software/ConsoleKit
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

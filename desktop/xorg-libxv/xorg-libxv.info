@@ -1,0 +1,12 @@
+libxv, library X Video extension client
+libXv, bibliothèque X Video extension client
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXv/
+
+Packagers:
+
+pierre at nutyx dot org

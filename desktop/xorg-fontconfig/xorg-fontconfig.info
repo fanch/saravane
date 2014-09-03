@@ -1,0 +1,12 @@
+fontconfig, library for access and the configuration of polices
+fontconfig, librairie pour l'accès et la configuration des polices
+
+http://xorg-fontconfig.org/wiki/
+
+Maintainers:
+
+- cgit.freedesktop.org/fontconfig/
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,10 @@
+version=1.2.2
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libSM-$version.tar.bz2)
+
+build() {
+cd libSM-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

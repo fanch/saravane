@@ -1,0 +1,12 @@
+libdrm, Interface space user for the services DRM of kernel
+libdrm, Interface espace utilisateur pour les services DRM du kernel
+
+http://dri.freedesktop.org/
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg-mesa/drm/
+
+Packagers:
+
+pierre at nutyx dot org

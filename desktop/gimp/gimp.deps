@@ -1,0 +1,13 @@
+shared-mime-info
+gtk
+python-gtk
+curl
+libexif
+xorg-libxmu
+xorg-libxpm
+openexr
+gegl
+poppler
+libmng
+alsa-lib
+babl

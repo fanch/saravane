@@ -1,0 +1,12 @@
+GObject based interface to system-tools-backends - shared library
+Une bibliothèque pour analyser les métadonnées XMP
+
+http://libopenraw.freedesktop.org/wiki/Exempi
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

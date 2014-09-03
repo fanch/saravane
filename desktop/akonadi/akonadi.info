@@ -1,0 +1,11 @@
+The Akonadi framework is responsible for providing applications with a centralized database to store, index and retrieve the user's personal information.
+
+http://userbase.kde.org/Akonadi
+
+Maintainers:
+
+- http://userbase.kde.org/Special:RecentChanges
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,10 @@
+version=1.1.4
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXxf86dga-$version.tar.bz2)
+
+build() {
+cd libXxf86dga-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

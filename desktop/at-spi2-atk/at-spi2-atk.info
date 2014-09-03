@@ -1,0 +1,11 @@
+A GTK+ module that bridges ATK to D-Bus at-spi
+
+http://www.gtk.org/
+
+Maintainers:
+
+- git.gnome.org/browse/atk/
+
+Packagers:
+
+pierre at nutyx dot org

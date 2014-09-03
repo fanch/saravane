@@ -1,0 +1,54 @@
+version=3.14.6
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        # Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip
+        # The hpcups driver does not use foomatic-rip
+        local i
+        for i in ppd/hpijs/*.ppd.gz ; do
+                rm -f ${i}.temp
+                gunzip -c ${i} | sed 's/foomatic-rip-hplip/foomatic-rip/g' | \
+                        gzip > ${i}.temp || return 1
+                mv ${i}.temp ${i}
+        done
+
+        export AUTOMAKE='automake --foreign'
+        autoreconf --force --install
+
+        ./configure --prefix=/usr \
+                --enable-qt4 \
+                --disable-foomatic-rip-hplip-install \
+                --enable-foomatic-ppd-install \
+                --enable-hpcups-install \
+                --enable-new-hpcups \
+                --enable-cups-ppd-install \
+                --enable-cups-drv-install \
+                --enable-hpijs-install \
+                --enable-foomatic-drv-install \
+                --enable-pp-build \
+                --enable-udev-acl-rules \
+                --enable-dbus-build  \
+                --enable-scan-build \
+                --enable-fax-build \
+                --enable-network-build
+        make
+        make DESTDIR=$PKG install
+
+	# Sinon n'imprime pas
+	rm -rf $PKG/etc/udev/rules.d
+
+        # hplip ne connait que lfs 6 ...
+        mkdir -pv  $PKG/etc
+        echo "lfs 6" > $PKG/etc/issue
+
+        # remove config provided by sane and autostart of hp-daemon
+        rm -rf $PKG/etc/{sane.d,xdg}
+
+        # remove HAL .fdi file because HAL is no longer used
+        rm -vrf $PKG/usr/share/hal
+
+        rm -r $PKG/usr/share/doc
+}
+

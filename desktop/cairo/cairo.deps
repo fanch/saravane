@@ -1,0 +1,9 @@
+libpng
+glib
+xorg-pixman
+xorg-fontconfig
+xcb-util
+xorg-libxrender
+xorg-mesa
+xorg-glu
+xorg-libxxf86vm

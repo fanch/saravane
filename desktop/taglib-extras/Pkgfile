@@ -1,0 +1,12 @@
+version=1.0.1
+source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  make 
+  make DESTDIR=$PKG install
+
+}
+
+  

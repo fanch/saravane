@@ -1,0 +1,12 @@
+version=1.1
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libxshmfence-$version.tar.bz2)
+
+build() {
+	cd libxshmfence-$version
+
+	./configure $XORG_CONFIG
+
+	make
+	make DESTDIR=$PKG install
+}

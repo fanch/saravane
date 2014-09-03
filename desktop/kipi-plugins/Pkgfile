@@ -1,0 +1,19 @@
+version=4.2.0
+
+
+source=(http://download.kde.org/stable/digikam/digikam-$version.tar.bz2)
+
+build() {
+	cd $SRC/digikam*
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+                -DSYSCONF_INSTALL_DIR=/etc/kde \
+    		-DBUILD_tests=OFF \
+		-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
+                ..
+	make 
+        cd $SRC/digikam-$version/build/extra/kipi-plugins/
+	make DESTDIR=$PKG install
+}
+

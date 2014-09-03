@@ -1,0 +1,13 @@
+version=0.8.3
+
+source=(ftp://ftp.gnupg.org/gcrypt/pinentry/pinentry-$version.tar.bz2)
+
+build() {
+cd pinentry-$version
+./configure --prefix=$XORG_PREFIX \
+--enable-fallback-curses \
+--libexecdir=$XORG_PREFIX/lib
+make
+make DESTDIR=$PKG install
+rm $PKG/$XORG_PREFIX/share/info/dir
+}

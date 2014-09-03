@@ -1,0 +1,24 @@
+version=0.1.f7f7b9c
+source=(
+https://github.com/downloads/naihe2010/apvlv/$name-$version-Source.tar.gz
+$name.desktop)
+
+
+build(){
+    cd $name-$version-Source
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+          -DAPVLV_WITH_DJVU=yes -DAPVLV_WITH_TXT=yes \
+          -DAPVLV_WITH_UMD=no  ..
+    make
+    make DESTDIR=$PKG install
+
+    # desktop integration
+    install -Dm644 $SRC/$name.desktop \
+        $PKG/usr/share/applications/$name.desktop
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

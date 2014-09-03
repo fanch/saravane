@@ -1,0 +1,12 @@
+xorg lib xorg-xtrans
+xorg lib xorg-xtrans
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/lib-xtrans/
+
+Packagers:
+
+pierre at nutyx dot org

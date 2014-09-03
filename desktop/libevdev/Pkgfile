@@ -1,0 +1,9 @@
+version=1.2.2
+source=( http://www.freedesktop.org/software/libevdev/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

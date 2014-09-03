@@ -1,0 +1,21 @@
+version=0.2.0
+
+source=(http://ftp.gimp.org/pub/$name/0.2/$name-$version.tar.bz2
+	 http://www.linuxfromscratch.org/patches/blfs/svn/gegl-0.2.0-ffmpeg2-1.patch
+	)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../gegl-0.2.0-ffmpeg2-1.patch
+./configure --prefix=/usr \
+--with-sdl --with-openexr --with-librsvg \
+--with-libavformat
+LC_ALL=en_US make
+make DESTDIR=$PKG install
+install -v -m644 docs/*.{css,html} \
+$PKG/usr/share/gtk-doc/html/gegl
+install -d -v -m755 \
+$PKG/usr/share/gtk-doc/html/gegl/images
+install -v -m644 docs/images/* \
+$PKG/usr/share/gtk-doc/html/gegl/images
+}

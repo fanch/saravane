@@ -1,0 +1,37 @@
+version=0.26.4
+dataversion=0.4.7
+
+source=(
+http://poppler.freedesktop.org/$name-$version.tar.xz
+http://poppler.freedesktop.org/poppler-data-$dataversion.tar.gz)
+
+build() {
+cd poppler-$version
+ 
+    ./configure --prefix=/usr      \
+            --sysconfdir=/etc      \
+            --disable-static       \
+            --disable-poppler-qt4  \
+            --disable-poppler-qt5  \
+            --disable-poppler-glib \
+            --enable-xpdf-headers
+
+make
+make DESTDIR=$PKG install
+
+cd ../poppler-data-$dataversion
+make prefix=/usr DESTDIR=$PKG install
+
+rm -f $PKG/usr/lib/pkgconfig/poppler-{glib,qt4,qt5}.pc
+rm -f $PKG/usr/lib/poppler-{glib*,qt4*,qt5*}
+
+rm -f $PKG/usr/bin/poppler-glib-demo
+rm -rf $PKG/usr/include/poppler/glib/
+
+rm -f $PKG/usr/bin/poppler-qt4-demo
+rm -rf $PKG/usr/include/poppler/qt4/
+
+rm -f $PKG/usr/bin/poppler-qt5-demo
+rm -rf $PKG/usr/include/poppler/qt5/
+
+}

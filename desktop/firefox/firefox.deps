@@ -1,0 +1,12 @@
+yasm
+sqlite
+libvpx
+libevent
+nss
+alsa-lib
+gtk
+xorg-app
+zip
+unzip
+gstreamer
+gstreamer-plugins-base

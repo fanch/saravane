@@ -1,0 +1,12 @@
+Modular geoinformation service built on the D-Bus messaging system.
+Module de geoinformation utilisant système de message dbus
+
+https://launchpad.net/geoclue/
+
+Maintainers:
+
+- cgit.freedesktop.org/geoclue
+
+Packagers:
+
+pierre at nutyx dot org

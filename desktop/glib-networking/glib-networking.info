@@ -1,0 +1,12 @@
+Network-related giomodules for glib
+Modules GIO de réseau pour GLib
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/browse/glib-networking/
+
+Packagers:
+
+pierre at nutyx dot org

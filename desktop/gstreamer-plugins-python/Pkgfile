@@ -1,0 +1,13 @@
+version=0.10.22
+
+source=(http://gstreamer.freedesktop.org/src/gst-python/gst-python-$version.tar.bz2)
+
+build() {
+cd gst-python-$version
+
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
+
+  

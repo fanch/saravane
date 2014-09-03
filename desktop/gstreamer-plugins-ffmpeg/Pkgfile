@@ -1,0 +1,19 @@
+version=0.10.13
+
+source=(http://gstreamer.freedesktop.org/src/gst-ffmpeg/gst-ffmpeg-$version.tar.bz2
+	http://nutyx.meticul.eu/files/patchs/$name/h264_qpel_mmx.patch)
+build() {
+unset CFLAGS
+unset CXXFLAGS
+
+cd gst-ffmpeg-$version
+patch -Np1 -i ../h264_qpel_mmx.patch
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--with-ffmpeg-extra-configure="--enable-runtime-cpudetect"
+make || make -j1
+make DESTDIR=$PKG install
+}
+
+  

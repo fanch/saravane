@@ -1,0 +1,8 @@
+version=4.14.0
+
+source=()
+
+build() {
+	mkdir -p $PKG/$KDE_PREFIX
+}
+

@@ -1,0 +1,10 @@
+version=1.0.12
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXaw-$version.tar.bz2)
+
+build() {
+cd libXaw-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

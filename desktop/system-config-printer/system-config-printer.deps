@@ -1,0 +1,11 @@
+desktop-file-utils
+python-pycups
+python-xml
+python-pycurl
+python-gobject
+dbus-python
+xmlto
+intltool
+gnome-icon-theme
+libusb
+gnome-keyring

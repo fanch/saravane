@@ -1,0 +1,12 @@
+Gnome keyboard library
+Contient les prises xkb utilisées par le bureau GNOME. 
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/browse/libgnomekbd/
+
+Packagers:
+
+pierre at nutyx dot org

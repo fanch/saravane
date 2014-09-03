@@ -1,0 +1,19 @@
+version=0.9.88
+source=(http://download.kde.org/stable/$name/$version/$name-$version.tar.bz2)
+build() {
+if [ -z $QT4DIR ];then 
+	error "QT4DIR not defined"
+	exit $E_BUILD
+fi
+cd $name-$version
+mkdir build &&
+cd build &&
+cmake -DCMAKE_INSTALL_PREFIX=$QT4DIR .. &&
+make
+make DESTDIR=$PKG install
+
+#sed -i 's/@_moc_cdefs@/@_moc_cdefs@;BOOST_TT_HAS_OPERATOR_HPP_INCLUDED/' \
+#$PKG/$QT4DIR/lib/automoc4/automoc4.files.in
+#sed -i 's/@_moc_defs@/@_moc_defs@ -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED/' \
+#$PKG/$QT4DIR/lib/automoc4/automoc4.files.in
+}

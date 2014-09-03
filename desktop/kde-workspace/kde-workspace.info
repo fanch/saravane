@@ -1,0 +1,11 @@
+Components that are central to providing the KDE desktop environment. Of particular importance are KWin, the KDE window manager, and Plasma, which provides the workspace interface. 
+
+http://www.kde.org
+
+Maintainers:
+
+- KDE Project : https://projects.kde.org/projects/kde
+
+Packagers:
+
+pierre at nutyx dot org

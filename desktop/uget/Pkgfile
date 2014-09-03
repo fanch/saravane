@@ -1,0 +1,11 @@
+version=1.10.3
+
+source=(http://downloads.sourceforge.net/urlget/$name-$version.tar.gz)
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              --disable-appindicator 
+	make
+	make DESTDIR=$PKG install
+}
+  

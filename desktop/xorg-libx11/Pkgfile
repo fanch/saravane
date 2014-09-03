@@ -1,0 +1,10 @@
+version=1.6.2
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libX11-$version.tar.bz2)
+
+build() {
+cd libX11-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

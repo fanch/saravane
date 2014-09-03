@@ -1,0 +1,12 @@
+C++ bindings for pango
+Wrapper C++ pour la librairie graphique pango
+
+http://cairographics.org/cairomm/
+
+Maintainers:
+
+- NuTyX coret team
+
+Packagers:
+
+pierre at nutyx dot org

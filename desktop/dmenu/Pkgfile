@@ -1,0 +1,17 @@
+version=4.5
+source=(http://dl.suckless.org/tools/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+
+    make install PREFIX=/usr \
+                 LIBDIR=/usr/lib \
+                 MANPREFIX=/usr/share/man \
+                 X11INC=$XORG_PREFIX/include \
+                 X11LIB=$XORG_PREFIX/lib \
+                 DESTDIR=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

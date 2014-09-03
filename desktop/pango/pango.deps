@@ -1,0 +1,7 @@
+cairo
+libthai
+freetype
+xorg-libxft
+gobject-introspection
+harfbuzz
+xorg-libxxf86vm

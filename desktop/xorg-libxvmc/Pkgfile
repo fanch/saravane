@@ -1,0 +1,10 @@
+version=1.0.8
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXvMC-$version.tar.bz2)
+
+build() {
+cd libXvMC-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,18 @@
+version=4.10.1
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=$XFCE4_PREFIX \
+--sysconfdir=/etc \
+--libexecdir=$XFCE4_PREFIX/lib/xfce4 \
+--localstatedir=/var \
+--disable-static
+make
+make DESTDIR=$PKG install
+	
+for i in $XFCE4_PREFIX/bin/xfrun4
+do rm $PKG/$i
+done
+}

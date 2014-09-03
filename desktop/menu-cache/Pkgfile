@@ -1,0 +1,10 @@
+version=0.4.1
+
+source=(http://downloads.sourceforge.net/lxde/files/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+--libexecdir=/usr/lib/menu-cache --disable-static
+make
+make DESTDIR=$PKG install
+}

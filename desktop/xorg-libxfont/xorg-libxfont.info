@@ -1,0 +1,12 @@
+libxfont, library Xorg
+libXfont, bibliothèque Xorg
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXfont/
+
+Packagers:
+
+pierre at nutyx dot org

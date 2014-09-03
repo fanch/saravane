@@ -1,0 +1,7 @@
+version=0.4.6
+source=(http://nutyx.meticul.eu/files/$name-$version.tar.gz)
+
+build() {
+mkdir -p $PKG/$XFCE4_PREFIX/share/icons/
+cp -a * $PKG/$XFCE4_PREFIX/share/icons/
+}

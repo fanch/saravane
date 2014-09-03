@@ -1,0 +1,8 @@
+dbus-glib
+startup-notification
+xorg-libxrandr
+xorg-libxinerama
+xorg-libsm
+xfce4-libgui
+desktop-file-utils
+gtksourceview2

@@ -1,0 +1,13 @@
+avahi
+dbus-glib
+intltool
+libsecret
+gtk3
+libgnome-keyring
+libsoup
+udisks2
+obexd
+fuse
+libarchive
+samba
+bluez

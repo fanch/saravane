@@ -1,0 +1,13 @@
+version=4.10.1
+
+_name=libxfce4util
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/share/gtk-doc
+}

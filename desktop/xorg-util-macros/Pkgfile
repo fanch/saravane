@@ -1,0 +1,10 @@
+version=1.18.0
+PKGMK_GROUPS=()
+_name=util-macros
+source=(http://downloads.nutyx.org/archives/xorg/individual/util/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

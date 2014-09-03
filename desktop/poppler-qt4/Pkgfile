@@ -1,0 +1,20 @@
+version=0.26.4
+source=(http://poppler.freedesktop.org/poppler-$version.tar.xz)
+
+build() {
+    cd poppler-$version
+    ./configure --prefix=/usr             \
+            --sysconfdir=/etc             \
+            --disable-static              \
+            --enable-qt4                  \
+            --disable-qt5                 \
+            --disable-glib                \
+            --enable-xpdf-headers
+    make
+    make -C poppler DESTDIR=$PKG install-libLTLIBRARIES
+    make -C qt4 DESTDIR=$PKG install
+
+    mkdir -p $PKG/usr/lib/pkgconfig
+    install -m644 poppler-qt4.pc $PKG/usr/lib/pkgconfig/
+    rm -f $PKG/usr/lib/libpoppler.*
+}

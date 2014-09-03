@@ -1,0 +1,15 @@
+version=1.1.0
+
+source=(http://downloads.sourceforge.net/pcmanfm/${name}-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--enable-udisks --with-gnu-ld
+make LDFLAGS+=' -lgobject-2.0 -lglib-2.0'
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+rm -r $PKG/usr/include/libfm
+mv $PKG/usr/include/libfm{-1.0,}
+}

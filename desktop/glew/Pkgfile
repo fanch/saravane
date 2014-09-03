@@ -1,0 +1,13 @@
+version=1.9.0
+
+source=(http://downloads.sourceforge.net/project/glew/glew/$version/$name-$version.tgz)
+
+build() {
+	cd $name-$version
+	sed -i 's|lib64|lib|' config/Makefile.linux
+	install -dm755 $PKG/usr/lib/pkgconfig
+
+	make 
+	make GLEW_DEST=$PKG/usr LIBDIR=$PKG/usr/lib BINDIR=$PKG/usr/bin install install.bin install.lib.mx
+}
+

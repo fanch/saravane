@@ -1,0 +1,6 @@
+dbus-glib
+libusb
+intltool
+polkit
+gobject-introspection
+udev-extras

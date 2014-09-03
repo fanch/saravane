@@ -1,0 +1,12 @@
+version=1.0.1
+
+source=(http://files.ayoy.net/qoauth/release/current/src/$name-$version-src.tar.bz2 )
+	
+build() {
+	cd $name-*
+	sed -i 's|lib64|lib|' src/src.pro
+	qmake
+	make
+	make INSTALL_ROOT=$PKG install
+}
+

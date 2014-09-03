@@ -1,0 +1,10 @@
+version=5.0.1
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXfixes-$version.tar.bz2)
+
+build() {
+cd libXfixes-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

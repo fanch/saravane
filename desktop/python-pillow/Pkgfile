@@ -1,0 +1,22 @@
+version=2.4.0
+source=(
+http://pypi.python.org/packages/source/P/Pillow/Pillow-$version.zip)
+
+build() {
+    cd Pillow-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+    cd Sane
+    python2 setup.py install --prefix=/usr --root=$PKG
+    cd ../libImaging
+    install -dm755 $PKG/usr/include/python2.7
+    install -m644 -t $PKG/usr/include/python2.7 *.h
+    # rename /bin/*.py to *
+    cd $PKG/usr/bin
+    for f in *.py; do
+        mv $f "${f%.py}2"
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

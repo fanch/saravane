@@ -1,0 +1,10 @@
+version=0.9.8
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXrender-$version.tar.bz2)
+
+build() {
+cd libXrender-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

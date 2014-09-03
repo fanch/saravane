@@ -1,0 +1,10 @@
+version=2.8.0
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/pyatspi/${version%.*}/pyatspi-$version.tar.xz)
+
+build() {
+cd pyatspi-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}  

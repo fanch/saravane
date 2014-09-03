@@ -1,0 +1,11 @@
+libnotify
+dbus-glib
+xfce4-libgui
+xfce4-libui
+gstreamer-plugins-base
+gstreamer1-plugins-base
+gstreamer1-plugins-good
+libdvdcss
+libdvdnav
+libdvdread
+startup-notification

@@ -1,0 +1,7 @@
+cmake
+automoc4
+kde-libs
+qjson
+xcb-util-image
+xcb-util-renderutil
+libxcb

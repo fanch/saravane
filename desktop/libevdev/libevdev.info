@@ -1,0 +1,11 @@
+The Libevdev package contains common functions for Xorg input drivers.
+
+URL:  http://www.freedesktop.org/wiki/Software/libevdev/
+
+Maintainers:
+
+-  peter.hutterer at who-t.net 
+
+Packager:
+
+- tnut at nutyx dot org

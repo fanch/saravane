@@ -1,0 +1,12 @@
+Monitor and display application startup
+Contient les librairies pour notifier le démarrage d'un programme
+
+http://freedesktop.org/wiki/Software/startup-notification
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,16 @@
+version=1.8.1
+
+source=(http://archive.xfce.org/src/apps/$name/1.8/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/xfce4 \
+	--localstatedir=/var \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/doc
+}
+

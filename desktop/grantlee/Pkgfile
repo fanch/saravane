@@ -1,0 +1,14 @@
+version=0.4.0
+
+source=(http://downloads.grantlee.org/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .. \
+	      -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_SKIP_RPATH=OFF 
+	make
+	make DESTDIR=$PKG install
+}

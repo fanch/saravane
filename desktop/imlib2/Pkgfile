@@ -1,0 +1,21 @@
+version=1.4.6
+source=(http://downloads.sourceforge.net/enlightenment/$name-$version.tar.gz)
+build() {
+cd $name-$version
+case $(uname -m) in 
+	i686)
+		EXTRAOPTS="--disable-mmx";;
+	x86_64)
+		EXTRAOPTS="--disable-amd64";;
+esac
+sed -i '/DGifOpen/s:fd:&, NULL:' src/modules/loaders/loader_gif.c
+sed -i '/DGifCloseFile/s:gif:&, NULL:' src/modules/loaders/loader_gif.c
+sed -i 's/@my_libs@//' imlib2-config.in
+
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+$EXTRAOPTS
+make
+make DESTDIR=$PKG install
+}

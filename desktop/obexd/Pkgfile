@@ -1,0 +1,12 @@
+version=0.48
+
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+build() {
+cd $name-$version
+sed -i 's/#include <string.h>/&\n#include <stdio.h>/' plugins/mas.c
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--libexecdir=/usr/lib/obexd
+make
+make DESTDIR=$PKG install
+}

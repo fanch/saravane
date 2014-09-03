@@ -1,0 +1,10 @@
+version=1.0.7
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXres-$version.tar.bz2)
+
+build() {
+	cd libXres-$version
+	./configure $XORG_CONFIG
+	make
+	make DESTDIR=$PKG install
+}

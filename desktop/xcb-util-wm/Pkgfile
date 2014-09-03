@@ -1,0 +1,11 @@
+version=0.4.1
+
+source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+        ./configure $XORG_CONFIG
+        make
+        make DESTDIR=$PKG install
+}
+

@@ -1,0 +1,12 @@
+version=4.10.1
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/$name/4.10/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=$XFCE4_PREFIX \
+--sysconfdir=/etc \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

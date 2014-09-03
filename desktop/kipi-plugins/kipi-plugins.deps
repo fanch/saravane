@@ -1,0 +1,14 @@
+cmake
+automoc4
+imagemagick
+sqlite
+doxygen
+kde-libksane
+kde-libkdcraw
+kde-libkipi
+kde-libkexiv2
+opencv
+qjson
+kde-marble
+mysql
+lensfun

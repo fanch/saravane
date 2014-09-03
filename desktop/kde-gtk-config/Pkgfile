@@ -1,0 +1,15 @@
+version=2.2.1
+
+source=(ftp://ftp.kde.org/pub/kde/stable/kde-gtk-config/$version/src/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+                -DSYSCONF_INSTALL_DIR=/etc/kde \
+                -DCMAKE_BUILD_TYPE=Release \
+                ..
+        make
+        make DESTDIR=$PKG install
+}

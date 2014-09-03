@@ -1,0 +1,11 @@
+version=0.10.17
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+  

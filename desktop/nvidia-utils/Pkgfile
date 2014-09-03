@@ -1,0 +1,139 @@
+version=337.25
+[ "`uname -m`" == "i686"   ] && _ARCH=x86
+[ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
+
+[ "`uname -m`" == "i686"   ] && _pkg="NVIDIA-Linux-x86-$version"
+[ "`uname -m`" == "x86_64" ] && _pkg="NVIDIA-Linux-x86_64-${version}-no-compat32"
+
+source=(ftp://download.nvidia.com/XFree86/Linux-${_ARCH}/$version/${_pkg}.run)
+
+build() {
+
+    cd "$SRC"
+    sh "${_pkg}.run" --extract-only
+    
+    cd "$SRC/${_pkg}"
+
+    # OpenCL
+    install -D -m644 nvidia.icd "$PKG/etc/OpenCL/vendors/nvidia.icd"
+    install -D -m755 "libnvidia-compiler.so.${version}" "$PKG/usr/lib/libnvidia-compiler.so.${version}"
+    install -D -m755 "libnvidia-opencl.so.${version}" "$PKG/usr/lib/libnvidia-opencl.so.${version}" 
+
+    while read -d '' _lib; do
+        _soname="$(dirname "${_lib}")/$(LC_ALL=C readelf -d "${_lib}" | sed -nr 's/.*Library soname: \[(.*)\].*/\1/p')"
+        [[ -e "${_soname}" ]] || ln -s "$(basename "${_lib}")" "${_soname}"
+        [[ -e "${_soname/.[0-9]*/}" ]] || ln -s "$(basename "${_soname}")" "${_soname/.[0-9]*/}"
+    done < <(find "$PKG" -type f -name '*.so*' -print0)
+
+    mkdir -p "$PKG/usr/share/licenses"
+    ln -s nvidia "$PKG/usr/share/licenses/opencl-nvidia"
+
+    cd "$SRC/${_pkg}"
+
+    mkdir -p "$PKG/usr/lib/xorg/modules/extensions"
+    ln -s "/usr/lib/nvidia/xorg/modules/extensions/libglx.so.${version}" "$PKG/usr/lib/xorg/modules/extensions/libglx.so.${version}"
+    ln -s "libglx.so.${version}" "$PKG/usr/lib/xorg/modules/extensions/libglx.so.1"
+    ln -s "libglx.so.${version}" "$PKG/usr/lib/xorg/modules/extensions/libglx.so"
+
+    ln -s "/usr/lib/nvidia/libGL.so.${version}" "$PKG/usr/lib/libGL.so.${version}"
+    ln -s "libGL.so.${version}" "$PKG/usr/lib/libGL.so.1"
+    ln -s "libGL.so.${version}" "$PKG/usr/lib/libGL.so"
+
+    ln -s "/usr/lib/nvidia/libEGL.so.${version}" "$PKG/usr/lib/libEGL.so.${version}"
+    ln -s "libEGL.so.${version}" "$PKG/usr/lib/libEGL.so.1"
+    ln -s "libEGL.so.${version}" "$PKG/usr/lib/libEGL.so"
+
+    ln -s "/usr/lib/nvidia/libGLESv1_CM.so.${version}" "$PKG/usr/lib/libGLESv1_CM.so.${version}"
+    ln -s "libGLESv1_CM.so.${version}" "$PKG/usr/lib/libGLESv1_CM.so.1"
+    ln -s "libGLESv1_CM.so.${version}" "$PKG/usr/lib/libGLESv1_CM.so"
+
+    ln -s "/usr/lib/nvidia/libGLESv2.so.${version}" "$PKG/usr/lib/libGLESv2.so.${version}"
+    ln -s "libGLESv2.so.${version}" "$PKG/usr/lib/libGLESv2.so.2"
+    ln -s "libGLESv2.so.${version}" "$PKG/usr/lib/libGLESv2.so"
+
+    mkdir -p "$PKG/usr/share/licenses"
+    ln -s nvidia "$PKG/usr/share/licenses/nvidia-libgl"
+
+    cd "$SRC/${_pkg}"
+
+    # X driver
+    install -D -m755 nvidia_drv.so "$PKG/usr/lib/xorg/modules/drivers/nvidia_drv.so"
+
+    # GLX extension module for X
+    install -D -m755 "libglx.so.${version}" "$PKG/usr/lib/nvidia/xorg/modules/extensions/libglx.so.${version}"
+    ln -s "libglx.so.${version}" "$PKG/usr/lib/nvidia/xorg/modules/extensions/libglx.so"	# X doesn't find glx otherwise
+
+    # OpenGL libraries
+    install -D -m755 "libGL.so.${version}" "$PKG/usr/lib/nvidia/libGL.so.${version}"
+    install -D -m755 "libEGL.so.${version}" "$PKG/usr/lib/nvidia/libEGL.so.${version}"
+    install -D -m755 "libGLESv1_CM.so.${version}" "$PKG/usr/lib/nvidia/libGLESv1_CM.so.${version}"
+    install -D -m755 "libGLESv2.so.${version}" "$PKG/usr/lib/nvidia/libGLESv2.so.${version}"
+
+    # OpenGL core library
+    install -D -m755 "libnvidia-glcore.so.${version}" "$PKG/usr/lib/libnvidia-glcore.so.${version}"
+    install -D -m755 "libnvidia-eglcore.so.${version}" "$PKG/usr/lib/libnvidia-eglcore.so.${version}"
+    install -D -m755 "libnvidia-glsi.so.${version}" "$PKG/usr/lib/libnvidia-glsi.so.${version}"
+    
+    # misc
+    install -D -m755 "libnvidia-ifr.so.${version}" "$PKG/usr/lib/libnvidia-ifr.so.${version}"
+    install -D -m755 "libnvidia-fbc.so.${version}" "$PKG/usr/lib/libnvidia-fbc.so.${version}"
+    install -D -m755 "libnvidia-encode.so.${version}" "$PKG/usr/lib/libnvidia-encode.so.${version}"
+    install -D -m755 "libnvidia-cfg.so.${version}" "$PKG/usr/lib/libnvidia-cfg.so.${version}"
+    install -D -m755 "libnvidia-ml.so.${version}" "$PKG/usr/lib/libnvidia-ml.so.${version}"
+
+    # VDPAU
+    install -D -m755 "libvdpau_nvidia.so.${version}" "$PKG/usr/lib/vdpau/libvdpau_nvidia.so.${version}"
+
+    # nvidia-tls library
+    install -D -m755 "tls/libnvidia-tls.so.${version}" "$PKG/usr/lib/libnvidia-tls.so.${version}"
+
+    # CUDA
+    install -D -m755 "libcuda.so.${version}" "$PKG/usr/lib/libcuda.so.${version}"
+    install -D -m755 "libnvcuvid.so.${version}" "$PKG/usr/lib/libnvcuvid.so.${version}"
+
+    # DEBUG
+    install -D -m755 nvidia-debugdump "$PKG/usr/bin/nvidia-debugdump"
+
+    # nvidia-xconfig
+    install -D -m755 nvidia-xconfig "$PKG/usr/bin/nvidia-xconfig"
+    install -D -m644 nvidia-xconfig.1.gz "$PKG/usr/share/man/man1/nvidia-xconfig.1.gz"
+
+    # nvidia-settings
+    install -D -m755 nvidia-settings "$PKG/usr/bin/nvidia-settings"
+    install -D -m644 nvidia-settings.1.gz "$PKG/usr/share/man/man1/nvidia-settings.1.gz"
+    install -D -m644 nvidia-settings.desktop "$PKG/usr/share/applications/nvidia-settings.desktop"
+    install -D -m644 nvidia-settings.png "$PKG/usr/share/pixmaps/nvidia-settings.png"
+    sed -e 's:__UTILS_PATH__:/usr/bin:' -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' -i "$PKG/usr/share/applications/nvidia-settings.desktop"
+
+    # nvidia-bug-report
+    install -D -m755 nvidia-bug-report.sh "$PKG/usr/bin/nvidia-bug-report.sh"
+
+    # nvidia-smi
+    install -D -m755 nvidia-smi "$PKG/usr/bin/nvidia-smi"
+    install -D -m644 nvidia-smi.1.gz "$PKG/usr/share/man/man1/nvidia-smi.1.gz"
+
+    # nvidia-cuda-mps
+    install -D -m755 nvidia-cuda-mps-server "$PKG/usr/bin/nvidia-cuda-mps-server"
+    install -D -m644 nvidia-cuda-mps-control.1.gz "$PKG/usr/share/man/man1/nvidia-cuda-mps-control.1.gz"
+
+    # nvidia-modprobe
+    # This should be removed if nvidia fixed their uvm module!
+    install -D -m4755 nvidia-modprobe "$PKG/usr/bin/nvidia-modprobe"
+
+    # application profiles
+    install -D -m644 nvidia-application-profiles-${version}-rc "$PKG/usr/share/nvidia/nvidia-application-profiles-${version}-rc"
+    install -D -m644 nvidia-application-profiles-${version}-key-documentation "$PKG/usr/share/nvidia/nvidia-application-profiles-${version}-key-documentation"
+
+    install -D -m644 LICENSE "$PKG/usr/share/licenses/nvidia/LICENSE"
+    ln -s nvidia "$PKG/usr/share/licenses/nvidia-utils"
+    install -D -m644 README.txt "$PKG/usr/share/doc/nvidia/README"
+    install -D -m644 NVIDIA_Changelog "$PKG/usr/share/doc/nvidia/NVIDIA_Changelog"
+    ln -s nvidia "$PKG/usr/share/doc/nvidia-utils"
+
+     while read -d '' _lib; do
+        _soname="$(dirname "${_lib}")/$(LC_ALL=C readelf -d "${_lib}" | sed -nr 's/.*Library soname: \[(.*)\].*/\1/p')"
+        [[ -e "${_soname}" ]] || ln -s "$(basename "${_lib}")" "${_soname}"
+        [[ -e "${_soname/.[0-9]*/}" ]] || ln -s "$(basename "${_soname}")" "${_soname/.[0-9]*/}"
+    done < <(find "$PKG" -type f -name '*.so*' -print0)
+}
+

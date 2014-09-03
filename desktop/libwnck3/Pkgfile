@@ -1,0 +1,11 @@
+version=3.4.7
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/libwnck/${version%.*}/libwnck-$version.tar.xz)
+build() {
+cd libwnck-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+}
+

@@ -1,0 +1,16 @@
+version=4.10.0
+
+_name=libxfce4ui
+
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+	./configure --prefix=$XFCE4_PREFIX \
+	--sysconfdir=/etc
+	make
+	make DESTDIR=$PKG install
+for i in $XFCE4_PREFIX/bin/xfce4-about $XFCE4_PREFIX/share/applications/xfce4-about.desktop $XFCE4_PREFIX/share/icons/hicolor/48x48/apps/xfce4-logo.png
+do rm $PKG/$i
+done	
+}

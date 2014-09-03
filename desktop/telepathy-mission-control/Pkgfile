@@ -1,0 +1,13 @@
+version=5.14.0
+
+source=(http://${name%-*-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/${name%-*} \
+--enable-gnome-keyring \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

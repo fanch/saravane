@@ -1,0 +1,25 @@
+version=2.10.9
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--disable-gevolution \
+--disable-meanwhile \
+--disable-avahi \
+--disable-mono \
+--disable-tk \
+--disable-cap \
+--disable-gtkspell  \
+--disable-vv \
+--disable-nm \
+--disable-tcl \
+--disable-schemas-install \
+--enable-gnutls=yes
+ 
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/{etc,usr/lib/perl5}
+}

@@ -1,0 +1,12 @@
+The naming utilities generate the icon files appropriate to the desktop environment you use.
+It should be noted, when icon-naming-utils is updated, tango-icon-theme should also be updated.
+
+URL: http://tango.freedesktop.org/
+
+Maintainer :
+
+- 
+
+Packager:
+
+- tnut at nutyx dot org

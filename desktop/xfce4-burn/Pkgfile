@@ -1,0 +1,12 @@
+version=0.5.2
+_name=xfburn
+
+source=( http://archive.xfce.org/src/apps/xfburn/${version%.*}/xfburn-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version	
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,5 @@
+cairo
+dbus-glib
+gobject-introspection
+js
+xorg-libxxf86vm

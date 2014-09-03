@@ -1,0 +1,10 @@
+version=3.5.11
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXpm-$version.tar.bz2)
+
+build() {
+cd libXpm-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

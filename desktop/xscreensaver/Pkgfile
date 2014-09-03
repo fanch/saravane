@@ -1,0 +1,23 @@
+version=5.28
+
+source=(http://www.jwz.org/xscreensaver/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib \
+--without-gnome
+make
+make install_prefix=$PKG install
+chmod 755 $PKG/usr/bin/xscreensaver
+mkdir -p $PKG/etc/pam.d
+cat > $PKG/etc/pam.d/xscreensaver << "EOF"
+# Begin /etc/pam.d/xscreensaver
+
+auth	include	system-auth
+account	include	system-account
+
+# End /etc/pam.d/xscreensaver
+EOF
+}
+  

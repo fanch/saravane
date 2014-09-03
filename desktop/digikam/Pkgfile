@@ -1,0 +1,32 @@
+version=4.2.0
+
+
+source=(http://download.kde.org/stable/digikam/digikam-$version.tar.bz2)
+
+build() {
+	cd $SRC/digikam*
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+                -DSYSCONF_INSTALL_DIR=/etc/kde \
+		-DBUILD_tests=OFF \
+		-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
+                ..
+	make 
+
+	cd $SRC/digikam*/build/core
+	make DESTDIR=$PKG install
+	cd ../../build/doc
+	make DESTDIR=$PKG install
+	cd ../../build/po
+	make DESTDIR=$PKG install
+
+	for i in libkface libkgeomap libkvkontakte libmediawiki
+        do
+          cd $SRC/digikam*/build/extra/$i
+          make DESTDIR=$PKG install
+       done
+
+	rm -f $PKG/$KDE_PREFIX/share/locale/*/LC_MESSAGES/libkipi.mo
+}
+

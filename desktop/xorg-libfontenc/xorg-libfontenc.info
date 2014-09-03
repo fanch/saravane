@@ -1,0 +1,12 @@
+libfontenc, library Xorg
+libfontenc, bibliothèque Xorg
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libfontenc
+
+Packagers:
+
+pierre at nutyx dot org

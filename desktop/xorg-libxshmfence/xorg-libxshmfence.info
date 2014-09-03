@@ -1,0 +1,12 @@
+xorg lib libxshmfence
+xorg lib libxshmfence
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/xorg-libxkbfile/
+
+Packagers:
+
+pierre at nutyx dot org

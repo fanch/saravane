@@ -1,0 +1,5 @@
+autoconf
+automake
+m4
+libtool
+xorg-libpciaccess

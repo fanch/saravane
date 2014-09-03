@@ -1,0 +1,10 @@
+udisks
+shared-mime-info
+xorg-libxinerama
+xorg-libxrandr
+xorg-libxdamage
+gtk
+menu-cache
+dbus-glib
+desktop-file-utils
+vala

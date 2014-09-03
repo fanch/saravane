@@ -1,0 +1,17 @@
+version=4.13.3
+
+_name=kactivities
+
+source=(ftp://ftp.kde.org/pub/kde/stable/$version/src/${_name}-$version.tar.xz)
+	
+build() {
+cd ${_name}-$version
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DWITH_NepomukCore=OFF \
+      -Wno-dev ..
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,21 @@
+version=0.26.4
+source=(http://poppler.freedesktop.org/poppler-$version.tar.xz)
+
+build() {
+cd poppler-$version
+
+./configure --prefix=/usr      \
+            --sysconfdir=/etc      \
+            --disable-static       \
+            --disable-poppler-qt4  \
+            --disable-poppler-qt5  \
+            --enable-poppler-glib \
+            --disable-xpdf-headers
+
+make
+make -C poppler DESTDIR=$PKG install-libLTLIBRARIES
+make -C glib DESTDIR=$PKG install
+
+rm -f $PKG/usr/lib/libpoppler.*
+rm -rf $PKG/usr/share/gtk-doc/html/poppler/ 
+}

@@ -1,0 +1,12 @@
+GObject collection library (legacy)
+Bibliothèque fournissant les interfaces pour les objets basés sur GObject et les classes pour une utilisation pratique des données et des structures. 
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/browse/libgee/
+
+Packagers:
+
+pierre at nutyx dot org

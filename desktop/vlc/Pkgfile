@@ -1,0 +1,12 @@
+version=2.1.5
+
+source=( http://download.videolan.org/pub/videolan/vlc/$version/vlc-$version.tar.xz)
+	
+build() {
+cd $name-$version
+sed -i 's:libsmbclient.h:samba-4.0/&:' modules/access/smb.c 
+sh bootstrap
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}

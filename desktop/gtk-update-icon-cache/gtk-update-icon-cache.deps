@@ -1,0 +1,9 @@
+cairo
+pango
+atk
+libtiff
+cups
+gdk-pixbuf
+xorg-libxi
+xorg-libxcursor
+hicolor-icon-theme

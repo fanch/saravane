@@ -1,0 +1,10 @@
+version=0.9
+
+source=(http://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

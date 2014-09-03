@@ -1,0 +1,11 @@
+version=1.3
+
+source=( http://freedesktop.org/~hadess/$name-$version.tar.xz)
+
+build() {
+unset MAKEFLAGS
+cd $name-$version
+./configure --prefix=/usr --disable-update-mimedb
+make
+make DESTDIR=$PKG install
+} 

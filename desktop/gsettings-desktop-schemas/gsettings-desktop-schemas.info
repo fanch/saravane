@@ -1,0 +1,12 @@
+Shared GSettings schemas for the desktop
+Contient une collection de schemas GSettings.
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/browse/gsettings-desktop-schemas/
+
+Packagers:
+
+pierre at nutyx dot org

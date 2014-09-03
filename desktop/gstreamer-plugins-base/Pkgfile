@@ -1,0 +1,13 @@
+version=0.10.36
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz)
+
+build() {
+cd gst-plugins-base-$version
+
+sed -i -e 's/-O2/& -msse2/' configure
+
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

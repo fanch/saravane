@@ -1,0 +1,10 @@
+version=1.2.2
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXtst-$version.tar.bz2)
+
+build() {
+cd libXtst-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

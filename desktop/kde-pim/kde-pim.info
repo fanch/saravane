@@ -1,0 +1,17 @@
+KDE programs for managing personal information.
+Programs include a contact manager, calendar, mail client,
+newsreader, X.509 certificate manager and sticky notes.
+Outils de gestions de donnees personnelles pour KDE4
+comprenant un gestionnaire de contacts, calendrier, client
+courrier electronique, lecteur de nouvelles, colleur de 
+notes et gestionnaire de certificats.
+
+http://www.kde.org
+
+Maintainers:
+
+- KDE Project: https://projects.kde.org/projects/kde
+
+Packagers:
+
+pierre at nutyx dot org

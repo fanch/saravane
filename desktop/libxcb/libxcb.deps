@@ -1,0 +1,8 @@
+autoconf
+automake
+m4
+libtool
+xcb-proto
+xorg-libxdmcp
+xorg-libxau
+libxslt

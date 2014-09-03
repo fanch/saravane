@@ -1,0 +1,12 @@
+libxft, library X are rendering client
+libXft, bibliothèque X font rendering client
+
+http://xorg.freedesktop.org/
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXft/
+
+Packagers:
+
+pierre at nutyx dot org

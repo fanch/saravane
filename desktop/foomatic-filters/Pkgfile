@@ -1,0 +1,10 @@
+version=4.0-20140715
+source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
+build() {
+cd $name-*
+./configure --prefix=/usr\
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/lib/cups/filter/foomatic-rip
+}

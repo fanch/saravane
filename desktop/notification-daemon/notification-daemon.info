@@ -1,0 +1,12 @@
+Notification daemon for the desktop notifications framework
+Contient un démon qui affiche les notifications pop-up passives
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/brownse/gnome-backgrounds/
+
+Packagers:
+
+pierre at nutyx dot org

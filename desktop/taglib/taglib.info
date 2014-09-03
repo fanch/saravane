@@ -1,0 +1,12 @@
+A Library for reading and editing the meta-data of several popular audio formats
+Permet de lire et de modifier les données de nombreux fichiers audio
+
+http://developer.kde.org/~wheeler/taglib.html
+
+Maintainers:
+
+- NuTyX packager  team
+
+Packagers:
+
+pierre at nutyx dot org

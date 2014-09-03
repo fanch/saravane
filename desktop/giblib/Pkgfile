@@ -1,0 +1,12 @@
+version=1.2.4
+
+source=(http://linuxbrit.co.uk/downloads/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+        rm -rf $PKG/usr/doc/
+}
+

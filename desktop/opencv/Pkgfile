@@ -1,0 +1,22 @@
+version=2.4.9
+
+_pybin=python2
+_pydir=python2.7
+
+source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip )
+
+build() {
+        cd $name-*
+        cmake . -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DCMAKE_SKIP_RPATH=ON \
+                -DWITH_XINE=ON \
+                -DWITH_UiNICAP=OFF \
+                -DPYTHON_EXECUTABLE=/usr/bin/$_pybin \
+                -DPYTHON_INCLUDE_DIR=/usr/include/$_pydir \
+                -DPYTHON_LIBRARY=/usr/lib/lib$_pydir.so
+        make
+        make DESTDIR=$PKG install
+}
+
+

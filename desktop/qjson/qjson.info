@@ -1,0 +1,12 @@
+A qt-based library that maps JSON data to QVariant objects
+Librairie JSON en Qt
+
+http://qjson.sourceforge.net
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

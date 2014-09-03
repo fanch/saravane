@@ -1,0 +1,12 @@
+libxpm, library Xorg
+libXpm, bibliothèque Xorg
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXpm/
+
+Packagers:
+
+pierre at nutyx dot org

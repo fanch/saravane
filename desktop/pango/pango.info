@@ -1,0 +1,17 @@
+A library for layout and rendering of text
+It can be use any where where on a need an text presented same one the most of work fact 
+on black to present occurs in the context of tools of widget of GTK.
+
+Bibliothèque de présentation et d'affichage de texte, mettant l'accent sur l'internationalisation. 
+On peut l'utiliser n'importe où où on a besoin d'un texte présenté, même si la plupart du travail 
+fait sur Pango jusqu'à présent s'effectue dans le contexte des outils de widget de GTK+.
+
+http://gnome.org
+
+Maintainers:
+
+- git.gnome.org/browse/pango/
+
+Packagers:
+
+pierre at nutyx dot org

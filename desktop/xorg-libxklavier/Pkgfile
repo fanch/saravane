@@ -1,0 +1,14 @@
+version=5.3
+_name=libxklavier
+
+source=( http://downloads.nutyx.org/archives/gnome/sources/${_name}/${version}/${_name}-$version.tar.xz)
+
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+} 

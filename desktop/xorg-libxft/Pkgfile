@@ -1,0 +1,9 @@
+version=2.3.2
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXft-$version.tar.bz2)
+
+build() {
+cd libXft-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

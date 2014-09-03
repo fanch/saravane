@@ -1,0 +1,15 @@
+version=1.0.5
+
+source=(ftp://ftp.kde.org/pub/kde/stable/libkscreen/$version/src/libkscreen-$version.tar.xz)
+
+build() {
+        cd libkscreen-$version
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DSYSCONF_INSTALL_DIR=/etc/kde \
+                ..
+        make
+        make DESTDIR=$PKG install
+}

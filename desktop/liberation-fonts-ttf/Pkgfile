@@ -1,0 +1,10 @@
+version=2.00.1
+
+source=(http://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-$version.tar.gz)
+
+build() {
+        cd liberation-fonts-$version
+	make
+        mkdir -p $PKG/usr/share/fonts/liberation/
+        cp -a $name-$version/*.ttf $PKG/usr/share/fonts/liberation/
+}

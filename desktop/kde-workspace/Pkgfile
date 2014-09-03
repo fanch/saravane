@@ -1,0 +1,36 @@
+version=4.11.11
+
+source=(ftp://ftp.kde.org/pub/kde/stable/4.13.3/src/$name-$version.tar.xz
+        kde-workspace.pam
+        kde-workspace.kde-np.pam
+        kde-workspace.kscreensaver.pam)
+
+build() {
+cd $name-$version
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX           \
+      -DSYSCONF_INSTALL_DIR=/etc/kde               \
+      -DCMAKE_BUILD_TYPE=Release                   \
+      -DINSTALL_PYTHON_FILES_IN_PYTHON_PREFIX=TRUE \
+      -DWITH_NepomukCore=OFF                       \
+      -DWITH_Soprano=OFF                           \
+      -Wno-dev .. 
+make
+make DESTDIR=$PKG install
+
+cd ..
+sed -i "s/AllowRootLogin=false/AllowRootLogin=true/" $PKG/opt/kde/share/config/kdm/kdmrc
+sed -i "s/#Language=de_DE/Language=fr_FR/" $PKG/opt/kde/share/config/kdm/kdmrc
+
+chown -R root:root $PKG
+mkdir -p $PKG/var/lib/kdm
+chown -R kdm:kdm $PKG/var/lib/kdm
+
+# Necessaire pour demarrer avec kdm
+install -D -m644 $SRC/kde-workspace.pam $PKG/etc/pam.d/kde
+install -D -m644 $SRC/kde-workspace.kde-np.pam $PKG/etc/pam.d/kde-np
+install -D -m644 $SRC/kde-workspace.kscreensaver.pam $PKG/etc/pam.d/kscreensaver
+
+#rm -rf $PKG/$KDE_PREFIX/share/apps/ksplash/Themes/Default/
+}

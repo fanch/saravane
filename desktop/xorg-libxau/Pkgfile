@@ -1,0 +1,12 @@
+version=1.0.8
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXau-$version.tar.bz2)
+
+build() {
+	cd libXau-$version
+
+	./configure $XORG_CONFIG
+
+	make
+	make DESTDIR=$PKG install
+}

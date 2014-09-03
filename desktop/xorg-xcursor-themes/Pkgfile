@@ -1,0 +1,11 @@
+version=1.0.4
+_name=xcursor-themes
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/data/${_name}-$version.tar.bz2)
+
+build() {
+	cd ${_name}-$version
+	./configure $XORG_CONFIG
+	make
+	make DESTDIR=$PKG install
+}

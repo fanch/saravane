@@ -1,0 +1,14 @@
+The Opal package contains a C++ class library for normalising the numerous telephony protocols
+into a single integrated call model. 
+Bibliothèque de classe C++ pour normaliser les nombreux protocoles de téléphonie
+dans un modèle d'appel unique intégré.  
+
+http://ftp.gnu.org/opal
+
+Maintainers:
+
+- git.gnome.org/browse/opal/
+
+Packagers:
+
+pierre at nutyx dot org

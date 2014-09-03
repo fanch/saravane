@@ -1,0 +1,37 @@
+version=6.8.9-6
+
+source=(
+ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-$version.tar.xz)
+
+build () {
+    cd ImageMagick-*
+
+    [ "`uname -m`" == "i686"   ] && EXTRAOPTS="--with-gcc-arch=i686"
+    [ "`uname -m`" == "x86_64"   ] && EXTRAOPTS="--with-gcc-arch=x86-64"
+    
+    sed '/AC_PATH_XTRA/d' -i configure.ac
+
+    ./configure --prefix=/usr \
+                --enable-static=no \
+                --enable-shared \
+                --with-webp \
+                --with-gslib \
+                --with-perl \
+                --with-perl-options="INSTALLDIRS=vendor" \
+                --with-x \
+                --with-frozenpaths=no \
+                --with-modules \
+                --disable-openmp \
+                --enable-hdri \
+                --with-wmf \
+                --with-gs-font-dir=/usr/share/fonts/Type1 \
+                --with-lqr \
+                --with-rsvg \
+                --enable-opencl \
+                --with-openjp2 \
+                $EXTRAOPTS
+    make
+    make DESTDIR=$PKG install
+    find  $PKG -name perllocal.pod -exec rm {} \;
+}
+

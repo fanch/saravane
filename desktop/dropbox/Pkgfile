@@ -1,0 +1,46 @@
+version=2.10.2
+DARCH=$( uname -m )
+
+source=(
+https://dl.dropboxusercontent.com/u/17/$name-lnx.$DARCH-$version.tar.gz
+dropbox.acceptable_use.txt
+dropbox.business_agreement.txt
+dropbox.dcma.txt
+dropbox.privacy.txt
+dropbox.terms.txt
+$name.desktop
+$name.png
+$name.48.png
+)
+
+build(){
+    install -d $PKG/opt
+    cp -R $SRC/.dropbox-dist/dropbox-lnx.$DARCH-$version $PKG/opt/dropbox
+
+    # fix rights
+    find $PKG/opt/dropbox/ -type f -exec chmod 644 {} \;
+    chmod 755 $PKG/opt/dropbox/dropboxd
+    chmod 755 $PKG/opt/dropbox/dropbox
+
+    # symlinks
+    install -d $PKG/usr/bin
+    ln -s ../../opt/dropbox/dropboxd $PKG/usr/bin/dropboxd
+
+    # desktop integration
+    install -Dm644 $SRC/dropbox.desktop \
+        $PKG/usr/share/applications/dropbox.desktop
+    install -Dm644 $SRC/$name.48.png \
+        $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+    # logo
+    install -Dm644 $SRC/$name.png \
+        $PKG/usr/share/pixmaps/$name.png
+
+    # dropbox stuffs
+    install -d $PKG/usr/share/doc/$name-$version
+    cp -r $SRC/*.txt \
+        $PKG/usr/share/doc/$name-$version/
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

@@ -1,0 +1,29 @@
+version=10.2.3
+
+source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-add_xdemos-1.patch)
+build() {
+cd Mesa-$version
+patch -Np1 -i ../MesaLib-$version-add_xdemos-1.patch 
+./autogen.sh CFLAGS="-O2" CXXFLAGS="-O2" \
+--prefix=$XORG_PREFIX \
+--sysconfdir=/etc \
+--enable-texture-float \
+--enable-gles1 \
+--enable-gles2 \
+--enable-openvg \
+--enable-osmesa \
+--enable-xa \
+--enable-gbm \
+--enable-gallium-egl \
+--enable-gallium-gbm \
+--enable-glx-tls \
+--with-egl-platforms="drm,x11" \
+--with-gallium-drivers="nouveau,r300,r600,radeonsi,svga,swrast"
+make
+make -C xdemos DEMOS_PREFIX=$XORG_PREFIX
+make DESTDIR=$PKG install
+make -C xdemos DEMOS_PREFIX=$XORG_PREFIX DESTDIR=$PKG install
+install -v -dm755 $PKG/usr/share/doc/MesaLib-$version
+cp -rfv docs/* $PKG/usr/share/doc/MesaLib-$version
+}

@@ -1,0 +1,12 @@
+provide a API of encryption direct and of platform cross, using of types of data and of conventions Qt.
+Fournir une API de chiffrement directe et de plateforme croisée, utilisant des types de données et des conventions Qt.
+
+http://delta.affinix.com/qca/
+
+Maintainers:
+
+- www.linuxfromscratch.org/blfs/view/svn/general/qca.html
+
+Packagers:
+
+pierre at nutyx dot org

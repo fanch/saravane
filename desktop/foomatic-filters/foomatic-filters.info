@@ -1,0 +1,11 @@
+Foomatic - Filter scripts used by the printer spoolers to convert the incoming PostScript data into the printer's native format.
+
+http://www.linuxprinting.org/foomatic.html
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

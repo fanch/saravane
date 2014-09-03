@@ -1,0 +1,8 @@
+cmake
+automoc4
+kde-libs
+kde-runtime
+kde-pimlibs
+libkgapi
+libkfbapi
+xorg-libxscrnsaver

@@ -1,0 +1,12 @@
+Library for writing single instance applications
+Librairie permettant une seule instance d'une application version gtk2
+
+http://live.gnome.org/LibUnique
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

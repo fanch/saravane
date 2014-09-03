@@ -1,0 +1,12 @@
+version=0.10.2
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,6 @@
+libnotify
+gtk3
+gstreamer
+curl
+hicolor-icon-theme
+xdg-utils

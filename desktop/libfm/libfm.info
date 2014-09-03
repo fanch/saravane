@@ -1,0 +1,12 @@
+Library for file management
+Librairie pour pcmanfm, gestionnaire de fichiers très léger
+
+http://pcmanfm.sourceforge.net/
+
+Maintainers:
+
+- git.lxde.org/gitweb/?p=debian/libfm.git;a=summary
+
+Packagers:
+
+geantbrun at gmail dot com

@@ -1,0 +1,11 @@
+version=0.30.0
+_name=pixman
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

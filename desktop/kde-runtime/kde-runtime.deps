@@ -1,0 +1,16 @@
+automoc4
+cmake
+kde-libs
+kde-pimlibs
+alsa-lib
+libjpeg-turbo
+exiv2
+pulseaudio
+xine-lib
+libcanberra
+networkmanager
+libssh
+openexr
+samba
+kde-activities
+qca

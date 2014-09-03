@@ -1,0 +1,15 @@
+version=1.0.17
+
+source=(http://download.librdf.org/source/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+	
+./configure --prefix=/usr \
+	--disable-static
+ 
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+}
+

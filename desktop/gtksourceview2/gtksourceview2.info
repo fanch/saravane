@@ -1,0 +1,12 @@
+A text widget adding syntax highlighting and more to GNOME
+Bibliothèques utilisées pour étendre les fonctions texte de GTK+ pour inclure le surlignement de la syntaxe.
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/brownse/gtksourceview/
+
+Packagers:
+
+pierre at nutyx dot org

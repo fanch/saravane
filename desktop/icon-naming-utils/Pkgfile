@@ -1,0 +1,9 @@
+version=0.8.90
+source=(http://tango.freedesktop.org/releases/$name-$version.tar.gz)
+build()
+{
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

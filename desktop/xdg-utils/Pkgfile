@@ -1,0 +1,14 @@
+version=1.1.0.rc1
+_version=1.1.0-rc1
+
+source=(http://portland.freedesktop.org/download/$name-$_version.tar.gz)
+
+build() {
+cd $name-$_version
+./configure --prefix=/usr \
+--mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}
+
+  

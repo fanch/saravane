@@ -1,0 +1,12 @@
+A string template engine based on the Django template system and written in Qt
+Un moteur de template basé sur le système de template Django et écrit en Qt
+
+http://www.gitorious.org/grantlee/pages/Home
+
+Maintainers:
+
+- NuTyX packager team
+
+Packagers:
+
+pierre at nutyx dot org

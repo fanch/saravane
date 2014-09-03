@@ -1,0 +1,13 @@
+version=0.7.90
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/rest/${version%.*}/rest-$version.tar.xz)
+
+build() {
+cd rest-$version
+./configure --prefix=/usr \
+--with-ca-certificates=/etc/ssl/ca-bundle.crt	
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+}
+  

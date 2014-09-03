@@ -1,0 +1,14 @@
+version=4.10.0
+
+_name=xfconf
+
+source=(http://archive.xfce.org/xfce/4.10/src/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+	./configure --prefix=/usr \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+	rm -f $PKG/usr/share/perl5/base/perllocal.pod
+}

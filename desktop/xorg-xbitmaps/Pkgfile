@@ -1,0 +1,10 @@
+version=1.1.1
+PKGMK_GROUPS=()
+_name=xbitmaps
+source=(http://downloads.nutyx.org/archives/xorg/individual/data/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

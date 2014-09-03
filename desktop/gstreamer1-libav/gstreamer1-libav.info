@@ -1,0 +1,12 @@
+Gstreamer libav Plugin
+Contient le plugin pour libav, un fork de ffmpeg.
+
+http://gstreamer.freedesktop.org/
+
+Maintainers:
+
+- cgit.freedesktop.org/gstreamer/gstreamer/
+
+Packagers:
+
+pierre at nutyx dot org

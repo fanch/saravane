@@ -1,0 +1,12 @@
+makedepend, created the dependencies in the Makefiles
+makedepend, créé les dépendances dans les Makefiles
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/util/makedepend/
+
+Packagers:
+
+pierre at nutyx dot org

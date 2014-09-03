@@ -1,0 +1,12 @@
+version=0.10.1
+
+source=(http://speedcrunch.googlecode.com/files/speedcrunch-$version.tar.gz)
+build ()
+{
+cd speedcrunch-$version/src
+cmake . -DCMAKE_INSTALL_PREFIX=/usr || return 1
+make
+lrelease speedcrunch.pro
+make DESTDIR=$PKG install
+
+}

@@ -1,0 +1,12 @@
+version=0.19.0
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-scrollkeeper
+make
+make DESTDIR=$PKG install
+sed -i "s|/usr/sbin/gparted|gksu /usr/sbin/gparted|g" $PKG/usr/share/applications/gparted.desktop
+}

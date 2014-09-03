@@ -1,0 +1,12 @@
+libx11, library for client X
+libX11, bibliothèque pour client X
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libX11/
+
+Packagers:
+
+pierre at nutyx dot org

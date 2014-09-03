@@ -1,0 +1,12 @@
+version=4.10.0
+
+_name=libxfcegui4
+
+source=(http://downloads.nutyx.org/archives/xfce/src/archive/${_name}/4.10/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=$XFCE4_PREFIX \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

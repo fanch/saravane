@@ -1,0 +1,20 @@
+version=1.0.54
+source=( http://www.openprinting.org/download/$name/$name-$version.tar.xz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/cups-filters-$version-pdftoraster-1.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i $SRC/cups-filters-$version-pdftoraster-1.patch
+
+./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--docdir=/usr/share/doc/cups-filters-$version \
+	--without-rcdir \
+	--with-gs-path=/usr/bin/gs \
+	--with-pdftops-path=/usr/bin/gs \
+	--disable-static
+
+make
+make DESTDIR=$PKG install
+}

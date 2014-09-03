@@ -1,0 +1,19 @@
+version=3.4.2
+source=(http://sylpheed.sraoss.jp/sylpheed/v${version%.*}/$name-$version.tar.bz2)
+
+
+build() {
+        cd $name-$version
+        ./configure --prefix=/usr \
+        --enable-static=no \
+        --disable-gtkspell \
+        --disable-gtktest \
+        --disable-compface \
+        --enable-gpgme \
+        --enable-ssl \
+        --enable-ldap
+
+        make
+        make DESTDIR=$PKG install
+        rm -r $PKG/usr/share/sylpheed
+}

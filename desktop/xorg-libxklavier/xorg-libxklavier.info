@@ -1,0 +1,12 @@
+libxklavier, library for the keyboard under X
+libxklavier, bibliothèque pour le clavier sous X
+
+ http://www.freedesktop.org/wiki/Software/LibXklavier
+
+Maintainers:
+
+- git.gnome.org/browse/xorg-libxklavier/
+
+Packagers:
+
+pierre at nutyx dot org

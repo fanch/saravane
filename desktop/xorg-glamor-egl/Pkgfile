@@ -1,0 +1,11 @@
+version=0.6.0
+_name=glamor-egl
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/driver/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure $XORG_CONFIG --enable-glx-tls
+make
+make DESTDIR=$PKG install
+}

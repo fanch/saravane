@@ -1,0 +1,12 @@
+libica, library Xorg
+libICE, bibliothèque Xorg
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libICE
+
+Packagers:
+
+pierre at nutyx dot org

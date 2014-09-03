@@ -1,0 +1,10 @@
+version=3.12.2
+source=(http://downloads.nutyx.org/archives/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
+
+build() {
+    cd pygobject-$version
+    ./configure --prefix=/usr \
+                --with-python=/usr/bin/python2
+    make
+    make DESTDIR=$PKG install
+}

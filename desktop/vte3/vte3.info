@@ -1,0 +1,14 @@
+Vte is a library (libvte) implementing a terminal emulator widget for GTK+ 3
+It contains a termcap file implementation for terminal emulators
+
+Implémentation pour émulateur de terminals
+
+http://developer.gnome.org/arch/gnome/widgets/vte.html
+
+Maintainers:
+
+- git.gnome.org/browse/vte/
+
+Packagers:
+
+pierre at nutyx dot org

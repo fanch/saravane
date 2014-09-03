@@ -1,0 +1,4 @@
+cmake
+automoc4
+libkscreen
+kde-runtime

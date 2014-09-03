@@ -1,0 +1,12 @@
+gstreamer
+alsa-lib
+pango
+cdparanoia
+libogg
+libtheora
+libvorbis
+xorg-libxv
+xorg-libxcursor
+xorg-libxdamage
+xorg-libxrandr
+xorg-libxinerama

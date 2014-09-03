@@ -1,0 +1,31 @@
+version=307
+_name=xterm
+
+source=(ftp://invisible-island.net/${_name}/${_name}-$version.tgz
+	$name.list)
+
+build() {
+cd ${_name}-*
+sed -i '/v0/,+1s/new:/new:kb=^?:/' termcap
+echo -e '\tkbs=\\177,' >>terminfo 
+TERMINFO=/usr/share/terminfo \
+./configure $XORG_CONFIG \
+--with-app-defaults=/etc/X11/app-defaults	
+make
+make DESTDIR=$PKG install
+make DESTDIR=$PKG install-ti
+
+cat >> $PKG/etc/X11/app-defaults/XTerm << "EOF"
+*VT100*locale: true
+*VT100*faceName: Monospace
+*VT100*faceSize: 10
+*backarrowKeyIsErase: true
+*ptyInitialErase: true
+EOF
+install -m755 -d $PKG/usr/share/applications
+install -m644 {xterm,uxterm}.desktop $PKG/usr/share/applications/
+for file in `cat $SRC/$name.list`
+do 
+	rm $PKG/$file
+done
+}

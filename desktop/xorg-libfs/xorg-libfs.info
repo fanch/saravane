@@ -1,0 +1,12 @@
+libfs, library X Font Service client
+libFS, bibliothèque X Font Service client
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libFS
+
+Packagers:
+
+pierre at nutyx dot org

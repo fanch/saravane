@@ -1,0 +1,17 @@
+version=3.2.6
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/GConf/${version%.*}/GConf-$version.tar.xz)
+
+build() {
+cd GConf-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--disable-static \
+--libexecdir=/usr/lib/GConf \
+--mandir=/usr/share/man \
+--disable-orbit
+make 
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+ln -s gconf.xml.defaults $PKG/etc/gconf/gconf.xml.system
+}

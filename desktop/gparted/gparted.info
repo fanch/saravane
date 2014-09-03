@@ -1,0 +1,17 @@
+Gparted is the Gnome Partition Editor,
+a Gtk 2 GUI for other command line tools
+that can create, reorganise or delete disk partitions.
+
+Gparted est l'éditeur de partitions de Gnome,
+un GUI Gtk 2 pour d'autres outils en ligne de commande
+qui peut créer, réorganiser ou effacer des partitions de disques. 
+
+http://gparted.sourceforge.net/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

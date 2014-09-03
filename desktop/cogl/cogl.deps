@@ -1,0 +1,6 @@
+xorg-libxrandr
+gdk-pixbuf
+xorg-mesa
+xorg-glu
+pango
+gobject-introspection

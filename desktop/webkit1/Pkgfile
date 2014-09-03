@@ -1,0 +1,22 @@
+version=1.10.2
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/blfs/svn/webkitgtk-$version-fix_librt_linking-1.patch)
+build() {
+cd webkitgtk-$version
+sed -i '/generate-gtkdoc --rebase/s:^:# :' GNUmakefile.in
+
+sed -i '/parse-param/ a%lex-param {YYLEX_PARAM}' \
+             Source/ThirdParty/ANGLE/src/compiler/glslang.y 
+
+patch -i ../webkitgtk-$version-fix_librt_linking-1.patch||true
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/WebKitGTK \
+--with-gtk=2.0 --disable-geolocation \
+--disable-webkit2
+make || make -j1
+make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
+if [ -D $PKG/usr/share/gtk-doc/html/webkitgtk-1.0 ]; then
+	rm -r $PKG/usr/share/gtk-doc/html/webkitgtk-1.0
+fi
+mv $PKG/usr/share/gtk-doc/html/webkitgtk{,-1.0}
+}

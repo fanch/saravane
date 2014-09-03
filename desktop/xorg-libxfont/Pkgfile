@@ -1,0 +1,10 @@
+version=1.4.7
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXfont-$version.tar.bz2)
+
+build() {
+cd libXfont-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

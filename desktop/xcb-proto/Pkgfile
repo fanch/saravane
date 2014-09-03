@@ -1,0 +1,12 @@
+version=1.10
+PKGMK_GROUPS=()
+source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
+
+build() {
+	cd xcb-proto-$version
+
+	./configure $XORG_CONFIG
+
+	make
+	make DESTDIR=$PKG install
+}

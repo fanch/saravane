@@ -1,0 +1,12 @@
+version=2.32.0
+
+_name=gnome-python-desktop
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr
+make -C rsvg install DESTDIR=$PKG
+install -m755 -d $PKG/usr/share/pygtk/2.0/defs
+install -m644 rsvg/rsvg.defs $PKG/usr/share/pygtk/2.0/defs/
+}

@@ -1,0 +1,7 @@
+gtk
+libvorbis
+alsa-lib
+gconf
+gstreamer1
+gtk3
+pulseaudio

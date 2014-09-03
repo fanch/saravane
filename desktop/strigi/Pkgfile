@@ -1,0 +1,18 @@
+version=0.7.8
+
+source=( http://www.vandenoever.info/software/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+sed -i "s/BufferedStream :/STREAMS_EXPORT &/" libstreams/include/strigi/bufferedstream.h
+mkdir build
+cd    build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib  \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DENABLE_CLUCENE=OFF        \
+      -DENABLE_CLUCENE_NG=OFF     \
+      .. 
+make
+make DESTDIR=$PKG install
+}

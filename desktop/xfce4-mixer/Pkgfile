@@ -1,0 +1,10 @@
+version=4.10.0
+
+source=(http://archive.xfce.org/src/apps/$name/4.10/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

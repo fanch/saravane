@@ -1,0 +1,12 @@
+libXi, library X Input client
+libXi, bibliothèque X Input client
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXi/
+
+Packagers:
+
+pierre at nutyx dot org

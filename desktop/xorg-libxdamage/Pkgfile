@@ -1,0 +1,10 @@
+version=1.1.4
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXdamage-$version.tar.bz2)
+
+build() {
+cd libXdamage-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

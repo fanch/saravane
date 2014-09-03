@@ -1,0 +1,13 @@
+version=1.12.16
+
+source=( http://cairographics.org/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+CFLAGS="$CFLAGS -ffat-lto-objects" \
+./configure --prefix=/usr \
+            --disable-static \
+	    --enable-tee
+make
+make DESTDIR=$PKG install
+} 

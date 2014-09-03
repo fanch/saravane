@@ -1,0 +1,12 @@
+GStreamer Multimedia Framework Bad Plugins
+gst-plugins-bad, jeu de plugins essentiels pour l'outil multimedia gstreamer
+
+http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
+
+Maintainers:
+
+- cgit.freedesktop.org/gstreamer/gst-plugins-base/
+
+Packagers:
+
+pierre at nutyx dot org

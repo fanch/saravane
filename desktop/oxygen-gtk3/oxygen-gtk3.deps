@@ -1,0 +1,4 @@
+cmake
+gtk3
+dbus-glib
+cairo

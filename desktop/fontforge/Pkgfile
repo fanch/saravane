@@ -1,0 +1,13 @@
+version=2.0.20140101
+
+source=(http://anduin.linuxfromscratch.org/sources/other/fontforge-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	sed "/DGifCloseFile/s:gif:&, NULL:g" -i gutils/gimagereadgif.c
+	./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/fontforge-$version
+	make
+	make DESTDIR=$PKG install
+}

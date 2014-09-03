@@ -1,0 +1,49 @@
+version=0.4.1
+
+source=(http://sourceforge.net/projects/lxde/files/lxdm/LXDM%200.4.1/$name-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/lxdm-Xsession.patch
+	http://downloads.nutyx.org/files/patchs/$name/lxdm-02.patch
+	http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-users-1.patch
+	http://downloads.nutyx.org/files/icones-sekong-03.tar.gz
+        http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-high-cpu-1.patch)
+
+build() {
+	cd $name-$version
+	patch -Np1 -i ../lxdm-0.4.1-users-1.patch
+	patch -Np1 -i ../lxdm-0.4.1-high-cpu-1.patch
+	sed -i "s@/usr/bin/X@/$XORG_PREFIX/bin/X@g" src/lxdm.c
+	./configure --sysconfdir=/etc \
+		--prefix=/usr \
+		--libexecdir=/usr/lib/lxdm
+	make
+  	
+	patch -Np0 < ../lxdm-02.patch
+	patch -Np0 < ../lxdm-Xsession.patch
+
+	make DESTDIR=$PKG install
+	
+		
+	mkdir -p $PKG/var/run/lxdm
+	mkdir -p $PKG/var/lib/lxdm
+
+	sed -i -e "s/local\/libexec/lib\/lxdm/" $PKG/etc/lxdm/lxdm.conf
+	mkdir -p $PKG/usr/share/backgrounds
+	install -m644 $SRC/icones/Fond-sekong.jpg \
+	$PKG/usr/share/backgrounds/default.jpg
+	install -m644 $SRC/icones/Banniere-sekong-trim.png \
+	$PKG/usr/share/lxdm/themes/Industrial/login.png
+
+	sed -i "s/default.png/default.jpg/" $PKG/etc/lxdm/lxdm.conf
+	cat > $PKG/etc/pam.d/lxdm << "EOF"
+#%PAM-1.0
+auth            requisite       pam_nologin.so
+auth            required        pam_env.so
+auth            required        pam_unix.so
+account         required        pam_unix.so
+session         required        pam_limits.so
+session         required        pam_unix.so
+password        required        pam_unix.so
+-session        optional        pam_loginuid.so
+-session        optional        pam_systemd.so
+EOF
+}

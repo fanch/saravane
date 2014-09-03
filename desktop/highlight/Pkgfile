@@ -1,0 +1,13 @@
+version=3.18
+source=(
+http://www.andre-simon.de/zip/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    make QMAKE=qmake-qt4
+    make DESTDIR=$PKG QMAKE=qmake-qt4 install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

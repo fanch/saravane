@@ -1,0 +1,11 @@
+version=1.2.4
+source=( http://downloads.sourceforge.net/silgraphite/graphite2-$version.tgz)
+
+build() {
+cd graphite2-$version
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+make
+make DESTDIR=$PKG install
+}

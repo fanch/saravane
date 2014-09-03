@@ -1,0 +1,14 @@
+version=0.4
+
+source=(http://downloads.sourceforge.net/project/gcolor2/gcolor2/0.4/gcolor2-0.4.tar.gz 
+	http://nutyx.meticul.eu/files/patchs/$name/gcolor2.desktop
+	http://nutyx.meticul.eu/files/patchs/$name/gcolor2-amd64-1.patch)
+build() {
+cd $name-$version
+[ "`uname -m`" == "x86_64" ] && (patch -p1 < ../gcolor2-amd64-1.patch)
+sed -i 's/\[:space:\]/[&]/g' configure
+./configure --prefix=/usr
+make 
+make DESTDIR=$PKG install
+install -D $SRC/gcolor2.desktop -m644 $PKG/usr/share/applications/gcolor2.desktop
+}

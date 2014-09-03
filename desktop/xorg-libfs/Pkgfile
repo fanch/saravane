@@ -1,0 +1,10 @@
+version=1.0.5
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libFS-$version.tar.bz2)
+
+build() {
+cd libFS-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

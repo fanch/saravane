@@ -1,0 +1,16 @@
+Xfburn is a GTK+ 2 GUI frontend for Libisoburn.
+This is useful for creating CDs and DVDs from files
+on your computer or ISO images downloaded from elsewhere. 
+
+Xfburn, est une application GTK+ 2 pour la gravure de CDs/DVDs/BDs
+ainsi que d'images ISO.
+
+http://www.xfce.org/projects/xfburn/
+
+Maintainers:
+
+- git.xfce.org/apps/xfburn
+
+Packagers:
+
+tnut at nutyx dot org

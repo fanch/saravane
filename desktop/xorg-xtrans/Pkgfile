@@ -1,0 +1,10 @@
+version=1.3.2
+_name=xtrans
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure $XORG_CONFIG
+make
+make DESTDIR=$PKG install
+}

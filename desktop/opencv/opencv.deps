@@ -1,0 +1,8 @@
+cmake
+libjpeg-turbo
+libtiff
+jasper
+libpng
+ffmpeg
+gstreamer
+xine-lib

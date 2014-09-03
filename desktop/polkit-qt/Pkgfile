@@ -1,0 +1,12 @@
+version=0.103.0
+
+source=(ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/$name-1-$version.tar.bz2)
+build() {
+cd $name-1-$version
+mkdir build
+cd build
+CMAKE_PREFIX_PATH=$QT4DIR \
+      cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX -Wno-dev ..
+make
+make DESTDIR=$PKG install
+}

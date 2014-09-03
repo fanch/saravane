@@ -1,0 +1,12 @@
+automoc4
+cmake
+kde-libs
+akonadi
+libxslt
+gpgme
+libical
+akonadi.devel
+cyrus-sasl
+boost
+qjson
+openldap

@@ -1,0 +1,13 @@
+version=0.12
+
+source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man
+	make
+	make DESTDIR=$PKG install
+}
+  

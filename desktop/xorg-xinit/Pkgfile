@@ -1,0 +1,12 @@
+version=1.3.2
+_name=xinit
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/app/${_name}-$version.tar.bz2)
+
+build() {
+	cd ${_name}-$version
+	./configure $XORG_CONFIG \
+	--with-xorg-xinitdir=/etc/X11/app-defaults
+	make
+	make DESTDIR=$PKG install
+}

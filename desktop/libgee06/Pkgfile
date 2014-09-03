@@ -1,0 +1,12 @@
+version=0.6.8
+
+_name=libgee
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
+
+build() {
+cd $_name-$version
+./configure --prefix=/usr
+make 
+make DESTDIR=$PKG install
+}

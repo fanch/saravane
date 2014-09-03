@@ -1,0 +1,17 @@
+version=1.0
+
+source=(ftp://ftp.kde.org/pub/kde/stable/$name/1.0/src/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+		-DQT_QMAKE_EXECUTABLE=/opt/qt4/bin/qmake \
+		-DCMAKE_BUILD_TYPE=Release \
+      		-DSYSCONF_INSTALL_DIR=/etc/kde \
+      		.. 
+	make
+	make DESTDIR=$PKG install
+}
+

@@ -1,0 +1,10 @@
+wireless-tools
+glib
+lua
+tolua++
+tolua++5.1
+cairo
+curl
+imlib2
+xorg-libxdamage
+xorg-libxft

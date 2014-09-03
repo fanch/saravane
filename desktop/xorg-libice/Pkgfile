@@ -1,0 +1,11 @@
+version=1.0.9
+source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libICE-$version.tar.bz2)
+
+build() {
+	cd libICE-$version
+
+	./configure $XORG_CONFIG
+
+	make
+	make DESTDIR=$PKG install
+}

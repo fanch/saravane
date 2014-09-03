@@ -1,0 +1,11 @@
+version=2.10.1
+_name=xkeyboard-config
+
+source=(http://downloads.nutyx.org/archives/xorg/individual/data/${_name}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure $XORG_CONFIG --with-xkb-rules-symlink=xorg
+make
+make DESTDIR=$PKG install
+}

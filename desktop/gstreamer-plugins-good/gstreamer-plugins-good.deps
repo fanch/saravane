@@ -1,0 +1,11 @@
+gstreamer-plugins-base
+cairo
+flac
+libjpeg-turbo
+libpng
+xorg-libx11
+libsoup
+speex
+aalib
+taglib
+libcdio

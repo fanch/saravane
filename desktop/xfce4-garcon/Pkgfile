@@ -1,0 +1,14 @@
+version=0.2.1
+
+_name=garcon
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+		
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

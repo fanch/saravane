@@ -1,0 +1,12 @@
+version=0.7.2
+
+source=(ftp://ftp.kde.org/pub/kde/stable/phonon/$name/$version/src/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX .. 
+	make
+	make DESTDIR=$PKG install
+}

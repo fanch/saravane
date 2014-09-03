@@ -1,0 +1,11 @@
+version=2.10.1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/pygtksourceview/2.10/pygtksourceview-${version}.tar.bz2)
+
+build() {
+cd pygtksourceview-$version
+PYTHON=python2 ./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static --disable-docs
+make
+make DESTDIR=$PKG install
+}

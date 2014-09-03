@@ -1,0 +1,12 @@
+Javascript Bindings for GNOME
+Modules classiques pour les bindings Javascript de GNOME. 
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/brownse/gnome-js-common/
+
+Packagers:
+
+pierre at nutyx dot org

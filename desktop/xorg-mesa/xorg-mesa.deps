@@ -1,0 +1,15 @@
+patch
+autoconf
+automake
+m4
+pkg-config
+libtool
+xorg-makedepend
+xorg-libx11
+xorg-libdrm
+xorg-libxext
+xorg-libxdamage
+expat
+llvm
+elfutils
+xorg-libxshmfence

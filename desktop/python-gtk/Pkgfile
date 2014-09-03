@@ -1,0 +1,11 @@
+version=2.24.0
+
+source=(http://downloads.nutyx.org/archives/gnome/sources/pygtk/${version%.*}/pygtk-$version.tar.bz2)
+	
+build() {
+cd pygtk-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+}  

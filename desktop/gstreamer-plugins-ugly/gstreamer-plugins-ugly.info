@@ -1,0 +1,12 @@
+GStreamer Multimedia Framework ugly Plugins
+gst-plugins-ugly, jeu de plugins essentiels pour l'outil multimedia gstreamer
+
+http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
+
+Maintainers:
+
+- cgit.freedesktop.org/gstreamer/gst-plugins-ugly/
+
+Packagers:
+
+pierre at nutyx dot org

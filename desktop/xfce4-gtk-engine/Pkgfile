@@ -1,0 +1,13 @@
+version=3.0.1
+
+_name=gtk-xfce-engine
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+	./configure --prefix=$XFCE4_PREFIX \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+}

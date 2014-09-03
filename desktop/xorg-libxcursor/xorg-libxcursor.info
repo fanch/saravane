@@ -1,0 +1,12 @@
+libxcursor, library Xorg
+libXcursor, bibliothèque Xorg
+
+http://xorg.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/xorg/lib/libXcursor/
+
+Packagers:
+
+pierre at nutyx dot org

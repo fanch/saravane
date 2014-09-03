@@ -1,0 +1,12 @@
+Interface to enumerating power devices, listening to device events and querying history and statistics
+Interface to enumerating power devices, listening to device events and querying history and statistics
+
+http://upower.freedesktop.org
+
+Maintainers:
+
+- cgit.freedesktop.org/upower/
+
+Packagers:
+
+pierre at nutyx dot org

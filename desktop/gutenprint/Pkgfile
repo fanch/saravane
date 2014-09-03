@@ -1,0 +1,16 @@
+version=5.2.9
+
+source=(http://downloads.sourceforge.net/gimp-print/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
+       {,doc/,doc/developer/}Makefile.in
+
+./configure --prefix=/usr \
+--disable-static \
+--infodir=/usr/share/info --mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}
+  

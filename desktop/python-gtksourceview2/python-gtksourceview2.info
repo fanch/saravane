@@ -1,0 +1,12 @@
+libraries used for expand the functions text of GTK for include the highlighting of the syntax.
+Bibliothèques utilisées pour étendre les fonctions texte de GTK+ pour inclure le surlignement de la syntaxe.
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/brownse/gtksourceview/
+
+Packagers:
+
+pierre at nutyx dot org

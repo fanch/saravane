@@ -1,0 +1,13 @@
+version=1.10
+source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	sed -e "s/pthread-stubs//" -i configure.ac
+	autoreconf -fiv
+	./configure $XORG_CONFIG
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share
+}

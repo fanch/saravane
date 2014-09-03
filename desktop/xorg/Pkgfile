@@ -1,0 +1,65 @@
+version=7.7
+section="driver"
+source=( http://www.linuxfromscratch.org/patches/blfs/svn/xf86-video-sis-0.10.7-upstream_fixes-1.patch)
+
+build() {
+cat > list.md5 << "EOF"
+9076ae2646f7aeb30963056e0bbfccf0  xf86-input-evdev-2.9.0.tar.bz2
+27a3f2b31606a13dd6b58d419978d64f  xf86-input-synaptics-1.8.0.tar.bz2
+34f9f64ee6a1a51fc8266a9af24e1e07  xf86-input-vmmouse-13.0.0.tar.bz2
+2cf57400fbd9e35eb16b50ad9fe32de1  xf86-input-wacom-0.25.0.tar.bz2
+8ee095009e927d61be522f392bdb843e  xf86-video-ati-7.4.0.tar.bz2
+91fd6b677d62027cd3001debb587a6a6  xf86-video-cirrus-1.5.2.tar.bz2
+3931c0e19d441cc576dc088f9eb9fd73  xf86-video-fbdev-0.4.4.tar.bz2
+88d1a884f9b7bd07bf0755cfa34052d4  xf86-video-intel-2.99.912.tar.bz2
+d645197cbf238ac0427c3904eafdce2f  xf86-video-mach64-6.9.4.tar.bz2
+a53b5ce166e31c181aaa4c3816d8babb  xf86-video-mga-1.6.3.tar.bz2
+f21abcdf87f73b5b547491281e894c87  xf86-video-openchrome-0.3.3.tar.bz2
+2e906d856a1c477bde000254b142445c  xf86-video-r128-6.9.2.tar.bz2
+44fd65897630fdd19c086133cc1bd679  xf86-video-nouveau-1.0.10.tar.bz2
+e813271ab43cc6a95ac0ab252b90a885  xf86-video-savage-2.3.7.tar.bz2
+f01e5e20e37342acf1983d269886171b  xf86-video-sis-0.10.7.tar.bz2
+1b4a7815a604b3764900b520336a75ea  xf86-video-tdfx-1.4.5.tar.bz2
+3690a5356ed121b1a7dfb59a6dcf4bf9  xf86-video-vesa-2.3.3.tar.bz2
+91d1d7d33181766714405ab013d31244  xf86-video-vmware-13.0.2.tar.bz2
+EOF
+unset MAKEFLAGS
+for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
+	do
+		packagedir=$(echo $package | sed 's/.tar.bz2//')
+		packagename=$(echo $package | sed 's/.tar.bz2//')
+		case $packagename in
+			xf86-input-wacom-[0-9]*)
+				wget http://downloads.sourceforge.net/linuxwacom/$package;;
+			*)
+				wget http://downloads.nutyx.org/archives/xorg/individual/$section/$package;;
+		esac
+		grep $package list.md5 |md5sum -c -
+		tar -xf $package
+
+		pushd $packagedir
+		case $packagename in
+		xf86-video-sis-[0-9]*)
+			patch -Np1 -i ../xf86-video-sis-0.10.7-upstream_fixes-1.patch
+			./configure $XORG_CONFIG;;
+		xf86-video-tdfx-[0-9]*)
+			sed -e "/mibstore.h/d" -e "/miInitializeBackingStore/d" \
+    -i src/tdfx_driver.c
+			./configure $XORG_CONFIG;;
+		xf86-input-vmmouse-[0-9]*)
+			./configure $XORG_CONFIG \
+            --with-udev-rules-dir=/lib/udev/rules.d \
+            --without-hal-callouts-dir \
+            --without-hal-fdi-dir;;
+		xf86-video-intel-[0-9]*)		
+			./configure $XORG_CONFIG \
+			--enable-kms-only \
+			--with-default-accel=sna;;
+		*)
+			./configure $XORG_CONFIG;;
+		esac
+		make
+		make DESTDIR=$PKG install
+		popd
+	done
+}

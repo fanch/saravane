@@ -1,0 +1,12 @@
+version=4.10.1
+
+_name=xfwm4
+
+source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=$XFCE4_PREFIX
+make
+make DESTDIR=$PKG install
+}
