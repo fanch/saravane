@@ -1,0 +1,10 @@
+name=openssl
+version=1.0.1i
+source=(http://www.openssl.org/source/openssl-$version.tar.gz)
+build(){
+unset MAKEFLAGS
+cd $name-$version
+./config --prefix=/tools zlib-dynamic shared
+make
+make install_sw
+}

@@ -1,0 +1,9 @@
+name=curl
+version=7.33.0
+source=(http://curl.haxx.se/download/$name-$version.tar.bz2 )
+build() {
+cd $name-$version
+./configure --prefix=/tools --without-ssl
+make
+make install
+}
