@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - exemple de recette de paquet</title>
+ </head>
+    
+ <body>
+     <header>    
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+       
+    <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribuer</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">Dépôt GIT</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">Paquets "system"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">Paquets "server"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">Paquets "desktop"</a></li>
+        </ul>
+    </nav>
+     
+        <!-- FIN HEADER -->
+     
+
+
+   <h2>Exemple pratique de recette pour commencer</h2>
+   <pre class="output"># Description: The libxfce4util package is a basic utility library for the Xfce desktop environment
+# URL: http://www.xfce.org/projects/libraries/
+# Maintainer: git.xfce.org/xfce/xfce4-libutils
+# Packager: tyrry at nutyx dot org
+# Depends on: glib, intltool, gtk-doc
+
+_name=libxfce4util
+
+source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=$XFCE_PREFIX \
+--disable-static
+make
+make DESTDIR=$PKG install
+}
+   </pre>
+   <h2>Explications</h2>
+Une description est indispensable pour avoir un minimum d'informations sur les fonctionalitées du paquet. La <b>description</b> sera incluse dans le paquet binaire et sera donc utilisée par le gestionnaire de paquets <b>cards</b>. La description est donc très importante et doit TOUJOURS être écrite en anglais. Il est donc essentiel qu'elle soit correctement rédigée. Il faut également s'assurer qu'elle soit rédigée sur une seule ligne.
+   <pre class="output"># Description: The libxfce4util package is a basic utility library for the Xfce desktop environment
+   </pre>
+l'<b>URL</b> est l'url du projet, idéalement, l'adresse url contenant un maximum d'informations sur le paquet
+   <pre class="output"># URL: http://www.xfce.org/projects/libraries/
+   </pre>
+Le <b>maintainer</b> est (quand c'est possible) doit pointer sur le git du projet. L'idée est que (dans le future) cards puisse vérifier si il y a une version + récente disponible. Si git n'est pas disponible, le nom du maintainer sera spécifié. Il est important de le mentionner.
+   <pre class="output"># Maintainer: git.xfce.org/xfce/xfce4-libutils
+   </pre>
+Le <b>packager</b> est VOUS, une fois que vous êtes capable de construire un paquet dans les règles, vous avez accès en écriture au git des paquets disponibles. Nous serons très heureux de vous avoir comme nouveau <b>packager</b>.
+   <pre class="output"># Packager: tyrry at nutyx dot org
+   </pre>
+Si vous souhaitez que le serveur de construction puisse construire le paquet sans soucis, il est important de mentioner toutes les dépendances de votre paquet necessaires, et ce en partant toujours d'une NuTyX de base. En effet le serveur construira toujours le paquet en partant de la même base. La ligne ci-dessous definie la liste des dépendances. Chaque dépendance est séparée par le caractère <b>,</b> .
+   <pre class="output"># Depends on: glib, intltool, gtk-doc
+   </pre>
+Si le nom du paquet binaire diffère du nom des sources, nous devons spécifier une variable interne avec le nom des sources du paquet. Puisque la variable <b>name</b> est déjà réservée, nous ne pouvons pas l'utiliser. Dans notre exemple, nous utilisons la variable <b>_name</b>
+   <pre class="output">_name=libxfce4util
+   </pre>
+Notez que les variables <b>name, version and release</b> sont définies automatiquement par le script <b>pkgmk</b>. Celui-ci lit le nom du dossier parent contenant l'info necessaire. Assurez-vous donc de créer le dossier avec les bonnes informations. Exemple: pour construire correctement ce paquet, il doit se trouver dans un dossier nommé:
+   <pre class="output">xfce4-libutil#4.10.1-1
+   </pre>
+   <div>Et pour mettre à jour un port il suffira de renommer le dossier.
+   </div>
+Il est temps maintenant de récupérer les sources de notre paquet. C'est ce qui se trouve à la ligne suivante. Comme vous pouvez le voir, nous utilisons les variables <b>_name</b> et <b>version</b> pour cette opération. Pour le reste de la ligne, si un patch est nécessaire par exemple, il peut être ajouté à la ligne suivante:
+   <pre class="output">source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)
+   </pre>
+Viens ensuite la fonction de construction proprement dite <b>build</b> qui va spécifier la construction. Dans la plus part des cas cette fonction est identique à ce qui est écrit ci-dessous
+   <pre class="output">build() {
+cd ${_name}-$version
+./configure --prefix=$XFCE_PREFIX \
+--disable-static
+make
+make DESTDIR=$PKG install
+}
+   </pre>
+Vous pouvez notez que l'on utilise une variable <b>XFCE_PREFIX</b> pour spécifier dans quel dossier parent le paquet doit être installé. La règle est la suivante:
+   <ol>
+    <ul><b>XFCE</b> Dans /opt/xfce4
+    </ul>
+    <ul><b>KDE</b> Dans /opt/kde
+    </ul>
+    <ul><b>xorg</b> Dans /opt/xorg
+    </ul>
+   </ol>
+L'avantage de la méthode qui suit est que vos ports personnels sont inclus dans le système et sont gérés comme les ports de NuTyX.
+   <div>Tout d'abord
+   
+    <ul>Vérifiez que dans <b>/etc/prt-get.conf</b> la ligne  :<b>prtdir /usr/ports/personnel</b> est en premier et décochée
+    </ul>
+    <ul>Dans ce répertoire vous placerez tous vos ports. Pour cela il faut créer un répertoire qui suit rigoureusement la syntaxe suivante : <b>name#version-release</b>
+    </ul>
+   </div>
+   <div>A l'intérieur créez un fichier <b>Pkgfile</b> qui doit respecter :
+   </div>  
+   <h2>Très Important</h2>
+   <div>
+    <ul>Il est essentiel que vous compiliez et testez vos ports en <b>CHROOT</b>. Dans le cas contraire vous créez des fichiers directement dans vos répertoires système avec tous les risques que cela comporte si votre port n'est pas au point.
+    </ul>
+    <ul>Il est essentiel que vous compiliez et testez vos ports à partir d'une NuTyX Base.
+    </ul>
+   </div>
+
+     
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
+ </body>
+</html>
+

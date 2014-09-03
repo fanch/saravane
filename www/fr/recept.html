@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - qu'est ce qu'un port</title>
+ </head>
+    
+ <body>
+     <header>    
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+       
+    <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribuer</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">Dépôt GIT</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">Paquets "system"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">Paquets "server"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">Paquets "desktop"</a></li>
+        </ul>
+    </nav>
+     
+        <!-- FIN HEADER -->
+     
+      
+      
+<h1>Qu'est-ce qu'un port ?</h1>
+<div>Le port est un dossier contenant un certain nombre de fichiers nécessaire pour la construction d'un paquet. La commande pkgmk permet de "construire" le paquet qui sera ensuite installable.</div>
+<div>Pour &ecirc;tre fonctionnel, ce dossier doit contenir au minimum un fichier appel&eacute; <strong><span style="color: #007a00;">Pkgfile</span></strong>. C'est gr&acirc;ce &agrave; ce fichier que la construction du paquet peut se faire. Le  contenu de Pkgfile contient toutes les informations n&eacute;cessaires pour la construction ou plus exactement  la compilation du paquet depuis les sources.</div>
+<p>Une fois compil&eacute; le dossier contient aussi 2 autres fichiers: le <strong><span style="color: #007a00;">.footprint.xxx</span></strong> et le <strong><span style="color: #007a00;">.md5sum.xxx</span></strong>. Pour s'assurer que le r&eacute;sultat de la compilation soit correct, c'est &agrave; dire que les fichiers produits par le fichier Pkgfile soient toujours identiques, l'outil compare la liste des fichiers et dossiers produits avec le contenu du fichier <em>.footprint.i686 (ou .footprint.x86_64)</em>. Ce fichier sert en quelque sorte de signature du paquet.</p>
+<div>Le fichier <em>.md5sum.i686 (ou .md5sum.x86_64)</em> est sans doute le plus important, il garantie que les sources &agrave;  t&eacute;l&eacute;charger aient la bonne somme MD5. De cette fa&ccedil;on vous &ecirc;tes assur&eacute; de  t&eacute;l&eacute;charger les bonnes sources du paquet. Si il y a une diff&eacute;rence lors  du t&eacute;l&eacute;chargement, il est important d'en identifier la raison.</div>
+<div>Le nom <em>port</em> est emprunt&eacute; du monde BSD o&ugrave; un port r&eacute;f&egrave;re &agrave; un logiciel "port&eacute;" sur un syst&egrave;me d'exploitation ou une plateforme. Dans notre cas, le port est simplement la d&eacute;finition de la construction d'un paquet.</div>
+  </div>
+
+    <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
+ </body>
+</html>

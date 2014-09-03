@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- En-tête de la page -->
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Compiler et installer son propre kernel </title>
+ </head>
+    
+ <body>
+    <header>
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">GIT Projects</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">"system" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">"server" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">"desktop" Packages</a></li>
+        </ul>
+    </nav>
+  <h2>Compiler et installer son propre kernel</h2>
+<div class="introduction">Cet article peut s'appliquer à toute autre distribution.<br />
+<br />
+Si vous avez installé NuTyX et que vous avez décidé de ne pas installer de kernel disponible dans les dépots et donc de compiler vous-même votre kernel, cet article vous explique sommairement comment compiler et installer un kernel personnalisé.</div><br />
+<div class="description">ll existe beaucoup de raisons de vouloir compiler son propre kernel. Avoir un kernel optimis&eacute; en taille et pour son propre mat&eacute;riel est sans doute la plus fr&eacute;quente.
+Il faut savoir que les &eacute;tapes 4 et 5 peuvent &ecirc;tre refaites &agrave; l'infini (dans le cas o&ugrave; le kernel ne booterai pas par exemple).
+Voici les diff&eacute;rentes &eacute;tapes &agrave; suivre:
+<ul>T&eacute;l&eacute;charger les sources du kernel sur le site <a href="http://kernel.org" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">http://kernel.org</a></ul>
+<ul>Se mettre dans le dossier /usr, cr&eacute;&eacute;r un dossier src et extraire les sources du kernel t&eacute;l&eacute;charg&eacute;es en point 1 dans le dossier /usr/src</ul>
+<ul>Se rendre dans le dossier du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles</ul>
+<ul>Configurer les options de compilation et lancer la compilation du kernel</ul>
+<ul>Installer les modules et le kernel dans les bons dossiers</ul>
+<ul>Optionnel (si vous avez d&eacute;j&agrave; un kernel) cr&eacute;&eacute;r une nouvelle entr&eacute;e dans le fichier grub.cfg ou menu.lst&nbsp;</ul>
+<h4>T&eacute;l&eacute;charger les sources du kernel</h4>
+Pour pouvoir compiler un kernel, il faut donc commencer par r&eacute;cup&eacute;rer les sources d'une version de kernel. Au moment de l'&eacute;criture de l'article , la version 3.12.3 est disponible. Nous allons donc prendre le risque de le compiler...<br />
+Ouvrez un terminal et tapez la commande:
+<pre class="command"><kbd>wget http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.3.tar.xz</kbd></pre>
+<p>Les sources commencent &agrave; se t&eacute;l&eacute;charger dans votre dossier personnel&nbsp;</p>
+<pre class="output">--2012-09-01 17:49:53--  http://www.kernel.org/pub/linux/kernel/v3.0/testing/linux-3.12.3.tar.xz
+R&eacute;solution de www.kernel.org... 149.20.4.69, 149.20.20.133
+Connexion vers www.kernel.org|149.20.4.69|:80...connect&eacute;.
+requ&ecirc;te HTTP transmise, en attente de la r&eacute;ponse...200 OK
+Longueur: 82259123 (78M) [application/x-bzip2]
+Sauvegarde en : &laquo;linux-3.6-rc3.tar.bz2&raquo;
+
+100%[=============================&gt;] 82.259.123  2,55M/s   ds 37s     
+
+2012-09-01 17:50:31 (2,13 MB/s) - &laquo;linux-3.12.3.tar.xz&raquo; sauvegard&eacute; [82259123/82259123]</pre>
+<div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Si vous proc&eacute;d&eacute; &agrave; la manip au moment de l'installation, vous &ecirc;tes d&eacute;j&agrave; en compte root et le fichier sera t&eacute;l&eacute;charg&eacute; dans le dossier /root de votre NuTyX</div>
+Une fois que les sources sont r&eacute;cup&eacute;r&eacute;es on va les mettre au bon endroit.
+<h4>Se mettre dans le dossier /usr, cr&eacute;&eacute;r le bon dossier et extraire les sources du kernel t&eacute;l&eacute;charg&eacute;&nbsp;dans le dossier /usr/src</h4>
+<div class="important"><img src="/skins/_reference/codes/important.gif" width="10" height="10" alt="!!!" /> A partir de maintenant toutes les op&eacute;rations se font dans le compte root. Soyez donc tr&egrave;s prudent.</div><div class="note"><img src="/skins/_reference/codes/note.gif" width="10" height="10" alt="*" /> Si vous proc&eacute;dez depuis l''installateur, la commande ci-dessous est inutile</div><pre>su -
+passworrd:</pre>
+<p>Entrez le mot de passe du compte root. On peut maintenant cr&eacute;&eacute;er un dossier&nbsp;</p>
+<pre>mkdir /usr/src</pre>
+<p>Il est possible que vous soyez insult&eacute; avec le message suivant:</p>
+<pre>mkdir: impossible de cr&eacute;er le r&eacute;pertoire &laquo; /usr/src &raquo;: Le fichier existe</pre>
+<p>Vous pouvez l'ignorer, maintenant on entre dans ce dossier.</p>
+<pre class="command"><kbd>cd /usr/src</kbd></pre>
+On extrait les sources du kernel t&eacute;l&eacute;charg&eacute;:
+<pre class="command"><kbd>tar xf /home/thierry/linux-3.12.3.tar.xz</kbd></pre>
+<div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Veuillez remplacer le dossier thierry par votre compte personnel</div>
+Apr&egrave;s quelques minutes, le prompt sera &agrave; nouveau disponible et les sources du kernel seront en place. Se rendre dans le dossier du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles. Pour pouvoir compiler le kernel, il faut &ecirc;tre dans le dossier sources de celui-ci, tapez dans votre console:
+<pre class="command"><kbd>cd /usr/src/linux-3.12.3</kbd></pre>
+Nous sommes maintenant pr&ecirc;t &agrave; lancer quelques commandes magiques. Je vous conseille pour commencer histoire de se faire une id&eacute;e des possibilit&eacute;es du makefile d'utiliser la commande:
+<pre class="command"><kbd> make help|more</kbd></pre>
+Elle vous donnera TOUTES les options qui vous sont disponibles pour la compilation du kernel et de ses modules.
+<pre class="output">Cleaning targets:
+  clean           - Remove most generated files but keep the config and
+                    enough build support to build external modules
+  mrproper        - Remove all generated files + config + various backup files
+  distclean       - mrproper + remove editor backup and patch files                                                   
+
+Configuration targets:                                                                                                
+  config          - Update current config utilising a line-oriented program
+  nconfig         - Update current config utilising a ncurses menu based program
+  menuconfig      - Update current config utilising a menu based program
+  xconfig         - Update current config utilising a QT based front-end
+  gconfig         - Update current config utilising a GTK based front-end                                             
+  oldconfig       - Update current config utilising a provided .config as base
+  localmodconfig  - Update current config disabling modules not loaded
+  localyesconfig  - Update current config converting local mods to core
+  silentoldconfig - Same as oldconfig, but quietly, additionally update deps
+  defconfig       - New config with default from ARCH supplied defconfig
+  savedefconfig   - Save current config as ./defconfig (minimal config)
+  allnoconfig     - New config where all options are answered with no
+  allyesconfig    - New config where all options are accepted with yes
+  allmodconfig    - New config selecting modules when possible
+  alldefconfig    - New config with all symbols set to default
+  randconfig      - New config with random answer to all options
+  listnewconfig   - List new options
+  oldnoconfig     - Same as silentoldconfig but sets new symbols to their default value
+
+......
+....</pre>
+Je vous ai mis que le d&eacute;but <img src="../graphics/smiley-wink.gif" border="0" alt="Wink" title="Wink">. On va donc commencer par s'assurer que les sources sont propres et d&eacute;pourvus de toute partie de code d&eacute;j&agrave; compil&eacute;e</p>
+<div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> cette commande n'est &agrave; faire qu'&agrave; la premi&egrave;re tentative de compilation du kernel. Il n'est plus necessaire de taper cette commande ci-dessous si vous souhaitez recompiler le kernel pour diverses raisons</div><pre>make mrproper</pre>
+Aucun message ne doit appara&icirc;tre. Nous allons maintenant lancer l'outil de configuration afin de choisir le minimum d'options necessaire pour avoir un kernel fonctionnel. J'ai volontairement choisi l'interface non graphique en effet, vous pouvez la lancer dans une chroot , une console non graphique ou graphique.<br/>
+Configurer les options de compilation et lancer la compilation du kernel. L'&eacute;quipe de Linuxfromscratch recommande de d&eacute;activer la variable LC_ALL:
+<pre class="output"><kbd>make LC_ALL= menuconfig</kbd></pre>
+Vous voici devant le menu principal de configuration du kernel:
+<img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/menuprincipal.png" border="0" alt="Configuration menu principal" title="http://download.tuxfamily.org/nutyx/img/installer_kernel/menuprincipal.png" width="578" height="517" />
+<div>Dans cet article, je ne vais que choisir les options indispensables au bon amor&ccedil;age du kernel et donc optenir un nombre de modules plus petit. Il faut savoir que le kernel disponible en binaire en contient plus de 3000. On se rend donc dans l'option <span style="color: #ff0000;">File systems ---&gt;</span></div><br/>
+<div>Si vous avez comme moi choisi un autre syst&egrave;me de fichier que l'ext3, il faut l'activer avec une &eacute;toile, dans mon cas, j'ai choisi le syst&egrave;me de fichiers reiserfs.</div>
+<img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/ChoixFS.png" border="0" alt="Activer le syst&egrave;me de fichiers utilis&eacute; par NuTyX" title="ttp://download.tuxfamily.org/nutyx/img/installer_kernel/ChoixFS.png" />
+<div>Une fois le choix effectu&eacute;, vous chosissez l'option <span style="color: #ff0000;">Exit 2 Fois</span></div>
+Un nouveau message vous demande si vous souhaitez sauvergarder votre configuration, chosissez simplement l'option de d&eacute;faut&nbsp;<span style="color: #ff0000;">Yes</span>
+Un joli message apparait dans votre terminal <img src="../graphics/smiley-cool.gif" border="0" alt="Cool" title="Cool" />:
+<pre class="output">#
+# configuration written to .config
+#
+
+
+<b>* End of the configuration.
+*</b> Execute 'make' to start the build or try 'make help'</pre>
+<p>La compilation du kernel peut commencer. Tapez dans la console</p>
+<pre class="command"><kbd>make</kbd></pre>
+<div>La compilation est d&eacute;marr&eacute;e</div><br />
+<img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/Compile.png" border="0" alt="Compilation en cours" width="578" height="517" />
+<p>Quelques minutes (ou quelques heures plus tard, ... Vous voil&agrave; avec un kernel pr&ecirc;t &agrave; &ecirc;tre install&eacute;</p>
+<pre class="output">Kernel: arch/x86/boot/bzImage is ready  (#1)</pre>
+<h4>Installer les modules et le kernel dans les bons dossiers</h4>
+<p>Le plus dur est fait. Il faut maintenant installer les modules du kernel, tapez dans la console:</p>
+<pre class="command"><kbd>make modules_install</kbd></pre>
+<p>Les quelques modules compil&eacute;s vont se mettre directement au bon endroit. Il faut maintenant copier le kernel qui a &eacute;t&eacute; compil&eacute; au bon endroit cad dans le dossier /boot:</p>
+<pre class="command"><kbd>cp -v arch/x86/boot/bzImage /boot/kernel-3.12.3</kbd></pre>
+Il faut encore faire un lien afin de pouvoir booter sur le kernel ad&eacute;quoit<br />
+<div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> La commande ci-dessous VARIE en fonction de la situation. Si vous compilez le kernel alors que vous &ecirc;tes dans l'installeur, choisissez l' option 1.&nbsp;Si vous compilez le kernel depuis une NuTyX fonctionnelle, choisissez l' option 2</div></p>
+<p>Option 1:</p>
+<pre class="command"><kbd>ln -s &nbsp;kernel-3.12.3 /boot/kernel</kbd></pre>
+<div>Option 2:</div>
+<div>Comme on ne veut pas &eacute;craser le lien existant du kernel, on va cr&eacute;er un nouveau lien et &agrave; la page suivante, 2 exemples de fichiers <strong><span style="color: #339966;">grub.cfg</span> </strong>et <strong><span style="color: #339966;">menu.lst</span></strong> seront adapt&eacute;s</div>
+<pre class="command"><kbd>ln -s &nbsp;kernel-3.12.3 /boot/kernelAmoi</kbd></pre>
+<div>Optionnel (si vous avez d&eacute;j&agrave; un kernel) cr&eacute;&eacute;er une nouvelle entr&eacute;e dans le fichier grub.cfg ou menu.lst</div>
+<div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Cette page ne concerne pas le cas o&ugrave; le kernel a &eacute;t&eacute; (courageusement) compil&eacute; lors de l'installation.</span><span style="font-size: small;"></div>
+<div>On a donc choisi d'appeller notre kernel "kernelAmoi", on aurai pu l'appeler &eacute;videment autrement. &nbsp;Voici le contenu des fichiers menu.lst (grub 0.97) et grub.cfg (grub 2.00) pour avoir la possibilit&eacute;e de booter sur le kernel fra&icirc;chement compil&eacute;. Seule la nouvelle entr&eacute;e est ajout&eacute;e et dans ces exemples &nbsp;on suppose que NuTyX est sur la 2 i&egrave;me partition du premier disque dur:</div>
+<div>1. menu.lst</div>
+<pre class="output">...
+# (3) NuTyX sur /dev/sda2
+title NuTyX avec kernel experimental sur /dev/sda2
+root (hd0,1)
+kernel /boot/kernelAmoi&nbsp; root=/dev/sda2 ro quiet</pre>
+<div>2. grub.cfg</div>
+<pre class="output"> ....
+ 
+menuentry "NuTyX avec kernel experimental sur /dev/sda2" {
+  set root=(hd0,2)
+  linux /boot/kernelAmoi root=/dev/sda2 ro quiet
+}</pre>
+<div>Et voil&agrave;, de cette fa&ccedil;on, vous pourrez toujours choisir au d&eacute;marrage de votre NuTyX sur quel kernel celle-ci doit &ecirc;tre lanc&eacute;e</div>
+
+  </div>
+  <div class="pied_page"> ... <img src="graphics/logo_nutyx_25.png"> ...
+  </div>
+ </body>
+</html>

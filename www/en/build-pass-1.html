@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<!-- En-tête de la page -->
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../css/nutyx.css" />
+        <title>NuTyX-building-p1</title>
+    </head>
+    
+ <body>
+    <header>
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">GIT Projects</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">"system" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">"server" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">"desktop" Packages</a></li>
+        </ul>
+    </nav>
+    <h2>Building of the CHROOT (pass 1)</h2>
+    <p1>
+    In this first pass we will build up a chroot environnement which will be used to build a NuTyX in a second pass. If you choose to use a separate artition, it should be mounted now. When done we can go on.
+</br></br>
+    We start by creating folders, links and the right user account for the building of the first pass.
+    </br></br>
+    The first part of preparation is done via the root account and the second directly in the unpriviledge account LFS.
+    The building time of the first pass can varie between 1 hour( with an 8 cores processor)  and probably 1 night(with a single core 32 bits).
+    </br></br>
+    It's a summary of what has to be done before starting the various scripts which will do all the job automatically.
+    </br></br>
+    Note that in this article, we use only a folder and not a partition. It's possible to build the CHROOT in a folder.
+    </br></br>
+    A few warning prior to start:
+    </br>
+    1. Use only the BASH interpreter
+    </br>
+    2. Check that all the conditions are fullfill by checking this <a  class="url" href="http://www.linuxfromscratch.org/lfs/view/lfs-svn/prologue/hostreqs.html" target="_blank">page</a>
+    </br>
+    </p1>
+    <h2>Administrator part:</h2>
+    <p1>
+     <ol>
+     <li>Creation of the LFS configuration variable:</li>
+<pre class="command"><kbd>export LFS=/mnt/lfs</kbd></pre>
+     <li>Creation of folders:</li>
+<pre class="command"><kbd> mkdir -vp $LFS/{sources,tools}</kbd></pre>
+     <li>Add the needed links:</li>
+<pre class="command"><kbd>ln -svf $LFS/tools /
+ln -svf $LFS/sources /</kbd></pre>
+     <li>Creation of the lfs user:</li>
+<pre class="command"><kbd>groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+passwd lfs</kbd></pre>
+     Enter the password of your choice, it's not absolutly necessaryy if you enter this accound from root.
+     <li>Owner and mode changing of the folders:</li>
+<pre class="command"><kbd>chown -v lfs $LFS/{tools,sources}
+chmod -v a+wt $LFS/sources
+chown -v lfs $LFS</kbd></pre>
+     </ol>
+     Time to go on with the LFS unprivildge user part: 
+<pre class="command"><kbd>su - lfs</kbd></pre>
+     </p1>
+     <h2>LFS part:</h2>
+     <p1>
+     From now on, you should type all the commands as lfs user.
+     </br>
+     Adjust the working environnement: the file ~/.bash_profile: 
+<pre class="command_user"><kbd><code>cat > ~/.bash_profile << "EOF"
+exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+EOF</code></kbd></pre>
+     and the file ~/.bashrc:
+<pre class="command_user"><kbd><code>cat > ~/.bashrc << "EOF"
+set +h
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/home/lfs/bin:/tools/bin:/bin:/usr/bin
+export LFS LC_ALL LFS_TGT PATH
+EOF</code></kbd></pre>
+    And then we load the new environnement:
+<pre class="command_user"><kbd>source ~/.bash_profile</kbd></pre>
+    And to finish, we get the latest version from the git:
+<pre class="command_user"><kbd>rsync -azv --delete-after rsync://rsync.nutyx.org:/ports/makelfs .</kbd></pre>
+    Ones this is done, a new folder is created: makelfs. We enter in it and launch the first script:
+<pre class="command_user"><kbd>cd makelfs
+bash runmefirst</kbd></pre>
+    The script will check a serie of verification and NO error should occur. The downloading of the sources will start automatically. When it's finish you just have to follow instructions.
+    </br>
+    If everything went well, you should read the following messages: <pre class="output">====> Successfull configured</pre>
+
+If your read this, congratulations you are ready to launch the first pass for the construction of your future NuTyX, do:    
+<pre class="command_user"><kbd>cd /home/lfs/makelfs/CHROOT
+pass</kbd></pre>
+
+Let's the show begin ... </br>
+
+<pre class="output">+ mkdir -pv /mnt/lfs/var/lib/pkg/DB
+mkdir: created directory '/mnt/lfs/var'
+mkdir: created directory '/mnt/lfs/var/lib'
+mkdir: created directory '/mnt/lfs/var/lib/pkg'
+mkdir: created directory '/mnt/lfs/var/lib/pkg/DB'
+=======> Building '/home/lfs/MakeNuTyX/CHROOT/cards/Pkgfile' succeeded.</pre>
+    Note that you can follow the evolution of the construction and then check that everything goes well by consulting the folder /home/lfs/logs/CHROOT/ . For each build package is a log corresponding
+ </div>
+<p>
+  <div class="pied_page"><a class="url" href="build-pass-2.html">We will see in a next article how to enter the CHROOT and to build a NuTyX from scratch by using a second time the same script.</a></div>
+<p>
+  <footer>
+   <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
+   </div>
+  </footer>
+ </body>
+</html>

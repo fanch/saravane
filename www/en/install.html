@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- En-tête de la page -->
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Install</title>
+ </head>
+ <body>
+    <header>
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">GIT Projects</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">"system" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">"server" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">"desktop" Packages</a></li>
+        </ul>
+    </nav>
+    Make shure you have enough space on your hard disk. A size of 8Go to 15Go will make it.
+    <h3>Téléchargez la dernière version de NuTyX</h3>
+    The actual version of NuTyX is named <b>sekong.5</b>.</br></br>
+    The available iso can be used to install all the packages from internel. It's also to used it for a minimum of maintenance on your machine before the actual installation of NuTyX.</br>
+    The size of an iso is <b>+- 88 Mb</b>.</br></br>
+    The 32 bits version can be download at: </br> <a class="url" href="http://nutyx.meticul.eu/NuTyX_i686-sekong.5.iso"  target="_blank" >http://nutyx.meticul.eu/NuTyX_i686-sekong.5.iso</a></br>
+    It's highly recommanded to check it's checksum integrity before using it. Here is the md5sum of it:</br>
+    <a class="url" href="http://nutyx.meticul.eu/NuTyX_i686-sekong.5.md5sum" target="_blank" >http://nutyx.meticul.eu/NuTyX_i686-sekong.5.md5sum</a></br></br>
+    The 64 bits version can be download at: </br> <a class="url" href="http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.iso"  target="_blank" >http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.iso</a></br>
+    It's highly recommanded to check it's checksum integrity before using it. Here is the md5sum of it: </br>
+    <a class="url" href="http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.md5sum" target="_blank" >http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.md5sum</a></br>
+    <h3>Create a bootable USB key</h3>
+    If you are currently running GNU/linux on your machine: </br>
+    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />In root, with the help of fdisk, find out where your usb KEY is located:</div>
+    <pre class="command"><kbd>fdisk -l</kbd></pre>
+    Then by using the command <b>dd</b> create a bootable key:
+    <pre class="command"><kbd>dd if=NuTyX_x86_64-sekong.5.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
+    If you are under Windows, the easiest way is to burn the ISO on a CD.
+    <h3>Installation of the boot process</h3>
+    If you used grub version 0.99, the following entry can be added to your menu.list: </br>
+    <pre class="command"><kbd>title NuTyX - Sekong sur sda2
+    root (hd0,1)
+    kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
+    
+    title Maintenance de NuTyX
+    root (hd0,1)
+    kernel /boot/kernel ro quiet vga=791
+    initrd /boot/nutyx-initrd</kbd></pre>
+    If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:
+    <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
+    set root=(hd0,2)
+    linux /boot/kernel root=/dev/sda2 ro quiet
+    }
+    
+    menuentry "Maintenance de NuTyX" {
+    set root=(hd0,1)
+    linux /boot/kernel ro quiet
+    initrd /boot/nutyx-initrd
+    }
+    
+    menuentry "Windows 8" {
+    set root=(hd0,3)
+    chainloader (hd0,3)+1
+    }</kbd></pre>
+    </p1>
+  </div>
+  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
+  </div>
+ </body>
+</html>

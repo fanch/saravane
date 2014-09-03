@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Post-construction et configuration</title>
+ </head>
+    
+ <body>
+     <header>    
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+       
+    <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribuer</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">Dépôt GIT</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">Paquets "system"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">Paquets "server"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">Paquets "desktop"</a></li>
+        </ul>
+    </nav>
+     
+        <!-- FIN HEADER -->
+
+
+   <h2>Post-construction et configuration de la NuTyX</h2>
+    Tous les paquets d'un système de base sont désormais disponible. On peut finaliser et booter sur la NuTyX
+    </br></br>
+  <ol>
+   <li>On commence par réentrer correctement dans la NuTyX</li>
+<pre class="command"><kbd>exit</kbd></pre>
+   <li>On revérifie la variable LFS</li>
+<pre class="command">echo $LFS</kbd></pre>
+Doit retourner
+<pre class="output">/mnt/lfs </pre>
+   <li>On peut maintenant retourner dans la nouvelle NuTyX pour finaliser les travaux</li>
+<pre class="command"><kbd>chroot $LFS /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u: \w\$' \
+/bin/bash --login</kbd></pre>
+Aucune erreur ne doit apparaître:
+<pre class="output">root [ / ]# </pre>
+   <li>Il faut supprimer le lien bin pour profiter des scripts définitifs</li>
+<pre class="command"><kbd>cd
+rm bin</kbd></pre>
+    <li>On produit enfin l'initrd indispensable pour le démarrage de la saravane</li>
+<pre class="command"><kbd>mkinitramfs</kbd></pre>
+    <li>il suffit d'ajouter une entrée dans le menu.lst ou grub.cfg </li>
+    Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon : </br>
+    <pre class="command"><kbd>title NuTyX - Saravane sur sda2
+    root (hd0,1)
+    kernel /boot/kernel root=/dev/sda2 ro quiet rootdelay=5
+    initrd /boot/initrd
+    </kbd></pre>
+    Si vous avez déjà grub 2 installé, il suffit juste de modifier votre grub.cfg selon :
+    <pre class="command"><kbd>menuentry "NuTyX - Saravane sur /dev/sda2" {
+    set root=(hd0,2)
+    linux /boot/kernel root=/dev/sda2 ro quiet rootdelay=5
+    initrd /boot/initrd
+    }
+    
+    menuentry "Windows 8" {
+    set root=(hd0,3)
+    chainloader (hd0,3)+1
+    }</kbd></pre>
+    <li>On termine par spécifier la bonne partition dans le fichier /etc/fstab</li>
+<pre class="command"><kbd>echo "/dev/sda2    /    reiserfs  defaults   0   1" >> /etc/fstab</kbd></pre>
+A vous d'ajuster la partition  et le système de fichiers utilisé
+   </ol>
+    Si votre NuTyX boot correctement et que le réseau fonctionne, vous pouvez supprimez les dossier /sources et /tools:
+<pre class="command"><kbd> rm -r /{sources,tools}</kbd></pre>
+    </br></br>
+Félicitations, vous avez maintenant entre les mains une NuTyX de base prête à l'emploi.
+  </div>
+
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
+ </body>
+</html>
+

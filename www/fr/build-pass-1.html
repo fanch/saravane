@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Construction du chroot</title>
+ </head>
+    
+ <body>
+     <header>    
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+       
+    <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribuer</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">Dépôt GIT</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">Paquets "system"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">Paquets "server"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">Paquets "desktop"</a></li>
+        </ul>
+    </nav>
+     
+        <!-- FIN HEADER -->
+     
+
+
+    <h2>Construction de la CHROOT (pass 1)</h2>
+    <p1>
+    Dans cette première pass nous allons construire un environnement chroot qui sera utilisé pour construire NuTyX dans la pass 2. Si vous avez choisis d'utiliser une partition, pensez à monter cette partition avant d'aller plus loin.
+    </br></br>
+    On va commencer par créér les dossiers, les liens et le compte adéquoit pour la construction de la première passe.
+    </br></br>
+    La première partie des préparatifs se fait en compte root et la deuxième partie en compte LFS. 
+    Le temps de contruction de la première passe varie entre 1 heure (avec un 8 cores) et une nuit (un mono core ).
+    </br></br>
+    C'est un condensé des choses à faire avant de pouvoir lancer les différents scripts qui feront tout le travail automatiquement.
+    </br></br>
+    Notez que dans cet article, on utilise uniquement un dossier et non une partition. Il est tout à fait possible de construire la CHROOT ds un dossier.
+    </br></br>
+    Quelques précautions s'imposent:
+    </br>
+    1. Utilisez l'interpréteur BASH
+    </br>
+    2. Vérifiez que toutes les conditions soient remplies en consultant cette <a  class="url" href="http://lfs.traduc.org/view/lfs-svn/prologue/hostreqs.html" target="_blank">page</a>
+    </br>
+    </p1>
+    <h2>Partie Administrateur:</h2>
+    <p1>
+     <ol>
+     <li>Création de la variable de configuration LFS:</li>
+<pre class="command"><kbd>export LFS=/mnt/lfs</kbd></pre>
+     <li>Création des dossiers:</li>
+<pre class="command"><kbd> mkdir -vp $LFS/{sources,tools}</kbd></pre>
+     <li>Ajout des liens necessaires:</li>
+<pre class="command"><kbd>ln -svf $LFS/tools /
+ln -svf $LFS/sources /</kbd></pre>
+     <li>Création de l'utilisateur lfs:</li>
+<pre class="command"><kbd>groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+passwd lfs</kbd></pre>
+     Vous entrez le mot de passe de votre choix, ce n'est pas indispensable si vous entrez ds le compte lfs depuis root.
+     <li>Changement de propriètaire et de mode des dossiers:</li>
+<pre class="command"><kbd>chown -v lfs $LFS/{tools,sources}
+chmod -v a+wt $LFS/sources
+chown -v lfs $LFS</kbd></pre>
+     </ol>
+     Il est temps de passer à la 2ième partie et donc de se connecter en utilisateur lfs:
+<pre class="command"><kbd>su - lfs</kbd></pre>
+     </p1>
+     <h2>Partie LFS:</h2>
+     <p1>
+     A partir de maintenant vous tapez toutes les commandes en compte lfs
+     </br>
+     Ajuster l'envitonnement de travail: le fichier ~/.bash_profile:
+<pre class="command_user"><kbd><code>cat > ~/.bash_profile << "EOF"
+exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+EOF</code></kbd></pre>
+     et le fichier ~/.bashrc:
+<pre class="command_user"><kbd><code>cat > ~/.bashrc << "EOF"
+set +h
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=$HOME/bin:/tools/bin:/bin:/usr/bin
+export LFS LC_ALL LFS_TGT PATH
+EOF</code></kbd></pre>
+    Et on charge le nouvel environnement:
+<pre class="command_user"><kbd>source ~/.bash_profile</kbd></pre>
+    Et pour finir on récupère la dernière version du git:
+<pre class="command_user"><kbd>rsync -azv --delete-after rsync://rsync.nutyx.org:/ports/makelfs .</kbd></pre>
+
+    Une fois terminée, un nouveau dossier a été créé: makelfs. On y entre et on lance le premier script:
+
+<pre class="command_user"><kbd>cd makelfs
+bash runmefirst</kbd></pre>
+    Le script va effectuer toute une série de vérifications et si aucune erreur ne s'est produite, le téléchargement des sources commence automatiquement. Une fois le téléchargement terminé, il suffit de suivre les instructions.
+    </br>
+    Si tout s'est bien passé, vous devriez avoir le message: <pre class="output">====> Successfull configured</pre>
+    
+Si vous lisez ce message, vous êtes prêt pour lancer la première passe pour la construction de votre future NuTyX,faites:
+<pre class="command_user"><kbd>cd /home/lfs/makelfs/CHROOT
+pass</kbd></pre>
+
+Admirez le travail ... </br>
+
+<pre class="output">+ mkdir -pv /mnt/lfs/var/lib/pkg/DB
+mkdir: created directory '/mnt/lfs/var'
+mkdir: created directory '/mnt/lfs/var/lib'
+mkdir: created directory '/mnt/lfs/var/lib/pkg'
+mkdir: created directory '/mnt/lfs/var/lib/pkg/DB'
+=======> Building '/home/lfs/MakeNuTyX/CHROOT/cards/Pkgfile' succeeded.</pre>
+    Notez que vous pouvez suivre l'évolution et contrôler la bonne conduite de chaque paquet construit en consultant le dossier /home/lfs/logs/CHROOT/ . En effet à chaque paquet construit correspond un log.
+ </div>
+<p>
+  <div class="pied_page"><a class="url" href="build-pass-2.html">On verra dans un prochain article comment entrer dans la chroot et y construire une NuTyX depuis scratch en utilisant une deuxième fois le même script </a></div>
+<p>
+
+    
+     
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
+ </body>
+</html>
+

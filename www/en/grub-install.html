@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- En-tête de la page -->
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Mise en place de grub</title>
+ </head>
+<body>
+    <header>
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">GIT Projects</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">"system" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">"server" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">"desktop" Packages</a></li>
+        </ul>
+    </nav>
+<h1>Mise en place de GRUB</h1>
+<div>Si vous n'avez pas installer de procédure d'amorçage lors de l'installation de NuTyX (par erreur ou par volonté). Il n'est pas trop tard. C'est finalement très simple d'installer GRUB de façon indépendante.</div>
+<h3>Historique</h3>
+<div>Au d&eacute;but de l'existance de la distribution NuTyX, l'installation de celle-ci se faisait uniquement par le script, et <strong>grub</strong> s'installait &eacute;galement via le script. Le probl&egrave;me &eacute;tait que toutes les distributions ne disposent pas de l'application grub install&eacute;e par d&eacute;faut. J'ai donc d&eacute;cid&eacute; de retirer cette option du script d'installation. C'est pour cette raison que d&eacute;sormais, l'installation de grub est<strong> OPTIONNELLE</strong> en effet si vous installez NuTyX comme seconde distribution par exemple, il n'est pas n&eacute;cessaire d'installer une seconde fois la procedure d'amor&ccedil;age <strong>GRUB</strong></div>
+<h3>Conditions &agrave; remplir pour pouvoir installer le GRUB:</h3>
+<ol>
+<li>Il n'est pas necessaire d'avoir une NuTyX install&eacute;e, il est en effet  possible d'installer le GRUB pour n'importe quelle distribution.</li>
+</ol>
+<div>Relancez la machine et d&eacute;marrez la mini-iso</div>
+<img src="http://download.tuxfamily.org/nutyx/img/iso/Boot1.png" border="0" alt="Figure 1: Amor&ccedil;a de la mini-iso" title="Figure 1: Amor&ccedil;a de la mini-iso" width="663" height="380" />
+<div>Une fois arriv&eacute; sur le menu principal, choisissez "Amor&ccedil;e Configurer le lancement du PC" comme ci-dessous:</div>
+<img src="http://download.tuxfamily.org/nutyx/img/maintenance/grub/Figure3.jpg" border="0" alt="Figure 2: Choix Amorce Configurer le lancement du PC" title="Figure 2: Choix Amorce Configurer le lancement du PC" width="664" height="400" />
+<br/>Un nouveau message appara&icirc;t. Comme vous n'avez pas installé NuTyX depuis cette session, l'installateur vous en avertit. Il propose donc de revenir dans le menu principal pour d'abord installer NuTyX.<br/><div><strong>On peut ignorer ce message et choisir Oui</strong></div>
+<img src="http://download.tuxfamily.org/nutyx/img/maintenance/grub/Figure4.jpg" border="0" alt="Figure 3: Avertissement NuTyX n'est pas install&eacute;" title="Figure 3: Avertissement NuTyX n'est pas install&eacute;" width="624" height="188" />
+<h4>Selection du disque d'amor&ccedil;age</h4>
+<div>Si vous avez choisi l'iso 32 bits, une fen&ecirc;tre suppl&eacute;mentaire appara&icirc;t avec le choix de version de grub. Soit vous choisissez la version 0.97 ou la version 2.00. Une fois le choix effectu&eacute;, un nouvel &eacute;cran appara&icirc;t, Il s'agit maintenant de choisir le disque physique qui sera utilis&eacute; pour l'amor&ccedil;age de la machine. Tr&egrave;s souvent on choisira le premier disque trouv&eacute; donc <strong>/dev/sda</strong></div>
+<img src="http://download.tuxfamily.org/nutyx/img/maintenance/grub/Figure5.jpg" border="0" alt="Figure 5: Choix du disque d'amor&ccedil;age" title="Figure 5: Choix du disque d'amor&ccedil;age" width="570" height="351" />
+<h4>Selection de la partition</h4>
+<div>Et maintenant on choisit la partition sur laquelle l'application grub doit &ecirc;tre install&eacute;e. Veuillez noter que la partition de destination ne doit pas forc&eacute;ment &ecirc;tre sur le disque d'amor&ccedil;age (choisi lors du menu pr&eacute;c&eacute;dent).</div>
+<img src="http://download.tuxfamily.org/nutyx/img/maintenance/grub/Figure6.jpg" border="0" alt="Figure 6: Choix de la partition" title="Figure 6: Choix de la partition" width="526" height="272" />
+<h4>Grub est install&eacute;</h4>
+<div>Il est maintenant possible d'&eacute;diter le fichier <strong><span style="color: #00ff00;">menu.lst</span></strong> ou <span style="color: #00ff00;"><strong>grub.cfg</strong></span> en fonction de la version de grub choisie&nbsp; comme ci-dessous.</div>
+<div class="important"><img src="../graphics/caution.gif" /> Attention la syntaxe pour la d&eacute;nomination des disques et partitions diff&egrave;re entre grub 0.97 et et grub 2.00</div>
+<div>Sous grub 0.97 le premier disque et premi&egrave;re partition commencent tout deux &agrave; zero:</div>
+<pre class="output">root (hd1,0)</pre>
+<div>d&eacute;finissent la premi&egrave;re partition sur le 2i&egrave;me disque</div>
+<div>Sous grub 2.00 le premier disque commence &agrave; 0 et la premi&egrave;re partition commence &agrave; 1. Et la syntaxe est l&eacute;g&egrave;rement diff&eacute;rente:</div>
+<pre class="output">set root=(hd0,5)</pre>
+<div>d&eacute;finit donc la cinqui&egrave;me partition sur le premier disque</div>
+<div>Dans les 2 exemples ci-dessous on peut voir plusieurs entr&eacute;es d&eacute;finies de diff&eacute;rente fa&ccedil;on.</div>
+<pre class="output"># Begin menu.lst
+# (0) Arch Linux
+title Arch Linux
+root  (hd0,0)
+kernel /boot/vmlinuz26 root=/dev/disk/by-uuid/db1a8066-a766-4aea-b34d-545f5acde6
+initrd /boot/kernel26.img
+# (1) NuTyX Maintenance
+title NuTyX Maintenance sur /dev/sda2
+root (hd0,1)
+kernel /boot/kernel ro quiet
+initrd /boot/nutyx-initrd
+# (2) NuTyX sur /dev/sda2
+title NuTyX sur /dev/sda2
+root (hd0,1)
+kernel /boot/kernel root=/dev/sda2 ro quiet</pre>
+<div>Dans l'exemple ci-dessus, on trouve 3 entr&eacute;es dont 2 entr&eacute;es NuTyX, la premi&egrave;re lancera la distribution ARCH qui se trouve sur le disque <strong>/dev/disk/by-uuid/db1a8066-a766-4aea-b34d-545f5acde6, </strong>la deuxi&egrave;me lancera la maintenance de NuTyX qui se trouve sur la partition <strong>/dev/sda2</strong> et enfin la troisi&egrave;me entr&eacute;e lancera la NuTyX en dur qui se trouve &eacute;galement sur <strong>/dev/sda2</strong></div>
+<div>Dans le cas de grub 2.00, la syntaxe est l&eacute;g&egrave;rement diff&eacute;rente comme on peut le voir ci-dessous:</div>
+<pre class="output"># Begin grub.cfg
+# By default boot the first menu entry.
+set default 0
+# Allow 5 seconds before booting the default.
+set timeout 5<br />set color_highlight=blue/white
+set color_normal=cyan/black<br />set gfxpayload=1024x768x16
+menuentry "NuTyX MINI pakxe.4 i686 reiserfs sur /dev/sda2" {
+ set root=(hd0,2)
+ linux /boot/kernel root=/dev/sda2 ro quiet
+}
+menuentry "Maintenance de NuTyX" {
+  set root=(hd0,1)
+  linux /boot/kernel ro quiet
+  initrd /boot/nutyx-initrd
+}
+menuentry "Windows 8" {
+ set root=(hd0,3)
+ chainloader (hd0,3)+1
+}
+</pre>
+<div>Dans l'exemple ci-dessus, on trouve 3 entr&eacute;es dont 2 entr&eacute;es NuTyX, la premi&egrave;re lancera la NuTyX qui se trouve sur <strong>/dev/sda2.</strong> La deuxi&egrave;me lancera le syst&egrave;me de maitenance qui se trouve sur<strong> /dev/sda1. </strong>La troisi&egrave;me entr&eacute;e lancera Windows 8 sur la partition <strong>/dev/sda3</strong>.</div>
+  </div>
+  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
+  </div>
+ </body>
+</html>

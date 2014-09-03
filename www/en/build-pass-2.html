@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<!-- En-tête de la page -->
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../css/nutyx.css" />
+        <title>NuTyX - building of the NuTyX (pass2)</title>
+    </head>
+    
+ <body>
+    <header>
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">GIT Projects</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">"system" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">"server" Packages</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">"desktop" Packages</a></li>
+        </ul>
+    </nav>
+    <h2>Construction of the NuTyX (pass 2)</h2>
+    It's time to build your NuTyX. One single condition: Have been able to finish with success the construction of the CHROOT (pass 1).
+    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />The author is not responsable for the lost of your datas or others dammage which could occur during a wrong manipulation. This article is target for aware Linux peoples.</div>
+    All the operations will be done in the root account. It's then ABSOLUTLY necessary to be very carefull otherwise you could broker your actual distribution.
+    <p>
+    The LFS variable in our exemple is pointing to /mnt/lfs. Up to you to adjust to your need if necessary.
+<div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Please note that the pass2 can be much more an "aventure" as it can always have problems when compiling a package the first time. Up to you to give us a feedback with all the details of the error. You can use the forum or the irc channel for that.</div>
+<div>To avoid any confusion and avoid dispersion in the actions to take, the article is split in two parts. The first shows every step to do and the second gives an explaignation about each step.</div> 
+<div>They are 14 actions. SO again: <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />All the manipulations should be done in the root account.</div></div>
+    <ol>
+      <li>We switch to root</li>
+<pre class="command"><kbd>su -</kbd></pre>
+      <li>We  define the LFS variable</li>
+<pre class="command"><kbd>export LFS=/mnt/lfs</kbd></pre>
+      <li>We check the LFS variable</li>
+<pre class="command"><kbd>echo $LFS</kbd></pre>MUST return <pre class="output">/mnt/lfs</pre>
+<div class="important"><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" />BEFORE YOU GO FURTER MAKE SHURE THE LFS VARIABLE IS PROPERLY SET OTHERWISE YOU WILL BREAK YOUR DISTRIBUTION</div>
+	If the result is correct:
+<pre class="command"><kbd>chown -R root:root $LFS</kbd></pre>
+      <li>We create folders and links to put the recepts in place.</li>
+<pre class="command"><kbd>install -dv -m0750  $LFS/root
+ln -s makelfs/bin $LFS/root</kbd></pre>
+      <li>We move the receipts to the right folder and go in this folder</li>
+<pre class="command"><kbd>mv /home/lfs/makelfs $LFS/root/
+cd $LFS/root/makelfs/BASE/aaabasicfs#*</kbd></pre>
+      <li>We compile the first package of NuTyX</li>
+<pre class="command"><kbd>/tools/bin/pkgmk -d</kbd></pre>
+      <li>We install aaabasicfs in the NuTyX</li>
+<pre class="command"><kbd>/tools/bin/pkgadd -r $LFS $LFS/root/makelfs/pkg/aaabasicfs#*</kbd></pre>
+      <li>We check if it's present</li>
+<pre class="command"><kbd>ls $LFS/var/lib/pkg/DB</kbd></pre>
+retourne
+<pre class="output">aaabasicfs#2013-81-x86_64</pre>
+      <li>We mount all different folders</li>
+<pre class="command"><kbd>mount -v -B /dev $LFS/dev
+mount -vt devpts devpts $LFS/dev/pts
+mount -vt proc proc $LFS/proc
+mount -vt sysfs sysfs $LFS/sys
+if [ -h /dev/shm ]; then rm -f $LFS/dev/shm;mkdir $LFS/dev/shm;fi
+mount -vt tmpfs shm $LFS/dev/shm
+chmod 1777 /dev/shm</kbd></pre>
+      <li>We copy resolv.conf from the host distribution</li>
+<pre class="command"><kbd>cp -v /etc/resolv.conf $LFS/etc</kbd></pre>
+      <li>We check that all the folders are correctly mounted via the command: </li>
+<pre class="command"><kbd>mount|grep $LFS</kbd></pre>
+	it should return something like:
+<pre class="output">/dev/sda2 on /mnt/lfs type ext4 (rw)
+/dev on /mnt/lfs/dev type none (rw,bind)
+devpts on /mnt/lfs/dev/pts type devpts (rw)
+proc on /mnt/lfs/proc type proc (rw)
+sysfs on /mnt/lfs/sys type sysfs (rw)
+shm on /mnt/lfs/dev/shm type tmpfs (rw)</pre>
+      <li>We enter now in the NuTyX</li>
+<pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
+/bin/bash --login +h</kbd></pre>
+        The result will be a bit uggly but we can ignored it:
+<pre class="output">bash: id: command not found
+bash: id: command not found
+bash: date: command not found
+bash: uname: command not found
+bash: uname: command not found
+bash: whoami: command not found
+bash: uname: command not found
+bash: tput: command not found
+...</pre>
+     <li>We redefine the PATH variable</li>
+<pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
+     <li> We launch the compilation of the packages</li>
+<pre class="command"><kbd>cd /root/makelfs/system
+pass</kbd></pre>
+	return
+<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
+...</pre>
+    </ol>
+    <h2>Explanation to each step</h2>
+    <ol>
+      <li><div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Its very important that everything is done via the root account.</div></li>
+      <li>The LFS variable is used all along the article, its important that it's correctly set and that it point always to the same folder. One way to solve this problem is to define ones for all in the .bash_profile file and to source it:</li>
+<pre class="command"><kbd>echo "export LFS=/mnt/lfs" >> /root/.bash_profile
+source  ~/.bash_profile</kbd></pre></li>
+      <li>Checking the LFS variable. If OK we change the owner and group of the contents of $LFS</li>
+      <li>We create the folder to put the receiptes in place and the log folder as well. We create also a link so that the script <b>pass</b> is found.</li>
+      <li>We will now compile the first package which is aaabasicfs. For this we need to go in the folder of the recept</li>
+      <li>This package doent contains any code so it's just create all the folders and configuration files for the NuTyX.</li>
+      <li>We install the first package aaabasicfs into the NuTyX et</li>
+      <li>We check if it's corretly installed by looking at the database folder.</li>
+      <li>It's time to mount all the necessary folders to be able to enter and to compile without problems the rest of the NuTyX.</li>
+      <li>In case of a package need to download something (for exemple the kernel) we copy the resolv.conf file from the host to be able to resolve the adress.</li>
+      <li>One last check before we enter the CHROOT.</li>
+      <li>We can now enter the CHROOT means the future NuTyX. As it has still no programms at the right place, we get all kind of uggly messages, The PATH must be define again so that all the binaries are found in the right order.</li>
+      <li>The PATH variable is not set properly, so we need to redefine it</li>
+      <li>We go in the right folder. We launch the compilation of the packages in the right order.</li>
+    </ol>
+    <h2>You need to know:</h2>
+    <ol>
+      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />If you have an error when compiling a package, it's not a big deal, when you restart the command <b>pass</b> the script will restart where it's stops. Up to you to inform us what kind of error it is. You can use the irc channel or the forum.</div>
+      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />You can build the pass 2 in serverall times. If you went out of the chroot, you MUST make shure to type the <u>12 et 13 commands</u> again. If you did stop the PC, make shure to type <u>the command 9</u> plus  commands 12 and 13.</div></li>
+    </ol>
+  </div>
+<p>
+  <div class="pied_page"><a class="url" href="build-post.html">One pass 2 is done, you can start the post-installation and configuration.</a></div>
+<p>
+  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
+  </div>
+ </body>
+</html>

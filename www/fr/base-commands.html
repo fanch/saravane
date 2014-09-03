@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - Les commandes de base</title>
+ </head>
+    
+ <body>
+     <header>    
+      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+    </header>
+       
+    <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="install.html">Installation</a></li>
+            <li><a href="contribute.html">Contribuer</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="http://git.nutyx.org/?o=age">Dépôt GIT</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/system/">Paquets "system"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/server/">Paquets "server"</a></li>
+            <li><a href="http://downloads.nutyx.org/saravane/latest/desktop/">Paquets "desktop"</a></li>
+        </ul>
+    </nav>
+     
+        <!-- FIN HEADER -->
+     
+    <h1>Les commandes de base de NuTyX</h1>
+    <p>Afin de profiter pleinement de votre NuTyX fraîchement installée, voici les commandes indispensables que vous allez utiliser quotidiennement. Cet article reprend les commandes essentielles et spécifiques à NuTyX. Il est conseillé de les bien les connaître.</p>
+    <p>NuTyX ne dispose pas (encore) d'outils graphiques pour son administration. Vous allez donc utiliser le terminal comme interface. Si vous n'y êtes pas habitué;, ce n'est pas grave, cet article vous expliquera pas à pas les commandes à taper au clavier.</p>
+    <p>Sous NuTyX (contrairement à d'autres système d'exploitation) la case doit être respectée, il faut donc toujours veiller à taper les commandes <strong>en minuscules</strong>.</p>
+     <p>Commençons donc par ouvrir un terminal... ça y est ? alors on peut commencer <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></p>
+     <p>Une commande peut être composée d'un seul mot dans le cas où aucune option n'est nécessaire. Mais la majorité des commandes peut être entrée à l'aide d'options diverses. Sachez par exemple que l'option la plus utile sera (en fonction de la commande)</p>
+     <pre class="command_user"><kbd>nomdelacommande -h</kbd></pre>
+     <p>le <em>-h</em> permet d'obtenir un aperçu des possibilitées de la <strong>nomdelacommande</strong>, <em>--help</em> ou <em>help</em> sont aussi des options permettant l'affichage de l'aide.</p>
+     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> Il faut savoir que certaines commandes mentionnées dans cet article sont en réalité un alias, c'est à dire un racourci de la commande originale. Si vous souhaitez connaître la liste des alias, utilisez la commande:
+<pre class="command_user"><kbd>alias</kbd></pre></div>
+     <div class="important"><img alt="[Important]" src="../graphics/caution.gif">Bien que ce ne soit absolument pas necessaire, si vous souhaitez malgré tout modifier les alias définis dans votre NuTyX, vous devez éditer le fichier <strong><span style="color: #007a00;">.bashrc</span></strong> qui se trouve dans le dossier personnel du compte concerné. Encore une fois, cette opération n'est pas du tout indispensable et il est vivement conseillé de bien connaître le principe avant de modifier les alias prédéfinis</div>
+     <pre class="output">/root/.bashrc</pre>
+     <div>En voici un extrait:
+     </div>
+     <pre class="output">if [ -f "/etc/bashrc" ] ; then
+  source /etc/bashrc
+fi
+if [ $EUID -eq 0 ]; then
+         alias del='pkgrm'
+         alias get='pkg-get depinst'
+         alias up='pkg-get update -r
+         alias check='pkg-get sync;pkg-get diff'
+else
+         alias del='sudo pkgrm'
+         alias get='sudo pkg-get depinst'
+         alias up='sudo pkg-get update -r'
+         alias check='sudo pkg-get sync;pkg-get diff'
+fi
+alias ll='ls -l'
+alias l='ls -alh'
+alias duh='du -h --max-depth=1'
+alias dfh='df -h'
+alias sysup='pkg-get sysup'
+alias pkgfind='pkginfo -i | grep -i'
+# End ~/.bashrc</pre>
+   
+     <h2>Recherche d'un paquet</h2>
+    <p>Pour rechercher un paquet sous NuTyX, c'est très simple, la commande :</p>
+    <pre class="command_user"><kbd>pkg-get dsearch <em>chaîne_à_trouver</em></kbd></pre>
+    <p>retournera tous les paquets dont le nom ou la description contient la <em>chaîne_à_trouver</em>. Il est important de respecter la case. Par exemple si vous souhaitez connaître les navigateurs disponible (en binaire)</p>
+    <pre class="command_user"><kbd>pkg-get dsearch avigat</kbd></pre>
+    <p>devrait retourner quelque chose comme :</p>
+    <pre class="output">
+chromium           Navigateur internet de Google
+dillo              Navigateur web minimaliste basé sur fltk1
+firefox            Navigateur internet de la fondation Mozilla
+flashplayer        Plugin flashplayer pour navigateur
+...</pre>
+
+   <h2>Ajout d'un utilisateur</h2>
+    <p>Pour ajouter un utilisateur sous NuTyX, c'est également très simple, la commande :</p>
+     <pre class="command"><kbd>nu</kbd></pre>
+     <p>permet d'ajouter un utilisateur, elle peut être utilisée sous 2 formes avec et sans options, si elle est utilisée sans options, 2 questions vous seront demandées:</p>
+<pre class="output">Nom de l'utilisateur: francois
+Description de l'utilisateur: François Perrin</pre>
+     <p>Vous devez bien noter que le nom d'utilisateur ne peut pas contenir certains caractères et ne peut pas contenir d'espace ni de majuscule.</p>
+     <p>Si par contre vous souhaitez utiliser la commande avec ses options, ces derniers sont dans l'ordre la description de l'utilisateur suivi du nom de l'utilisateur:</p>
+     <pre class="command"><kbd>nu "François Perrin" francois</kbd></pre>
+     
+     <h2>Ajout d'un logiciel</h2>
+     <p>Pour ajouter un logiciel, un alias existe pour vous, la commande <strong>get</strong> suivi du ou des noms des logiciels à installer sera utilisée :</p>
+     <pre class="command"><kbd>get firefox sylpheed gparted pidgin</kbd></pre>
+     <p>les applications firefox sylpheed (client de messagerie) gparted (utilitaire de partitionnement de disque) et pidgin client multiprotocole de messagerie instantannée seront installés.</p>
+     
+     <h2>Vérifier si il y a des mises à jour disponible</h2>
+     <p>La commande check permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
+     <pre class="command"><kbd>check</kbd></pre>
+     <pre class="output">/srv/NuTyX/release/PKGREPO<br />/srv/NuTyX/release/PKGINST<br />..<br />Différences entre paquets installés et paquets disponibles dans les dépots:<br /><br />Paquet                        Installé                    Disponible dans le dépot
+
+sylpheed                      3.0.1-1                     3.2.0-1</pre>
+     <p>Dans cet exemple sylpheed peut être mis à jour.</p>
+     
+     <h2>Mettre à jour un logiciel</h2>
+     <p>Pour mettre à jour un logiciel, la commande <strong>pkg-get update -r</strong> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
+     <pre class="command"><kbd>pkg-get update -r sylpheed</kbd></pre>
+     <p>L'option <strong>-r</strong> est indispensable afin que si de nouvelles dépendances exitent, elles soient également installées. Si vous avez l'alias <b>up</b> configuré, il fera la même chose.</p>
+     
+     <h2>Conclusion</h2>
+     <p>Vous l'avez compris les seules commandes à connaître pour commencer à utiliser NuTyX sont donc les 2 commandes :</p>
+     <pre class="command"><kbd>nu
+pkg-get</kbd></pre>
+     <p>Cette dernière est d'ailleurs expliquée plus en détail via son aide:</p>
+<pre class="command_user"><kbd>pkg-get help</kbd></pre>
+<p>Je vous souhaite beaucoup de plaisir avec votre nouvelle NuTyX installée.</p>
+
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
+ </body>
+</html>
