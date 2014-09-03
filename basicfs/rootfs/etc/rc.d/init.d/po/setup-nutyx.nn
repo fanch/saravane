@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NuTyX Configuration tool\n"
+"PO-Revision-Date: 2014-08-07+2000\n"
+"Last-Translator: https://translate.google.no/#fr/no/\n"
+"Language-Team: Norwegian\n"
+"Language: nn \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Settings"
+msgstr "innstillinger"
+
+msgid "Keyboard Layout"
+msgstr "Keyboard Layout"
+
+msgid "Choose available"
+msgstr "Velg tilgjengelig"
+
+msgid "ERROR configuration"
+msgstr "konfigurasjonsfeil"
+
+msgid "Please try again"
+msgstr "Vennligst prøv igjen"
+
+msgid "Network card"
+msgstr "Nettverkskort"
+
+msgid "Select the card"
+msgstr "Velg kortet"
+
+msgid "Card to configure"
+msgstr "Kort for å konfigurere"
+
+msgid "Configuration of"
+msgstr "konfigurasjon av"
+
+msgid "Configuration mode"
+msgstr "Konfigurasjonsmodus"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Man"
+msgstr "Man"
+
+msgid "IP address automatically set from DHCP server"
+msgstr "IP adresse automatisk satt fra DHCP-server"
+
+msgid "Manually specify parameters"
+msgstr "Manuelt spesifisere parametere"
+
+msgid "Enter an IP address"
+msgstr "Skriv inn en IP-adresse"
+
+msgid "Enter a broadcast address"
+msgstr "Skriv inn et kringkastings adresse"
+
+msgid "in most cases the current value can be used"
+msgstr "i de fleste tilfeller den aktuelle verdien kan benyttes"
+
+msgid "Enter the subnet mask"
+msgstr "Tast inn nettverksmasken"
+
+msgid "Enter the gateway address"
+msgstr "Skriv inn gateway adress"
+
+msgid "it is normally the address of your router access point"
+msgstr "det er normalt den adressen til ruteren tilgangspunkt"
+
+msgid "Enter the DNS address"
+msgstr "Skriv inn DNS-adresse"
+
+msgid "DNS Search Suffix"
+msgstr "DNS Søk suffiks"
+
+msgid "Enter the domain name"
+msgstr "Angi domenenavnet"
+
+msgid "this is only need if you are in a subdomain"
+msgstr "dette er bare trenger hvis du er i et underdomene"
+
+msgid "Most of the time it's not need"
+msgstr "Mesteparten av tiden er det ikke trenger"
+
+msgid "Start the service"
+msgstr "Godt å vite"
+
+msgid "Check the all configuration, return true or false"
+msgstr "Kontrollere all konfigurasjon, returnerer sant eller usant"
+
+msgid "Show the network configuration"
+msgstr "Vise nettverkskonfigurasjonen"
+
+msgid "Show the keyboard configuration"
+msgstr "Vise tastatur konfigurasjonen"
+
+msgid "Show the clock configuration"
+msgstr "Vise klokken konfigurasjon"
+
+msgid "Show the locale and local time adjustment"
+msgstr "Viser locale og lokal tid justering"
+
+msgid "Show the all configuration"
+msgstr "Siser all konfigurasjon"
+
+msgid "Configure the language"
+msgstr "Konfigurere språk"
+
+msgid "Configure the keyboard"
+msgstr "Konfigurere tastaturet"
+
+msgid "Configure the network"
+msgstr "Konfigurere nettverket"
+
+msgid "Configure the clock"
+msgstr "Konfigurere klokken"
+
+msgid "add a user to the system"
+msgstr "til en bruker i systemet"
+
+msgid "Configure the all system"
+msgstr "Konfigurere alle system"
+
+msgid "Install NuTyX"
+msgstr "Installere NuTyX"
+
+msgid "Use the arrows keys to change the values"
+msgstr "Bruk piltastene for å endre verdiene"
+
+msgid "coordinated universal time or local time ?"
+msgstr "coordinated universal time eller lokal tid ?"
+
+msgid "the hardware clock is set to"
+msgstr "maskinvareklokken er satt til"
+
+msgid "do you want to use this time as coordinated universal time ?"
+msgstr "ønsker du å bruke denne tiden som coordinated universal time ?"
+
+msgid "and have the summer/winter time changing automatically"
+msgstr "og har sommer / vintertid endrer automatisk"
+
+msgid "Please enter the date"
+msgstr "skriv inn datoen"
+
+msgid "Please enter the time"
+msgstr "skriv inn tiden"
+
+msgid "configuration of the boot of the machine (grub)"
+msgstr "konfigurasjon av bagasjerommet på maskinen (grub)"
+
+msgid "select the disk on which you want to modify the mbr"
+msgstr "velg disken du ønsker å endre mbr"
+
+msgid "select the partition on which should be located the grub files"
+msgstr "velg partisjonen som skal plasseres grub filer"
+
+msgid "note that the destination partition can contain nutyx or any other distribution"
+msgstr "legg merke til at bestemmelses partisjon kan inneholde nutyx eller annen fordeling"
+
+msgid "no boot process configured"
+msgstr "ingen oppstartsprosessen konfigurert"
+
+msgid "you have installed nutyx without configuring the boot process"
+msgstr "du har installert nutyx uten å konfigurere oppstartsprosessen"
+
+msgid "are you sure, you want to cancel the process ?"
+msgstr "er du sikker på at du ønsker å avbryte prosessen ?"
+
+msgid "you already have a copy of the original mbr, it will not be backup"
+msgstr "du har allerede en kopi av den opprinnelige mbr, vil det ikke være backup"
+
+msgid "good to know"
+msgstr "godt å vite"
+
+msgid "Main Menu"
+msgstr "hovedmeny"
+
+msgid "Welcome in the NuTyX installer"
+msgstr "Velkommen i NuTyX installatør"
+
+msgid "Create all your partitions"
+msgstr "Lag all din partisjon"
+
+msgid "Format a partition"
+msgstr "Formatere en partisjon"
+
+msgid "Configure the boot of the PC"
+msgstr "Konfigurer avklart av PC"
+
+msgid "Reboot the PC"
+msgstr "Start PCen på nytt"

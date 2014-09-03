@@ -1,0 +1,258 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+export PATH
+
+problem()
+{
+   printf "Encountered a problem!\n\nDropping you to a shell.\n\n"
+   sh
+}
+
+no_device()
+{
+   printf "The device %s, which is supposed to contain the\n" $1
+   printf "root file system, does not exist.\n"
+   printf "Please fix this problem and exit this shell.\n\n"
+}
+
+no_mount()
+{
+   printf "Could not mount device %s\n" $1
+   printf "Sleeping forever. Please reboot and fix the kernel command line.\n\n"
+   printf "Maybe the device is formatted with an unsupported file system?\n\n"
+   printf "Or maybe filesystem type autodetection went wrong, in which case\n"
+   printf "you should add the rootfstype=... parameter to the kernel command line.\n\n"
+   printf "Available partitions:\n"
+}
+
+do_mount_root()
+{
+   [ -n "$rootflags" ] && rootflags="$rootflags,"
+   rootflags="$rootflags$ro"
+
+   case "$root" in
+      /dev/* ) device=$root ;;
+      UUID=* ) eval $root; device="/dev/disk/by-uuid/$UUID"  ;;
+      LABEL=*) eval $root; device="/dev/disk/by-label/$LABEL" ;;
+      ""     ) echo "No root device specified." ; problem    ;;
+   esac
+
+   while [ ! -b "$device" ] ; do
+       no_device $device
+       problem
+   done
+
+   if ! mount -n -t "$rootfstype" -o "$rootflags" "$device" /.root ; then
+       no_mount $device
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+   else
+       echo "Successfully mounted device $root"
+   fi
+}
+do_install()
+{
+echo "Start installation on $root "
+
+umount /.root
+
+ro="rw"
+
+mkdir /etc
+ln -s /proc/self/mounts /etc/mtab
+
+do_mount_root
+
+for DIR in home proc sys dev srv mnt
+do
+  echo -n "."
+  if [ ! -d /.root/$DIR ]; then
+    mkdir /.root/$DIR
+  fi
+done
+
+echo -n "."
+ln -s lib /.root/lib64
+
+if [ ! -d /.root/tmp ]; then
+   echo -n "."
+   mkdir  /.root/tmp
+   chmod 1777 /.root/tmp
+fi
+for DIR in var run usr etc root lib sbin bin opt
+do
+  echo -n "."
+  if [ -f /.root/boot/$DIR.squashfs ]; then
+     mkdir /DIR
+     mount -o loop -t squashfs /.root/boot/$DIR.squashfs /DIR
+     cp -a /DIR /.root/$DIR
+     umount /DIR
+     rm -r /DIR
+     if [ "$DIR" == "root" ]; then
+        chmod 750 /.root/root
+     fi
+  fi
+done
+# We need to check if entry exist in /etc/fstab
+if [ "`cat /.root/etc/fstab |sed "s/ \+/ /g"|sed "s/\t\+/ /g"|sed "s/ /:/g"|cut -d ":" -f1-2|grep $root|cut -d ":" -f2`" != "/" ]; then
+   # blkid will tell us the file system so we need udev running for that
+   ${UDEV_PATH}/udevd --daemon --resolve-names=never
+   udevadm trigger
+   udevadm settle
+
+   TYPE=`print_file_system $root`
+   echo -n "."
+
+   echo "$root   /   $TYPE   defaults     0      1" >> /.root/etc/fstab
+
+   killall -w ${UDEV_PATH}/udevd
+fi
+
+umount /.root
+
+ro="ro"
+
+do_mount_root
+echo "Successfully Installed on device $root" 
+}
+do_mount_in_ram()
+{
+	# squasfs files are in ${1} on the initrd
+	# RW folders
+	for DIR in var run etc root
+	do
+		if [ -f ${1}/$DIR.squashfs ];then
+			mkdir /DIR
+			mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR || problem
+			mkdir -p /$DIR > /dev/null 2>&1
+			cp -a /DIR/* /$DIR/
+			umount /DIR
+			rm -r /DIR
+			if [ "$DIR" == "root" ]; then
+				chmod 750 /root
+			fi
+		fi
+	done
+	# RO folders
+	for DIR in usr lib sbin bin opt
+	do
+		if [ -f ${1}/$DIR.squashfs ];then
+			mkdir /$DIR > /dev/null 2>&1
+			mount -o loop -t squashfs ${1}/$DIR.squashfs /$DIR || problem
+		fi
+	done		
+}
+find_media() {
+EXPECT_LABEL="nutyxcd"
+echo ""
+for SYS in /sys/block/sd* /sys/block/sr* ; do
+	echo "Looking in $SYS for media"
+	if [ ! -d "$SYS" ]; then  continue; fi
+	DEV=/dev/${SYS##*/}
+	LABEL=`dd if=$DEV bs=1 skip=32808 count=32 2>/dev/null`
+	if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
+		ln -s $DEV /dev/nutyx-cd
+		mkdir  -p /media/cdrom 2>/dev/null
+		mount -n /dev/nutyx-cd /media/cdrom
+		if [ -d /media/cdrom/depot ]; then
+			echo $DEV > /tmp/depot
+		fi
+	fi
+done
+}
+MainLoop(){
+while [ ! -f /root/boot ];
+do
+	/etc/rc.d/init.d/setup-nutyx || problem
+done
+}
+# **********
+# Begin here
+# **********
+
+init=/sbin/init
+root=
+rootdelay=
+rootfstype=auto
+ro="ro"
+rootflags=
+device=
+UDEV_PATH=/sbin
+
+. /lib/lsb/init-functions
+
+do_mount_virtualfs
+
+read -r cmdline < /proc/cmdline
+
+for param in $cmdline ; do
+  case $param in
+    init=*      ) init=${param#init=}             ;;
+    root=*      ) root=${param#root=}             ;;
+    rootdelay=* ) rootdelay=${param#rootdelay=}   ;;
+    rootfstype=*) rootfstype=${param#rootfstype=} ;;
+    rootflags=* ) rootflags=${param#rootflags=}   ;;
+    ro          ) ro="ro"                         ;;
+    rw          ) ro="rw"                         ;;
+  esac
+done
+
+
+if [ -f /etc/mdadm.conf ] ; then mdadm -As                       ; fi
+if [ -x /sbin/vgchange  ] ; then /sbin/vgchange -a y > /dev/null ; fi
+if [ -n "$rootdelay"    ] ; then
+	echo "... wait $rootdelay seconds"
+	sleep "$rootdelay"
+fi
+
+# If variable root not define we are in maintenance mode
+if [ "$root" == "" ]; then
+	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
+		find_media
+		if [ ! -L /dev/nutyx-cd ]; then
+			echo "Media not found yet, trying again in 5 sec"
+			sleep 5
+			find_media
+		fi
+		if [ -d /media/cdrom/isolinux/boot ]; then
+			do_mount_in_ram /media/cdrom/isolinux/boot
+		else
+			do_mount_in_ram /boot
+		fi
+	else
+		do_mount_in_ram /boot
+	fi
+	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
+		no_mount
+		sh
+	fi
+	${UDEV_PATH}/udevd --daemon --resolve-names=never
+	udevadm trigger
+	udevadm settle
+	MainLoop
+	root=`cat /root/boot`
+	killall -w ${UDEV_PATH}/udevd
+	for DIR in usr lib sbin bin opt
+	do
+		umount /$DIR > /dev/null 2>&1
+	done
+fi
+
+mkdir /.root
+do_mount_root
+
+if ! [ -d /.root/bin -a -d /.root/dev -a -d /.root/etc -a -d /.root/lib \
+-a -d /.root/sbin -a -d /.root/tmp -a -d /.root/root  -a -d /.root/proc \
+-a -d /.root/usr -a -d /.root/var  -a -d /.root/run -a -d /.root/sys ]; then
+
+  do_install
+
+fi
+
+# killall -w ${UDEV_PATH}/udevd
+
+clear
+cd /.root
+exec switch_root /.root "$init" "$@" > /dev/null 2>&1
+

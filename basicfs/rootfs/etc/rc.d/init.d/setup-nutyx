@@ -1,0 +1,1621 @@
+#!/bin/sh
+#
+#  Copyright (c) 2014 by NuTyX team (http://nutyx.org)
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+#  USA.
+#
+#
+
+# gettext initialization
+# 
+export TEXTDOMAIN='setup-nutyx'
+export TEXTDOMAINDIR='/etc/rc.d/init.d/locale'
+. gettext.sh
+. /lib/lsb/init-functions
+
+#
+# Basics functions
+#
+info() {
+	echo -e  " ====> $1"
+}
+error() {
+	info "${FAILURE}ERROR: ${NORMAL}$1" >&2
+	cleanup
+	exit 1
+
+}
+warning() {
+	info "${WARNING}WARNING: ${NORMAL}$1"
+}
+is_true()
+{
+ [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ]
+}
+_msgfmt() {
+	echo "locale ${1}" >> ${CARDS}
+	if [ -n /etc/rc.d/init.d/po/setup-nutyx.${1} ]; then
+		mkdir -p $TEXTDOMAINDIR/${1}/LC_MESSAGES
+		msgfmt /etc/rc.d/init.d/po/setup-nutyx.${1} \
+		-o $TEXTDOMAINDIR/${1}/LC_MESSAGES/setup-nutyx.mo
+	fi
+}
+#
+# Main functions
+#
+interrupt() {
+dialog --title " $(gettext "ERROR configuration") " \
+	--msgbox " \n $(gettext "Please try again") " 7 32
+exit 1
+}
+
+network_card_found() {
+	if [ `ls /sys/class/net|sed /lo/d|wc -l` == 1 ];then
+		NET_ID=`ls /sys/class/net|sed /lo/d`
+	else
+		retval=""
+		touch $TMP/result
+		while [ true ]; do
+			echo  "--backtitle \" $(gettext "Network card") \" \
+			--title \" $(gettext "Select the card") \" \
+			--radiolist \" $(gettext "Card to configure") \" 0 0 0 \\" > $TMP/list
+			for i in `ls /sys/class/net/|sed /lo/d`
+			do
+				echo -n \""$i"\"\  \"`/sbin/udevadm info /sys/class/net/$i|grep MODEL_FROM_DATABASE|cut -d "=" -f2`\" " off "
+				done >> $TMP/list
+				dialog --file $TMP/list 2>$TMP/result
+				retval=$?
+				result=`cat $TMP/result`
+				case $retval in
+					0)
+						if [ "$result" != "" ]; then
+							break
+						fi;;
+					1|255)
+						if [ "$result" != "" ]; then
+							break
+						fi;;
+				esac
+		done
+		NET_ID=`cat $TMP/result|sed 's/"//g'`
+	fi
+}
+setup_net() 
+{
+network_card_found
+retval=""
+while [ "$retval" == "" ]; do
+	dialog  \
+	--title " $(gettext "Configuration of") ${NET_ID} " \
+	--radiolist "$(gettext "Configuration mode")" \
+	0 0 0 "$(gettext "Auto")" "$(gettext "IP address automatically set from DHCP server")" "on" \
+	"$(gettext "Man")" "$(gettext "Manually specify parameters")" "off" 2> $TMP/result
+	retval=$?
+	result=`cat $TMP/result`
+	case $retval in
+		0)
+			if [ "$result" == "" ]; then
+				retval=""
+			fi;;
+		1|255)
+				exit;;
+  esac
+done
+if [ "`cat $TMP/result`" == "Auto" ];then
+	cat > /etc/sysconfig/ifconfig.$NET_ID << "EOF"
+ONBOOT="yes"
+SERVICE="dhcpcd"
+DHCP_START=""
+DHCP_STOP="-k "
+# Mettez PRINTIP="yes" pour que le script affiche l'addresse IP
+PRINTIP="no"
+# Mettez PRINTALL="yes" pour que le script affiche tous le détails
+# de la connection réseau
+PRINTALL="no"
+EOF
+else
+	dialog \
+	--title " $(gettext "Configuration of") ${NET_ID} " \
+	--inputbox " $(gettext "Enter an IP address") : " 10 60 "192.168.1.5" 2> $TMP/IP
+
+	if [ "`cat $TMP/IP`" == "" ]; then
+		interrupt
+	else
+		 IP=$(tail -n 1 $TMP/IP)
+	fi
+	BC_TEMP=$(echo $IP|cut -d . -f 1).$(echo $IP|cut -d . -f 2).$(echo $IP|cut -d . -f 3).255
+	dialog --title " $(gettext "Configuration of") ${NET_ID} " \
+	--inputbox " $(gettext "Enter a broadcast address"),\
+	$(gettext "in most cases the current value can be used"): " 10 60 ${BC_TEMP} 2> $TMP/BC
+	if [ "`cat $TMP/BC`" == "" ]; then
+		interrupt
+	else
+		BROADCAST=$(tail -n 1 $TMP/BC)
+	fi
+	dialog \
+	--title " $(gettext "Configuration of") ${NET_ID} " \
+	--inputbox "$(gettext "Enter the subnet mask"),\
+	$(gettext "in most cases the current value can be used"): " 10 60 "255.255.255.0" 2> $TMP/NM
+	if [ "`cat $TMP/NM`" == "" ]; then
+		interrupt
+	else
+		PREFIX=$(tail -n 1 $TMP/NM)
+	fi
+	GW_TEMP=$(echo $IP|cut -d . -f 1).$(echo $IP|cut -d . -f 2).$(echo $IP|cut -d . -f 3).1
+	dialog \
+	--title " $(gettext "Configuration of") ${NET_ID} " \
+	--inputbox "$(gettext "Enter the gateway address"),\
+	$(gettext "it is normally the address of your router access point"): " 10 60 ${GW_TEMP} 2> $TMP/GW
+	GW=$(tail -n 1 $TMP/GW)
+	dialog \
+	--title " $(gettext "Configuration of") ${NET_ID} " \
+	--inputbox "$(gettext "Enter the DNS address"),\
+	$(gettext "it is normally the address of your router access point"): " 10 60 ${GW} 2> $TMP/DNS
+	DNS=$(tail -n 1 $TMP/DNS)
+
+	/sbin/ifconfig ${NET_ID} ${IP} broadcast ${BROADCAST} netmask ${PREFIX}
+
+	if [ -n ${GW} ]; then
+		/bin/ip route add default via ${GW}
+	fi
+	cat > /etc/sysconfig/ifconfig.${NET_ID} << "EOF"
+ONBOOT=yes
+SERVICE=ipv4-static
+EOF
+	echo "IP=${IP}" >> /etc/sysconfig/ifconfig.${NET_ID}
+	if [ -n ${GW} ]; then
+		echo "GATEWAY=${GW}" >> /etc/sysconfig/ifconfig.${NET_ID}
+	fi
+	echo "PREFIX=${PREFIX}" >> /etc/sysconfig/ifconfig.${NET_ID}
+	echo "BROADCAST=${BROADCAST}" >> /etc/sysconfig/ifconfig.${NET_ID}
+
+	if [ -n "${DNS}" ]; then
+		dialog \
+		--title " $(gettext "DNS Search Suffix") " \
+		--inputbox "$(gettext "Enter the domain name"),\
+		$(gettext "this is only need if you are in a subdomain").\
+		$(gettext "Most of the time it's not need"): " 10 60 2> $TMP/SUFFIX
+		SUFFIX=$(tail -n 1 $TMP/SUFFIX)
+		echo "nameserver ${DNS}" > /etc/resolv.conf
+		if [ -n "${SUFFIX}" ]; then
+			echo "search ${SUFFIX}" >> /etc/resolv.conf
+		fi
+	fi
+	cat > /etc/sysconfig/network << "EOF"
+HOSTNAME='nutyx'        # Hostname of this machine
+MANAGER='cli'           # Network manager (wicd/networkmanager/cli/nothing)
+NETWORKWAIT='no'        # Wait or not for network
+LINKDELAY='15'          # init delay for initialisation of Networkmanager
+NETWORKDELAY='0'        # init delay to wait after initialisation of Networkmanager
+EOF
+fi
+if [ "$SETUP_INITRD" == "yes" ]; then
+	/etc/rc.d/init.d/network start
+fi
+SETUP_CONFIG_NETWORK="no"
+}
+setup_language()
+{
+/bin/setfont LatGrkCyr-8x16
+while [ true ]; do
+dialog   \
+--no-ok --no-cancel \
+--title "" --menu "" 0 0 0 \
+"United Arab Emirates" "Arabic" \
+"Agleria" "Arabic" \
+"Egypt" "Arabic" \
+"India" "Arabic" \
+"Iraq" "Arabic" \
+"Jordan" "Arabic" \
+"Kuwait" "Arabic" \
+"Lebanon" "Arabic" \
+"Libyan Arab Jamahiriya" "Arabic" \
+"Moroco" "Arabic" \
+"Oman" "Arabic" \
+"Qatar" "Arabic" \
+"Saudi Arabia" "Arabic" \
+"Sudan" "Arabic" \
+"South Sudan" "Arabic" \
+"Syrian Arab Republic" "Arabic" \
+"Tunisia" "Arabic" \
+"Yemen" "Arabic" \
+"Azerbaijan" "Azerbaycanca" \
+"Cataluña" "Catala" \
+"Česko" "čeština" \
+"cymru" "Cymraeg" \
+"Danmark" "Dansk" \
+"Deutschland" "Deutsch" \
+"Österreich" "Deutsch" \
+"Schweiz" "Deutsch" \
+"Luxemburg"  "Deutsch" \
+"Belgien" "Deutsch" \
+"Eesti" "Eesti" \
+"Australia" "English" \
+"Botwana" "English" \
+"Canada" "English" \
+"Denmark" "English" \
+"United Kingdom" "English" \
+"Hong Kong" "English" \
+"Ireland" "English" \
+"India " "English" \
+"Nigeria" "English" \
+"New Zealand" "English" \
+"Philippines" "English" \
+"Singapore" "English" \
+"United States" "English" \
+"South Africa" "English" \
+"Zambia" "English" \
+"Zimbabwe" "English" \
+"Argentiña" "Español" \
+"Bolivia" "Español" \
+"Chile" "Español" \
+"Colombia" "Español" \
+"Costa Rica" "Español" \
+"Cuba" "Español" \
+"Dominican Republic" "Español" \
+"Ecuador" "Español" \
+"España" "Español" \
+"Guatemala" "Español" \
+"Honduras" "Español" \
+"Mexico" "Español" \
+"Nicaragua" "Español" \
+"Panama" "Español" \
+"Peru" "Español" \
+"Puerto Rico" "Español" \
+"Paraguay" "Español" \
+"El Salvador" "Español" \
+"Estados Unidos" "Español" \
+"Uruguay" "Español" \
+"Venezuala" "Español" \
+"Euskera" "Euskera" \
+"France" "Français" \
+"Suisse" "Français" \
+"Belgique" "Français" \
+"Luxembourg" "Français" \
+"Quebec" "Français" \
+"Galego" "Galego" \
+"Ελληνική Δημοκρατία" "Ελληνικά" \
+"Hrvatska" "Hrvatski" \
+"Iceland" "Icelandic" \
+"Ireland" "Irish" \
+"Italia" "Italiano" \
+"Svizzera" "Italiano" \
+"latviešu" "latviešu" \
+"lietuvių" "lietuvių" \
+"kinyarwanda" "kinyarwanda" \
+"Magyar" "Magyar" \
+"Aruba" "Nederlands" \
+"België" "Nederlands" \
+"The Nederlands" "Nederlands" \
+"Norge" "Norsk bokmål" \
+"Poland" "Polski" \
+"Brazil" "Português" \
+"Portugal" "Português" \
+"română" "română" \
+"shqip" "shqip" \
+"slovenčina" "slovenčina" \
+"Slovenščina" "Slovenščina" \
+"Srbija" "Srpski" \
+"Suomi" "Suomi" \
+"Sverige" "Svenska" \
+"Türkiye" "Tükçe" \
+"Thaïland" "Thaï" \
+"Ukraïna" "Ukraïna" \
+"Viêt nam" "Viêt nam" \
+2> $TMP/language.check
+
+if [ ! $? = 0 ]; then
+  break
+fi
+REPLY=`cat $TMP/language.check`
+break
+done
+sed -i "/locale/d" /etc/cards.conf
+case ${REPLY} in
+ "United Arab Emirates")
+	_msgfmt ar
+	echo "export LANG=ar_AE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Dubai ${LOCALTIME};;
+ "Agleria")
+	_msgfmt ar
+	echo "export LANG=ar_DZ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Addis_Ababa ${LOCALTIME};;
+ "Egypt")
+	_msgfmt ar
+	echo "export LANG=ar_EG.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Egypt ${LOCALTIME};;
+ "India")
+	_msgfmt ar
+	echo "export LANG=ar_IN.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Kolkata ${LOCALTIME};;
+ "Iraq")
+	_msgfmt ar
+	echo "export LANG=ar_IQ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Baghdad ${LOCALTIME};;
+ "Jordan")
+	_msgfmt ar
+	echo "export LANG=ar_IQ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Amman ${LOCALTIME};;
+ "Kuwait")
+	_msgfmt ar
+	echo "export LANG=ar_KW.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Kuwait ${LOCALTIME};;
+ "Lebanon")
+	_msgfmt ar
+	echo "export LANG=ar_LB.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Beirut ${LOCALTIME};;
+ "Libyan Arab Jamahiriya")
+	_msgfmt ar
+	echo "export LANG=ar_LY.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Tripoli ${LOCALTIME};;
+ "Moroco")
+	_msgfmt ar
+	echo "export LANG=ar_MA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Casablanca ${LOCALTIME};;
+ "Oman")
+	_msgfmt ar
+	echo "export LANG=ar_OM.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Muscat ${LOCALTIME};;
+ "Qatar")
+	_msgfmt ar
+	echo "export LANG=ar_QA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Qatar ${LOCALTIME};;
+ "Saudi Arabia")
+	_msgfmt ar
+	echo "export LANG=ar_SA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Riyadh ${LOCALTIME};;
+ "Sudan")
+	_msgfmt ar
+	echo "export LANG=ar_SD.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Khartoum ${LOCALTIME};;
+ "South Sudan")
+	_msgfmt ar
+	echo "export LANG=ar_SS.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Khartoum ${LOCALTIME};;
+ "Syrian Arab Republic")
+	_msgfmt ar
+	echo "export LANG=ar_SY.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Damascus ${LOCALTIME};;
+ "Tunisia")
+	_msgfmt ar
+	echo "export LANG=ar_TN.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Tunis ${LOCALTIME};;
+ "Yemen")
+	_msgfmt ar
+	echo "export LANG=ar_YE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Aden ${LOCALTIME};;
+ "Azerbaijan")
+	_msgfmt az
+	echo "export LANG=az_AZ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Baku;;
+ "Cataluña")
+	_msgfmt ca
+	echo "export LANG=ca_ES.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Madrid ${LOCALTIME};;
+ "Cestina")
+	_msgfmt cs
+	echo "export LANG=cs_CZ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Prague ${LOCALTIME};;
+ "Cymraeg")
+	_msgfmt cy
+	echo "export LANG=cy_GB.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/London ${LOCALTIME};;
+ "Danmark")
+	_msgfmt da
+	echo "export LANG=da_DK.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Copenhagen ${LOCALTIME};;
+ "Deutschland")
+	_msgfmt de
+	echo "export LANG=de_DE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Berlin ${LOCALTIME};;
+ "Österreich")
+	_msgfmt de
+	echo "export LANG=de_AT.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Vienna ${LOCALTIME};;
+ "Schweiz")
+	_msgfmt de
+	echo "export LANG=de_CH.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Zurich ${LOCALTIME};;
+ "Luxemburg")
+	_msgfmt de
+	echo "export LANG=de_BE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Luxembourg ${LOCALTIME};;
+ "Belgien")
+	_msgfmt de
+	echo "export LANG=de_BE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Brussels ${LOCALTIME};;
+ "Eesti")
+	_msgfmt et
+	echo "export LANG=et_EE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Tallinn ${LOCALTIME};;
+ "Australia")
+	_msgfmt en
+	echo "export LANG=en_AU.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Australia/Sydney ${LOCALTIME};;
+ "Botwana")
+	_msgfmt en
+	echo "export LANG=en_BW.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Gaborone ${LOCALTIME};;
+ "Canada")
+	_msgfmt en
+	echo "export LANG=en_CA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Canada/Central ${LOCALTIME};;
+ "Denmark")
+	_msgfmt en
+	echo "export LANG=en_DK.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Copenhagen ${LOCALTIME};;
+ "United Kingdom")
+	_msgfmt en
+	echo "export LANG=en_GB.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/London ${LOCALTIME};;
+ "Hong Kong")
+	_msgfmt en
+	echo "export LANG=en_HK.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Hong_Kong ${LOCALTIME};;
+ "Ireland")
+	_msgfmt en
+	echo "export LANG=en_IE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Dublin ${LOCALTIME};;
+ "India ")
+	_msgfmt en
+	echo "export LANG=en_IN.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Indian/Maldives ${LOCALTIME};;
+ "Nigeria")
+	_msgfmt en
+	echo "export LANG=en_NG.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Lagos ${LOCALTIME};;
+ "New Zealand")
+	_msgfmt en
+	echo "export LANG=en_NZ.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Pacific/Auckland ${LOCALTIME};;
+ "Philippines")
+	_msgfmt en
+	echo "export LANG=en_PH.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Manila ${LOCALTIME};;
+ "Singapore")
+	_msgfmt en
+	echo "export LANG=en_SG.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Singapore ${LOCALTIME};;
+ "United States")
+	_msgfmt en
+	echo "export LANG=en_US.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/New_York ${LOCALTIME};;
+ "South Africa")
+	_msgfmt en
+	echo "export LANG=en_ZA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Johannesburg ${LOCALTIME};;
+ "Zambia")
+	_msgfmt en
+	echo "export LANG=en_ZM.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Lusaka ${LOCALTIME};;
+ "Zimbabwe")
+	_msgfmt en
+	echo "export LANG=en_ZW.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Africa/Harare ${LOCALTIME};;
+ "Argentiña")
+	_msgfmt es
+	echo "export LANG=es_AR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Buenos_Aires ${LOCALTIME};;
+ "Bolivia")
+	_msgfmt es
+	echo "export LANG=es_BO.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/La_paz ${LOCALTIME};;
+ "Chile")
+	_msgfmt es
+	echo "export LANG=es_CL.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Santiago ${LOCALTIME};;
+ "Colombia")
+	_msgfmt es
+	echo "export LANG=es_CO.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Bogota ${LOCALTIME};;
+ "Costa Ricar")
+	_msgfmt es
+	echo "export LANG=es_CR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Costa_Rica ${LOCALTIME};;
+ "Cuba")
+	_msgfmt es
+	echo "export LANG=es_CU.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Havana ${LOCALTIME};;
+ "Dominican Republic")
+	_msgfmt es
+	echo "export LANG=es_DO.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Santo_Domingo ${LOCALTIME};;
+ "Ecuador")
+	_msgfmt es
+	echo "export LANG=es_EC.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Guayaquil ${LOCALTIME};;
+ "España")
+	_msgfmt es
+	echo "export LANG=es_ES.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Madrid ${LOCALTIME};;
+ "Guatemala")
+	_msgfmt es
+	echo "export LANG=es_GT.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Guatemala ${LOCALTIME};;
+ "Honduras")
+	_msgfmt es
+	echo "export LANG=es_HN.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Tegucigalpa ${LOCALTIME};;
+ "Mexico")
+	_msgfmt es
+	echo "export LANG=es_MX.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Mexico_City ${LOCALTIME};;
+ "Nicaragua")
+	_msgfmt es
+	echo "export LANG=es_NI.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Managua ${LOCALTIME};;
+ "Panama")
+	_msgfmt es
+	echo "export LANG=es_PA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Panama ${LOCALTIME};;
+ "Peru")
+	_msgfmt es
+	echo "export LANG=es_PE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Lima ${LOCALTIME};;
+ "Puerto Rico")
+	_msgfmt es
+	echo "export LANG=es_PR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Argentina/San_Juan ${LOCALTIME};;
+ "Paraguay")
+	_msgfmt es
+	echo "export LANG=es_PY.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Asuncion ${LOCALTIME};;
+ "El Salvador")
+	_msgfmt es
+	echo "export LANG=es_SV.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/El_Salvador ${LOCALTIME};;
+ "Estados Unidos")
+	_msgfmt es
+	echo "export LANG=es_US.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/New_York ${LOCALTIME};;
+ "Uruguay")
+	_msgfmt es
+	echo "export LANG=es_UY.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Montevideo ${LOCALTIME};;
+ "Venezuala")
+	_msgfmt es
+	echo "export LANG=es_VE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Caracas ${LOCALTIME};;
+ "Euskera")
+	_msgfmt es
+	echo "export LANG=eu_ES.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Madrid;;
+ "France")
+	_msgfmt fr
+	echo "export LANG=fr_FR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Paris ${LOCALTIME};;
+ "Belgique")
+	_msgfmt fr
+	echo "export LANG=fr_BE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Brussels ${LOCALTIME};;
+ "Suisse")
+	_msgfmt fr
+	echo "export LANG=fr_CH.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Zurich ${LOCALTIME};;
+ "Luxembourg")
+	_msgfmt fr
+	echo "export LANG=fr_LU.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Luxembourg ${LOCALTIME};;
+ "Quebec")
+	_msgfmt fr
+	echo "export LANG=fr_CA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Montreal ${LOCALTIME};;
+ "Ελληνικά")
+	_msgfmt el
+	echo "export LANG=el_GR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Athens ${LOCALTIME};;
+ "Galego")
+	_msgfmt gl
+	echo "export LANG=gl_ES.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Madrid ${LOCALTIME};;
+ "Hrvatska")
+	_msgfmt hr
+	echo "locale hr" >> ${CARDS}
+	echo "export LANG=hr_HR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Zagreb ${LOCALTIME};;
+ "Iceland")
+	_msgfmt is
+	echo "export LANG=is_IS.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Atlantic/Reykjavik ${LOCALTIME};;
+ "Ireland")
+	_msgfmt ga
+	echo "export LANG=ga_IE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Dublin ${LOCALTIME};;
+ "Italia")
+	_msgfmt it
+	echo "export LANG=it_IT.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Rome ${LOCALTIME};;
+ "Svizzera")
+	_msgfmt it
+	echo "export LANG=it_CH.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Zurich ${LOCALTIME};;
+ "kinyarwanda")
+	_msgfmt rw
+	echo "export LANG=rw_RW.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}/Africa/Kigali ${LOCALTIME};;
+ "latviešu")
+	_msgfmt lv
+	echo "export LANG=lv_LV.utf-8" > ${LOCALE};;
+ "lietuvių")
+	_msgfmt lt
+	echo "export LANG=lt_LT.utf-8" > ${LOCALE};;
+ "Magyar")
+	_msgfmt hu
+	echo "export LANG=hu_HU.utf-8" > ${LOCALE};;
+ "Aruba")
+	_msgfmt nl
+	echo "export LANG=nl_AW.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Aruba ${LOCALTIME};;
+ "België")
+	_msgfmt nl
+	echo "export LANG=nl_BE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Brussels ${LOCALTIME};;
+ "The Nederlands")
+	_msgfmt nl
+	echo "export LANG=nl_NL.utf-8" > ${LOCALE}
+ 	ln -sf ${ZONEINFO}Europe/Amsterdam ${LOCALTIME};;
+ "Norge")
+	_msgfmt nb
+	echo "export LANG=nb_NO.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Oslo ${LOCALTIME};;
+ "Polski")
+	_msgfmt pl
+	echo "export LANG=pl_PL.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Warsaw ${LOCALTIME};;
+ "Portugal")
+	_msgfmt pt
+	echo "export LANG=pt_PT.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Lisbon ${LOCALTIME};;
+ "Brazil")
+	_msgfmt pt
+	echo "export LANG=pt_BR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}America/Sao_Paulo ${LOCALTIME};;	
+ "română")
+	_msgfmt ro
+	echo "export LANG=ro_RO.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Bucharest ${LOCALTIME};;
+ "shqip")
+	_msgfmt sq
+	echo "locale sq" >> ${CARDS}
+	echo "export LANG=sq_MK.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Tirane ${LOCALTIME};;
+ "slovenčina")
+	_msgfmt sk
+	echo "export LANG=sk_SK.utf-8" > ${LOCALE}
+	lb -sf ${ZONEINFO}Europe/Bratislava ${LOCALTIME};;
+ "Slovenščina")
+	_msgfmt sl
+	echo "export LANG=sl_SI.utf-8" > ${LOCALE}
+	lb -sf ${ZONEINFO}Europe/Ljubljana ${LOCALTIME};;
+ "Srbija")
+	_msgfmt sr
+	echo "export LANG=sr_RS.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Belgrade ${LOCALTIME};;
+ "Suomi")
+	_msgfmt fi
+	echo "export LANG=fi_FI.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Helsinki ${LOCALTIME};;
+ "Sverige")
+	_msgfmt sv
+	echo "export LANG=sv_SE.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Stockholm ${LOCALTIME};;
+ "Türkiye")
+	_msgfmt tr
+	echo "export LANG=tr_TR.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Istanbul ${LOCALTIME};;
+ "Thaïland")
+	_msgfmt th
+	echo "export LANG=th_TH.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Bangkok ${LOCALTIME};;
+ "Ukraïna")
+	_msgfmt uk
+	echo "export LANG=uk_UA.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Europe/Kiev ${LOCALTIME};;
+ "Viêt nam")
+	_msgfmt vi
+	echo "export LANG=vi_VN.utf-8" > ${LOCALE}
+	ln -sf ${ZONEINFO}Asia/Ho_Chi_Minh ${LOCALTIME};;
+esac
+. ${LOCALE}
+SETUP_CONFIG_LANGUAGE="no"
+}
+setup_keymap ()
+{
+	cat > ${CONSOLE} << "EOF"
+FONT="LatGrkCyr-8x16"
+UNICODE="1"
+LOGLEVEL=1
+EOF
+	cat > ${XORGKB} << "EOF"
+Section "InputClass"
+  Identifier "Generic Keyboard"
+  MatchIsKeyboard "yes"
+EOF
+while [ true ]; do
+dialog  \
+--title " $(gettext "Keyboard Layout") " \
+--backtitle " $(gettext "Settings") " --menu " $(gettext "Choose available"): " 0 0 0 \
+"fr-latin9" "AZERTYUIOP" \
+"be-latin1" "AZERTYUIOP" \
+"fr_CH-latin1" "QWERTZUIOP" \
+"de_CH-latin1" "QWERTZUIOP" \
+"cf" "AZERTYUIOP" \
+"en" "QWERTYUIOP" \
+"de-latin1" "QWERTY" \
+"azerty" "AZERTY" \
+"ANSI-dvorak" "" \
+"applkey" "" \
+"backspace" "" \
+"bg-cp1251" "" \
+"bg-cp855" "" \
+"bg_bds-cp1251" "" \
+"bg_bds-utf8" "" \
+"bg_pho-cp1251" "" \
+"bg_pho-utf8" "" \
+"br-abnt" "" \
+"br-abnt2" "" \
+"br-latin1-abnt2" "" \
+"br-latin1-us" "" \
+"by" "" \
+"croat" "" \
+"ctrl" "" \
+"cz-cp1250" "" \
+"cz-lat2-prog" "" \
+"cz-lat2" "" \
+"cz-us-qwertz" "" \
+"cz" "" \
+"de-latin1-nodeadkeys" "" \
+"de" "" \
+"defkeymap" "" \
+"defkeymap_V1.0" "" \
+"dk-latin1" "" \
+"dk" "" \
+"dvorak-l" "\"<>PYF" \
+"dvorak-r" "" \
+"dvorak" "" \
+"emacs" "" \
+"emacs2" "" \
+"es-cp850" "" \
+"es" "" \
+"et-nodeadkeys" "" \
+"et" "" \
+"euro" "" \
+"euro1" "" \
+"euro2" "" \
+"fi-latin1" "QWERTYUIOPÅ" \
+"fi-latin9" "QWERTYUIOPÅ" \
+"fi" "" \
+"gr-pc" "" \
+"gr" "" \
+"hu" "" \
+"hu101" "" \
+"il-heb" "" \
+"il-phonetic" "" \
+"il" "" \
+"is-latin1-us" "" \
+"is-latin1" "" \
+"it-ibm" "" \
+"it" "" \
+"it2" "" \
+"jp106" "" \
+"keypad" "" \
+"la-latin1" "" \
+"list" "" \
+"lt.baltic" "" \
+"lt" "" \
+"lt.l4" "" \
+"mk-cp1251" "" \
+"mk-utf" "" \
+"mk" "" \
+"mk0" "" \
+"nl" "" \
+"nl2" "" \
+"no-latin1" "" \
+"no" "" \
+"pc110" "" \
+"pl" "" \
+"pl2" "" \
+"pt-latin1" "" \
+"pt-latin9" "" \
+"ro_win" "" \
+"ru-cp1251" "" \
+"ru-ms" "" \
+"ru-yawerty" "" \
+"ru" "" \
+"ru1" "" \
+"ru2" "" \
+"ru3" "" \
+"ru4" "" \
+"ru_win" "" \
+"se-fi-ir209" "" \
+"se-fi-lat6" "" \
+"se-ir209" "" \
+"se-lat6" "" \
+"sg-latin1-lk450" "" \
+"sg-latin1" "" \
+"sg" "" \
+"sk-prog-qwerty" "" \
+"sk-prog-qwertz" "" \
+"sk-qwerty" "" \
+"sk-qwertz" "" \
+"slovene" "" \
+"speakup-jfw" "" \
+"speakupmap" "" \
+"sr-cy" "" \
+"sv-latin1" "" \
+"tr_f-latin5" "" \
+"tr_q-latin5" "" \
+"tralt" "" \
+"trf" "" \
+"trq" "" \
+"ua-utf-ws" "" \
+"ua-utf" "" \
+"ua-ws" "" \
+"ua" "" \
+"uk" "" \
+"unicode" "" \
+"us-acentos" "" \
+"windowkeys" "" 2> $TMP/locale.check
+
+if [ ! $? = 0 ]; then
+  break
+fi
+REPLY=`cat $TMP/locale.check`
+break
+done
+sed -i "/KEYMAP/d" ${CONSOLE}
+echo "KEYMAP=${REPLY}.map" >> ${CONSOLE}
+loadkeys ${REPLY}.map > /dev/null 2>&1
+case $REPLY in
+	en)
+		echo '  Option "XkbLayout" "us"' >> ${XORGKB};;
+	be-latin1|wangbe*)
+		echo '  Option "XkbLayout" "be"' >> ${XORGKB};;
+	cf)
+		echo '  Option "XkbLayout" "cf"' >> ${XORGKB};;
+	fr|fr-*|azerty)
+		echo '  Option "XkbLayout" "fr"' >> ${XORGKB};;
+	fr_CH*)
+		echo '  Option "XkbLayout" "ch"' >> ${XORGKB}
+		echo '  Option "XkbVariant" "fr"' >> ${XORGKB};;
+	de_CH*) echo '  Option "XkbLayout" "ch"' >> ${XORGKB};;
+	de-*) echo '  Option "XkbLayout" "de"' >> ${XORGKB};;
+	es|es-*) echo '  Option "XkbLayout" "es"' >> ${XORGKB};;
+	da*) echo '  Option "XkbLayout" "da"' >> ${XORGKB};;
+	nl*) echo '  Option "XkbLayout" "nl"' >> ${XORGKB};;
+	it*) echo '  Option "XkbLayout" "it"' >> ${XORGKB};;
+	lu*) echo '  Option "XkbLayout" "lu"' >> ${XORGKB};;
+	pt*) echo '  Option "XkbLayout" "pt"' >> ${XORGKB};;
+	no*) echo '  Option "XkbLayout" "no"' >> ${XORGKB};;
+	se*) echo '  Option "XkbLayout" "sv"' >> ${XORGKB};;
+	fi*) echo '  Option "XkbLayout" "fi"' >> ${XORGKB};;
+	ga*) echo '  Option "XkbLayout" "ga"' >> ${XORGKB};;
+	el*) echo '  Option "XkbLayout" "el"' >> ${XORGKB};;
+	pl*) echo '  Option "XkbLayout" "pl"' >> ${XORGKB};;
+	ro_*) echo '  Option "XkbLayout" "ro"' >> ${XORGKB};;
+	ru*) echo '  Option "XkbLayout" "ru"' >> ${XORGKB};;
+	sr*) echo '  Option "XkbLayout" "sr"' >> ${XORGKB};;
+	slo*) echo '  Option "XkbLayout" "sl"' >> ${XORGKB};;
+	cro*) echo '  Option "XkbLayout" "hr"' >> ${XORGKB};;
+	tr*) echo '  Option "XkbLayout" "tr"' >> ${XORGKB};;
+esac
+echo "EndSection" >> ${XORGKB}
+SETUP_CONFIG_KEYBOARD="no"
+}
+
+setup_clock() {
+	local TABDATE
+	HWCLOCK=`LANG=C.utf-8 hwclock -r`
+	dialog --title "   $(gettext "Coordinated Universal Time or Local Time ?")  " \
+	--yesno "$(gettext "The hardware clock is set to"):\n\n $HWCLOCK. \n\n$(gettext "Do you want to use this time as Coordinated Universal Time ?") \n\
+$(gettext "and have the summer/winter time changing automatically" ) " 0 0
+	retval=$?
+	case $retval in
+		0)
+			UTC=1;;
+		1)
+			UTC=0;;
+	esac
+
+	echo "UTC=${UTC}" > /etc/sysconfig/clock
+
+	[ -r /etc/sysconfig/clock ] && . /etc/sysconfig/clock
+
+	case "${UTC}" in
+		1)
+			CLOCKPARAMS="${CLOCKPARAMS} --utc";;
+		0)
+			CLOCKPARAMS="${CLOCKPARAMS} --localtime";;
+	esac
+	
+	hwclock --hctosys ${CLOCKPARAMS} >/dev/null
+
+	exec 3>&1
+	DESC=" $(gettext "Use the arrows keys to change the values") "
+	USERDATE=`dialog --title " $(gettext "Please enter the date") " \
+	--calendar "$DESC" 0 0 2>&1 1>&3`
+	code=$?
+	exec 3>&-
+	case $code in
+		0)
+			TABDATE=(`echo $USERDATE|sed "s|/| |g"`)
+			GOODDATE="${TABDATE[2]}${TABDATE[1]}${TABDATE[0]} "
+			;;
+		1)
+			SETUP_CONFIG_CLOCK="no"
+			break;;
+	esac
+	exec 3>&1
+	USERTIME=`dialog --title " $(gettext "Please enter the time") " \
+	--timebox  "$DESC" 0 0 2>&1 1>&3`
+	code=$?
+	exec 3>&-
+	case $code in
+		0)
+			echo "$GOODDATE$USERTIME" > $TMP/date;;
+		1)
+			break;;
+	esac
+
+	date -s "$GOODDATE$USERTIME"
+
+	hwclock --systohc ${CLOCKPARAMS}
+
+	SETUP_CONFIG_CLOCK="no"
+}
+select_disk() {
+	local retval result
+	retval=""
+	result=""
+	while [ "$retval" == "" ]; do
+		dialog --title "   ${1}    " \
+		--menu \
+		"  $(gettext "Choose the disk you want to use for this operation")  " \
+		0 0 0  \
+		`for DISK in $DISK_LIST; do  lsblk -p -n -d -o NAME,SIZE $DISK; done` \
+		2> $TMP/disk
+		retval=$?
+		result=`cat $TMP/disk`
+	done
+	case $retval in
+		0)
+			if [ "$result" == "" ]; then
+				retval=""
+			fi;;
+		1|255)
+			break;;
+	esac
+DISK=`cat $TMP/disk|sed 's/"//g'`
+if [ -z $DISK ]; then
+	DISK="no"
+fi
+}
+select_partition() {
+	local retval result
+	retval=""
+	result=""
+	while [ "$retval"  == "" ]; do
+		dialog --cancel-label "$(gettext "Main Menu")" \
+		--title " ${1} " \
+		--menu " $(gettext "Choose the partition you want to use for this operation") " \
+		0 0 0 \
+		`for PARTITION in ${PARTITION_LIST[@]}; do  lsblk -p -n -o NAME,SIZE $PARTITION; done`  2>$TMP/part
+		retval=$?
+		result=`cat $TMP/part`
+		case $retval in
+			0)
+				if [ "$result" == "" ]; then
+					retval=""
+				fi;;
+			1|255)
+				break;;
+		esac
+	done
+PARTITION=`cat $TMP/part|sed 's/"//g'`
+if [ -z $PARTITION ];then
+		dialog --no-cancel \
+		--title " $(gettext "No partition available") " \
+		--msgbox " $(gettext "Please create/modify yours partitions") " 0 0
+		PARTITION="no"
+fi
+}
+check_available_disk() {
+	unset DISK_LIST
+	local DISK_FULL_LIST
+	DISK_FULL_LIST=(`lsblk -p -n -d -o NAME -e 1,3,7,11`)
+	for i in ${DISK_FULL_LIST[@]}; do
+		[ "`lsblk -p -n -d -o LABEL $i`" == "nutyxcd" ] && continue
+		DISK_LIST="$DISK_LIST $i"
+	done
+	if [ -z "$DISK_LIST" ]; then
+		dialog --no-cancel \
+		--title " $(gettext "No disk available") " \
+		--msgbox " $(gettext "Please stop the PC and install a harddisk") " 6 60
+		CHECK_HD_OK="no"
+	else
+		CHECK_HD_OK="yes"
+	fi
+}
+check_available_partition() {
+	PARTITION_LIST=(`for i in $DISK_LIST; do  lsblk -p -l -n -o NAME $i| tail -n +2; done`)
+	if [ -z "$PARTITION_LIST" ];then
+		dialog --no-cancel \
+		--title " $(gettext "No partition available") " \
+		--msgbox " $(gettext "Please create/modify yours partitions") " 0 0
+		CHECK_PART_OK="no"
+		setup_partition
+	else
+		CHECK_PART_OK="yes"
+	fi
+}	
+setup_partition() {
+	local retval result
+	CHECK_HD_OK="no"
+	retval=""
+	check_available_disk
+	if [ "$CHECK_HD_OK" == "yes" ]; then
+		select_disk "$(gettext "Create all your partitions")"
+		if [ "$DISK" != "no" ]; then
+			dialog --title " $(gettext "Choose your favorite tool") " \
+			--menu "$(gettext "Partitioning of the disk"): $result" 15 55 2 \
+			"cfdisk" "$(gettext "Basic partitioning tool")" \
+			"fdisk" "$(gettext "Advanced partitioning tool")" 2>$TMP/choix
+			retval=$?
+			choice=`cat $TMP/choix`
+			case $retval in
+				0|2)
+					case $choice in
+						cfdisk)
+							cfdisk $DISK
+							sleep 2;;
+						fdisk)
+							fdisk $DISK
+							sleep 2;;
+					esac
+					;;
+				1|2544)
+					break;;
+			esac
+			check_available_partition
+		fi
+	fi
+}
+setup_format() {
+	local retval retval2 result
+	CHECK_HD_OK="no"
+	retval=""
+	retval2=""
+	check_available_disk
+	if [ "$CHECK_HD_OK" == "yes" ]; then
+		CHECK_PART_OK=no
+		check_available_partition
+		if [ "$CHECK_PART_OK" == "yes" ]; then
+			PARTITION="no"
+			select_partition "$(gettext "Format a partition")"
+			if [ "$PARTITION" != "no" ]; then
+				dialog --title " $(gettext "Available file systems") " \
+				--menu " $(gettext "Choose the file system you want to use for the partition") \
+$PARTITION" 0 0 0 \
+				"xfs" "$(gettext "High performance journal file system create by SGI")" \
+				"reiserfs" "$(gettext "Very stable file system but not maintain anymore")" \
+				"ext4" "$(gettext "Next generation of Ext3 file system")" \
+				"ext3" "$(gettext "Journal version of Ext2 file system")"  \
+				"ext2" "$(gettext "Standard file system Ext2")" \
+				"btrfs" "$(gettext "New promising file system")" 2> $TMP/result
+				result=`cat $TMP/result`
+				if [ ! "$result" == "" ]; then
+					dialog --title " $(gettext "Launch the format process ?") " \
+					--yesno "$(gettext "The partition") $PARTITION \
+					$(gettext "will be format in") $result.\n\
+					$(gettext "Are you sure you want to continue ?")" 7 60
+					retval2=$?
+				fi
+				case $retval2 in
+					0)
+						case $result in
+							ext2)
+								mkfs.ext2 -F $PARTITION > /dev/tty2 || error "mkfs.ext2 $PARTITION"
+								;;
+							ext3)
+								mkfs.ext3 -F $PARTITION > /dev/tty2 || error "mkfs.ext3 $PARTITION"
+								;;
+							ext4)
+								mkfs.ext4 -F $PARTITION > /dev/tty2 || error "mkfs.ext4 $PARTITION"
+								;;
+							reiserfs)
+								mkreiserfs -q $PARTITION > /dev/tty2 || error "mkreiserfs -q $PARTITION"
+								;;
+							btrfs)
+								mkfs.btrfs $PARTITION > /dev/tty2 || error "mkfs.btrfs $PARTITION"
+								;;
+							xfs)
+								mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
+								;;
+						esac;;
+					1|255)
+						break;;
+				esac
+			fi
+		fi
+	fi
+}
+setup_install() {
+	local MF
+	CHECK_HD_OK="no"
+	check_available_disk
+	if [ "$CHECK_HD_OK" == "yes" ]; then
+		CHECK_PART_OK=no
+		check_available_partition
+		if [ "$CHECK_PART_OK" == "yes" ]; then
+			PARTITION="no"
+			select_partition "$(gettext "Install NuTyX")"
+			if [ "$PARTITION" != "no" ]; then
+				FORMAT=`print_file_system $PARTITION`
+				if [ "$FORMAT" != "no" ]; then
+					SETUP_INSTALL="no"
+					MF=/mnt/hd
+					mkdir -p $MF
+					mount $PARTITION $MF || error "$(gettext "mounting") $PARTITION"
+					clear
+					if [ -d /media/cdrom/isolinux/boot ]; then
+						# Installing from ISO
+						cp -av /media/cdrom/isolinux/boot /$MF/ || error "$(gettext "copying files")"
+						cp -v /media/cdrom/isolinux/initrd /$MF/boot/initrd
+						cp -v /media/cdrom/isolinux/kernel /$MF/boot/kernel-`uname -r`
+						ln -svf kernel-`uname -r` /$MF/boot/kernel
+					else
+						# Installing from Maintenance this means
+						# TODO the initrd has to be rebuild at configuration time
+						cp -av /boot /$MF/ || error "$(gettext "copying files")"
+					fi
+					umount $PARTITION
+					SETUP_INSTALL="yes"
+					echo "$PARTITION" > $TMP/boot
+					setup_grub
+					if [ "$SETUP_INSTALL" == "yes" ];then
+						echo "$PARTITION" > /root/boot
+					fi
+				fi
+			fi
+		fi
+	fi
+}
+maintenance_entry_grub2() {
+	echo " " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+	echo 'menuentry "Maintenance NuTyX" {' >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+	echo "  linux /${GRUB_DESTINATION_DIR}kernel ro quiet" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+	echo "  initrd /${GRUB_DESTINATION_DIR}initrd" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+	echo "}" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+}
+MBR_ok() {
+	local retval
+	retval=""
+	dialog --title "   $(gettext "Everything OK, do you want to modify") $GRUB_CONFIG_FILE ?   " \
+	--colors \
+	--yesno " $(gettext "A new") $GRUB_CONFIG_FILE $(gettext "has been created") \
+	$(gettext "it has been adapted to launch the Maintenance system of NuTyX") \
+	$(gettext "if you choose") $(gettext "Yes"), \
+	$(gettext "an simplify VI editor will allow you to adjust it").\n \
+	\Z4i\Zn   $(gettext "Enter the edit mode") \n\
+	\Z4Esc\Zn $(gettext "Exit the edit mode") \n\
+	\Z4:q!\Zn $(gettext "Cancel the modifications and exit VI")\n\
+	\Z4:x\Zn  $(gettext "Save and exit VI")\n" 0 0
+	retval=$?
+	case $retval in
+		0|2)
+			setup_keymap
+			vi $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE;;
+	esac
+}
+setup_grub() {
+	local log_file device_map retval Root Part
+	GRUB_CONFIG_FILE="grub.cfg"
+	GRUB_CONFIG_DIR=""
+	GRUB_DESTINATION_DIR=""
+	log_file=$TMP/grub.log
+	retval=""
+	CHECK_HD_OK="no"
+	check_available_disk
+	if [ "$CHECK_HD_OK" != "no" ]; then
+		CHECK_PART_OK="no"
+		check_available_partition
+		if [ "$CHECK_PART_OK" != "no" ]; then
+			select_disk "$(gettext "Configure the boot of the PC")"
+			if [ "$DISK" != "no" ]; then
+				PARTITION="no"
+				select_partition "$(gettext "Configure the boot of the PC")"
+				if [ "$PARTITION" != "no" ]; then
+					FORMAT=`print_file_system $PARTITION`
+					if [ "$FORMAT" != "no" ]; then
+						# We saved the current MBR if no yet saved
+						dd if=$DISK of=$TMP/MBR bs=512 count=1 2>/dev/null
+						GRUB_DISK=`cat $TMP/disk|sed "s/ //g"`
+						LINUX_PART=`cat $TMP/part |sed -e 's%.*/[sh]d[a-z]\([0-9]*\)$%\1%' \
+-e 's%.*d[0-9]*p%%' \
+-e 's%.*/fd[0-9]*$%%' \
+-e 's%.*/floppy/[0-9]*$%%' \
+-e 's%.*/\(disc\|part\([0-9]*\)\)$%\2%' \
+-e 's%.*c[0-7]d[0-9]*p%%'`
+						LINUX_DISK=`cat /tmp/part| sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
+-e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
+-e 's%\(fd[0-9]*\)$%\1%' \
+-e 's%/part[0-9]*$%/disc%' \
+-e 's%\(c[0-7]d[0-9]*\).*$%\1%'`
+						echo "$Root" | sed "s%)$%,`expr $LINUX_PART - 0`)%" > $TMP/grub
+						Root=`cat $TMP/grub`
+						Part=`cat $TMP/part`
+						# Copy all the necessary files
+						mkdir $TMP/boot_partition
+						mount $Part $TMP/boot_partition
+						echo "$Part" > $TMP/boot_part
+						if [ -d $TMP/boot_partition/boot ]; then
+							# NuTyX is installed
+							GRUB_DESTINATION_DIR="boot/"
+						fi
+						GRUB_CONFIG_DIR="$TMP/boot_partition/${GRUB_DESTINATION_DIR}grub"
+						mkdir $GRUB_CONFIG_DIR 2> /dev/null
+						if [ -f $GRUB_CONFIG_DIR/MBR.original ]; then
+							dialog --title " !!! Oups !!!! " \
+							--msgbox " $(gettext "You already have a copy of the original MBR, it will not be backup") " \
+							6 50
+						else
+							dialog --title " $(gettext "Good to know") " \
+							--msgbox " $(gettext "A copy of the original MBR is backup in the folder /boot/grub of your NuTyX. It will be then possible to restore it if need") " 10 60
+						fi
+						if [ ! -f $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE ]; then
+							cat > $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE << "EOF"
+# Begin grub.cfg
+# By default boot the first menu entry.
+set default=0
+# Allow 5 seconds before booting the default.
+set timeout=5
+set color_highlight=blue/white
+set color_normal=cyan/black
+# insmod all_video
+# insmod jpeg
+# terminal_output gfxterm
+EOF
+						fi
+						# Writing of NEW MBR
+						BOOT_FS="`print_file_system $Part`"
+						LANG=C /sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} ${GRUB_DISK} > $log_file 2>&1
+						if ! (grep finished $log_file > /dev/null); then
+							echo "/sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} [`echo $GRUB_DISK`]" >> $log_file
+							mount >> $log_file
+							echo "GRUB_DISK=${GRUB_DISK}" >> $log_file
+							echo "GRUB_DESTINATION_DIR=${GRUB_DESTINATION_DIR}" >> $log_file
+							echo "GRUB_CONFIG_DIR=${GRUB_CONFIG_DIR}" >> $log_file
+							echo "NuTyX_PART=${NuTyX_PART}" >> $log_file
+							echo "BOOT_FS=${BOOT_FS}" >> $log_file
+							echo "NuTyX_FS=${NuTyX_FS}" >> $log_file
+							echo "PATH=$PATH" >> $log_file
+							env >> $log_file
+							# Restore MBR
+							dd if=$TMP/MBR of=`cat $TMP/disk` bs=512 count=1 > 2/dev/null
+							dialog --title " $(gettext "Something went wrong probably file system not supported") " \
+							--msgbox "`cat $log_file`" 30 70
+							umount $TMP/boot_partition
+							umount /mnt/hd 2>/dev/null
+							error "Sorry, I cannot install GRUB" # die now
+						fi
+						if [ -f $TMP/boot ]; then # The $TMP/boot file contains the NuTyX partition
+							NuTyX_PART="`cat $TMP/boot`"
+							BOOT_FS="`print_file_system $Part`"
+							NuTyX_FS="`print_file_system $NuTyX_PART`"
+							# Check if it is a separated partition
+							if [ ! "$GRUB_DESTINATION_DIR" == "boot/" ]; then
+								mkdir -p /mnt/hd 2> /dev/null
+								mount ${NuTyX_PART} /mnt/hd
+								mv /mnt/hd/boot/* /mnt/boot_partition/
+								# Add the entry to the fstab
+								echo "$Part   /boot ${BOOT_FS} auto 0 0" \
+								>> /mnt/hd/etc/fstab
+							fi
+							echo "menuentry \"NuTyX #VERSION# ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+							echo " linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro quiet " >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+							echo " initrd /${GRUB_DESTINATION_DIR}initrd" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+							echo "}" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+							maintenance_entry_grub2
+							MBR_ok
+						else # NuTyX is not yet installed
+							maintenance_entry_grub2
+							if [ ! -f $TMP/boot_partitio/${GRUB_DESTINATION_DIR}initrd ]; then
+								cp /media/cdrom/isolinux/initrd \
+								$TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd 2> /dev/null
+								cp /media/cdrom/isolinux/kernel \
+								$TMP/boot_partition/${GRUB_DESTINATION_DIR}kernel 2> /dev/null
+							fi
+							MBR_ok
+						fi
+						umount $Part
+					fi
+				fi
+			fi
+		fi
+	fi
+}
+setup_reboot() {
+	cd /
+	if [ -f /tmp/depot ]; then
+	 umount /media/cdrom > /dev/null 2>&1
+	fi
+	for i in /mnt/*; do
+		umount -f $i > /dev/null 2>&1
+	done
+	umount /media/cdrom 2>/dev/null
+	eject /dev/nutyx-cd 2>/dev/null
+	dialog --title "    $(gettext "Reboot the PC")    " \
+	--msgbox "  $(gettext "Press OK to reboot the computer")  " 0 0 
+	/sbin/reboot -f
+}
+setup_initrd() {
+	dialog --title "   $(gettext "Welcome in the NuTyX installer")   " \
+	--menu "    $(gettext "Main Menu")    " 0 0 0 \
+	"$(gettext "Install")" "$(gettext "Install NuTyX")" \
+	"$(gettext "Partitioning")" "$(gettext "Create all your partitions") ($(gettext "optional"))" \
+	"$(gettext "Format")" "$(gettext "Format a partition") ($(gettext "optional"))" \
+	"$(gettext "Boot")" "$(gettext "Configure the boot of the PC") ($(gettext "optional"))" \
+	"$(gettext "Keyboard")" "$(gettext "Configure the keyboard") ($(gettext "optional"))" \
+	"$(gettext "Network")" "$(gettext "Configure the network") ($(gettext "optional"))" \
+	"$(gettext "Clock")" "$(gettext "Configure the clock") ($(gettext "optional"))" \
+	"$(gettext "Console")" "$(gettext "Open a console")" \
+	"$(gettext "Restart")" "$(gettext "Reboot the PC")" \
+ 	2>$TMP/choix
+	retval=$?
+	choice=`cat $TMP/choix`
+	case $retval in
+	0|2)
+		case $choice in
+			"$(gettext "Install")")
+				setup_install
+				;;
+			"$(gettext "Partitioning")")
+				setup_partition
+				;;
+			"$(gettext "Format")")
+				setup_format
+				;;
+			"$(gettext "Boot")")
+				setup_grub
+				;;
+			"$(gettext "Keyboard")")
+				setup_keymap
+				;;
+			"$(gettext "Network")")
+				setup_net
+				;;
+			"$(gettext "Clock")")
+				setup_clock
+				;;
+			"$(gettext "Console")")
+				source /etc/profile
+				sh
+				;;
+			"$(gettext "Restart")")
+				setup_reboot
+				;;
+		esac
+		;;
+	1)
+		echo "1"
+		;;
+	255)
+		echo "255"
+		;;
+	esac
+
+}
+config_all() {
+	echo "config the system"
+}
+print_help() {
+	echo "usage: `basename $COMMAND` [options]"
+	echo "options:"
+	echo "   start,                 $(gettext "Start the service")"
+	echo "   -ok,   --check-all     $(gettext "Check the all configuration, return true or false")"
+	echo "   -sn,   --show-net      $(gettext "Show the network configuration")"
+	echo "   -sk,   --show-keymap   $(gettext "Show the keyboard configuration")"
+	echo "   -sc,   --show-clock    $(gettext "Show the clock configuration")"
+	echo "   -sl,   --show-locale   $(gettext "Show the locale and local time adjustment")"
+	echo "   -sa,   --show-all      $(gettext "Show the all configuration")"
+	echo "   -cl,   --config-lang   $(gettext "Configure the language")"
+	echo "   -ck,   --config-keymap $(gettext "Configure the keyboard")"
+	echo "   -cn,   --config-net    $(gettext "Configure the network")"
+	echo "   -cc,   --config-clock  $(gettext "Configure the clock")"
+	echo "   -cu,   --create-user   $(gettext "add a user to the system")"
+	echo "   -ca,   --config-all    $(gettext "Configure the all system")"
+}
+initrd_only() {
+	read -r cmdline < /proc/cmdline
+	for param in $cmdline ; do
+		case $param in
+			root=*)
+				root=${param#root=};;
+		esac
+	done
+	if [ "$root" != "" ]; then
+		print_help
+		exit 1
+	else
+		# we are in the initrd
+		SETUP_INITRD="yes"
+		SETUP_CHECKALL="yes"
+		SETUP_START_SERVICE="yes"
+	fi
+}
+parse_options() {
+	if [ $# -lt 1 ]; then
+		initrd_only
+	else
+		while [ "$1" ]; do
+			case "${1}" in
+				start)
+					SETUP_CHECKALL="yes"
+					SETUP_START_SERVICE="yes"
+					;;
+				-ok|--check-all)
+					SETUP_CHECKALL="yes"
+					;;
+				-sn|--show-net)
+					echo "show net"
+					;;
+				-sk|--show-keymap)
+					echo "show keyboard"
+					;;
+				-sl|--show-locale)
+					echo "show locale"
+					;;
+				-sc|--show-config)
+					echo "show config"
+					;;
+				-sa|--show-all)
+					echo "show all"
+					;;
+				-cl|--config-lang)
+					SETUP_CONFIG_LANGUAGE="yes"
+					SETUP_START_SERVICE="yes"
+					;;
+				-sl|--show-locale)
+					echo "show locale"
+					;;
+				-ck|--config-keymap)
+					unset KEYMAP
+					SETUP_CONFIG_KEYBOARD="yes"
+					SETUP_START_SERVICE="yes"
+					;;
+				-cn|--config-net)
+					SETUP_CONFIG_NETWORK="yes"
+					SETUP_START_SERVICE="yes"
+					;;
+				-cc|--config-clock)
+					SETUP_CONFIG_CLOCK="yes"
+					SETUP_START_SERVICE="yes"
+					;;
+				-cu|--create-user)
+					echo "create user"
+					;;
+				-ca|--config-all)
+					echo "config all"
+					;;
+				-h|--help)
+					print_help
+					exit 0
+					;;
+				*)
+					echo "`basename ${COMMAND}`: invalid option $1"
+					exit 1
+					;;
+			esac
+			shift
+		done
+	fi
+}
+check_all () {
+	if [ "$SETUP_CONFIG_LANGUAGE" = "no" ]; then
+		[ -r ${LOCALE} ] || export SETUP_CONFIG_LANGUAGE="yes"
+	fi
+	if [ "$SETUP_CONFIG_KEYBOARD" = "no" ]; then
+		[ -r ${CONSOLE} ] || export SETUP_CONFIG_KEYBOARD="yes"
+	fi
+	if [ "$SETUP_CONFIG_NETWORK" = "no" ]; then
+		[ -r ${NETWORK} ] || export SETUP_CONFIG_NETWORK="yes"
+	fi
+	if [ "$SETUP_CONFIG_CLOCK" = "no" ]; then
+		[ -r ${CLOCK} ] || export SETUP_CONFIG_CLOCK="yes"
+	fi
+
+}
+service_need () {
+	check_all
+	if [ "$SETUP_CONFIG_LANGUAGE" = "yes" ] ||
+	[ "$SETUP_CONFIG_KEYBOARD" = "yes" ] ||
+	[ "$SETUP_CONFIG_NETWORK" = "yes" ] ||
+	[ "$SETUP_CONFIG_CLOCK" = "yes" ]; then
+		echo "yes"
+	else
+		 echo "no"
+	fi
+}
+cleanup () {
+	if [ ! -z $TMP ]; then
+		[ -d $TMP ] &&  rm -r $TMP
+	fi
+}
+
+top_loop() {
+	if [ "$SETUP_INITRD" = "yes" ]; then
+		while [ "$SETUP_INSTALL" = "no" ];do
+				[ "$SETUP_CONFIG_LANGUAGE" = "yes" ] && LANG=de_CH.utf-8 setup_language
+				[ "$SETUP_INSTALL" = "no" ] && setup_initrd
+		done
+	else
+		while [ "$SETUP_CONFIG_LANGUAGE" = "yes" ] ||
+			[ "$SETUP_CONFIG_KEYBOARD" = "yes" ] ||
+			[ "$SETUP_CONFIG_NETWORK" = "yes" ] ||
+			[ "$SETUP_CONFIG_CLOCK" = "yes" ]; do
+				[ "$SETUP_CONFIG_LANGUAGE" = "yes" ] && LANG=de_CH.utf-8 setup_language
+				[ "$SETUP_CONFIG_KEYBOARD" = "yes" ] && setup_keymap
+				[ "$SETUP_CONFIG_NETWORK" = "yes" ] && setup_net
+				[ "$SETUP_CONFIG_CLOCK" = "yes" ] && setup_clock
+		done
+	fi
+
+}
+main () {
+	parse_options "$@"
+	if [ "$SETUP_INITRD" == "yes" ]; then
+		SETUP_CONFIG_LANGUAGE="yes"
+		SETUP_INSTALL="no"
+	fi
+
+	if [ "$SETUP_CHECKALL" == "yes" ]; then
+			log_info_msg "Checking configuration..."			
+			if [ "`check_all`" == "yes" ]; then
+				log_success_msg2
+				exit 0
+			fi
+	fi
+	if [ "$SETUP_START_SERVICE" == "yes" ]; then
+		check_all
+		TMP=`mktemp -d`
+		top_loop
+		cleanup
+	fi
+}
+
+#
+# VARIABLES
+readonly COMMAND="$0"
+readonly SETUP_ARCH="`uname -m`"
+CARDS="/etc/cards.conf"
+XORGKB="/etc/X11/xorg.conf.d/20-keyboard.conf"
+CONSOLE="/etc/sysconfig/console"
+LOCALE="/etc/profile.d/i18n.sh"
+LOCALTIME="/etc/localtime"
+ZONEINFO="/usr/share/zoneinfo/"
+NETWORK="/etc/sysconfig/ifconfig.eth0"
+CLOCK="/etc/sysconfig/clock"
+
+SETUP_INITRD="no"
+SETUP_INSTALL="no"
+SETUP_CONFIG_LANGUAGE="no"
+SETUP_CONFIG_KEYBOARD="no"
+SETUP_CONFIG_NETWORK="no"
+SETUP_CONFIG_CLOCK="no"
+
+main "$@"
+
+# End of file
+# vim:set ts=2 :

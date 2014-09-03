@@ -1,0 +1,3 @@
+if [ "x$QT4DIR" != "x/usr" ]; then pathremove  $QT4DIR/bin; fi
+if [ "x$QT5DIR" != "x/usr" ]; then pathprepend $QT5DIR/bin; fi
+echo $PATH

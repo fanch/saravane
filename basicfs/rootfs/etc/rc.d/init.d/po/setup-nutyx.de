@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NuTyX Configuration tool\n"
+"PO-Revision-Date: 2014-08-07+2000\n"
+"Last-Translator: https://translate.google.de/#fr/de/\n"
+"Language-Team: Deutch\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Keyboad Layout"
+msgstr "Tastaturlayout"
+
+msgid "Choose available"
+msgstr "Wählen verfügbar"
+
+msgid "ERROR configuration"
+msgstr "ERROR-Konfiguration"
+
+msgid "Please try again"
+msgstr "Bitte versuchen Sie es erneut"
+
+msgid "Network card"
+msgstr "Netwerke Karte(n)"
+
+msgid "Select the card"
+msgstr "Choisissez la carte"
+
+msgid "Card to configure"
+msgstr "Wählen Sie die Karte"
+
+msgid "Configuration of"
+msgstr "Kartenkonfiguration"
+
+msgid "Configuration mode"
+msgstr "Konfigurationsmodus"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "IP address automatically set from DHCP server"
+msgstr "Die IP-Adresse wird automatisch vom DHCP-Server erhalten"
+
+msgid "Man"
+msgstr "Man"
+
+msgid "Manually specify parameters"
+msgstr "Geben Sie die Einstellungen manuell"
+
+msgid "Enter an IP address"
+msgstr "Geben Sie eine IP-Adresse"
+
+msgid "Enter a broadcast address"
+msgstr "Geben Sie eine Broadcast-Adresse"
+
+msgid "in most cases the current value can be used"
+msgstr "In den meisten Fällen kann der aktuelle Wert verwendet werden"
+
+msgid "Enter the subnet mask"
+msgstr "Geben Sie die Subnetz-Maske"
+
+msgid "Enter the gateway address"
+msgstr "Geben Sie die Gateway-Adresse"
+
+msgid "it is normally the address of your router access point"
+msgstr "es ist in der Regel die Adresse Ihres Routers Zugangspunkt"
+
+msgid "Enter the DNS address"
+msgstr "Geben Sie die DNS-Adresse"
+
+msgid "DNS Search Suffix"
+msgstr "Suffix Search DNS"
+
+msgid "Enter the domain name"
+msgstr "Geben Sie den Namen Ihrer Domain"
+
+msgid "this is only need if you are in a subdomain"
+msgstr "dies nur benötigen, wenn Sie in einer Subdomain sind"
+
+msgid "Most of the time it's not need"
+msgstr "Die meiste Zeit ist es nicht brauchen"
+
+msgid "Start the service"
+msgstr "Starten Sie den Dienst"
+
+msgid "Check the all configuration, return true or false"
+msgstr "Überprüfen Sie die alle Konfigurations, return true oder false"
+
+msgid "Show the network configuration"
+msgstr "Zeigen die Netzwerkkonfiguration"
+
+msgid "Show the keyboard configuration"
+msgstr "Zeigen die Tastaturkonfiguration"
+
+msgid "Show the clock configuration"
+msgstr "Zeigen die Konfiguration Uhr"
+
+msgid "Show the locale and local time adjustment"
+msgstr "Zeigen das Gebietsschema und local time Einstellung"
+
+msgid "Show the all configuration"
+msgstr "Zeigen die alle Konfigurations"
+
+msgid "Configure the language"
+msgstr "Konfigurieren Sie die Sprache"
+
+msgid "Configure the keyboard"
+msgstr "Die Tastatur konfigurieren"
+
+msgid "Configure the network"
+msgstr "Konfigurieren Sie die Netzwerk"
+
+msgid "Configure the clock"
+msgstr "Konfigurieren Sie die Uhr"
+
+msgid "add a user to the system"
+msgstr "fügen Sie einen Benutzer zum System"
+
+msgid "Configure the all system"
+msgstr "Konfigurieren Sie die gesamte System"
+
+msgid "Install NuTyX"
+msgstr "Installieren Sie NuTyX"
+
+msgid "Use the arrows keys to change the values"
+msgstr "Verwenden Sie die Pfeiltasten, um die Werte zu ändern"
+
+msgid "Coordinated Universal Time or Local Time ?"
+msgstr "Universal Time Coordinated oder lokale Zeit ?"
+
+msgid "The hardware clock is set to"
+msgstr "Die Hardware-Uhr eingestellt ist"
+
+msgid "Do you want to use this time as Coordinated Universal Time ?"
+msgstr "Möchten Sie diese Zeit als koordinierte Weltzeit nutzen wollen ?"
+
+msgid "and have the summer/winter time changing automatically"
+msgstr "und haben den Sommer / Winterzeit automatisch ändert"
+
+msgid "Please enter the date"
+msgstr "Bitte geben Sie das Datum"
+
+msgid "Please enter the time"
+msgstr "Bitte geben Sie die Zeit"
+
+msgid "Configuration of the boot of the machine (GRUB)"
+msgstr "Konfiguration des Boot der Maschine (GRUB)"
+
+msgid "Select the disk on which you want to modify the MBR"
+msgstr "Wählen Sie das Laufwerk, auf dem Sie den MBR ändern möchten"
+
+msgid "Select the partition on which should be located the GRUB files"
+msgstr "Wählen Sie die Partition, auf der sollte die GRUB-Dateien befinden"
+
+msgid "Note that the destination partition can contain NuTyX or any other distribution"
+msgstr "Beachten Sie, dass die Zielpartition kann NuTyX oder eine andere Distribution enthalten"
+
+msgid "No boot process configured"
+msgstr "Kein Bootvorgang konfiguriert"
+
+msgid "You have installed NuTyX without configuring the boot process"
+msgstr "Sie haben NuTyX ohne die Konfiguration des Bootprozesses installiert"
+
+msgid "Are you sure, you want to cancel the process ?"
+msgstr "Sind Sie sicher, Sie den Vorgang abbrechen wollen ?"
+
+msgid "You already have a copy of the original MBR, it will not be backup"
+msgstr "Sie haben bereits eine Kopie der Original-MBR, wird es nicht sein Backup"
+
+msgid "Good to know"
+msgstr "Gut zu wissen"
+
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+msgid "Welcome in the NuTyX installer"
+msgstr "Willkommen in der NuTyX Installations"
+
+msgid "Create all your partitions"
+msgstr "Erstellen Sie alle Ihre Partition"
+
+msgid "Format a partition"
+msgstr "Formatieren einer Partition"
+
+msgid "Configure the boot of the PC"
+msgstr "Konfigurieren Sie den boot des PC"
+
+msgid "Reboot the PC"
+msgstr "Starten Sie den PC"
