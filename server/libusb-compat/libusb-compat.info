@@ -1,0 +1,13 @@
+The libusb-compat package aims to look, feel and behave exactly like libusb-0.1.
+It is a compatibility layer needed by packages that have not been 
+upgraded to the libusb-1.0 API.
+
+http://libusb.wiki.sourceforge.net/
+
+Maintainers:
+
+- Daniel Drake (dsd at gentoo dot org)
+
+Packagers:
+
+pierre at nutyx dot org

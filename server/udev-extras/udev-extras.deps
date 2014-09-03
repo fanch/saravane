@@ -1,0 +1,5 @@
+util-linux.devel
+kmod.devel
+glib
+gperf
+gobject-introspection

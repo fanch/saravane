@@ -1,0 +1,12 @@
+version=1.5.0
+
+source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-fd-passing \
+--disable-gpgsm-test
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}  

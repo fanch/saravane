@@ -1,0 +1,9 @@
+version=1.38
+
+source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
+build() {
+cd sg3_utils-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

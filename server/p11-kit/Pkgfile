@@ -1,0 +1,15 @@
+version=0.20.2
+
+source=(http://p11-glue.freedesktop.org/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/share
+if [ -f $PKG/etc/pkcs11/pkcs11.conf.example ]; then
+	mv $PKG/etc/pkcs11/pkcs11.conf{.example,}
+fi
+}

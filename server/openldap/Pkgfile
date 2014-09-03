@@ -1,0 +1,19 @@
+version=2.4.39
+source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/openldap-$version-blfs_paths-1.patch
+	 http://www.linuxfromscratch.org/patches/blfs/svn/openldap-$version-symbol_versions-1.patch)
+build() {
+cd $name-$version
+patch -Np1 -i ../openldap-$version-blfs_paths-1.patch
+patch -Np1 -i ../openldap-$version-symbol_versions-1.patch
+autoconf
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --enable-dynamic \
+            --disable-debug \
+            --disable-slapd
+make depend
+make
+make DESTDIR=$PKG install   
+}
+  

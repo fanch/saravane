@@ -1,0 +1,13 @@
+version=3.3.5
+
+source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2)
+
+build() {
+	cd lm_sensors-$version
+	make
+	make user_install PREFIX=/usr DESTDIR=$PKG
+	mkdir -p $PKG/usr/share/man
+	mv $PKG/usr/man $PKG/usr/share/man
+	rm -rf $PKG/usr/lib/libsensors.a
+	rm -rf $PKG/usr/include/linux
+}

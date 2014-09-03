@@ -1,0 +1,8 @@
+A system-independent interface for user-level packet capture
+Bibliothèque fournissant un accès aux paquets via la couche utilisateur
+
+http://www.tcpdump.org
+
+Packagers:
+
+pierre at nutyx dot org

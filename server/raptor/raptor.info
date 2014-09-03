@@ -1,0 +1,12 @@
+A C library that parses RDF/XML/N-Triples into RDF triples
+Librairies RDF de Redland
+
+http://download.librdf.org/source/
+
+Maintainers:
+
+- NuTyX packager team
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,16 @@
+Git is a free and open source distributed version control system 
+Gestionnaire de revision de dossiers 
+designed to handle everything from small 
+to very large projects with speed and efficiency.
+
+http://git-scm.com/
+
+Maintainers:
+
+- Junio C Hamano
+- Linus Torvalds
+
+Packagers:
+
+tnut at nutyx dot org
+pierre at nutyx dot org

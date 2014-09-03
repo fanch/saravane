@@ -1,0 +1,13 @@
+version=18
+
+source=(http://www.freedesktop.org/software/$name/$name-$version.tar.gz )
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+      		--with-udevdir=/lib/udev
+
+  	LANG="en_US.UTF-8" make
+	make DESTDIR=$PKG install
+}
+

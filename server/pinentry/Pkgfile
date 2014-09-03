@@ -1,0 +1,14 @@
+version=0.8.3
+
+source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--libexecdir=/usr/lib \
+		--disable-pinentry-qt \
+		--disable-pinentry-gtk
+	make
+	make DESTDIR=$PKG install
+	rm $PKG/usr/share/info/dir
+}

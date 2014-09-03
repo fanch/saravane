@@ -1,0 +1,16 @@
+Free peer-reviewed portable C++ source libraries
+It includes libraries for linear algebra,
+pseudorandom number generation, multithreading,
+image processing, regular expressions and unit testing. 
+
+http://boost.sourceforge.net/
+
+Maintainer:
+
+- Herb Sutter
+- Andrei Alexandrescu
+
+Packager:
+
+pierre at nutyx dot org
+tnut at nutyx dot org

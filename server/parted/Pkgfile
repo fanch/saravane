@@ -1,0 +1,23 @@
+version=3.1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+sed -i parted/ui.c \
+    -e "s:(CPPFunction\*) complete:(rl_completion_func_t\*) complete:"
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+make -C doc html
+makeinfo --html -o doc/html doc/parted.texi
+makeinfo --plaintext -o doc/parted.txt doc/parted.texi
+
+install -v -m755 -d $PKG/usr/share/doc/parted-$version/html
+install -v -m644    doc/html/* \
+$PKG/usr/share/doc/parted-$version/html
+install -v -m644 doc/{FAT,API,parted.{txt,html}} \
+$PKG/usr/share/doc/parted-$version
+}

@@ -1,0 +1,11 @@
+version=1.988
+source=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$version.tar.gz)
+
+build() {
+cd IO-Socket-SSL-$version
+yes | perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

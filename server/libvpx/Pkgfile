@@ -1,0 +1,13 @@
+version=1.3.0
+
+source=( http://webm.googlecode.com/files/libvpx-v$version.tar.bz2 )
+build() {
+cd $name-v$version
+mkdir ../libvpx-build
+cd ../libvpx-build
+../libvpx-v$version/configure --prefix=/usr \
+--enable-shared --disable-static
+make
+
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,10 @@
+version=0.2.2
+source=(https://gitlab.com/alienus/nutyx/raw/master/pkgdir)
+
+build(){
+    install -Dm755 $SRC/$name $PKG/usr/bin/$name    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

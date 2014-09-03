@@ -1,0 +1,10 @@
+libisofs is a library to create an ISO-9660 filesystem
+with extensions like RockRidge or Joliet. 
+Librairie pour creer des systemes de fichiers ISO-9660
+avec extension comme RockRidge ou Joliet
+
+http://libburnia.pykix.org/
+
+Packagers:
+
+pierre at nutyx dot org

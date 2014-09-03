@@ -1,0 +1,12 @@
+Lightweight Directory Access Protocol (LDAP) client and server
+Outil permettant d'accéder au protocol LDAP
+
+http://www.openldap.org
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

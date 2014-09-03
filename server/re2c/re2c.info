@@ -1,0 +1,11 @@
+A tool for generating C-based recognizers from regular expressions 
+
+http://re2c.sourceforge.net/
+
+Maintainers:
+
+- 
+
+Packagers:
+
+pierre at nutyx dot org

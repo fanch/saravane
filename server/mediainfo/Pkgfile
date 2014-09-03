@@ -1,0 +1,15 @@
+version=0.7.69
+source=(
+http://downloads.sourceforge.net/mediainfo/${name}_${version}.tar.bz2)
+
+build(){
+    cd $SRC/MediaInfo/Project/GNU/CLI
+    sh ./autogen
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

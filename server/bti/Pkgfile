@@ -1,0 +1,18 @@
+version=034
+source=(https://www.kernel.org/pub/software/web/bti/bti-$version.tar.xz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+
+    install -Dm644 bti-bashcompletion \
+        $PKG/etc/bash_completion.d/bti
+    install -Dm644 README \
+        $PKG/usr/share/doc/$name-$version/README
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

@@ -1,0 +1,12 @@
+Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+Controle des DD S.M.A.R.T
+
+http://smartmontools.sourceforge.net
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,12 @@
+version=2.2
+source=(
+http://pypi.python.org/packages/source/t/tweepy/tweepy-$version.tar.gz)
+
+build() {
+    cd tweepy-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

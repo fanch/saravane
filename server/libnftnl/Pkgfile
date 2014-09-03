@@ -1,0 +1,14 @@
+version=1.0.1
+source=(http://netfilter.org/projects/libnftnl/files/libnftnl-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make check
+    make DESTDIR=$PKG install    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

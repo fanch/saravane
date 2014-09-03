@@ -1,0 +1,12 @@
+Ogg bitstream and framing library
+Contient la structure Ogg port créer et lire les flux
+
+http://xiph.org/ogg/
+
+Maintainers:
+
+- Beyond Linux From Scratch 
+
+Packagers:
+
+pierre at nutyx dot org

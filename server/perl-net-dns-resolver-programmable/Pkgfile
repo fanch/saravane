@@ -1,0 +1,9 @@
+version=0.003
+source=(http://www.cpan.org/authors/id/J/JM/JMEHNLE/net-dns-resolver-programmable/Net-DNS-Resolver-Programmable-v$version.tar.gz)
+
+build() {
+cd Net-DNS-Resolver-Programmable-v$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+}

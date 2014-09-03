@@ -1,0 +1,40 @@
+version=3.4.1
+source=(
+http://www.python.org/ftp/python/$version/Python-$version.tar.xz
+python3.desktop
+python3.png)
+
+docversion=3.4.0
+
+build() {
+	cd Python-$version
+	./configure --prefix=/usr \
+                --enable-shared     \
+                --with-system-expat \
+                --with-system-ffi
+	make
+	make DESTDIR=$PKG install
+
+	chmod -v 755 $PKG/usr/lib/libpython3.4m.so
+	chmod -v 755 $PKG//usr/lib/libpython3.so
+
+# Install all HTML Docs files with desktop menu integration
+
+    install -v -dm755 $PKG/usr/share/doc/$name-$docversion/html
+    cd $SRC
+    wget -c https://www.python.org/ftp/python/doc/$docversion/python-${docversion}-docs-html.tar.bz2 
+    tar --strip-components=1 \
+        --no-same-owner \
+        --no-same-permissions \
+        -C $PKG/usr/share/doc/$name-$docversion/html \
+        -xvf python-$docversion-docs-html.tar.bz2
+
+    find $PKG/usr/share/doc/$name-$docversion -type d -exec chmod 0755 {} \;
+    find $PKG/usr/share/doc/$name-$docversion -type f -exec chmod 0644 {} \;
+
+    install -Dm644 $SRC/$name.desktop \
+        $PKG/usr/share/applications/$name.desktop
+    install -Dm644 $SRC/$name.png \
+        $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+}
+  

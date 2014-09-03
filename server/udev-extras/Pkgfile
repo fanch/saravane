@@ -1,0 +1,24 @@
+version=208
+lfs_version="lfs-$version-2"
+PKGMK_GROUPS=(devel doc)
+source=(http://anduin.linuxfromscratch.org/sources/other/udev-${lfs_version}.tar.bz2 \
+http://www.freedesktop.org/software/systemd/systemd-$version.tar.xz)
+
+build()
+{
+cd systemd-$version
+mv ../udev-${lfs_version} .
+make -f udev-${lfs_version}/Makefile.lfs keymap ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs keymap
+make -f udev-${lfs_version}/Makefile.lfs gudev ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs gudev
+make -f udev-${lfs_version}/Makefile.lfs gir-data ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs gir-data
+
+make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-keymap ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-keymap
+make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gudev ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gudev
+make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gir-data ||
+make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gir-data
+}

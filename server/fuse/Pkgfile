@@ -1,0 +1,16 @@
+version=2.9.3
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static INIT_D_PATH=/tmp/init.d
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/lib
+mv -v $PKG/usr/lib/libfuse.so.* $PKG/lib
+ln -sfv ../../lib/libfuse.so.$version $PKG/usr/lib/libfuse.so 
+rm -rf $PKG/tmp
+rm $PKG/dev/fuse
+}

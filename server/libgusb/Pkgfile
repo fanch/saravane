@@ -1,0 +1,10 @@
+version=0.1.6
+source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

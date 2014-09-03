@@ -1,0 +1,14 @@
+version=0.6.31
+
+source=(http://www.freedesktop.org/software/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--libexecdir=/usr/lib/accountsservice \
+--disable-static
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/var/{lib,run}/polkit-1
+}

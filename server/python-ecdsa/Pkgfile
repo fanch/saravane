@@ -1,0 +1,11 @@
+version=0.11
+source=(http://pypi.python.org/packages/source/e/ecdsa/ecdsa-$version.tar.gz)
+
+build() {
+    cd ecdsa-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

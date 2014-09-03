@@ -1,0 +1,14 @@
+version=0.304
+source=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$version.tar.gz)
+
+build() {
+	cd ExtUtils-Depends-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+		-name perllocal.pod \
+		-o -name .packlist | xargs rm
+	find $PKG -empty | xargs rmdir -p ||:
+
+}

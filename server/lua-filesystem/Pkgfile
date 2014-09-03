@@ -1,0 +1,13 @@
+version=1.6.2
+source=(
+http://github.com/downloads/keplerproject/luafilesystem/luafilesystem-$version.tar.gz)
+
+build(){
+    cd luafilesystem-$version
+    make
+    make PREFIX=$PKG/usr LUA_LIBDIR=$PKG/lib/lua/5.2 install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

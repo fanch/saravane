@@ -1,0 +1,16 @@
+version=3.14.2
+source=(http://crocla.cahouet.net/nutyx/btrfs-progs-$version.tar.xz)
+
+build(){
+    # the source tarball is made by myself after a git clone
+    cd $name
+    make
+    make prefix=/usr \
+         libdir=/lib \
+         bindir=/sbin \
+         DESTDIR=$PKG install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

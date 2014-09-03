@@ -1,0 +1,15 @@
+version=0.8.90
+
+source=(http://tango.freedesktop.org/releases/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/icon-naming-utils \
+	--localstatedir=/var
+	make
+	make DESTDIR=$PKG install
+}
+
+  

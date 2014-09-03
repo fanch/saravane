@@ -1,0 +1,13 @@
+version=20100619
+# Depends on:
+
+
+source=(http://pm-utils.freedesktop.org/releases/pm-quirks-${version}.tar.gz)
+
+build() {
+	install -m755 -d "${PKG}/usr/lib/pm-utils/video-quirks"
+	install -m644 video-quirks/*.quirkdb "${PKG}/usr/lib/pm-utils/video-quirks/"
+}
+
+
+

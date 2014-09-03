@@ -1,0 +1,14 @@
+version=20140316-2245
+
+source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$version.tar.bz2)
+
+build() {
+cd x264-snapshot-$version
+./configure \
+--prefix=/usr \
+--enable-pic \
+--enable-shared
+
+make
+make DESTDIR=$PKG install
+}

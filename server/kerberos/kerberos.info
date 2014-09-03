@@ -1,0 +1,12 @@
+The Kerberos network authentication system
+Utilitaire et démon MIT Kerberos V5 client et serveur.
+
+http://web.mit.edu/kerberos/
+
+Packagers:
+
+pierre at nutyx dot org
+
+Maintainers:
+
+- thierryn1 at hispeed

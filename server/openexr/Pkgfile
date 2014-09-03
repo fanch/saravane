@@ -1,0 +1,11 @@
+version=2.1.0
+source=( http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--localstatedir=/var \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

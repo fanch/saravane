@@ -1,0 +1,20 @@
+version=8.35
+source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
+PKGMK_GROUPS=(devel man doc)
+build() {
+cd $name-$version
+
+[ "${CARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"
+
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/pcre-$version \
+--enable-unicode-properties \
+--enable-pcre16 \
+--enable-pcre32 \
+--enable-pcregrep-libz \
+--enable-pcregrep-libbz2 \
+--enable-pcretest-libreadline \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

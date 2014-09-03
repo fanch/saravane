@@ -1,0 +1,16 @@
+version=1.0.93
+
+source=(http://www.codenix.com/~tolua/$name-$version.tar.bz2)
+       
+build() {
+cd $name-$version
+
+cat > config_linux.py << "EOF"
+CCFLAGS = ['-I/usr/include/lua5.1', '-O2', '-ansi', '-Wall', '-fPIC']
+prefix = '/usr'
+LIBS = ['lua5.1', 'dl', 'm']
+EOF
+
+scons all
+scons prefix=$PKG/usr install
+}

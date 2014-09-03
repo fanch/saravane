@@ -1,0 +1,12 @@
+version=0.6.8
+source=(http://downloads.nutyx.org/archives/gnome/sources/$name/0.6/$name-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share
+}

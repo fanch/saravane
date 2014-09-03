@@ -1,0 +1,12 @@
+version=0.92.3
+
+source=(http://download.tuxfamily.org/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--disable-static
+make
+make prefix=$PKG/usr install
+rm -rf $PKG/usr/share
+}

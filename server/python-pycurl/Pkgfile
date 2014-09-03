@@ -1,0 +1,13 @@
+version=7.19.5
+source=(
+http://pycurl.sourceforge.net/download/pycurl-$version.tar.gz)
+
+build() {
+    cd pycurl-$version
+    python2 setup.py build --with-ssl
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

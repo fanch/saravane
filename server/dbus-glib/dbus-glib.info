@@ -1,0 +1,16 @@
+The D-Bus GLib package contains GLib interfaces to the D-Bus API.
+Since version 2.26, GLib includes a D-Bus binding.
+This is intended to replace the DBus-GLib bindings and 
+many applications have started migrating their code.
+See the documentation for the high-level and low-level API for more details.
+
+http://www.freedesktop.org/wiki/Software/DBusBindings
+
+Maintainer:
+
+cgit.freedesktop.org/dbus/dbus-glib
+
+Packager:
+
+jmilot at nutyx dot org
+tnut at nutyx dot org

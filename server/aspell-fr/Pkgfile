@@ -1,0 +1,12 @@
+version=0.50.3
+_version=0.50-3
+
+source=(ftp://ftp.gnu.org/gnu/aspell/dict/fr/$name-$_version.tar.bz2)
+
+build() {
+  cd aspell-fr*
+  ./configure
+  make
+  make DESTDIR=$PKG install
+}
+  

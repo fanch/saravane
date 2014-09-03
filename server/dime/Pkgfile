@@ -1,0 +1,11 @@
+version=20120723
+
+source=(http://nutyx.meticul.eu/files/Coin3D-dime-7cd55bc6a6d0.zip)
+build() {
+  cd Coin3D-dime-7cd55bc6a6d0
+  ./configure --prefix=/usr || return 1
+  make || make -j1
+  make DESTDIR="$PKG" install
+  mkdir -p $PKG/usr/bin
+  cp dxf2vrml/.libs/dxf2vrml $PKG/usr/bin
+}

@@ -1,0 +1,11 @@
+An alternative implementation of Linux sound support
+
+http://www.alsa-project.org
+
+Maintainers:
+
+- git.alsa-project.org/?p=alsa-lib.git
+
+Packagers:
+
+pierre at nutyx dot org

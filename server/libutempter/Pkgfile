@@ -1,0 +1,15 @@
+version=1.1.6
+source=(ftp://ftp.altlinux.org/pub/people/ldv/utempter/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    RPM_OPT_FLAGS="$CFLAGS" make
+    make
+    make DESTDIR=$PKG install
+    chown root:utmp $PKG/usr/lib/utempter/utempter
+    chmod 2755 $PKG/usr/lib/utempter/utempter
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

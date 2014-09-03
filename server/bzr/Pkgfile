@@ -1,0 +1,17 @@
+version=2.6.0
+source=(
+http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    sed -i -e 's|man/man1|share/&|' setup.py
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    # bash-completion
+    install -Dm644 contrib/bash/bzr \
+        $PKG/usr/share/bash-completion/completions/bzr
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

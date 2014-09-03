@@ -1,0 +1,22 @@
+version=1.63
+_cpanname=Net-SSLeay
+source=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$version.tar.gz)
+
+build() {
+cd ${_cpanname}-$version
+sed -i \
+      -e "/\$opts->{optimize} = '-O2 -g';/d" \
+      inc/Module/Install/PRIVATE/Net/SSLeay.pm
+
+export OPTIMIZE="$CFLAGS"
+export OPENSSL_PREFIX=/usr
+
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL -- INSTALLDIRS=vendor
+make
+make install DESTDIR=$PKG
+
+install -D -m644 README $PKG/usr/share/licenses/$name/LICENSE
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}
+

@@ -1,0 +1,13 @@
+version=2.5
+_dir=690
+
+source=(http://code.soundsoftware.ac.uk/attachments/download/$_dir/$name-$version.tar.gz)
+
+build() {
+cd $SRC/$name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$pkgname/COPYING
+}

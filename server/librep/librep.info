@@ -1,0 +1,18 @@
+The librep package contains a Lisp system.
+This is useful for scripting or for applications 
+that may use the Lisp interpreter as an extension language.
+
+Le paquet librep contient un système Lisp.
+C'est utile pour le scriptage ou pour des applications 
+qui veulent utiliser l'interpréteur Lisp comme langage d'extension.
+
+http://librep.sourceforge.net/
+
+
+Maintainers:
+
+- John Harper (jsh at unfactored dot org)
+
+Packagers:
+
+pierre at nutyx dot org

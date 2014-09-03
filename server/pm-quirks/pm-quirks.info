@@ -1,0 +1,13 @@
+pm-utils is a small collection of scripts that handle suspend and resume on behalf of HAL
+
+http://pm-utils.freedesktop.org/wiki/
+
+Maintainers:
+
+Victor Lowther (victor dot lowther at gmail dot com)
+- git://anongit.freedesktop.org/git/pm-utils
+
+Packagers:
+
+pierre at nutyx dot org
+

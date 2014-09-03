@@ -1,0 +1,13 @@
+version=1.304
+source=(http://www.cpan.org/authors/id/X/XA/XAOC/Glib-$version.tar.gz)
+
+build() {
+	cd Glib-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+	-name perllocal.pod \
+	-o -name .packlist | xargs rm 
+	rm $PKG -empty | xargs rmdir -p ||:
+}

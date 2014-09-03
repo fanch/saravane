@@ -1,0 +1,11 @@
+version=1.37
+
+source=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$version.tar.gz)
+
+build() {
+	cd Archive-*
+        perl Makefile.PL
+	make OPTIMIZE="${CFLAGS}"
+	make DESTDIR=${PKG} install
+        find ${PKG} -name perllocal.pod -exec rm {} \;
+}

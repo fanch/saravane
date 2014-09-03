@@ -1,0 +1,11 @@
+version=6.01
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Cookies-$version.tar.gz)
+
+build() {
+cd HTTP-Cookies-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

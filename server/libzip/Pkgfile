@@ -1,0 +1,12 @@
+version=0.11.2
+source=(http://www.nih.at/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+ln -s /usr/lib/libzip/include/zipconf.h $PKG/usr/include/zipconf.h
+install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

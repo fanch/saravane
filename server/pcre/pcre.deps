@@ -1,0 +1,7 @@
+gcc.devel
+glibc.devel
+make
+wget
+zlib.devel
+bzip2.devel
+file.devel

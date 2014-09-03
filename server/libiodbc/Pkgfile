@@ -1,0 +1,13 @@
+version=3.52.9
+source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--includedir=/usr/include/libiodbc \
+--disable-gui \
+--disable-libodbc 
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/libiodbc/
+}

@@ -1,0 +1,9 @@
+version=2.9.0
+source=(http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$version.tar.gz)
+
+build() {
+cd Mail-SPF-v$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+}

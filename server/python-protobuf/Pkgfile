@@ -1,0 +1,10 @@
+version=2.4.1
+
+_name=protobuf
+
+source=(http://protobuf.googlecode.com/files/${_name}-$version.tar.bz2)
+build () 
+{ 
+cd ${_name}-$version/python
+python2 setup.py install --prefix=/usr --root $PKG
+}

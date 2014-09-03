@@ -1,0 +1,12 @@
+Library for manipulation of TIFF images
+Bibliothèques TIFF et leurs outils associatés. Les bibliothèques sont utilisées par de nombreux programmes de lecture et d'écriture de fichiers images et les outils sont utilisés pour des travaux généraux avec des fichiers TIFF.
+
+http://www.remotesensing.org/libtiff/
+
+Maintainers:
+
+- tiff at lists dot maptools dot org
+
+Packagers:
+
+pierre at nutyx dot org

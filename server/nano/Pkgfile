@@ -1,0 +1,18 @@
+version=2.3.2
+
+source=(http://www.nano-editor.org/dist/v2.3/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-color \
+--enable-multibuffer \
+--enable-nanorc \
+--disable-x
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/etc/nano
+install -v -m644 -D doc/nanorc.sample $PKG/etc/nano/nanorc.sample
+rm $PKG/usr/share/info/dir
+rm -r $PKG/usr/share/nano/man-html
+}

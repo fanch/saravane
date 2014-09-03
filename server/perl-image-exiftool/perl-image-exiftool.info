@@ -1,0 +1,8 @@
+Generates and rewritten exif info in the raw files
+Génère et réécrit les infos EXIF dans les fichiers raw 
+
+http://search.cpan.org/~exiftool/Image-ExifTool/
+
+Packagers:
+
+piernov  piernov at piernov dot org

@@ -1,0 +1,12 @@
+version=1.7.4
+
+
+source=(http://encfs.googlecode.com/files/$name-$version.tgz )
+
+build() {
+	cd $name-$version
+	./configure \
+    		--prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

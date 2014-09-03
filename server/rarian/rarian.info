@@ -1,0 +1,12 @@
+Documentation meta-data library, designed as a replacement for Scrollkeeper.
+Bibliothèque de données de documentation basée sur sur la spec proposée sur Freedesktop.org. Rarian est conçu pour remplacer ScrollKeeper.
+
+http://www.gnome.org/
+
+Maintainers:
+
+- git.gnome.org/brownse/rarian/
+
+Packagers:
+
+pierre at nutyx dot org

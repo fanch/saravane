@@ -1,0 +1,12 @@
+A library for computing the discrete Fourier transform (DFT)
+
+
+http://www.fftw.org/
+
+Mainteners:
+
+developed at MIT by Matteo Frigo and Steven G. Johnson
+
+Packagers:
+
+pierre at nutyx dot org

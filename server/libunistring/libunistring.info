@@ -1,0 +1,14 @@
+libunistring is a library that provides functions for manipulating Unicode strings
+and for manipulating C strings according to the Unicode standard.
+
+http://www.gnu.org/software/bison/
+
+Maintainers:
+
+- Akim Demaille
+- Joel E. Denny and
+- Paul Eggert.
+
+Packagers:
+
+pierre at nutyx dot org

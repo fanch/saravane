@@ -1,0 +1,12 @@
+version=4.22.10
+
+source=(http://www.centerim.org/download/releases/$name-$version.tar.gz\
+	http://nutyx.meticul.eu/files/patchs/$name/$name-$version-gcc-1.patch)
+
+build() {
+	cd $name-$version
+	patch -Np1 -i ../$name-$version-gcc-1.patch
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

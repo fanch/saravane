@@ -1,0 +1,12 @@
+Collection of user space tools for general SMBus access and hardware monitoring
+Collection d'outils pour la supervision du matériel
+
+http://dl.lm-sensors.org/lm-sensors/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

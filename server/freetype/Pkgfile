@@ -1,0 +1,22 @@
+version=2.5.2
+
+source=( http://switch.dl.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
+
+
+build() {
+cd $name-$version
+sed -i  -e "/AUX.*.gxvalid/s@^# @@" \
+ -e "/AUX.*.otvalid/s@^# @@" \
+ modules.cfg
+sed -ri -e 's:.*(#.*SUBPIXEL.*) .*:\1:' \
+ include/config/ftoption.h
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+cd ..
+mkdir docs
+wget http://downloads.sourceforge.net/freetype/freetype-doc-$version.tar.bz2
+tar -xf freetype-doc-$version.tar.bz2 --strip-components=2 -C docs
+install -v -m755 -d $PKG/usr/share/doc/$name-$version
+cp -v -R docs/*     $PKG/usr/share/doc/$name-$version
+}

@@ -1,0 +1,12 @@
+A free library for decoding ATSC A/52 streams
+Permet de décoder le codec ATSC (AC3)
+
+http://liba52.sourceforge.net/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,8 @@
+A library which implements a protocol for transmission of raster page images.
+Contient le protocol pour la transmission de pages contenant des images aux imprimantes
+
+http://www.linuxfoundation.org/collaborate/workgroups/openprinting
+
+Packagers:
+
+pierre at nutyx dot org

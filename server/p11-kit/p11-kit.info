@@ -1,0 +1,12 @@
+Library to work with PKCS#11 modules
+Offre une façon de charger et de numéroter des modules PKCS #11 (a Cryptographic Token Interface Standard (standard d'interface de chiffrement)).
+
+http://p11-glue.freedesktop.org/p11-kit.html
+
+Maintainers:
+
+- cgit.freedesktop.org/p11-glue/p11-kit/
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,11 @@
+Nearly transparent SSL encapsulation for IO::Socket::INET
+
+http://search.cpan.org/dist/IO-Socket-SSL/
+
+Mainteners: 
+
+http://search.cpan.org/
+
+Packagers:
+
+pierre at nutyx dot org

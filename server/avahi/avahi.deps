@@ -1,0 +1,5 @@
+intltool
+glib
+dbus-python
+gobject-introspection
+libdaemon

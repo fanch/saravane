@@ -1,0 +1,8 @@
+A daemon which implements the Point-to-Point Protocol for dial-up networking
+Service (Daemon) permettant la gestion des ligne téléphonique pour la communication internet
+
+http://samba.org/ppp
+
+Packagers:
+
+pierre at nutyx dot org

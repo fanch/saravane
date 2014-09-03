@@ -1,0 +1,11 @@
+version=6.06
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Net-HTTP-$version.tar.gz)
+
+build() {
+cd Net-HTTP-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

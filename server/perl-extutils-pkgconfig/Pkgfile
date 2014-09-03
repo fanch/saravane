@@ -1,0 +1,14 @@
+version=1.15
+source=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$version.tar.gz)
+
+build() {
+	cd ExtUtils-PkgConfig-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+		-name perllocal.pod \
+		-o -name .packlist | xargs rm
+	find $PKG -empty | xargs rmdir -p ||:
+}
+  

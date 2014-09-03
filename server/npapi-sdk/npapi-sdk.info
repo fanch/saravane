@@ -1,0 +1,15 @@
+NPAPI-SDK is a bundle of Netscape Plugin Application Programming Interface headers by Mozilla
+This package provides a clear way to install those headers and depend on them.
+
+NPAPI-SDK est un ensemble d'entêtes de programmation d'application greffon de Netscape par Mozilla.
+Ce paquet fournit un moyen propre d'installer ses entêtes et leurs dépendances. 
+
+https://bitbucket.org/mgorny/npapi-sdk/
+
+Maintainers:
+
+Michael Gorny, Poznan, PL
+
+Packager:
+
+pierre at nutyx dot org

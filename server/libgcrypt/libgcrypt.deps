@@ -1,0 +1,5 @@
+gcc.devel
+glibc.devel
+libgpg-error
+make
+file.devel

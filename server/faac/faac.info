@@ -1,0 +1,25 @@
+Encoder MPEG-4 de AudioCoding.com
+FAAC is an MPEG-4 and MPEG-2 AAC encoder.
+
+Features:
+
+    Portable
+    Reasonably fast
+    LC, Main, LTP support
+    DRM support through DreaM
+
+
+http://www.audiocoding.com
+
+Forums:
+
+http://www.hydrogenaudio.org/
+http://forum.doom9.org/
+
+Maintainer:
+
+
+Packagers:
+
+pierre at nutyx dot org
+tnut at nutyx dot org

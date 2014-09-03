@@ -1,0 +1,12 @@
+version=1.0.28
+source=(ftp://ftp.alsa-project.org/pub/plugins/$name-$version.tar.bz2
+	$name.conf)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+
+install -Dm644 $SRC/$name.conf $PKG/etc/asound.conf
+}

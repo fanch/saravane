@@ -1,0 +1,13 @@
+version=4.60.1
+
+source=(http://www.wavpack.com/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-mmx \
+--enable-static=no 
+make
+make DESTDIR=$PKG install
+}
+

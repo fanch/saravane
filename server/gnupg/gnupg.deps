@@ -1,0 +1,9 @@
+pth
+libgpg-error
+libgcrypt
+libassuan
+libksba
+pinentry
+openldap
+libusb-compat
+curl

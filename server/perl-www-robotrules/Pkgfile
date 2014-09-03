@@ -1,0 +1,11 @@
+version=6.02
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-$version.tar.gz)
+
+build() {
+cd WWW-RobotRules-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

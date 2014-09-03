@@ -1,0 +1,27 @@
+version=5.0.5
+source=(http://www.zsh.org/pub/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    sed -e '/attr.mdh/ d' -e '/attr.pro/ d' \
+        -e '/include <sys\/xattr.h>/ a\\n#include "attr.mdh"\n#include "attr.pro"' \
+        -i Src/Modules/attr.c
+    ./configure --prefix=/usr \
+                --bindir=/bin \
+                --sysconfdir=/etc/zsh \
+                --enable-etcdir=/etc/zsh
+    make
+    makeinfo Doc/zsh.texi --html -o Doc/html
+    makeinfo Doc/zsh.texi --html --no-split --no-headers -o Doc/zsh.html
+    makeinfo Doc/zsh.texi --plaintext -o Doc/zsh.txt
+    make DESTDIR=$PKG install
+
+    make infodir=$PKG/usr/share/info install.info
+    install -v -dm755 $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$version
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

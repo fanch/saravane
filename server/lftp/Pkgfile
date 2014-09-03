@@ -1,0 +1,10 @@
+version=4.5.0
+source=(http://lftp.yar.ru/ftp/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-openssl \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

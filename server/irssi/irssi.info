@@ -1,0 +1,22 @@
+Irssi is a terminal based IRC client for UNIX systems.
+It also supports SILC and ICB protocols via plugins.
+
+Features:
+
+  Autologging
+  Formats and themes
+  Configurable keybindings
+  Paste detection
+  Perl scripting
+  Irssi-proxy
+  Upgrades
+
+http://irssi.org/
+
+Maintainers:
+
+- Joost Vunderink 
+
+Packagers:
+
+pierre at nutyx dot org

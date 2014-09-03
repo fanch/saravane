@@ -1,0 +1,10 @@
+version=29
+
+source=(  http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.$version.tar.gz)
+
+build() {
+cd wireless_tools.$version
+make
+mkdir -p $PKG/usr/{sbin,lib,include,share/man}
+make PREFIX=$PKG/usr INSTALL_MAN=$PKG/usr/share/man install
+}

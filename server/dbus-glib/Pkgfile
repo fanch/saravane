@@ -1,0 +1,11 @@
+version=0.102
+source=(http://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,11 @@
+A C wrapper library for GnuPG 
+
+http://www.gnupg.org/related_software/gpgme/
+
+Maintainers:
+
+- NuTyX coreteam
+
+Packagers:
+
+pierre at nutyx dot org

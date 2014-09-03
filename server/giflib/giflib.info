@@ -1,0 +1,12 @@
+A garbage collector for C and C++
+Bibliothèques giflib pour lire et écrire des GIF
+
+ http://downloads.sourceforge.net/giflib/
+
+Maintainers:
+
+- NuTyX packager team
+
+Packagers:
+
+pierre at nutyx dot org

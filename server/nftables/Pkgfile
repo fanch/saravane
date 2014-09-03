@@ -1,0 +1,15 @@
+version=0.2
+source=(http://netfilter.org/projects/nftables/files/nftables-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                CONFIG_MAN=y DB2MAN=docbook2man
+    make
+    make DESTDIR=$PKG install    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

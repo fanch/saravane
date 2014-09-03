@@ -1,0 +1,12 @@
+version=1.6
+source=(
+http://pypi.python.org/packages/source/P/Pygments/Pygments-$version.tar.gz)
+
+build() {
+    cd Pygments-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

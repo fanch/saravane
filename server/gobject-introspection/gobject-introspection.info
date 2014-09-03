@@ -1,0 +1,20 @@
+Used to describe the program APIs and collect them in a uniform, machine readable format.
+GObject introspection is a middleware layer between C libraries (using GObject) and 
+language bindings. The C library can be scanned at compile time and generate 
+a metadata file, in addition to the actual native C library. 
+Then at runtime, language bindings can read this metadata and automatically 
+provide bindings to call into the C library.
+
+http://live.gnome.org/GObjectIntrospection
+
+Maintainers:
+
+- Colin Walters (walters at verbum dot org)
+- Johan Dahlin (johan at gnome dot org)
+
+- Jürg Billeter  (j at bitron dot ch)
+
+Packagers:
+
+pierre at nutyx dot org
+tnut at nutyx dot org

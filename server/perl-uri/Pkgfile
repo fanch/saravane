@@ -1,0 +1,10 @@
+version=1.60
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-$version.tar.gz)
+
+build() {
+cd URI-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG -name perllocal.pod | xargs rm
+}

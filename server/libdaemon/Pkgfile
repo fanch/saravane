@@ -1,0 +1,12 @@
+version=0.14
+
+source=(http://0pointer.de/lennart/projects/libdaemon/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--disable-doxygen \
+		--disable-lynx
+	make
+	make DESTDIR=$PKG install
+}

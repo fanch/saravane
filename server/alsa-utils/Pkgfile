@@ -1,0 +1,18 @@
+version=1.0.28
+PKGMK_GROUPS=(man)
+source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
+
+build() {
+source /etc/blfs-bootscripts
+wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+./configure --prefix=/usr \
+--disable-alsaconf \
+--disable-xmlto
+make
+make DESTDIR=$PKG install
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-alsa
+}

@@ -1,0 +1,10 @@
+version=2.3.2
+
+source=(http://www.unixodbc.org/unixODBC-$version.tar.gz)
+build() { 
+cd unixODBC-$version
+./configure --prefix=/usr --sysconfdir=/etc/unixODBC \
+--enable-gui=no
+make
+make DESTDIR=$PKG install
+}

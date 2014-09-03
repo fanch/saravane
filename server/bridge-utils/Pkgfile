@@ -1,0 +1,20 @@
+version=1.5
+source=( http://sourceforge.net/projects/bridge/files/bridge/$name-$version.tar.gz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/bridge-utils-1.5-linux_3.8_fix-1.patch)
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+patch -Np1 -i ../bridge-utils-1.5-linux_3.8_fix-1.patch
+autoconf -o configure configure.in
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+# service
+
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-service-bridge
+}

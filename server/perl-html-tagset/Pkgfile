@@ -1,0 +1,11 @@
+version=3.20
+source=(http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-$version.tar.gz)
+
+build() {
+cd HTML-Tagset-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

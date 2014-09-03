@@ -1,0 +1,14 @@
+python-pip (easy_install replacement to install pypi python packages)
+pip is a tool for installing and managing Python packages, such as
+those found in the Python Package Index.
+It’s a replacement for easy_install.
+
+URL: http://www.pip-installer.org
+
+Packager:
+
+alienus at nutyx dot org
+
+
+
+# NuTyX package info file (http://nutyx.org)

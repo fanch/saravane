@@ -1,0 +1,13 @@
+version=0.13
+
+source=(  http://icon-theme.freedesktop.org/releases/$name-$version.tar.gz)
+
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+}

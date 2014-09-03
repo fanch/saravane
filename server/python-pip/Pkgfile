@@ -1,0 +1,14 @@
+version=1.5.6
+source=(http://pypi.python.org/packages/source/p/pip/pip-$version.tar.gz)
+
+build() {
+    cd pip-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    mkdir -p $PKG/usr/share/doc/$name-$version
+    cp -Rf docs/* $PKG/usr/share/doc/$name-$version 
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

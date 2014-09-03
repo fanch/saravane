@@ -1,0 +1,14 @@
+version=3.3.2
+
+source=(ftp://ftp.gnutls.org/gcrypt/$name/v3.3/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-zlib \
+--with-default-trust-store-file=/etc/ssl/ca-bundle.crt \
+--disable-guile
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

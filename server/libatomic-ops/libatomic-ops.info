@@ -1,0 +1,11 @@
+Implementations for atomic memory update operations on a number of architectures.
+
+http://www.hpl.hp.com/research/linux/atomic_ops/
+
+Maintainers:
+
+http://www.hpl.hp.com/people/
+
+Packagers:
+
+pierre at nutyx dot org

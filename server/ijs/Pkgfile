@@ -1,0 +1,13 @@
+version=0.35
+
+source=(http://www.openprinting.org/download/$name/download/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-shared --disable-static \
+--infodir=/usr/share/info --mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}
+  

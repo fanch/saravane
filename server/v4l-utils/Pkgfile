@@ -1,0 +1,14 @@
+version=0.8.9
+
+source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2
+	http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2.asc)
+
+build() {
+	cd $name-$version
+	sed -i 's|CFLAGS :=|CFLAGS ?=|' Make.rules
+	make install PREFIX="/usr" DESTDIR=$PKG/
+	rm -f $PKG/usr/bin/ivtv-ctl
+  	mv $PKG/lib/udev $PKG/usr/lib/
+  	rm -rf $PKG/lib
+}
+

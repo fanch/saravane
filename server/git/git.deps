@@ -1,0 +1,8 @@
+wget
+gcc.devel
+glibc.devel
+zlib.devel
+openssl.devel
+curl.devel
+make
+file.devel

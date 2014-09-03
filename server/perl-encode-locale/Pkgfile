@@ -1,0 +1,11 @@
+version=1.03
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-$version.tar.gz)
+
+build() {
+cd Encode-Locale-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+} 

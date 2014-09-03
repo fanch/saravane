@@ -1,0 +1,12 @@
+version=1.8.7
+
+source=(http://ftp.stack.nl/pub/$name/$name-$version.src.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix /usr \
+--docdir /usr/share/doc/$name-$version
+make
+make INSTALL=$PKG/usr \
+MAN1DIR=share/man/man1 install
+make install_docs || true
+}

@@ -1,0 +1,12 @@
+Library for applications dealing with netlink sockets
+Bibliothèques fournissant des API pour le protocole netlink basé sur le noyau Linux.
+
+http://people.suug.ch/~tgr/libnl
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

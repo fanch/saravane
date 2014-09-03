@@ -1,0 +1,10 @@
+version=2.5.0
+
+source=(http://protobuf.googlecode.com/files/${name}-$version.tar.bz2)
+build () 
+{ 
+cd ${name}-$version
+./autogen.sh
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+}

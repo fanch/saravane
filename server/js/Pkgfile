@@ -1,0 +1,15 @@
+version=1.8.5
+source=( http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz )
+
+build () {
+cd $name-$version/js/src
+./configure --prefix=/usr       \
+            --enable-readline   \
+            --enable-threadsafe \
+            --with-system-ffi   \
+            --with-system-nspr
+sed -i 's#s \($(SHLIB_\(ABI\|EXACT\)_VER)\)#s $(notdir \1)#' Makefile.in
+./configure --prefix=/usr --enable-threadsafe --with-system-nspr &&
+make
+make DESTDIR=$PKG install
+}

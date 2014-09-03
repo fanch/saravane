@@ -1,0 +1,15 @@
+version=2.9.0
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build()
+{
+cd $name-$version
+./configure --prefix=/usr \
+--with-default-dict=/lib/cracklib/pw_dict
+make
+make DESTDIR=$PKG  install
+mkdir $PKG/lib
+mv -v $PKG/usr/lib/libcrack.so.2* $PKG/lib
+ln -v -sf ../../lib/libcrack.so.2.8.1 $PKG/usr/lib/libcrack.so
+}

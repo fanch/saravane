@@ -1,0 +1,12 @@
+A free codec for free speech
+Format de compression audio spécialement adapté pour la voix
+
+http://www.speex.org/
+
+Maintainers:
+
+- www.linuxfromscratch.org/blfs/view/svn/multimedia/speex.html
+
+Packagers:
+
+pierre at nutyx dot org

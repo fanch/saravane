@@ -1,0 +1,40 @@
+version=2.4.9
+
+source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2 
+	http://downloads.nutyx.org/files/patchs/apache/httpd-2.4.6-nutyx_layout-2.patch)
+build(){
+
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+
+cd httpd-$version
+
+patch -Np1 -i ../httpd-2.4.6-nutyx_layout-2.patch
+
+./configure --enable-layout=BLFS                            \
+            --enable-mods-shared="all cgi"                  \
+            --enable-mpms-shared=all                        \
+            --with-apr=/usr/bin/apr-1-config                \
+            --with-apr-util=/usr/bin/apu-1-config           \
+            --enable-suexec=shared                          \
+            --with-suexec-bin=/usr/lib/httpd/suexec         \
+            --with-suexec-docroot=/srv/www/htdocs           \
+            --with-suexec-caller=apache                     \
+            --with-suexec-userdir=public_html               \
+            --with-suexec-logfile=/var/log/apache/suexec.log \
+            --with-suexec-uidmin=100
+make
+make DESTDIR=$PKG install
+
+mv -v $PKG/usr/sbin/suexec $PKG/usr/lib/httpd/suexec
+chgrp apache $PKG/usr/lib/httpd/suexec
+chmod 4754 $PKG/usr/lib/httpd/suexec
+
+chown -v -R apache:apache $PKG/srv/www
+rm -f $PKG/srv/www/htdocs/index.html
+ln -s nutyx/release/index.html $PKG/srv/www/htdocs/index.html
+cd $SRC
+tar xf $scripts-$scriptsversion.tar.bz2
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-httpd
+}

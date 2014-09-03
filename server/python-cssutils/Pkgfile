@@ -1,0 +1,15 @@
+version=1.0
+source=(
+http://pypi.python.org/packages/source/c/cssutils/cssutils-$version.zip)
+
+build() {
+    cd cssutils-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    # rm tests (FS#27567)
+    rm -rf $PKG/usr/lib/python2.7/site-packages/tests
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

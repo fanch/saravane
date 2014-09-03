@@ -1,0 +1,12 @@
+version=3.6.0
+source=(
+https://pypi.python.org/packages/source/s/simplejson/simplejson-$version.tar.gz)
+
+build() {
+    cd simplejson-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

@@ -1,0 +1,8 @@
+version=2.7.3
+source=(https://pypi.python.org/packages/source/J/Jinja2/Jinja2-$version.tar.gz)
+
+build() {
+cd Jinja2-$version
+python setup.py install --optimize=1 --root=$PKG
+python3 setup.py install --optimize=1 --root=$PKG
+}

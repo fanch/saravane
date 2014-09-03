@@ -1,0 +1,12 @@
+A garbage collector for C and C++
+Détecteur de fuites de mémoire
+
+http://www.hpl.hp.com/personal/Hans_Boehm/gc/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

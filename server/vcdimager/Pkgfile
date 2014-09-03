@@ -1,0 +1,16 @@
+version=0.7.23
+
+source=(http://ftp.twaren.net/Unix/GNU/gnu/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--with-xml-prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+	rm $PKG/usr/share/info/dir
+}
+  
+

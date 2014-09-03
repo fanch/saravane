@@ -1,0 +1,15 @@
+version=1.2.12
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+        ./configure --prefix=/usr \
+		    --disable-static \
+        	    --with-ui \
+		    --with-readline \
+		    --with-experimental
+        make
+        make DESTDIR=$PKG install
+}
+

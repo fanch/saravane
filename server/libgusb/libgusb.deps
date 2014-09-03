@@ -1,0 +1,5 @@
+libusb
+gperf
+glib
+gobject-introspection
+udev-extras

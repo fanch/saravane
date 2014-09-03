@@ -1,0 +1,10 @@
+version=1.5.8
+source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
+
+build() {
+	unset MAKEFLAGS
+        cd $name-$version
+	sed -i "s/-O2/${CFLAGS}/" Makefile
+        make
+        make DESTDIR=$PKG install
+}

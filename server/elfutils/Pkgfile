@@ -1,0 +1,11 @@
+version=0.158
+
+source=( https://fedorahosted.org/releases/e/l/$name/$version/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--program-prefix="eu-"
+make
+make prefix=$PKG/usr install
+}

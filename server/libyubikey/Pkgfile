@@ -1,0 +1,13 @@
+version=1.10
+source=(https://github.com/Yubico/yubico-c/archive/libyubikey-$version.tar.gz
+	libyubikey.70-yubikey.rules)
+build ()
+{
+cd yubico-c-libyubikey-$version
+autoreconf --install
+./configure --prefix=/usr
+make
+make DESTDIR="${PKG}/" install
+install -D -m0644 "${SRC}/libyubikey.70-yubikey.rules" "${PKG}/lib/udev/rules.d/70-yubikey.rules"
+}
+

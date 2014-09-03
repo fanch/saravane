@@ -1,0 +1,12 @@
+version=0.9.8
+
+source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)
+
+build() {
+		cd $name-$version
+                ./configure --prefix=/usr --without-docs
+		make
+		make DESTDIR=$PKG install
+}
+  
+

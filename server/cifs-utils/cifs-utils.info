@@ -1,0 +1,11 @@
+CIFS filesystem user-space tools
+
+http://www.samba.org
+
+Maintainers:
+
+- git.samba.org/?p=cifs-utils.git;a=summary
+
+Packagers:
+
+pierre at nutyx dot org

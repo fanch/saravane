@@ -1,0 +1,10 @@
+version=0.19
+source=(http://0pointer.de/public/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG docdir=/usr/share/doc/libatasmart-$version install
+}

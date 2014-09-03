@@ -1,0 +1,15 @@
+version=4.10.6
+source=( http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
+build () {
+
+cd $name-$version/$name
+sed -ri 's#^(RELEASE_BINS =).*#\1#' pr/src/misc/Makefile.in &&
+sed -i 's#$(LIBRARY) ##' config/rules.mk &&
+./configure --prefix=/usr \
+            --with-mozilla \
+            --with-pthreads \
+            $([ $(uname -m) = x86_64 ] && echo --enable-64bit) &&
+make
+
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,14 @@
+version=0.5.7
+source=(http://gondor.apana.org.au/~herbert/dash/files/dash-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --bindir=/bin \
+                --mandir=/usr/share/man
+    make
+    make DESTDIR=$PKG install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

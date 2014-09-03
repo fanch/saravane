@@ -1,0 +1,12 @@
+A set of C++ libraries for multimedia streaming
+Librairies C++ pour flux multimedia (RTP/RTCP, RTSP, SIP)
+
+http://www.live555.com/liveMedia/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

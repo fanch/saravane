@@ -1,0 +1,20 @@
+version=5.20.0
+source=(
+http://perldoc.perl.org/perldoc-html.tar.gz
+perldoc.desktop
+perldoc.png
+)
+
+build(){
+    mkdir -p $PKG/usr/share/doc/$name-$version
+    cp -rf $SRC/perldoc-html/* \
+        $PKG/usr/share/doc/$name-$version/
+    install -Dm 644 $SRC/$name.desktop \
+        $PKG/usr/share/applications/$name.desktop
+    install -Dm 644 $SRC/$name.png \
+        $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

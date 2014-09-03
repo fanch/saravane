@@ -1,0 +1,10 @@
+version=0.2.2
+
+source=(http://sourceforge.net/projects/libwpg/files/libwpg/libwpg-$version/$name-$version.tar.gz)
+
+build() {
+		cd $name-$version
+                ./configure --prefix=/usr --without-docs
+		make
+		make DESTDIR=$PKG install
+}

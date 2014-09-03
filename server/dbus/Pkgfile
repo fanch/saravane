@@ -1,0 +1,42 @@
+version=1.8.4
+
+source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
+       dbus.system-local.conf dbus.session-local.conf)
+
+build() {
+	source /etc/blfs-bootscripts
+	wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2
+
+	cd $name-$version
+	./configure --prefix=/usr --without-x \
+            	--libexecdir=/usr/lib/dbus-1.0 \
+		--localstatedir=/var \
+		--sysconfdir=/etc \
+		--with-console-auth-dir=/run/console \
+		--without-systemdsystemunitdir \
+		--disable-systemd --disable-static
+
+	make
+	make DESTDIR=$PKG install
+	mv -v $PKG/usr/share/doc/dbus \
+	$PKG/usr/share/doc/dbus-1.8.2
+        mkdir -p $PKG/etc/dbus-1
+        mv ../dbus.system-local.conf $PKG/etc/dbus-1/system-local.conf
+	mv ../dbus.session-local.conf $PKG/etc/dbus-1/session-local.conf
+        cd ../$scripts-$scriptsversion
+        make DESTDIR=$PKG install-dbus
+	mkdir -p $PKG/usr/lib/dbus-1.0/services
+	mkdir -p $PKG/usr/share/dbus-1/services
+	mkdir -p $PKG/etc/dbus-1/system.d/
+	mkdir -p $PKG/etc/dbus-1/session.d/
+	rm -r $PKG/usr/share/doc
+	for i in 2 3 4 5
+	do 
+		mv $PKG/etc/rc.d/rc$i.d/S{29,15}dbus
+	done
+	for i in 0 1 6
+	do
+		mv $PKG/etc/rc.d/rc$i.d/K{30,85}dbus
+	done
+}

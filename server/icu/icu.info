@@ -1,0 +1,19 @@
+The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries
+providing Unicode and Globalization support for software applications. ICU is widely portable and gives 
+applications the same results on all platforms and between C/C++ and Java software.
+
+http://www.icu-project.org/
+
+Maintainers:
+
+- Mark Davis	Google
+- John Emmons	IBM Corporation
+- Doug Felt	Google
+- Deborah Goldsmith	Apple
+- Steven Loomis	IBM Corporation
+- Markus Scherer	Google
+- Peter Edberg	Apple
+- Yoshito Umaoka	IBM Corporation
+Packagers:
+
+pierre at nutyx dot org

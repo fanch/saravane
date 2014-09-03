@@ -1,0 +1,15 @@
+version=0.92
+# Depends on:
+
+source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+	rm $PKG/usr/share/info/dir
+}
+

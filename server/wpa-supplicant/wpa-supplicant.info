@@ -1,0 +1,12 @@
+A utility providing key negotiation for WPA wireless networks
+Utilitaire permettant la négociation WPA pour les réseaux sans fils
+
+http://hostap.epitest.fi/wpa_supplicant
+
+Maintainers:
+
+- NuTyX core team 
+
+Packagers:
+
+pierre at nutyx dot org

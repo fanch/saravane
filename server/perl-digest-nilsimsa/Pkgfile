@@ -1,0 +1,11 @@
+version=0.06
+source=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$version.tar.gz)
+
+build() {
+cd Digest-Nilsimsa-$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

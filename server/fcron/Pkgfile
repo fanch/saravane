@@ -1,0 +1,28 @@
+version=3.1.2
+# Depends on:
+
+source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
+build() {
+unset MAKEFLAGS
+source /etc/blfs-bootscripts                                                                                                            
+wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2                                                
+tar xf $scripts-$scriptsversion.tar.bz2                                                                                                 
+# build package
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+--without-sendmail --localstatedir=/var \
+--with-boot-install=no --mandir=/usr/share/man \
+--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+rm $PKG/etc/pam.conf
+mkdir -p $PKG/etc/pam.d
+for i in fcron fcrontab
+
+	do install -D -m644 files/fcron.pam $PKG/etc/pam.d/$i
+done
+# Install the script
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-fcron
+rm -rf $PKG/usr/share/doc
+}

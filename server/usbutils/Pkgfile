@@ -1,0 +1,13 @@
+version=007
+
+source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-zlib \
+--datadir=/usr/share/misc
+make
+make DESTDIR=$PKG install
+mv -v $PKG/usr/sbin/update-usbids{.sh,}
+}

@@ -1,0 +1,11 @@
+version=4.075
+source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIKER/NetAddr-IP-$version.tar.gz)
+
+build() {
+cd NetAddr-IP-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

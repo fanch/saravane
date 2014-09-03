@@ -1,0 +1,8 @@
+version=3.99.5
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --enable-mp3rtp --disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,13 @@
+version=2.1.2
+source=(http://cache.ruby-lang.org/pub/ruby/2.1/ruby-$version.tar.bz2)
+
+build() {
+cd ruby-$version
+./configure --prefix=/usr --enable-shared \
+--docdir=/usr/share/doc/ruby-$version
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/include/ruby-2.1.0/
+rm -rf $PKG/usr/share/man/man1/
+rm $PKG/usr/lib/pkgconfig/ruby-2.1.pc
+}

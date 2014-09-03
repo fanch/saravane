@@ -1,0 +1,11 @@
+version=0.11.3
+source=(http://downloads.us.xiph.org/releases/celt/celt-$version.tar.gz)
+
+build() {
+cd celt-$version
+./configure --prefix=/usr --enable-custom-modes --disable-static
+make
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/celt/LICENSE
+}

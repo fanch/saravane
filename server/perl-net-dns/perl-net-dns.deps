@@ -1,0 +1,5 @@
+perl
+perl-digest-hmac
+perl-net-ip
+perl-io-socket-inet6
+perl-socket6

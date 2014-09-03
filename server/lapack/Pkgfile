@@ -1,0 +1,18 @@
+version=3.5.0
+
+source=(http://www.netlib.org/$name/$name-$version.tgz )
+
+build() {
+cd $name-$version
+mkdir build
+cd build
+cmake .. \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_SKIP_RPATH=ON \
+-DBUILD_SHARED_LIBS=ON \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_Fortran_COMPILER=gfortran \
+-DLAPACKE=ON
+make
+make DESTDIR=$PKG install
+}

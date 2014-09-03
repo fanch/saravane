@@ -1,0 +1,10 @@
+version=3.11
+source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
+
+build() {
+cd PyYAML-$version
+python setup.py build
+python setup.py install --optimize=1 --root=$PKG
+python3 setup.py build
+python3 setup.py install --optimize=1 --root=$PKG
+}

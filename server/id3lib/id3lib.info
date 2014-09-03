@@ -1,0 +1,12 @@
+Library for reading, writing, and manipulating ID3v1 and ID3v2 tags
+Librairie de manipulation tag ID3v1 et ID3v2
+
+http://id3lib.sourceforge.net/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

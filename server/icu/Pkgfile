@@ -1,0 +1,9 @@
+version=53.1
+source=(http://download.$name-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
+
+build () {
+cd $name/source
+CXX=g++ ./configure --prefix=/usr
+make
+make prefix=$PKG/usr install
+}

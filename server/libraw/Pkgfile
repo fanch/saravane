@@ -1,0 +1,14 @@
+version=0.15.4
+
+source=(http://www.libraw.org/data/LibRaw-$version.tar.gz)
+build ()
+{
+cd LibRaw-$version
+
+./configure --prefix=/usr
+
+make
+
+make DESTDIR=$PKG install
+
+}

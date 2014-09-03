@@ -1,0 +1,16 @@
+version=2.1.28
+source=(
+http://inxi.googlecode.com/svn/trunk/inxi
+http://inxi.googlecode.com/svn/trunk/inxi.1)
+
+build(){
+    cd $SRC
+    install -Dm755 inxi \
+        $PKG/usr/bin/inxi
+    install -Dm644 inxi.1 \
+        $PKG/usr/share/man/man1/inxi.1
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

@@ -1,0 +1,13 @@
+version=1.0.28
+source=(ftp://ftp.alsa-project.org/pub/lib/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure
+make
+make DESTDIR=$PKG install
+make doc
+install -v -d -m755 $PKG/usr/share/doc/$name-$version/html
+cp -a doc/doxygen/html/* $PKG/usr/share/doc/$name-$version/html
+chmod 644 $PKG/usr/share/doc/$name-$version/html/*
+}
+  

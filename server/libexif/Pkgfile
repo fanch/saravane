@@ -1,0 +1,14 @@
+version=0.6.21
+
+source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--with-doc-dir=/usr/share/doc/libexif-$version
+make
+make DESTDIR=$PKG install
+}

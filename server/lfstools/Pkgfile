@@ -1,0 +1,12 @@
+version=0.5
+source=(
+http://crocla.cahouet.net/lfstools/lfstools-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    DESTDIR=$PKG sh install.sh
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

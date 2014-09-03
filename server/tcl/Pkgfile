@@ -1,0 +1,23 @@
+version=8.6.0
+
+source=( http://downloads.sourceforge.net/$name/$name$version-src.tar.gz)
+
+build() {
+# build package
+cd $name$version/unix
+
+if [ "$CARCH" = "x86_64" ]; then
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --enable-64bit
+else
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --disable-64bit
+fi
+	
+make
+sed -e "s@^\(TCL_SRC_DIR='\).*@\1/usr/include'@" \
+-e "/TCL_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
+-i tclConfig.sh
+make DESTDIR=$PKG install
+make DESTDIR=$PKG install-private-headers
+ln -svf tclsh8.6 $PKG/usr/bin/tclsh
+chmod -v 755 $PKG/usr/lib/libtcl8.6.so
+}

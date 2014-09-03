@@ -1,0 +1,13 @@
+version=1.4rc5
+
+source=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
+
+build() {
+cd $name-*
+sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4
+./configure --prefix=/usr --mandir=/usr/share/man \
+--infodir=/usr/share/info --disable-static
+make
+make  DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

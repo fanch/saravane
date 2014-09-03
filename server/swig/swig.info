@@ -1,0 +1,11 @@
+Generate scripting interfaces to C/C++ code
+Compilateur rendant plus aisé l'intégration de code C et et C++ dans les langages de script.
+http://www.swig.org/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

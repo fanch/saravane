@@ -1,0 +1,12 @@
+A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard
+Implémentation du codec spécifié par le standard JPEG-2000 Part-1 
+
+http://www.ece.uvic.ca/~mdadams/jasper/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

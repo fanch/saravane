@@ -1,0 +1,12 @@
+version=1.3.1
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz )
+
+build() {
+docsdir=/usr/share/doc/$name-$version
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--with-jpeg8 --disable-static
+make
+make docdir=$docsdir exampledir=$docsdir DESTDIR=$PKG install
+}

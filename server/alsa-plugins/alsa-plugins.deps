@@ -1,0 +1,5 @@
+alsa-lib
+ffmpeg-cli
+pulseaudio-cli
+libsamplerate
+speex

@@ -1,0 +1,12 @@
+Network Time Protocol reference implementation
+Serveur de synchronisation pour l'horloge système
+
+http://www.ntp.org/ 
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

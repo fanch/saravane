@@ -1,0 +1,10 @@
+version=3.2.24
+source=(http://www.carisma.slowglass.com/~tgr/$name/files/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

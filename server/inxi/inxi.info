@@ -1,0 +1,12 @@
+inxi (a full featured system information script)
+A newer, better system information script for irc, administration,
+and system troubleshooters.
+inxi offers a wide range of built-in options, as well as a good number
+of extra features which require having the script recommends installed
+on the system.
+
+URL: http://inxi.org
+
+Packager:
+
+alienus at nutyx dot org

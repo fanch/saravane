@@ -1,0 +1,11 @@
+The libusb package contains a library used by some applications for USB device access.
+
+http://libusb.wiki.sourceforge.net/
+
+Maintainers:
+
+- Nathan Hjelm (hjelmn at users dot sourceforge dot net)
+
+Packagers:
+
+pierre at nutyx dot org

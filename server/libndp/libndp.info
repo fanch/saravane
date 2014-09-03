@@ -1,0 +1,12 @@
+The libndp package provides a wrapper for IPv6 Neighbor Discovery Protocol. 
+It also provides a tool named ndptool for sending and receiving NDP messages.
+
+URL: 
+
+Maintainer:
+
+- Jiri Pirko jiri at resnulli dot us
+
+Packager:
+
+- tnut at nutyx dot org

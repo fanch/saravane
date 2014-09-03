@@ -1,0 +1,12 @@
+ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
+Implémentation libre permettant une application pour accéder aux données via odbc
+
+http://www.unixodbc.org/
+
+Maintainers:
+
+- http://www.linuxfromscratch.org/blfs/view/svn/general/unixodbc.html
+
+Packagers:
+
+pierre at nutyx dot org

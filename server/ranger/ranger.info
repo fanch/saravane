@@ -1,0 +1,14 @@
+ranger is a file manager with VI key bindings.
+It provides a minimalistic and nice curses interface with a view on the
+directory hierarchy. The secondary task of ranger is to psychically guess which
+program you want to use for opening particular files.
+
+URL: http://ranger.nongnu.org/
+
+Packager:
+
+alienus at nutyx dot org
+
+
+
+# NuTyX package info file (http://nutyx.org)

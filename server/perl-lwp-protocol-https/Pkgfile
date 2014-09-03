@@ -1,0 +1,11 @@
+version=6.04
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/LWP-Protocol-https-$version.tar.gz)
+
+build() {
+cd LWP-Protocol-https-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

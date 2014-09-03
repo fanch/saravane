@@ -1,0 +1,13 @@
+version=9.60
+source=(http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-$version.tar.gz)
+
+build() {
+cd Image-ExifTool-$version
+perl Makefile.PL
+make
+make DESTDIR=$PKG install
+find $PKG \
+-name '*.pod' \
+-o -name '.packlist' | xargs rm
+find $PKG -empty | xargs rmdir -p ||:
+}

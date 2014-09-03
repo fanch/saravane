@@ -1,0 +1,18 @@
+version=5.0
+
+source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
+
+build() {
+unset MAKEFLAGS
+cd pulseaudio-$version
+find . -name "Makefile.in" | xargs sed -i "s|(libdir)/@PACKAGE@|(libdir)/pulse|"
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --localstatedir=/var  \
+            --disable-bluez4      \
+            --disable-rpath       \
+            --with-module-dir=/usr/lib/pulse/modules
+make
+make DESTDIR=$PKG install
+rm -vf $PKG/etc/dbus-1/system.d/pulseaudio-system.conf
+}

@@ -1,0 +1,8 @@
+version=0.23
+
+source=(http://people.freedesktop.org/~takluyver/pyxdg-$version.tar.gz)
+
+build() {
+	cd pyxdg-$version
+	python2 setup.py install --prefix=/usr --root=$PKG
+}

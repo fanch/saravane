@@ -1,0 +1,9 @@
+version=4.2.1
+
+source=( http://dvdnav.mplayerhq.hu/releases/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./autogen.sh --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

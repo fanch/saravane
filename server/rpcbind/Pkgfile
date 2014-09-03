@@ -1,0 +1,27 @@
+version=0.2.1
+PKGMK_GROUPS=(man)
+source=(http://downloads.sourceforge.net/rpcbind/rpcbind-$version.tar.bz2 )
+
+build() {
+    source /etc/blfs-bootscripts
+
+    wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2
+    tar xvf $scripts-$scriptsversion.tar.bz2
+
+    cd rpcbind-$version
+    sed -i "/servname/s:rpcbind:sunrpc:" src/rpcbind.c &&
+    sed -i "/error = getaddrinfo/s:rpcbind:sunrpc:" src/rpcinfo.c
+
+    ./configure --prefix=/usr \
+                --bindir=/sbin \
+                --with-rpcuser=root
+    make
+    make DESTDIR=$PKG install
+
+    cd ../$scripts-$scriptsversion
+    make DESTDIR=$PKG install-rpcbind
+    make DESTDIR=$PKG install-netfs
+
+    # cut is in /bin
+    sed -i "s,usr/bin/cut,bin/cut," $PKG/etc/rc.d/init.d/netfs
+}

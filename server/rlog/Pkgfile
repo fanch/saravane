@@ -1,0 +1,14 @@
+version=1.4
+# Depends on:
+
+
+source=(http://rlog.googlecode.com/files/$name-$version.tar.gz 
+       $name-section.patch)
+
+build () {
+	cd $name-$version
+	patch -Np1 -i ../$name-section.patch
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

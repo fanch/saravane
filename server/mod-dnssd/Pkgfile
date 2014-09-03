@@ -1,0 +1,11 @@
+version=0.6
+
+source=(http://0pointer.de/lennart/projects/mod_dnssd/mod_dnssd-$version.tar.gz)
+
+build() {
+cd mod_dnssd-$version
+./configure --prefix=/usr --disable-lynx
+make
+install -m755 -d $PKG/usr/lib/httpd/modules
+install -m755 src/.libs/mod_dnssd.so $PKG/usr/lib/httpd/modules/
+}

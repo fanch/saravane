@@ -1,0 +1,15 @@
+The libcroco package contains a standalone CSS2 parsing and manipulation library.
+Libcroco is a general CSS parsing and manipulation library written in C for the GNOME project.
+It provides a CSS2 parser (SAC and CSSOM API), and a CSS2 selection engine.
+It uses Libxml2 as underlying XML platform and the GLib as a portability layer.
+
+https://launchpad.net/libcroco
+
+Contributors:
+
+- Alex Valavanis
+- Jeremy Bicha
+
+Packagers:
+
+pierre at nutyx dot org

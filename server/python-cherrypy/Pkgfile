@@ -1,0 +1,12 @@
+version=3.3.0
+source=(
+https://pypi.python.org/packages/source/C/CherryPy/CherryPy-$version.tar.gz)
+
+build() {
+    cd CherryPy-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

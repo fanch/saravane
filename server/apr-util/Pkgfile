@@ -1,0 +1,13 @@
+version=1.5.3
+source=(http://archive.apache.org/dist/apr/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-apr=/usr \
+--with-gdbm=/usr \
+--with-openssl=/usr \
+--with-crypto
+make
+make DESTDIR=$PKG install
+}

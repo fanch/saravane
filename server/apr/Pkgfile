@@ -1,0 +1,10 @@
+version=1.5.1
+source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--with-installbuilddir=/usr/share/apr-1/build
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,11 @@
+Contains an IPC library used by some of the other GnuPG related packages
+
+http://www.gnupg.org/related_software/libassuan/
+
+Maintainers:
+
+http://www.gnupg.org/index.html
+
+Packagers:
+
+pierre at nutyx dot org

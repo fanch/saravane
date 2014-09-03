@@ -1,0 +1,13 @@
+Unpacks .zip archives such as those made by PKZIP
+Utilitaire de décompression de fichiers zip
+
+http://www.info-zip.org
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org
+

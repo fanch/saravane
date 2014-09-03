@@ -1,0 +1,12 @@
+The Udev package contains programs for dynamic creation of device nodes.
+The development of udev has been merged with systemd
+
+http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+
+Maintainers:
+
+- cgit.freedesktop.org/systemd/
+
+Packagers:
+
+tnut at nutyx dot org

@@ -1,0 +1,13 @@
+version=1.0.4
+
+source=( http://hal.freedesktop.org/releases/$name-$version.tar.gz)
+
+build() {
+cd udisks-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--libexecdir=/usr/lib/udisks
+make
+make DESTDIR=$PKG install
+}

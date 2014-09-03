@@ -1,0 +1,17 @@
+version=2.2
+source=(
+http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+    # fixes
+    chmod -R a+r $PKG/usr/lib/python2.7/
+    rm $PKG/usr/lib/python2.7/site-packages/dateutil/zoneinfo/zoneinfo--latest.tar.gz
+    # check
+    python2 test.py
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

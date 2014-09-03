@@ -1,0 +1,15 @@
+version=0.40
+source=(
+http://morte.jedrea.com/~jedwin/projects/$name/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --enable-examples=yes
+    make
+    make DESTDIR=$PKG install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

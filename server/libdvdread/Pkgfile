@@ -1,0 +1,11 @@
+version=4.9.9
+
+source=( http://dvdnav.mplayerhq.hu/releases/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--docdir=/usr/share/libdvdread-$version
+make
+make DESTDIR=$PKG install
+}

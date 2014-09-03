@@ -1,0 +1,20 @@
+version=0.9.5
+source=(
+http://deb.grml.org/pool/main/g/grml-etc-core/grml-etc-core_${version}.tar.gz)
+
+build(){
+    cd $SRC/grml-etc-core-$version/doc
+    make
+    cd $SRC/grml-etc-core-$version
+    install -D -m644 etc/skel/.zshrc $PKG/etc/skel/.zshrc
+    install -D -m644 etc/zsh/keephack $PKG/etc/zsh/keephack
+    install -D -m644 etc/zsh/zshrc $PKG/etc/zsh/zshrc
+
+    install -D -m644 doc/grmlzshrc.5 \
+        $PKG/usr/share/man/man5/grmlzshrc.5
+    ln -sf grmlzshrc.5.gz $PKG/usr/share/man/man5/grml-zsh-config.5.gz
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

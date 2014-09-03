@@ -1,0 +1,10 @@
+version=0.0.26
+source=(https://fedorahosted.org/releases/x/m/xmlto/$name-$version.tar.bz2)
+
+build() {
+unset MAKEFLAGS	
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

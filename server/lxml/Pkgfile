@@ -1,0 +1,9 @@
+version=3.0.1
+
+source=(http://pypi.python.org/packages/source/l/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	python2 setup.py install --root=$PKG
+}
+  

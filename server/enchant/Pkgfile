@@ -1,0 +1,16 @@
+version=1.6.0
+source=(http://www.abisource.com/downloads/$name/$version/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--disable-static \
+		--disable-dependency-tracking
+
+	make
+	make DESTDIR=$PKG install
+	chmod a-x $PKG/usr/lib/*.so
+}

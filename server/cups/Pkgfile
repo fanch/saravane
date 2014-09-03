@@ -1,0 +1,45 @@
+version=1.7.5
+PKGMK_GROUPS=(man devel)
+source=( http://cups.org/software/$version/cups-$version-source.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/cups-$version-blfs-1.patch )
+
+
+build() {
+	source /etc/blfs-bootscripts
+	wget  http://nutyx.meticul.eu/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
+        tar xvf $scripts-$scriptsversion.tar.bz2
+	cd $name-$version
+	patch -Np1 -i ../cups-$version-blfs-1.patch
+	aclocal -I config-scripts
+	autoconf -I config-scripts
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--with-logdir=/var/log/cups \
+		--with-docdir=/usr/share/doc/cups \
+		--enable-raw-printing \
+		--mandir=/usr/share/man \
+		--enable-threads \
+		--enable-ssl \
+		--enable-gnutls=no \
+		--infodir=/usr/share/info
+	make
+	make BUILDROOT=$PKG install
+
+	# Lanceur
+	if [ ! -f $PKG/usr/share/applications/cups.desktop ]; then
+		mkdir -p $PKG/usr/share/applications
+		install -m644 desktop/cups.desktop \
+		$PKG/usr/share/applications/cups.desktop
+	fi
+	# Startup Script 
+	cd ../$scripts-$scriptsversion
+	make DESTDIR=$PKG install-$name
+	rm $PKG/etc/init.d/cups
+	# Supprimer les filtres faisant parti de cups-filters
+	rm -rf $PKG/usr/share/cups/banners
+	rm -rf $PKG/usr/share/cups/data/testprint
+	
+	chmod 755 $PKG/var/spool
+	chmod 755 $PKG/etc
+}

@@ -1,0 +1,14 @@
+version=20130114
+source=(http://search.cpan.org/CPAN/authors/id/A/AB/ABH/Mozilla-CA-$version.tar.gz)
+
+build() {
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+unset PERL5LIB PERL_MM_OPT
+
+cd Mozilla-CA-$version
+perl Makefile.PL
+make
+make install INSTALLDIRS=vendor DESTDIR=$PKG
+
+rm $PKG/lib/share/perl5/base/perllocal.pod
+}

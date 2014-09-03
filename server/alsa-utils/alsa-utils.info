@@ -1,0 +1,11 @@
+Utilities for configuring and using ALSA 
+
+http://www.alsa-project.org
+
+Maintainers:
+
+- git.alsa-project.org/?p=alsa-utils.git
+
+Packagers:
+
+pierre at nutyx dot org

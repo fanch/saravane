@@ -1,0 +1,19 @@
+The LVM2 package is a package that manages logical partitions.
+It allows spanning of file systems across multiple physical disks
+and disk partitions and provides for dynamic growing or shrinking
+of logical partitions. 
+LVM2 refers to the userspace toolset that provide logical
+volume management facilities on linux.
+It is reasonably backwards-compatible with the original LVM toolset. 
+
+Outils pour la gestion des volumes logiques (lvm)
+
+http://sourceware.org/lvm2/
+
+Maintainers:
+
+https://git.fedorahosted.org/git/lvm2.git
+
+Packagers:
+
+pierre at nutyx dot org

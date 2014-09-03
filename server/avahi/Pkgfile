@@ -1,0 +1,24 @@
+version=0.6.31
+
+source=(http://www.avahi.org/download/avahi-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure \
+--prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--disable-python \
+--disable-qt3 \
+--disable-qt4 \
+--disable-monodoc \
+--disable-gtk \
+--disable-gtk3 \
+--disable-doxygen-doc \
+--disable-mono \
+--with-distro=none
+make
+make DESTDIR=$PKG install
+
+rm -r $PKG/{etc/avahi,var,usr/share/man/man8,usr/sbin}
+}

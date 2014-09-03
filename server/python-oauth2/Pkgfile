@@ -1,0 +1,12 @@
+version=1.5.211
+source=(
+https://pypi.python.org/packages/source/o/oauth2/oauth2-$version.tar.gz)
+
+build() {
+    cd oauth2-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

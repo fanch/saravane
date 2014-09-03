@@ -1,0 +1,9 @@
+version=2.13
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-SHA1-$version.tar.gz)
+
+build() {
+cd Digest-SHA1-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+}

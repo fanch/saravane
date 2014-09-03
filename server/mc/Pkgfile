@@ -1,0 +1,12 @@
+version=4.8.12
+source=(https://www.midnight-commander.org/downloads/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-charset  \
+--disable-static  \
+--sysconfdir=/etc \
+--with-screen=ncurses
+make
+make DESTDIR=$PKG install
+}

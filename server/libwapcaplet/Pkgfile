@@ -1,0 +1,10 @@
+version=0.2.0
+
+source=(http://download.netsurf-browser.org/libs/releases/$name-$version-src.tar.gz)
+build() {
+cd $name-$version
+make PREFIX=/usr COMPONENT_TYPE="lib-shared"
+make PREFIX=/usr COMPONENT_TYPE="lib-static"
+make install PREFIX=/usr DESTDIR=$PKG COMPONENT_TYPE="lib-shared"
+make install PREFIX=/usr DESTDIR=$PKG COMPONENT_TYPE="lib-static"
+}

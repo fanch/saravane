@@ -1,0 +1,8 @@
+Gives a fake root environment.
+Useful and must be used for building packages as a non-privileged user.
+
+http://packages.debian.org/fakeroot
+
+Packager:
+
+alienus at nutyx dot org

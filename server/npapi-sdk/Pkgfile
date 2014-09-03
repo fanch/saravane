@@ -1,0 +1,9 @@
+version=0.27.2
+source=(https://bitbucket.org/mgorny/npapi-sdk/downloads/npapi-sdk-$version.tar.bz2)
+
+build() {
+cd npapi-sdk-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

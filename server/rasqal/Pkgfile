@@ -1,0 +1,11 @@
+version=0.9.32
+
+source=(http://download.librdf.org/source/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

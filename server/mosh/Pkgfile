@@ -1,0 +1,16 @@
+version=1.2.4
+source=(http://mosh.mit.edu/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    install -Dm644 conf/bash_completion.d/$name \
+        $PKG/usr/share/bash-completion/completions/$name
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

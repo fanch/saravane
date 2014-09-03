@@ -1,0 +1,11 @@
+version=6.1
+
+source=( http://ftp.samba.org/pub/linux-cifs/$name/$name-$version.tar.bz2)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

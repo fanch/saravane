@@ -1,0 +1,12 @@
+A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others)
+Bibliothèque pour la lecture du format raw
+
+http://www.libraw.org/
+
+Packagers:
+
+pierre at nutyx dot org
+
+Maintainers:
+
+- git://github.com/LibRaw/LibRaw.git

@@ -1,0 +1,5 @@
+perl
+perl-io-socket-ssl
+perl-mozilla-ca
+perl-net-http
+perl-libwww

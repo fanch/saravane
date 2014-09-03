@@ -1,0 +1,20 @@
+version=4.0.0
+source=(
+http://repo.varnish-cache.org/source/$name-$version.tar.gz
+varnish.service)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var/lib
+    make
+    make DESTDIR=$PKG install
+
+    # install the varnish init script
+    install -Dm755 $SRC/$name.service $PKG/etc/rc.d/init.d/$name
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

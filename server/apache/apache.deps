@@ -1,0 +1,7 @@
+wget
+gcc.devel
+glibc.devel
+pcre
+apr-util
+sqlite
+expat

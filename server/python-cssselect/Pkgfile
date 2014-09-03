@@ -1,0 +1,12 @@
+version=0.9.1
+source=(
+http://pypi.python.org/packages/source/c/cssselect/cssselect-$version.tar.gz)
+
+build() {
+    cd cssselect-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

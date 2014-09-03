@@ -1,0 +1,12 @@
+version=1.5.1
+
+source=(http://openjpeg.googlecode.com/files/openjpeg-1.5.1.tar.gz )
+
+
+build() {
+	cd openjpeg-$version
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+	ln -s openjpeg-1.5/openjpeg.h $PKG/usr/include
+}

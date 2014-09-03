@@ -1,0 +1,12 @@
+version=0.40
+source=(http://www.cpan.org/authors/id/J/JA/JASLONG/Mail-DKIM-$version.tar.gz)
+
+build() {
+cd Mail-DKIM-$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+find "$PKG" -name '.packlist' -delete
+find "$PKG" -name '*.pod' -delete
+}

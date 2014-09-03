@@ -1,0 +1,11 @@
+Contains the library used for providing an extensible input/output abstraction layer for structured file formats.
+
+http://www.gnome.org/
+
+Maintainers:
+
+git.gnome.org/browse/libgsf/
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,13 @@
+version=2.2.1
+source=( http://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+
+./configure \
+--prefix=/usr \
+--mandir=/usr/share/man \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

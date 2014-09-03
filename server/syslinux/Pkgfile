@@ -1,0 +1,11 @@
+version=5.00
+
+source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	sed -i "s|win32/syslinux.exe||g" Makefile
+	make
+	make SBINDIR=$PKG/usr/sbin BINDIR=$PKG/usr/bin INCDIR=$PKG/usr/include MANDIR=$PKG/usr/share/man AUXDIR=$PKG/usr/lib/syslinux install
+}
+  

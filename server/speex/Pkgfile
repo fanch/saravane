@@ -1,0 +1,13 @@
+version=1.2rc1
+
+source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--docdir=/usr/share/doc/speex-$version
+make
+make DESTDIR=$PKG install
+}  

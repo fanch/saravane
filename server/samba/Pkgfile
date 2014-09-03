@@ -1,0 +1,40 @@
+version=4.1.9
+
+source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+./configure                             \
+    --prefix=/usr                       \
+    --sysconfdir=/etc                   \
+    --localstatedir=/var                \
+    --with-piddir=/run/samba            \
+    --with-pammodulesdir=/lib/security  \
+    --enable-fhs                        \
+    --enable-nss-wrapper  
+make
+make DESTDIR=$PKG install
+
+install -d $PKG/lib       
+mv -v $PKG/usr/lib/libnss_win{s,bind}.so*   $PKG/lib
+ln -v -sf lib/libnss_winbind.so.2 $PKG/usr/lib/libnss_winbind.so
+ln -v -sf lib/libnss_wins.so.2    $PKG/usr/lib/libnss_wins.s
+   
+install -v -m644 examples/smb.conf.default $PKG/etc/samba/smb.conf.default
+
+#  cups 
+cd $PKG/usr/lib/
+install -d cups/backend
+ln -v -sf $PKG/usr/bin/smbspool $PKG/usr/lib/cups/backend/smb
+
+# service
+cd $SRC
+
+tar xf $scripts-$scriptsversion.tar.bz2
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-samba
+make DESTDIR=$PKG install-winbindd
+}

@@ -1,0 +1,11 @@
+Contains a very portable POSIX/ANSI-C based library for Unix platforms
+
+http://www.gnu.org/software/pth/
+
+Maintainers:
+
+- Ralf S. Engelschall (rse at gnu dot org)
+
+Packagers:
+
+pierre at nutyx dot org

@@ -1,0 +1,12 @@
+version=1.3
+
+source=(http://downloads.nutyx.org/files/$name-$version.tgz)
+
+build() {
+	for i in *.fw
+	do
+	install -D -m 644 $i $PKG/lib/firmware/$i
+	done
+	# Install firmware licence
+ 	install -D -m 644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

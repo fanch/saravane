@@ -1,0 +1,48 @@
+version=1.12.1
+source=(http://web.mit.edu/$name/www/dist/krb5/1.12/krb5-$version-signed.tar
+        http://www.linuxfromscratch.org/patches/blfs/7.5/mitkrb-$version-db2_fix-1.patch)
+
+build()  {
+        tar xzf krb5-${version}.tar.gz
+        cd krb5-$version
+        patch -Np1 -i $SRC/mitkrb-$version-db2_fix-1.patch
+        cd src
+        sed -e "s@python2.5/Python.h@& python2.7/Python.h@g" \
+            -e "s@-lpython2.5]@&,\n  AC_CHECK_LIB(python2.7,main,[PYTHON_LIB=-lpython2.7])@g" \
+                -i configure.in
+        sed -e "s@interp->result@Tcl_GetStringResult(interp)@g" \
+            -i kadmin/testing/util/tcl_kadm5.c
+        sed -e 's@\^u}@^u cols 300}@' \
+            -i tests/dejagnu/config/default.exp
+
+autoconf
+
+./configure CPPFLAGS="-I/usr/include/et -I/usr/include/ss" \
+            --prefix=/usr                                  \
+            --localstatedir=/var/lib                       \
+            --with-system-et                               \
+            --with-system-ss                               \
+            --enable-dns-for-realm
+make
+make DESTDIR=$PKG install
+
+for LIBRARY in gssapi_krb5 gssrpc k5crypto kadm5clnt_mit kadm5srv_mit kdb5 krb5 krb5support verto; do
+	chmod -v 755 $PKG/usr/lib/lib$LIBRARY.so.*.*
+done
+mkdir -p $PKG/{bin,lib}
+mv -v $PKG/usr/lib/libkrb5.so.3* $PKG/lib
+mv -v $PKG/usr/lib/libk5crypto.so.3* $PKG/lib
+mv -v $PKG/usr/lib/libkrb5support.so.0* $PKG/lib
+
+ln -v -sf ../../lib/libkrb5.so.3.3        $PKG/usr/lib/libkrb5.so
+ln -v -sf ../../lib/libk5crypto.so.3.1    $PKG/usr/lib/libk5crypto.so
+ln -v -sf ../../lib/libkrb5support.so.0.1 $PKG/usr/lib/libkrb5support.so
+
+mv -v $PKG/usr/bin/ksu $PKG/bin
+chmod -v 755 $PKG/bin/ksu 
+
+install -v -dm755 $PKG/usr/share/doc/krb5-$version
+cp -vfr ../doc/*  $PKG/usr/share/doc/krb5-$version
+
+unset LIBRARY INFOFILE
+}

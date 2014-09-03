@@ -1,0 +1,12 @@
+Maps the new names of icons for Tango to the legacy names used by the GNOME and KDE desktops
+utilitaires de compatibilite d'icones pour KDE/Gnome/Xfce 
+
+http://tango.freedesktop.org/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org
