@@ -1,0 +1,12 @@
+GNU cpio copies files into or out of a cpio or tar archive.
+The archive can be another file on the disk, a magnetic tape, or a pipe.
+
+http://www.gnu.org/software/cpio/
+
+Maintainers:
+
+- Sergey Poznyakoff
+
+Packagers:
+
+pierre at nutyx dot org

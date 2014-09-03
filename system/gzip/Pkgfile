@@ -1,0 +1,13 @@
+version=1.6
+source=(http://ftp.gnu.org/gnu/gzip/gzip-$version.tar.xz)
+
+build()
+{
+cd gzip-$version
+./configure --prefix=/usr \
+ --bindir=/bin --libdir=/lib
+make
+make -k check || true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

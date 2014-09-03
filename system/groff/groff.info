@@ -1,0 +1,11 @@
+The Groff package contains programs for processing and formatting text.
+
+http://www.gnu.org/software/groff/
+
+Maintainer:
+
+- Werner Lemberg  wl at gnu dot org
+
+Packager: 
+
+pierre^

@@ -1,0 +1,26 @@
+version=2014
+PKGMK_GROUPS=(man)
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-20140829.tar.bz2) 
+build () {
+cd nutyx-basicfs/nutyx-saravane-basicfs/rootfs
+mv * $PKG/
+mkdir $PKG/{dev,sys,proc,run,tmp,home,srv,mnt}
+mkdir $PKG/var/tmp
+mkdir -p $PKG/usr/{,local/}lib
+chmod 1777 $PKG/{,var/}tmp
+mkdir -v $PKG/var/{mail,spool}
+mkdir -pv $PKG/var/run/lock
+mkdir -pv $PKG/opt/kde/share
+ln -svf /usr/share/polkit-1 $PKG/opt/kde/share
+
+ln -sv $PKG/opt/xorg/share/X11 $PKG/usr/share/X11
+
+case $(uname -m) in
+ x86_64) mkdir -p $PKG/opt/{xorg,xfce4}
+         ln -sv lib $PKG/opt/xorg/lib64
+         ln -sv lib $PKG/opt/xfce4/lib64
+         ln -sv lib $PKG/lib64
+         ln -sv lib $PKG/usr/lib64
+         ln -sv lib $PKG/usr/local/lib64;;
+esac
+}

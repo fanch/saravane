@@ -1,0 +1,11 @@
+version=0.9.14
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make docdir=/usr/share/doc/$name-$version DESTDIR=$PKG install
+rm -f $PKG/usr/share/info/dir
+}

@@ -1,0 +1,35 @@
+version=5.20.0
+source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.bz2)
+
+build()
+{
+cd $name-$version
+
+if [ "`uname -m`" == "x86_64" ]; then
+	_ARCH="-Dcccdlflags='-fPIC'"
+else
+	_ARCH=""
+fi
+
+echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
+
+
+sh Configure -des  -Dusethreads \
+	-Dprefix=/usr \
+	-Dvendorprefix=/usr \
+	-Dman1dir=/usr/share/man/man1 \
+	-Dman3dir=/usr/share/man/man3 \
+	-Dpager="/usr/bin/less isR" ${_ARCH}
+
+make
+make -k test || true
+make DESTDIR=$PKG install
+find $PKG -iname 'TODO*' -or \
+	-iname 'Change*' -or \
+	-iname 'README*' -or \
+	-name '*.bs' -or \
+	-name .packlist -or \
+	-name perllocal.pod | xargs rm
+find $PKG -depth -empty -exec rmdir {} \;
+chmod -R +w $PKG
+}

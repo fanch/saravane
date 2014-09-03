@@ -1,0 +1,21 @@
+This PSmisc package is a set of some small useful utilities that use the proc filesystem.
+We're not about changing the world, but providing the system administrator 
+with some help in common tasks.
+
+There is options for using SELinux if you need it and fuser understands IPv6.
+It also speaks various languages using the gettext facilities
+
+Petits utilitaires qui utilisent le système de fichiers /proc
+
+
+http://psmisc.sourceforge.net/
+
+Maintainer:
+
+- Werner Almesberger werner at almesberger dot net
+- Craig Small csmall at small dot dropbear dot id dot au
+- Trent Waddington trent dot waddington @ gmail dot com
+
+Packager:
+
+tnuttens at gmail dot com

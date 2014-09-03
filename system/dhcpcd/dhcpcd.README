@@ -1,0 +1,23 @@
+Si vous n'avez pas choisi d'utilitaire de réseau, 
+et que votre carte réseau par défaut est eth0,
+si le fichier /etc/sysconfig/ifconfig.eth0 est inexistant, 
+ajoutez ceci dans le fichier /etc/sysconfig/ifconfig.eth0
+
+ONBOOT="yes"
+SERVICE="dhcpcd"
+DHCP_START=""
+DHCP_STOP="-k "
+
+# Set PRINTIP="yes" to have the script print
+# the DHCP assigned IP address
+PRINTIP="no"
+
+# Set PRINTALL="yes" to print the DHCP assigned values for
+# IP, SM, DG, and 1st NS. This requires PRINTIP="yes".
+PRINTALL="no"
+
+Vous trouverez plus d'infos:
+
+http://lfs.traduc.org/view/blfs-svn/basicnet/dhcpcd.html
+http://www.linuxfromscratch.org/blfs/view/svn/basicnet/dhcpcd.html
+

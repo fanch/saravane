@@ -1,0 +1,21 @@
+NASM (Netwide Assembler) is an 80x86 assembler designed for portability and modularity.
+It includes a disassembler as well.
+The Netwide Assembler, NASM, is an 80x86 and x86-64 assembler designed for 
+portability and modularity. It supports a range of object file formats,
+including Linux and *BSD a.out, ELF, COFF, Mach-O, Microsoft 16-bit OBJ, Win32 and Win64.
+It will also output plain binary files. Its syntax is designed to be simple and
+easy to understand, similar to Intel's but less complex. It supports all currently known
+x86 architectural extensions, and has strong support for macros.
+
+http://nasm.sourceforge.net/
+
+Maintainers:
+
+- H. Peter Anvin
+- Frank B. Kotler
+- Jin Kyu Song
+- Cyrill Gorcunov
+
+Packagers:
+
+pierre at nutyx dot org

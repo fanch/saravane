@@ -1,0 +1,17 @@
+The Expat package contains a stream oriented C library for parsing XML.
+Expat is an XML parser library written in C.
+It is a stream-oriented parser in which an application
+registers handlers for things the parser might find in the XML document
+(like start tags).
+
+http://expat.sourceforge.net/
+
+Maintainer:
+
+- James Clark
+
+Packager:
+
+jmilot at nutyx dot org
+tnut at nutyx dot org
+

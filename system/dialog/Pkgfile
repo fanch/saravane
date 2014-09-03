@@ -1,0 +1,22 @@
+version=1.2-20140219
+PKGMK_GROUPS=(devel man)
+
+source=(ftp://dickey.his.com/dialog/$name-${version}.tgz)
+
+build() {
+cd $name-${version}
+./configure --prefix=/usr \
+--enable-nls --bindir=/bin \
+--with-ncursesw \
+--mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_BUILDVER}`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib
+
+rm -r usr/lib
+}

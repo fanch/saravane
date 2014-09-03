@@ -1,0 +1,11 @@
+version=1.0.2
+source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz )
+build()
+{
+cd mpc-$version
+./configure --prefix=/usr --libdir=/lib
+make
+make check
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

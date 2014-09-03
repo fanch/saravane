@@ -1,0 +1,12 @@
+XFS filesystem utilities
+Diverses outils pour le système de fichiers XFS
+
+http://oss.sgi.com/projects/xfs/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

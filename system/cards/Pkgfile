@@ -1,0 +1,20 @@
+version=0.9.86.1
+source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
+#	http://downloads.nutyx.org/files/patchs/$name/$name-$version-upstream_fixes-1.patch
+	)
+build () {
+cd $name-$version
+# patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
+make all
+make DESTDIR=$PKG install
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_BUILDVER}`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/bin \
+etc/pkgmk.conf
+rm -rf usr/bin etc/pkgmk.conf
+}
+

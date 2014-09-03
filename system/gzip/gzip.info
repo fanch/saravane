@@ -1,0 +1,12 @@
+The Gzip package contains programs for compressing and decompressing files.
+
+http://www.gzip.org/
+
+Maintainer: 
+
+- Jean-loup Gailly jloup at gzip dot org
+- Mark Adler for the decompression code.
+
+Packager:
+
+pierre^

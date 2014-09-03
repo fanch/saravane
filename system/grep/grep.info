@@ -1,0 +1,13 @@
+The grep command searches one or more input files for lines containing 
+a match to a specified pattern. By default, grep prints the matching lines.
+
+http://www.gnu.org/software/grep/ 
+
+Maintainer:
+
+- Jim Meyering jim at meyering dot net
+- Paolo Bonzini bonzini at gnu dot org
+
+Packager:
+
+pierre^

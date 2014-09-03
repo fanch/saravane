@@ -1,0 +1,9 @@
+version=4.3
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name$version.tar.gz)
+
+build() {
+cd $name$version/squashfs-tools
+make 
+mkdir -p $PKG/bin
+make INSTALL_DIR=$PKG/bin install
+}

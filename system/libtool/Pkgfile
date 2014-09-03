@@ -1,0 +1,14 @@
+version=2.4.2
+source=(http://ftp.gnu.org/gnu/libtool/libtool-$version.tar.gz)
+
+PKGMK_GROUPS=()
+
+build()
+{
+cd libtool-*
+./configure --prefix=/usr
+make
+# make check || true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

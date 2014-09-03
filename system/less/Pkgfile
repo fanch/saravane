@@ -1,0 +1,11 @@
+version=458
+source=(http://www.greenwoodsoftware.com/less/less-$version.tar.gz)
+
+build()
+{
+cd less-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

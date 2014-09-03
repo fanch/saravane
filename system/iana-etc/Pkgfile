@@ -1,0 +1,13 @@
+version=2.30
+source=(http://sethwklein.net/iana-etc-2.30.tar.bz2)
+
+build()
+{
+cd iana-etc-$version
+
+make
+
+make DESTDIR=$PKG install
+
+}
+

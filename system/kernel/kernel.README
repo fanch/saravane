@@ -1,0 +1,8 @@
+si vous avez une carte wifi Broadcom et que vous souhaitez utilisez le
+pilote de broadcom compilé avec le kernel vous allez devoir blacklister
+certains modules de cette façon 
+cat > /etc/modprobe.d/broadcom.conf << "EOF"
+blacklist ssb
+blacklist bcma
+blacklist b43
+EOF

@@ -1,0 +1,12 @@
+POSIX 1003.1e capabilities
+Librairie posix 1003.1e version 2
+
+http://www.kernel.org/pub/linux/libs/security/linux-privs/
+
+Maintainers:
+
+- NuTyX core team
+
+Packagers:
+
+pierre at nutyx dot org

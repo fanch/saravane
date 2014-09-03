@@ -1,0 +1,23 @@
+The Tar package contains an archiving program.
+Le paquet Tar contient un programme d'archivage. 
+
+http://www.gnu.org/software/tar/tar.html
+
+Maintainer:
+
+- John Gilmore
+- Henry Spencer
+- Fred Fish
+- Ian Darwin
+- Geoff Collyer
+- Stan Barber
+- Guy Harris
+- Dave Brower
+- Richard Todd
+- Michael Rendell
+- Stu Heiss and
+- Rich Salz.
+
+Packager:
+
+pierre^

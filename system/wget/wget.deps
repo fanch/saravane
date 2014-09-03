@@ -1,0 +1,6 @@
+patch
+gcc.devel
+glibc.devel
+zlib.devel
+openssl.devel
+make

@@ -1,0 +1,13 @@
+version=1.1.8
+source=(http://linux-pam.org/library/Linux-PAM-$version.tar.bz2)
+
+build() {
+mkdir -p $PKG/etc/pam.d
+cd Linux-PAM-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+--docdir=/usr/share/doc/Linux-PAM-$version \
+--disable-nis
+make
+make DESTDIR=$PKG install
+chmod -v 4755 $PKG/sbin/unix_chkpwd
+}

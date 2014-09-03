@@ -1,0 +1,20 @@
+Dialog is a utility to create nice user interfaces to shell scripts
+or other scripting languages, such as perl.
+It is non-graphical (it uses curses) so it can be run in the console or an xterm. 
+There are also graphical Xwindows versions.
+
+Outil permettant d'afficher des boîtes de dialogue via des scripts ou
+autres languages scripts tel que perl.
+C'est la version non-graphique (qui utilise curses) qui peut être exécutée
+dans un terminal ou à la console.
+Il existe aussi des version graphique pour Xwindows.
+
+http://hightek.org/dialog/
+
+Maintainer: 
+
+- Thomas E. Dickey dickey at invisible-island dot net
+
+Packager: 
+
+tnuttens at gmail dot com

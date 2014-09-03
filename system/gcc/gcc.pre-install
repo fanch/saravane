@@ -1,0 +1,3 @@
+rm -fv usr/lib{,64}/libgcc_s.so{,.1}
+rm -fv usr/lib{,64}/libstdc++.so{,.6}
+rm -fv usr/lib{,64}/libstdc++.la

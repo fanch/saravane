@@ -1,0 +1,12 @@
+The Sysvinit package contains programs for controlling the startup,
+running, and shutdown of the system.
+
+ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/
+
+Maintainer:
+
+- sysvinit-devel@nongnu.org 
+
+Packager:
+
+pierre^

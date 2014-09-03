@@ -1,0 +1,5 @@
+gcc.devel
+glibc.devel
+make
+wget
+file.devel
