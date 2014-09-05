@@ -134,8 +134,8 @@ e3526f59023f3f7d1ffa4d541335edab  file-5.19.tar.gz
 5be15528788635818104146957171f5d  eudev-1.10-manpages.tar.bz2
 c2d6b127f89261513b23b6d458484099  udev-lfs-20140408.tar.bz2
 20cbecd4e9e880ee7a50a136c8b1484e  perl-5.20.0.tar.bz2
-412acbbd64a866c2ed1c729deaf4ae7c  e2fsprogs-1.42.11.tar.gz
-f333b2e8f876221a97871cae0c188aa5  tzdata2014f.tar.gz
+68255f51be017a93f2f6402fab06c2bf  e2fsprogs-1.42.12.tar.gz
+f9f59425e55b21d2e52bb3a95fc17b8d  tzdata2014g.tar.gz
 97ae0ecd007750f776099fcb9fccc7af  nasm-2.11.04.tar.xz
 fddf71348546af523353bd43d34919c1  gcc-4.9.1.tar.bz2
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
@@ -147,7 +147,7 @@ a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 1e6da4e434553d2811437aa42c7f7c76  gmp-6.0.0a.tar.xz
 a4650aebcc464bb91113c2c356da8210  XML-Parser-2.42_01.tar.gz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
-3c8bf9c9ccf2f1a3e8b7b7303be54543  util-linux-2.25.1-rc1.tar.xz
+2ff36a8f8ede70f66c5ad0fb09e40e79  util-linux-2.25.1.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
 e7a985a243b7941b6bc6240fcbc797fc  linux-3.16.1.tar.xz
 fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
