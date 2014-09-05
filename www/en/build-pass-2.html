@@ -53,13 +53,13 @@ ln -s saravane/scripts $LFS/root/bin</kbd></pre>
 <pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
 cd $LFS/root/saravane/system/aaabasicfs</kbd></pre>
       <li>We compile the first package of NuTyX</li>
-<pre class="command"><kbd>/tools/bin/pkgmk -d</kbd></pre>
+<pre class="command"><kbd>/tools/bin/pkgmk -cf ../../../bin/pkgmk.conf.passes</kbd></pre>
       <li>We install aaabasicfs in the NuTyX</li>
 <pre class="command"><kbd>/tools/bin/pkgadd -r $LFS $LFS/root/saravane/pkg/aaabasicfs1*</kbd></pre>
       <li>We check if it's present</li>
 <pre class="command"><kbd>ls $LFS/var/lib/pkg/DB</kbd></pre>
-retourne
-<pre class="output">aaabasicfs aaabasicfs.man</pre>
+should return
+<pre class="output" style="color: blue;">aaabasicfs aaabasicfs.man</pre>
       <li>We mount all different folders</li>
 <pre class="command"><kbd>mount -v -B /dev $LFS/dev
 mount -vt devpts devpts $LFS/dev/pts
