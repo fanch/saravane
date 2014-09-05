@@ -37,9 +37,9 @@ do
       fi
       NAME=`echo $i|cut -d "@" -f1`
       if [ "$NAME" != "kernel" ];then
-      	$PKGMK -cf ../../bin/pkgmk.conf.passes -i -kw 2>&1|tee ${LOG}/$i.log || exit 1
+      	$PKGMK -cf ../../../bin/pkgmk.conf.passes -i -kw 2>&1|tee ${LOG}/$i.log || exit 1
       else
-        $PKGMK -d -cf ../../bin/pkgmk.conf.passes -i -kw
+        $PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i -kw
       fi
       if ( grep "^=======>" ${LOG}/$i.log| tail -1 |grep "ERROR"  > /dev/null);then
          exit 1
