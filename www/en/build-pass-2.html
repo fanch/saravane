@@ -48,18 +48,18 @@
 <pre class="command"><kbd>chown -R root:root $LFS</kbd></pre>
       <li>We create folders and links to put the recepts in place.</li>
 <pre class="command"><kbd>install -dv -m0750  $LFS/root
-ln -s makelfs/bin $LFS/root</kbd></pre>
+ln -s saravane/scripts $LFS/root/bin</kbd></pre>
       <li>We move the receipts to the right folder and go in this folder</li>
-<pre class="command"><kbd>mv /home/lfs/makelfs $LFS/root/
-cd $LFS/root/makelfs/BASE/aaabasicfs#*</kbd></pre>
+<pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
+cd $LFS/root/saravane/system/aaabasicfs</kbd></pre>
       <li>We compile the first package of NuTyX</li>
 <pre class="command"><kbd>/tools/bin/pkgmk -d</kbd></pre>
       <li>We install aaabasicfs in the NuTyX</li>
-<pre class="command"><kbd>/tools/bin/pkgadd -r $LFS $LFS/root/makelfs/pkg/aaabasicfs#*</kbd></pre>
+<pre class="command"><kbd>/tools/bin/pkgadd -r $LFS $LFS/root/saravane/pkg/aaabasicfs1*</kbd></pre>
       <li>We check if it's present</li>
 <pre class="command"><kbd>ls $LFS/var/lib/pkg/DB</kbd></pre>
 retourne
-<pre class="output">aaabasicfs#2013-81-x86_64</pre>
+<pre class="output">aaabasicfs aaabasicfs.man</pre>
       <li>We mount all different folders</li>
 <pre class="command"><kbd>mount -v -B /dev $LFS/dev
 mount -vt devpts devpts $LFS/dev/pts
@@ -95,7 +95,7 @@ bash: tput: command not found
      <li>We redefine the PATH variable</li>
 <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
      <li> We launch the compilation of the packages</li>
-<pre class="command"><kbd>cd /root/makelfs/system
+<pre class="command"><kbd>cd /root/saravane/system
 pass</kbd></pre>
 	return
 <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz

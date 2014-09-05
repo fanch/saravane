@@ -52,12 +52,12 @@
 <pre class="command"><kbd>chown -R root:root $LFS</kbd></pre>
       <li>On créé les dossiers et lien pour y placer les recettes.</li>
 <pre class="command"><kbd>install -dv -m0750  $LFS/root
-ln -s makelfs/bin $LFS/root</kbd></pre>
+ln -s saravane/scripts $LFS/root/bin</kbd></pre>
       <li>On déplace les recettes et l'on se place dans le dossier adéquat</li>
-<pre class="command"><kbd>mv /home/lfs/makelfs $LFS/root/
-cd $LFS/root/makelfs/system/aaabasicfs*</kbd></pre>
+<pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
+cd $LFS/root/saravane/system/aaabasicfs</kbd></pre>
       <li>On compile le premier paquet de NuTyX</li>
-<pre class="command"><kbd>/tools/bin/pkgmk -cf ../../config/pkgmk.conf</kbd></pre>
+<pre class="command"><kbd>/tools/bin/pkgmk -cf ../../config/pkgmk.config.passes</kbd></pre>
       <li>On installe aaabasicfs dans la NuTyX</li>
 <pre class="command"><kbd>/tools/bin/pkgadd -r $LFS aaabasicfs1*
 /tools/bin/pkgadd -r $LFS aaabasicfs.man1*</kbd></pre>
@@ -100,10 +100,10 @@ bash: tput: command not found
      <li>On redéfinie la variable PATH</li>
 <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
      <li> On lance la compilation des paquets</li>
-<pre class="command"><kbd>cd /root/makelfs/system
+<pre class="command"><kbd>cd /root/saravane/system
 pass</kbd></pre>
 	retourne
-<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.14.4.tar.xz
+<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
 ...</pre>
     </ol>
     <h2>Explications relative à chaque action</h2>

@@ -91,16 +91,16 @@ EOF</code></kbd></pre>
     And then we load the new environnement:
 <pre class="command_user"><kbd>source ~/.bash_profile</kbd></pre>
     And to finish, we get the latest version from the git:
-<pre class="command_user"><kbd>rsync -azv --delete-after rsync://rsync.nutyx.org:/ports/makelfs .</kbd></pre>
-    Ones this is done, a new folder is created: makelfs. We enter in it and launch the first script:
-<pre class="command_user"><kbd>cd makelfs
-bash runmefirst</kbd></pre>
+<pre class="command_user"><kbd>git clone git://git.tuxfamily.org/gitroot/nutyx/saravane.git</kbd></pre>
+    Ones this is done, a new folder is created: saravane. We enter in it and launch the first script:
+<pre class="command_user"><kbd>cd saravane
+scripts/runmebeforepass1</kbd></pre>
     The script will check a serie of verification and NO error should occur. The downloading of the sources will start automatically. When it's finish you just have to follow instructions.
     </br>
     If everything went well, you should read the following messages: <pre class="output">====> Successfull configured</pre>
 
 If your read this, congratulations you are ready to launch the first pass for the construction of your future NuTyX, do:    
-<pre class="command_user"><kbd>cd /home/lfs/makelfs/CHROOT
+<pre class="command_user"><kbd>cd /home/lfs/saravane/CHROOT
 pass</kbd></pre>
 
 Let's the show begin ... </br>
