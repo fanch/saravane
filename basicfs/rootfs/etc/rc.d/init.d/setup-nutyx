@@ -1118,8 +1118,8 @@ $PARTITION" 0 0 0 \
 				if [ ! "$result" == "" ]; then
 					dialog --title " $(gettext "Launch the format process ?") " \
 					--yesno "$(gettext "The partition") $PARTITION \
-					$(gettext "will be format in") $result.\n\
-					$(gettext "Are you sure you want to continue ?")" 7 60
+$(gettext "will be format in") $result.\n\n\
+$(gettext "Are you sure you want to continue ?")" 7 60
 					retval2=$?
 				fi
 				case $retval2 in
@@ -1182,11 +1182,9 @@ setup_install() {
 					fi
 					umount $PARTITION
 					SETUP_INSTALL="yes"
+					echo "$PARTITION" > /root/boot
 					echo "$PARTITION" > $TMP/boot
 					setup_grub
-					if [ "$SETUP_INSTALL" == "yes" ];then
-						echo "$PARTITION" > /root/boot
-					fi
 				fi
 			fi
 		fi
@@ -1204,11 +1202,11 @@ MBR_ok() {
 	retval=""
 	dialog --title "   $(gettext "Everything OK, do you want to modify") $GRUB_CONFIG_FILE ?   " \
 	--colors \
-	--yesno " $(gettext "A new") $GRUB_CONFIG_FILE $(gettext "has been created") \
-	$(gettext "it has been adapted to launch the Maintenance system of NuTyX") \
-	$(gettext "if you choose") $(gettext "Yes"), \
-	$(gettext "an simplify VI editor will allow you to adjust it").\n \
-	\Z4i\Zn   $(gettext "Enter the edit mode") \n\
+	--yesno " $(gettext "A new") $GRUB_CONFIG_FILE $(gettext "has been created"), \
+$(gettext "it has been adapted to launch the Maintenance system of NuTyX"), \
+$(gettext "if you choose") $(gettext "Yes"), \
+$(gettext "an simplify VI editor will allow you to adjust it").\n\n \
+	\Z4i\Zn  $(gettext "Enter the edit mode") \n\
 	\Z4Esc\Zn $(gettext "Exit the edit mode") \n\
 	\Z4:q!\Zn $(gettext "Cancel the modifications and exit VI")\n\
 	\Z4:x\Zn  $(gettext "Save and exit VI")\n" 0 0
