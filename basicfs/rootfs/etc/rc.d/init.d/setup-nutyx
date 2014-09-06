@@ -1138,7 +1138,7 @@ $(gettext "Are you sure you want to continue ?")" 7 60
 								mkreiserfs -q $PARTITION > /dev/tty2 || error "mkreiserfs -q $PARTITION"
 								;;
 							btrfs)
-								mkfs.btrfs $PARTITION > /dev/tty2 || error "mkfs.btrfs $PARTITION"
+								mkfs.btrfs -f $PARTITION > /dev/tty2 || error "mkfs.btrfs $PARTITION"
 								;;
 							xfs)
 								mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
