@@ -1117,8 +1117,8 @@ $PARTITION" 0 0 0 \
 				result=`cat $TMP/result`
 				if [ ! "$result" == "" ]; then
 					dialog --title " $(gettext "Launch the format process ?") " \
-					--yesno "$(gettext "The partition") $PARTITION \
-$(gettext "will be format in") $result.\n\n\
+					--yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
+$(gettext "will be format in") \Zb\Z1$result\Zn.\n\n\
 $(gettext "Are you sure you want to continue ?")" 7 60
 					retval2=$?
 				fi
@@ -1138,7 +1138,7 @@ $(gettext "Are you sure you want to continue ?")" 7 60
 								mkreiserfs -q $PARTITION > /dev/tty2 || error "mkreiserfs -q $PARTITION"
 								;;
 							btrfs)
-								mkfs.btrfs -f $PARTITION > /dev/tty2 || error "mkfs.btrfs $PARTITION"
+								mkfs.btrfs -f $PARTITION > /dev/tty2 || error "mkfs.btrfs -f $PARTITION"
 								;;
 							xfs)
 								mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
@@ -1206,10 +1206,10 @@ MBR_ok() {
 $(gettext "it has been adapted to launch the Maintenance system of NuTyX"), \
 $(gettext "if you choose") $(gettext "Yes"), \
 $(gettext "an simplify VI editor will allow you to adjust it").\n\n \
-	\Z4i\Zn  $(gettext "Enter the edit mode") \n\
-	\Z4Esc\Zn $(gettext "Exit the edit mode") \n\
-	\Z4:q!\Zn $(gettext "Cancel the modifications and exit VI")\n\
-	\Z4:x\Zn  $(gettext "Save and exit VI")\n" 0 0
+	\Zb\Z4i\Zn  $(gettext "Enter the edit mode") \n\
+	\Zb\Z4Esc\Zn $(gettext "Exit the edit mode") \n\
+	\Zb\Z4:q!\Zn $(gettext "Cancel the modifications and exit VI")\n\
+	\Zb\Z4:x\Zn  $(gettext "Save and exit VI")\n" 0 0
 	retval=$?
 	case $retval in
 		0|2)
