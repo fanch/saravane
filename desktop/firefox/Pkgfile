@@ -99,7 +99,7 @@ sed -i 's/\(MOZ_PKG_FATAL_WARNINGS =\).*/\1 0/' \
 sed -i 's# ""##' browser/installer/Makefile.in
 #make -f client.mk
 
-make -f client.mk build
+SHELL=/bin/sh  make -f client.mk build
 
 make -C firefox-build-dir/browser/installer
 

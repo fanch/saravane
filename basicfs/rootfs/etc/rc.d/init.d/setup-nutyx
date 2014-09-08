@@ -1078,11 +1078,9 @@ setup_partition() {
 				0|2)
 					case $choice in
 						cfdisk)
-							cfdisk $DISK
-							sleep 2;;
+							cfdisk $DISK;;
 						fdisk)
-							fdisk $DISK
-							sleep 2;;
+							fdisk $DISK;;
 					esac
 					;;
 				1|2544)
@@ -1117,7 +1115,7 @@ $PARTITION" 0 0 0 \
 				result=`cat $TMP/result`
 				if [ ! "$result" == "" ]; then
 					dialog --title " $(gettext "Launch the format process ?") " \
-					--yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
+					--colors --yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
 $(gettext "will be format in") \Zb\Z1$result\Zn.\n\n\
 $(gettext "Are you sure you want to continue ?")" 7 60
 					retval2=$?

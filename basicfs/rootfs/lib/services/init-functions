@@ -817,9 +817,8 @@ do_mount_virtualfs()
                 mount -o mode=0755,nosuid /dev  || failed=1
         fi
         ln -sfn /run/shm /dev/shm
-#	Let see this later	
-#	(exit ${failed})
-#	evaluate_retval
+	(exit ${failed})
+	evaluate_retval
 }
 
 ################################################################################
