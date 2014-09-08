@@ -10,7 +10,7 @@ fi
 
 GROUP=${1}
 
-cd /srv/nutyx/saravane/latest/${GROUP}/
+cd ${GROUP}
 rm -f {index.html,MD5SUM}
 
 TMP=`mktemp -d`
