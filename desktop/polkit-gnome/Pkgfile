@@ -1,6 +1,6 @@
 version=0.105
 
-source=(http://downloads.nutyx.org/archives/gnome/sources/$name/0.105/$name-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/0.105/$name-$version.tar.xz)
 build() {
 cd $name-$version
 ./configure --prefix=/usr \

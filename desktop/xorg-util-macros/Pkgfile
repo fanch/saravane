@@ -1,7 +1,7 @@
 version=1.18.0
 PKGMK_GROUPS=()
 _name=util-macros
-source=(http://downloads.nutyx.org/archives/xorg/individual/util/${_name}-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/util/${_name}-$version.tar.bz2)
 build() {
 cd ${_name}-$version
 ./configure $XORG_CONFIG

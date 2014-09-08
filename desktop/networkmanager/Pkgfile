@@ -2,7 +2,7 @@ version=0.9.10.0
 
 _name=NetworkManager
 
-source=(http://downloads.nutyx.org/archives/gnome/sources/$_name/${version%.*.*}/$_name-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/$_name/${version%.*.*}/$_name-$version.tar.xz)
 
 build() {
 cd ${_name}-$version

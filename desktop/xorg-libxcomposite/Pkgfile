@@ -1,6 +1,6 @@
 version=0.4.4
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXcomposite-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcomposite-$version.tar.bz2)
 
 build() {
 cd libXcomposite-$version

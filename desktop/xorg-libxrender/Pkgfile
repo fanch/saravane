@@ -1,6 +1,6 @@
 version=0.9.8
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXrender-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrender-$version.tar.bz2)
 
 build() {
 cd libXrender-$version

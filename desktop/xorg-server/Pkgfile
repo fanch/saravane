@@ -1,6 +1,6 @@
 version=1.15.2
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/xserver/$name-$version.tar.bz2
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/blfs/svn/xorg-server-$version-add_prime_support-1.patch)
 
 build() {

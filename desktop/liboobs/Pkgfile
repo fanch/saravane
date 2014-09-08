@@ -1,6 +1,6 @@
 version=3.0.0
 
-source=(ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/3.0/$name-$version.tar.bz2)
+source=(ftp://ftp.gnome.org/pub/gnome/GNOME/sources/liboobs/3.0/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version

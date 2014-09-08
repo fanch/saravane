@@ -1,6 +1,6 @@
 version=1.2.2
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXScrnSaver-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXScrnSaver-$version.tar.bz2)
 
 build() {
 cd libXScrnSaver-$version

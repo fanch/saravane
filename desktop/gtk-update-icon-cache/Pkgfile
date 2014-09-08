@@ -1,6 +1,6 @@
 version=2.24.24
 
-source=(http://downloads.nutyx.org/archives/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 
 build() {
 cd gtk+-$version

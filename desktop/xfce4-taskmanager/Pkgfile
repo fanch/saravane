@@ -1,6 +1,6 @@
 version=1.0.0
 
-source=(http://downloads.nutyx.org/archives/xfce/src/apps/$name/1.0/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/apps/$name/1.0/$name-$version.tar.bz2)
         
 build() {
 cd $name-$version

@@ -1,7 +1,7 @@
 version=5.3
 _name=libxklavier
 
-source=( http://downloads.nutyx.org/archives/gnome/sources/${_name}/${version}/${_name}-$version.tar.xz)
+source=( http://ftp.gnome.org/pub/gnome/sources/${_name}/${version}/${_name}-$version.tar.xz)
 
 
 build() {

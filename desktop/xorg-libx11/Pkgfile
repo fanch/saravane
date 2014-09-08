@@ -1,6 +1,6 @@
 version=1.6.2
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libX11-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libX11-$version.tar.bz2)
 
 build() {
 cd libX11-$version

@@ -1,6 +1,6 @@
 version=3.2.6
 
-source=(http://downloads.nutyx.org/archives/gnome/sources/GConf/${version%.*}/GConf-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/GConf/${version%.*}/GConf-$version.tar.xz)
 
 build() {
 cd GConf-$version

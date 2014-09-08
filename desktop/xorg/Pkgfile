@@ -32,7 +32,7 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 			xf86-input-wacom-[0-9]*)
 				wget http://downloads.sourceforge.net/linuxwacom/$package;;
 			*)
-				wget http://downloads.nutyx.org/archives/xorg/individual/$section/$package;;
+				wget http://mirror.switch.ch/ftp/mirror/X11/pub/individual/$section/$package;;
 		esac
 		grep $package list.md5 |md5sum -c -
 		tar -xf $package

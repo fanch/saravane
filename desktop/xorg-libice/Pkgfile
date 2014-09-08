@@ -1,5 +1,5 @@
 version=1.0.9
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libICE-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libICE-$version.tar.bz2)
 
 build() {
 	cd libICE-$version

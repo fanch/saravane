@@ -1,6 +1,6 @@
 version=3.5.11
 
-source=(http://downloads.nutyx.org/archives/xorg/individual/lib/libXpm-$version.tar.bz2)
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXpm-$version.tar.bz2)
 
 build() {
 cd libXpm-$version
