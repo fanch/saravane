@@ -8,6 +8,7 @@ http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-lto_tes
 http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-load_gcc_lto_plugin_by_default-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
 http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1i-fix_parallel_build-1.patch
+http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
 http://ftp.gnu.org/gnu/gettext/gettext-0.19.2.tar.xz
 http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
@@ -16,13 +17,14 @@ http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz
 http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
 http://ftp.gnu.org/gnu/gcc/gcc-4.9.1/gcc-4.9.1.tar.bz2
-http://downloads.nutyx.org/files/kernel/linux-3.16.1.tar.xz
+http://ftp.gnu.org/gnu/glibc/glibc-2.20.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
 http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.xz
 http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz
 http://ftp.gnu.org/gnu/wget/wget-1.15.tar.xz
 http://ftp.gnu.org/gnu/cpio/cpio-2.11.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.0.tar.bz2
+http://downloads.nutyx.org/files/kernel/linux-3.16.2.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2014g.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/tcl/Tcl/8.6.2/tcl8.6.2-src.tar.gz
@@ -71,3 +73,4 @@ http://crocla.cahouet.net/nutyx/btrfs-progs-3.14.2.tar.xz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://www.sudo.ws/sudo/dist/sudo-1.8.10p3.tar.gz
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-3.2.1.tar.xz
+ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.111.tgz

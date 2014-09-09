@@ -77,5 +77,8 @@ wget
 gpm
 pciutils
 sudo
+lzo
+lvm2
+btrfs-progs
 cards
 kernel

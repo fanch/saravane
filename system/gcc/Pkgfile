@@ -1,5 +1,6 @@
 version=4.9.1
 source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/lfs/development/gcc-4.9.1-upstream_fixes-1.patch
 	)
 PKGMK_GROUPS=(devel man doc)
 
@@ -8,6 +9,7 @@ build()
 cd gcc-$version
 
 sed -i 's/if \((code.*))\)/if (\1 \&\& \!DEBUG_INSN_P (insn))/' gcc/sched-deps.c
+patch -Np1 -i ../gcc-4.9.1-upstream_fixes-1.patch
 
 mkdir -v ../gcc-build
 cd ../gcc-build
