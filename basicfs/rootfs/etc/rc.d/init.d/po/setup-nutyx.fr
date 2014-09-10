@@ -330,3 +330,6 @@ msgstr "Partitionnement du disque"
 
 msgid "Open a console"
 msgstr "Ouvrir une console"
+
+msgid "Please wait"
+msgstr "Veuillez patienter"
