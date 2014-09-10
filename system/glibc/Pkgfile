@@ -1,8 +1,8 @@
-version=2.19
-kernelversion=3.16.1
+version=2.20
+kernelversion=3.16.2
 PKGMK_GROUPS=(devel man doc)
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-$kernelversion.tar.xz
-	 http://www.linuxfromscratch.org/patches/lfs/7.5/glibc-2.19-fhs-1.patch
+	http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-$version-fhs-1.patch
 	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz 
 	glibc.locales.supported )
 build() {
@@ -18,9 +18,7 @@ cp -rv dest/include/* $PKG/usr/include
 
 cd ../glibc-$version
 
-sed -i 's/\\$$(pwd)/`pwd`/' timezone/Makefile
-
-patch -Np1 -i ../glibc-2.19-fhs-1.patch
+patch -Np1 -i ../glibc-$version-fhs-1.patch
 
 mkdir -v ../glibc-build
 cd ../glibc-build

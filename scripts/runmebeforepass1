@@ -104,6 +104,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/coreutils/d" $LFS/sources/$i
    sed -i "/linux.3.13.3/d" $LFS/sources/$i
    sed -i "/gcc-4.8.2/d" $LFS/sources/$i
+   sed -i "/glibc-/d" $LFS/sources/$i
    sed -i "/shadow-/d" $LFS/sources/$i
    sed -i "/shadow_/d" $LFS/sources/$i
    sed -i "/gettext-/d" $LFS/sources/$i
@@ -139,6 +140,7 @@ c2d6b127f89261513b23b6d458484099  udev-lfs-20140408.tar.bz2
 f9f59425e55b21d2e52bb3a95fc17b8d  tzdata2014g.tar.gz
 97ae0ecd007750f776099fcb9fccc7af  nasm-2.11.04.tar.xz
 fddf71348546af523353bd43d34919c1  gcc-4.9.1.tar.bz2
+948a6e06419a01bd51e97206861595b0  glibc-2.20.tar.xz
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
 48e4e96a60bfed41804aaecf4944f5d9  binutils-2.24-load_gcc_lto_plugin_by_default-1.patch
 d43ab9f680435a7fff35b4ace8d45b80  libcap-2.24.tar.xz
@@ -150,7 +152,7 @@ a4650aebcc464bb91113c2c356da8210  XML-Parser-2.42_01.tar.gz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
 2ff36a8f8ede70f66c5ad0fb09e40e79  util-linux-2.25.1.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
-e7a985a243b7941b6bc6240fcbc797fc  linux-3.16.1.tar.xz
+227814a1a523992400da5d5437552445  linux-3.16.2.tar.xz
 fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
 ce7b697f8e8016a085d9f5975ae6c4fb  man-db-2.6.7.1.tar.xz
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
