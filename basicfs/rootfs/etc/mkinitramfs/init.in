@@ -126,7 +126,7 @@ do_mount_in_ram()
 			mkdir /DIR
 			mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR || problem
 			mkdir -p /$DIR > /dev/null 2>&1
-			cp -a /DIR/* /$DIR/
+			cp -a /DIR/* /$DIR/ > /dev/null 2>&1
 			umount /DIR
 			rm -r /DIR
 			if [ "$DIR" == "root" ]; then
