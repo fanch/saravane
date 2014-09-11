@@ -52,6 +52,9 @@ _msgfmt() {
 		-o $TEXTDOMAINDIR/${1}/LC_MESSAGES/setup-nutyx.mo
 	fi
 }
+calc(){
+        echo "scale=2;$@"|bc
+}
 #
 # Main functions
 #
@@ -1149,6 +1152,53 @@ $(gettext "Are you sure you want to continue ?")" 7 60
 		fi
 	fi
 }
+install_nutyx() {
+	local DIR REAL FILE
+	cd ${1}/boot
+	MAX=`ls *squashfs|wc -l`
+	N=0
+	(for i in *squashfs
+	do
+		DIR=`echo $i|cut -d "." -f1`
+		unsquashfs -f -n -d ${2}/${DIR} ${i} >/dev/null
+		REAL=`calc $N/$MAX *100`
+		PCT=${REAL%.*}
+		echo "$PCT"
+		N=$((N+1))
+	done
+	echo "95"
+	chmod 750 ${2}/root
+	mkdir ${2}/boot 2>/dev/null
+	[ "`uname -m`" == "x86_64" ] && ln -svf lib ${2}/lib64
+	for FILE in boot/kernel  \
+	boot/kernel-`uname -r` \
+	boot/initrd \
+	etc/profile.d/i18n.sh \
+	etc/sysconfig/clock \
+	etc/sysconfig/console \
+	etc/cards.conf \
+	etc/resolv.conf \
+	etc/network
+	do
+		if [ -f /$FILE ];then
+			cp -a /$FILE  ${2}/$FILE
+		fi
+	done
+	if [ -f ${1}/kernel ]; then
+		cp  ${1}/kernel ${2}/boot/kernel-`uname -r`
+		ln -sf kernel-`uname -r` ${2}/boot/kernel
+	fi
+	if [ -f ${1}/initrd ]; then
+		cp  ${1}/initrd ${2}/boot/initrd
+	fi
+	for DIR in home proc sys dev srv mnt tmp
+	do
+		[ ! -d ${2}/$DIR ] &&	mkdir ${2}/$DIR
+	done
+	chmod 1777 ${2}/tmp
+	echo "100") |
+	dialog --title "$(gettext "Install NuTyX")" --gauge "$(gettext "Please wait") ..." 6 50
+}
 setup_install() {
 	local MF
 	CHECK_HD_OK="no"
@@ -1161,22 +1211,21 @@ setup_install() {
 			select_partition "$(gettext "Install NuTyX")"
 			if [ "$PARTITION" != "no" ]; then
 				FORMAT=`print_file_system $PARTITION`
+				if [ "$FORMAT" == "no" ]; then
+					setup_format
+				fi
 				if [ "$FORMAT" != "no" ]; then
 					SETUP_INSTALL="no"
 					MF=/mnt/hd
 					mkdir -p $MF
 					mount $PARTITION $MF || error "$(gettext "mounting") $PARTITION"
-					clear
 					if [ -d /media/cdrom/isolinux/boot ]; then
 						# Installing from ISO
-						cp -av /media/cdrom/isolinux/boot /$MF/ || error "$(gettext "copying files")"
-						cp -v /media/cdrom/isolinux/initrd /$MF/boot/initrd
-						cp -v /media/cdrom/isolinux/kernel /$MF/boot/kernel-`uname -r`
-						ln -svf kernel-`uname -r` /$MF/boot/kernel
+						install_nutyx "/media/cdrom/isolinux" "$MF"
 					else
 						# Installing from Maintenance this means
 						# TODO the initrd has to be rebuild at configuration time
-						cp -av /boot /$MF/ || error "$(gettext "copying files")"
+						install_nutyx "/" "$MF"
 					fi
 					umount $PARTITION
 					SETUP_INSTALL="yes"
