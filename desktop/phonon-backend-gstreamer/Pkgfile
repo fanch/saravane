@@ -1,6 +1,6 @@
-version=4.7.2
+version=4.8.0
 
-source=(ftp://ftp.kde.org/pub/kde/stable/phonon/$name/$version/src/$name-$version.tar.xz)
+source=(http://download.kde.org/stable/phonon/$name/$version/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
