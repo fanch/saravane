@@ -15,6 +15,9 @@ cd poppler-$version
 make
 make -C poppler DESTDIR=$PKG install-libLTLIBRARIES
 make -C glib DESTDIR=$PKG install
+install -m755 -d $PKG/usr/lib/pkgconfig
+install -m644 poppler-glib.pc $PKG/usr/lib/pkgconfig/
+
 
 rm -f $PKG/usr/lib/libpoppler.*
 rm -rf $PKG/usr/share/gtk-doc/html/poppler/ 
