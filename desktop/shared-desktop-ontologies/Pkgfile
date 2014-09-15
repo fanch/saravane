@@ -6,7 +6,7 @@ build() {
 cd $name-$version
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX -Wno-dev .. 
+cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev .. 
 make
 make DESTDIR=$PKG install
 }

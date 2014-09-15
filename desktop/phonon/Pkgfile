@@ -2,9 +2,9 @@ version=4.8.0
 source=(ftp://ftp.kde.org/pub/kde/stable/$name/$version/$name-$version.tar.xz)
 build() {
 cd $name-$version
-mkdir build &&
-cd build &&
-cmake -DCMAKE_INSTALL_PREFIX=$QT4DIR \
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE \
