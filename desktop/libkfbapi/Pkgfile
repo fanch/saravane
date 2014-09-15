@@ -6,7 +6,7 @@ build() {
 	cd $name-$version
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 		-DQT_QMAKE_EXECUTABLE=/opt/qt4/bin/qmake \
 		-DCMAKE_BUILD_TYPE=Release \
       		-DSYSCONF_INSTALL_DIR=/etc/kde \
