@@ -5,8 +5,11 @@ build() {
 cd $name-1-$version
 mkdir build
 cd build
-CMAKE_PREFIX_PATH=$QT4DIR \
-      cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_LIBDIR=lib  \
+      -DUSE_QT4=TRUE              \
+      -Wno-dev .. 
 make
 make DESTDIR=$PKG install
 }
