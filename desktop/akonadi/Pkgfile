@@ -6,7 +6,7 @@ build() {
 cd $name-$version
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
 -DCMAKE_PREFIX_PATH=$QT4DIR \
 -DCMAKE_BUILD_TYPE=Release \
 -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE \
