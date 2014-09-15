@@ -9,7 +9,7 @@ build() {
 cd $name-$version
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX           \
+cmake -DCMAKE_INSTALL_PREFIX=/usr           \
       -DSYSCONF_INSTALL_DIR=/etc/kde               \
       -DCMAKE_BUILD_TYPE=Release                   \
       -DINSTALL_PYTHON_FILES_IN_PYTHON_PREFIX=TRUE \
@@ -20,8 +20,8 @@ make
 make DESTDIR=$PKG install
 
 cd ..
-sed -i "s/AllowRootLogin=false/AllowRootLogin=true/" $PKG/opt/kde/share/config/kdm/kdmrc
-sed -i "s/#Language=de_DE/Language=fr_FR/" $PKG/opt/kde/share/config/kdm/kdmrc
+sed -i "s/AllowRootLogin=false/AllowRootLogin=true/" $PKG/usr/share/config/kdm/kdmrc
+sed -i "s/#Language=de_DE/Language=fr_FR/" $PKG/usr/share/config/kdm/kdmrc
 
 chown -R root:root $PKG
 mkdir -p $PKG/var/lib/kdm
@@ -31,6 +31,4 @@ chown -R kdm:kdm $PKG/var/lib/kdm
 install -D -m644 $SRC/kde-workspace.pam $PKG/etc/pam.d/kde
 install -D -m644 $SRC/kde-workspace.kde-np.pam $PKG/etc/pam.d/kde-np
 install -D -m644 $SRC/kde-workspace.kscreensaver.pam $PKG/etc/pam.d/kscreensaver
-
-#rm -rf $PKG/$KDE_PREFIX/share/apps/ksplash/Themes/Default/
 }
