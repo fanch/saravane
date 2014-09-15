@@ -6,10 +6,9 @@ build() {
 
 	python2 configure.py \
 		-v /usr/share/sip \
-		-q /opt/qt4/bin/qmake \
-                --confirm-license \
-    		--qsci-api
+		-q /usr/bin/qmake \
+        --confirm-license \
+    	--qsci-api
 	make
 	make DESTDIR=$PKG INSTALL_ROOT=$PKG install
 }
-  
