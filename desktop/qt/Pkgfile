@@ -5,6 +5,8 @@ source=(http://download.qt-project.org/official_releases/qt/4.8/$version/${_name
 
 build() {
 
+export QT4LINK=/usr
+
 cd ${_name}
 sed -i -e '631a if (image->isNull()) { state = Error; return -1; }' \
     src/gui/image/qgifhandler.cpp
@@ -15,36 +17,45 @@ sed -i -e "/#if/d" -e "/#error/d" -e "/#endif/d" \
 sed -i '/CONFIG -/ a\isEmpty(OUTPUT_DIR): OUTPUT_DIR = ../..' \
      src/3rdparty/webkit/Source/WebKit2/DerivedSources.pro
 
-./configure -prefix     	$QT4DIR   \
-            -sysconfdir 	/etc/xdg  \
-            -confirm-license		  \
-	    -docdir         	$QT4DIR/share/doc/qt4	       \
-            -demosdir       	$QT4DIR/share/doc/qt4/demos    \
-            -examplesdir    	$QT4DIR/share/doc/qt4/examples \
-            -translationdir 	$QT4DIR/share/qt4/translations \
-            -opensource          \
-            -release             \
-            -dbus-linked         \
-            -openssl-linked      \
-            -system-sqlite       \
-            -plugin-sql-sqlite   \
-            -no-phonon           \
-            -no-phonon-backend   \
-            -no-nis              \
-            -no-openvg           \
-            -nomake demos        \
-            -nomake examples     \
-            -optimized-qmake 
+     ./configure -prefix    /usr                 \
+            -bindir         /usr/bin             \
+            -plugindir      /usr/lib/qt4/plugins \
+            -importdir      /usr/lib/qt4/imports \
+            -headerdir      /usr/include/qt4     \
+            -datadir        /usr/share/qt4       \
+            -sysconfdir     /etc/xdg             \
+            -docdir         /usr/share/doc/qt4   \
+            -demosdir       /usr/share/doc/qt4/demos    \
+            -examplesdir    /usr/share/doc/qt4/examples \
+            -translationdir /usr/share/qt4/translations \
+            -confirm-license   \
+            -opensource        \
+            -release           \
+            -dbus-linked       \
+            -openssl-linked    \
+            -system-sqlite     \
+            -no-phonon         \
+            -no-phonon-backend \
+            -no-nis            \
+            -no-openvg         \
+            -nomake demos      \
+            -nomake examples   \
+            -optimized-qmake   
 
 make
+
+find . -name "*.pc" -exec perl -pi -e "s, -L$PWD/?\S+,,g" {} \;
+
 make INSTALL_ROOT=$PKG install
 
-for file in `basename -a -s .prl $PKG/$QT4DIR/lib/lib*.prl`; do
-       sed -r -e '/^QMAKE_PRL_BUILD_DIR/d'    \
-              -e 's/(QMAKE_PRL_LIBS =).*/\1/' \
-              -i $PKG/$QT4DIR/lib/${file}.prl
+rm -rf $PKG/usr/tests
+for file in 3Support CLucene Core DBus Declarative DesignerComponents \
+            Designer Gui Help Multimedia Network OpenGL Script \
+            ScriptTools Sql Svg Test UiTools WebKit XmlPatterns Xml phonon; do
 
-   perl -pi -e "s, -L$PWD/?\S+,,g" $PKG/$QT4DIR/lib/pkgconfig/${file##lib}.pc
+     [ -e /usr/lib/libQt${file}.prl ] &&
+     sed -r '/^QMAKE_PRL_BUILD_DIR/d;s/(QMAKE_PRL_LIBS =).*/\1/' \
+         -i $PKG/usr/lib/libQt${file}.prl
 done
 unset file
 
