@@ -12,7 +12,7 @@ source=(http://download.documentfoundation.org/libreoffice/src/${_version}/$name
 
 build() {
         unset ACLOCAL
-        export LO_PREFIX=/opt/libreoffice
+        export LO_PREFIX=/usr
 
 	cd $SRC
 	tar -xf $name-$version.tar.xz --no-overwrite-dir
