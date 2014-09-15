@@ -1,19 +1,18 @@
 version=1.7.0.40
 
-
 source=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-$version/OpenJDK-$version-`uname -m`-bin.tar.xz )
 	
 build() {
 cd OpenJDK*
-install -vdm755 $PKG/opt/OpenJDK-$version-bin
-mv -v * $PKG/opt/OpenJDK-$version-bin 
-chown -R root:root $PKG/opt/OpenJDK-$version-bin
+install -vdm755 $PKG/usr/jdk
+mv -v * $PKG/usr/jdk
+chown -R root:root $PKG/usr/jdk
 mkdir -p $PKG/etc/profile.d
 cat > $PKG/etc/profile.d/openjdk.sh << "EOF"
 # Begin /etc/profile.d/openjdk.sh
 
 # Set JAVA_HOME directory
-JAVA_HOME=/opt/jdk
+JAVA_HOME=/usr/jdk
 
 # Adjust PATH
 pathappend $JAVA_HOME/bin PATH
