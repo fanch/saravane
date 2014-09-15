@@ -7,11 +7,11 @@ cd $name-$version
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
--DCMAKE_PREFIX_PATH=$QT4DIR \
--DCMAKE_BUILD_TYPE=Release \
--DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE \
--DWITH_SOPRANO=OFF \
--Wno-dev .. 
+      -DCMAKE_PREFIX_PATH=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE \
+      -DWITH_SOPRANO=OFF \
+      -Wno-dev .. 
 make
 make DESTDIR=$PKG install
 }
