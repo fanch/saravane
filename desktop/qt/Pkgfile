@@ -80,7 +80,7 @@ cat > $PKG/usr/share/applications/assistant-qt4.desktop << EOF
 [Desktop Entry]
 Name=Qt4 Assistant 
 Comment=Shows Qt4 documentation and examples
-Exec=$QT4DIR/bin/assistant
+Exec=/usr/bin/assistant
 Icon=assistant-qt4.png
 Terminal=false
 Encoding=UTF-8
@@ -92,7 +92,7 @@ cat > $PKG/usr/share/applications/designer-qt4.desktop << EOF
 [Desktop Entry]
 Name=Qt4 Designer
 Comment=Design GUIs for Qt4 applications
-Exec=$QT4DIR/bin/designer
+Exec=/usr/bin/designer
 Icon=designer-qt4.png
 MimeType=application/x-designer;
 Terminal=false
@@ -105,7 +105,7 @@ cat > $PKG/usr/share/applications/linguist-qt4.desktop << EOF
 [Desktop Entry]
 Name=Qt4 Linguist 
 Comment=Add translations to Qt4 applications
-Exec=$QT4DIR/bin/linguist
+Exec=/usr/bin/linguist
 Icon=linguist-qt4.png
 MimeType=text/vnd.trolltech.linguist;application/x-linguist;
 Terminal=false
@@ -119,7 +119,7 @@ cat > $PKG/usr/share/applications/qdbusviewer-qt4.desktop << EOF
 Name=Qt4 QDbusViewer 
 GenericName=D-Bus Debugger
 Comment=Debug D-Bus applications
-Exec=$QT4DIR/bin/qdbusviewer
+Exec=/usr/bin/qdbusviewer
 Icon=qdbusviewer-qt4.png
 Terminal=false
 Encoding=UTF-8
@@ -131,7 +131,7 @@ cat > $PKG/usr/share/applications/qtconfig-qt4.desktop << EOF
 [Desktop Entry]
 Name=Qt4 Config 
 Comment=Configure Qt4 behavior, styles, fonts
-Exec=$QT4DIR/bin/qtconfig
+Exec=/usr/bin/qtconfig
 Icon=qt4logo.png
 Terminal=false
 Encoding=UTF-8
@@ -141,5 +141,5 @@ EOF
 
 mkdir -p $PKG/etc/ld.so.conf.d
 
-echo "$QT4DIR/lib" > $PKG/etc/ld.so.conf.d/qt4.conf
+echo "/usr/lib" > $PKG/etc/ld.so.conf.d/qt4.conf
 }
