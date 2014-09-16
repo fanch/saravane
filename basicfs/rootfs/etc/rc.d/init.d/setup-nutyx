@@ -1067,10 +1067,9 @@ setup_help() {
 	dialog --no-cancel \
 	--title "   $(gettext "How to do")  " \
 	--colors --msgbox \
-"$(gettext "This is a very straightforward tool, do not expect too much. \
-It will ask you on which partition you want to install NuTyX. \
-If not yet created/formatted, it will prompt you to do so.")\n\
-$(gettext "No futur plan to make this installer more sophisticated"). \
+"$(gettext "This is a very straightforward tool, do not expect too much"). \
+$(gettext "It will ask you on which partition you want to install NuTyX"). \
+$(gettext "If not yet created/formatted, it will prompt you to do so").\n\
 \n\n$(gettext "NuTyX goes on") \
 \Zu\Zb\Z1$(gettext "only ONE partition")\Zn\n\n\
 $(gettext "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"). \n\n\

@@ -160,7 +160,6 @@ greeter=/usr/lib/lxdm/lxdm-greeter-gtk
 
 [server]
 ## arg used to start xserver, not fully function
-arg=/opt/xorg/bin/X
 # arg=/usr/bin/X -background vt1
 
 [display]
