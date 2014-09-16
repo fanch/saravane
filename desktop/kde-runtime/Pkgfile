@@ -17,6 +17,8 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr         \
 make
 make DESTDIR=$PKG install
 ln -sf $PKG//usr/lib/kde4/libexec/kdesu $PKG//usr/bin/kdesu
+
+rm $PKG/usr/share/icons/hicolor/index.theme
 }
 
 
