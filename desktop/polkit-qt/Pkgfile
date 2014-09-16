@@ -1,4 +1,4 @@
-version=0.103.0
+version=0.112.0
 
 source=(ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/$name-1-$version.tar.bz2)
 build() {
