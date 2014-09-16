@@ -9,7 +9,6 @@ patch -Np1 -i $SRC/polkit-kde-agent-1-0.99.0-remember_password-1.patch
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DKDE4_AUTH_POLICY_FILES_INSTALL_DIR=/usr/share/PolicyKit/policy \
       -Wno-dev ..
 make
 make DESTDIR=$PKG install
