@@ -364,3 +364,8 @@ msgstr "Amusez-vous bien"
 msgid "Thank you for trying NuTyX"
 msgstr "Merci d'essayer NuTyX"
 
+msgid "Help"
+msgstr "Aide"
+
+msgid "How to do"
+msgstr "Comment procéder"
