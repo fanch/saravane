@@ -7,8 +7,8 @@ build(){
     make install PREFIX=/usr \
                  LIBDIR=/usr/lib \
                  MANPREFIX=/usr/share/man \
-                 X11INC=$XORG_PREFIX/include \
-                 X11LIB=$XORG_PREFIX/lib \
+                 X11INC=/usr/include \
+                 X11LIB=/usr/lib \
                  DESTDIR=$PKG
 }
 

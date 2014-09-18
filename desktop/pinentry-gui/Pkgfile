@@ -4,9 +4,9 @@ source=(ftp://ftp.gnupg.org/gcrypt/pinentry/pinentry-$version.tar.bz2)
 
 build() {
 cd pinentry-$version
-./configure --prefix=$XORG_PREFIX \
+./configure --prefix=/usr \
 --enable-fallback-curses \
---libexecdir=$XORG_PREFIX/lib
+--libexecdir=/usr/lib
 make
 make DESTDIR=$PKG install
 rm $PKG/$XORG_PREFIX/share/info/dir

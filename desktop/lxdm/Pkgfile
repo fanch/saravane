@@ -11,7 +11,6 @@ build() {
 	cd $name-$version
 	patch -Np1 -i ../lxdm-0.4.1-users-1.patch
 	patch -Np1 -i ../lxdm-0.4.1-high-cpu-1.patch
-	sed -i "s@/usr/bin/X@/$XORG_PREFIX/bin/X@g" src/lxdm.c
 	./configure --sysconfdir=/etc \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/lxdm

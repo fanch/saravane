@@ -3,7 +3,7 @@ version=1.18.0
 source=( http://downloads.sourceforge.net/mpg123/mpg123-$version.tar.bz2)
 build() {
 cd mpg123-$version
-./configure --prefix=$XORG_PREFIX --disable-static
+./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install
 }

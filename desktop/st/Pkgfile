@@ -3,7 +3,7 @@ source=(http://dl.suckless.org/st/$name-$version.tar.gz)
 
 build(){
     cd $name-$version
-    make X11INC=$XORG_PREFIX/include/ X11LIB=$XORG_PREFIX/lib/
+    make X11INC=/usr/include/ X11LIB=/usr/lib/
     make PREFIX=/usr DESTDIR=$PKG TERMINFO=$PKG/usr/share/terminfo install
 }
 
