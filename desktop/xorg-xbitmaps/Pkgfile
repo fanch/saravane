@@ -4,7 +4,7 @@ _name=xbitmaps
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}-$version.tar.bz2)
 build() {
 cd ${_name}-$version
-./configure $XORG_CONFIG
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install
 }

@@ -4,7 +4,7 @@ source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcursor-$ve
 
 build() {
 cd libXcursor-$version
-./configure $XORG_CONFIG
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make	
 make DESTDIR=$PKG install
 }
