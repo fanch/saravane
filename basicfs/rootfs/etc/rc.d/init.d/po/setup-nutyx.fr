@@ -347,7 +347,7 @@ msgid "No futur plan to make this installer more sophisticated"
 msgstr "Aucune amélioration n'est prévue pour rendre cette installation plus sophistiquée"
 
 msgid "NuTyX goes on"
-msgstr "NuTyX va sur"
+msgstr "NuTyX s'installe sur"
 
 msgid "only ONE partition"
 msgstr "UNE seule partition"
