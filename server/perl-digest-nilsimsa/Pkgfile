@@ -6,6 +6,4 @@ cd Digest-Nilsimsa-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
-rm $PKG/lib/share/perl5/base/perllocal.pod
 }
