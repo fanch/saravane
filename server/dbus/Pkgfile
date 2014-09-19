@@ -1,4 +1,5 @@
 version=1.8.4
+PKGMK_GROUPS=()
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
        dbus.system-local.conf dbus.session-local.conf)

@@ -4,10 +4,10 @@ source=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
 
 build() {
 cd aalib-*
-./configure --prefix=$XORG_PREFIX \
- --mandir=$XORG_PREFIX/share/man \
---infodir=$XORG_PREFIX/share/info --disable-static
+./configure --prefix=/usr \
+ --mandir=/usr/share/man \
+--infodir=/usr/share/info --disable-static
 make
 make  DESTDIR=$PKG install
-rm $PKG/$XORG_PREFIX/share/info/dir
+rm -f $PKG/$XORG_PREFIX/share/info/dir
 }

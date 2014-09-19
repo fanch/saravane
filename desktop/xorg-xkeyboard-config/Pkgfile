@@ -5,7 +5,7 @@ source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}/${_n
 
 build() {
 cd ${_name}-$version
-./configure $XORG_CONFIG --with-xkb-rules-symlink=xorg
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-xkb-rules-symlink=xorg
 make
 make DESTDIR=$PKG install
 }

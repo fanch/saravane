@@ -1,4 +1,4 @@
-version=4.14.0
+
 _name=oxygen-icons-svg
 _name=oxygen-icons
 
@@ -9,7 +9,7 @@ build() {
 	cd ${_name}-$version
 	mkdir build
 	cd build
-	cmake ../ -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX ..
+	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr ..
 	cd $SRC/${_name}-*
 	find scalable -type f ! -name '*.sh' -exec \
 		install -D -m644 "{}" $PKG/usr/share/icons/oxygen/{} \;

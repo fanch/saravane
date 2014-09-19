@@ -1,5 +1,5 @@
 cmake
 webkit1
 djvulibre
-poppler
+poppler-glib
 gtk

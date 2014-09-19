@@ -5,7 +5,7 @@ build() {
 	cd $name-$version
 	sed -e "s/pthread-stubs//" -i configure.ac
 	autoreconf -fiv
-	./configure $XORG_CONFIG
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install
 

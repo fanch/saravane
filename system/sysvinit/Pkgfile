@@ -49,7 +49,7 @@ su:S016:once:/sbin/sulogin
 
 20:4:respawn:/usr/sbin/lxdm >& /dev/null
 
-30:5:respawn:/opt/kde/bin/kdm
+30:5:respawn:/usr/bin/kdm
 # End /etc/inittab
 EOF
 }

@@ -4,7 +4,7 @@ source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.bz2)
 build() {
 cd ffmpeg-$version
 sed -i 's/-lflite"/-lflite -lasound"/' configure
-./configure --prefix=$XORG_PREFIX      \
+./configure --prefix=/usr      \
             --enable-gpl         \
             --enable-version3    \
             --enable-nonfree     \
@@ -21,5 +21,5 @@ make
 gcc tools/qt-faststart.c -o tools/qt-faststart
 make DESTDIR=$PKG install
 install -v -m755 tools/qt-faststart \
-$PKG/$XORG_PREFIX/bin
+$PKG/usr/bin
 }

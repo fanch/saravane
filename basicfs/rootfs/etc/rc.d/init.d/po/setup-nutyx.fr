@@ -333,3 +333,45 @@ msgstr "Ouvrir une console"
 
 msgid "Please wait"
 msgstr "Veuillez patienter"
+
+msgid "This is a very straightforward tool, do not expect too much"
+msgstr "Il s'agit d'un outil très simple, ne vous attendez pas à trop"
+
+msgid "It will ask you on which partition you want to install NuTyX"
+msgstr "Il vous sera demandé sur quelle partition vous voulez installer NuTyX"
+
+msgid "If not yet created/formatted, it will prompt you to do so"
+msgstr "Si elle n'est pas encore créée / formatée, il vous demandera de le faire"
+
+msgid "No futur plan to make this installer more sophisticated"
+msgstr "Aucune amélioration n'est prévue pour rendre cette installation plus sophistiquée"
+
+msgid "NuTyX goes on"
+msgstr "NuTyX s'installe sur"
+
+msgid "only ONE partition"
+msgstr "UNE seule partition"
+
+msgid "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"
+msgstr "UNE exception, grub peut faire partie de la NuTyX, être installée sur une autre partition ou ne pas être installé"
+
+msgid "As NuTyX users, we recommand you to install GRUB on a separated partition"
+msgstr "En tant qu'utilisateur NuTyX, nous vous recommandons d'installer GRUB sur une partition séparée"
+
+msgid "To do so"
+msgstr "Procédez comme ceci"
+
+msgid "Install grub first then NuTyX"
+msgstr "Installez grub d'abord puis NuTyX"
+
+msgid "Have fun"
+msgstr "Amusez-vous bien"
+
+msgid "Thank you for trying NuTyX"
+msgstr "Merci d'essayer NuTyX"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "How to do"
+msgstr "Comment procéder"

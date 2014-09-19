@@ -5,7 +5,7 @@ source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
 build() {
 	cd xcb-proto-$version
 
-	./configure $XORG_CONFIG
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 
 	make
 	make DESTDIR=$PKG install

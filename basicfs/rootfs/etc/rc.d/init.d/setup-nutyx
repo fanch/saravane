@@ -1062,6 +1062,23 @@ check_available_partition() {
 	else
 		CHECK_PART_OK="yes"
 	fi
+}
+setup_help() {
+	dialog --no-cancel \
+	--title "   $(gettext "How to do")  " \
+	--colors --msgbox \
+"$(gettext "This is a very straightforward tool, do not expect too much"). \
+$(gettext "It will ask you on which partition you want to install NuTyX"). \
+$(gettext "If not yet created/formatted, it will prompt you to do so").\n\
+\n\n$(gettext "NuTyX goes on") \
+\Zu\Zb\Z1$(gettext "only ONE partition")\Zn\n\n\
+$(gettext "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"). \n\n\
+$(gettext "As NuTyX users, we recommand you to install GRUB on a separated partition"):\n\n\
+$(gettext "To do so"): \
+$(gettext "Install grub first then NuTyX") \n\n\
+$(gettext "Have fun") :) \n\n\
+$(gettext "Thank you for trying NuTyX") \
+" 0 0
 }	
 setup_partition() {
 	local retval result
@@ -1368,7 +1385,7 @@ EOF
 								echo "$Part   /boot ${BOOT_FS} auto 0 0" \
 								>> /mnt/hd/etc/fstab
 							fi
-							echo "menuentry \"NuTyX #VERSION# ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+							echo "menuentry \"NuTyX ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
 							echo " linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro quiet " >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
 							echo " initrd /${GRUB_DESTINATION_DIR}initrd" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
 							echo "}" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
@@ -1407,7 +1424,8 @@ setup_reboot() {
 }
 setup_initrd() {
 	dialog --title "   $(gettext "Welcome in the NuTyX installer")   " \
-	--menu "    $(gettext "Main Menu")    " 0 0 0 \
+	--colors --menu "    $(gettext "Main Menu")   "  0 0 0 \
+	"$(gettext "Help")" "$(gettext "How to do") ? " \
 	"$(gettext "Install")" "$(gettext "Install NuTyX")" \
 	"$(gettext "Partitioning")" "$(gettext "Create all your partitions") ($(gettext "optional"))" \
 	"$(gettext "Format")" "$(gettext "Format a partition") ($(gettext "optional"))" \
@@ -1423,6 +1441,9 @@ setup_initrd() {
 	case $retval in
 	0|2)
 		case $choice in
+			"$(gettext "Help")")
+				setup_help
+				;;
 			"$(gettext "Install")")
 				setup_install
 				;;
@@ -1601,6 +1622,8 @@ cleanup () {
 
 top_loop() {
 	if [ "$SETUP_INITRD" = "yes" ]; then
+		[ "$SETUP_CONFIG_LANGUAGE" = "yes" ] && LANG=de_CH.utf-8 setup_language
+		setup_help
 		while [ "$SETUP_INSTALL" = "no" ];do
 				[ "$SETUP_CONFIG_LANGUAGE" = "yes" ] && LANG=de_CH.utf-8 setup_language
 				[ "$SETUP_INSTALL" = "no" ] && setup_initrd

@@ -1,3 +1,5 @@
+cmake
 automoc4
+qt
 glib
 pulseaudio

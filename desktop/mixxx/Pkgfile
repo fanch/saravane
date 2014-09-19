@@ -3,8 +3,8 @@ source=(http://downloads.mixxx.org/$name-$version/$name-$version-src.tar.gz)
 
 build() {
 cd $SRC/$name-$version
-scons qtdir=/opt/qt4 prefix=/usr faad=1
-scons qtdir=/opt/qt4 prefix=/usr install_root=$PKG/usr install
+scons qtdir=/usr prefix=/usr faad=1
+scons qtdir=/usr prefix=/usr install_root=$PKG/usr install
 }
 
 

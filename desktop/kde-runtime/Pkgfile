@@ -1,4 +1,4 @@
-version=4.14.0
+
 
 _name=kde-runtime
 
@@ -8,7 +8,7 @@ build() {
 cd ${_name}-$version
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX         \
+cmake -DCMAKE_INSTALL_PREFIX=/usr         \
       -DSYSCONF_INSTALL_DIR=/etc/kde             \
       -DCMAKE_BUILD_TYPE=Release                 \
       -DSAMBA_INCLUDE_DIR=/usr/include/samba-4.0 \
@@ -16,7 +16,9 @@ cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX         \
       -Wno-dev .. 
 make
 make DESTDIR=$PKG install
-ln -sf $PKG/$KDE_PREFIX/lib/kde4/libexec/kdesu $PKG/$KDE_PREFIX/bin/kdesu
+ln -sf $PKG//usr/lib/kde4/libexec/kdesu $PKG//usr/bin/kdesu
+
+rm $PKG/usr/share/icons/hicolor/index.theme
 }
 
 

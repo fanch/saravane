@@ -4,7 +4,7 @@ source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
 
 build() {
         cd $name-$version
-        ./configure $XORG_CONFIG
+        ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
         make
         make DESTDIR=$PKG install
 }

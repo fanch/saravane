@@ -1,4 +1,4 @@
-version=4.14.0
+
 _name=libkexiv2
 
 source=(http://download.kde.org/stable/$version/src/${_name}-$version.tar.xz)
@@ -7,7 +7,7 @@ build() {
 	cd ${_name}-$version
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX -DCMAKE_BUILD_TYPE=Release \
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
       		-DSYSCONF_INSTALL_DIR=/etc/kde \
       		.. 
 	make

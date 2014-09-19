@@ -7,7 +7,7 @@ build() {
 	cd $SRC/digikam*
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=$KDE_PREFIX \
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
                 -DSYSCONF_INSTALL_DIR=/etc/kde \
 		-DBUILD_tests=OFF \
 		-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
@@ -27,6 +27,6 @@ build() {
           make DESTDIR=$PKG install
        done
 
-	rm -f $PKG/$KDE_PREFIX/share/locale/*/LC_MESSAGES/libkipi.mo
+	rm -f $PKG//usr/share/locale/*/LC_MESSAGES/libkipi.mo
 }
 

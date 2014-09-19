@@ -6,7 +6,7 @@ source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$ver
 build() {
 cd $name-$version
 patch -Np1 -i ../$name-$version-add_prime_support-1.patch
-./configure $XORG_CONFIG \
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 --with-xkb-output=/var/lib/xkb \
 --with-fontrootdir=/usr/share/fonts \
 --enable-install-setuid
