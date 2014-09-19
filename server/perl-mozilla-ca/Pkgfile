@@ -9,6 +9,4 @@ cd Mozilla-CA-$version
 perl Makefile.PL
 make
 make install INSTALLDIRS=vendor DESTDIR=$PKG
-
-rm $PKG/lib/share/perl5/base/perllocal.pod
 }
