@@ -9,5 +9,5 @@ cd aalib-*
 --infodir=/usr/share/info --disable-static
 make
 make  DESTDIR=$PKG install
-rm $PKG/$XORG_PREFIX/share/info/dir
+rm -f $PKG/$XORG_PREFIX/share/info/dir
 }
