@@ -1,10 +1,12 @@
-version=10.2.3
+version=10.2.7
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-upstream_fixes-1.patch
 	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-add_xdemos-1.patch)
 build() {
 cd Mesa-$version
 patch -Np1 -i ../MesaLib-$version-add_xdemos-1.patch 
+patch -Np1 -i ../MesaLib-$version-upstream_fixes-1.patch
 ./autogen.sh CFLAGS="-O2" CXXFLAGS="-O2" \
 --prefix=/usr \
 --sysconfdir=/etc \
