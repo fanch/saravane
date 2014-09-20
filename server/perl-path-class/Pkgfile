@@ -12,4 +12,5 @@ cd Path-Class-$version
 perl Makefile.PL
 make
 make DESTDIR=$PKG install
+
 }
