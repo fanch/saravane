@@ -1,4 +1,10 @@
 version=1.56.0
+# Description: Free peer-reviewed portable C++ source libraries
+# URL: http://boost.sourceforge.net/
+# Maintainer:  Herb Sutter and Andrei Alexandrescu
+# Packager: pierre at nutyx dot org
+# Depends on: icu
+
 source=(http://downloads.sourceforge.net/$name/${name}_${version//./_}.tar.bz2)
 build() {
 cd ${name}_${version//./_}
