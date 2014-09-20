@@ -16,5 +16,6 @@ make
 make install DESTDIR=$PKG
 
 install -D -m644 README $PKG/usr/share/licenses/$name/LICENSE
+
 }
 
