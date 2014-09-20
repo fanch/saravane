@@ -6,4 +6,5 @@ cd MailTools-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
+
 }
