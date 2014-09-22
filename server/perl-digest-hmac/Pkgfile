@@ -6,6 +6,5 @@ cd Digest-HMAC-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
-rm $PKG/lib/share/perl5/base/perllocal.pod
+rm $PKG/usr/lib/perl5/5.20.0/x86_64-linux-thread-multi/perllocal.pod
 }

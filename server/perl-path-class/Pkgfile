@@ -13,5 +13,4 @@ perl Makefile.PL
 make
 make DESTDIR=$PKG install
 
-rm $PKG/lib/share/perl5/base/perllocal.pod
 }

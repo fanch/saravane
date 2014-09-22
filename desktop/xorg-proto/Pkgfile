@@ -41,7 +41,7 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 		tar -xf $package
 
 		pushd $packagedir
-		./configure $XORG_CONFIG
+		./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 		make
 		make DESTDIR=$PKG install
 		popd

@@ -7,5 +7,4 @@ perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
 
-rm $PKG/lib/share/perl5/base/perllocal.pod
 } 

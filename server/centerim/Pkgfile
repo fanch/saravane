@@ -1,7 +1,7 @@
 version=4.22.10
 
-source=(http://www.centerim.org/download/releases/$name-$version.tar.gz\
-	http://nutyx.meticul.eu/files/patchs/$name/$name-$version-gcc-1.patch)
+source=(http://www.centerim.org/download/releases/$name-$version.tar.gz
+	   http://downloads.nutyx.org/files/patchs/centerim/$name-$version-gcc-1.patch)
 
 build() {
 	cd $name-$version

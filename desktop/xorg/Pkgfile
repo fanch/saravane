@@ -41,22 +41,22 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 		case $packagename in
 		xf86-video-sis-[0-9]*)
 			patch -Np1 -i ../xf86-video-sis-0.10.7-upstream_fixes-1.patch
-			./configure $XORG_CONFIG;;
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
 		xf86-video-tdfx-[0-9]*)
 			sed -e "/mibstore.h/d" -e "/miInitializeBackingStore/d" \
     -i src/tdfx_driver.c
-			./configure $XORG_CONFIG;;
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
 		xf86-input-vmmouse-[0-9]*)
-			./configure $XORG_CONFIG \
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
             --with-udev-rules-dir=/lib/udev/rules.d \
             --without-hal-callouts-dir \
             --without-hal-fdi-dir;;
 		xf86-video-intel-[0-9]*)		
-			./configure $XORG_CONFIG \
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 			--enable-kms-only \
 			--with-default-accel=sna;;
 		*)
-			./configure $XORG_CONFIG;;
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
 		esac
 		make
 		make DESTDIR=$PKG install
