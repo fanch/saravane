@@ -48,7 +48,7 @@ https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.16.0.tar.xz
 http://downloads.nutyx.org/files/ca-certificates-20140901.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://downloads.nutyx.org/files/cards-0.10.81.1.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20140910.tar.bz2
+http://downloads.nutyx.org/files/nutyx-basicfs-20140920.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
