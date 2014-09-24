@@ -1,7 +1,7 @@
 version=0.1.10
 
 source=(http://www.gnome.org/~veillard/gamin/sources/$name-$version.tar.gz
-	http://nutyx.meticul.eu/files/patchs/$name/remove_deprecated_G_CONST_RETURN.patch)
+	http://downloads.nutyx.org/files/patchs/$name/remove_deprecated_G_CONST_RETURN.patch)
 
 build() {
 cd $name-$version
