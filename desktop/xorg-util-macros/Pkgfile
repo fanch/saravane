@@ -1,4 +1,4 @@
-version=1.18.0
+version=1.19.0
 PKGMK_GROUPS=()
 _name=util-macros
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/util/${_name}-$version.tar.bz2)
