@@ -192,3 +192,149 @@ msgstr "Configureren van de boot van de PC"
 msgid "Reboot the PC"
 msgstr "Start de pc opnieuw"
 
+msgid "Press OK to reboot the computer"
+msgstr "Pressez Accepter pour relancer le PC"
+
+msgid "optional"
+msgstr "en option"
+
+msgid "Install"
+msgstr "Installer"
+
+msgid "Partitioning"
+msgstr "Partitionner"
+
+msgid "Format"
+msgstr "Formater"
+
+msgid "Boot"
+msgstr "Démarrage"
+
+msgid "Keyboard"
+msgstr "Clavier"
+
+msgid "Network"
+msgstr "Réseau"
+
+msgid "Clock"
+msgstr "Horloge"
+
+msgid "Restart"
+msgstr "Relancer"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "Choose the disk you want to use for this operation"
+msgstr "Selecteer de schijf die je hiervoor wil gebruiken"
+
+msgid "Choose the partition you want to use for this operation"
+msgstr "Selecteer de partitie die je hiervoor wil gebruiken"
+
+msgid "Available file systems"
+msgstr "Beschikbare bestandssystemen"
+
+msgid "Choose the file system you want to use for the partition"
+msgstr "Selecter het bestandssysteem dat je wil gebruiken voor deze partitie"
+
+msgid "High performance journal file system create by SGI"
+msgstr "Hoog-performant journalling bestandssysteem ontwikkeld door SGI"
+
+msgid "Very stable file system but not maintain anymore"
+msgstr "Zeer stabiel bestandssysteem maar dit wordt niet meer verder ontwikkeld"
+
+msgid "Next generation of Ext3 file system"
+msgstr "Volgende generatie bestandssysteem van Ext3"
+
+msgid "Journal version of Ext2 file system"
+msgstr "Volgende generatie bestandssysteem van Ext2"
+
+msgid "Standard file system Ext2"
+msgstr "Standaard bestandssystem Ext2"
+
+msgid "New promising file system"
+msgstr "Nieuw veelbelovend bestandssysteem"
+
+msgid "Launch the format process ?"
+msgstr "Formatteren starten"
+
+msgid "The partition"
+msgstr "De partitie"
+
+msgid "will be format in"
+msgstr "wordt geformatteerd als"
+
+msgid "Are you sure you want to continue ?"
+msgstr "Ben je zeker dat je wil verdergaan?"
+
+msgid "No disk available"
+msgstr "Geen schijf beschikbaar"
+
+msgid "Please stop the PC and install a harddisk"
+msgstr "Schakel de pc uit en installeer een schijf"
+
+msgid "No partition available"
+msgstr "een partities beschikbaar"
+
+msgid "Please create/modify yours partitions"
+msgstr "Maak of pas een partitie aan"
+
+msgid "Choose your favorite tool"
+msgstr "Selecteer je favoriete tool"
+
+msgid "Basic partitioning tool"
+msgstr "Basis partitioneringstool"
+
+msgid "Advanced partitioning tool"
+msgstr "Geadvanceerde partitioneringstool"
+
+msgid "Partitioning of the disk"
+msgstr "Partitioneren van de schijf"
+
+msgid "Open a console"
+msgstr "Open een console"
+
+msgid "Please wait"
+msgstr "Wachten a.u.b."
+
+msgid "This is a very straightforward tool, do not expect too much"
+msgstr "Deze tool is rechttoe rechtaan, verwacht er niet te veel van"
+
+msgid "It will ask you on which partition you want to install NuTyX"
+msgstr "Er wordt gevraagd op welke partitie je NuTyx wil installeren"
+
+msgid "If not yet created/formatted, it will prompt you to do so"
+msgstr "Indien je nog geen hebt gemaakt of gepartitioneerd, wordt je gevraagd dit te doen"
+
+msgid "No futur plan to make this installer more sophisticated"
+msgstr "Er zijn geen verdere plannen om de installatie-tool meer functies te geven"
+
+msgid "NuTyX goes on"
+msgstr "NuTyX wordt hier geinstalleerd"
+
+msgid "only ONE partition"
+msgstr "Gebruik slechts EEN partitie"
+
+msgid "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"
+msgstr "EEN uitzondering, grub kan deel zijn van, geinstalleerd worden op een aparte partitie of helemaal niet geinstalleerd worden"
+
+msgid "As NuTyX users, we recommand you to install GRUB on a separated partition"
+msgstr "Als NuTyx gebruikers, wordt het je aanbevolen om GRUB op een aparte partitie te installeren"
+
+msgid "To do so"
+msgstr "Hiervoor"
+
+msgid "Install grub first then NuTyX"
+msgstr "Installeer je GRUB eerst en daarna pas NuTyx"
+
+msgid "Have fun"
+msgstr "Veel plezier"
+
+msgid "Thank you for trying NuTyX"
+msgstr "Hartelijk dank om NuTyx te proberen"
+
+msgid "Help"
+msgstr "Hulp"
+
+msgid "How to do"
+msgstr "Hoe ga ik verder"
