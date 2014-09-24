@@ -6,7 +6,8 @@ cd Mail-DKIM-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
-find "$PKG" -name '.packlist' -delete
-find "$PKG" -name '*.pod' -delete
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
 }
