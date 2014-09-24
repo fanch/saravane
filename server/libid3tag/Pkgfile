@@ -1,7 +1,7 @@
 version=0.15.1b
 
 source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\
-	http://nutyx.meticul.eu/files/patchs/$name/id3tag.pc)
+	http://downloads.nutyx.org/files/patchs/$name/id3tag.pc)
 
 build() {
 	mkdir -p $PKG/usr/lib/pkgconfig/
