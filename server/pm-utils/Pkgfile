@@ -2,10 +2,10 @@ version=1.4.1
 
 
 source=(http://pm-utils.freedesktop.org/releases/pm-utils-${version}.tar.gz
-        http://nutyx.meticul.eu/files/patchs/$name/02-logging-append.patch
-        http://nutyx.meticul.eu/files/patchs/$name/12-fix-intel-audio-powersave-hook.patch
-        http://nutyx.meticul.eu/files/patchs/$name/13-49bluetooth-sync.patch
-        http://nutyx.meticul.eu/files/patchs/$name/14-disable-sata-alpm.patch)
+        http://downloads.nutyx.org/files/patchs/$name/02-logging-append.patch
+        http://downloads.nutyx.org/files/patchs/$name/12-fix-intel-audio-powersave-hook.patch
+        http://downloads.nutyx.org/files/patchs/$name/13-49bluetooth-sync.patch
+        http://downloads.nutyx.org/files/patchs/$name/14-disable-sata-alpm.patch)
 
 build() {
   	cd $name-$version
