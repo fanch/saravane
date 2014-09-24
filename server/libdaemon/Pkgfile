@@ -1,6 +1,6 @@
 version=0.14
 
-source=(http://0pointer.de/lennart/projects/libdaemon/$name-$version.tar.gz)
+source=( http://pkgs.fedoraproject.org/repo/pkgs/libdaemon/libdaemon-0.14.tar.gz/509dc27107c21bcd9fbf2f95f5669563/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
