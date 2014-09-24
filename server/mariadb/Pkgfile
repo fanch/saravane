@@ -5,7 +5,7 @@ PKGMK_GROUPS=(devel lib man doc service)
 
 build() {
 source /etc/blfs-bootscripts
-wget http://nutyx.meticul.eu/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
+wget http://downloads.nutyx.org/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version
