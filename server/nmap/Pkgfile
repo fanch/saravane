@@ -1,4 +1,4 @@
-version=6.46
+version=6.47
 source=(http://nmap.org/dist/$name-$version.tar.bz2)
 
 build() {
