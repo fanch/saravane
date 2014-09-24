@@ -8,6 +8,8 @@ patch -p1 -i $SRC/razor-2.85-cosmetic-pv-fix.patch
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
-rm $PKG/lib/share/perl5/base/perllocal.pod
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
 }
