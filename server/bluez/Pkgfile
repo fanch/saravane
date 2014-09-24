@@ -1,0 +1,37 @@
+
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.bz2)
+build() {
+source /etc/blfs-bootscripts
+wget  http://nutyx.meticul.eu/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/lib \
+    --enable-gstreamer \
+    --enable-alsa \
+    --enable-usb \
+    --enable-tools \
+    --enable-bccmd \
+    --enable-dfutool \
+    --enable-hid2hci \
+    --enable-hidd \
+    --enable-pand \
+    --enable-dund \
+    --enable-cups \
+    --disable-test \
+    --without-systemdunitdir
+make
+make DESTDIR=$PKG install
+install -m644 network/network.conf \
+	input/input.conf \
+	audio/audio.conf  serial/serial.conf $PKG/etc/bluetooth
+mkdir -p $PKG/etc/rc.d/{init.d,rc0.d,rc1.d,rc2.d,rc3.d,rc4.d,rc5.d,rc6.d}
+
+# Startup Script 
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-bluetooth
+
+}

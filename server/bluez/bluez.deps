@@ -1,0 +1,7 @@
+check
+libvorbis
+alsa-lib
+libusb-compat
+libsndfile
+cups
+glib

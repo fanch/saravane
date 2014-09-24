@@ -1,0 +1,12 @@
+OpenType text shaping engine
+Contient un moteur de texte OpenType
+
+http://www.freedesktop.org/software/harfbuzz
+
+Maintainers:
+
+- cgit.freedesktop.org/hardbuzz
+
+Packagers:
+
+pierre at nutyx dot org
