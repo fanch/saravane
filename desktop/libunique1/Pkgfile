@@ -4,8 +4,8 @@ _name=libunique
 
 source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/blfs/svn/libunique-$version-upstream_fixes-1.patch
-        http://nutyx.meticul.eu/files/patchs/$name/remove_G_CONST_RETURN.patch
-        http://nutyx.meticul.eu/files/patchs/$name/unique-gdbus.patch)
+        http://downloads.nutyx.org/files/patchs/$name/remove_G_CONST_RETURN.patch
+        http://downloads.nutyx.org/files/patchs/$name/unique-gdbus.patch)
 
 build() {
 cd ${_name}-$version
