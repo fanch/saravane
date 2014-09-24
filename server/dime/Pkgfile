@@ -1,6 +1,7 @@
 version=20120723
 
 source=(http://downloads.nutyx.org/files/Coin3D-dime-7cd55bc6a6d0.zip)
+
 build() {
   cd Coin3D-dime-7cd55bc6a6d0
   ./configure --prefix=/usr || return 1
