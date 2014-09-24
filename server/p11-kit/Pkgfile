@@ -1,4 +1,4 @@
-version=0.20.2
+version=0.20.7
 
 source=(http://p11-glue.freedesktop.org/releases/$name-$version.tar.gz)
 
