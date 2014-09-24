@@ -1,8 +1,6 @@
-version=1.2.9
-
-
-
-source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2)
+version=1.3.0
+source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2 
+	 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-gcc_4_9-1.patch)
 build() {
 source  /etc/blfs-bootscripts
 wget \
@@ -11,6 +9,7 @@ tar xvf $scripts-$scriptsversion.tar.bz2
 	
 # build package
 cd $name-$version
+patch -Np1 -i ../$name-$version-gcc_4_9-1.patch 
 ./configure --prefix=/usr     \
 --sysconfdir=/etc \
 --disable-nfsv4   \
