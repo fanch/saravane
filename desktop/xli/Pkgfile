@@ -1,7 +1,7 @@
 version=1
 
 source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
-	http://nutyx.meticul.eu/files/patchs/$name/xli-1.16-makefile-1.patch)
+	http://downloads.nutyx.org/files/patchs/$name/xli-1.16-makefile-1.patch)
 build() {
 sed -i "s/varargs/stdarg/" rlelib.c
 mv Makefile{.std,}
