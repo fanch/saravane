@@ -1,6 +1,6 @@
 version=20130206
 
-source=(http://nutyx.meticul.eu/files/patchs/$name/$name-$version.tar.bz2)
+source=(http://downloads.nutyx.org/files/patchs/$name/$name-$version.tar.bz2)
 build ()
 {
 cd $name-$version
