@@ -1,7 +1,7 @@
 version=0.10.13
 
 source=(http://gstreamer.freedesktop.org/src/gst-ffmpeg/gst-ffmpeg-$version.tar.bz2
-	http://nutyx.meticul.eu/files/patchs/$name/h264_qpel_mmx.patch)
+	http://downloads.nutyx.org/files/patchs/$name/h264_qpel_mmx.patch)
 build() {
 unset CFLAGS
 unset CXXFLAGS
