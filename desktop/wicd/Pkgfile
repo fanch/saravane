@@ -1,7 +1,7 @@
 version=1.7.2.4
 
 source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
-	 http://nutyx.meticul.eu/files/patchs/$name/dbus_string_fix.patch)
+	 http://downloads.nutyx.org/files/patchs/$name/dbus_string_fix.patch)
 build() {
 unset MAKEFLAGS
 cd $name-$version
