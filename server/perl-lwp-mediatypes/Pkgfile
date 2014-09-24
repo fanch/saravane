@@ -6,5 +6,8 @@ cd LWP-MediaTypes-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
 }

@@ -6,4 +6,7 @@ cd Digest-SHA1-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
+find $PKG -iname '*.pod' -or \
+-name '.packlist' -or \
+-name 'perllocal.pod' | xargs rm
 }

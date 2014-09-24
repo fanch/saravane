@@ -6,6 +6,7 @@ cd Net-DNS-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
-
-rm $PKG/lib/share/perl5/base/perllocal.pod
+find $PKG -iname '*.pod' -or \
+-name '.packlist' -or \
+-name 'perllocal.pod' | xargs rm
 }
