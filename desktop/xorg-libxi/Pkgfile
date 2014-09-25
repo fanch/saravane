@@ -1,4 +1,4 @@
-version=1.7.2
+version=1.7.4
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXi-$version.tar.bz2)
 
