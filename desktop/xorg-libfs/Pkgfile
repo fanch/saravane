@@ -1,4 +1,4 @@
-version=1.0.5
+version=1.0.6
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libFS-$version.tar.bz2)
 
