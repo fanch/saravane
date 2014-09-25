@@ -1,4 +1,4 @@
-version=1.3.2
+version=1.3.4
 _name=xtrans
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
 
