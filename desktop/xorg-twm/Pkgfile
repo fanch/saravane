@@ -1,4 +1,4 @@
-version=1.0.7
+version=1.0.8
 _name=twm
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
