@@ -1,4 +1,4 @@
-version=1.0.6
+version=1.0.7
 _name=xclock
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
