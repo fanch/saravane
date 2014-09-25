@@ -1,4 +1,4 @@
-version=1.3.2
+version=1.3.3
 _name=xinit
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
