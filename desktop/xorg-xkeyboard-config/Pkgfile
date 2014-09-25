@@ -1,4 +1,4 @@
-version=2.10.1
+version=2.12
 _name=xkeyboard-config
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}/${_name}-$version.tar.bz2)
