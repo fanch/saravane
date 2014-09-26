@@ -9,5 +9,8 @@ cd Mozilla-CA-$version
 perl Makefile.PL
 make
 make install INSTALLDIRS=vendor DESTDIR=$PKG
-
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
 }
