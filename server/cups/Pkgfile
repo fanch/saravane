@@ -6,7 +6,7 @@ source=( http://cups.org/software/$version/cups-$version-source.tar.gz
 
 build() {
 	source /etc/blfs-bootscripts
-	wget  http://downloads.nutyx.org/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
+	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
         tar xvf $scripts-$scriptsversion.tar.bz2
 	cd $name-$version
 	patch -Np1 -i ../cups-$version-blfs-1.patch
