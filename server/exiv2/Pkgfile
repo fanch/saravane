@@ -1,6 +1,6 @@
 version=0.24
 
-source=(http://www.exiv2.org/$name-$version.tar.gz)
+source=(http://downloads.tuxfamily.org/nutyx/sources/exiv2/$name-$version.tar.gz)
 
 build() {
 cd $name-$version
