@@ -21,5 +21,8 @@ make DESTDIR=$PKG install
 install -D -m644 $SRC/spamassassin.service $PKG/usr/lib/systemd/system/spamassassin.service
 install -d -o 182 -g 182 -m 755 $PKG/var/lib/spamassassin
 
-rm $PKG/lib/share/perl5/base/perllocal.pod
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist -or \
+        -name perllocal.pod | xargs rm
 }

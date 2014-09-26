@@ -1,0 +1,12 @@
+re2c
+perl-net-dns
+perl-io-socket-ssl
+perl-libwww
+perl-mail-spf
+perl-http-message
+perl-net-http
+perl-io-socket-inet6
+perl-mail-dkim
+perl-crypt-ssleay
+razor
+perl-dbi
