@@ -1,4 +1,4 @@
-version=4.0-20140715
+version=4.0-20140926
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
 build() {
 cd $name-*
