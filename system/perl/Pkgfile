@@ -22,7 +22,7 @@ sh Configure -des  -Dusethreads \
 	-Dpager="/usr/bin/less isR" ${_ARCH}
 
 make
-make -k test || true
+# make -k test || true
 make DESTDIR=$PKG install
 find $PKG -iname 'TODO*' -or \
 	-iname 'Change*' -or \
