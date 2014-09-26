@@ -1,9 +1,10 @@
-
+version=0.9.35
 source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr
+./configure --prefix=/usr \
+--with-gobject
 make
 make DESTDIR=$PKG install
 }
