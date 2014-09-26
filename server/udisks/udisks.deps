@@ -1,4 +1,5 @@
 acl
+udev-extras
 dbus-glib
 libatasmart
 lvm2

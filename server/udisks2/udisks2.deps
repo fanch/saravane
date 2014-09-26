@@ -1,4 +1,5 @@
 acl
+udev-extras
 expat
 libatasmart
 libxslt
