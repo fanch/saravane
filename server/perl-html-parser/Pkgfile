@@ -7,5 +7,8 @@ perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install
 
-rm $PKG/usr/lib/perl5/5.20.0/x86_64-linux-thread-multi/perllocal.pod
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist -or \
+        -name perllocal.pod | xargs rm
 }
