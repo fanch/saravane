@@ -1,6 +1,6 @@
 version=0.30
 
-source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.xz)
+source=(http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-$version.tar.xz )
 
 build() {
 cd $name-$version
