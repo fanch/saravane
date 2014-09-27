@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Dropbox
-Exec=dropboxd
-Icon=dropbox
-Terminal=false
-Type=Application
-Categories=Network;
