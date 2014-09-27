@@ -58,4 +58,11 @@ for package in $(grep -v '^#' ${section}-${version}-${release}.md5 |cut -d " " -
 		make DESTDIR=$PKG install
 		popd
 	done
+for FILE in usr/bin/bdftruncate \
+usr/bin/ucs2any \
+usr/share/aclocal/fontutil.m4 \
+usr/lib/pkgconfig/fontutil.pc
+do
+  rm $PKG/$FILE
+done
 }

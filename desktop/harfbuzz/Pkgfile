@@ -7,4 +7,9 @@ cd $name-$version
 --with-gobject
 make
 make DESTDIR=$PKG install
+########################## 
+# WARNING:               #
+#                        #
+# RECOMPILE freetype Now #
+##########################
 }
