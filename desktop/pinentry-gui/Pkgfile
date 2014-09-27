@@ -9,5 +9,4 @@ cd pinentry-$version
 --libexecdir=/usr/lib
 make
 make DESTDIR=$PKG install
-rm $PKG/$XORG_PREFIX/share/info/dir
 }
