@@ -1,8 +1,11 @@
+libwebp
+libsecret
+geoclue
 gperf
 gtk
 curl
 dbus
-gstreamer-plugins-base
+gstreamer1-plugins-base
 icu
 enchant
 libsoup
