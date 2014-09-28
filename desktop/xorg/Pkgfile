@@ -62,7 +62,7 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 			--enable-kms-only \
 			--with-default-accel=sna;;
 		xf86-input-wacom-[0-9]*)
-			./configure $XORG_CONFIG --with-systemd-unit-dir=no;;
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-systemd-unit-dir=no;;
 		xf86-video-openchrome-[0-9]*)
 			sed -i "/via_3d.h/i #include <xorg-server.h>" src/via_3d.c
 			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
