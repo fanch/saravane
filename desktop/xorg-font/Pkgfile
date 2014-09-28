@@ -61,7 +61,9 @@ for package in $(grep -v '^#' ${section}-${version}-${release}.md5 |cut -d " " -
 for FILE in usr/bin/bdftruncate \
 usr/bin/ucs2any \
 usr/share/aclocal/fontutil.m4 \
-usr/lib/pkgconfig/fontutil.pc
+usr/lib/pkgconfig/fontutil.pc \
+usr/share/man/man1/bdftruncate.1 \
+usr/share/man/man1/ucs2any.1
 do
   rm $PKG/$FILE
 done
