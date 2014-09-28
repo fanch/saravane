@@ -1,11 +1,10 @@
-GStreamer Multimedia Framework ugly Plugins
-gst-plugins-ugly, Ensemble de plugins considéré par les développeurs de GStreamer comme étant de bonne qualité et fonctionnant correctement, mais leur distribution peut poser problèmes. La licence des plugins ou des bibliothèques supportés peut ne pas être comme les développeurs de GStreamer voudraient. Le code peut être connu pour présenter des problèmes de droits. 
+GStreamer Multimedia Framework libav Plugins (fork of ffmpeg)
 
-http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
+http://gstreamer.freedesktop.org/modules/gst-libav.html
 
 Maintainers:
 
-- cgit.freedesktop.org/gstreamer/gst-plugins-base/
+- cgit.freedesktop.org/gstreamer/gst-libav/
 
 Packagers:
 
