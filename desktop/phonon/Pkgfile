@@ -7,10 +7,15 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_LIBDIR=lib \
-      -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=FALSE \
+      -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
       -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces \
       -Wno-dev ..
 
 make
 make DESTDIR=$PKG install
+
+install -d $PKG/usr/include/qt4
+mv $PKG/usr/include/{phonon,KDE} $PKG/usr/include/qt4/
+sed -i 's#includedir=/usr/include#includedir=/usr/include/qt4#' \
+        $PKG/usr/lib/pkgconfig/phonon.pc
 }
