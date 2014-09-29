@@ -1,3 +1,4 @@
 cmake
+xorg-libxt
 kde-libs
 mplayer
