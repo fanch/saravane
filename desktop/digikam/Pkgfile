@@ -1,5 +1,4 @@
-version=4.2.0
-
+version=4.3.0
 
 source=(http://download.kde.org/stable/digikam/digikam-$version.tar.bz2)
 
