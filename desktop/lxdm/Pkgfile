@@ -4,8 +4,9 @@ source=(http://sourceforge.net/projects/lxde/files/lxdm/LXDM%200.4.1/$name-$vers
 	http://downloads.nutyx.org/files/patchs/$name/lxdm-Xsession.patch
 	http://downloads.nutyx.org/files/patchs/$name/lxdm-02.patch
 	http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-users-1.patch
-	http://downloads.nutyx.org/files/icones-sekong-03.tar.gz
         http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-high-cpu-1.patch)
+
+#http://downloads.nutyx.org/files/icones-sekong-03.tar.gz
 
 build() {
 	cd $name-$version
@@ -27,10 +28,10 @@ build() {
 
 	sed -i -e "s/local\/libexec/lib\/lxdm/" $PKG/etc/lxdm/lxdm.conf
 	mkdir -p $PKG/usr/share/backgrounds
-	install -m644 $SRC/icones/Fond-sekong.jpg \
-	$PKG/usr/share/backgrounds/default.jpg
-	install -m644 $SRC/icones/Banniere-sekong-trim.png \
-	$PKG/usr/share/lxdm/themes/Industrial/login.png
+#	install -m644 $SRC/icones/Fond-sekong.jpg \
+#	$PKG/usr/share/backgrounds/default.jpg
+#	install -m644 $SRC/icones/Banniere-sekong-trim.png \
+#	$PKG/usr/share/lxdm/themes/Industrial/login.png
 
 	sed -i "s/default.png/default.jpg/" $PKG/etc/lxdm/lxdm.conf
 	cat > $PKG/etc/pam.d/lxdm << "EOF"
