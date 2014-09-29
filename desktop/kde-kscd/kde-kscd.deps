@@ -1,4 +1,4 @@
 cmake
 automoc4
 kde-libs
-libmusicbrainz
+libmusicbrainz3
