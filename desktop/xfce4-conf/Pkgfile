@@ -10,5 +10,6 @@ cd ${_name}-$version
 	--disable-static
 	make
 	make DESTDIR=$PKG install
-	rm -f $PKG/usr/share/perl5/base/perllocal.pod
+find $PKG \
+        -name perllocal.pod | xargs rm
 }
