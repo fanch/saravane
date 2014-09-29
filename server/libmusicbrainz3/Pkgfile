@@ -1,0 +1,15 @@
+version=3.0.3
+
+source=( ftp://ftp.musicbrainz.org/pub/musicbrainz/libmusicbrainz-$version.tar.gz )
+
+build() {
+	cd libmusicbrainz-$version
+	mkdir build
+  	cd build
+  	cmake .. \
+      		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+      		-DBUILD_SHARED_LIBS:BOOL=ON \
+      		-DBUILD_STATIC_LIBS:BOOL=OFF
+  	make
+	make DESTDIR=$PKG install
+}
