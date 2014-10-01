@@ -1,4 +1,4 @@
 version=4.10.1
 build() {
-	mkdir -p $PKG/$XFCE4_PREFIX
+	mkdir -p $PKG//usr
 }

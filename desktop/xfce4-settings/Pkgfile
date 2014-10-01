@@ -5,7 +5,7 @@ build() {
 cd $name-$version
 sed -i "s/\"ThemeName\" type=\"empty\"/\"ThemeName\" type=\"string\" value=\"Xfce-winter\"/" xfsettingsd/xsettings.xml
 sed -i "s/\"IconThemeName\" type=\"empty\"/\"IconThemeName\" type=\"string\" value=\"Xquisite\"/" xfsettingsd/xsettings.xml
-./configure --prefix=$XFCE4_PREFIX \
+./configure --prefix=/usr \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

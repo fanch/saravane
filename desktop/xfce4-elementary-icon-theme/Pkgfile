@@ -1,6 +1,6 @@
 version=0.3
 source=(https://github.com/shimmerproject/elementary-xfce/archive/v$version.tar.gz)
 build() {
-install -d -m 0755 $PKG/$XFCE4_PREFIX/share/icons
-mv elementary-xfce-$version/elementary-xfce{,-dark,-darker} $PKG/$XFCE4_PREFIX/share/icons
+install -d -m 0755 $PKG//usr/share/icons
+mv elementary-xfce-$version/elementary-xfce{,-dark,-darker} $PKG//usr/share/icons
 }

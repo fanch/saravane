@@ -4,15 +4,15 @@ source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.
 
 build() {
 cd $name-$version
-./configure --prefix=$XFCE4_PREFIX \
+./configure --prefix=/usr \
 --sysconfdir=/etc \
---libexecdir=$XFCE4_PREFIX/lib/xfce4 \
+--libexecdir=/usr/lib/xfce4 \
 --localstatedir=/var \
 --disable-static
 make
 make DESTDIR=$PKG install
 	
-for i in $XFCE4_PREFIX/bin/xfrun4
+for i in /usr/bin/xfrun4
 do rm $PKG/$i
 done
 }

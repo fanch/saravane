@@ -8,9 +8,9 @@ source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2
 build() {
 cd ${_name}-$version
 sed -i "s/xfce-blue.jpg/wall-sekong.jpg/" common/xfdesktop-common.h
-./configure --prefix=$XFCE4_PREFIX
+./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 install -D -m644 ../wall-sekong.jpg \
-$PKG/$XFCE4_PREFIX/share/backgrounds/xfce/wall-sekong.jpg
+$PKG//usr/share/backgrounds/xfce/wall-sekong.jpg
 }

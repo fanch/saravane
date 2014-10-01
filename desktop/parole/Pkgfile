@@ -2,7 +2,7 @@ version=0.5.4
 source=(http://archive.xfce.org/src/apps/parole/0.5/parole-$version.tar.bz2)
 build() {
 cd parole-$version
-./configure --prefix=$XFCE4_PREFIX \
+./configure --prefix=/usr \
 --with-gstreamer=1.0
 make
 make DESTDIR=$PKG install

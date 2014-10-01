@@ -2,6 +2,6 @@ version=0.4.6
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
 build() {
-mkdir -p $PKG/$XFCE4_PREFIX/share/icons/
-cp -a * $PKG/$XFCE4_PREFIX/share/icons/
+mkdir -p $PKG//usr/share/icons/
+cp -a * $PKG//usr/share/icons/
 }

@@ -3,7 +3,7 @@ version=1.6.3
 source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2 )
 build() {
 cd Thunar-$version
-./configure --prefix=$XFCE4_PREFIX \
+./configure --prefix=/usr \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

@@ -3,7 +3,7 @@ version=0.8.0
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2 )
 build() {
 cd $name-$version
-./configure --prefix=$XFCE4_PREFIX \
+./configure --prefix=/usr \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

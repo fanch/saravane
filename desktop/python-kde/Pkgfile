@@ -9,6 +9,7 @@ build() {
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
       	      -DSYSCONF_INSTALL_DIR=/etc/kde \
+		-DPYKDEUIC4_ALTINSTALL=TRUE \
 	      -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
 
 	make
