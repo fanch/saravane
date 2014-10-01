@@ -166,7 +166,7 @@ de9f1f45026c2f4e0776058d429ff4b6  xfsprogs-3.1.11.tar.gz
 d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 fcd8d0d9f9f0397d076ee901e242ed39  sudo-1.8.10p3.tar.gz
 fe7806d075994db0e28894e42668a02a  pciutils-3.2.1.tar.xz
-2df44881052b59e131f60b76a059db57  cards-0.10.81.1.tar.gz" >> $LFS/sources/md5sums
+45c8bc735d8a31400a729d0087a22440  cards-0.10.81.2.tar.gz" >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`
 do
