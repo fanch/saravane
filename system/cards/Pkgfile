@@ -1,4 +1,4 @@
-version=0.10.81.1
+version=0.10.81.2
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
 #	http://downloads.nutyx.org/files/patchs/$name/$name-$version-upstream_fixes-1.patch
 	)

@@ -48,3 +48,4 @@ lzo.devel
 lvm2.devel
 wget
 zlib.devel
+gpm.devel
