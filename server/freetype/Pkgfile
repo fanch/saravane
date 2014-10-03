@@ -1,15 +1,37 @@
 version=2.5.3
 
-source=( http://switch.dl.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
+source=( http://switch.dl.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2
+	http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2)
 
 
 build() {
+
+# First pass
 cd $name-$version
+./configure
+make
+make DESTDIR=$PKG install
+
+
+# Harfbuzz
+cd ../harfbuzz-0.9.35
+FREETYPE_CFLAGS="-I$PKG/usr/local/include/freetype2" \
+FREETYPE_CFLAGS="-L/$PKG/usr/local/lib/ -lfreetype" \
+./configure
+make
+make DESTDIR=$PKG install
+
+
+# Second pass freetype
+cd ../$name-$version
 sed -i  -e "/AUX.*.gxvalid/s@^# @@" \
  -e "/AUX.*.otvalid/s@^# @@" \
  modules.cfg
 sed -ri -e 's:.*(#.*SUBPIXEL.*) .*:\1:' \
  include/config/ftoption.h
+
+HARFBUZZ_CFLAGS="-I$SRC/harfbuzz-0.9.35/src" \
+HARFBUZZ_LIBS="-L/$PKG/usr/local/lib/ -lharfbuzz" \
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install
@@ -19,4 +41,8 @@ wget http://downloads.sourceforge.net/freetype/freetype-doc-$version.tar.bz2
 tar -xf freetype-doc-$version.tar.bz2 --strip-components=2 -C docs
 install -v -m755 -d $PKG/usr/share/doc/$name-$version
 cp -v -R docs/*     $PKG/usr/share/doc/$name-$version
+
+# Clean up
+rm -r $PKG/usr/local/{share,include,bin,lib/{libfreetype*,pkgconfig}}
+
 }
