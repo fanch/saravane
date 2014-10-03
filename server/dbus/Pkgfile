@@ -1,5 +1,5 @@
 version=1.8.8
-PKGMK_GROUPS=(devel)
+PKGMK_GROUPS=(doc devel)
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
        dbus.system-local.conf dbus.session-local.conf)
@@ -30,7 +30,6 @@ build() {
 	mkdir -p $PKG/usr/share/dbus-1/services
 	mkdir -p $PKG/etc/dbus-1/system.d/
 	mkdir -p $PKG/etc/dbus-1/session.d/
-	rm -r $PKG/usr/share/doc
 	for i in 2 3 4 5
 	do 
 		mv $PKG/etc/rc.d/rc$i.d/S{29,15}dbus
@@ -39,4 +38,5 @@ build() {
 	do
 		mv $PKG/etc/rc.d/rc$i.d/K{30,85}dbus
 	done
+	rm $PKG/usr/bin/dbus-launch
 }
