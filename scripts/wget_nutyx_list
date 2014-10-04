@@ -1,6 +1,6 @@
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
-http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3-upstream_fixes-4.patch
+http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3-upstream_fixes-5.patch
 http://www.linuxfromscratch.org/patches/downloads/mpfr/mpfr-3.1.2-upstream_fixes-2.patch
 http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream_fixes-2.patch
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
@@ -26,7 +26,7 @@ http://ftp.gnu.org/gnu/wget/wget-1.15.tar.xz
 http://ftp.gnu.org/gnu/cpio/cpio-2.11.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
 http://downloads.nutyx.org/files/kernel/linux-3.16.2.tar.xz
-http://www.iana.org/time-zones/repository/releases/tzdata2014g.tar.gz
+http://www.iana.org/time-zones/repository/releases/tzdata2014h.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/tcl/Tcl/8.6.2/tcl8.6.2-src.tar.gz
 http://dev.gentoo.org/~blueness/eudev/eudev-1.10.tar.gz
