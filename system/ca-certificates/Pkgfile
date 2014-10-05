@@ -1,4 +1,4 @@
-version=20140901
+version=20141001
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
 build() {
