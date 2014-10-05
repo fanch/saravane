@@ -1,14 +1,13 @@
 
-
 source=(http://download.kde.org/stable/$version/src/$name-$version.tar.xz)
-	
+#
 build() {
 cd $name-$version
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
--DCMAKE_BUILD_TYPE=Release               \
--Wno-dev ..
+      -DCMAKE_BUILD_TYPE=Release  \
+      -Wno-dev ..
 make
 make DESTDIR=$PKG install
 }
