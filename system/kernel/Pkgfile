@@ -4,7 +4,7 @@ PKGMK_NO_STRIP="yes"
 REALTEK_VERSION=8.038.00
 VB_VERSION=4.3.16
 VB_BUILD=95972
-NVIDIA_VERSION=337.25
+NVIDIA_VERSION=343.22
 
 [ "`uname -m`" == "i686"   ] && VB_ARCH=x86
 [ "`uname -m`" == "x86_64"   ] && VB_ARCH=amd64
