@@ -1,5 +1,0 @@
-rm -f usr/bin/env
-for i in cat echo pwd stty
-do
-	rm -f bin/$i
-done
