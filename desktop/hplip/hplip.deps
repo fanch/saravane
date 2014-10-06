@@ -1,3 +1,4 @@
+sip
 avahi
 python
 ghostscript
@@ -16,3 +17,11 @@ python-notify
 python-pillow
 python-reportlab
 python-xml
+libjpeg-turbo.devel
+dbus.devel
+libjpeg-turbo.devel
+sane.devel
+python.devel
+libusb.devel
+cups.devel
+net-snmp.devel
