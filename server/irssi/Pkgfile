@@ -1,4 +1,4 @@
-version=0.8.15
+version=0.8.16
 source=(http://irssi.org/files/$name-$version.tar.bz2)
 
 build() {
