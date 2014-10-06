@@ -17,6 +17,8 @@ polkit-kde
 kde-pimlibs
 kde-activities
 kde-runtime
+kde-runtime.l10n 
+kde-runtime.currency
 kde-baseapps
 kde-dolphin-plugins
 kde-workspace
