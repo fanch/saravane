@@ -1,0 +1,39 @@
+#!/bin/sh
+# **************************************************************************
+#              BEGIN of SCRIPT
+# **************************************************************************
+
+NFS=/NFS
+
+if [ $# -lt 1 ]; then
+	echo "need to know the category to generate"
+	exit 1
+fi
+
+GROUP=${1}
+
+cd ${GROUP}
+rm -f MD5SUM
+
+TMP=`mktemp -d`
+
+for file in *
+do
+        name="$file"
+        if [ ! -f $file/$name.info ]; then
+                echo "$file is obsolete, removed folder $file..."
+                rm -rf $file
+                continue
+        else
+                echo "`md5sum $file/MD5SUM|cut -d " " -f1`:$file" >> $TMP/MD5SUM
+        fi
+done
+mv $TMP/MD5SUM .
+rm -r $TMP
+cd -
+# time to send
+rsync -auv --delete-after ${GROUP}/ ${NFS}/${GROUP}/
+rm ${GROUP}/MD5SUM
+# ********************************************************************
+#                     END of SCRIPT
+# ********************************************************************
