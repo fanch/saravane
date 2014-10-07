@@ -47,35 +47,33 @@
   source /etc/bashrc
 fi
 if [ $EUID -eq 0 ]; then
-         alias del='pkgrm'
-         alias get='pkg-get depinst'
-         alias up='pkg-get update -r
-         alias check='pkg-get sync;pkg-get diff'
+         alias del='cards remove'
+         alias get='cards install'
+         alias up='cards install -u'
+         alias check='cards sync -i;cards diff -b'
 else
-         alias del='sudo pkgrm'
-         alias get='sudo pkg-get depinst'
-         alias up='sudo pkg-get update -r'
-         alias check='sudo pkg-get sync;pkg-get diff'
+         alias del='sudo cards remove'
+         alias get='sudo cards install'
+         alias up='sudo cards install -u'
+         alias check='sudo cards sync -i;sudo cards diff -b'
 fi
 alias ll='ls -l'
 alias l='ls -alh'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
-alias sysup='pkg-get sysup'
-alias pkgfind='pkginfo -i | grep -i'
+alias pkgfind='cards list -i | grep -i'
+alias search='cards search
 # End ~/.bashrc</pre>
    
      <h2>Recherche d'un paquet</h2>
     <p>Pour rechercher un paquet sous NuTyX, c'est très simple, la commande :</p>
-    <pre class="command_user"><kbd>pkg-get dsearch <em>chaîne_à_trouver</em></kbd></pre>
-    <p>retournera tous les paquets dont le nom ou la description contient la <em>chaîne_à_trouver</em>. Il est important de respecter la case. Par exemple si vous souhaitez connaître les navigateurs disponible (en binaire)</p>
-    <pre class="command_user"><kbd>pkg-get dsearch avigat</kbd></pre>
+    <pre class="command_user"><kbd>search <em>chaîne_à_trouver</em></kbd></pre>
+    <p>retournera tous les paquets dont le nom ou la description contient la <em>chaîne_à_trouver</em>.Par exemple si vous souhaitez connaître les navigateurs disponible (en binaire)</p>
+    <pre class="command_user"><kbd>search browser</kbd></pre>
     <p>devrait retourner quelque chose comme :</p>
     <pre class="output">
-chromium           Navigateur internet de Google
-dillo              Navigateur web minimaliste basé sur fltk1
-firefox            Navigateur internet de la fondation Mozilla
-flashplayer        Plugin flashplayer pour navigateur
+chromium           The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser. Include PepperFlash and libpdf plugins
+firefox            Standalone web browser from mozilla.org
 ...</pre>
 
    <h2>Ajout d'un utilisateur</h2>
@@ -95,23 +93,24 @@ Description de l'utilisateur: François Perrin</pre>
      
      <h2>Vérifier si il y a des mises à jour disponible</h2>
      <p>La commande check permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
-     <pre class="command"><kbd>check</kbd></pre>
-     <pre class="output">/srv/NuTyX/release/PKGREPO<br />/srv/NuTyX/release/PKGINST<br />..<br />Différences entre paquets installés et paquets disponibles dans les dépots:<br /><br />Paquet                        Installé                    Disponible dans le dépot
+     <pre class="command"><kbd>cards sync -i
+cards diff -b</kbd></pre>
+     <pre class="output">Synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Differences between installed packages and the depot of binaries:<br /><br />Package                        Installed                    Available in the depot of binaries
 
 sylpheed                      3.0.1-1                     3.2.0-1</pre>
      <p>Dans cet exemple sylpheed peut être mis à jour.</p>
      
      <h2>Mettre à jour un logiciel</h2>
-     <p>Pour mettre à jour un logiciel, la commande <strong>pkg-get update -r</strong> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
-     <pre class="command"><kbd>pkg-get update -r sylpheed</kbd></pre>
-     <p>L'option <strong>-r</strong> est indispensable afin que si de nouvelles dépendances exitent, elles soient également installées. Si vous avez l'alias <b>up</b> configuré, il fera la même chose.</p>
+     <p>Pour mettre à jour un logiciel, la commande <strong>cards install -u</strong> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
+     <pre class="command"><kbd>cards install -u sylpheed</kbd></pre>
+     <p>Si vous avez l'alias <b>up</b> configuré, il fera la même chose.</p>
      
      <h2>Conclusion</h2>
      <p>Vous l'avez compris les seules commandes à connaître pour commencer à utiliser NuTyX sont donc les 2 commandes :</p>
      <pre class="command"><kbd>nu
 pkg-get</kbd></pre>
      <p>Cette dernière est d'ailleurs expliquée plus en détail via son aide:</p>
-<pre class="command_user"><kbd>pkg-get help</kbd></pre>
+<pre class="command_user"><kbd>cards</kbd></pre>
 <p>Je vous souhaite beaucoup de plaisir avec votre nouvelle NuTyX installée.</p>
 
         <!-- DEBUT FOOTER -->

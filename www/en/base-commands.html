@@ -64,16 +64,17 @@ User description: James Bond 007</pre>
      <h2>Check if they are any updates available</h2>
      <p>The command <b>check</b> will check the latest status of the available updates for your system.
      </p>
-     <pre class="command"><kbd>check</kbd></pre>
-     <pre class="output">/srv/NuTyX/release/PKGREPO<br />/srv/NuTyX/release/PKGINST<br />..<br />Difference between installed and availables packages on the mirrors:<br /><br />Package                      Installed                   Available on the mirror<br /><br />sylpheed                      3.0.1-1                       3.2.0-1<br /></pre>
+     <pre class="command"><kbd>cards sync -i
+cards diff -b</kbd></pre>
+     <pre class="output">synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Difference between installed packages and the depot of binaries:<br /><br />Package                      Installed                   Available in the depot of binaries<br /><br />sylpheed                      3.0.1-1                       3.2.0-1<br /></pre>
      <p>In this exemple, sylpheed could be updated.
      </p>
      <h2>Updating a package</h2>
-     <p>To update a package, the command <strong>pkg-get update -r</strong> follow by the package will be used. It's important that the update is available:
+     <p>To update a package, the command <strong>cards install -u</strong> follow by the package will be used. It's important that the update is available:
      </p>
-     <pre class="command"><kbd>pkg-get update -r sylpheed</kbd>
+     <pre class="command"><kbd>cards install -u sylpheed</kbd>
      </pre>
-     <p>The option <strong>-r</strong> is needed if news dependancies exists, they will be updated as well. The alias <b>up</b> is doing the same result.</p>
+     <p>The alias <b>up</b> is doing the same result.</p>
      <h2>Conclusion</h2>
      <p>As you can see the only two commands to knows are:
      </p>
