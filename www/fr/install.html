@@ -33,35 +33,24 @@
       
     <p1> Assurez vous tout d'abord d'avoir un espace libre sur votre disque dur d'au moins 8Go ou mieux 15Go pour plus de confort.
     <h3>Téléchargez la dernière version de NuTyX</h3>
-    <p1>
-    La version actuelle de NuTyX s'appelle sekong.5.</br></br>
+    La version actuelle de NuTyX s'appelle <b>saravane</b>.</br></br>
     L'iso disponible permet une installation depuis internet.Elle permet également de faire un minimum de maintenance sur la machine avant l'installation de NuTyX.</br></br>
-    La taille des iso est +- 88 Mb.</br></br>
-    La version 32 bits peut être téléchargée à l'adresse : </br> <a class="url" href="http://nutyx.meticul.eu/NuTyX_i686-sekong.5.iso"  target="_blank" title="Lire dans une autre fenêtre" >http://nutyx.meticul.eu/NuTyX_i686-sekong.5.iso</a></br>
-    Il est conseillé de vérifier son intégrité avant de la graver, pour cela voici sa somme </br>
-    <a class="url" href="http://nutyx.meticul.eu/NuTyX_i686-sekong.5.md5sum" target="_blank" title="Lire dans une autre fenêtre">http://nutyx.meticul.eu/NuTyX_i686-sekong.5.md5sum</a></br></br>
-    La version 64 bits peut être téléchargée à l'adresse : </br> <a class="url" href="http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.iso"  target="_blank" title="Lire dans une autre fenêtre" >http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.iso</a></br>
-    Il est conseillé de vérifier son intégrité avant de la graver, pour cela voici sa somme </br>
-    <a class="url" href="http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.md5sum" target="_blank" title="Lire dans une autre fenêtre">http://nutyx.meticul.eu/NuTyX_x86_64-sekong.5.md5sum</a>
-    </p1>
+    La taille des iso est <b>+- 175 Mb</b>.</br></br>
+    Toutes les isos disponible peuvent être téléchargées à l'adresse : </br> <a class="url" href="http://downloads.nutyx.org/"  target="_blank" title="Lire dans une autre fenêtre" >http://downloads.nutyx.org</a></br>
     <h3>Créez une clé bootable</h3>
-    <p1>
     Si vous êtes déjà sous GNU/Linux : </br>
     <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />En root </div>
     A l'aide de fdisk, déterminez où se trouve votre clé USB : 
     <pre class="command"><kbd>fdisk -l</kbd></pre>
     A l'aide de dd, créez votre clé bootable :
-    <pre class="command"><kbd>dd if=NuTyX_x86_64-sekong.5.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
+    <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
     Si vous êtes sous Windows : </br>
-    Il existe surrement des logiciels pouvant le faire aisément 
-    </p1>
+    Il existe surrement des logiciels pouvant le faire aisément, vous pouvez le cas échéant graver l'iso sur un CD.
     <h3>Installation de NuTyX</h3>
   <div><a class="url" href="mini-iso-install.html">Laissez-vous guider pas à pas pour l'installation depuis la MINI iso (ou depuis le système de maintenance.</a></div>
   <br/>
-  <div><a class="url" href="usb-key-live-install.html">Si vous avez choisi de tenter une installation depuis une version LIVE de NuTyX, suivez le guide</a></div>
-  <br/>
-  <div><a class="url" href="script-install.html">Et enfin, si vous préférer installer votre NuTyX en utilisant le script, cet article vous guidera pas à pas. Un minimum de connaissance de linux s'impose</a></div>
-  <br/>
+  <!-- <div><a class="url" href="script-install.html">Et enfin, si vous préférer installer votre NuTyX en utilisant le script, cet article vous guidera pas à pas. Un minimum de connaissance de linux s'impose</a></div>
+  <br/> -->
   <div><a class="url" href="build-kernel.html">Si vous avez choisi de compiler et installer votre propre kernel, suivez pas à pas cet article. Un minimum de connaissance sur votre matériel est recommandé pour mener à bien cette opération.</a></div>
 
     <h3>Installation de l'amorçage de la machine</h3>
@@ -72,35 +61,24 @@
     <pre class="command"><kbd>title NuTyX - Sekong sur sda2
     root (hd0,1)
     kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
-    
-    title Maintenance de NuTyX
-    root (hd0,1)
-    kernel /boot/kernel ro quiet vga=791
-    initrd /boot/nutyx-initrd</kbd></pre>
-    Si vous avez déjà grub 2 installé, il suffit juste de modifier votre grub.cfg selon :
+    initrd /boot/initrd</kbd></pre>
     <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
-    }
-    
-    menuentry "Maintenance de NuTyX" {
-    set root=(hd0,1)
-    linux /boot/kernel ro quiet
-    initrd /boot/nutyx-initrd
+    initrd /boot/initrd
     }
     
     menuentry "Windows 8" {
     set root=(hd0,3)
     chainloader (hd0,3)+1
     }</kbd></pre>
-    </p1>
   </div>
 
         <!-- DEBUT FOOTER -->
      
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.</p>
     </footer>
  </body>
 </html>
