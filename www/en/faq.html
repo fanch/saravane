@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-	<!-- En-tête de la page -->
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="../css/nutyx.css" />
-        <title>NuTyX - FAQ</title>
-    </head>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - FAQ</title>
+ </head>
     
-<body>
-    <header>
+ <body>
+     <header>    
       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
     </header>
+       
     <nav>
         <ul>
             <li><a href=".">Home</a></li>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="irc.html">IRC channel</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
@@ -25,54 +26,33 @@
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Packages</a></li>
         </ul>
     </nav>
-   <h2>Practical exemple of a receipt to begin</h2>
-<pre class="output"># Description: The libxfce4util package is a basic utility library for the Xfce desktop environment
-# URL: http://ww.xfce.org/projects/libraries/
-# Maintainer: git.xfce.org/xfce/xfce4-libutils
-# Packager: tyrry at nutyx dot org
-# Depends on: glib, intltool, gtk-doc
+     
+        <!-- FIN HEADER -->
+    
+     <h1>Frequency Asked Questions</h1>
+      
+      
+   <h2>The installer doesn't allow to have a separate partition for the /home for example</h2>
+    <div><p>This question have so many time been ask, I will try to bring as much arguments as possible.</p>
+    </div>
+    <div><p>Today, a user use very often a lot of data and big amount of data, the size of the personal folder can get very quick big. MP3, photos, videos are normally quite big ones. Imagines that you have a 25' bytes hard disk. You said OK I take 100 G for the system and 150 for my datas. Great you just cut your disk in two pieces and the data partition will be quicker full then if you would have kept one partition. So if we could avoid to have to cut the hard disk in partitions while we could be able to reinstall as much as we want NuTyX without having to think of our datas that would be great. <u>That's exactly the idea of the NuTyX installer</u>.</p>
+    </div>
+    <ul>
+    <li>The installer will nevel format a partition allready formated without a manual intervention.</li>
+    <li>If you have a distribution (NuTyX or any other) with your personnal datas and the system is on the same partition, during the installation process, the installer will tell you that there is allready a distribution but will not ask for format the partition. You will need to delete the folders <b>  /var,/proc,/sys,/usr,/sbin,/etc </b> but will not touch the other folders like <b>/home, /MP3,</b> etc. So yours datas are untouch.</li>
+    <li>Today it's very easy to configure a file server based on NFS, so users could have they home folder remotly on this server.</li>
+    <li>Let's summarise, we can say that create a partition for your home today is unecessary, at least with NuTyX. We could wonder why the "apple" operating system never recommand this.</li>
+    </ul>
+   <h2>Is it possible to upgrade NuTyX sekong to NuTyX saravane without reinstalling everything ?</h2>
+    <div><p>No. The number of changes is too big. The package manager has change, the initrd has change, the installer has change, the ports location has change, etc</p>
 
-_name=libxfce4util
-
-source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
-
-build() {
-cd ${_name}-$version
-./configure --prefix=$XFCE_PREFIX \
---disable-static
-make
-make DESTDIR=$PKG install
-}</pre>
-<h2>Explanations</h2>
-We wish always to describe what the package is about. The <b>description</b> is going to be include in the binarie and will be used by the package manager <b>cards</b>. Inside the receipt, so the description is very important and should always be writen in english. It's important that it's all on one line.
-<pre class="output"># Description: The libxfce4util package is a basic utility library for the Xfce desktop environment</pre>
-The <b>maintainer</b> is (when possible) should point to the git location of the project in progress. The idea is that (in the future) cards can check and informed the packager in case of a new version available. If git is not available, the name of the maintainer(s) will be fine. It's important to mentionned them.
-<pre class="output"># Maintainer: git.xfce.org/xfce/xfce4-libutils</pre>
-The <b>packager</b> is actually you, once you are able to build the package following the rules, you will have access to the git repository of all the available packages. We will be please to have you as new <b>packager.</b>
-<pre class="output"># Packager: tyrry at nutyx dot org</pre>
-If you wish that the build server is able to build the package without trouble, it's important to specify the dependencies of your package. The following line define the list of dependencies. Each dependencies are separated with a <b>,</b> character.
-<pre class="output"># Depends on: glib, intltool, gtk-doc</pre>
-If the name of the binary package is different from the sources of the package, we need to define a internal variable with the name of the source package. As the variable <b>name</b> is allready reserve, we should not used it but anything else. In our exemple, we used the variable <b>_name</b>
-<pre class="output">_name=libxfce4util</pre>
-Note that the variables <b>name, version and release</b> are automatically set by reading the name of the folder containing your receipt. So make shure you create a base folder with the correct "settings". Example to build correctly this package, it should be found in a folder name:
-<pre class="output">xfce4-libutil#4.10.1-1</pre>
-It's now time to get the sources of our package. It's declare in the next line. As you can see, we use the <b>_name</b> and <b>version</b> variables for this. For the rest of the line, if a patch is need for exemple, it can be added on the next line
-<pre class="output">source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)</pre>
-Then comes the function <b>build</b> which define what should be done. Most of the time, it's allways the same.
-<pre class="output">build() {
-cd ${_name}-$version
-./configure --prefix=$XFCE_PREFIX \
---disable-static
-make
-make DESTDIR=$PKG install
-}</pre>
-You note that they is a variable XFCE_PREFIX defined and defining where the package will be implemented. The rule is follow:<p>
-<ol>
-<ul>XFCE: In /opt/xfce4</ul>
-<ul>KDE: In /opt/kde</ul>
-<ul>xorg: In /opt/xorg</ul></ol>
-  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
-  </div>
+    </div>
+    
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+    </footer>
  </body>
 </html>
