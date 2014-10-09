@@ -11,22 +11,22 @@
      <header>    
       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
     </header>
-       
     <nav>
         <ul>
             <li><a href=".">Accueil</a></li>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="contribute.html">Contribuer</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Paquets</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
-     
+ 
         <!-- FIN HEADER -->
      
       
@@ -61,7 +61,7 @@
     <li>et enfin une application pour KDE car en général ce sont celles qui necessite le plus grand nombre d'options dans le code de la recette et le plus grand nombre de dépendances. Si vous ne me croyez pas je vous invite à tester la commande
     </li>
    </ol>
-   <pre class="command_user"><kbd>pkg-get quickdep konsole</kbd></pre>
+   <pre class="command_user"><kbd>cards depends konsole</kbd></pre>
    <pre class="output">libtiff libjpeg lcms libmng dbus...
 Nombre de dépendances : 193
    </pre>
@@ -87,7 +87,7 @@ Nombre de dépendances : 193
    </div>
    <div>Une chroot consiste tout simplement à installer une NuTyX dans un dossier au lieu d'une partition. Je propose de choisir le dossier <em><strong>/chroot</strong></em> comme dossier de destination, la commande est donc:
    </div>
-   <pre class="command"><kbd>install-sekong.5.ash /chroot</kbd>
+   <pre class="command"><kbd>install-saravane.ash /chroot</kbd>
    </pre>
    <div>Il est possible que vous obteniez des erreurs en raison du dossier  /chroot/srv/NuTyX/test inexistant.
    </div>
@@ -116,12 +116,12 @@ Souhaitez-vous continuer sans dialog et sans kernel ? Tapez o pour continuer
    </div>
    <pre class="output"><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b>*
 
-Vous êtes TOUJOURS dans la NuTyX sekong.5.
+Vous êtes TOUJOURS dans la NuTyX saravane.
 
 Vous avez choisis de compiler votre kernel.
 ....
 
-Pour sortir de la NuTyX sekong, tapez:
+Pour sortir de la NuTyX saravane, tapez:
 
 exit
 <b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b>*
@@ -168,7 +168,7 @@ EOF</kbd>
    </div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.
    </div>
-   <div>Nous avons donc l'environnement et les outils, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <strong><em>/etc/prt-get.conf</em></strong>
+   <div>Nous avons donc l'environnement et les outils, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <strong><em>/etc/cards.conf</em></strong>
    </div>
    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est important de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:<em><strong> /usr/ports/base</strong></em> et <em><strong>/usr/ports/extra</strong></em>. Sinon, à la prochaine demande de synchronisation des ports NuTyX via la commande:
    </div>
@@ -180,33 +180,23 @@ EOF</kbd>
    </div>
    <pre class="command"><kbd>mkdir -pv /usr/ports/personnel</kbd>
    </pre>
-   <div>Vérifiez le contenu du fichier <em><strong>/etc/prt-get.conf</strong></em> le cas échéant, on ajoute ensuite l'information dans le fichier de configuration <strong><em>/etc/prt-get.conf. </em></strong>Celui-ci doit ressembler à ceci
+   <div>Vérifiez le contenu du fichier <em><strong>/etc/cards.conf</strong></em> le cas échéant, on ajoute ensuite l'information dans le fichier de configuration <strong><em>/etc/cards.conf. </em></strong>Celui-ci doit ressembler à ceci
    </div>
    <pre class="output">#
-# prt-get conf
+# cards conf
 ###
 
 # note: L'ordre importe: Le premier paquet qui sera trouvé sera utilisé
-prtdir /usr/ports/personnel
-prtdir /usr/ports/base
-prtdir /usr/ports/extra
+dir /usr/ports/personnel
+dir /var/lib/pkg/saravane/desktop ...
+dir /var/lib/pkg/saravane/server ..
 ...
    </pre>
    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Vous noterez donc que ce sont les paquets trouvés dans /usr/ports/personnel qui seront traités en premier lieu même si le même port existe dans les dossiers base ou extra
    </div>
    <div>Pour que vous puissiez installez vos paquets binaires dans votre NuTyX principale, il est important de vérifier quelques variables dans le fichier <strong><em>/etc/pkgmk.conf</em></strong>
    </div>
-   <div>Si ce n'est pas encore le cas, remplacez
-   </div>
-   <pre class="output"># PKGMK_COMPRESSION_MODE="gz"
-   </pre>
-   par
-   <pre class="output">PKGMK_COMPRESSION_MODE="xz"
-   </pre>
-   <div>Pour que les paquets binaires atterissent dans le dossier /srv/NuTyX/release, on ajuste la variable:
-   </div>
-   <pre class="output">PKGMK_PACKAGE_DIR="/srv/www/htdocs/nutyx/release"
-   </pre>
+   <p>
    <div>Optionnellement vous pouvez également ajuster les dossiers et optimisation dans le fichier <strong><em>/etc/pkgmk.conf</em></strong>. Si vous ne changez rien, sachez que les sources des paquets binaires seront dans le dossier <strong><em>/tmp</em></strong>.
    </div>
    <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire son premier paquet.
@@ -223,9 +213,7 @@ prtdir /usr/ports/extra
    <div>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />
    </div>
    <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
-name=joe
 version=3.7
-release=1
 source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
 build() {
 cd $name-$version
@@ -235,13 +223,11 @@ make DESTDIR=$PKG install
 }
 EOF</kbd>
    </pre>
-   <div>Vous venez de créer la recette de votre premier paquet. On va maintenant demander à <strong>prt-get</strong> de le compiler et de l'installer:
+   <div>Vous venez de créer la recette de votre premier paquet. On va maintenant demander à <strong>cards</strong> de le compiler et de l'installer:
    </div>
-   <pre class="command"><kbd>prt-get install joe</kbd>
+   <pre class="command"><kbd>cards create -n joe</kbd>
    </pre>
-   <pre class="output">[Config error: can't access /usr/ports/base]
-[Config error: can't access /usr/ports/extra]
-prt-get: installing /usr/ports/perso/joe
+   <pre class="output">cards: installing /usr/ports/perso/joe
 Building '/srv/NuTyX/release/joe#3.7-1.pkg.tar.gz'
 bsdtar -p -o -C /tmp/work/src -xf /tmp/joe-3.7.tar.gz
 + build
@@ -263,26 +249,11 @@ prt-get: installing joe 3.7-1
 -- Packages installed
 joe
 
-prt-get: installed successfully
+cards: installed successfully
    </pre>
    <div><img src="../graphics/clap.gif" alt="clap" />Ca c'est vraiment cool non <img src="../graphics/clap.gif" alt="clap" />
    </div>
    <div>Votre premier paquet est compilé et installé. Le gestionnaire de paquet (de votre chroot) l'a intégré dans sa base de données. Petite remarque, si vous avez suivi ce tuto, vous avez sans doute remarquez que toutes les commandes ont été effectuées depuis la racine de votre chroot ... <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Il est temps de se familiariser avec son nouveau paquet installé. Ca tombe bien, on vient d'installer ... un éditeur de texte.</div>
-   <div>Les deux erreurs</div>
-   <pre class="output">[Config error: can't access /usr/ports/base]
-[Config error: can't access /usr/ports/extra]
-   </pre>
-   <div>n'ont pas du vous échapper. C'est tout simplement parce que les dossiers base et extra ne contiennent aucune recette. Pour remédier à ce petit soucis faites simplement:
-   </div>
-   <pre class="command"><kbd>ports -u</kbd>
-   </pre>
-   <div>Et toutes les recettes seront téléchargées dans votre environnement.
-   </div>
-   <div>Les deux WARNING</div>
-   <pre class="output">WARNING: Md5sum not found, creating new.
-WARNING: Footprint not found, creating new.
-   </pre>
-   <div>S'expliquent normalement, comme c'est la première compilation du paquet, le script pkgmk crée pour vous les 2 fichiers .md5sum et .footprint
    </div>
    <div>Maintenant que l'on a un éditeur de texte, on va s'en servir pour la suite. Fini les cat ...
    </div>
@@ -435,7 +406,7 @@ make DESTDIR=$PKG install
      
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
     </footer>
  </body>
 </html>

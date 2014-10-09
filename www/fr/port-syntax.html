@@ -11,22 +11,22 @@
      <header>    
       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
     </header>
-       
     <nav>
-        <ul>
+       <ul>
             <li><a href=".">Accueil</a></li>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="contribute.html">Contribuer</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Paquets</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
-     
+
         <!-- FIN HEADER -->
      
    <h1>Syntaxe minimale d'un port (recette de fabrication)</h1>
@@ -36,11 +36,8 @@
    </div>
    <div>Les informations minimales pour pouvoir produire le binaire sont:
    </div>
-   <li> <em><strong>name</strong></em> spécifie le nom du paquet qui sera installé.
    </li>
    <li> <em><strong>version</strong></em> spécifie la version des sources du paquet.
-   </li>
-   <li> <em><strong>release</strong></em> spécifie le numéro de version du paquet binaire finale, Si c'est la première tentative de construction du paquet binaire, cette variable initialisée à <span style="text-decoration: underline;"><strong>1</strong></span>. Elle contiendra la valeur <strong><span style="text-decoration: underline;">2</span></strong> si c'est la deuxième tentative ainsi de suite.
    </li>
    <li> <em><strong>source</strong></em> contient l'adresse des sources du paquet que l'on souhaite empaqueter.
    </li>
@@ -48,12 +45,8 @@
    </li>
    </br>
    <div>Un petit exemple "en image"</div>
-   <pre class="output"># Nom du paquet 
-name=libglade
-# Version du paquets
+   <pre class="output"># Version du paquets
 version=2.6.4
-# Première tentative d'empaquetage
-release=1
 # Emplacement des sources du paquet qui sera empaqueté
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
 # Recette proprement dite, souvent constitué des trois commandes standards
@@ -62,7 +55,6 @@ cd $name-$version
 ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info
 make
 make DESTDIR=$PKG install
-rm -rf $PKG/usr/share/gtk-doc
 }
    </pre>
    <div>Si vous comparez cet exemple avec un port officiel de NuTyX, vous constaterez que ce dernier dispose de plus d'informations. C'est ce que nous verrons dans un prochain article. Une ligne vous a sans doute attiré l'attention:
@@ -85,7 +77,7 @@ rm -rf $PKG/usr/share/gtk-doc
      
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
     </footer>
  </body>
 </html>
