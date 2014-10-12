@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 3.16.1 Kernel Configuration
+# Linux/x86 3.16.5 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1528,6 +1528,7 @@ CONFIG_ATA_GENERIC=y
 # CONFIG_PATA_LEGACY is not set
 CONFIG_MD=y
 CONFIG_BLK_DEV_MD=y
+CONFIG_MD_AUTODETECT=y
 CONFIG_MD_LINEAR=m
 CONFIG_MD_RAID0=m
 CONFIG_MD_RAID1=m
