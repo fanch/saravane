@@ -1196,9 +1196,10 @@ install_nutyx() {
 	etc/cards.conf \
 	etc/resolv.conf \
 	etc/localtime \
-	etc/network
+	etc/network \
+	$TEXTDOMAINDIR
 	do
-		if [ -f /$FILE ];then
+		if [ -f /$FILE ] || [ -d /$FILE ];then
 			cp -a /$FILE  ${2}/$FILE
 		fi
 	done
