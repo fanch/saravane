@@ -198,7 +198,7 @@ EOF
 	fi
 	cat > /etc/sysconfig/network << "EOF"
 HOSTNAME='nutyx'        # Hostname of this machine
-MANAGER='cli'           # Network manager (wicd/networkmanager/cli/nothing)
+MANAGER=''              # Network manager (wicd/networkmanager/cli/nothing)
 NETWORKWAIT='no'        # Wait or not for network
 LINKDELAY='15'          # init delay for initialisation of Networkmanager
 NETWORKDELAY='0'        # init delay to wait after initialisation of Networkmanager
@@ -1591,6 +1591,11 @@ parse_options() {
 }
 check_all () {
 	if [ "$SETUP_CONFIG_LANGUAGE" = "no" ]; then
+		if [ -r ${LOCALE} ]; then
+			. ${LOCALE}
+		else
+			export SETUP_CONFIG_LANGUAGE="yes"
+		fi
 		[ -r ${LOCALE} ] || export SETUP_CONFIG_LANGUAGE="yes"
 	fi
 	if [ "$SETUP_CONFIG_KEYBOARD" = "no" ]; then
