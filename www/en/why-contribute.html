@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <!-- En-tête de la page -->
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Pourquoi contribuer ?</title>
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - pourquoi contribuer</title>
  </head>
+    
  <body>
-    <header>
+     <header>    
       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
     </header>
+       
     <nav>
-        <ul>
+       <ul>
             <li><a href=".">Home</a></li>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
-            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="contribute.html">Contribute</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Lasts changes</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Packages</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Lasts changes</a></li>
         </ul>
     </nav>
-<h1><span>Pourquoi vouloir contribuer ?</span></h1>
-<div class="introduction">NuTyX dispose actuellement de quelques <a href="http://nutyx.meticul.eu/sekong.5/x86_64/release/" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">980 applications</a> disponibles en binaires. C'est à la fois beaucoup et pas beaucoup en effet tous les jours ou presque sortent de nouvelles applications sous licence libre (ou pas)</div>
-<div class="description"><p>Vous l'avez compris, vous ne trouverez jamais TOUTES les applications disponibles sur le net pr&ecirc;tes &agrave; &ecirc;tre install&eacute;es sur NuTyX. Rien que sur le site de <a href="http://sourceforge.net/">sourceforge.net</a>,  on peut y trouver plus de 5000 applications toutes platformes confondues. Si vous avez trouvez l'application de vos r&ecirc;ves, il faudra  par un moyen ou un autre la compiler, l'installer et la faire  fonctionner dans NuTyX.Pour cela nous allons vous demander de contribuer un petit peu. C'est vous qui aller construire le paquet... Si vous le voulez bien.</p>
-<p>Compiler une application se r&eacute;sume souvent a faire les manipulations suivantes:</p>
-<ul><li>Trouver l'application qui n'existe pas sur NuTyX</li></ul>
-<ul><li>T&eacute;l&eacute;charger les sources de l'application</li></ul>
-<ul><li>V&eacute;rifier la somme MD5&nbsp; (vivement recommend&eacute;e mais h&eacute;las pas toujours possible)</li></ul>
-<ul><li>Extraires les sources dans un dossier de travail</li></ul>
-<ul><li>Entrer dans ce dossier de travail</li></ul>
-<ul><li>V&eacute;rifier que toutes les d&eacute;pendances sont existantes dans NuTyX pour que la compilation de la nouvelle application se termine avec succ&egrave;s.</li></ul>
-<ul><li>Taper les 3 commandes magiques (pas toujours le cas)</li></ul>
+     
+        <!-- FIN HEADER -->      
+      
+<h1><span>Why should you contribute ?</span></h1>
+<div class="introduction">Today NuTyX have about <a href="http://downloads.nutyx.org/saravane/latest/" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">1000 applications</a> in binaries available. It's a lot and not because every days are new programs release on the net under open source licence (or not)</div>
+<div class="description"><p>It's clear, you will never have the chance to see all thoses programs ready to be installed on NuTyX. Just with the web site <a href="http://sourceforge.net/">sourceforge.net</a>,  we can find more then 5000 applications for all platforms. If you found the application of yours dreams, you will have in eather way to compile it, install it and make it working on NuTyX. That why we will ask you to contribute a little bit. It's you who will build the package... if you want of course.</p>
+<p>Compiling an application is often something like:</p>
+<ul><li>Find the application that doen't exist on NuTyX</li></ul>
+<ul><li>Download the sources of the application</li></ul>
+<ul><li>Check the MD5SUM (strongly recommended but not always possible)</li></ul>
+<ul><li>Extract sources in a working directory</li></ul>
+<ul><li>Enter in this working directory</li></ul>
+<ul><li>Check that all the dependencies exists in NuTyX so that the compilation endup with succes</li></ul>
+<ul><li>Type the three magic commands (not always the case)</li></ul>
 <pre class="output">./configure --prefix=/usr
 make
 make install</pre>
-<p>Et voil&agrave; votre nouvelle application est compil&eacute;e et disponible dans NuTyX.</p>
-<p>C'est une fa&ccedil;on de faire, mais comme vous pouvez le constatez, elle n'est pas sans inconv&eacute;gnients:</p>
-<li>Aucun moyen de retrouver les fichiers install&eacute;s</li>
-<li>Aucun moyen de retrouver les informations sur le paquet install&eacute; cad le nom, la version, la description etc<br /></li>
-<li>Aucun moyen de retrouver le paquet si vous souhaitez l'installer sur une autre machine</li>
-<li>Cette methode est relativement fastidieuse, chaque op&eacute;ration doit imp&eacute;rativement &ecirc;tre refaite en cas de mise &agrave; jour par exemple.</li>
-<li>Aucun paquet n'a &eacute;t&eacute; cr&eacute;&eacute;, ce qui est tr&egrave;s dommage si vous souhaitez le partager avec d'autres utilisateurs de NuTyX</li>
-<li>Votre NuTyX n'est plus vraiment propre puisque vous avez ajout&eacute; une application (ou m&ecirc;me plusieurs si il y avait des d&eacute;pendances). Cette application ne peut pas &ecirc;tre g&eacute;r&eacute;e par le gestionnaire de paquets.<br /></li>
+<p>That's it you new program is compiled and install on your NuTyX.</p>
+<p>That's one way to go... but as you can see they are a few disadvantages:</p>
+<li>Impossible to know which files are installed</li>
+<li>Impossible get information about the installed package like name, version, description, etc...<br /></li>
+<li>Impossible to share the application with another installation of NuTyX</li>
+<li>This method is quiete heavy because need to be done again when they will be an update available for example.</li>
+<li>Your NuTyX is not really clean anymore since you have add files that are not track by the package manager.<br /></li>
 <p>&nbsp;</p>
-<p>NuTyX dispose d'outils tr&egrave;s facile d'emploi qui vous faciliterons grandement la tache et surtout qui vous permettent de maintenir et int&eacute;grer la nouvelle application fra&icirc;chement compil&eacute;e.</p></div>
+<p>NuTyX have nice tools to help you greatly the integration of new programs. You will be then able to track them, maintain them. The package manager will treat them like other NuTyX packages.</p></div>
   </div>
-  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
-  </div>
+
+        <!-- DEBUT FOOTER -->
+     
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+    </footer>
  </body>
 </html>

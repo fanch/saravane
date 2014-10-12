@@ -1195,6 +1195,7 @@ install_nutyx() {
 	etc/sysconfig/console \
 	etc/cards.conf \
 	etc/resolv.conf \
+	etc/localtime \
 	etc/network
 	do
 		if [ -f /$FILE ];then

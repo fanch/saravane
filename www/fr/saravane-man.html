@@ -11,27 +11,27 @@
      <header>    
       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
     </header>
-       
     <nav>
         <ul>
             <li><a href=".">Accueil</a></li>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="contribute.html">Contribuer</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Paquets</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
-     
+       
         <!-- FIN HEADER -->
      
 
       
-    <h2>Manuel NuTyX Sekong </h2>
+    <h2>Manuel NuTyX Saravane </h2>
     <div>Cette page de manuel vous permet de prendre connaissance du minimum vital pour pouvoir utiliser votre système d'exploitation NuTyX GNU/Linux. Veuillez consulter les fichiers mentionnés pour obtenir plus d'information.
  </div>
   <ol>
@@ -44,7 +44,7 @@
     Le fichier <b>/etc/sysconfig/console</b> défini la configuration du clavier en mode console cad non graphique. Un exemple de configuration de la console:
     </div>
     <pre class="command"><kbd>cat >  /etc/sysconfig/console << "EOF"
-FONT="lat0-16 -m 8859-15"
+FONT="LatGrkCyr-8x16"
 UNICODE="1"
 LOGLEVEL=1
 KEYMAP=fr_CH-latin1.map
@@ -190,18 +190,19 @@ swapon /SWAP</kbd></pre>
 <pre class="command"><kbd>sudo ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime</kbd></pre> défini Rome comme ville de votre région.
   </div>
   <div><h4><li>L'amorçage de la machine</li></h4></div>
-  <div>Si vous avez utilisez une iso pour l'installation de NuTyX et que vous avez choisi d'installer l'amorçage de la machine, le fichier de configuration de l'amorçage se trouve dans <b>/boot/grub/grub.cfg</b>. Le nom du fichier du kernel de NuTyX s'appelle <b>kernel</b>, et le nom de l'initrd s'appelle <b>nutyx-initrd</b>. Les deux  fichiers se trouvent par défaut dans le dossier <b>/boot</b>. Dans l'exemple qui suit: NuTyX est installée sur la première partition du deuxième disque, grub est installé sur le premier disque. Le fichier de configurations sera:
+  <div>Si vous avez utilisez une iso pour l'installation de NuTyX et que vous avez choisi d'installer l'amorçage de la machine, le fichier de configuration de l'amorçage se trouve dans <b>/boot/grub/grub.cfg</b>. Le nom du fichier du kernel de NuTyX s'appelle <b>kernel</b>, et le nom de l'initrd s'appelle <b>initrd</b>. Les deux  fichiers se trouvent par défaut dans le dossier <b>/boot</b>. Dans l'exemple qui suit: NuTyX est installée sur la première partition du deuxième disque, grub est installé sur le premier disque. Le fichier de configurations sera:
   </div>
   <pre class="output">menuentry "NuTyX sekong" {
   set root=(hd1,1)
   linux /boot/kernel root=/dev/sdb1 ro quiet 3
+  initrd /boot/initrd
   }</pre>
   <div>Si l'on souhaite avoir une entrée supplémentaire pour lancer le système de maintenance:
   </div>
   <pre class="output">menuentry "NuTyX systeme de maintenance" {
   set root=(hd1,1)
   linux /boot/kernel ro quiet 3
-  initrd /boot/nutyx-initrd
+  initrd /boot/initrd
   }</pre>
   <div>Notez que l'option <b>root=/dev/sdb1</b> est supprimée.
   </div>
@@ -224,43 +225,37 @@ lequel la partition de NuTyX sekong se trouve, dans notre exemple ci-dessus, on 
   </div>
  </ol>
     <div><h3><li>EN CAS DE PROBLEMES</li></h3></div>
-  <div>Il existe de nombreux fichiers logs qui peuvent afficher de precieuses informations. Les informations de démarrage se trouvent dans les fichiers <b>/var/log/boot.log</b> et <b>/var/log/sys.log</b>. Les informations du dernier lancement du serveur X se trouvent dans le fichier <b>/var/log/Xorg.0.log</b>. La plupart des services disposent également de leur propre log. Si vous avez un problème de connection ssh, une source d'info peut se trouver dans le fichier <b>/var/log/auth.log</b> du serveur ssh. Pour connaître l'historique des paquets binaires installés, consultez le fichier <b>/var/log/pkg-get.conf</b>. 
+  <div>Il existe de nombreux fichiers logs qui peuvent afficher de precieuses informations. Les informations de démarrage se trouvent dans les fichiers <b>/var/log/boot.log</b> et <b>/var/log/sys.log</b>. Les informations du dernier lancement du serveur X se trouvent dans le fichier <b>/var/log/Xorg.0.log</b>. La plupart des services disposent également de leur propre log. Si vous avez un problème de connection ssh, une source d'info peut se trouver dans le fichier <b>/var/log/auth.log</b> du serveur ssh. Pour connaître l'historique des paquets binaires installés, consultez le fichier <b>/var/log/cards.log</b>. 
   </div>
   <div><h3><li>GESTION DES PAQUETS BINAIRES DISTANTS (ET INSTALLES)</li></div></h3>
   <ol>
-  <div><h4><li>Configuration de pkg-get</li></h4></div>
-  <div>Le fichier <b>/etc/pkg-get.conf</b> définit les règles de fonctionnement de la commande <b>pkg-get</b>. La première ligne définie le dossier où sont stockés les paquets binaires et l'adresse URL du mirroir utilisé. La deuxième ligne définie la liste des paquets que contient une NuTyX de base dans le cas de la commande <b>pkg-get base</b>. Libre à vous d'ajouter les paquets que vous souhaitez garder lors de l'exécution de cette commande.</di>
+  <div><h4><li>Configuration de cards</li></h4></div>
+  <div>Le fichier <b>/etc/cards.conf</b> définit les règles de fonctionnement de la commande <b>cards</b>. Chaque ligne de configuration est constituée d'une pair &lt;variable&gt; &lt;donnée&gt;</div>
   <div><h4><li>Les commandes à savoir</li></h4></div>
-La commande <b>pkg-get</b> comprends de nombreuses options dont voici quelques unes. 
+La commande <b>cards</b> comprends de nombreuses options dont voici quelques unes. 
 Pour une aide complète. Les commandes modifiant votre installation s'utilisent avec le compte administrateur (via su -) ou via la commande <b>sudo</b>
-<pre class="command"><kbd>pkg-get help</kbd></pre>
+<pre class="command"><kbd>cards</kbd></pre>
 synchronisation, voir les mises à jour disponibles
 <pre class="command"><kbd>check</kbd></pre>
 ou
-<pre class="command"><kbd>sudo pkg-get sync</kbd></pre>
+<pre class="command"><kbd>sudo cards sync -i</kbd></pre>
 Installe le paquetX 
-<pre class="command"><kbd>get paquetX  [paquetY ...]</kbd></pre>ou
-<pre class="command"><kbd>sudo pkg-get depinst paquetX [paquetY ..]</kbd></pre>
-Désinstalle le paquetX ET ses dépendances, à utiliser uniquement si vous savez ce que vous faîtes, les dépendances étant le plus souvent partagées par différents paquets. Si vous souhaitez supprimer le paquetX seul, utilisez la commande sans le <b>-r</b>
-<pre class="command"><kbd>del -r paquetX</kbd></pre>
+<pre class="command"><kbd>get paquetX</kbd></pre>ou
+<pre class="command"><kbd>sudo cards install paquetX</kbd></pre>
+Désinstalle le paquetX</b>
+<pre class="command"><kbd>del paquetX</kbd></pre>
 ou
-<pre class="command"><kbd>sudo pkg-get remove -r paquetX</kbd></pre>
+<pre class="command"><kbd>sudo cards remove paquetX</kbd></pre>
 Mise à jour du paquetX. Notez que toutes les dépendances du paquetX seront également mise à jour.
 <pre class="command"><kbd>up paquetX</kbd></pre>
 ou
-<pre class="command"><kbd>sudo pkg-get update -r paquetX</kbd></pre>
-Recherche les mots chaine1 .. chaîneN dans le nom et la description des paquets.
-<pre class="command"><kbd>search <chaîne1> .. <chaîneN></kbd></pre>
+<pre class="command"><kbd>sudo cards install -u paquetX</kbd></pre>
+Recherche le mots &lt;chaîne&gt; dans le nom et la description des paquets.
+<pre class="command"><kbd>search <chaîne></kbd></pre>
 ou
-<pre class="command"><kbd>pkg-get dsearch <chaîne1> .. <chaîneN></kbd></pre>
-Installe le paquetX SANS ses dépendances. Un message averti l'utilisateur si il y a des dépendances manquantes.
-<pre class="command"><kbd>sudo pkg-get install paquetX [paquetY ...]</kbd></pre>
+<pre class="command"><kbd>sudo cards search <chaîne></kbd></pre>
 Affiche la liste des paquets pouvant être mis à jour. On trouve aussi dans cette liste les paquets verrouillé ne devant pas être mis à jour.
-<pre class="command"<kbd>pkg-get diff</kbd></pre>
-Affiche le README du <paquet> si le fichier README est présent.
-<pre class="command"><kbd>pkg-get readme <paquet></kbd></pre>
-Permet de rechercher un nom de paquet ou de description de paquet, veuillez spécifier 2 lettres minimums.
-<pre class="command"><kbd>pkg-get dsearch <nomdepaquet></kbd></pre>
+<pre class="command"<kbd>cards diff -i</kbd></pre>
   </div>
  </ol>
 
@@ -291,64 +286,27 @@ Connaître l'appartenance d'un fichier
 <pre class="command"><kbd>pkginfo -o NomDuFichier</kbd></pre>
  </ol>
  
- <div><h3><li>GESTION DES PORTS (mode utilisateur avancé pour l'utilisation des recettes)</li></h3></div>
- <div>Un port est un dossier contenant les informations necessaire pour la construction d'un paquet binaire. Le fichier <b>Pkgfile</b> qui se trouve dans le dossier décrit toutes les informations et opérations à effectuer pour la construction de ce paquet.</div>
-<ol>
-<div><h4><li>Configuration des ports</li></h4></div>
-<div>Le dossier <b>/etc/ports</b> contient les fichiers de configuration pour la commande <b>ports</b>. Chaque fichier gère son propre dossier de recettes. Le dossier <b>/etc/ports/drivers</b> contient les différents pilotes utilisé par la commande <b>port</b></div>
-<div>Le contenu de base.rsync</div>
-<pre class="output">host=nutyx.org
-collection=ports/nutyx-sekong/base/
-destination=/usr/ports/base</pre>
-<ul><b>host:</b> spécifie l'addresse des ports à rapatrier</ul>
-<ul><b>collection:</b> la collection concernée</ul>
-<ul><b>destination:</b> le dossier local de destination</ul>
-<div><h4><li>Les commandes à savoir</li></h4></div>
-Mise à jour de l'arbre des ports (/usr/ports/*)
-<pre class="command"><kbd>sudo ports -u</kbd></pre>
-Lister les ports disponibles
-<pre class="command"><kbd>ports -l</kbd></pre>
-Voir si une mise à jour d'un port est disponible
-<pre class="command"><kbd>ports -d</kbd></pre>
-</ol>
-
  <div><h3><li>GESTION DES PAQUETS VIA LES PORTS AVEC LA GESTION DES DEPENDANCES (mode utilisateur avancé)</li></h3></div>
- <div>La gestion des recettes des paquets ainsi que les dépendances de ceux-ci se fait via la commande <b>prt-get</b>. Le nombre d'options de <b>prt-get</b> est très grande. Nous en listons ici quelques-unes.
+ <div>La gestion des recettes des paquets ainsi que les dépendances de ceux-ci se fait via la commande <b>cards</b> également.
  </div>
  <ol>
-  <div><h4><li>Configuration de prt-get</li></h4></div>
-  <div>Le fichier <b>/etc/prt-get.conf</b> définit les règles de fonctionnement de la commande <b>prt-get</b>. La lignes <b>prtdir /usr/ports/...</b> sont très importante, l'ordre défini dans quel dossier la recette sera choisie si le port est en double. Consultez les pages de man de <b>man prt-get.conf</b> et <b>man prt-get</b> pour avoir la liste complète des options de <b>prt-get</b>.</div>
+  <div><h4><li>Configuration de cards</li></h4></div>
+  <div>Le fichier <b>/etc/cards.conf</b> définit les règles de fonctionnement de la commande <b>cards</b>. Les lignes <b>dir /var/lib/pkg/saravane/...</b> sont très importantes, l'ordre défini dans quel dossier la recette sera choisie si le port est en double.</div>
   <div><h4><li>Les commande à savoir</li></h4></div>
 Lister les dépendances d'un paquet et voir si elles sont installées ou pas
-<pre class="command"><kbd>prt-get deptree paquetX</kbd></pre>
+<pre class="command"><kbd>cards deptree paquetX</kbd></pre>
 Voir si paquetX est disponible
-<pre class="command"><kbd>prt-get search -v paquetX</kbd></pre>
+<pre class="command"><kbd>cards search paquetX</kbd></pre>
 Rechercher avec la description d'un paquet
-<pre class="command"><kbd>prt-get search -vv paquetX</kbd></pre>
-Rechercher le chemin du port
-<pre class="command"><kbd>prt-get search --path paquetX</kbd></pre>
-Rechercher dans la description du paquet
-<pre class="command"><kbd>prt-get dsearch le_nom_a_trouver</kbd></pre>
-Rechercher un fichier dans un paquet
-<pre class="command"><kbd>prt-get fsearch le_fichier\e*</kbd></pre>
-Obtenir des infos sur un port (deps, paquetr, chemin, ...)
-<pre class="command"><kbd>prt-get info paquetX</kbd></pre>
-Lister les dépendances inverses
-<pre class="command"><kbd>prt-get dependent paquetY</kbd></pre>
+<pre class="command"><kbd>cards info -p paquetX</kbd></pre>
 Empaqueter et installer un port (necessite les droits du compte root)
-<pre class="command"><kbd>cd /usr/ports/extra/paquetX && pkgmk -d -i</kbd></pre>
-Télécharge, empaquete et installe paquetX en une seule commande
-<pre class="command"><kbd>sudo prt-get install paquetX</kbd></pre>
-Mise à jour du port paquetX
-<pre class="command"><kbd>sudo prt-get update paquetX</kbd></pre>
-Mise à jour de tous les paquets qui ont une version de port différente
-<pre class="command"><kbd>sudo prt-get update</kbd></pre>ou
-<pre class="command"><kbd>prt-get quickdiff</kbd></pre>
+<pre class="command"><kbd>cd /var/lib/pkg/saravane/&lt;categorie&gt;/paquetX && pkgmk -d -i</kbd></pre>
+Télécharge, empaquete et installe paquetX en une seule commande. Les dépendances DOIVENT être disponible en binaire. Celles-ci ne seront pas compilées.
+<pre class="command"><kbd>sudo cards create -n paquetX</kbd></pre>
   </ol>
 
    <div><h3><li>SERVICES</li></h3></div>
-   <div>Les différents services sont disponible sous le nom service-<nomduservice>. La commande <b>pkg-get dsearch service-</b> affichera la liste des paquets de service disponible. Une fois installé, ils sont disponibles (cups, gdm, sshd, ...) dans le dossier <b>/etc/rc.d/init.d</b></div>
-
+   <div>Les différents services sont disponible sous le nom &lt;nomduservice&gt;.service. La commande <b>cards search service</b> affichera la liste des paquets de service disponible. Une fois installé, ils sont disponibles (cups, gdm, sshd, ...) dans le dossier <b>/etc/rc.d/init.d</b></div>
    <div>
 Mise en route du serviceX
 <pre class="command"><kbd>/etc/rc.d/init.d/serviceX start</kbd></pre>
@@ -359,13 +317,12 @@ Redémarrage du serviceC cette option n'est pas toujours disponible.
    </div>
 
    <div><h3><li>AIDE EN LIGNE</li></h3></div>
-   <div><b>IRC</b> rejoindre le canal <b>#nutyx</b> sur le réseau irc.freenode.net (utf\-8)
+   <div><b>IRC</b> rejoindre le canal <b>#nutyx</b> sur le réseau irc.freenode.net (utf-8)
    </div>
    <div><b>Site des utilisateurs</b> http://www.nutyx.org</div>
 
   <div><h3><li>FICHIERS</li></h3></div>
-  <pre class="output"><b>/etc/pkg-get.conf,
-/etc/prt-get.conf,
+  <pre class="output"><b>/etc/cards.conf,
 /etc/pkgadd.conf,
 /etc/pkgmk.conf,
 /etc/sysconfig/console,
@@ -377,17 +334,15 @@ Redémarrage du serviceC cette option n'est pas toujours disponible.
 /etc/fstab,
 /etc/profile.d/i18n.sh</b></pre>
   <div><h3><li>AUTHEURS</li></h3></div>
-  <div>Ecrit par Frederic Galusik <fred.galusik ~AT~ linuxpedia.fr>, Thierry Nuttens <thierryn1 ~AT~ hispeed.ch> et Pierre Bouchet</div>
+  <div>Thierry Nuttens &lt;thierryn1 ~AT~ nutyx.org&gt; et Pierre Bouchet &lt;pierre ~AT~ nutyx.org&gt;</div>
   <div><h3><li>VOIR AUSSI</li></h3></div>
 les pages man de
-  <pre class="output">ports(8), 
-prt-get(8), prt-get.conf(5), prt-cache(8), pkgmk(8) pkgadd(8),
-pkg-get(8), pkgrm(8), pkginfo(8), modprobe(8), modprobe.conf(5),
+  <pre class="output">pkgmk(8) pkgadd(8),
+pkgrm(8), pkginfo(8), modprobe(8), modprobe.conf(5),
 useradd(8), userdel(8)</pre>
   <div><h3><li>COPYRIGHT</li></h3></div>
 <pre class="output">
-Copyright (C) 2009 - 2010 - 2011 Frederic Galusik
-Copyright (C) 2011 - 2012 - 2013 Thierry Nuttens - Pierre Bouchet
+Copyright (C) 2011 - 2012 - 2014 Thierry Nuttens - Pierre Bouchet
 
 Ceci est un document libre publié sous licence libre WTFPL - Do What The Fuck You Want To Public License.
 ( http://sam.zoy.org/wtfpl/ ) </pre>
@@ -398,7 +353,7 @@ Ceci est un document libre publié sous licence libre WTFPL - Do What The Fuck Y
      
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
     </footer>
  </body>
 </html>

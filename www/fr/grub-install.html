@@ -13,17 +13,18 @@
     </header>
        
     <nav>
-        <ul>
+       <ul>
             <li><a href=".">Accueil</a></li>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="contribute.html">Contribuer</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/latest/">Paquets</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
      
@@ -70,11 +71,12 @@ initrd /boot/kernel26.img
 title NuTyX Maintenance sur /dev/sda2
 root (hd0,1)
 kernel /boot/kernel ro quiet
-initrd /boot/nutyx-initrd
+initrd /boot/initrd
 # (2) NuTyX sur /dev/sda2
 title NuTyX sur /dev/sda2
 root (hd0,1)
-kernel /boot/kernel root=/dev/sda2 ro quiet</pre>
+kernel /boot/kernel root=/dev/sda2 ro quiet
+initrd /boot/initrd</pre>
 <div>Dans l'exemple ci-dessus, on trouve 3 entr&eacute;es dont 2 entr&eacute;es NuTyX, la premi&egrave;re lancera la distribution ARCH qui se trouve sur le disque <strong>/dev/disk/by-uuid/db1a8066-a766-4aea-b34d-545f5acde6, </strong>la deuxi&egrave;me lancera la maintenance de NuTyX qui se trouve sur la partition <strong>/dev/sda2</strong> et enfin la troisi&egrave;me entr&eacute;e lancera la NuTyX en dur qui se trouve &eacute;galement sur <strong>/dev/sda2</strong></div>
 <div>Dans le cas de grub 2.00, la syntaxe est l&eacute;g&egrave;rement diff&eacute;rente comme on peut le voir ci-dessous:</div>
 <pre class="output"># Begin grub.cfg
@@ -83,14 +85,15 @@ set default 0
 # Allow 5 seconds before booting the default.
 set timeout 5<br />set color_highlight=blue/white
 set color_normal=cyan/black<br />set gfxpayload=1024x768x16
-menuentry "NuTyX MINI pakxe.4 i686 reiserfs sur /dev/sda2" {
+menuentry "NuTyX  xfs sur /dev/sda2" {
  set root=(hd0,2)
  linux /boot/kernel root=/dev/sda2 ro quiet
+ initrd /boot/initrd
 }
 menuentry "Maintenance de NuTyX" {
   set root=(hd0,1)
   linux /boot/kernel ro quiet
-  initrd /boot/nutyx-initrd
+  initrd /boot/initrd
 }
 menuentry "Windows 8" {
  set root=(hd0,3)
@@ -105,7 +108,7 @@ menuentry "Windows 8" {
      
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a> | Design by <a href="http://ptite.cahouet.net">La ptite Cahouet</a>.</p>
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
     </footer>
  </body>
 </html>
