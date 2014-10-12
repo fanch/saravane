@@ -1,6 +1,6 @@
-version=4.3.16
+version=4.3.18
 _name=Oracle_VM_VirtualBox_Extension_Pack
-_release=95972
+_release=96516
 
 PKGMK_IGNORE_FOOTPRINT="yes"
 PKGMK_IGNORE_MD5SUM="yes"
