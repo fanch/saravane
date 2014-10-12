@@ -49,6 +49,4 @@ build() {
         # remove HAL .fdi file because HAL is no longer used
         rm -vrf $PKG/usr/share/hal
 
-        rm -r $PKG/usr/share/doc
 }
-
