@@ -1,3 +1,0 @@
-if [ ! -L /usr/X11R6 ]; then
-	ln -s $XORG_PREFIX /usr/X11R6
-fi
