@@ -6,6 +6,4 @@ build() {
 	./configure --prefix=/usr --program-suffix=-1
 	make GETTEXT_PACKAGE=libwnck-1
 	make DESTDIR=$PKG GETTEXT_PACKAGE=libwnck-1 install
-	rm -rf $PKG/usr/share/gtk-doc
 }
-
