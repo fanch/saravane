@@ -1,4 +1,4 @@
-version=0.8.9
+version=1.6.0
 
 source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2
 	http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2.asc)
