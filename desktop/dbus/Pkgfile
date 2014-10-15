@@ -2,7 +2,7 @@ version=1.8.8
 PKGMK_GROUPS=(doc devel)
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
-       dbus.system-local.conf dbus.session-local.conf)
+       dbus.system-local.conf)
 
 build() {
 	source /etc/blfs-bootscripts
@@ -23,7 +23,6 @@ build() {
 	$PKG/usr/share/doc/dbus-$version
         mkdir -p $PKG/etc/dbus-1
         mv ../dbus.system-local.conf $PKG/etc/dbus-1/system-local.conf
-	mv ../dbus.session-local.conf $PKG/etc/dbus-1/session-local.conf
         cd ../$scripts-$scriptsversion
         make DESTDIR=$PKG install-dbus
 	mkdir -p $PKG/usr/lib/dbus-1.0/services
@@ -38,5 +37,4 @@ build() {
 	do
 		mv $PKG/etc/rc.d/rc$i.d/K{30,85}dbus
 	done
-	rm $PKG/usr/bin/dbus-launch
 }
