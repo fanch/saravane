@@ -1,4 +1,4 @@
-version=8.6.0
+version=8.6.2
 
 source=( http://downloads.sourceforge.net/$name/$name$version-src.tar.gz)
 
