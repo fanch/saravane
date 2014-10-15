@@ -1,4 +1,4 @@
-version=0.158
+version=0.160
 
 source=( https://fedorahosted.org/releases/e/l/$name/$version/$name-$version.tar.bz2)
 
