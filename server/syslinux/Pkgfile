@@ -1,4 +1,4 @@
-version=5.00
+version=6.03
 
 source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
 
