@@ -1,4 +1,4 @@
-version=20140213-3.1
+version=20140620-3.1
 source=(http://www.thrysoee.dk/editline/libedit-$version.tar.gz)
 
 build(){
@@ -8,7 +8,3 @@ build(){
     make
     make DESTDIR=$PKG install    
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
