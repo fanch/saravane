@@ -1,1 +1,9 @@
-pulseaudio-cli
+json-c
+libsndfile
+alsa-lib
+dbus
+glib
+libcap
+openssl
+speex
+libsamplerate

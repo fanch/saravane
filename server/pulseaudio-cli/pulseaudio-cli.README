@@ -1,8 +1,0 @@
-A faire si necessaire en root:
-
-groupadd -g 58 pulse &&
-groupadd -g 59 pulse-access &&
-useradd -c "Pulseaudio User" -d /var/run/pulse -g pulse \
-        -s /bin/false -u 58 pulse &&
-usermod -a -G audio pulse
-
