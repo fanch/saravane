@@ -1,4 +1,4 @@
-version=5.1.6
+version=5.1.7
 source=(
 http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
 $name.patch)
