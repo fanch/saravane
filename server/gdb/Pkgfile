@@ -1,5 +1,5 @@
-version=7.7.1
-source=(http://ftp.gnu.org/gnu/gdb/$name-$version.tar.bz2)
+version=7.8
+source=(http://ftp.gnu.org/gnu/gdb/$name-$version.tar.xz)
 build() {
 cd $name-$version
 ./configure --prefix=/usr --with-system-readline
@@ -19,5 +19,5 @@ rm $PKG/usr/lib/libopcodes.la
 
 # Most of the locale are allready present from binnutils, beter get rid of all of them
 rm -r $PKG/usr/share/locale
-rm $PKG/usr/share/info/dir
+rm -f $PKG/usr/share/info/dir
 }
