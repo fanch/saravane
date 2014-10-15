@@ -4,7 +4,6 @@ consolekit
 udisks
 upower
 xorg-libxres
-dbus-launch
 libwnck
 xfce4-libui
 xorg-app
