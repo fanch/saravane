@@ -1,4 +1,4 @@
-version=1.2.17
+version=1.2.18
 source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
 build() {
 cd $name-core-$version
