@@ -1,5 +1,5 @@
 alsa-lib
 ffmpeg-cli
-pulseaudio-cli
+pulseaudio
 libsamplerate
 speex
