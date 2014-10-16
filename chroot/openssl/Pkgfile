@@ -1,5 +1,5 @@
 name=openssl
-version=1.0.1i
+version=1.0.1j
 source=(http://www.openssl.org/source/openssl-$version.tar.gz)
 build(){
 unset MAKEFLAGS
