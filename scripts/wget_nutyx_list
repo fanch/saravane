@@ -7,7 +7,7 @@ http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.pa
 http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-lto_testsuite-1.patch
 http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-load_gcc_lto_plugin_by_default-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
-http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1i-fix_parallel_build-1.patch
+http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1j-fix_parallel_build-1.patch
 http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
@@ -58,7 +58,7 @@ http://www.nasm.us/pub/nasm/releasebuilds/2.11.04/nasm-2.11.04.tar.xz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.04/nasm-2.11.04-xdoc.tar.xz
 http://sites.google.com/site/e3editor/Home/e3-2.8.tgz
 http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
-http://www.openssl.org/source/openssl-1.0.1i.tar.gz
+http://www.openssl.org/source/openssl-1.0.1j.tar.gz
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20140907.tar.bz2
 http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
 http://curl.haxx.se/download/curl-7.37.1.tar.bz2
