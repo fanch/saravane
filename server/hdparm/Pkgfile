@@ -1,4 +1,4 @@
-version=9.43
+version=9.45
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {
 cd $name-$version && make
