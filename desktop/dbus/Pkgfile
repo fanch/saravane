@@ -10,7 +10,7 @@ build() {
 	tar xvf $scripts-$scriptsversion.tar.bz2
 
 	cd $name-$version
-	./configure --prefix=/usr --without-x \
+	./configure --prefix=/usr --with-x \
 		--localstatedir=/var \
 		--sysconfdir=/etc \
 		--with-console-auth-dir=/run/console \
