@@ -1,4 +1,4 @@
-version=3.6.0
+version=3.6.3
 source=(
 https://pypi.python.org/packages/source/s/simplejson/simplejson-$version.tar.gz)
 
