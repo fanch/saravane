@@ -1,4 +1,4 @@
-version=5.4.2
+version=6.0.2
 
 source=(http://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
 

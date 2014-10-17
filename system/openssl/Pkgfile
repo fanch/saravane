@@ -1,4 +1,4 @@
-version=1.0.1i
+version=1.0.1j
 source=(http://www.openssl.org/source/$name-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-fix_parallel_build-1.patch)
 PKGMK_GROUPS=(devel man doc)

@@ -1,4 +1,4 @@
-version=3.3.0
+version=3.6.0
 source=(
 https://pypi.python.org/packages/source/C/CherryPy/CherryPy-$version.tar.gz)
 

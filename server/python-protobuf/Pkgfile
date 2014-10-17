@@ -1,8 +1,9 @@
-version=2.4.1
+version=2.6.0
 
 _name=protobuf
 
-source=(http://protobuf.googlecode.com/files/${_name}-$version.tar.bz2)
+source=(http://protobuf.googlecode.com/svn/rc/${_name}-$version.tar.bz2)
+
 build () 
 { 
 cd ${_name}-$version/python
