@@ -1,14 +1,16 @@
-version=3.12.2
+version=3.14.3
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 
 build() {
 cd gtk+-$version
-CXX=/bin/false ./configure --prefix=/usr \
+./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --infodir=/usr/share/info \
 --disable-packagekit \
 --sysconfdir=/etc \
+--enable-x11-backend \
+--enable-broadway-backend \
 --enable-gtk2-dependency \
 --disable-schemas-compile
 
