@@ -38,11 +38,13 @@ printf "Creating $INITRAMFS_FILE... "
 
 binfiles="sh cat clear cut date grep cp dd hostname killall ls mkdir mknod mount mountpoint chmod"
 binfiles="$binfiles umount stty sed sleep ln rm uname"
+binfiles="$binfiles kmod" ##
 
 sbinfiles="udevd udevadm modprobe blkid switch_root"
 
 #Optional files and locations
-if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
+## if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
+sbinfiles="$sbinfiles mdadm insmod" ##
 
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 

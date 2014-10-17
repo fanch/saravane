@@ -51,71 +51,73 @@ do_mount_root()
        echo "Successfully mounted device $root"
    fi
 }
+
 do_install()
 {
-echo "Start installation on $root "
+   echo "Start installation on $root "
 
-umount /.root
+   umount /.root
 
-ro="rw"
+   ro="rw"
 
-mkdir /etc
-ln -s /proc/self/mounts /etc/mtab
+   mkdir /etc
+   ln -s /proc/self/mounts /etc/mtab
 
-do_mount_root
+   do_mount_root
 
-for DIR in home proc sys dev srv mnt
-do
-  echo -n "."
-  if [ ! -d /.root/$DIR ]; then
-    mkdir /.root/$DIR
-  fi
-done
-
-echo -n "."
-ln -s lib /.root/lib64
-
-if [ ! -d /.root/tmp ]; then
-   echo -n "."
-   mkdir  /.root/tmp
-   chmod 1777 /.root/tmp
-fi
-for DIR in var run usr etc root lib sbin bin opt
-do
-  echo -n "."
-  if [ -f /.root/boot/$DIR.squashfs ]; then
-     mkdir /DIR
-     mount -o loop -t squashfs /.root/boot/$DIR.squashfs /DIR
-     cp -a /DIR /.root/$DIR
-     umount /DIR
-     rm -r /DIR
-     if [ "$DIR" == "root" ]; then
-        chmod 750 /.root/root
+   for DIR in home proc sys dev srv mnt
+   do
+     echo -n "."
+     if [ ! -d /.root/$DIR ]; then
+       mkdir /.root/$DIR
      fi
-  fi
-done
-# We need to check if entry exist in /etc/fstab
-if [ "`cat /.root/etc/fstab |sed "s/ \+/ /g"|sed "s/\t\+/ /g"|sed "s/ /:/g"|cut -d ":" -f1-2|grep $root|cut -d ":" -f2`" != "/" ]; then
-   # blkid will tell us the file system so we need udev running for that
-   ${UDEV_PATH}/udevd --daemon --resolve-names=never
-   udevadm trigger
-   udevadm settle
+   done
 
-   TYPE=`print_file_system $root`
    echo -n "."
+   ln -s lib /.root/lib64
 
-   echo "$root   /   $TYPE   defaults     0      1" >> /.root/etc/fstab
+   if [ ! -d /.root/tmp ]; then
+      echo -n "."
+      mkdir  /.root/tmp
+      chmod 1777 /.root/tmp
+   fi
+   for DIR in var run usr etc root lib sbin bin opt
+   do
+      echo -n "."
+      if [ -f /.root/boot/$DIR.squashfs ]; then
+         mkdir /DIR
+         mount -o loop -t squashfs /.root/boot/$DIR.squashfs /DIR
+         cp -a /DIR /.root/$DIR
+         umount /DIR
+         rm -r /DIR
+         if [ "$DIR" == "root" ]; then
+            chmod 750 /.root/root
+         fi
+      fi
+   done
+   # We need to check if entry exist in /etc/fstab
+   if [ "`cat /.root/etc/fstab |sed "s/ \+/ /g"|sed "s/\t\+/ /g"|sed "s/ /:/g"|cut -d ":" -f1-2|grep $root|cut -d ":" -f2`" != "/" ]; then
+      # blkid will tell us the file system so we need udev running for that
+      ${UDEV_PATH}/udevd --daemon --resolve-names=never
+      udevadm trigger
+      udevadm settle
 
-   killall -w ${UDEV_PATH}/udevd
-fi
+      TYPE=`print_file_system $root`
+      echo -n "."
 
-umount /.root
+      echo "$root   /   $TYPE   defaults     0      1" >> /.root/etc/fstab
 
-ro="ro"
+      killall -w ${UDEV_PATH}/udevd
+   fi
 
-do_mount_root
-echo "Successfully Installed on device $root" 
+   umount /.root
+
+   ro="ro"
+
+   do_mount_root
+   echo "Successfully Installed on device $root" 
 }
+
 do_mount_in_ram()
 {
 	# squasfs files are in ${1} on the initrd
@@ -143,30 +145,33 @@ do_mount_in_ram()
 		fi
 	done		
 }
+
 find_media() {
-EXPECT_LABEL="nutyxcd"
-echo ""
-for SYS in /sys/block/sd* /sys/block/sr* ; do
-	echo "Looking in $SYS for media"
-	if [ ! -d "$SYS" ]; then  continue; fi
-	DEV=/dev/${SYS##*/}
-	LABEL=`dd if=$DEV bs=1 skip=32808 count=32 2>/dev/null`
-	if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
-		ln -s $DEV /dev/nutyx-cd
-		mkdir  -p /media/cdrom 2>/dev/null
-		mount -n /dev/nutyx-cd /media/cdrom
-		if [ -d /media/cdrom/depot ]; then
-			echo $DEV > /tmp/depot
-		fi
-	fi
-done
+   EXPECT_LABEL="nutyxcd"
+   echo ""
+   for SYS in /sys/block/sd* /sys/block/sr* ; do
+	   echo "Looking in $SYS for media"
+      if [ ! -d "$SYS" ]; then  continue; fi
+      DEV=/dev/${SYS##*/}
+      LABEL=`dd if=$DEV bs=1 skip=32808 count=32 2>/dev/null`
+      if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
+         ln -s $DEV /dev/nutyx-cd
+         mkdir  -p /media/cdrom 2>/dev/null
+         mount -n /dev/nutyx-cd /media/cdrom
+         if [ -d /media/cdrom/depot ]; then
+            echo $DEV > /tmp/depot
+         fi
+      fi
+   done
 }
+
 MainLoop(){
-while [ ! -f /root/boot ];
-do
-	/etc/rc.d/init.d/setup-nutyx || problem
-done
+   while [ ! -f /root/boot ];
+   do
+	   /etc/rc.d/init.d/setup-nutyx || problem
+   done
 }
+
 # **********
 # Begin here
 # **********
@@ -198,9 +203,21 @@ for param in $cmdline ; do
   esac
 done
 
+if [ -f /sbin/mdadm ]; then 
+  ${UDEV_PATH}/udevd --daemon --resolve-names=never
+  udevadm trigger
+  udevadm settle
+  /sbin/insmod /lib/modules/`uname -r`/kernel/drivers/md/dm-mod.ko
+  /sbin/mdadm --auto-detect
+fi
+### First we activate lvm if possible
+if [ -f /sbin/lvm ]; then
+  /sbin/lvm vgscan --ignorelockingfailure --mknodes
+  if [ $? = 0 ]; then
+    /sbin/lvm vgchange --ignorelockingfailure -ay
+  fi
+fi
 
-if [ -f /etc/mdadm.conf ] ; then mdadm -As                       ; fi
-if [ -x /sbin/vgchange  ] ; then /sbin/vgchange -a y > /dev/null ; fi
 if [ -n "$rootdelay"    ] ; then
 	echo "... wait $rootdelay seconds"
 	sleep "$rootdelay"
@@ -243,11 +260,9 @@ mkdir /.root
 do_mount_root
 
 if ! [ -d /.root/bin -a -d /.root/dev -a -d /.root/etc -a -d /.root/lib \
--a -d /.root/sbin -a -d /.root/tmp -a -d /.root/root  -a -d /.root/proc \
--a -d /.root/usr -a -d /.root/var  -a -d /.root/run -a -d /.root/sys ]; then
-
+      -a -d /.root/sbin -a -d /.root/tmp -a -d /.root/root  -a -d /.root/proc \
+      -a -d /.root/usr -a -d /.root/var  -a -d /.root/run -a -d /.root/sys ]; then
   do_install
-
 fi
 
 # killall -w ${UDEV_PATH}/udevd
