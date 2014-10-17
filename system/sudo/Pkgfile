@@ -1,4 +1,4 @@
-version=1.8.10p3
+version=1.8.11p1
 
 source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)
 
