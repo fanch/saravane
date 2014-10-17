@@ -1,4 +1,4 @@
-version=1.2.0
+version=1.2.4
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
 
@@ -11,6 +11,7 @@ cd $name-$version
 --enable-vala \
 --enable-systemd-login=no \
 --disable-static \
+--with-systemdsystemunitdir=no \
 --disable-bash-completion
 make
 make DESTDIR=$PKG install
