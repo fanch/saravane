@@ -1,4 +1,4 @@
-version=5.23
+version=5.24
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
 build() {
 source /etc/blfs-bootscripts
