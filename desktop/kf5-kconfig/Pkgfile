@@ -1,0 +1,19 @@
+version=5.3.0
+_name=kconfig
+source=(ftp://ftp.kde.org/pub/kde/stable/frameworks/$version/${_name}-$version.tar.xz )
+
+build() {
+cd ${_name}-$version
+mkdir build
+cd    build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -DLIB_INSTALL_DIR=lib              \
+      -DBUILD_TESTING=OFF                \
+      -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt5/mkspecs/modules \
+      -Wno-dev .. 
+
+make
+make DESTDIR=$PKG install
+}
