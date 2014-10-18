@@ -31,15 +31,15 @@
      
     <h1>Les commandes de base de NuTyX</h1>
     <p>Afin de profiter pleinement de votre NuTyX fraîchement installée, voici les commandes indispensables que vous allez utiliser quotidiennement. Cet article reprend les commandes essentielles et spécifiques à NuTyX. Il est conseillé de les bien les connaître.</p>
-    <p>NuTyX ne dispose pas (encore) d'outils graphiques pour son administration. Vous allez donc utiliser le terminal comme interface. Si vous n'y êtes pas habitué;, ce n'est pas grave, cet article vous expliquera pas à pas les commandes à taper au clavier.</p>
-    <p>Sous NuTyX (contrairement à d'autres système d'exploitation) la case doit être respectée, il faut donc toujours veiller à taper les commandes <strong>en minuscules</strong>.</p>
+    <p>NuTyX ne dispose pas (encore) d'outils graphiques pour son administration. Vous allez donc utiliser le terminal comme interface. Si vous n'y êtes pas habitué, ce n'est pas grave. Cet article vous expliquera pas à pas les commandes à taper au clavier.</p>
+    <p>Sous NuTyX (contrairement à d'autres systèmes d'exploitation) la <a href=http://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse">casse</a> doit être respectée, il faut donc toujours veiller à taper les commandes <b>en minuscules</b>.</p>
      <p>Commençons donc par ouvrir un terminal... ça y est ? alors on peut commencer <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></p>
      <p>Une commande peut être composée d'un seul mot dans le cas où aucune option n'est nécessaire. Mais la majorité des commandes peut être entrée à l'aide d'options diverses. Sachez par exemple que l'option la plus utile sera (en fonction de la commande)</p>
      <pre class="command_user"><kbd>nomdelacommande -h</kbd></pre>
-     <p>le <em>-h</em> permet d'obtenir un aperçu des possibilitées de la <strong>nomdelacommande</strong>, <em>--help</em> ou <em>help</em> sont aussi des options permettant l'affichage de l'aide.</p>
-     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> Il faut savoir que certaines commandes mentionnées dans cet article sont en réalité un alias, c'est à dire un racourci de la commande originale. Si vous souhaitez connaître la liste des alias, utilisez la commande:
+     <p>le <em>-h</em> permet d'obtenir un aperçu des possibilitées de la <b>nomdelacommande</b>, <em>--help</em> ou <em>help</em> sont aussi des options permettant l'affichage de l'aide.</p>
+     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> Il faut savoir que certaines commandes mentionnées dans cet article sont en réalité des alias, c'est à dire un racourci de la commande originale. Si vous souhaitez connaître la liste des alias, utilisez la commande:
 <pre class="command_user"><kbd>alias</kbd></pre></div>
-     <div class="important"><img alt="[Important]" src="../graphics/caution.gif">Bien que ce ne soit absolument pas necessaire, si vous souhaitez malgré tout modifier les alias définis dans votre NuTyX, vous devez éditer le fichier <strong><span style="color: #007a00;">.bashrc</span></strong> qui se trouve dans le dossier personnel du compte concerné. Encore une fois, cette opération n'est pas du tout indispensable et il est vivement conseillé de bien connaître le principe avant de modifier les alias prédéfinis</div>
+     <div class="important"><img alt="[Important]" src="../graphics/caution.gif">Bien que ce ne soit absolument pas necessaire, si vous souhaitez malgré tout modifier les alias définis dans votre NuTyX, vous devez éditer le fichier <b><span style="color: #007a00;">.bashrc</span></b> qui se trouve dans le dossier personnel du compte concerné. Encore une fois, cette opération n'est pas du tout indispensable et il est vivement conseillé de bien connaître le principe avant de modifier les alias prédéfinis</div>
      <pre class="output">/root/.bashrc</pre>
      <div>En voici un extrait:
      </div>
@@ -51,18 +51,19 @@ if [ $EUID -eq 0 ]; then
          alias get='cards install'
          alias up='cards install -u'
          alias check='cards sync -i;cards diff -b'
+         alias search='cards search'
 else
          alias del='sudo cards remove'
          alias get='sudo cards install'
          alias up='sudo cards install -u'
          alias check='sudo cards sync -i;sudo cards diff -b'
+         alias search='sudo cards search'
 fi
 alias ll='ls -l'
 alias l='ls -alh'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
 alias pkgfind='cards list -i | grep -i'
-alias search='cards search
 # End ~/.bashrc</pre>
    
      <h2>Recherche d'un paquet</h2>
@@ -87,21 +88,20 @@ Description de l'utilisateur: François Perrin</pre>
      <pre class="command"><kbd>nu "François Perrin" francois</kbd></pre>
      
      <h2>Ajout d'un logiciel</h2>
-     <p>Pour ajouter un logiciel, un alias existe pour vous, la commande <strong>get</strong> suivi du ou des noms des logiciels à installer sera utilisée :</p>
+     <p>Pour ajouter un logiciel, un alias existe pour vous, la commande <b>get</b> suivi du ou des noms des logiciels à installer sera utilisée :</p>
      <pre class="command"><kbd>get firefox</kbd></pre>
      <p>Le téléchargement de l'application <b>firefox</b> commence imnmédiatement, une fois le paquet téléchargé, ses dépendances seront à leur tour téléchargées. Quand le téléchargement est terminé, tous les paquets seront installés dans le bon ordre.</p>
      
      <h2>Vérifier si il y a des mises à jour disponible</h2>
-     <p>La commande check permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
-     <pre class="command"><kbd>cards sync -i
-cards diff -b</kbd></pre>
+     <p>La commande <b>check</b> permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
+     <pre class="command"><kbd>check</kbd></pre>
      <pre class="output">Synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Differences between installed packages and the depot of binaries:<br /><br />Package                        Installed                    Available in the depot of binaries
 
 sylpheed                      3.0.1-1                     3.2.0-1</pre>
      <p>Dans cet exemple sylpheed peut être mis à jour.</p>
      
      <h2>Mettre à jour un logiciel</h2>
-     <p>Pour mettre à jour un logiciel, la commande <strong>cards install -u</strong> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
+     <p>Pour mettre à jour un logiciel, la commande <b>cards install -u</b> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
      <pre class="command"><kbd>cards install -u sylpheed</kbd></pre>
      <p>Si vous avez l'alias <b>up</b> configuré, il fera la même chose.</p>
      
