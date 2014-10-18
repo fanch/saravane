@@ -1,0 +1,11 @@
+version=1.2
+
+source=(http://crux.nu/files/libepoxy-$version.tar.gz)
+
+build() {
+cd libepoxy-$version
+./autogen.sh --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
+
