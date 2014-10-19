@@ -1,4 +1,4 @@
-version=5.3.0
+
 _name=krunner
 source=(ftp://ftp.kde.org/pub/kde/stable/frameworks/$version/portingAids/${_name}-$version.tar.xz )
 
