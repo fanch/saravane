@@ -1,3 +1,4 @@
+http://www.linuxfromscratch.org/patches/downloads/perl/perl-5.20.1-infinite_recurse_fix-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
 http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3-upstream_fixes-7.patch
@@ -24,6 +25,7 @@ http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.xz
 http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz
 http://ftp.gnu.org/gnu/wget/wget-1.15.tar.xz
 http://ftp.gnu.org/gnu/cpio/cpio-2.11.tar.bz2
+http://ftp.gnu.org/gnu/make/make-4.1.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
 http://downloads.nutyx.org/files/kernel/linux-3.16.6.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2014h.tar.gz
