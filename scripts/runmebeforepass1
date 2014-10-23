@@ -125,6 +125,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/tar-/d" $LFS/sources/$i
 done
 echo "60d96aa6e111c4cf06a8a2186c60a281  eudev-1.10.tar.gz
+d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 8103eaf6d71acb716a64224492f09d5f  tcl8.6.2-src.tar.gz
 6c823b40fdcfa7b8120743349a52ac18  iproute2-3.16.0.tar.xz
