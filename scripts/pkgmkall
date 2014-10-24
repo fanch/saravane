@@ -62,8 +62,7 @@ fi
 
 for i in `cat $TMP/list`
 do
-        cd $i
-        pkgmk -d -i || erreur
+        cards create -r `basename $i` || erreur
 done
 rm -r $TMP
 
