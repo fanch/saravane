@@ -1,6 +1,6 @@
 
 _name=ktextwidgets
-source=(ftp://ftp.kde.org/pub/kde/stable/frameworks/$version/${_name}-$version.tar.xz )
+source=(http://download.kde.org/stable/frameworks/$version/${_name}-$version.tar.xz )
 
 build() {
 cd ${_name}-$version
