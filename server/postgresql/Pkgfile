@@ -7,7 +7,7 @@ source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
 build() {
 # service
 source /etc/blfs-bootscripts
-wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 
