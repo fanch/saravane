@@ -1,12 +1,12 @@
 version=0.10.36
 
-source=(http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/blfs/svn/gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch)
 
 build() {
 cd gst-plugins-base-$version
 
-sed -i -e 's/-O2/& -msse2/' configure
-
+[ "`uname -m`" == "i686" ] && patch -Np1 -i ../gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
