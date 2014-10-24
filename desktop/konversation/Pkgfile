@@ -1,6 +1,6 @@
 version=1.5
 
-source=( ftp://ftp.kde.org/pub/kde/stable/konversation/$version/src/$name-$version.tar.xz)
+source=( http://download.kde.org/stable/konversation/$version/src/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
