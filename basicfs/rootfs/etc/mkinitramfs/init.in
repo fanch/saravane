@@ -207,7 +207,7 @@ if [ -f /sbin/mdadm ]; then
   ${UDEV_PATH}/udevd --daemon --resolve-names=never
   udevadm trigger
   udevadm settle
-  /sbin/insmod /lib/modules/`uname -r`/kernel/drivers/md/dm-mod.ko
+# /sbin/insmod /lib/modules/`uname -r`/kernel/drivers/md/dm-mod.ko
   /sbin/mdadm --auto-detect
 fi
 ### First we activate lvm if possible
