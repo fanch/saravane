@@ -1,6 +1,6 @@
 version=4.8.0
 basename=phonon-backend-gstreamer
-source=(ftp://ftp.kde.org/pub/kde/stable/phonon/$basename/$version/src/$basename-$version.tar.xz)
+source=(http://download.kde.org/stable/phonon/$basename/$version/src/$basename-$version.tar.xz)
 
 build() {
 	cd $basename-$version
