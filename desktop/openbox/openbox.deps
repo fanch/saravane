@@ -1,0 +1,17 @@
+glib.devel
+pcre.devel
+pango
+pango.devel
+freetype.devel
+libpng.devel
+xorg-fontconfig.devel
+harfbuzz.devel
+xorg-libxft.devel
+xorg-proto
+xorg-libxrender.devel
+xorg-libx11.devel
+xcb-util.devel
+libxcb.devel
+xorg-libxau.devel
+xorg-libxdmcp.devel
+libxml2.devel

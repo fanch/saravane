@@ -203,22 +203,17 @@ for param in $cmdline ; do
   esac
 done
 
-if [ -f /sbin/mdadm ]; then 
-  ${UDEV_PATH}/udevd --daemon --resolve-names=never
-  udevadm trigger
-  udevadm settle
-  /sbin/insmod /lib/modules/`uname -r`/kernel/drivers/md/dm-mod.ko
+if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then
   /sbin/mdadm --auto-detect
-fi
-### First we activate lvm if possible
-if [ -f /sbin/lvm ]; then
-  /sbin/lvm vgscan --ignorelockingfailure --mknodes
-  if [ $? = 0 ]; then
-    /sbin/lvm vgchange --ignorelockingfailure -ay
+  ### First we activate lvm if possible
+  if [ -f /sbin/lvm ]; then
+    /sbin/lvm vgscan --ignorelockingfailure --mknodes
+    if [ $? = 0 ]; then
+      /sbin/lvm vgchange --ignorelockingfailure -ay
+    fi
   fi
 fi
-
-if [ -n "$rootdelay"    ] ; then
+if [ -n "$rootdelay" ] ; then
 	echo "... wait $rootdelay seconds"
 	sleep "$rootdelay"
 fi
