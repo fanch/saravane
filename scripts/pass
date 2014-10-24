@@ -42,13 +42,20 @@ do
 		rm -fv /usr/lib{,64}/libgcc_s.so{,.1}
 		rm -fv /usr/lib{,64}/libstdc++.so{,.6}
 		rm -fv /usr/lib{,64}/libstdc++.la
-		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i
+		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i || exit 1
+		for i in *cards.tar*
+		do
+		 echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
 		;;
 
 	   bash)
 		$PKGMK -cf ../../../bin/pkgmk.conf.passes -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
 		rm /bin/bash
 		rm /bin/sh
+		echo "need to install bash manually"
+		echo "=======> Installing '$NAME' succeeded." >> ${LOG}/$NAME.log
+		exit 1
 		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i
 		;;
 
@@ -59,18 +66,30 @@ do
 		do
 			rm -f /bin/$i
 		done
-		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i
+		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i || exit 1
+		for i in *cards.tar*
+		do
+		  echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
 		;;
 
 	  perl)
 		$PKGMK -cf ../../../bin/pkgmk.conf.passes -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
 		rm -f /usr/bin/perl
-		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i
+		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i || exit 1
+		for i in *cards.tar*
+		do
+			echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
 		;;
 	  cards)
 		$PKGMK -cf ../../../bin/pkgmk.conf.passes -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
 		rm -f /etc/pkgadd.conf
-		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i
+		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i || exit 1
+		for i in *cards.tar*
+		do
+			echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
 		;;
 	  kernel)
 		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i -kw

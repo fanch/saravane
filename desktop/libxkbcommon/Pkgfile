@@ -1,0 +1,11 @@
+version=0.4.3
+
+source=(http://xkbcommon.org/download/libxkbcommon-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --disable-static
+make
+make DESTDIR=$PKG install
+}

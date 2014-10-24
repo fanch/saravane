@@ -2,7 +2,7 @@ version=1.4.21
 source=( http://www.netfilter.org/projects/iptables/files/$name-$version.tar.bz2)
 build() {
 source /etc/blfs-bootscripts
-wget  http://downloads.nutyx.org/files/patchs/aaabasicfs/blfs-bootscripts-$scriptsversion.tar.bz2
+wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version

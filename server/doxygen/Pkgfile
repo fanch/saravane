@@ -1,4 +1,4 @@
-version=1.8.7
+version=1.8.8
 
 source=(http://ftp.stack.nl/pub/$name/$name-$version.src.tar.gz)
 build() {

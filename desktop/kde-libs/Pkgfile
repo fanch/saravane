@@ -1,7 +1,7 @@
 
 _name=kdelibs
 
-source=(ftp://ftp.kde.org/pub/kde/stable/$version/src/${_name}-$version.tar.xz)
+source=(http://download.kde.org/stable/$version/src/${_name}-$version.tar.xz)
 	
 build() {
 cd ${_name}-$version

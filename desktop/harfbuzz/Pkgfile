@@ -3,7 +3,7 @@ source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2
 
 build() {
 cd $name-$version
-FREETYPE_CFLAGS="-I/usr/include/freetype2"  ./configure --prefix=/usr \
+./configure --prefix=/usr \
 --with-gobject
 make
 make DESTDIR=$PKG install

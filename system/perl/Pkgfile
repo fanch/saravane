@@ -1,6 +1,6 @@
 version=5.20.1
-source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.bz2)
-
+source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-infinite_recurse_fix-1.patch)
 build()
 {
 cd $name-$version
@@ -12,7 +12,9 @@ else
 fi
 
 echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
-
+export BUILD_ZLIB=False
+export BUILD_BZIP2=0
+patch -Np1 -i ../$name-$version-infinite_recurse_fix-1.patch
 
 sh Configure -des  -Dusethreads \
 	-Dprefix=/usr -Duseshrplib -Dscriptdir=/usr/bin \

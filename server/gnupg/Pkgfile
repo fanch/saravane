@@ -1,9 +1,10 @@
-version=2.0.25
+version=2.0.26
 source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
 
 build() {
 cd gnupg-$version
 ./configure --prefix=/usr \
+--enable-symcryptrun \
 --docdir=/usr/share/doc/gnupg-$version
 make
 
@@ -13,9 +14,11 @@ makeinfo --plaintext -o doc/gnupg.txt doc/gnupg.texi
 make DESTDIR=$PKG install
 
 # Links to makes gpg2 compatible with gpg1
-
-ln -sv gpg2  $PKG/usr/bin/gpg
-ln -sv gpgv2 $PKG/usr/bin/gpgv
+for f in gpg gpgv
+do
+	ln -svf ${f}2.1 $PKG/usr/share/man/man1/$f.1
+	ln -svf ${f}2 $PKG/usr/bin/${f}
+done
 
 install -v -m755 -d \
 $PKG/usr/share/doc/gnupg-$version/html

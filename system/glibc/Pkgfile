@@ -1,5 +1,5 @@
 version=2.20
-kernelversion=3.16.2
+kernelversion=3.16.6
 PKGMK_GROUPS=(devel man doc)
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-$kernelversion.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-$version-fhs-1.patch
