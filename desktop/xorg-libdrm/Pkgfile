@@ -1,4 +1,4 @@
-version=2.4.54
+version=2.4.58
 _name=libdrm
 
 source=( http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
@@ -6,7 +6,7 @@ source=( http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
 build() {
 cd ${_name}-$version
 sed -e "/pthread-stubs/d" -i configure.ac
-autoreconf -fi
+autoreconf -fiv
 ./configure --prefix=/usr \
 --enable-udev \
 --mandir=/usr/share/man \
