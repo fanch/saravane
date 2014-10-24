@@ -1,4 +1,4 @@
-version=32.0.3
+version=33.0
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.bz2)
 
@@ -58,7 +58,7 @@ ac_add_options --disable-pulseaudio
 ac_add_options --enable-system-sqlite
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
-#ac_add_options --with-system-nspr
+ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-icu
 
@@ -93,11 +93,7 @@ ac_add_options --with-system-zlib
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
-sed -i 's/\(MOZ_PKG_FATAL_WARNINGS =\).*/\1 0/' \
-  browser/installer/Makefile.in
-
-sed -i 's# ""##' browser/installer/Makefile.in
-#make -f client.mk
+test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
 
 SHELL=/bin/sh  make -f client.mk build
 
