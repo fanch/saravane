@@ -5,7 +5,12 @@ build () {
 mkdir $name-$version
 tar xf midori_${version}_all_.tar.bz2 -C midori-$version
 cd $name-$version
-./configure --prefix=/usr
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+ -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/midori-0.5.8 \
+ -DUSE_ZEITGEIST=OFF \
+ ..
 make
 make DESTDIR=$PKG install
 }
