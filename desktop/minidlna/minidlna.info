@@ -1,0 +1,16 @@
+A DLNA/UPnP-AV Media server (aka ReadyDLNA)
+
+ReadyMedia (formerly known as MiniDLNA) is a simple media server software,
+with the aim of being fully compliant with DLNA/UPnP-AV clients.
+It is developed by a NETGEAR employee for the ReadyNAS product line.
+
+URL: http://minidlna.sourceforge.net/
+
+Maintainer:
+
+- http://sourceforge.net/u/jmaggard/profile/
+
+Packager:
+
+- tnut at nutyx dot org
+
