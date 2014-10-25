@@ -1,6 +1,4 @@
-# name=openbox
 version=3.5.2
-release=2
 source=(http://icculus.org/openbox/releases/$name-$version.tar.gz \
         openbox.xinitrc)
 
