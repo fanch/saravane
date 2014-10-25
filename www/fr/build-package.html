@@ -64,7 +64,7 @@
   <h2>Construire un environnement isolé appelé "chroot"</h2>
    <div>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</div>
    <p>
-   <div>Pour pouvoir construire une recette en toute tranquilitée,il est recommandé de se construire un environnement qui sera isolé de votre NuTyX sur laquelle vous êtes actuellement. On l'appelera désormais la<b> chroot</b>.</div>
+   <div>Pour pouvoir construire une recette en toute tranquilité,il est recommandé de se construire un environnement qui sera isolé de votre NuTyX sur laquelle vous êtes actuellement. On l'appelera désormais la<b> chroot</b>.</div>
    <p>
    <div>Vous allez voir que l'on a tout prévu pour vous simplifier la vie dans la construction d'une chroot.
    </div>
@@ -78,7 +78,7 @@
    <p>
    <div>Nous voilà donc en root, (la couleur du prompt est passée en rouge)</div>
    <p>
-   <div>Une chroot consiste tout simplement à installer une NuTyX dans un dossier au lieu d'une partition. Je propose de choisir le dossier <b>/chroot</b> comme dossier de destination, la commande est donc:</div>
+   <div>Nous allons installer une autre nutyx dans un repertoire et nous y accederons en chroot. Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</div>
    <pre class="command"><kbd>install-saravane.ash /chroot</kbd></pre>
    <div>Et l'installation commence. Une fois l'installation terminée on peut mettre notre chroot en service.</div>
   <h2>Mise en service de la chroot</h2>
@@ -293,7 +293,7 @@ Packager:
      <ul>
       <li>le fichier <b>xorg-xf86-video-sisusb.deps</b> contenant  <b>xorg-server</b>: est la seule dépendance necessaire en effet xorg-server réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</li>
      </ul>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Pour pouvoir installer ce paquet dans votre NuTyX principale il faut procéder comme expliquer dans le chapitre précédent</div>
+   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Pour pouvoir installer ce paquet dans votre NuTyX principale il faut procéder comme expliqué dans le chapitre précédent</div>
    <div>Pour terminer, il faut savoir qu'avant de commencer un nouveau paquet, il est important de toujours revenir sur une NuTyX de base afin de bien connaître les dépendances necessaires. La commande:</div>
    <pre class="command"><kbd>cards base -r</kbd></pre>
    <div>nous permet de revenir sur une NuTyX de base. Si l'on souhaite que certains paquets soient conservés lors de cette manipulation, on peut les ajouter dans un dossier dédié, et ce dossier est mentionné à la ligne:</div>
@@ -301,7 +301,7 @@ Packager:
 base /root/mes_paquets_a_conserver</pre>
    <div>du fichier <b>/etc/cards.conf</b></div>
    <p>
-   <div>Les paquets à conserver seront répertorié par dossier. Si par exemple vous souhaitez conserver le paquet <b>joe</b>, crééez le dossier /root/mes_paquets_a_conserver/joe et le tour est joué:</div>
+   <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver le paquet <b>joe</b>, crééez le dossier /root/mes_paquets_a_conserver/joe et le tour est joué:</div>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/joe</kbd></pre>
 
         <!-- DEBUT FOOTER -->
