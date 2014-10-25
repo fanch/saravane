@@ -2,7 +2,9 @@ version=3.99.5
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {
 cd $name-$version
+sed -i -e '/xmmintrin\.h/d' configure
 ./configure --prefix=/usr --enable-mp3rtp --disable-static
 make
 make DESTDIR=$PKG install
+make DESTDIR=$PKG pkghtmldir=$PKG/usr/share/doc/$name-$version install
 }
