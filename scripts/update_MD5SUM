@@ -38,7 +38,7 @@ mv $TMP/MD5SUM .
 rm -r $TMP
 cd -
 # time to send
-rsync -auv --delete-after ${GROUP}/ ${NFS}/${GROUP}/
+rsync -av --delete-after ${GROUP}/ ${NFS}/${GROUP}/
 rm ${GROUP}/MD5SUM
 # ********************************************************************
 #                     END of SCRIPT
