@@ -635,7 +635,7 @@ fi
 install_base
 
 # replace in cards with the correct arch
-sed -i "s|latest|${ARCH}|" ${MountFolder}/etc/cards
+sed -i "s|latest|${ARCH}|" ${MountFolder}/etc/cards.conf
 
 if [ "$MIG" == "0" ]; then
 	echo "$1     /    $2    defaults   0   1" >> ${MountFolder}/etc/fstab  
