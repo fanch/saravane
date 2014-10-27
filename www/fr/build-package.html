@@ -48,7 +48,7 @@
     <li>un pilote xorg pour sa spécificité dans l'écriture de la recette.</li>
     <li>une application pour KDE car en général ce sont celles qui necessite le plus grand nombre d'options dans le code de la recette et le plus grand nombre de dépendances. Si vous ne me croyez pas je vous invite à tester la commande</li>
    </ol>
-   <pre class="command_user"><kbd>cards depends kde-konsole</kbd></pre>
+   <pre class="command_user"><kbd>cards depends -a kde-konsole</kbd></pre>
    <pre class="output">/var/lib/pkg/saravane/system/gcc
 /var/lib/pkg/saravane/system/glibc
 /var/lib/pkg/saravane/server/libtiff
@@ -58,8 +58,8 @@
 /var/lib/pkg/saravane/desktop/dbus
 ...
    </pre>
-   Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 193 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" />
-   <div>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 193 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />
+   Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 185 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" />
+   <div>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 185 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />
    </div>
   <h2>Construire un environnement isolé appelé "chroot"</h2>
    <div>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</div>
@@ -70,18 +70,18 @@
    </div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez très attentif lorsque vous tapez les commandes.
    </div>
-   <div>Commençons donc par basculer en <strong><span style="color: #ff0000;">compte root</span></strong>
+   <div>Commençons donc par basculer en <b><span style="color: #ff0000;">compte root</span></b>
    </div>
    <pre class="command_user"><kbd>su -</kbd></pre>
    <pre class="output">Password:</pre>
-   <div>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <strong>le tiret</strong>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</div>
+   <div>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <b>le tiret</b>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</div>
    <p>
    <div>Nous voilà donc en root, (la couleur du prompt est passée en rouge)</div>
    <p>
    <div>Nous allons installer une autre nutyx dans un repertoire et nous y accederons en chroot. Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</div>
-   <pre class="command"><kbd>wget http://downloads.nutyx-org/install-saravane.ash</kbd></pre>
+   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash</kbd></pre>
    <div>Optionnellement on vérifie la somme md5 du script:</div>
-<pre class="command"><kbd>wget http://downloads.nutyx-org/install-saravane.ash.md5sum
+<pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash.md5sum
 md5sum -c install-saravane.ash.md5sum</kbd></pre>
 <pre class="output">install-saravane.ash: Réussi</pre>
 <div>On peut maintenant lancer l'installation sans grosse crainte</div>
@@ -139,7 +139,7 @@ EOF</kbd></pre>
    <pre class="command"><kbd>EntrerChroot</kbd></pre>
    <div>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
-   <div>Nous avons donc l'environnement et les outils, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b></div>
+   <div>Nous avons donc l'environnement, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b> et d'installer les outils de travail.</div>
    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est important de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:
     <ul> <li>/var/lib/pkg/saravane/desktop</li>
      <li>/var/lib/pkg/saravane/server</li>
@@ -160,7 +160,7 @@ dir /var/lib/pkg/saravane/system|http://downloads.nutyx.org/.
 ...
    </pre>
    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Vous noterez donc que ce sont les paquets trouvés dans le dossier <b>personnel</b> qui seront traités en premier lieu même si le même port existe dans les dossiers <b>desktop</b>, <b>server</b> ou <b>system</b></div>
-   <div>Il est temps d'installer les paquets necessaire au développement cad compilateur etc, cette opération peut durer plusieurs minutes:</div>
+   <div>Il est temps d'installer les outils de travail c'est à dire les paquets necessaire au développement: compilateur et autres, cette opération peut durer plusieurs minutes:</div>
    <pre class="command"><kbd>get cards.devel</kbd></pre>
    <pre class="output">/var/lib/pkg/saravane/desktop/MD5SUM                                                                                                                                  
 /var/lib/pkg/saravane/server/MD5SUM                                                                                                                                    
@@ -450,8 +450,8 @@ Packager:
 base /root/mes_paquets_a_conserver</pre>
    <div>du fichier <b>/etc/cards.conf</b></div>
    <p>
-   <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver le paquet <b>joe</b>, crééez le dossier /root/mes_paquets_a_conserver/joe et le tour est joué:</div>
-<pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/joe</kbd></pre>
+   <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</div>
+<pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
 
         <!-- DEBUT FOOTER -->
      
