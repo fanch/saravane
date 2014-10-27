@@ -10,5 +10,5 @@ imlib2
 librsvg
 startup-notification
 xcb-util
-libxcb.devel
+libxcb
 libxml2
