@@ -14,7 +14,7 @@ find . -name "Makefile.in" | xargs sed -i "s|(libdir)/@PACKAGE@|(libdir)/pulse|"
             --disable-rpath       \
             --with-module-dir=/usr/lib/pulse/modules
 make
-
+make DESTDIR=$PKG install
 mkdir -p $PKG/usr/share/icons/hicolor/scalable/devices
 for size in 16 22 32 48 64 128; do
     mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/{apps,devices}
