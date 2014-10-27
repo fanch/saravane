@@ -633,6 +633,10 @@ if [ ! -d ${MountFolder}/var/lib/pkg/DB ]; then
 	mkdir -p ${MountFolder}/var/lib/pkg/DB
 fi
 install_base
+
+# replace in cards with the correct arch
+sed -i "s|latest|${ARCH}|" ${MountFolder}/etc/cards.conf
+
 if [ "$MIG" == "0" ]; then
 	echo "$1     /    $2    defaults   0   1" >> ${MountFolder}/etc/fstab  
 fi

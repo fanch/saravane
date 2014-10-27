@@ -196,7 +196,7 @@ msgid "Press OK to reboot the computer"
 msgstr "Pressez Accepter pour relancer le PC"
 
 msgid "optional"
-msgstr "en option"
+msgstr "optioneel"
 
 msgid "Install"
 msgstr "Installer"
@@ -205,7 +205,7 @@ msgid "Partitioning"
 msgstr "Partitionner"
 
 msgid "Format"
-msgstr "Formater"
+msgstr "Formatteren"
 
 msgid "Boot"
 msgstr "Démarrage"
@@ -223,7 +223,7 @@ msgid "Restart"
 msgstr "Relancer"
 
 msgid "Yes"
-msgstr "Oui"
+msgstr "Ja"
 
 msgid "Choose the disk you want to use for this operation"
 msgstr "Selecteer de schijf die je hiervoor wil gebruiken"
