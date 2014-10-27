@@ -111,7 +111,8 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
   <h2>Mise en service de la chroot</h2>
    <div>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:
    </div>
-   <pre class="command"><kbd>cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
+   <pre class="command"><kbd>mkdir -p /root/bin
+cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
 echo "Entrer dans la chroot..."
 mount -v -B /dev /chroot/dev
 mount -vt devpts devpts /chroot/dev/pts
