@@ -1,7 +1,7 @@
-version=2.4.9
+version=2.4.10
 
-source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2 
-	http://downloads.nutyx.org/files/patchs/apache/httpd-2.4.6-nutyx_layout-2.patch)
+source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
+	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)
 build(){
 
 source /etc/blfs-bootscripts
@@ -9,20 +9,21 @@ wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion
 
 cd httpd-$version
 
-patch -Np1 -i ../httpd-2.4.6-nutyx_layout-2.patch
-
-./configure --enable-layout=BLFS                            \
+patch -Np1 -i ../httpd-$version-blfs_layout-1.patch
+sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in
+./configure --enable-authnz-fcgi                            \
+            --enable-layout=BLFS                            \
             --enable-mods-shared="all cgi"                  \
             --enable-mpms-shared=all                        \
+            --enable-suexec=shared                          \
             --with-apr=/usr/bin/apr-1-config                \
             --with-apr-util=/usr/bin/apu-1-config           \
-            --enable-suexec=shared                          \
             --with-suexec-bin=/usr/lib/httpd/suexec         \
-            --with-suexec-docroot=/srv/www/htdocs           \
             --with-suexec-caller=apache                     \
-            --with-suexec-userdir=public_html               \
-            --with-suexec-logfile=/var/log/apache/suexec.log \
-            --with-suexec-uidmin=100
+            --with-suexec-docroot=/srv/www                  \
+            --with-suexec-logfile=/var/log/httpd/suexec.log \
+            --with-suexec-uidmin=100                        \
+            --with-suexec-userdir=public_html
 make
 make DESTDIR=$PKG install
 
@@ -32,7 +33,6 @@ chmod 4754 $PKG/usr/lib/httpd/suexec
 
 chown -v -R apache:apache $PKG/srv/www
 rm -f $PKG/srv/www/htdocs/index.html
-ln -s nutyx/release/index.html $PKG/srv/www/htdocs/index.html
 cd $SRC
 tar xf $scripts-$scriptsversion.tar.bz2
 cd $SRC/$scripts-$scriptsversion
