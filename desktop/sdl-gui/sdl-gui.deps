@@ -2,3 +2,6 @@ alsa-lib
 nasm
 libusb
 pulseaudio
+xorg-libx11
+xorg-libxext
+
