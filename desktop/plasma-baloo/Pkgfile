@@ -7,11 +7,12 @@ cd ${_name}*
 sed -i "s|ecm_optional_add_subdirectory(po)|#ecm_optional_add_subdirectory(po)|" CMakeLists.txt
 mkdir build
 cd    build
-cmake -DCMAKE_INSTALL_PREFIX=/usr      \
+cmake -DCMAKE_INSTALL_PREFIX=/usr             \
       -DCMAKE_BUILD_TYPE=Release              \
-      -DSYSCONF_INSTALL_DIR=/etc/kf5   \
+      -DSYSCONF_INSTALL_DIR=/etc/kf5          \
       -DLIB_INSTALL_DIR=lib                   \
       -DBUILD_TESTING=OFF                     \
+      -DQML_INSTALL_DIR=lib/qt5/qml           \
       -DQT_PLUGIN_INSTALL_DIR=lib/qt5/plugins \
       .. 
 make
