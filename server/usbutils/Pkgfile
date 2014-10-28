@@ -4,10 +4,12 @@ source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar
 
 build() {
 cd $name-$version
+sed -i '/^usbids/ s:usb.ids:hwdata/&:' lsusb.py
 ./configure --prefix=/usr \
+--datadir=/usr/share/hwdata \
 --disable-zlib \
 --datadir=/usr/share/misc
+mkdir -p $PKG/usr/share/hwdata
 make
 make DESTDIR=$PKG install
-mv -v $PKG/usr/sbin/update-usbids{.sh,}
 }

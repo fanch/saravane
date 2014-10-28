@@ -285,8 +285,31 @@ Lister les fichiers contenus dans un paquet
 Connaître l'appartenance d'un fichier
 <pre class="command"><kbd>pkginfo -o NomDuFichier</kbd></pre>
  </ol>
+ <div><h3><li>GESTION DES PORTS VIA LA COMMANDE PKGMK (mode utilisateur avancé)</li></h3></div>
+ <div>La gestion des recettes des paquets se faire via la commande <b>pkgmk</b>.</div>
+ <ol>
+  <div><h4><li>Configuration de pkgmk</li></h4></div>
+  <div>Le fichier <b>/etc/pkgmk.conf</b> définit les règles de fonctionnement de la commande <b>pkgmk</b>. Chaque ligne de configuration est constituée d'une pair &lt;variable&gt;=&lt;donnée&gt;</div>
+  <div>Voici la définition des principales variables trouvées dans le fichier de configuration:</div>
+  <p>
+  <div><b>PKGMK_SOURCE_DIR='STRING'</b> défini le dosssier des archives sources. Le dossier du Pkgfile est le défaut</div>
+  <p>
+  <div><b>PKGMK_WORK_DIR='STRING'</b> défini le dosssier de construction des paquets. Le dossier du Pkgfile est le défaut</div>
+  <p>
+  <div><b>PKGMK_KEEP_SOURCES="no"</b> si "yes", les archives sources du paquet concerné seront conservées après une compilation réussie. Par défaut, les archives sont supprimées.</div>
+  <p>
+  <div><b>PKGMK_COMPRESS_PACKAGE="no"</b> si "yes", le(s) paquet(s) binaire(s) seront compressés au format défini par la variable <b>PKGMK_COMPRESSION_MODE</b> après compilation. Par défaut, et pour gagner du temps, le(s) paquet(s) binaire(s) du port ne sont pas compressés après une compilation réussi.</div>
+  <p>
+  <div><b>PKGMK_CLEAN="yes"</b> si "no", le(s) paquet(s) binaire(s) du port seront conservés après une compilation ET une installation réussie. Par défaut, le(s) paquet(s) binaire(s) du port sont supprimés après une compilation ET une installation réussie.</div>
+  <p>
+  <div><b>PKGMK_SYNC_FILES="no"</b> si "yes",  le(s) paquet(s) binaire(s) du port déjà compilés et disponible sur le serveur de dépot seront automatiquement téléchargés et installés en lieu des versions compilées en locale. Par défaut, le(s) paquet(s) binaire(s) du port ne sont pas téléchargés. Ils doivent donc être compilés en locale.</div>
+  <p>
+  <div><b>PKGMK_GROUPS=(devel man doc service)</b> défini quel sous paquet(s) sera produit (si cela est possible). Les sous paquets peuvent donc être changé en fonction de cette variable. Exemple: <b>PKGMK_GROUPS=(devel man)</b> produira un paquet de base (qui comprendra donc la <b>doc</b> et le <b>service</b>, un paquet.man et un paquet.devel.</div>
+
+  
+ </ol>
  
- <div><h3><li>GESTION DES PAQUETS VIA LES PORTS AVEC LA GESTION DES DEPENDANCES (mode utilisateur avancé)</li></h3></div>
+ <div><h3><li>GESTION DES PORTS AVEC LA GESTION DES DEPENDANCES VIA LA COMMANDE CARDS (mode utilisateur avancé)</li></h3></div>
  <div>La gestion des recettes des paquets ainsi que les dépendances de ceux-ci se fait via la commande <b>cards</b> également.
  </div>
  <ol>

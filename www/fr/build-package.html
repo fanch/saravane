@@ -48,7 +48,7 @@
     <li>un pilote xorg pour sa spécificité dans l'écriture de la recette.</li>
     <li>une application pour KDE car en général ce sont celles qui necessite le plus grand nombre d'options dans le code de la recette et le plus grand nombre de dépendances. Si vous ne me croyez pas je vous invite à tester la commande</li>
    </ol>
-   <pre class="command_user"><kbd>cards depends kde-konsole</kbd></pre>
+   <pre class="command_user"><kbd>cards depends -a kde-konsole</kbd></pre>
    <pre class="output">/var/lib/pkg/saravane/system/gcc
 /var/lib/pkg/saravane/system/glibc
 /var/lib/pkg/saravane/server/libtiff
@@ -58,8 +58,8 @@
 /var/lib/pkg/saravane/desktop/dbus
 ...
    </pre>
-   Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 193 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" />
-   <div>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 193 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />
+   Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 185 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" />
+   <div>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 185 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />
    </div>
   <h2>Construire un environnement isolé appelé "chroot"</h2>
    <div>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</div>
@@ -70,21 +70,49 @@
    </div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez très attentif lorsque vous tapez les commandes.
    </div>
-   <div>Commençons donc par basculer en <strong><span style="color: #ff0000;">compte root</span></strong>
+   <div>Commençons donc par basculer en <b><span style="color: #ff0000;">compte root</span></b>
    </div>
    <pre class="command_user"><kbd>su -</kbd></pre>
    <pre class="output">Password:</pre>
-   <div>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <strong>le tiret</strong>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</div>
+   <div>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <b>le tiret</b>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</div>
    <p>
    <div>Nous voilà donc en root, (la couleur du prompt est passée en rouge)</div>
    <p>
    <div>Nous allons installer une autre nutyx dans un repertoire et nous y accederons en chroot. Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</div>
-   <pre class="command"><kbd>install-saravane.ash /chroot</kbd></pre>
-   <div>Et l'installation commence. Une fois l'installation terminée on peut mettre notre chroot en service.</div>
+   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash</kbd></pre>
+   <div>Optionnellement on vérifie la somme md5 du script:</div>
+<pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash.md5sum
+md5sum -c install-saravane.ash.md5sum</kbd></pre>
+<pre class="output">install-saravane.ash: Réussi</pre>
+<div>On peut maintenant lancer l'installation sans grosse crainte</div>
+<pre class="command"><kbd>sh install-saravane.ash /chroot</kbd></pre>
+   <div>Et l'installation commence.</div>
+   <pre class="output">This installation will be on /chroot                                     [ INFO ]
+*******************************************
+Downloads of cards.devel1412543016x86_64.cards.tar.xz
+
+.....
+...
+ADD: cards-0.10.81.3, 9 files: 100 %                                     [  OK  ]
+Downloading ca-certificates...                                           [ INFO ]
+Retrieve info about the 62 packages: 100 %
+pre-install: start
+pre-install: finish
+ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  ]
+***********************************************
+* Installation finish. Tanks for trying NuTyX *
+* For more info, come to visit us:            *
+*                                             *
+*           http://www.nutyx.org              *
+*                                             *
+***********************************************
+</pre>
+   <div>Une fois l'installation terminée on peut mettre notre chroot en service.</div>
   <h2>Mise en service de la chroot</h2>
    <div>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:
    </div>
-   <pre class="command"><kbd>cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
+   <pre class="command"><kbd>mkdir -p /root/bin
+cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
 echo "Entrer dans la chroot..."
 mount -v -B /dev /chroot/dev
 mount -vt devpts devpts /chroot/dev/pts
@@ -112,11 +140,13 @@ EOF</kbd></pre>
    <pre class="command"><kbd>EntrerChroot</kbd></pre>
    <div>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
-   <div>Nous avons donc l'environnement et les outils, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b></div>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est important de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:<b> /usr/ports/base</b> et <em><strong>/usr/ports/extra</strong></em>. Sinon, à la prochaine demande de synchronisation des ports NuTyX via la commande:
-   </div>
-   <pre class="command"><kbd>cards sync -b</kbd></pre>
-   <div>vos recettes seront supprimées. Je vous propose d'utiliser le dossier <b>/usr/ports/personnel</b>. Si celui-ci n'existe pas encore, créez-le:</div>
+   <div>Nous avons donc l'environnement, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b> et d'installer les outils de travail.</div>
+   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est important de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:
+    <ul> <li>/var/lib/pkg/saravane/desktop</li>
+     <li>/var/lib/pkg/saravane/server</li>
+     <li>/var/lib/pkg/saravane/system</li></ul>
+    Sinon, à la prochaine demande de synchronisation des ports NuTyX vos recettes seront supprimées.</div>
+   <div>Je vous propose d'utiliser le dossier <b>/usr/ports/personnel</b>. Si celui-ci n'existe pas encore, créez-le:</div>
    <pre class="command"><kbd>mkdir -pv /usr/ports/personnel</kbd></pre>
    <div>Vérifiez le contenu du fichier <b>/etc/cards.conf</b> le cas échéant, on ajoute ensuite l'information dans le fichier de configuration <b>/etc/cards.conf. </b>Celui-ci doit ressembler à ceci:</div>
    <pre class="output">#
@@ -130,31 +160,51 @@ dir /var/lib/pkg/saravane/server|http://downloads.nutyx.org/..
 dir /var/lib/pkg/saravane/system|http://downloads.nutyx.org/.
 ...
    </pre>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Vous noterez donc que ce sont les paquets trouvés dans /usr/ports/personnel qui seront traités en premier lieu même si le même port existe dans les dossiers <b>desktop</b>, <b>server</b> ou <b>system</b></div>
-   <div>Pour que vous puissiez installez vos paquets binaires dans votre NuTyX principale, il est important de vérifier quelques variables dans le fichier <b>/etc/pkgmk.conf</b>
-   </div>
+   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Vous noterez donc que ce sont les paquets trouvés dans le dossier <b>personnel</b> qui seront traités en premier lieu même si le même port existe dans les dossiers <b>desktop</b>, <b>server</b> ou <b>system</b></div>
+   <div>Il est temps d'installer les outils de travail c'est à dire les paquets necessaire au développement: compilateur et autres, cette opération peut durer plusieurs minutes:</div>
+   <pre class="command"><kbd>get cards.devel</kbd></pre>
+   <pre class="output">/var/lib/pkg/saravane/desktop/MD5SUM                                                                                                                                  
+/var/lib/pkg/saravane/server/MD5SUM                                                                                                                                    
+/var/lib/pkg/saravane/system/MD5SUM
+...
+...
+/var/lib/pkg/saravane/system/zlib/MD5SUM
+Retrieve info about the 63 packages: 100 %
+/var/lib/pkg/saravane/system/cards/cards.devel1412543016x86_64.cards.tar.xz
+...
+...
+/var/lib/pkg/saravane/system/bison/bison.fr1412540451any.cards.tar.xz
+9044 Bytes - 3830580 Bytes/Sec - 100% - 0 Sec remain c remain 
+ADD: perl-5.20.1, 1773 files: 100 %
+ADD: gcc.devel-4.9.1, 1136 files: 100 %
+...
+...
+ADD: make.fr-4.0, 3 files: 100 %
+ADD: gawk.fr-4.1.1, 3 files: 100 %
+ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
+
+   <div>Pour que vous puissiez compiler vos paquets binaires et ensuite eventuellement les installer dans votre NuTyX principale, il est important de vérifier quelques variables dans le fichier <b>/etc/pkgmk.conf</b>. La variable <b>PKGMK_CLEAN</b> doit être mise à <b>no</b></div>
    <p>
    <div>Optionnellement vous pouvez également ajuster les dossiers et optimisation dans le fichier <b>/etc/pkgmk.conf</b>. Si vous ne changez rien, sachez que:</div>
     <ol>
-     <li><b>PKGMK_SOURCE_DIR</b> les sources des paquets binaires seront dans le dossier du paquet et seront effacé si le paquet s'est compilé avec succès.</li>
-     <li><b>PKGMK_COMPRESS_PACKAGE</b> le paquet binaire ne sera pas compressé.</li>
-     <li><b>PKGMK_CLEAN</b> le paquet binaire cad le fichier  &lt;nom_du_port&gt;1234567890x86_64.cards.tar sera supprimé une fois installé</li>
-     <li><b>PKGMK_UPDATE_INDEX</b> le fichier MD5SUM ne sera pas crée</li>
-     <li><b>PKGMK_SYNC_FILES</b> si des dépendances sont réclamées, elle ne seront pas téléchargées</li>
+     <li><b>PKGMK_SOURCE_DIR="$PWD"</b> les sources des paquets binaires seront dans le dossier du paquet et seront effacé si le paquet s'est compilé avec succès.</li>
+     <li><b>PKGMK_COMPRESS_PACKAGE="no"</b> le paquet binaire ne sera pas compressé.</li>
+     <li><b>PKGMK_CLEAN="no"</b> le paquet binaire cad le fichier  &lt;nom_du_port&gt;1234567890x86_64.cards.tar ne sera pas supprimé une fois installé</li>
+     <li><b>PKGMK_SYNC_FILES="no"</b> si des dépendances sont réclamées, elle ne seront pas téléchargées</li>
     </ol>
+
    <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire son premier paquet.</div>
+
   <h2>Mon premier paquet</h2>
-   <div>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.
-   </div>
-   <div>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <strong>joe</strong>
-   </div>
-    <ol>
-     <li><h3>Création du dossier du paquet joe</h3>
-      <pre class="command"><kbd>mkdir -pv /usr/ports/personnel/joe</kbd></pre>
-     </li>
-     <li><h3>Création de la recette</h3>
-      <div>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></div>
-   <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
+   <div>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</div>
+   <p>
+   <div>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></div>
+    <li><h3>Création du dossier du paquet joe</h3>
+     <pre class="command"><kbd>mkdir -pv /usr/ports/personnel/joe</kbd></pre>
+      </li>
+   <li><h3>Création de la recette</h3>
+    <div>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></div>
+    <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
 version=3.7
 source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
 build() {
@@ -166,36 +216,87 @@ make DESTDIR=$PKG install
 EOF</kbd></pre>
 <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/joe.info &lt;&lt; "EOF"
 Petit éditeur non graphique emulant emuler, wordStar
-EOF</kbd>
-   </pre>
-   <div>Vous venez de créer la recette de votre premier paquet. On va maintenant demander à <strong>cards</strong> de le compiler et de l'installer:
-   </div>
-   <pre class="command"><kbd>cards create -n joe</kbd>
-   </pre>
-   <pre class="output">cards: installing /usr/ports/perso/joe
-Building '/usr/ports/personnel/joe/joe140013231x86_64.cards.tar'
-bsdtar -p -o -C /tmp/work/src -xf /tmp/joe-3.7.tar.gz
-+ build
-+ ./configure --prefix=/usr --sysconfdir=/etc
-checking build system type... i686-pc-linux-gnu
+EOF</kbd></pre>
+    <div>Vous venez de créer la recette de votre premier paquet. Il nous reste une petite opération à faire avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</div>
+    <pre class="command"><kbd>cd /usr/ports/personnel/joe
+pkgmk -us</kbd></pre>
+    <div>Observez ATTENTIVEMENT le résultat, si vous n'avez rien changé dans le fichier de configuration <b>/etc/pkgmk.conf</b> vous devriez avoir ceci comme résultat:</div>
+    <pre class="output">=======> PKGMK_SYNC_FILES: no
+=======> PKGMK_INSTALL: no
+=======> PKGMK_WORK_DIR: /usr/ports/personnel/joe/work
+=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/joe
+=======> WARNING: CLEAN IGNORED
+=======> WARNING: KEEP SOURCES
+=======> PKGMK_UPDATE_SIGNATURE: yes
+=======> PKGMK_IGNORE_FOOTPRINT: yes
+=======> PKGMK_IGNORE_MD5SUM: yes
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: joe
+=======> version: 3.7</pre>
+    <div>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</div></li>
+   <li><h3>Compilation de la recette</h3>
+    <div>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></div>
+    <pre class="command"><kbd>cards create -n joe</kbd></pre>
+    <pre class="output">var/lib/pkg/saravane/desktop/xfce4-settings/xfce4-settings.deps: No such file or directory
+Failed to open /var/lib/pkg/saravane/desktop/xfce4-systemload-plugin/xfce4-systemload-plugin.deps
+/var/lib/pkg/saravane/desktop/xfce4-systemload-plugin/xfce4-systemload-plugin.deps: No such file or directory
+Failed to open /var/lib/pkg/saravane/desktop/xfce4-taskmanager/xfce4-taskmanager.deps
 ...
+...
+Failed to open /var/lib/pkg/saravane/system/zlib/zlib.deps
+/var/lib/pkg/saravane/system/zlib/zlib.deps: No such file or directory
+/usr/ports/personnel/joe has no deps
+Retrieve info about the 120 packages: 100 %
+cards create: /usr/ports/personnel/joe package(s) starting build Sun Oct 26 22:27:45 2014
+
+=======> PKGMK_SYNC_FILES: no
+=======> PKGMK_INSTALL: no
+=======> PKGMK_WORK_DIR: /usr/ports/personnel/joe/work
+=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/joe
+=======> WARNING: CLEAN IGNORED
+=======> WARNING: KEEP SOURCES
+=======> PKGMK_UPDATE_SIGNATURE:
+=======> PKGMK_IGNORE_FOOTPRINT: yes
+=======> PKGMK_IGNORE_MD5SUM: yes
+=======> MD5SUM file will be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: joe
+=======> version: 3.7
+=======> Downloading 'http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz'.
+...
+...
+Saving to: '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial'
+
+     0K .......... .......... .......... .......... ..........  7%  523K 1s
 ..
-.
--rwxr-xr-x  0 root   root   459336 Jun 30 23:28 usr/bin/joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/rjoe -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jmacs -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jpico -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jstar -&gt; joe
--rwxr-xr-x  0 root   root     4312 Jun 30 23:23 usr/bin/termidx
+   650K .......... .......... .........                       100% 11.6M=0.7s
 
-Building '/usr/ports/personnel/joe/joe140013231x86_64.cards.tar' succeeded.
-cards: installing joe 3.7-1
+2014-10-26 22:27:47 (1.01 MB/s) - '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial' saved [696036/696036]
 
--- Packages installed
-joe
+=======> Building '/usr/ports/personnel/joe/joe1414362465x86_64.cards.tar.xz'.
+bsdtar -p -o -C /usr/ports/personnel/joe/work/src -xf /usr/ports/personnel/joe/joe-3.7.tar.gz
++ build
++ cd joe-3.7
++ ./configure --prefix=/usr --sysconfdir=/etc
+...
+...
+make[3]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+make[2]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+=======> WARNING: Footprint ignored.
+=======> Adding meta data to Archive joe
+=======> Adding meta data to Archive joe.man
+=======> Adding meta data to Archive joe.doc
 
-cards: installed successfully
-   </pre>
+cards create: build done Sun Oct 26 22:27:59 2014
+
+ADD FOR INSTALL: joe
+ADD FOR INSTALL: joe.doc
+ADD FOR INSTALL: joe.man
+
+cards create: finish Sun Oct 26 22:27:59 2014
+
+</pre>
    <div><img src="../graphics/clap.gif" alt="clap" />Ca c'est vraiment cool non <img src="../graphics/clap.gif" alt="clap" /></div>
    <p>
    <div>Votre premier paquet est compilé et installé. Le gestionnaire de paquet (de votre chroot) l'a intégré dans sa base de données. Petite remarque, si vous avez suivi ce tuto, vous avez sans doute remarquez que toutes les commandes ont été effectuées depuis la racine de votre chroot ... <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />.</div>
@@ -205,45 +306,94 @@ cards: installed successfully
    <div>Maintenant que l'on a un éditeur de texte, on va s'en servir pour la suite. Fini les cat ...</div>
    <p>
    <div>Tapez maintenant la commande suivante:</div>
-   <pre class="command"><kbd>cards info -p joe</kbd></pre>
-   <pre class="output">Name:      joe
-Path       : /usr/ports/personnel
-Description: Petit éditeur non graphique emulant emuler, wordStar
-Version    : 3.7</pre>
-   <li><h4>Installer mon premier paquet sur la NuTyX principale</h4>
-   <div><img src="../graphics/wall.gif" alt="wall" /> Super j'ai un nouveau paquet...</div>
-   <p>
+   <pre class="command"><kbd>cards info -i joe</kbd></pre>
+   <pre class="output">Retrieve info about the 123 packages: 100 %                                                         
+Name           : joe                                                                                
+Description    : Petit éditeur non graphique emulant emuler, wordStar                               
+Version        : 3.7
+Build date     : Sun Oct 26 22:27:45 2014
+Size           : 1117696
+Number of Files: 70
+Arch           : x86_64</pre>
+   </li>
+   <li><h3>Installer mon premier paquet sur la NuTyX principale</h3>
+    <div><img src="../graphics/wall.gif" alt="wall" /> Super j'ai un nouveau paquet...</div>
+    <p>
    <div><img src="../graphics/question.gif" width="16" height="15" alt="?" /> Mais comment je fais pour l'installer dans ma NuTyX principale... ?</div>
    <p>
-   <div><img src="../graphics/answer.gif" width="15" height="15" alt="!!" /> Pas de problème tout est prévu, on a un petit programme pour cela.</div>
+   <div><img src="../graphics/answer.gif" width="15" height="15" alt="!!" /> Pas de problème tout est prévu, quelques préparatifs s'imposent, je vous préviens c'est un peu chaud <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /></div>
    <p>
-   <div>Ce petit programme va nous permettre de mettre à jour l'info utilisée par le script update_MD5SUM. On se rend donc dans le dossier <b>parent</b> des paquets binaires et on regénère les infos necessaires du bon dossier:</div>
-   <pre class="command"><kbd>cd /usr/ports
+   <div>Il faut commencer par mettre à jour les info meta qui seront necessaires pour cards. On va utilisée le script update_MD5SUM. On se rend donc dans le dossier <b>parent</b> des paquets binaires et on regénère les infos necessaires du bon dossier après avoir crééer le dossier destinée au service http de la principale:</div>
+   <pre class="command"><kbd>get rsync
+mkdir /NFS
+mkdir /root/bin
+wget http://downloads.nutyx.org/files/update_MD5SUM -O /root/bin/update_MD5SUM
+chmod 755 /root/bin/update_MD5SUM
+export PATH=/root/bin:$PATH
+cd /usr/ports
 update_MD5SUM personnel</kbd></pre>
-   <div>En fonction du nombre de paquets, la regénération peut prendre un certain temps. En attendant la fin de la regénération, on peut déjà ajuster le fichier <b>/etc/cards.conf</b> de votre NuTyX <b><u>PRINCIPALE</u></b>.</div>
+   <pre class="output">/usr/ports
+building file list ... done
+created directory /NFS/personnel
+./
+MD5SUM
+joe/
+joe/MD5SUM
+joe/Pkgfile
+joe/joe-3.7.tar.gz
+joe/joe.doc1414362465any.cards.tar
+joe/joe.info
+joe/joe.man1414362465any.cards.tar
+joe/joe1414362465x86_64.cards.tar
+
+sent 1,987,463 bytes  received 210 bytes  3,975,346.00 bytes/sec
+total size is 1,986,341  speedup is 1.00</pre>
+   <div>Comme nous avons construit un seul paquet, c'est très rapide. On peut maintenant quitter la chroot:</div>
+   <pre class="command"><kbd>exit</kbd></pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous êtes de nouveau dans votre NuTyX principale</div>
-   <div>Ouvrez un nouveau terminal et passez en compte root et ajustez le fichier <b>/etc/cards.conf</b> comme ceci:</div>
-   <pre class="command"><kbd>dir /chroot/usr/ports/personnel
+   <div>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</div>
+   <pre class="command_user"><kbd>get apache
+get apache.service</kbd></pre>
+   <div>Un petit lien bien placé et la magie va bientôt opérer. <img src="../graphics/beer.gif" alt="Cool" title="Cool"/> En root donc:</div>
+   <pre class="command"><kbd>ln -svf /chroot/NFS/personnel /srv/www/htdocs/</kbd></pre> 
+   <div>Il est temps d'ajustez le fichier <b>/etc/cards.conf</b> comme ceci:</div>
+   <pre class="command"><kbd>dir /var/lib/pkg/saravane/personnel|http://localhost/personnel
 dir /var/lib/pkg/saravane/desktop|http://...
 dir /var/lib/pkg/saravane/server|http://...</kbd></pre>
    <div>La ligne qui nous intéresse est uniquement la première:</div>
-   <div><b>dir /chroot/usr/ports/personnel</b> sans plus d'information permet de profiter d'un dépot local de votre NuTyX.</div>
    <p>
-   <div> Et comme vous le remarquez, vous utilisez donc le dépot de votre ... <b><u>chroot</u></b> <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /> C'est cool non ? et en plus y a même pas besoin de faire de sync puisque l'info utile est "locale":</div>
+   <div> Et comme vous le remarquez, vous utilisez donc le dépot de votre ... <b><u>chroot</u></b> <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /> C'est cool non ?</div>
    <p>
-   <div>Donc si vous faites maintenant:</div>
-   <pre class="command"><kbd>cards info -b joe</kbd>
-   </pre>
-   <pre class="output">Nom         : joe
-Paquet      : /usr/ports/personnel/joe/joe140013231x86_64.cards.tar.xz
-Description : Petit editeur non graphique
-URL mirroir : (null)
-URL sources : http://sourceforge.net/projects/joe-editor/
-Mainteneur  : sourceforge.net/projects/joe-editor/files/JOE%20sources/joe-3.7/
-Packager    : François Perrin
-Version     : 3.7-1</pre>
+   <div>On active le service http via le terminal toujours en root:</div>
+   <pre class="command"><kbd>/etc/rc.d/init.d/httpd start</kbd></pre>
+   <pre class="output">     Starting Apache HTTP daemon...AH00558: httpd: 
+Could not reliably determine the server's fully qualified domain name,
+using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+  *                                                                      [  OK  ]</pre>
+   <p>
+   <div>Pour le message d'avertissement, on verra plus tard. <img src="../graphics/champion.gif" />. Donc si vous faites maintenant:</div>
+   <pre class="command"><kbd>cards info -b joe</kbd></pre>
+   <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
+/var/lib/pkg/saravane/desktop/MD5SUM
+/var/lib/pkg/saravane/server/MD5SUM
+/var/lib/pkg/saravane/system/MD5SUM
+Name           : joe
+Description    : Petit éditeur non graphique emulant emuler, wordStar
+Version        : 3.7
+Build date     : Sun Oct 26 23:27:45 2014
+Arch           : x86_64
+Url            : http://localhost/personnel
+Local Directory: /var/lib/pkg/saravane/personnel</pre>
+    <div><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></div>
+    <p>
     <div>Il ne nous reste plus qu'a l'installer <img src="../graphics/smiley-surprised.gif" alt="Surprised" title="Surprised" /></div>
-    <pre class="command"><kbd>cards install joe</kbd></pre></li>
+    <pre class="command_user"><kbd>get joe</kbd></pre></li>
+    <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
+/var/lib/pkg/saravane/desktop/MD5SUM
+/var/lib/pkg/saravane/server/MD5SUM
+/var/lib/pkg/saravane/system/MD5SUM
+Retrieve info about the 622 packages: 100 %
+ADD: joe-3.7, 71 files: 100 %</pre>
     </ol>
    <h2>Un paquet avec quelques dépendances</h2>
     <div>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</div>
@@ -301,8 +451,8 @@ Packager:
 base /root/mes_paquets_a_conserver</pre>
    <div>du fichier <b>/etc/cards.conf</b></div>
    <p>
-   <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver le paquet <b>joe</b>, crééez le dossier /root/mes_paquets_a_conserver/joe et le tour est joué:</div>
-<pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/joe</kbd></pre>
+   <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</div>
+<pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
 
         <!-- DEBUT FOOTER -->
      

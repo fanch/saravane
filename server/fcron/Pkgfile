@@ -1,11 +1,10 @@
 version=3.1.2
-# Depends on:
 
 source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
 build() {
 unset MAKEFLAGS
 source /etc/blfs-bootscripts                                                                                                            
-wget http://downloads.nutyx.org/files/patchs/aaabasicfs/$scripts-$scriptsversion.tar.bz2                                                
+wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2                                                
 tar xf $scripts-$scriptsversion.tar.bz2                                                                                                 
 # build package
 cd $name-$version

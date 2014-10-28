@@ -26,8 +26,22 @@ ln -sv ../../lib/libbz2.so.1.0 $PKG/usr/lib/libbz2.so
 rm -v $PKG/usr/bin/{bunzip2,bzcat,bzip2}
 mv -v $PKG/usr/bin/* \
 $PKG/bin
-ln -sv bzip2 $PKG/bin/bunzip2
-ln -sv bzip2 $PKG/bin/bzcat
+for i in bzegrep bzfgrep 
+do
+  ln -svf bzgrep $PKG/bin/$i
+done
+for i in bunzip2 bzcat
+do
+ ln -svf bzip2 $PKG/bin/$i
+done
+for i in  bzless 
+do
+ ln -svf bzmore $PKG/bin/$i
+done
+for i in bzcmp
+do
+ ln -svf bzdiff $PKG/bin/$i
+done
 }
 devel() {
 cd $PKG
