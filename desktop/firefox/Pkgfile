@@ -1,4 +1,4 @@
-version=33.0.1
+version=33.0.2
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.bz2)
 
