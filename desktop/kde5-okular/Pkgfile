@@ -15,4 +15,6 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr        \
       ..
 make
 make DESTDIR=$PKG install
+
+rm -rf $PKG/usr/share/doc/HTML/en/okular/
 }
