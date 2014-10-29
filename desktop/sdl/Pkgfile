@@ -1,5 +1,4 @@
 version=1.2.15
-# pour l'écriture de logiciel multimedia
 source=(http://www.libsdl.org/release/SDL-$version.tar.gz)
 build() {
 cd SDL-$version

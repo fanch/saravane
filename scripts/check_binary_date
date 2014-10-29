@@ -1,0 +1,20 @@
+for i in *
+do
+	cd $i
+	if [ -f ${i}1* ];then
+		BINARY_TIME=`date +%s -r ${i}1*`
+		for FILE in Pkgfile $i.README $i.info $i.deps $i.run $i.pre-install $i.post-install
+		do
+			if [ -f $FILE ];then
+				FILE_TIME=`date +%s -r $FILE`
+				if [ ${FILE_TIME} -gt ${BINARY_TIME} ];then
+					echo "$i"
+					break
+				fi
+			fi
+		done
+	else
+		echo "$i"
+	fi
+	cd ..
+done

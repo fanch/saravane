@@ -1,8 +1,8 @@
-version=2.6.0
+version=2.6.1
 
 _name=protobuf
 
-source=(http://protobuf.googlecode.com/svn/rc/${_name}-$version.tar.bz2)
+source=(https://github.com/google/protobuf/releases/download/$version/protobuf-$version.tar.bz2)
 
 build () 
 { 
