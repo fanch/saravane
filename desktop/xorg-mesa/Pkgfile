@@ -1,4 +1,4 @@
-version=10.3.1
+version=10.3.2
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-add_xdemos-1.patch)
