@@ -203,13 +203,13 @@ for param in $cmdline ; do
   esac
 done
 
-if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then
+if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then 
   /sbin/mdadm --auto-detect
   ### First we activate lvm if possible
   if [ -f /sbin/lvm ]; then
-    /sbin/lvm vgscan --ignorelockingfailure --mknodes
+    /sbin/lvm vgchange --ignorelockingfailure -ay
     if [ $? = 0 ]; then
-      /sbin/lvm vgchange --ignorelockingfailure -ay
+       /sbin/lvm vgscan --ignorelockingfailure --mknodes
     fi
   fi
 fi

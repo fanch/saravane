@@ -1,8 +1,7 @@
 version=7.7
 section="driver"
 source=(http://www.linuxfromscratch.org/patches/blfs/svn/xf86-input-vmmouse-13.0.0-build_fix-1.patch
-	 
-	http://www.linuxfromscratch.org/patches/blfs/svn/xf86-video-sis-0.10.7-upstream_fixes-1.patch)
+	) 
 
 build() {
 cat > list.md5 << "EOF"
@@ -14,14 +13,8 @@ ed70d0cba94262a4008dcef654ab34a9  xf86-input-synaptics-1.8.1.tar.bz2
 91fd6b677d62027cd3001debb587a6a6  xf86-video-cirrus-1.5.2.tar.bz2
 3931c0e19d441cc576dc088f9eb9fd73  xf86-video-fbdev-0.4.4.tar.bz2
 7e24551eae0b952f4d795e791e88ebe5  xf86-video-intel-2.99.916.tar.bz2
-d645197cbf238ac0427c3904eafdce2f  xf86-video-mach64-6.9.4.tar.bz2
-a53b5ce166e31c181aaa4c3816d8babb  xf86-video-mga-1.6.3.tar.bz2
 f21abcdf87f73b5b547491281e894c87  xf86-video-openchrome-0.3.3.tar.bz2
-2e906d856a1c477bde000254b142445c  xf86-video-r128-6.9.2.tar.bz2
 a0d2932d84ba10c4933c8332c9afe157  xf86-video-nouveau-1.0.11.tar.bz2
-e813271ab43cc6a95ac0ab252b90a885  xf86-video-savage-2.3.7.tar.bz2
-f01e5e20e37342acf1983d269886171b  xf86-video-sis-0.10.7.tar.bz2
-1b4a7815a604b3764900b520336a75ea  xf86-video-tdfx-1.4.5.tar.bz2
 3690a5356ed121b1a7dfb59a6dcf4bf9  xf86-video-vesa-2.3.3.tar.bz2
 91d1d7d33181766714405ab013d31244  xf86-video-vmware-13.0.2.tar.bz2
 EOF
@@ -41,13 +34,6 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 
 		pushd $packagedir
 		case $packagename in
-		xf86-video-sis-[0-9]*)
-			patch -Np1 -i ../xf86-video-sis-0.10.7-upstream_fixes-1.patch
-			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
-		xf86-video-tdfx-[0-9]*)
-			sed -e "/mibstore.h/d" -e "/miInitializeBackingStore/d" \
-    -i src/tdfx_driver.c
-			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
 		xf86-input-vmmouse-[0-9]*)
 			patch -Np1 -i ../xf86-input-vmmouse-13.0.0-build_fix-1.patch
 			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
