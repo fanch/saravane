@@ -15,3 +15,9 @@ kde5-konsole
 kde5-kscreen
 kde5-okular
 kde5-polkit-kde-agent
+dejavu-ttf
+alsa-utils
+kde-ffmpegthumbs
+kde-graphics-thumbnailers
+kde-mplayerthumb
+pm-utils
