@@ -398,28 +398,28 @@ ADD: joe-3.7, 71 files: 100 %</pre>
     <div>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</div>
     <p>
     <div>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées</div>
-    <div>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX, c'est surtout l'aspect qui importe ici: Nous allons donc prendre le pilote xf86-video-sisusb qui d'après le README est (en anglais dans le texte)</div>
+    <div>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le pilote xf86-video-sisusb qui d'après le README est (en anglais dans le texte)</div>
     <i>SiS Net2280-based USB video driver for the Xorg X server</i>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
     <ol>
      <li><h3>Créer le dossier</h3>
-      <pre class="command"><kbd>mkdir -p /usr/ports/perso/xorg-xf86-video-sisusb</kbd></pre>
+      <pre class="command"><kbd>mkdir -p /usr/ports/personnel/xorg-xf86-video-sisusb</kbd></pre>
      </li>
      <li><h3>Créer les fichiers</h3>
       <h4>Le Pkgfile</h4> 
-       <div>Completez le fichier <b>/usr/ports/perso/xorg-xf86-video-sisusb/Pkgfile</b>  avec ceci:</div>
+       <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/Pkgfile</b>  avec ceci:</div>
        <pre class="command"><kbd>version=0.9.5
 _name=xf86-video-sisusb
 source=(http://xorg.freedesktop.org/archive/individual/driver/${_name}-$version.tar.bz2)
 build() {
 cd ${_name}-$version
-./configure /usr
+./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 }</kbd></pre>
     <h4>Le xorg-xf86-video-sisusb.info</h4>
-    <div>Completez le fichier <b>/usr/ports/perso/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.info</b> avec ceci:</div>
-    <pre class="command"><kbd>Pilote video pour les cartes sis usb
+    <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.info</b> avec ceci:</div>
+    <pre class="command"><kbd>SiS Net2280-based USB video driver for the Xorg X server
 
 URL: http://xorg.freedesktop.org
 
@@ -432,8 +432,18 @@ Packager:
 - François Perrin
 </kbd></pre>
    <h4>Le xorg-xf86-video-sisusb.deps</h4>
-    <div>Completez le fichier <b>/usr/ports/perso/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.deps</b> avec ceci:</div>
+    <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.deps</b> avec ceci:</div>
     <pre class="command"><kbd>xorg-server</kbd></pre> 
+   </li>
+   <li><h3>Télécharger les dépendances automatiquemet</h3>
+   <div>Pour cet exercice, nous choisissons d'utiliser les dépendances disponibles sur le dépot de NuTyX. Il est tout à fait possible de choisir si oui ou non on souhaite utiliser les dépendances disponibles. La variable <b>PKGMK_SYNC_FILES="no"</b> qui est dans le fichier /etc/pkgmk.conf est là pour cela. Si <b>"yes"</b> vous ne devez pas compiler les dépendances vous-même mais celle du dépot. Si <b>"no"</b>, vous désirez compiler vos propre versions des dépendances.</div> 
+   <p>
+   <div>Nous ajustons donc la variable ds le fichier <b>/etc/pkgmk.conf</b></div>
+   <pre class="output">PKGMK_SYNC_FILES="yes"</pre>
+   <div>le script <b>/usr/bin/pkgmk</b> contient une petite erreur que l'on va corriger via le sed:</div>
+   <pre class="command"><kbd>sed -i "s/{name}@\${version}/{name}/" /usr/bin/pkgmk</kbd></pre>
+   <div>Aucune erreur ne doit apparaître.</div>
+
    </li>
    <li><h3>Compilez le paquet.</h3>
     <pre class="command"><kbd>cards create -r xorg-xf86-video-sisusb</kbd></pre>
