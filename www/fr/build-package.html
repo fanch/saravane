@@ -141,11 +141,16 @@ EOF</kbd></pre>
    <div>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</div>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
    <div>Nous avons donc l'environnement, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b> et d'installer les outils de travail.</div>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est important de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:
+   <div class="important"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est INDISPENSABLE de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:
     <ul> <li>/var/lib/pkg/saravane/desktop</li>
      <li>/var/lib/pkg/saravane/server</li>
      <li>/var/lib/pkg/saravane/system</li></ul>
-    Sinon, à la prochaine demande de synchronisation des ports NuTyX vos recettes seront supprimées.</div>
+    Sinon:
+    <ul>
+     <li>Vous aurez des messages d'erreurs lors de la tentative de compilation de votre paquet</li>
+     <li>Lors de la prochaine demande de synchronisation des ports NuTyX vos recettes seront supprimées.</li>
+    </ul>
+   </div>
    <div>Je vous propose d'utiliser le dossier <b>/usr/ports/personnel</b>. Si celui-ci n'existe pas encore, créez-le:</div>
    <pre class="command"><kbd>mkdir -pv /usr/ports/personnel</kbd></pre>
    <div>Vérifiez le contenu du fichier <b>/etc/cards.conf</b> le cas échéant, on ajoute ensuite l'information dans le fichier de configuration <b>/etc/cards.conf. </b>Celui-ci doit ressembler à ceci:</div>
@@ -354,8 +359,10 @@ total size is 1,986,341  speedup is 1.00</pre>
    <div>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</div>
    <pre class="command_user"><kbd>get apache
 get apache.service</kbd></pre>
-   <div>Un petit lien bien placé et la magie va bientôt opérer. <img src="../graphics/beer.gif" alt="Cool" title="Cool"/> En root donc:</div>
-   <pre class="command"><kbd>ln -svf /chroot/NFS/personnel /srv/www/htdocs/</kbd></pre> 
+   <div>Malheureusement la configuration de apache n'étant parfaite, un minimum d'actions s'impose.</div>
+   <div>On terminera par un petit lien bien placé et la magie va bientôt opérer. <img src="../graphics/beer.gif" alt="Cool" title="Cool"/> En root donc:</div>
+   <pre class="command"><kbd>mkdir /srv/www/htdocs
+ln -svf /chroot/NFS/personnel /srv/www/htdocs</kbd></pre> 
    <div>Il est temps d'ajustez le fichier <b>/etc/cards.conf</b> comme ceci:</div>
    <pre class="command"><kbd>dir /var/lib/pkg/saravane/personnel|http://localhost/personnel
 dir /var/lib/pkg/saravane/desktop|http://...
@@ -398,60 +405,101 @@ ADD: joe-3.7, 71 files: 100 %</pre>
    <h2>Un paquet avec quelques dépendances</h2>
     <div>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</div>
     <p>
-    <div>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées</div>
-    <div>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le pilote xf86-video-sisusb qui d'après le README est (en anglais dans le texte)</div>
-    <i>SiS Net2280-based USB video driver for the Xorg X server</i>
+    <div>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées. Par principe, sous NuTyX nous essayons de proposer le maximum de fonctionalitées.</div>
+    <p>
+    <div>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le paquet <b>clipit</b> qui d'après le README est (en anglais dans le texte)</div>
+    <p><i>ClipIt is a lightweight GTK+ clipboard manager.</i>
+    <p><i>Project website: http://clipit.rspwn.com/</i>
+    <p><i>Requirements:</i>
+    <p><i>* gtk+ >= 2.10.0</i>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
     <ol>
      <li><h3>Créer le dossier</h3>
-      <pre class="command"><kbd>mkdir -p /usr/ports/personnel/xorg-xf86-video-sisusb</kbd></pre>
+      <pre class="command"><kbd>mkdir -p /usr/ports/personnel/clipit</kbd></pre>
      </li>
      <li><h3>Créer les fichiers</h3>
-      <h4>Le Pkgfile</h4> 
-       <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/Pkgfile</b>  avec ceci:</div>
-       <pre class="command"><kbd>version=0.9.5
-_name=xf86-video-sisusb
-source=(http://xorg.freedesktop.org/archive/individual/driver/${_name}-$version.tar.bz2)
-build() {
-cd ${_name}-$version
+      <h4>Le fichier Pkgfile</h4> 
+       <div>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</div>
+       <pre class="command"><kbd>version=1.4.2
+source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 }</kbd></pre>
-    <h4>Le xorg-xf86-video-sisusb.info</h4>
-    <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.info</b> avec ceci:</div>
-    <pre class="command"><kbd>SiS Net2280-based USB video driver for the Xorg X server
+    <h4>Le fichier clipit.info</h4>
+    <div>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.info</b> avec ceci:</div>
+    <pre class="command"><kbd>ClipIt is a lightweight GTK+ clipboard manager.
 
-URL: http://xorg.freedesktop.org
+URL: http://clipit.rspwn.com/
 
 Maintainer:
 
--  http://xorg.freedesktop.org
+-  Gilberto "Xyhthyx" Miralla &lt;xyhthyx at gmail dot com&gt;
 
 Packager:
 
 - François Perrin
 </kbd></pre>
-   <h4>Le xorg-xf86-video-sisusb.deps</h4>
-    <div>Completez le fichier <b>/usr/ports/personnel/xorg-xf86-video-sisusb/xorg-xf86-video-sisusb.deps</b> avec ceci:</div>
-    <pre class="command"><kbd>xorg-server</kbd></pre> 
+   <h4>Le fichier clipit.deps</h4>
+    <div>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.deps</b> avec ceci:</div>
+    <pre class="command"><kbd>gtk</kbd></pre> 
+   </li>
+   <li><h3>Générer le fichier MD5SUM</h3>
+    <div>Vous venez de créer la recette de votre deuxième paquet. Il faut à nouveau faire une opération avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</div>
+    <pre class="command"><kbd>cd /usr/ports/personnel/clipit
+pkgmk -us</kbd></pre>
+   <div>Le fichier <b>MD5SUM</b> est créé.</div>
    </li>
    <li><h3>Télécharger les dépendances automatiquemet</h3>
    <div>Pour cet exercice, nous choisissons d'utiliser les dépendances disponibles sur le dépot de NuTyX. Il est tout à fait possible de choisir si oui ou non on souhaite utiliser les dépendances disponibles. La variable <b>PKGMK_SYNC_FILES="no"</b> qui est dans le fichier /etc/pkgmk.conf est là pour cela. Si <b>"yes"</b> vous ne devez pas compiler les dépendances vous-même mais celle du dépot. Si <b>"no"</b>, vous désirez compiler vos propre versions des dépendances.</div> 
    <p>
    <div>Nous ajustons donc la variable ds le fichier <b>/etc/pkgmk.conf</b></div>
    <pre class="output">PKGMK_SYNC_FILES="yes"</pre>
-   <div>le script <b>/usr/bin/pkgmk</b> contient une petite erreur que l'on va corriger via le sed:</div>
-   <pre class="command"><kbd>sed -i "s/{name}@\${version}/{name}/" /usr/bin/pkgmk</kbd></pre>
-   <div>Aucune erreur ne doit apparaître.</div>
-
+   <div>Il faut commencer par rappatrier toutes les infos concernant les ports, lancez la commande en root:</div>
+   <pre class="command"><kbd>cards sync -p</kbd></pre>
+   <div>L'opération peut prendre plusieurs minutes. Une fois terminée, on va demander à <b>cards</b> de télécharger les dépendances necessaires à notre petit paquet:</div>
+   <pre class="command"><kbd>for i in `cards depends -a clipit`;do cd $i; pkgmk; done</kbd></pre>
+   <div>Les dépendances necessaire à la compilation de notre petit paquet <b>clipit</b> sont maintenant téléchargées. Cela prendra quelques minutes.</div>
    </li>
    <li><h3>Compilez le paquet.</h3>
-    <pre class="command"><kbd>cards create -r xorg-xf86-video-sisusb</kbd></pre>
+    <pre class="command"><kbd>cards create -r clipit</kbd></pre>
     <div>La commande <b>cards</b> remet la chroot dans une "installation minimale", recherche toutes les dépendances du paquet et comme ces dépendances n'existent pas dans votre chroot, il télécharge les binaires déjà à jour et enfin compile le paquet.</div></li>
+    <li><h3>Installer notre paquet dans la principale</h3>
+     <div>On commence par sortir de la chroot</div>
+     <pre class="command"><kbd>exit</kbd></pre>
+     <div>On vérifie si il est dispo pour téléchargement et installation</div>
+     <pre class="command"><kbd>cards info -b clipit</kbd></pre>
+   <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
+/var/lib/pkg/saravane/desktop/MD5SUM
+/var/lib/pkg/saravane/server/MD5SUM
+/var/lib/pkg/saravane/system/MD5SUM
+Name           : clipit
+Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
+Version        : 1.4.2
+Build date     : Fri Oct 31 22:52:36 2014
+Arch           : x86_64
+Url            : http://localhost/personnel
+Local Directory: /var/lib/pkg/saravane/personnel</pre>
+     <div>On peut maintenant installer notre nouveau paquet:</div>
+     <pre class="command_user"><kbd>get clipit</kbd></pre></li>
+     <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
+/var/lib/pkg/saravane/desktop/MD5SUM
+/var/lib/pkg/saravane/server/MD5SUM
+/var/lib/pkg/saravane/system/MD5SUM
+Retrieve info about the 635 packages: 100 %
+ADD: clipit-1.4.2, 17 files: 100 %
+ADD: clipit.fr-1.4.2, 3 files: 100 %</pre>
+    <div>Vous avez installé un paquet contenant des dépendances. La preuve si vous demandez les informations de votre nouvelle archive en faisant:</div>
+    <pre class="command_user"><kbd>pkginfo -a /var/lib/pkg/saravane/personnel/clipit/clipit1*</kbd></pre>
+    <pre class="output">Name           : clipit
+Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
+Version        : 1.4.2
+Build date     : 1414792356
+Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk1414590782 xorg-libx111411748195</pre>
+    <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
     <li><h3>Quelques explications:</h3>
      <ul>
-      <li>le fichier <b>xorg-xf86-video-sisusb.deps</b> contenant  <b>xorg-server</b>: est la seule dépendance necessaire en effet xorg-server réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</li>
+      <li>le fichier <b>clipit.deps</b> contenant  <b>gtk</b>: est la seule dépendance necessaire en effet <b>gtk</b> réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</li>
      </ul>
    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> Pour pouvoir installer ce paquet dans votre NuTyX principale il faut procéder comme expliqué dans le chapitre précédent</div>
    <div>Pour terminer, il faut savoir qu'avant de commencer un nouveau paquet, il est important de toujours revenir sur une NuTyX de base afin de bien connaître les dépendances necessaires. La commande:</div>
