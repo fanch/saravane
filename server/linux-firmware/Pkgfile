@@ -16,6 +16,7 @@ find firmware \( -type d -and -empty \) | xargs rm -rv
 rm -rf firmware/cis/src
 rm -rf firmware/usbdux
 rm -rf firmware/carl9170fw
+rm -rf firmware/.git
 mkdir $PKG/lib
 cp -a firmware \
 $PKG/lib
