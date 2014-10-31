@@ -1,3 +1,4 @@
 if [ -f etc/pkgmk.conf ]; then 
 	mv etc/pkgmk.conf etc/pkgmk.conf.backup
+	echo "/etc/pkgmk.conf saved in /etc/pkgmk.conf.backup"
 fi
