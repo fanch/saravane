@@ -1,6 +1,6 @@
-version=2.5.0
+version=2.6.1
 
-source=(http://protobuf.googlecode.com/files/${name}-$version.tar.bz2)
+source=(https://github.com/google/protobuf/releases/download/$version/protobuf-$version.tar.bz2)
 build () 
 { 
 cd ${name}-$version

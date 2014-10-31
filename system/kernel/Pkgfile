@@ -1,4 +1,4 @@
-version=3.16.6
+version=3.16.7
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 REALTEK_VERSION=8.038.00
@@ -50,7 +50,7 @@ if ! [ -d /usr/src/linux-${_version} ]; then
         		cp $SRC/kernel.config ./.config;;
 	esac
 
-#make menuconfig
+make menuconfig
 fi
 make || make -j1
 
@@ -124,4 +124,7 @@ cd $PKG/lib/modules/${_version}/
 rm -f {build,source}
 ln -sv /usr/src/linux-${_version} build
 ln -sv /usr/src/linux-${_version} source
+
+# Firmware are in linux-firmware
+rm -rf $PKG/lib/firmware
 }

@@ -26,7 +26,16 @@ cd ${_name}*
             -optimized-qmake 
 
 make
+
+find . -name "*.pc" -exec perl -pi -e "s, -L$PWD/?\S+,,g" {} \;
+
 make INSTALL_ROOT=$PKG install
+
+sed -e "s:$PWD/qtbase:/usr/lib/qt5:g" \
+    -i $PKG/usr/lib/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri
+
+find $PKG/usr/lib/lib{Enginio,qgsttools_p,Qt5*}.prl -exec sed -i -r \
+     '/^QMAKE_PRL_BUILD_DIR/d;s/(QMAKE_PRL_LIBS =).*/\1/' {} \;
 
 install -v -dm755 $PKG/usr/share/pixmaps/
 

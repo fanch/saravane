@@ -111,7 +111,8 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
   <h2>Mise en service de la chroot</h2>
    <div>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:
    </div>
-   <pre class="command"><kbd>cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
+   <pre class="command"><kbd>mkdir -p /root/bin
+cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
 echo "Entrer dans la chroot..."
 mount -v -B /dev /chroot/dev
 mount -vt devpts devpts /chroot/dev/pts
@@ -347,8 +348,8 @@ joe/joe1414362465x86_64.cards.tar
 
 sent 1,987,463 bytes  received 210 bytes  3,975,346.00 bytes/sec
 total size is 1,986,341  speedup is 1.00</pre>
-   <div>Comme nous avons construit un seul paquet, c'est très rapide. On peut maintenant quitter la chroot</div>
-   <p>
+   <div>Comme nous avons construit un seul paquet, c'est très rapide. On peut maintenant quitter la chroot:</div>
+   <pre class="command"><kbd>exit</kbd></pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous êtes de nouveau dans votre NuTyX principale</div>
    <div>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</div>
    <pre class="command_user"><kbd>get apache

@@ -1,6 +1,8 @@
 if [ -f etc/pkgadd.conf ]; then 
 	mv etc/pkgadd.conf etc/pkgadd.conf.backup
+	echo "/etc/pkgadd.conf saved in /etc/pkgadd.conf.backup"
 fi
 if [ -f etc/cards.conf ]; then
 	mv etc/cards.conf etc/cards.conf.backup
+	echo "/etc/cards.conf saved in /etc/cards.conf.backup"
 fi

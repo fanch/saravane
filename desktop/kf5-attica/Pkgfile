@@ -11,7 +11,7 @@ build() {
               -DCMAKE_BUILD_TYPE=Release         \
               -DLIB_INSTALL_DIR=lib              \
               -DBUILD_TESTING=OFF                \
-              -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt5/mkspecs/modules \
+              -DECM_MKSPECS_INSTALL_DIR=/usr/share/qt5/mkspecs/modules \
               -Wno-dev .. 
 	make
         make DESTDIR=$PKG install
