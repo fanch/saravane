@@ -64,7 +64,7 @@
   <h2>Construire un environnement isolé appelé "chroot"</h2>
    <div>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</div>
    <p>
-   <div>Pour pouvoir construire une recette en toute tranquilité,il est recommandé de se construire un environnement qui sera isolé de votre NuTyX sur laquelle vous êtes actuellement. On l'appelera désormais la<b> chroot</b>.</div>
+   <div>On l'appelera désormais la<b> chroot</b>.</div>
    <p>
    <div>Vous allez voir que l'on a tout prévu pour vous simplifier la vie dans la construction d'une chroot.
    </div>
@@ -464,6 +464,43 @@ pkgmk -us</kbd></pre>
    <li><h3>Compilez le paquet.</h3>
     <pre class="command"><kbd>cards create -r clipit</kbd></pre>
     <div>La commande <b>cards</b> remet la chroot dans une "installation minimale", recherche toutes les dépendances du paquet et comme ces dépendances n'existent pas dans votre chroot, il télécharge les binaires déjà à jour et enfin compile le paquet.</div></li>
+    <li><h3>Envoyer le paquet</h3>
+     <div>Dernière étape, il faut "envoyer" les binaires sur "votre serveur http":</div>
+     <pre class="command"><kbd>cd /usr/ports
+update_MD5SUM personnel</kbd></pre>
+     <pre class="output">/usr/ports
+building file list ... done
+./
+MD5SUM
+clipit/
+clipit/MD5SUM
+clipit/Pkgfile
+clipit/clipit-1.4.2.tar.gz
+clipit/clipit.cs1414792356any.cards.tar
+clipit/clipit.da1414792356any.cards.tar
+clipit/clipit.de1414792356any.cards.tar
+clipit/clipit.deps
+clipit/clipit.es1414792356any.cards.tar
+clipit/clipit.es_ES1414792356any.cards.tar
+clipit/clipit.et1414792356any.cards.tar
+clipit/clipit.fr1414792356any.cards.tar
+clipit/clipit.hu1414792356any.cards.tar
+clipit/clipit.info
+clipit/clipit.it1414792356any.cards.tar
+clipit/clipit.ja1414792356any.cards.tar
+clipit/clipit.man1414792356any.cards.tar
+clipit/clipit.nb1414792356any.cards.tar
+clipit/clipit.pl1414792356any.cards.tar
+clipit/clipit.pt_BR1414792356any.cards.tar
+clipit/clipit.ro1414792356any.cards.tar
+clipit/clipit.ru1414792356any.cards.tar
+clipit/clipit.sv1414792356any.cards.tar
+clipit/clipit.tr1414792356any.cards.tar                                                                                                 
+clipit/clipit.zh_CN1414792356any.cards.tar                                                                                              
+clipit/clipit1414792356x86_64.cards.tar                                                                                                 
+                                                                                                                                        
+sent 588,560 bytes  received 515 bytes  1,178,150.00 bytes/sec
+total size is 2,572,451  speedup is 4.37</pre>
     <li><h3>Installer notre paquet dans la principale</h3>
      <div>On commence par sortir de la chroot</div>
      <pre class="command"><kbd>exit</kbd></pre>
