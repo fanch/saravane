@@ -240,6 +240,7 @@ pkgmk -us</kbd></pre>
 =======> version: 3.7</pre>
     <div>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</div></li>
    <li><h3>Compilation de la recette</h3>
+    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />N'intérrompez JAMAIS la commande <b>cards create </b> via ctrl+c, cela aurait pour effet de rendre votre chroot inutilisable.</div>
     <div>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></div>
     <pre class="command"><kbd>cards create -n joe</kbd></pre>
     <pre class="output">var/lib/pkg/saravane/desktop/xfce4-settings/xfce4-settings.deps: No such file or directory
