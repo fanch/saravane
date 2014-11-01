@@ -1,0 +1,14 @@
+openbox
+startup-notification
+gtk
+cairo
+xorg-pixman
+xorg-libxext
+gdk-pixbuf
+atk
+libglade
+avahi
+dbus-python
+dbus-glib
+libdaemon
+xorg-mesa
