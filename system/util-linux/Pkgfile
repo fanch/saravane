@@ -1,4 +1,4 @@
-version=2.25.1
+version=2.25.2
 source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-$version.tar.xz
 	)
 
@@ -11,9 +11,11 @@ cd util-linux-$version
 mkdir -pv $PKG/var/lib/hwclock
 ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
 --docdir=/usr/share/doc/$name-$version \
---disable-su \
---disable-login \
---disable-sulogin
+--disable-chfn-chsh --disable-setpriv \
+--disable-runuser --disable-pylibmount \
+--without-python --without-systemd \
+--disable-su --disable-login \
+--disable-sulogin --without-systemdsystemunitdir
 
 make
 make DESTDIR=$PKG  install
