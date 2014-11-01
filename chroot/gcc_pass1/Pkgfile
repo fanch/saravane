@@ -1,4 +1,4 @@
-version=4.9.1
+version=4.9.2
 source=(\
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz \
 http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz \
@@ -27,7 +27,6 @@ do
 done
 
 sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure
-sed -i 's/if \((code.*))\)/if (\1 \&\& \!DEBUG_INSN_P (insn))/' gcc/sched-deps.c
 
 mkdir -v ../gcc-build
 cd ../gcc-build

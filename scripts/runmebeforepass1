@@ -141,7 +141,7 @@ ede5166f949d9a07163bc5b086be9759  perl-5.20.1.tar.bz2
 68255f51be017a93f2f6402fab06c2bf  e2fsprogs-1.42.12.tar.gz
 ed05111948beba8a0f30956baa46b272  tzdata2014h.tar.gz
 97ae0ecd007750f776099fcb9fccc7af  nasm-2.11.04.tar.xz
-fddf71348546af523353bd43d34919c1  gcc-4.9.1.tar.bz2
+4df8ee253b7f3863ad0b86359cd39c43  gcc-4.9.2.tar.bz2
 948a6e06419a01bd51e97206861595b0  glibc-2.20.tar.xz
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
 48e4e96a60bfed41804aaecf4944f5d9  binutils-2.24-load_gcc_lto_plugin_by_default-1.patch

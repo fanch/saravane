@@ -1,4 +1,4 @@
-version=4.9.1
+version=4.9.2
 source=(\
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz \
 http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz \
@@ -35,7 +35,6 @@ mv -v ../mpfr-3.1.2 mpfr
 mv -v ../gmp-6.0.0 gmp
 mv -v ../mpc-1.0.2 mpc
 
-sed -i 's/if \((code.*))\)/if (\1 \&\& \!DEBUG_INSN_P (insn))/' gcc/sched-deps.c
 
 mkdir -v ../gcc-build
 cd ../gcc-build
