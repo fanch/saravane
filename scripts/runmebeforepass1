@@ -102,8 +102,8 @@ for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
    sed -i "/coreutils/d" $LFS/sources/$i
-   sed -i "/linux.3.13.3/d" $LFS/sources/$i
-   sed -i "/gcc-4.8.2/d" $LFS/sources/$i
+   sed -i "/linux.3.16.2/d" $LFS/sources/$i
+   sed -i "/gcc-4.9.1/d" $LFS/sources/$i
    sed -i "/glibc-/d" $LFS/sources/$i
    sed -i "/shadow-/d" $LFS/sources/$i
    sed -i "/shadow_/d" $LFS/sources/$i
@@ -122,6 +122,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/check-/d" $LFS/sources/$i
    sed -i "/libpipeline-/d" $LFS/sources/$i
    sed -i "/tcl/d" $LFS/sources/$i
+   sed -i "/libtool-/d" $LFS/sources/$i
    sed -i "/tar-/d" $LFS/sources/$i
 done
 echo "60d96aa6e111c4cf06a8a2186c60a281  eudev-1.10.tar.gz
@@ -132,6 +133,7 @@ d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 1e6a827f5fbd98b3d40bd16b803acc44  gettext-0.19.2.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
 5d5e13eb3e0e13839da869a31790faf2  file-5.20.tar.gz
+ec4dabd3bc580dc188197d4d5eb95fe3  libtool-2.4.3.tar.gz
 82835c7f01983634e06ca72b4ee30cc6  kmod-18.tar.xz
 2cbea44a4f1548aee20b9ff2d3076908  grep-2.20.tar.xz
 38263d115d784c17aa3b959ce94be8b8  check-0.9.14.tar.gz
