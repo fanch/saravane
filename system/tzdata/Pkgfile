@@ -1,4 +1,4 @@
-version=2014h
+version=2014i
 source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz)
 build() {
 timezones=('africa' 'antarctica' 'asia' 'australasia'
