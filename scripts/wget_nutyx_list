@@ -12,7 +12,7 @@ http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1j-fix_par
 http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
-http://ftp.gnu.org/gnu/gettext/gettext-0.19.2.tar.xz
+http://ftp.gnu.org/gnu/gettext/gettext-0.19.3.tar.xz
 http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 http://ftp.gnu.org/gnu/grep/grep-2.20.tar.xz
 http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
