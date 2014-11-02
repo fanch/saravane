@@ -1,4 +1,3 @@
-version=0.26.4
 source=(http://poppler.freedesktop.org/poppler-$version.tar.xz)
 
 build() {
