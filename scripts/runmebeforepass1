@@ -101,6 +101,7 @@ echo "link /home/lfs/config: OK"
 for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
+   sed -i "/iproute2-/d" $LFS/sources/$i
    sed -i "/eudev-/d" $LFS/sources/$i
    sed -i "/coreutils/d" $LFS/sources/$i
    sed -i "/linux.3.16.2/d" $LFS/sources/$i
@@ -131,7 +132,7 @@ dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 8103eaf6d71acb716a64224492f09d5f  tcl8.6.2-src.tar.gz
-6c823b40fdcfa7b8120743349a52ac18  iproute2-3.16.0.tar.xz
+b741a02c6dda5818d18011d572874493  iproute2-3.17.0.tar.xz
 092c3f460553ceb4a638ff81d36434c4  gettext-0.19.3.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
 5d5e13eb3e0e13839da869a31790faf2  file-5.20.tar.gz
