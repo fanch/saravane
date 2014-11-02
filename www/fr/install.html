@@ -34,19 +34,27 @@
       
     <p1> Assurez vous tout d'abord d'avoir un espace libre sur votre disque dur d'au moins 8Go ou mieux 15Go pour plus de confort.
     <h3>Téléchargez la dernière version de NuTyX</h3>
-    La version actuelle de NuTyX s'appelle <b>saravane</b>.</br></br>
-    L'iso disponible permet une installation depuis internet.Elle permet également de faire un minimum de maintenance sur la machine avant l'installation de NuTyX.</br></br>
-    La taille des iso est <b>+- 175 Mb</b>.</br></br>
-    Toutes les isos disponible peuvent être téléchargées à l'adresse : </br> <a class="url" href="http://downloads.nutyx.org/"  target="_blank" title="Lire dans une autre fenêtre" >http://downloads.nutyx.org</a></br>
+    La version actuelle de NuTyX s'appelle <b>saravane 14.11</b>.
+    <p>
+    Elle est disponible en 32 bits et en 64 bits. La version 64 bits n'est pas une multi lib mais une 64 bits pure.
+    <p>
+    Les isos disponible permettent une installation sans avoir besoin de connection internet. Les isos étant le système de base. Elles permettent également de faire un minimum de maintenance sur la machine avant l'installation de NuTyX.
+    <p>
+    La taille des iso est <b>+- 175 Mb</b> pour la 64 bits et <b>+- 100 Mb</b> pour la 32 bits.
+    <p>
+    Les isos sont disponible à l'adresse:
+    <p>
+    <a class="url" href="http://downloads.nutyx.org/"  target="_blank" title="Lire dans une autre fenêtre" >http://downloads.nutyx.org</a></br>
     <h3>Créez une clé bootable</h3>
     Si vous êtes déjà sous GNU/Linux : </br>
     <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />En root </div>
     A l'aide de fdisk, déterminez où se trouve votre clé USB : 
     <pre class="command"><kbd>fdisk -l</kbd></pre>
     A l'aide de dd, créez votre clé bootable :
-    <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
-    Si vous êtes sous Windows : </br>
-    Il existe surrement des logiciels pouvant le faire aisément, vous pouvez le cas échéant graver l'iso sur un CD.
+    <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
+    Si vous êtes sous Windows :
+    <p>
+    Utilisez votre outils de gravure favori pour graver l'iso sur un CD-RW (si possible) ...
     <h3>Installation de NuTyX</h3>
 <!--  <div><a class="url" href="mini-iso-install.html">Laissez-vous guider pas à pas pour l'installation depuis la MINI iso (ou depuis le système de maintenance.</a></div>
   <br/>

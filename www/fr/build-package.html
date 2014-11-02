@@ -362,8 +362,7 @@ total size is 1,986,341  speedup is 1.00</pre>
 get apache.service</kbd></pre>
    <div>Malheureusement la configuration de apache n'étant parfaite, un minimum d'actions s'impose.</div>
    <div>On terminera par un petit lien bien placé et la magie va bientôt opérer. <img src="../graphics/beer.gif" alt="Cool" title="Cool"/> En root donc:</div>
-   <pre class="command"><kbd>mkdir /srv/www/htdocs
-ln -svf /chroot/NFS/personnel /srv/www/htdocs</kbd></pre> 
+   <pre class="command"><kbd>ln -svf /chroot/NFS/personnel /srv/www</kbd></pre> 
    <div>Il est temps d'ajustez le fichier <b>/etc/cards.conf</b> comme ceci:</div>
    <pre class="command"><kbd>dir /var/lib/pkg/saravane/personnel|http://localhost/personnel
 dir /var/lib/pkg/saravane/desktop|http://...
@@ -380,6 +379,10 @@ using 127.0.0.1. Set the 'ServerName' directive globally to suppress this messag
   *                                                                      [  OK  ]</pre>
    <p>
    <div>Pour le message d'avertissement, on verra plus tard. <img src="../graphics/champion.gif" />. Donc si vous faites maintenant:</div>
+   <p>
+   <div>Vous pouvez vérifier le bon fonctionnement de votre serveur http, en allant à l'adresse: <a href=http://localhost/personnel/>http://localhost/personnel/</a> avec votre navigateur favori</div>
+   <p>
+   <div>Donc si vous faites maintenant:</div>
    <pre class="command"><kbd>cards info -b joe</kbd></pre>
    <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
 /var/lib/pkg/saravane/desktop/MD5SUM

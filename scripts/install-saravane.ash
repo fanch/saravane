@@ -537,7 +537,6 @@ if [ "$MIG" == "0" ]; then
 	echo_info
 	FILESYSTEM=$2
 else
-	FILESYSTEM=`grep " / " /etc/fstab|awk '{ print $3 }' `
 	if [ ! -z "${KEYMAP}" ] || [ -f /etc/sysconfig/console ]; then
 		clavier=`grep "^KEYMAP" /etc/sysconfig/console|sed 's/KEYMAP=//'|sed 's/.map//'`
 		if [ $# -lt 1 ]; then
