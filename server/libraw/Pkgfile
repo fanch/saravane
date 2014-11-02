@@ -1,4 +1,4 @@
-version=0.15.4
+version=0.16.0
 
 source=(http://www.libraw.org/data/LibRaw-$version.tar.gz)
 build ()
