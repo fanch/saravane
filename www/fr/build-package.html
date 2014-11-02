@@ -426,6 +426,7 @@ ADD: joe-3.7, 71 files: 100 %</pre>
        <div>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</div>
        <pre class="command"><kbd>version=1.4.2
 source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
+cd $name-$version
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
@@ -452,6 +453,20 @@ Packager:
     <div>Vous venez de créer la recette de votre deuxième paquet. Il faut à nouveau faire une opération avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</div>
     <pre class="command"><kbd>cd /usr/ports/personnel/clipit
 pkgmk -us</kbd></pre>
+    <pre class="output">=======> WARNING: PKGMK_SYNC_FILES: yes
+=======> WARNING: URL not found for /usr/ports/personnel in /etc/cards.conf, ignore synchronising
+=======> PKGMK_INSTALL: no
+=======> PKGMK_WORK_DIR: /usr/ports/personnel/clipit/work
+=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/clipit
+=======> WARNING: CLEAN IGNORED
+=======> WARNING: KEEP SOURCES
+=======> PKGMK_UPDATE_SIGNATURE: yes
+=======> PKGMK_IGNORE_FOOTPRINT: yes
+=======> PKGMK_IGNORE_MD5SUM: yes
+=======> MD5SUM file will be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: clipit
+=======> version: 1.4.2</pre>
    <div>Le fichier <b>MD5SUM</b> est créé.</div>
    </li>
    <li><h3>Télécharger les dépendances automatiquemet</h3>
