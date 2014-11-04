@@ -1,7 +1,7 @@
 PKGMK_IGNORE_UNPACK="yes"
 
-version=4.3.2.2
-_version=4.3.2
+version=4.3.3.2
+_version=4.3.3
 
 source=(http://download.documentfoundation.org/libreoffice/src/${_version}/$name-$version.tar.xz
 	http://download.documentfoundation.org/libreoffice/src/${_version}/$name-dictionaries-$version.tar.xz
@@ -18,15 +18,10 @@ build() {
 	tar -xf $name-$version.tar.xz --no-overwrite-dir
 
 	cd $name-$version
-	install -dm755 src
-	tar -xf ../$name-dictionaries-$version.tar.xz --no-overwrite-dir --strip-components=1
-	tar -xf ../$name-help-$version.tar.xz --no-overwrite-dir --strip-components=1
-
-	ln -sv $SRC/libreoffice-dictionaries-$version.tar.xz src/
-	ln -sv $SRC/libreoffice-help-$version.tar.xz src
-
-	tar -xf ../$name-translations-$version.tar.xz --strip-components=1
-	ln -sv $SRC/libreoffice-translations-$version.tar.xz src/
+	install -dm755 external/tarballs
+	ln -sv $SRC/$name-dictionaries-$version.tar.xz  external/tarballs/
+	ln -sv $SRC/$name-help-$version.tar.xz          external/tarballs/
+        ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
 
 	[ "`uname -m`" == "i686" ] && patch -Np1 -i $SRC/libreoffice-$version-gcc_4_9_0-1.patch
 
@@ -37,25 +32,17 @@ build() {
 
         sed -e "/distro-install-file-lists/d" -i Makefile.in
 
-        sed -e "/distro-install-file-lists/d"           \
-            -e "s:fetch_Download_item:&_unchecked:"     \
-            -e "/fetch_Download_item/s:,no-check::"     \
-            -i Makefile.in
-
 	chmod -v +x bin/unpack-sources
-
-        sed -e "s/target\.mk/langlist\.mk/"                \
-            -e "s/tar -xf/tar -x --strip-components=1 -f/" \
-            -e "/tar -x/s/lo_src_dir/start_dir/"           \
-            -i bin/unpack-sources
 
 ./autogen.sh --prefix=$LO_PREFIX         \
              --sysconfdir=/etc           \
              --with-vendor="BLFS"        \
              --with-lang="es de fr it pt fi nb nl da sv"   \
              --with-help                 \
+             --with-myspell-dicts        \
              --with-alloc=system         \
              --without-java              \
+             --without-system-dicts      \
              --disable-gconf             \
              --disable-odk               \
              --disable-postgresql-sdbc   \
