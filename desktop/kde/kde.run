@@ -35,7 +35,6 @@ kde-gwenview
 kde-kcalc
 kde-wallpapers
 kde-walletmanager
-kde-print-manager
 kde-ksnapshot
 alsa-utils
 oxygen-gtk2
@@ -50,3 +49,4 @@ cups-filters
 gnupg
 kde-l10n
 pm-utils
+alsa-plugins

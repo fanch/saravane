@@ -1,0 +1,11 @@
+Library that contains several hash-map implementations, including implementations that optimize for space or speed
+
+URL: http://code.google.com/p/sparsehash
+
+Maintainers:
+
+  http://code.google.com/p/sparsehash
+
+Packagers:
+
+  pierre at nutyx dot org
