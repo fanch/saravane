@@ -1,4 +1,4 @@
-version=0.30.0
+version=0.30.1
 
 source=( http://www.webdav.org/neon/$name-$version.tar.gz)
 
@@ -12,6 +12,4 @@ cd $name-$version
 --infodir=/usr/share/info
 make
 make DESTDIR=$PKG install
-rm -r $PKG/usr/share/doc/
 }
-  
