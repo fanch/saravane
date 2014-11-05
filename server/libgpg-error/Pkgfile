@@ -1,4 +1,4 @@
-version=1.16
+version=1.17
 source=( ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2 )
 
 build() {
