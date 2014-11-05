@@ -1,4 +1,4 @@
-version=1.5.3
+version=1.5.4
 source=(http://archive.apache.org/dist/apr/$name-$version.tar.bz2)
 
 build() {
