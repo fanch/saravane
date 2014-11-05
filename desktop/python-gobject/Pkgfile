@@ -1,10 +1,13 @@
-version=3.12.2
+version=3.14.0
 source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
 
 build() {
-    cd pygobject-$version
-    ./configure --prefix=/usr \
-                --with-python=/usr/bin/python2
-    make
-    make DESTDIR=$PKG install
+cd pygobject-$version
+mkdir python2
+pushd python2
+../configure --prefix=/usr \
+--with-python=/usr/bin/python2
+make
+popd
+make DESTDIR=$PKG -C python2 install
 }
