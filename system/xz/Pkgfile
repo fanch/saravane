@@ -14,7 +14,7 @@ make pkgconfigdir=/usr/lib/pkgconfig DESTDIR=$PKG install
 mkdir -pv $PKG/{,usr/}lib
 mv -v $PKG/usr/lib/liblzma.so.* \
 $PKG/lib
-ln -svf ../../lib/liblzma.so.5.0.5 $PKG/usr/lib/liblzma.so
+ln -svf ../../lib/liblzma.so.5.0.7 $PKG/usr/lib/liblzma.so
 }
 devel()
 {
