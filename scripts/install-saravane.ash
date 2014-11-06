@@ -460,7 +460,7 @@ install_base()
 for i in \
 aaabasicfs acl attr bash bc binutils bzip2 coreutils cpio curl \
 dhcpcd diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
-gettext glibc gmp gperf grep grub gzip \
+gettext glibc gmp gperf grep grub gzip dialog \
 iana-etc inetutils intltool iproute2 kbd kernel kmod \
 libarchive libcap libpipeline lvm2 mpc mpfr ncurses openssl pam \
 pciutils procps-ng psmisc readline \
