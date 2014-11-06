@@ -13,12 +13,10 @@ build() {
 	sed -i '/LIBGCRYPTCONFIG/d' config-scripts/cups-ssl.m4
 	aclocal -I config-scripts
 	autoconf -I config-scripts
-	./configure --prefix=/usr \
-		--libdir=/usr/lib \
+	./configure --libdir=/usr/lib \
 		--disable-systemd \
 		--with-rcdir=/tmp/cupsinit \
 		--with-system-groups=lpadmin \
-		--infodir=/usr/share/info \
 		--with-docdir=/usr/share/cups/doc-$version
 	make
 	make BUILDROOT=$PKG install
