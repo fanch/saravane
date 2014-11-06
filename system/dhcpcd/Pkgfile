@@ -5,7 +5,7 @@ build() {
 cd $name-$version
 ./configure --prefix= \
 --libexecdir=/lib/dhcpcd \
---dbdir=/run \
+--dbdir=/var/tmp \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
