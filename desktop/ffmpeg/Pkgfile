@@ -1,4 +1,4 @@
-version=2.2.4
+version=2.4.3
 source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.bz2)
 
 build() {
@@ -16,7 +16,7 @@ sed -i 's/-lflite"/-lflite -lasound"/' configure
             --enable-libvorbis   \
             --enable-libvpx      \
             --enable-libx264     \
-            --enable-x11grab   
+            --enable-x11grab
 make
 gcc tools/qt-faststart.c -o tools/qt-faststart
 make DESTDIR=$PKG install
