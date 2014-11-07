@@ -1,4 +1,4 @@
-version=1.4.3
+version=1.4.4
 
 source=(http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-$version.tar.xz)
 
