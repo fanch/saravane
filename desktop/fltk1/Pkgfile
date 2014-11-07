@@ -1,9 +1,9 @@
 version=1.3.3
 source=(http://fltk.org/pub/fltk/$version/fltk-$version-source.tar.gz
-	 http://www.linuxfromscratch.org/patches/blfs/svn/fltk-1.3.3-dynamic_libs-1.patch)
+	 http://www.linuxfromscratch.org/patches/blfs/svn/fltk-$version-dynamic_libs-1.patch)
 build() {
 cd fltk-*
-patch -Np1 -i ../fltk-1.3.3-dynamic_libs-1.patch
+patch -Np1 -i ../fltk-$version-dynamic_libs-1.patch
 sed -i -e '/cat./d' documentation/Makefile
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
@@ -12,6 +12,10 @@ sed -i -e '/cat./d' documentation/Makefile
 --enable-shared \
 --enable-xft
 make
-make DESTDIR=$PKG install
-make DESTDIR=$PKG install-desktop
+make -C documentation html
+
+make DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install
+
+make -C test DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install-linux
+make -C documentation DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install-linux
 }
