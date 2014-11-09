@@ -1,27 +1,15 @@
-version=5.1.7
+version=5.2.2
 source=(
 http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
-$name.patch)
+)
 
 build() {
-	cd $name
-    patch -Np1 -i $SRC/unrar.patch || exit
-    cp -a $SRC/unrar $SRC/libunrar
-    make -C $SRC/libunrar lib libversion=$version CXXFLAGS="-fPIC ${CXXFLAGS}"
-    make CXXFLAGS="-fPIC ${CXXFLAGS}" STRIP="true"
+cd $name
+make -f makefile
+install -Dm755 unrar $PKG/usr/bin/unrar
 
-	install -Dm755 unrar $PKG/usr/bin/unrar
-    # doc & license
-    mkdir -p $PKG/usr/share/doc/$name-$version
-	install -m644 {license.txt,readme.txt} \
-        $PKG/usr/share/doc/$name-$version
-    # libunrar
-    cd $SRC/libunrar
-    install -Dm755 libunrar.so.${version} \
-        $PKG/usr/lib/libunrar.so.${version}
-    install -Dm644 dll.hpp \
-        $PKG/usr/include/unrar/dll.hpp
-    ln -s libunrar.so.${pkgver} $PKG/usr/lib/libunrar.so.5
-    ln -s libunrar.so.${pkgver} $PKG/usr/lib/libunrar.so
+# doc & license
+mkdir -p $PKG/usr/share/doc/$name-$version
+install -m644 {license.txt,readme.txt} \
+$PKG/usr/share/doc/$name-$version
 }
-
