@@ -1,0 +1,31 @@
+version=2.0.2
+
+source=(http://downloads.sf.net/$name/$name-$version.tar.bz2
+        k3b-2.0.2-ffmpeg.patch
+        k3b-2.0.2-libavformat54.patch
+        k3b-2.0.2-libav9.patch)
+
+build() {
+        # To prevent compilation of a particular component, set DO_NOT_COMPILE
+        # to a subset of:
+        # plugins k3bsetup
+        # Eg:
+        # export DO_NOT_COMPILE="k3bsetup"
+
+        [ -n "$DO_NOT_COMPILE" ] && DO_NOT_COMPILE="`echo $DO_NOT_COMPILE | awk -F\  '{for(i=1;i
+<=NF;i++)printf("-DBUILD_%s=OFF%s",$i,i<NF?" ":"")}'`"
+
+        cd $name-$version
+        patch -p1 -i $SRC/k3b-2.0.2-ffmpeg.patch
+        patch -p1 -i $SRC/k3b-2.0.2-libavformat54.patch
+        patch -p1 -i $SRC/k3b-2.0.2-libav9.patch
+        cd ../
+        mkdir build
+        cd build
+        cmake ../$name-$version \
+                -DCMAKE_BUILD_TYPE=RELEASE \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DBUILD_po=OFF
+        make
+        make DESTDIR=$PKG install
+}
