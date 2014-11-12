@@ -8,7 +8,7 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr     \
       -DSYSCONF_INSTALL_DIR=/etc/kde  \
-      -Wno-dev .. 
+      -Wno-dev ..
 make
 make DESTDIR=$PKG install
 }
