@@ -1,6 +1,6 @@
-version=2.0.2
+version=2.0.3
 
-source=(http://downloads.sf.net/$name/$name-$version.tar.bz2)
+source=(http://download.kde.org/stable/$name/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
