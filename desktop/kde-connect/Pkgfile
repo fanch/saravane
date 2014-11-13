@@ -1,11 +1,11 @@
 version=0.7.3
-
-source=(http://download.kde.org/unstable/$name/$version/src/$name-kde-$version.tar.xz)
+_name=kdeconnect
+source=(http://download.kde.org/unstable/${_name}/$version/src/${_name}-kde-$version.tar.xz)
 
 build() {
 mkdir build
 cd build
-  cmake ../$name-kde-$version   \
+  cmake ../${_name}-kde-$version   \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE4_BUILD_TESTS=OFF      \
     -DCMAKE_BUILD_TYPE=Release
