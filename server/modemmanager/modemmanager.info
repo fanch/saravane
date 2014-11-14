@@ -1,0 +1,11 @@
+Provides a unified high level API for communicating with mobile broadband modems, regardless of the protocol used to communicate with the actual device.
+
+URL:  http://www.freedesktop.org/software/ModemManager/
+
+Maintainers:
+
+   http://www.freedesktop.org/software/ModemManager/
+
+Packagers:
+
+   pierre att nutyx dot org
