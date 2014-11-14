@@ -1,0 +1,10 @@
+version=1.0.2
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$version.tar.bz2)
+
+build() {
+cd libXp-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}
