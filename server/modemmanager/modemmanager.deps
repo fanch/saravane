@@ -1,0 +1,7 @@
+udev
+udev-extras
+gobject-introspection.
+libmbim
+libqmi
+polkit
+vala
