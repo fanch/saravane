@@ -1,40 +1,33 @@
-version=0.4.1
+version=0.5.0
 
-source=(http://sourceforge.net/projects/lxde/files/lxdm/LXDM%200.4.1/$name-$version.tar.gz
-	http://downloads.nutyx.org/files/patchs/$name/lxdm-Xsession.patch
-	http://downloads.nutyx.org/files/patchs/$name/lxdm-02.patch
-	http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-users-1.patch
-        http://downloads.nutyx.org/files/patchs/$name/lxdm-0.4.1-high-cpu-1.patch)
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz
+        http://downloads.nutyx.org/files/patchs/$name/lxdm-industrial-01.tar.gz
+        http://downloads.nutyx.org/FondsEcrans/140203075501444240.png)
 
 #http://downloads.nutyx.org/files/icones-sekong-03.tar.gz
 
 build() {
-	cd $name-$version
-	patch -Np1 -i ../lxdm-0.4.1-users-1.patch
-	patch -Np1 -i ../lxdm-0.4.1-high-cpu-1.patch
-	./configure --sysconfdir=/etc \
-		--prefix=/usr \
-		--libexecdir=/usr/lib/lxdm
-	make
-  	
-	patch -Np0 < ../lxdm-02.patch
-	patch -Np0 < ../lxdm-Xsession.patch
+        cd $name-$version
+        ./configure --sysconfdir=/etc \
+                --prefix=/usr \
+                --libexecdir=/usr/lib/lxdm
+        make
+  
+        make DESTDIR=$PKG install
 
-	make DESTDIR=$PKG install
-	
-		
-	mkdir -p $PKG/var/run/lxdm
-	mkdir -p $PKG/var/lib/lxdm
 
-	sed -i -e "s/local\/libexec/lib\/lxdm/" $PKG/etc/lxdm/lxdm.conf
-	mkdir -p $PKG/usr/share/backgrounds
-#	install -m644 $SRC/icones/Fond-sekong.jpg \
-#	$PKG/usr/share/backgrounds/default.jpg
-#	install -m644 $SRC/icones/Banniere-sekong-trim.png \
-#	$PKG/usr/share/lxdm/themes/Industrial/login.png
+        mkdir -p $PKG/var/run/lxdm
+        mkdir -p $PKG/var/lib/lxdm
 
-	sed -i "s/default.png/default.jpg/" $PKG/etc/lxdm/lxdm.conf
-	cat > $PKG/etc/pam.d/lxdm << "EOF"
+        sed -i -e "s/local\/libexec/lib\/lxdm/" $PKG/etc/lxdm/lxdm.conf
+
+        mkdir -p $PKG/usr/share/backgrounds
+        install -m644 $SRC/140203075501444240.png \
+        $PKG/usr/share/backgrounds/default.png
+        install -m644 $SRC/usr/share/lxdm/themes/Industrial/login.png \
+        $PKG/usr/share/lxdm/themes/Industrial/login.png
+
+        cat > $PKG/etc/pam.d/lxdm << "EOF"
 #%PAM-1.0
 auth            requisite       pam_nologin.so
 auth            required        pam_env.so
