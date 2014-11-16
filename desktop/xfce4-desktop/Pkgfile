@@ -1,16 +1,16 @@
-version=4.10.2
+version=4.10.3
 
 _name=xfdesktop
 
 source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2
-        http://downloads.nutyx.org/files/patchs/xfce/wall-sekong.jpg)
+        http://downloads.nutyx.org/FondsEcrans/140203075407731241.png)
 
 build() {
 cd ${_name}-$version
-sed -i "s/xfce-blue.jpg/wall-sekong.jpg/" common/xfdesktop-common.h
+sed -i "s/xfce-blue.jpg/wall-saravane.png/" common/xfdesktop-common.h
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
-install -D -m644 ../wall-sekong.jpg \
-$PKG//usr/share/backgrounds/xfce/wall-sekong.jpg
+install -D -m644 ../140203075407731241.png \
+$PKG//usr/share/backgrounds/xfce/wall-saravane.png
 }
