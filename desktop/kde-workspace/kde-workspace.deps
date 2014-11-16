@@ -17,6 +17,5 @@ libusb-compat.devel
 networkmanager
 lm-sensors
 qjson
-python-kde
 xorg-libx11
 xorg-xkeyboard-config
