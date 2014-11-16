@@ -1,4 +1,4 @@
-version=2.0.0
+version=2.1.3
 source=( https://www.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
 
 PKGMK_GROUPS=(doc man)
