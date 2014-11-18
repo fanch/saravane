@@ -1,4 +1,4 @@
-version=2.6.7.1
+version=2.7.1
 source=(http://savannah.nongnu.org/download/man-db/man-db-$version.tar.xz \
 )
 
