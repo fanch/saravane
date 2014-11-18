@@ -1,4 +1,4 @@
-version=3.17.2
+version=3.17.3
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 REALTEK_VERSION=8.038.00
