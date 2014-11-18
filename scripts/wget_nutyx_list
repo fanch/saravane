@@ -1,12 +1,12 @@
 http://www.linuxfromscratch.org/patches/downloads/perl/perl-5.20.1-infinite_recurse_fix-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
-http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3-upstream_fixes-7.patch
 http://www.linuxfromscratch.org/patches/downloads/mpfr/mpfr-3.1.2-upstream_fixes-2.patch
 http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream_fixes-3.patch
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-lto_testsuite-1.patch
 http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-load_gcc_lto_plugin_by_default-1.patch
+http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.24-multiple_plugins-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
 http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1j-fix_parallel_build-1.patch
 http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
@@ -17,7 +17,7 @@ http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 http://ftp.gnu.org/gnu/grep/grep-2.20.tar.xz
 http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz
-http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz
 http://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
 http://ftp.gnu.org/gnu/glibc/glibc-2.20.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
@@ -66,7 +66,7 @@ http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
 http://www.openssl.org/source/openssl-1.0.1j.tar.gz
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20141011.tar.bz2
 http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
-http://curl.haxx.se/download/curl-7.37.1.tar.bz2
+http://curl.haxx.se/download/curl-7.39.0.tar.bz2
 http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.6.0.tar.bz2
 http://linux-pam.org/library/Linux-PAM-1.1.8.tar.bz2
 http://downloads.sourceforge.net/sourceforge/squashfs/squashfs4.3.tar.gz

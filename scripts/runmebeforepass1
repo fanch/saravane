@@ -101,6 +101,7 @@ echo "link /home/lfs/config: OK"
 for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
+   sed -i "/bash-/d" $LFS/sources/$i
    sed -i "/groff-/d" $LFS/sources/$i
    sed -i "/iproute2-/d" $LFS/sources/$i
    sed -i "/eudev-/d" $LFS/sources/$i
@@ -128,7 +129,8 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/libtool-/d" $LFS/sources/$i
    sed -i "/tar-/d" $LFS/sources/$i
 done
-echo "660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
+echo "a27b3ee9be83bd3ba448c0ff52b2844 bash-4.3.30.tar.gz
+660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
 d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
@@ -147,7 +149,7 @@ c2d6b127f89261513b23b6d458484099  udev-lfs-20140408.tar.bz2
 ede5166f949d9a07163bc5b086be9759  perl-5.20.1.tar.bz2
 68255f51be017a93f2f6402fab06c2bf  e2fsprogs-1.42.12.tar.gz
 2d7ea9c309f0d4e162e426e568290ca3  tzdata2014j.tar.gz
-97ae0ecd007750f776099fcb9fccc7af  nasm-2.11.04.tar.xz
+2b958e9f5d200641e6fc9564977aecc5  nasm-2.11.06.tar.xz
 4df8ee253b7f3863ad0b86359cd39c43  gcc-4.9.2.tar.bz2
 948a6e06419a01bd51e97206861595b0  glibc-2.20.tar.xz
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
@@ -170,7 +172,7 @@ f7175c9cd3c39bb1907ac8bba9df8ed3  openssl-1.0.1j.tar.gz
 efad5a503f66329bb9d2f4308b5de98a  libarchive-3.1.2.tar.gz
 de9f1f45026c2f4e0776058d429ff4b6  xfsprogs-3.1.11.tar.gz
 3e06f3d64768cb95a65e71a17f14d52e  ca-certificates-20141001.tar.gz
-1efecb5b0e43c17d968f0d228bbbbbbd  curl-7.39.tar.bz2
+1efecb5b0e43c17d968f0d228bbbbbbd  curl-7.39.0.tar.bz2
 d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 5065deec62e8cd514fb04d1d1253db03  sudo-1.8.11p1.tar.gz
 fe7806d075994db0e28894e42668a02a  pciutils-3.2.1.tar.xz
