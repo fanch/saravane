@@ -19,4 +19,5 @@ build() {
 	if [ -f $PKG/usr/share/info/dir ]; then
 		rm $PKG/usr/share/info/dir
 	fi
+	rm -r $PKG/tmp
 }
