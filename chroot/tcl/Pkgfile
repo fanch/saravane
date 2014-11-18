@@ -1,4 +1,4 @@
-version=8.6.2
+version=8.6.3
 source=(http://prdownloads.sourceforge.net/tcl/tcl${version}-src.tar.gz)
 
 build()
