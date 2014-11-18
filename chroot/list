@@ -30,6 +30,5 @@ texinfo
 util-linux
 xz
 zlib
-openssl
 libarchive
 cards
