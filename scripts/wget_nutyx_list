@@ -53,7 +53,7 @@ http://downloads.nutyx.org/files/ca-certificates-20141001.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.0.7.tar.xz
 http://downloads.nutyx.org/files/cards-0.10.82.1.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20141031.tar.bz2
+http://downloads.nutyx.org/files/nutyx-basicfs-20141118.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
