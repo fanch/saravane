@@ -1,7 +1,7 @@
-version=3.8.7
+version=3.8.7.2
 
 
-_amalgamationver=3080700
+_amalgamationver=3080702
 
 source=(http://www.sqlite.org/2014/sqlite-autoconf-$_amalgamationver.tar.gz
 	http://www.sqlite.org/2014/sqlite-doc-$_amalgamationver.zip )
