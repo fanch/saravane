@@ -1,4 +1,4 @@
-version=3.2.1
+version=3.3.0
 source=( ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz )
 
 PKGMK_GROUPS=(devel man)
