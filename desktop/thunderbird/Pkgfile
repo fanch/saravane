@@ -1,4 +1,4 @@
-version=31.1.2
+version=31.2.0
 
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$version/source/$name-$version.source.tar.bz2)
@@ -25,6 +25,7 @@ ac_add_options --prefix=/usr
 ac_add_options --libdir=/usr/lib
 
 # System libraries
+ac_add_options --with-system-icu
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-jpeg
@@ -40,9 +41,15 @@ ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
 ac_add_options --with-pthreads
 
+ac_add_options --enable-optimize
+ac_add_options --enable-strip
+ac_add_options --enable-install-strip
+
 # Features
 ac_add_options --enable-official-branding
 ac_add_options --enable-safe-browsing
+ac_add_options --enable-url-classifier
+
 ac_add_options --enable-startup-notification
 ac_add_options --enable-gio
 
@@ -53,7 +60,7 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --disable-mochitest
 ac_add_options --disable-installer
-ac_add_options --disable-debug-symbols
+ac_add_options --disable-debug
 
 # Optimization
 ac_add_options --enable-optimize
@@ -61,12 +68,14 @@ ac_add_options --enable-optimize
 export MOZILLA_OFFICIAL=1
 mk_add_options MOZILLA_OFFICIAL=1
 
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/thunderbuild
+
 EOF
 
-sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' mozilla/configure
+mkdir -vp mozilla/thunderbuild
 
-make -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS"
-make -f client.mk DESTDIR=$PKG install
+make -f client.mk
+make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
 	
 mkdir -pv $PKG/usr/bin
 ln -sfv ../lib/$name-$version/thunderbird $PKG/usr/bin

@@ -1,4 +1,4 @@
-version=2.10.9
+version=2.10.10
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 

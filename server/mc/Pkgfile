@@ -1,4 +1,4 @@
-version=4.8.12
+version=4.8.13
 source=(https://www.midnight-commander.org/downloads/$name-$version.tar.xz)
 build() {
 cd $name-$version
