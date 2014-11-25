@@ -7,8 +7,8 @@ cd $name-$version
 make DEBUG=-DNDEBUG INSTALL_USER=root INSTALL_GROUP=root \
      LOCAL_CONFIGURE_OPTIONS="--enable-readline"
 
-make
-make DIST_ROOT=$PKG install install-dev
+make DIST_ROOT=$PKG install
+make DIST_ROOT=$PKG install-dev
 if [ "`uname -m `" == "x86_64" ];then
 	LIB="lib64"
 else
