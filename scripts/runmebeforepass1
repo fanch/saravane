@@ -129,7 +129,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/libtool-/d" $LFS/sources/$i
    sed -i "/tar-/d" $LFS/sources/$i
 done
-echo "a27b3ee9be83bd3ba448c0ff52b2844 bash-4.3.30.tar.gz
+echo "a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
@@ -144,7 +144,7 @@ ec4dabd3bc580dc188197d4d5eb95fe3  libtool-2.4.3.tar.gz
 a08643f814aa4efc12211c6e5909f4d9  kmod-19.tar.xz
 2cbea44a4f1548aee20b9ff2d3076908  grep-2.20.tar.xz
 38263d115d784c17aa3b959ce94be8b8  check-0.9.14.tar.gz
-5be15528788635818104146957171f5d  eudev-1.10-manpages.tar.bz2
+5be15528788635818104146957171f5d  eudev-2.1-manpages.tar.bz2
 c2d6b127f89261513b23b6d458484099  udev-lfs-20140408.tar.bz2
 ede5166f949d9a07163bc5b086be9759  perl-5.20.1.tar.bz2
 68255f51be017a93f2f6402fab06c2bf  e2fsprogs-1.42.12.tar.gz
@@ -165,7 +165,7 @@ cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
 d0e66347360aceb3cdb94f5d1d7880f2  linux-3.17.3.tar.xz
 fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
-ce7b697f8e8016a085d9f5975ae6c4fb  man-db-2.6.7.1.tar.xz
+88d32360e2ed18e05de9b528ad336fd8  man-db-2.7.1.tar.xz
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
 c1f1db32fb6598d6a93e6e88796a8632  gperf-3.0.4.tar.gz
 f7175c9cd3c39bb1907ac8bba9df8ed3  openssl-1.0.1j.tar.gz
