@@ -1,4 +1,4 @@
-version=3.8.7
+version=3.8.8
 source=(
 https://fedorahosted.org/releases/l/o/logrotate/logrotate-$version.tar.gz
 logrotate.conf
