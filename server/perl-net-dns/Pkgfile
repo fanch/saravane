@@ -1,4 +1,4 @@
-version=0.77
+version=0.81
 source=(http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-$version.tar.gz)
 
 build() {
