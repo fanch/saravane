@@ -92,7 +92,8 @@ do
 		done
 		;;
 	  kernel)
-		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i -kw
+		$PKGMK -d -cf ../../../bin/pkgmk.conf.passes -i -kw || exit 1
+		echo "=======> Installing '$NAME' succeeded." >> ${LOG}/$NAME.log
 		;;
 
 	  *)

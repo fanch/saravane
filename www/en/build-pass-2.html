@@ -103,21 +103,20 @@ pass</kbd></pre>
     <pre class="output">need to install bash manually</pre>
     <li>As it's says, the <b>bash</b> packages needs to be installed manually. So let's do it from outside the NuTyX. We got out first:</li>
     <pre class="command"><kbd>exit</kbd></pre>
-    <li>Now we go to the right place and install the bash packages:</li>
+    <li>Now we go to the right place and install the <b>bash</b> packages:</li>
     <pre class="command"><kbd>cd $LFS/root/saravane/system/bash
 for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
-    <li>We enter again into NuTyX and we finish the job</li>
+    <li>We enter again into NuTyX and we finish the job:</li>
     <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
 /bin/bash --login +h</kbd></pre>
       As you can see no more error:
 <pre class="output">/</pre>
-           <li>We redefine AGAIN the PATH variable</li>
+           <li>We redefine AGAIN the PATH variable:</li>
 <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
-     <li> We launch AGAIN the compilation of the packages</li>
+     <li> We launch AGAIN the compilation of the packages:</li>
 <pre class="command"><kbd>cd /root/saravane/system
 pass</kbd></pre>
-
-<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
+<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
     </ol>
     <h2>Explanation to each step</h2>

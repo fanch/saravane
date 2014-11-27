@@ -80,4 +80,5 @@ sudo
 lzo
 lvm2
 cards
+mdadm
 kernel

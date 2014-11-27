@@ -103,6 +103,25 @@ pass</kbd></pre>
 	retourne
 <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
 ...</pre>
+    <li>On attend le message suivant:</li>
+    <pre class="output">need to install bash manually</pre>
+    <li>En français cela signifie qu'il faut installer le paquet <b>bash</b> à la main. Il faut donc le faire en dehors de la NuTyX. Il faut donc sortir:</li>
+    <pre class="command"><kbd>exit</kbd></pre>
+    <li>Nous allons maintenant dans le bon dossier et installons le paquet <b>bash</b>:</li>
+    <pre class="command"><kbd>cd $LFS/root/saravane/system/bash
+for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
+    <li>Nous entrons à nouveau dans la NuTyX et finissons le travail:</li>
+    <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
+/bin/bash --login +h</kbd></pre>
+    Aucune erreur ne doit s'afficher:
+    <pre class="output">/</pre>
+    <li>Nous définissons la variable PATH une dernière fois:</li>
+    <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
+    <li>Nous relançons la compilation des paquets restants:</li>
+    <pre class="command"><kbd>cd /root/saravane/system
+pass</kbd></pre>
+    <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
+....</pre>
     </ol>
     <h2>Explications relative à chaque action</h2>
     <ol>

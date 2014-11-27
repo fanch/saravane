@@ -128,11 +128,13 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/tcl/d" $LFS/sources/$i
    sed -i "/libtool-/d" $LFS/sources/$i
    sed -i "/tar-/d" $LFS/sources/$i
+   sed -i "/sysklogd-/d" $LFS/sources/$i
 done
 echo "a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
+c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
 d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
@@ -163,7 +165,7 @@ a4650aebcc464bb91113c2c356da8210  XML-Parser-2.42_01.tar.gz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
 cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
-d0e66347360aceb3cdb94f5d1d7880f2  linux-3.17.3.tar.xz
+ce49828adecf8908eb3a9ffc5b860d44  linux-3.17.4.tar.xz
 fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
 88d32360e2ed18e05de9b528ad336fd8  man-db-2.7.1.tar.xz
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
@@ -177,6 +179,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 5065deec62e8cd514fb04d1d1253db03  sudo-1.8.11p1.tar.gz
 3c19adf32a8457983b71ff376ef7dafe  pciutils-3.3.0.tar.xz
 7d829c9c8da9ebc9e5d5546725ba5f45  cards-0.10.82.1.tar.gz
+f71aa8e64030f3d2a3fdabcc36e45094  LVM2.2.02.113.tgz
 fe102975ab3a6c049777883f1bb9ad07  wget-1.16.tar.xz" >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`

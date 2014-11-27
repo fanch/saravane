@@ -1,23 +1,18 @@
-version=3.17.3
+version=3.17.4
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 REALTEK_VERSION=8.038.00
-VB_VERSION=4.3.18
-VB_BUILD=96516
-NVIDIA_VERSION=343.22
+VB_VERSION=4.3.20
+VB_BUILD=96996
 
 [ "`uname -m`" == "i686"   ] && VB_ARCH=x86
 [ "`uname -m`" == "x86_64"   ] && VB_ARCH=amd64
 [ "`uname -m`" == "i686"   ] && _ARCH=x86
 [ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
 
-[ "`uname -m`" == "i686"   ] && _pkg="NVIDIA-Linux-x86-${NVIDIA_VERSION}"
-[ "`uname -m`" == "x86_64" ] && _pkg="NVIDIA-Linux-x86_64-${NVIDIA_VERSION}-no-compat32"
-
 
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${version}.tar.xz kernel.config kernel.config_64
 	http://download.virtualbox.org/virtualbox/${VB_VERSION}/VirtualBox-${VB_VERSION}-${VB_BUILD}-Linux_${VB_ARCH}.run
-	ftp://download.nvidia.com/XFree86/Linux-${_ARCH}/$NVIDIA_VERSION/${_pkg}.run
 	http://downloads.nutyx.org/files/patchs/$name/delayed_work_ethtool_ops_fix2.patch
 	http://r8168dl.appspot.com/files/r8168-$REALTEK_VERSION.tar.bz2)
 
@@ -85,18 +80,6 @@ do
 	install -D -m0644 $i \
 	$PKG/lib/modules/${version}/kernel/drivers/zzzz/$i
 done
-
-# Module nvidia
-cd $SRC
-sh ${_pkg}.run --extract-only
-cd ${_pkg}
-cd kernel
-SYSSRC=$SRC/linux-${_version} make module
-install -m 0644 -D nvidia.ko $PKG/lib/modules/${version}/kernel/drivers/zzzz/nvidia.ko
-cd uvm
-SYSSRC=$SRC/linux-${_version} make module
-install -m 0644 -D nvidia-uvm.ko $PKG/lib/modules/${version}/kernel/drivers/zzzz/nvidia-uvm.ko
-
 
 # Install modules
 cd $SRC/linux-${version}

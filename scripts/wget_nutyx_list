@@ -29,7 +29,8 @@ http://ftp.gnu.org/gnu/make/make-4.1.tar.bz2
 http://ftp.gnu.org/gnu/libtool/libtool-2.4.3.tar.gz
 http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
-http://downloads.nutyx.org/archives/linux-3.17.3.tar.xz
+http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
+http://downloads.nutyx.org/archives/linux-3.17.4.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2014j.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/tcl/Tcl/8.6.3/tcl8.6.3-src.tar.gz
@@ -49,7 +50,7 @@ http://prdownloads.sourceforge.net/flex/flex-2.5.39.tar.bz2
 http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-19.tar.xz
 http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
 https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.17.0.tar.xz
-http://downloads.nutyx.org/files/ca-certificates-20141001.tar.gz
+http://downloads.nutyx.org/files/ca-certificates-20141201.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.0.7.tar.xz
 http://downloads.nutyx.org/files/cards-0.10.82.1.tar.gz
@@ -79,5 +80,6 @@ http://crocla.cahouet.net/nutyx/btrfs-progs-3.14.2.tar.xz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://www.sudo.ws/sudo/dist/sudo-1.8.11p1.tar.gz
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz
-ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.111.tgz
+ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.113.tgz
+http://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.3.1.tar.xz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.08.tar.gz
