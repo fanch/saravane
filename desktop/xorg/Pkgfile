@@ -5,10 +5,10 @@ source=(http://www.linuxfromscratch.org/patches/blfs/svn/xf86-input-vmmouse-13.0
 
 build() {
 cat > list.md5 << "EOF"
-9076ae2646f7aeb30963056e0bbfccf0  xf86-input-evdev-2.9.0.tar.bz2
+9076ae2646f7aeb30963056e0bbfccf0  xf86-input-evdev-2.9.1.tar.bz2
 ed70d0cba94262a4008dcef654ab34a9  xf86-input-synaptics-1.8.1.tar.bz2
 34f9f64ee6a1a51fc8266a9af24e1e07  xf86-input-vmmouse-13.0.0.tar.bz2
-75d2beafd3cbdbd0829f4bef363919b3  xf86-input-wacom-0.26.1.tar.bz2
+75d2beafd3cbdbd0829f4bef363919b3  xf86-input-wacom-0.27.0.tar.bz2
 29654190e37310b87e44a14c229967ee  xf86-video-ati-7.5.0.tar.bz2
 91fd6b677d62027cd3001debb587a6a6  xf86-video-cirrus-1.5.2.tar.bz2
 3931c0e19d441cc576dc088f9eb9fd73  xf86-video-fbdev-0.4.4.tar.bz2
