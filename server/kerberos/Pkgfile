@@ -1,4 +1,4 @@
-version=1.12.1
+version=1.13
 source=(http://web.mit.edu/$name/www/dist/krb5/1.12/krb5-$version-signed.tar
         http://www.linuxfromscratch.org/patches/blfs/7.5/mitkrb-$version-db2_fix-1.patch)
 
