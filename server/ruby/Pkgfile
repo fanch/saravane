@@ -1,4 +1,4 @@
-version=2.1.4
+version=2.1.5
 source=(http://cache.ruby-lang.org/pub/ruby/2.1/ruby-$version.tar.bz2)
 
 build() {
