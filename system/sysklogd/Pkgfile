@@ -1,4 +1,4 @@
-version=1.5
+version=1.5.1
 source=(http://www.infodrom.org/projects/sysklogd/download/sysklogd-$version.tar.gz)
 
 build()
