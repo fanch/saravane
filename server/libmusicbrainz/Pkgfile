@@ -1,4 +1,4 @@
-version=5.0.1
+version=5.1.0
 
 source=( https://github.com/downloads/metabrainz/libmusicbrainz/$name-$version.tar.gz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-build_system-1.patch)
