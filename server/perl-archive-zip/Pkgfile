@@ -1,4 +1,4 @@
-version=1.37
+version=1.39
 
 source=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$version.tar.gz)
 
