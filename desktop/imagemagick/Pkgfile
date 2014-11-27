@@ -1,4 +1,4 @@
-version=6.8.9-6
+version=6.9.0-0
 
 source=(
 ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-$version.tar.xz)
