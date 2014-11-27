@@ -1,4 +1,4 @@
-version=3.4.1
+version=3.4.2
 source=(
 http://www.python.org/ftp/python/$version/Python-$version.tar.xz
 python3.desktop
