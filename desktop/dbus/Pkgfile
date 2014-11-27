@@ -1,4 +1,4 @@
-version=1.8.8
+version=1.8.12
 PKGMK_GROUPS=(doc devel)
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
