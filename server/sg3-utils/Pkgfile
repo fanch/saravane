@@ -1,4 +1,4 @@
-version=1.39
+version=1.40
 
 source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
 build() {
