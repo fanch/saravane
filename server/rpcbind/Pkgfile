@@ -1,4 +1,4 @@
-version=0.2.1
+version=0.2.2
 PKGMK_GROUPS=(man)
 source=(http://downloads.sourceforge.net/rpcbind/rpcbind-$version.tar.bz2 )
 
