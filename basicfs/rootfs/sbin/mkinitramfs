@@ -42,8 +42,7 @@ binfiles="$binfiles umount stty sed sleep ln rm uname"
 sbinfiles="blkid switch_root"
 
 #Optional files and locations
-## if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
-sbinfiles="$sbinfiles mdadm"
+if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
 
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 
