@@ -1,10 +1,10 @@
-version=2.0.20140101
+version=20141126
 
-source=(http://anduin.linuxfromscratch.org/sources/other/fontforge-$version.tar.xz)
+source=(https://github.com/fontforge/fontforge/releases/download/${version}/fontforge-2014-11-26-Unix-Source.tar.gz)
 
 build() {
 	cd $name-$version
-	sed "/DGifCloseFile/s:gif:&, NULL:g" -i gutils/gimagereadgif.c
+	./bootstrap
 	./configure --prefix=/usr    \
             --disable-static \
             --docdir=/usr/share/doc/fontforge-$version
