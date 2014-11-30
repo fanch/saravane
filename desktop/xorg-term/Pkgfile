@@ -1,4 +1,4 @@
-version=312
+version=313
 _name=xterm
 
 source=(ftp://invisible-island.net/${_name}/${_name}-$version.tgz
