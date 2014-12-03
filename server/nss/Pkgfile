@@ -1,4 +1,4 @@
-version=3.17.2
+version=3.17.3
 
 source=( ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_17_2_RTM/src/nss-$version.tar.gz \
 	 http://www.linuxfromscratch.org/patches/blfs/svn/nss-$version-standalone-1.patch )
