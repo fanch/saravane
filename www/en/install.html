@@ -39,12 +39,12 @@
     <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane.iso of=/dev/sdX </b>value given by fdisk -l</kbd></pre>
     If you are under Windows, the easiest way is to burn the ISO on a CD.
     <h3>Installation of the boot process</h3>
-    If you used grub version 0.99, the following entry can be added to your menu.list: </br>
+    If you used grub version 0.99, the following entry can be added to your menu.list:</br>
     <pre class="command"><kbd>title NuTyX - Saravane sur sda2
     root (hd0,1)
     kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
     initrd /boot/initrd</kbd></pre>
-    If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:
+    If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:</br>
     <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
