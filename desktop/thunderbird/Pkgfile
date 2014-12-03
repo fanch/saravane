@@ -98,7 +98,6 @@ EOF
 mkdir -pv $PKG/usr/share/pixmaps
 ln -sfv $PKG/usr/lib/thunderbird-$version/chrome/icons/default/default256.png \
 $PKG/usr/share/pixmaps/thunderbird.png
-rm -r $PKG/usr/include/$name-$version
 mkdir -p $PKG/etc/ld.so.conf.d
 echo "/usr/lib/$name-$version" > $PKG/etc/ld.so.conf.d/$name.conf
 cat > $PKG/usr/lib/thunderbird-$version/defaults/pref/vendor.js << "EOF"
