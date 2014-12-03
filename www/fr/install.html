@@ -66,11 +66,12 @@
     <div><a class="url" href="grub-install.html">Cet article vous explique comment installer depuis zero l'amorçage de la machine</a></div>
     <br/>
     <div>Pour les plus pressé et les plus callés, voici un résumé</div>
-    Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon : </br>
+    Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon:</br>
     <pre class="command"><kbd>title NuTyX - Sekong sur sda2
     root (hd0,1)
     kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
     initrd /boot/initrd</kbd></pre>
+    <div>Si vous avez déjà grub 2 installé, il suffit de modifier votre grub.cfg selon:</br>
     <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
