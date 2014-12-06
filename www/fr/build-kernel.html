@@ -214,13 +214,9 @@ Configuration targets:
     </table>
    <div><h3>Device Drivers</h3></div>
     <table>
-     <tr class="odd"><td style="width:20%;">Generic Driver Options</td><td>(/sbin/hotplug) path to uevent helper</td>
+     <tr class="odd"><td style="width:20%;">Generic Driver Options</td><td>Maintain a devtmpfs filesystem to mount at /dev</td>
      </tr>
-     <tr  class="even"><td></td><td>Maintain a devtmpfs filesystem to mount at /dev</td>
-     </tr>
-     <tr class="odd"><td></td><td>(/sbin/hotplug) path to uevent helper</td>
-     </tr>
-     <tr class="even"><td></td><td>Automount devtmpfs at /dev, after the kernel  mounted the rootfs</td>
+     <tr  class="even"><td></td><td>Automount devtmpfs at /dev, after the kernel mounted the rootfs</td>
      </tr>
      <tr class="odd"><td></td><td>Userspace firmware loading support</td>
      </tr>
@@ -228,23 +224,27 @@ Configuration targets:
      </tr>
      <tr class="odd"><td>SCSI device support</td><td>SCSI device support</td>
      </tr>
-     <tr class="even"><td></td><td>SCSI target support</td>
+     <tr class="even"><td></td><td>legacy /proc/scsi/ support</td>
      </tr>
-     <tr class="odd"><td></td><td>legacy /proc/scsi/ support</td>
+     <tr class="odd"><td></td><td>SCSI disk support</td>
      </tr>
-     <tr class="even"><td></td><td>SCSI disk support</td>
+     <tr class="even"><td></td><td>SCSI generic support</td>
      </tr>
-     <tr class="odd"><td>Serial ATA and Parallel ATA Drivers</td><td>AHCI SATA support</td>
+     <tr class="odd"><td>Serial ATA and Parallel ATA Drivers</td><td>ATA ACPI support</td>
      </tr>
-     <tr class="even"><td>Network device support</td><td>Ethernet driver support</td><td>Realtek devices</td><td>Realtek RTL-8139 C+ PCI Fast Ethernet Adapter support (Ajustez en fonction de votre carte réseau)</td>
+     <tr class="even"><td></td><td>AHCI SATA support</td>
+     </tr>
+     <tr class="odd"><td>Network device support</td><td>Network core driver support</td>
+     </tr>
+     <tr class="even"><td></td><td>Ethernet driver support</td><td>Realtek devices</td><td>Realtek RTL-8139 C+ PCI Fast Ethernet Adapter support (Ajustez en fonction de votre carte réseau)</td>
      </tr>
      <tr class="even"><td></td><td></td><td></td><td>Realtek RTL-8129 PCI Fast Ethernet Adapter support</td>
      </tr>
      <tr class="odd"><td>Input device support</td><td>Generic input layer (need for keyboard, mouse ..)</td>
      </tr>
-     <tr class="even"><td></td><td>Support for memoryless force-back device</td>
+     <tr class="even"><td></td><td>Mouse interface</td>
      </tr>
-     <tr class="odd"><td></td><td>Mouse interface</td>
+     <tr class="odd"><td></td><td>Provide legacy /dev/psaux device</td>
      </tr>
      <tr class="even"><td></td><td>(1024) Horizontal screen resolution</td>
      </tr>
@@ -252,19 +252,31 @@ Configuration targets:
      </tr>
      <tr class="even"><td></td><td>Event interface</td>
      </tr>
-     <tr class="even"><td></td><td>Keyboards</td>
+     <tr class="odd"><td></td><td>Keyboards</td><td>AT keyboard</td>
      </tr>
-     <tr class="odd"><td>USB support</td><td>Support for Host-side USB</td>
+     <tr class="even"><td></td><td>Mice</td><td>PS/2 mouse</t>
+     </tr>
+     <tr class="odd"><td></td><td>Miscellaneous devices</td><td>User level driver support</td>
+     </tr>
+     <tr class="even"><td>USB support</td><td>Support for Host-side USB</td>
+     </tr>
+     <tr class="odd"><td></td><td>USB announce new devices</td>
      </tr>
      <tr class="even"><td></td><td>Enable USB persist by default</td>
      </tr>
-     <tr class="odd"><td></td><td>EHCUI HCD (USB 2.0) support</td>
+     <tr class="odd"><td></td><td>xHCI HCD (USB 3.0) support</td>
      </tr>
-     <tr class="even"><td></td><td>Generc EHCI driver for a platform device</td>
+     <tr class="even"><td></td><td>EHCUI HCD (USB 2.0) support</td>
      </tr>
-     <tr class="odd"><td></td><td>UHCI HCD (most Intel and VIA) support</td>
+     <tr class="odd"><td></td><td>Root Hub Transaction Translators</td>
      </tr>
-     <tr class="even"><td></td><td>USB Mass Storage support</td>
+     <tr class="even"><td></td><td>Improved Transaction Translator scheduling</td>
+     </tr>
+     <tr class="odd"><td></td><td>Generc EHCI driver for a platform device</td>
+     </tr>
+     <tr class="even"><td></td><td>UHCI HCD (most Intel and VIA) support</td>
+     </tr>
+     <tr class="odd"><td></td><td>USB Mass Storage support</td>
      </tr>
     </table>
      
