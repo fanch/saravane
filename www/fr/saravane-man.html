@@ -292,9 +292,9 @@ Connaître l'appartenance d'un fichier
   <div>Le fichier <b>/etc/pkgmk.conf</b> définit les règles de fonctionnement de la commande <b>pkgmk</b>. Chaque ligne de configuration est constituée d'une pair &lt;variable&gt;=&lt;donnée&gt;</div>
   <div>Voici la définition des principales variables trouvées dans le fichier de configuration:</div>
   <p>
-  <div><b>PKGMK_SOURCE_DIR='STRING'</b> défini le dosssier des archives sources. Le dossier du Pkgfile est le défaut</div>
+  <div><b>PKGMK_SOURCE_DIR='STRING'</b> défini le dosssier pour le stockage des archives sources. Le dossier du Pkgfile est le défaut</div>
   <p>
-  <div><b>PKGMK_WORK_DIR='STRING'</b> défini le dosssier de construction des paquets. Le dossier du Pkgfile est le défaut</div>
+  <div><b>PKGMK_WORK_DIR='STRING'</b> défini le dosssier pour la construction des paquets. Le dossier <b>work</b> dans le dossier du Pkgfile est le défaut. Par exemple <b>foo</b>/work où <b>foo</b> est le nom du paquet.</div>
   <p>
   <div><b>PKGMK_KEEP_SOURCES="no"</b> si "yes", les archives sources du paquet concerné seront conservées après une compilation réussie. Par défaut, les archives sont supprimées.</div>
   <p>
@@ -315,7 +315,7 @@ Connaître l'appartenance d'un fichier
  <ol>
   <div><h4><li>Configuration de cards</li></h4></div>
   <div>Le fichier <b>/etc/cards.conf</b> définit les règles de fonctionnement de la commande <b>cards</b>. Les lignes <b>dir /var/lib/pkg/saravane/...</b> sont très importantes, l'ordre défini dans quel dossier la recette sera choisie si le port est en double.</div>
-  <div><h4><li>Les commande à savoir</li></h4></div>
+  <div><h4><li>Les commandes à savoir</li></h4></div>
 Lister les dépendances d'un paquet et voir si elles sont installées ou pas
 <pre class="command"><kbd>cards deptree paquetX</kbd></pre>
 Voir si paquetX est disponible
