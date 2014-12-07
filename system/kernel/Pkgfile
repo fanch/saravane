@@ -1,7 +1,6 @@
-version=3.17.4
+version=3.17.6
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
-REALTEK_VERSION=8.038.00
 VB_VERSION=4.3.20
 VB_BUILD=96996
 
@@ -12,9 +11,7 @@ VB_BUILD=96996
 
 
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${version}.tar.xz kernel.config kernel.config_64
-	http://download.virtualbox.org/virtualbox/${VB_VERSION}/VirtualBox-${VB_VERSION}-${VB_BUILD}-Linux_${VB_ARCH}.run
-	http://downloads.nutyx.org/files/patchs/$name/delayed_work_ethtool_ops_fix2.patch
-	http://r8168dl.appspot.com/files/r8168-$REALTEK_VERSION.tar.bz2)
+	http://download.virtualbox.org/virtualbox/${VB_VERSION}/VirtualBox-${VB_VERSION}-${VB_BUILD}-Linux_${VB_ARCH}.run)
 
 _version=$version
 
@@ -55,18 +52,6 @@ case `uname -m` in
         i?86)
                 cp .config $SRC/kernel.config;;
 esac
-# Module realtek
-cd $SRC
-# Fix build with Linux 3.16
-# https://code.google.com/p/r8168/issues/detail?id=19
-cd r8168-${REALTEK_VERSION}
-patch -Np1 -i $SRC/delayed_work_ethtool_ops_fix2.patch
-cd src
-make -C $SRC/linux-${_version} SUBDIRS="`pwd`" \
-EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_R8168_VLAN" \
-modules
-install -m 0644 -D r8168.ko \
-$PKG/lib/modules/${version}/kernel/drivers/net/ethernet/realtek/r8168.ko
 
 # Module VB
 cd $SRC
