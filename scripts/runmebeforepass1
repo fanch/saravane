@@ -180,7 +180,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 3c19adf32a8457983b71ff376ef7dafe  pciutils-3.3.0.tar.xz
 7d829c9c8da9ebc9e5d5546725ba5f45  cards-0.10.82.1.tar.gz
 de826e0736070aed70148ea5ec0ecff9  LVM2.2.02.114.tgz
-fe102975ab3a6c049777883f1bb9ad07  wget-1.16.tar.xz" >> $LFS/sources/md5sums
+78942cc0cce0a23e18114d982789e360  wget-1.16.1.tar.xz >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`
 do
