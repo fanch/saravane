@@ -1,9 +1,9 @@
-version=20141014-2245
+version=20141208-2245
 
-source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$version.tar.bz2)
+source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$version-stable.tar.bz2)
 
 build() {
-cd x264-snapshot-$version
+cd x264-snapshot-$version-stable
 ./configure \
 --prefix=/usr \
 --enable-pic \
