@@ -15,14 +15,15 @@
     <nav>
         <ul>
             <li><a href=".">Accueil</a></li>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="irc.html">Salon IRC</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+         </ul>
+         <ul>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/PACKAGES.TXT">Paquets</a></li>
+            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
      
@@ -33,7 +34,7 @@
    <h2>Exemple pratique de recette pour commencer</h2>
    <pre class="output">_name=libxfce4util
 
-source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 
 build() {
 cd ${_name}-$version
@@ -41,28 +42,23 @@ cd ${_name}-$version
 --disable-static
 make
 make DESTDIR=$PKG install
-}
-   </pre>
+}</pre>
    <h2>Explications</h2>
 <div>Nous souhaitons toujours avoir une description du paquet avec diverses information comme le nom des mainteneurs, l'url du projet, le nom des packagers, etc
 Le fichier <b>&lt;nom_du_port.info&gt;</b> est utilisé à cet effet.</div>
 <p>
-<div>Si vous souhaitez que le serveur de construction puisse construire le paquet sans soucis, il est important de mentioner toutes les dépendances nessecaires à la compilation de votre paquet, et ce en partant toujours d'une NuTyX de base. En effet le serveur construira toujours le paquet en partant de la même base. Le fichier <b>&lt;nom_du_port.deps&gt;</b> est utilisé à cet effet. On y trouve une dépendance par ligne.</div>
+<div>Si vous souhaitez que le serveur de construction puisse construire le paquet sans soucis, il est important de mentioner toutes les dépendances necessaires à la compilation de votre paquet, et ce en partant toujours d'une NuTyX de base. En effet le serveur construira toujours le paquet en partant de la même base. Le fichier <b>&lt;nom_du_port.deps&gt;</b> est utilisé à cet effet. On y trouve une dépendance par ligne.</div>
    <pre class="output">glib
 intltool
-gtk-doc
-   </pre>
+gtk-doc</pre>
 Si le nom du paquet binaire diffère du nom des sources, nous devons spécifier une variable interne avec le nom des sources du paquet. Puisque la variable <b>name</b> est déjà réservée, nous ne pouvons pas l'utiliser. Dans notre exemple, nous utilisons la variable <b>_name</b>
-   <pre class="output">_name=libxfce4util
-   </pre>
+   <pre class="output">_name=libxfce4util</pre>
 Notez que la variable <b>name</b> est définie automatiquement par le script <b>pkgmk</b>. Celui-ci lit le nom du dossier parent contenant l'info necessaire. Assurez-vous donc de créer le dossier avec les bonnes informations. Exemple: pour construire correctement ce paquet, il doit se trouver dans un dossier nommé:
-   <pre class="output">xfce4-libutil
-   </pre>
+   <pre class="output">xfce4-libutil</pre>
    <div>Et pour mettre à jour un port il suffira de modifier la variable <b>version</b>.</div>
 <div>Il est temps maintenant de récupérer les sources de notre paquet. C'est ce qui se trouve à la ligne suivante. Comme vous pouvez le voir, nous utilisons les variables <b>_name</b> et <b>version</b> pour cette opération. Pour le reste de la ligne, si un patch est nécessaire par exemple, il peut être ajouté à la ligne suivante:</div>
    <pre class="output">source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)
-   </pre>
+http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)</pre>
 <di>Viens ensuite la fonction de construction proprement dite <b>build</b> qui va spécifier la construction. Dans la plus part des cas cette fonction est identique à ce qui est écrit ci-dessous</div>
    <pre class="output">build() {
 cd ${_name}-$version
@@ -70,25 +66,17 @@ cd ${_name}-$version
 --disable-static
 make
 make DESTDIR=$PKG install
-}
-   </pre>
+}</pre>
 L'avantage de la méthode qui suit est que vos ports personnels sont inclus dans le système et sont gérés comme les ports de NuTyX.
-   <div>Tout d'abord
-   
-    <ul>Vérifiez que dans <b>/etc/cards.conf</b> la ligne: <b>dir /usr/ports/personnel</b> est en premier et décochée
-    </ul>
-    <ul>Dans ce répertoire vous placerez tous vos ports. Pour cela il faut créer un répertoire qui suit rigoureusement la syntaxe suivante : <b>name</b>
-    </ul>
+   <div>Tout d'abord:
+    <ul>Vérifiez que dans <b>/etc/cards.conf</b> la ligne: <b>dir /usr/ports/personnel</b> est en premier et décochée</ul>
+    <ul>Dans ce répertoire vous placerez tous vos ports. Pour cela il faut créer un répertoire qui suit rigoureusement la syntaxe suivante : <b>name</b></ul>
    </div>
    <div>A l'intérieur créez les 3 fichiers <b>Pkgfile</b>, <b>&lt;nom_du_port.info&gt;</b> et <b>&lt;nom_du_port.deps&gt;</b>  qui doivent respecter les règles ci-dessus:
    </div>  
-   <h2>Très Important</h2>
-   <div>
-    <ul>Il est essentiel que vous compiliez et testez vos ports en <b>CHROOT</b>. Dans le cas contraire vous créez des fichiers directement dans vos répertoires système avec tous les risques que cela comporte si votre port n'est pas au point.
-    </ul>
-    <ul>Il est essentiel que vous compiliez et testez vos ports à partir d'une NuTyX Base.
-    </ul>
-   </div>
+  <h2>Très Important</h2>
+   <div>Il est essentiel que vous compiliez et testez vos ports en <b>CHROOT</b>. Dans le cas contraire vous créez des fichiers directement dans vos répertoires système avec tous les risques que cela comporte si votre port n'est pas au point.</div><p>
+   <div>Il est essentiel que vous compiliez et testez vos ports à partir d'une NuTyX Base.</div>
 
      
         <!-- DEBUT FOOTER -->
