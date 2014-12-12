@@ -67,7 +67,6 @@
      <li>Se rendre dans le dossier des sources du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles</li>
      <li>Configurer les options de compilation</li>
      <li>Compiler le kernel</li>
-     <li>Installer les modules au bon endroit</li>
      <li>Créer une nouvelle entrée dans le fichier grub.cfg ou menu.lst</li>
     </ol>
   <ol>
@@ -89,9 +88,7 @@ Sauvegarde en : &laquo;linux-3.17.4.tar.bz2&raquo;
      
    <li><h2>Extraire les sources du kernel</h2></li>
    <p>On extrait les sources du kernel téléchargées :</p>
-   <pre class="command_user"><kbd>tar xf /home/thierry/linux-3.17.4.tar.xz</kbd></pre>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Veuillez remplacer le dossier thierry par votre compte personnel
-   </div>
+   <pre class="command_user"><kbd>tar xf linux-3.17.4.tar.xz</kbd></pre>
    <p>Après quelques minutes, le prompt sera à nouveau disponible et les sources du kernel seront en place. Se rendre dans le dossier du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles. Pour pouvoir compiler le kernel, il faut être dans le dossier sources de celui-ci, tapez dans votre console :</p>
 
    <li><h2>Se rendre dans le dossier des sources</h2></li>
@@ -331,11 +328,6 @@ Configuration targets:
    <img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/Compile.png" border="0" alt="Compilation en cours" width="578" height="517" />
    <p>Quelques minutes (ou quelques heures plus tard, ... Vous voilà avec un kernel prêt à être utilisé.</p>    
    <pre class="output">Kernel: arch/x86/boot/bzImage is ready  (#1)</pre>
-
-   <li><h2>Installer les modules au bon endroit (optionnel)</h2></li>
-   <p>Le plus dur est fait. Si malgré tout vous avez optez pour l'utilisation de modules, il faut maintenant installer les modules du kernel, tapez dans la console :</p>
-   <pre class="command_user"><kbd>sudo make modules_install</kbd></pre>
-   <p>Les modules sont maintenant en place.</p>
 
    <li><h2>Créer une nouvelle entrée dans le fichier grub.cfg ou menu.lst</h2></li>
    </ol>
