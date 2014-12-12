@@ -1,4 +1,4 @@
-version=6.6.4
+version=6.6.5
 source=(http://roy.marples.name/downloads/$name/$name-$version.tar.bz2)
 
 build() {
