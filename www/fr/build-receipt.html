@@ -53,7 +53,8 @@ intltool
 gtk-doc</pre>
 Si le nom du paquet binaire diffère du nom des sources, nous devons spécifier une variable interne avec le nom des sources du paquet. Puisque la variable <b>name</b> est déjà réservée, nous ne pouvons pas l'utiliser. Dans notre exemple, nous utilisons la variable <b>_name</b>
    <pre class="output">_name=libxfce4util</pre>
-Notez que la variable <b>name</b> est définie automatiquement par le script <b>pkgmk</b>. Celui-ci lit le nom du dossier parent contenant l'info necessaire. Assurez-vous donc de créer le dossier avec les bonnes informations. Exemple: pour construire correctement ce paquet, il doit se trouver dans un dossier nommé:
+   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Notez que la variable <b>name</b> est définie automatiquement par le script <b>pkgmk</b>. Celui-ci lit le nom du dossier parent contenant l'info necessaire. Assurez-vous donc de créer le dossier avec les bonnes informations.</div>
+    Exemple: pour construire correctement le paquet nommé <b>xfce4-libutil</b>, la recette doit se trouver dans un dossier nommé:
    <pre class="output">xfce4-libutil</pre>
    <div>Et pour mettre à jour un port il suffira de modifier la variable <b>version</b>.</div>
 <div>Il est temps maintenant de récupérer les sources de notre paquet. C'est ce qui se trouve à la ligne suivante. Comme vous pouvez le voir, nous utilisons les variables <b>_name</b> et <b>version</b> pour cette opération. Pour le reste de la ligne, si un patch est nécessaire par exemple, il peut être ajouté à la ligne suivante:</div>
