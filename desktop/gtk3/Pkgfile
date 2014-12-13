@@ -1,4 +1,4 @@
-version=3.14.5
+version=3.14.6
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 
