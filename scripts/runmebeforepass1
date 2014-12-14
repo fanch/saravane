@@ -161,7 +161,7 @@ ba56fb5bfd44acea83fc5dac4a9b7f15  kbd-2.0.2.tar.gz
 f75cca16a38da6caa7d52151f7136895  kbd-2.0.2-backspace-1.patch
 a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 1e6da4e434553d2811437aa42c7f7c76  gmp-6.0.0a.tar.xz
-a4650aebcc464bb91113c2c356da8210  XML-Parser-2.42_01.tar.gz
+2c9ca46832d8e7578bcda99eba3a47f1  XML-Parser-2.43.tar.gz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
 cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
@@ -181,7 +181,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 7d829c9c8da9ebc9e5d5546725ba5f45  cards-0.10.82.1.tar.gz
 de826e0736070aed70148ea5ec0ecff9  LVM2.2.02.114.tgz
 e56f630a2e1514b1c6c269dfac60f65d  dhcpcd-6.6.5.tar.bz2
-78942cc0cce0a23e18114d982789e360  wget-1.16.1.tar.xz >> $LFS/sources/md5sums
+78942cc0cce0a23e18114d982789e360  wget-1.16.1.tar.xz" >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`
 do

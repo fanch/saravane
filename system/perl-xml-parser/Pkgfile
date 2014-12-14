@@ -1,4 +1,4 @@
-version=2.42_01
+version=2.43
 source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)
 
 build() {
