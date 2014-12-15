@@ -1,4 +1,4 @@
-version=2.1.3
+version=2.2.0
 source=( ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 build() {
 cd $name-$version
