@@ -1,11 +1,14 @@
-version=5.24
-source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+version=5.26
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-obexd_without_systemd-1.patch)
 build() {
 source /etc/blfs-bootscripts
 wget   http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version
+patch -Np1 -i ../$name-$version-obexd_without_systemd-1.patch
+
 ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
