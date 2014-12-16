@@ -181,6 +181,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 7d829c9c8da9ebc9e5d5546725ba5f45  cards-0.10.82.1.tar.gz
 de826e0736070aed70148ea5ec0ecff9  LVM2.2.02.114.tgz
 e56f630a2e1514b1c6c269dfac60f65d  dhcpcd-6.6.5.tar.bz2
+43bd6676f0b404326eee2d63be3cdcfe  rsync-3.1.1.tar.gz
 78942cc0cce0a23e18114d982789e360  wget-1.16.1.tar.xz" >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`
