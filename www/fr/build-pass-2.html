@@ -23,7 +23,6 @@
          <ul>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="http://downloads.nutyx.org/saravane/PACKAGES.TXT">Paquets</a></li>
-            <li><a href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Derniers changements</a></li>
         </ul>
     </nav>
      
@@ -122,6 +121,10 @@ for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
 pass</kbd></pre>
     <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
+    <li>La compilation se termine par le kernel:</li>
+    <pre class="output">ADD: kernel-3.17.6, 1282 files: 100%
+=======> Installing 'kernel1418739487x86_64.cards.tar' succeeded.
+=======> compress kernel1418739487x86_64.cards.tar</pre>
     </ol>
     <h2>Explications relative à chaque action</h2>
     <ol>
