@@ -81,4 +81,5 @@ lzo
 lvm2
 cards
 mdadm
+rsync
 kernel
