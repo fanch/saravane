@@ -1,4 +1,4 @@
-version=2.5
+version=2.5.1
 source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.bz2)
 
 build() {
