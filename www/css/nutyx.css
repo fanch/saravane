@@ -200,5 +200,11 @@ a {
     padding-top: 20px;
 }
 
+/* Last edited info */
+p.updated {
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+}
 
 @media print { header, footer {display:none } }
