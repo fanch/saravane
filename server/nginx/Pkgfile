@@ -1,4 +1,4 @@
-version=1.6.0
+version=1.6.2
 source=(http://nginx.org//download/$name-$version.tar.gz
 nginx.service
 nginx.logrotate)
