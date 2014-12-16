@@ -17,8 +17,6 @@ _version=$version
 
 build(){
 
-bsdtar -p -o -C $SRC -xf r8168-$REALTEK_VERSION.tar.bz2
-
 if [ -d /usr/src/linux-${_version} ]; then
 	ln -s  /usr/src/linux-${_version} linux-${_version}
 	if [ -f $SRC/patch-$version.bz2 ]; then
