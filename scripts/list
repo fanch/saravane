@@ -82,4 +82,9 @@ lvm2
 cards
 mdadm
 rsync
+openssh
+libtirpc
+rpcbind
+nfs-utils
+git
 kernel
