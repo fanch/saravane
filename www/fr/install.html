@@ -6,71 +6,47 @@
      <link rel="stylesheet" href="../css/nutyx.css" />
   <title>NuTyX - installation</title>
  </head>
-    
  <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-       
-    <nav>
-        <ul>
+  <header>    
+   <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+  </header>
+  <nav>
+   <ul>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
+            <li><a href="packages.html">Paquets</a></li>
+   </ul>
+   <ul>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-            <li><a href="http://downloads.nutyx.org/saravane/PACKAGES.TXT">Paquets</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-     
-    <h1>Installation</h1>  
-      
-    <p1> Assurez vous tout d'abord d'avoir un espace libre sur votre disque dur d'au moins 8Go ou mieux 15Go pour plus de confort.
-    <h3>Téléchargez la dernière version de NuTyX</h3>
-    La version actuelle de NuTyX s'appelle <b>saravane 14.11</b>.
-    <p>
-    Elle est disponible en 32 bits et en 64 bits. La version 64 bits n'est pas une multi lib mais une 64 bits pure.
-    <p>
-    Les isos disponible permettent une installation sans avoir besoin de connection internet. Les isos étant le système de base. Elles permettent également de faire un minimum de maintenance sur la machine avant l'installation de NuTyX.
-    <p>
-    La taille des iso est <b>+- 175 Mb</b> pour la 64 bits et <b>+- 100 Mb</b> pour la 32 bits.
-    <p>
-    Les isos sont disponible à l'adresse:
-    <p>
-    <a class="url" href="http://downloads.nutyx.org/"  target="_blank" title="Lire dans une autre fenêtre" >http://downloads.nutyx.org</a></br>
-    <h3>Créez une clé bootable</h3>
-    Si vous êtes déjà sous GNU/Linux : </br>
-    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />En root </div>
-    A l'aide de fdisk, déterminez où se trouve votre clé USB : 
-    <pre class="command"><kbd>fdisk -l</kbd></pre>
-    A l'aide de dd, créez votre clé bootable :
-    <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
-    Si vous êtes sous Windows :
-    <p>
-    Utilisez votre outils de gravure favori pour graver l'iso sur un CD-RW (si possible) ...
-    <h3>Installation de NuTyX</h3>
-<!--  <div><a class="url" href="mini-iso-install.html">Laissez-vous guider pas à pas pour l'installation depuis la MINI iso (ou depuis le système de maintenance.</a></div>
-  <br/>
-   <div><a class="url" href="script-install.html">Et enfin, si vous préférer installer votre NuTyX en utilisant le script, cet article vous guidera pas à pas. Un minimum de connaissance de linux s'impose</a></div>
-  <br/> -->
-  <div><a class="url" href="build-kernel.html">Si vous avez choisi de compiler et installer votre propre kernel, suivez pas à pas cet article. Un minimum de connaissance sur votre matériel est recommandé pour mener à bien cette opération.</a></div>
-
-    <h3>Installation de l'amorçage de la machine</h3>
-    <div><a class="url" href="grub-install.html">Cet article vous explique comment installer depuis zero l'amorçage de la machine</a></div>
-    <br/>
-    <div>Pour les plus pressé et les plus callés, voici un résumé</div>
-    Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon:</br>
-    <pre class="command"><kbd>title NuTyX - Sekong sur sda2
+   </ul>
+  </nav>
+  <h1>Installation</h1>  
+     <p>Assurez vous tout d'abord d'avoir un espace libre sur votre disque dur d'au moins 8Go ou mieux 15Go pour plus de confort.</p>
+     <h2>Téléchargez la dernière version de NuTyX</h2>
+      <p>La version actuelle de NuTyX s'appelle <b>saravane 14.11</b>. Elle est disponible en 32 bits et en 64 bits. La version 64 bits n'est pas une multi lib mais une 64 bits pure. Les isos disponible permettent une installation sans avoir besoin de connection internet. Les isos étant le système de base. Elles permettent également de faire un minimum de maintenance sur la machine avant l'installation de NuTyX.</p>
+      <p>La taille des iso est <b>+- 175 Mb</b> pour la 64 bits et <b>+- 100 Mb</b> pour la 32 bits.</p>
+      <p>Les isos sont disponible à l'adresse: <a class="url" href="http://downloads.nutyx.org/"  target="_blank" title="Lire dans une autre fenêtre" >http://downloads.nutyx.org</a></p>
+     <h2>Créez une clé bootable</h2>
+      <p>Si vous êtes déjà sous GNU/Linux:</p>
+      <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />En root </div>
+      <p>A l'aide de fdisk, déterminez où se trouve votre clé USB:</p>
+      <pre class="command"><kbd>fdisk -l</kbd></pre>
+      <p>A l'aide de <b>dd</b>, créez votre clé bootable:</p>
+      <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
+      <p>Si vous êtes sous Windows:</p>
+      <p>Utilisez votre outils de gravure favori pour graver l'iso sur un CD-RW (si possible) ...</p>
+     <h2>Installation de l'amorçage de la machine</h2>
+      <p><a class="url" href="grub-install.html">Cet article vous explique comment installer depuis zero l'amorçage de la machine</a></p>
+      <p>Pour les plus pressé et les plus callés, voici un résumé</p>
+      <p>Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon:</p>
+      <pre class="command"><kbd>title NuTyX - Sekong sur sda2
     root (hd0,1)
     kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
     initrd /boot/initrd</kbd></pre>
-    <div>Si vous avez déjà grub 2 installé, il suffit de modifier votre grub.cfg selon:</br>
-    <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
+      <p>Si vous avez déjà grub 2 installé, il suffit de modifier votre grub.cfg selon:</p>
+      <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
     initrd /boot/initrd
@@ -80,13 +56,9 @@
     set root=(hd0,3)
     chainloader (hd0,3)+1
     }</kbd></pre>
-  </div>
-
-        <!-- DEBUT FOOTER -->
-     
-    <footer>
-        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
-    </footer>
+  <p class="updated">Dernière mise à jour 17-12-2014 21:08:00</p>
+  <footer>
+   <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />&copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.</p>
+  </footer>
  </body>
 </html>
