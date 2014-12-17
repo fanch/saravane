@@ -15,35 +15,35 @@
             <li><a href=".">Home</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="packages.html">Packages</a></li>
          </ul>
          <ul>
             <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
-            <li><a href="http://downloads.nutyx.org/saravane/PACKAGES.TXT">Packages</a></li>
         </ul>
     </nav>
-    Make shure you have enough space on your hard disk. A size of 8Go to 15Go will make it.
-    <h3>Download the last version of NuTyX</h3>
-    The actual version of NuTyX is named <b>saravane</b>.</br></br>
-    The available iso can be used to install all the packages from internel. It's also to used it for a minimum of maintenance on your machine before the actual installation of NuTyX.</br>
-    The size of an iso is <b>+- 175 Mb</b>.</br></br>
-    All the available iso can be download at: </br> <a class="url" href="http://downloads.nutyx.org/"  target="_blank" >http://downloads.nutyx.org</a></br>
-    <h3>Create a bootable USB key</h3>
-    If you are currently running GNU/linux on your machine: </br>
-    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />In root, with the help of fdisk, find out where your usb KEY is located:</div>
-    <pre class="command"><kbd>fdisk -l</kbd></pre>
-    Then by using the command <b>dd</b> create a bootable key:
-    <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane.iso of=/dev/sdX </b>value given by fdisk -l</kbd></pre>
-    If you are under Windows, the easiest way is to burn the ISO on a CD.
-    <h3>Installation of the boot process</h3>
-    If you used grub version 0.99, the following entry can be added to your menu.list:</br>
-    <pre class="command"><kbd>title NuTyX - Saravane sur sda2
+  <h1>Installation</h1>
+   <p>Make shure you have enough space on your hard disk. A size of 8Go to 15Go will make it.</p>
+    <h2>Download the last version of NuTyX</h2>
+     <p>The actual version of NuTyX is named <b>saravane</b>. The available iso can be used to install all the packages from internel. It's also to used it for a minimum of maintenance on your machine before the actual installation of NuTyX.</p>
+     <p>The size of an iso is <b>+- 175 Mb</b>.</p>
+     <p>All the available iso can be download at: <a class="url" href="http://downloads.nutyx.org/"  target="_blank" >http://downloads.nutyx.org</a></p>
+    <h2>Create a bootable USB key</h2>
+     <p>If you are currently running GNU/linux on your machine: </p>
+     <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />In root </div>
+     <p>With the help of fdisk, find out where your usb KEY is located:</p>
+     <pre class="command"><kbd>fdisk -l</kbd></pre>
+     <p>Then by using the command <b>dd</b>, create a bootable key:</p>
+     <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX </b>value given by fdisk -l</kbd></pre>
+     <p>If you are under Windows, the easiest way is to burn the ISO on a CD.</p>
+    <h2>Installation of the boot process</h2>
+     <p>If you used grub version 0.99, the following entry can be added to your menu.list:</p>
+     <pre class="command"><kbd>title NuTyX - Saravane on sda2
     root (hd0,1)
     kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
     initrd /boot/initrd</kbd></pre>
-    If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:</br>
-    <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
+     <p>If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:</p>
+     <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
     initrd /boot/nutyx-initrd
@@ -52,9 +52,9 @@
     set root=(hd0,3)
     chainloader (hd0,3)+1
     }</kbd></pre>
+   <p class="updated">Last updated 2014-12-17 21:08:00</p>
   <footer>
-      <p id="foot"> ... <img src="../graphics/logo_nutyx_25.png" alt="small nutyx logo"> ...<br />
-      &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.</p>
+   <p id="foot"> ... <img src="../graphics/logo_nutyx_25.png" alt="small nutyx logo"> ...<br />&copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.</p>
   </footer>
  </body>
 </html>
