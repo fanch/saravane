@@ -1,4 +1,4 @@
-version=0.2.4
+version=0.2.5
 source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libtirpc-$version.tar.bz2)
 
 build()

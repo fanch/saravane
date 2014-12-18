@@ -14,7 +14,8 @@ build() {
 
     ./configure --prefix=/usr \
                 --bindir=/sbin \
-                --with-rpcuser=root
+                --with-rpcuser=root \
+		--without-systemdsystemunitdir
     make
     make DESTDIR=$PKG install
 
