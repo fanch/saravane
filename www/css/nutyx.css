@@ -56,8 +56,8 @@
 body{
     background: #eee url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAMAAAC6sdbXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF3d3d////riJKgAAAAAJ0Uk5T/wDltzBKAAAAFUlEQVR42mJgBAEGGMmAxAYCgAADAAGGABmnk/7aAAAAAElFTkSuQmCC);
     font: 14px 'corbertregular';
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 header {
@@ -139,7 +139,7 @@ p1 {
 
 pre {
    padding: 0.5em 1em;
-   margin: 1em 2em 1em 2em;
+   margin: 1em 0em 1em 2em;
    font-weight:bold;
    color: black;
    font-family: monospace;
