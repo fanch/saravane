@@ -1,4 +1,4 @@
-version=0.36.3
+version=0.38.3
 source=(http://ftp.gnome.org/pub/gnome/sources/vte/${version%.*}/vte-$version.tar.xz)
 build() {
 cd vte-$version
