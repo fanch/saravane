@@ -16,13 +16,11 @@ polkit-kde
 kde-pimlibs
 kde-activities
 kde-runtime
-kde-runtime.l10n 
 kde-baseapps
 kde-dolphin-plugins
 kde-workspace
 kde-konsole
 kde-kate
-kde-ark
 kde-kmix
 kde-libkcddb
 kde-pim
@@ -47,6 +45,5 @@ kde-sdk-thumbnailers
 kipi-plugins
 cups-filters
 gnupg
-kde-l10n
 pm-utils
 alsa-plugins
