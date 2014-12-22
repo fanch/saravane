@@ -5,7 +5,7 @@ cd $name-$version
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
- -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/midori-0.5.8 \
+ -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$name-$version \
  -DUSE_ZEITGEIST=OFF \
  ..
 make
