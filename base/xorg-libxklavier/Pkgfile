@@ -1,4 +1,4 @@
-version=5.3
+version=5.4
 _name=libxklavier
 
 source=( http://ftp.gnome.org/pub/gnome/sources/${_name}/${version}/${_name}-$version.tar.xz)
