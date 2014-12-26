@@ -1,7 +1,7 @@
 PKGMK_IGNORE_UNPACK="yes"
 
-version=4.3.4.1
-_version=4.3.4
+version=4.3.5.2
+_version=4.3.5
 
 source=(http://download.documentfoundation.org/libreoffice/src/${_version}/$name-$version.tar.xz
 	http://download.documentfoundation.org/libreoffice/src/${_version}/$name-dictionaries-$version.tar.xz
