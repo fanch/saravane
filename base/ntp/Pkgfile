@@ -1,4 +1,4 @@
-version=4.2.6p5
+version=4.2.8
 
 source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
 
