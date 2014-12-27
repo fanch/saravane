@@ -1,17 +1,9 @@
-version=3.17.6
+version=3.18.1
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
-VB_VERSION=4.3.20
-VB_BUILD=96996
-
-[ "`uname -m`" == "i686"   ] && VB_ARCH=x86
-[ "`uname -m`" == "x86_64"   ] && VB_ARCH=amd64
-[ "`uname -m`" == "i686"   ] && _ARCH=x86
-[ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
 
 
-source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${version}.tar.xz kernel.config kernel.config_64
-	http://download.virtualbox.org/virtualbox/${VB_VERSION}/VirtualBox-${VB_VERSION}-${VB_BUILD}-Linux_${VB_ARCH}.run)
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${version}.tar.xz kernel.config kernel.config_64)
 
 _version=$version
 
@@ -50,19 +42,6 @@ case `uname -m` in
         i?86)
                 cp .config $SRC/kernel.config;;
 esac
-
-# Module VB
-cd $SRC
-sh VirtualBox-${VB_VERSION}-${VB_BUILD}-Linux_${VB_ARCH}.run --target vb --keep --noexec
-cd vb
-tar xfj VirtualBox.tar.bz2
-cd src/vboxhost/
-KERNELRELEASE=${version} KERN_DIR=$SRC/linux-${_version} make
-for i in *.ko
-do
-	install -D -m0644 $i \
-	$PKG/lib/modules/${version}/kernel/drivers/zzzz/$i
-done
 
 # Install modules
 cd $SRC/linux-${version}

@@ -1,16 +1,8 @@
-version=2.24
-source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-load_gcc_lto_plugin_by_default-1.patch
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-multiple_plugins-1.patch)
+version=2.25
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2)
 build()
 {
 cd binutils-$version
-
-rm -fv etc/standards.info
-sed -i.bak '/^INFO/s/standards.info //' etc/Makefile.in
-
-patch -Np1 -i ../$name-$version-load_gcc_lto_plugin_by_default-1.patch
-patch -Np1 -i ../$name-$version-multiple_plugins-1.patch
 
 mkdir -v ../binutils-build
 cd ../binutils-build

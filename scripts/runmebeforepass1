@@ -102,6 +102,7 @@ for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
    sed -i "/bash-/d" $LFS/sources/$i
+   sed -i "/binutils-/d" $LFS/sources/$i
    sed -i "/groff-/d" $LFS/sources/$i
    sed -i "/iproute2-/d" $LFS/sources/$i
    sed -i "/eudev-/d" $LFS/sources/$i
@@ -131,6 +132,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/sysklogd-/d" $LFS/sources/$i
 done
 echo "a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
+d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
@@ -138,8 +140,8 @@ c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
 d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
-b741a02c6dda5818d18011d572874493  iproute2-3.17.0.tar.xz
-092c3f460553ceb4a638ff81d36434c4  gettext-0.19.3.tar.xz
+6f6ad51a00007880460e103367b16057  iproute2-3.18.0.tar.xz
+997c9070354eff5517115feaea6038f0  gettext-0.19.4.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
 549fe96e09041eabece9de2bb28ef923  file-5.21.tar.gz
 51bf400de3354687d68dfa2392506b7e  libtool-2.4.4.tar.xz
@@ -165,7 +167,7 @@ a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
 cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
-a62e72e2c3af99d13fcf747b8cbd21fe  linux-3.17.6.tar.xz
+79c9b73a01e1dce0a4c28828496ef02c  linux-3.18.1.tar.xz
 fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
 88d32360e2ed18e05de9b528ad336fd8  man-db-2.7.1.tar.xz
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
