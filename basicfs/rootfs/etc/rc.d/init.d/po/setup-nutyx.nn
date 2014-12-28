@@ -87,7 +87,7 @@ msgstr "Mesteparten av tiden er det ikke trenger"
 msgid "Start the service"
 msgstr "Godt å vite"
 
-msgid "Check the all configuration, return true or false"
+msgid "Checking the configuration, returning true or false"
 msgstr "Kontrollere all konfigurasjon, returnerer sant eller usant"
 
 msgid "Show the network configuration"
@@ -96,13 +96,13 @@ msgstr "Vise nettverkskonfigurasjonen"
 msgid "Show the keyboard configuration"
 msgstr "Vise tastatur konfigurasjonen"
 
-msgid "Show the clock configuration"
+msgid "Show the date and time settings"
 msgstr "Vise klokken konfigurasjon"
 
 msgid "Show the locale and local time adjustment"
 msgstr "Viser locale og lokal tid justering"
 
-msgid "Show the all configuration"
+msgid "Show all configurations"
 msgstr "Siser all konfigurasjon"
 
 msgid "Configure the language"
@@ -114,10 +114,10 @@ msgstr "Konfigurere tastaturet"
 msgid "Configure the network"
 msgstr "Konfigurere nettverket"
 
-msgid "Configure the clock"
+msgid "Date and time settings"
 msgstr "Konfigurere klokken"
 
-msgid "add a user to the system"
+msgid "Add a user to the system"
 msgstr "til en bruker i systemet"
 
 msgid "Configure the all system"
@@ -138,7 +138,7 @@ msgstr "maskinvareklokken er satt til"
 msgid "do you want to use this time as coordinated universal time ?"
 msgstr "ønsker du å bruke denne tiden som coordinated universal time ?"
 
-msgid "and have the summer/winter time changing automatically"
+msgid "so that the summer/winter time is changed automatically"
 msgstr "og har sommer / vintertid endrer automatisk"
 
 msgid "Please enter the date"
@@ -177,7 +177,7 @@ msgstr "godt å vite"
 msgid "Main Menu"
 msgstr "hovedmeny"
 
-msgid "Welcome in the NuTyX installer"
+msgid "Welcome to the NuTyX installer"
 msgstr "Velkommen i NuTyX installatør"
 
 msgid "Create all your partitions"

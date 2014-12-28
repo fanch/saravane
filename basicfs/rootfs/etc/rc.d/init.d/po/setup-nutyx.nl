@@ -87,7 +87,7 @@ msgstr "Meestal is het niet nodig"
 msgid "Start the service"
 msgstr "Service start"
 
-msgid "Check the all configuration, return true or false"
+msgid "Checking the configuration, returning true or false"
 msgstr "Controleer de hele configuratie, return true of false"
 
 msgid "Show the network configuration"
@@ -96,13 +96,13 @@ msgstr "De netwerkconfiguratie tonen"
 msgid "Show the keyboard configuration"
 msgstr "De toetsenbord configuratie tonen"
 
-msgid "Show the clock configuration"
+msgid "Show the date and time settings"
 msgstr "De klockconfiguratie tonen"
 
 msgid "Show the locale and local time adjustment"
 msgstr "Regio tonen en locale tijd instellen"
 
-msgid "Show the all configuration"
+msgid "Show all configurations"
 msgstr "De volledige configuratie tonen"
 
 msgid "Configure the language"
@@ -114,10 +114,10 @@ msgstr "Configureren van het toetsenbord"
 msgid "Configure the network"
 msgstr "Configureren van het netwerk"
 
-msgid "Configure the clock"
+msgid "Date and time settings"
 msgstr "Configureren van de klok"
 
-msgid "add a user to the system"
+msgid "Add a user to the system"
 msgstr "voeg een gebruiker toe aan het systeem"
 
 msgid "Configure the all system"
@@ -138,7 +138,7 @@ msgstr "De hardware klok is ingesteld op"
 msgid "Do you want to use this time as Coordinated Universal Time ?"
 msgstr "Wilt u deze tijd gebruiken als Coordinated Universal Time ?"
 
-msgid "and have the summer/winter time changing automatically"
+msgid "so that the summer/winter time is changed automatically"
 msgstr "Zomer en Wintertijd worden automatisch gewijzigd"
 
 msgid "Please enter the date"
@@ -168,7 +168,7 @@ msgstr "U heeft NuTyX geïnstalleerd zonder de configuratie van het bootproces"
 msgid "Are you sure, you want to cancel the process ?"
 msgstr "Weet u zeker dat u het proces wilt annuleren ?"
 
-msgid "You already have a copy of the original MBR, it will not be backup"
+msgid "You already have a copy of the original MBR, I will not make a backup of it"
 msgstr "U heeft al een kopie van de originele MBR, er wordt geen backup gemaakt"
 
 msgid "Good to know"
@@ -177,7 +177,7 @@ msgstr "Goed om te weten"
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-msgid "Welcome in the NuTyX installer"
+msgid "Welcome to the NuTyX installer"
 msgstr "Welkom in de NuTyX installer"
 
 msgid "Create all your partitions"
@@ -237,7 +237,7 @@ msgstr "Beschikbare bestandssystemen"
 msgid "Choose the file system you want to use for the partition"
 msgstr "Selecter het bestandssysteem dat je wil gebruiken voor deze partitie"
 
-msgid "High performance journal file system create by SGI"
+msgid "High performance journaling file system create by SGI"
 msgstr "Hoog-performant journalling bestandssysteem ontwikkeld door SGI"
 
 msgid "Very stable file system but not maintain anymore"
@@ -246,7 +246,7 @@ msgstr "Zeer stabiel bestandssysteem maar dit wordt niet meer verder ontwikkeld"
 msgid "Next generation of Ext3 file system"
 msgstr "Volgende generatie bestandssysteem van Ext3"
 
-msgid "Journal version of Ext2 file system"
+msgid "Journaling version of Ext2 file system"
 msgstr "Volgende generatie bestandssysteem van Ext2"
 
 msgid "Standard file system Ext2"
@@ -261,7 +261,7 @@ msgstr "Formatteren starten"
 msgid "The partition"
 msgstr "De partitie"
 
-msgid "will be format in"
+msgid "will be formatted in"
 msgstr "wordt geformatteerd als"
 
 msgid "Are you sure you want to continue ?"
@@ -297,7 +297,7 @@ msgstr "Open een console"
 msgid "Please wait"
 msgstr "Wachten a.u.b."
 
-msgid "This is a very straightforward tool, do not expect too much"
+msgid "This is a very basic tool, do not expect too much"
 msgstr "Deze tool is rechttoe rechtaan, verwacht er niet te veel van"
 
 msgid "It will ask you on which partition you want to install NuTyX"
@@ -315,16 +315,16 @@ msgstr "NuTyX wordt hier geinstalleerd"
 msgid "only ONE partition"
 msgstr "Gebruik slechts EEN partitie"
 
-msgid "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"
+msgid "ONE exception, GRUB can be part of it, installed on a separate partition or not installed at all"
 msgstr "EEN uitzondering, grub kan deel zijn van, geinstalleerd worden op een aparte partitie of helemaal niet geinstalleerd worden"
 
-msgid "As NuTyX users, we recommand you to install GRUB on a separated partition"
+msgid "As NuTyX users, we recommand you to install GRUB on a separate partition"
 msgstr "Als NuTyx gebruikers, wordt het je aanbevolen om GRUB op een aparte partitie te installeren"
 
 msgid "To do so"
 msgstr "Hiervoor"
 
-msgid "Install grub first then NuTyX"
+msgid "Install GRUB first, then NuTyX"
 msgstr "Installeer je GRUB eerst en daarna pas NuTyx"
 
 msgid "Have fun"
@@ -336,5 +336,5 @@ msgstr "Hartelijk dank om NuTyx te proberen"
 msgid "Help"
 msgstr "Hulp"
 
-msgid "How to do"
+msgid "How to do it"
 msgstr "Hoe ga ik verder"

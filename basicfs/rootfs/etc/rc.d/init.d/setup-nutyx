@@ -923,7 +923,7 @@ setup_clock() {
 	HWCLOCK=`LANG=C.utf-8 hwclock -r`
 	dialog --title "   $(gettext "Coordinated Universal Time or Local Time ?")  " \
 	--yesno "$(gettext "The hardware clock is set to"):\n\n $HWCLOCK. \n\n$(gettext "Do you want to use this time as Coordinated Universal Time ?") \n\
-$(gettext "and have the summer/winter time changing automatically" ) " 0 0
+$(gettext "so that the summer/winter time is changed automatically" ) " 0 0
 	retval=$?
 	case $retval in
 		0)
@@ -1065,17 +1065,17 @@ check_available_partition() {
 }
 setup_help() {
 	dialog --no-cancel \
-	--title "   $(gettext "How to do")  " \
+	--title "   $(gettext "How to do it")  " \
 	--colors --msgbox \
-"$(gettext "This is a very straightforward tool, do not expect too much"). \
+"$(gettext "This is a very basic tool, do not expect too much"). \
 $(gettext "It will ask you on which partition you want to install NuTyX"). \
 $(gettext "If not yet created/formatted, it will prompt you to do so").\n\
 \n\n$(gettext "NuTyX goes on") \
 \Zu\Zb\Z1$(gettext "only ONE partition")\Zn\n\n\
-$(gettext "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"). \n\n\
-$(gettext "As NuTyX users, we recommand you to install GRUB on a separated partition"):\n\n\
+$(gettext "ONE exception, GRUB can be part of it, installed on a separate partition or not installed at all"). \n\n\
+$(gettext "As NuTyX users, we recommand you to install GRUB on a separate partition"):\n\n\
 $(gettext "To do so"): \
-$(gettext "Install grub first then NuTyX") \n\n\
+$(gettext "Install GRUB first, then NuTyX") \n\n\
 $(gettext "Have fun") :) \n\n\
 $(gettext "Thank you for trying NuTyX") \
 " 0 0
@@ -1126,17 +1126,17 @@ setup_format() {
 				dialog --title " $(gettext "Available file systems") " \
 				--menu " $(gettext "Choose the file system you want to use for the partition") \
 $PARTITION" 0 0 0 \
-				"xfs" "$(gettext "High performance journal file system create by SGI")" \
+				"xfs" "$(gettext "High performance journaling file system create by SGI")" \
 				"reiserfs" "$(gettext "Very stable file system but not maintain anymore")" \
 				"ext4" "$(gettext "Next generation of Ext3 file system")" \
-				"ext3" "$(gettext "Journal version of Ext2 file system")"  \
+				"ext3" "$(gettext "Journaling version of Ext2 file system")"  \
 				"ext2" "$(gettext "Standard file system Ext2")" \
 				"btrfs" "$(gettext "New promising file system")" 2> $TMP/result
 				result=`cat $TMP/result`
 				if [ ! "$result" == "" ]; then
 					dialog --title " $(gettext "Launch the format process ?") " \
 					--colors --yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
-$(gettext "will be format in") \Zb\Z1$result\Zn.\n\n\
+$(gettext "will be formatted in") \Zb\Z1$result\Zn.\n\n\
 $(gettext "Are you sure you want to continue ?")" 7 60
 					retval2=$?
 				fi
@@ -1272,7 +1272,7 @@ MBR_ok() {
 	--yesno " $(gettext "A new") $GRUB_CONFIG_FILE $(gettext "has been created"), \
 $(gettext "it has been adapted to launch the Maintenance system of NuTyX"), \
 $(gettext "if you choose") $(gettext "Yes"), \
-$(gettext "an simplify VI editor will allow you to adjust it").\n\n \
+$(gettext "an simplify VI editor will allow you to modify it").\n\n \
 	\Zb\Z4i\Zn  $(gettext "Enter the edit mode") \n\
 	\Zb\Z4Esc\Zn $(gettext "Exit the edit mode") \n\
 	\Zb\Z4:q!\Zn $(gettext "Cancel the modifications and exit VI")\n\
@@ -1333,11 +1333,11 @@ setup_grub() {
 						mkdir $GRUB_CONFIG_DIR 2> /dev/null
 						if [ -f $GRUB_CONFIG_DIR/MBR.original ]; then
 							dialog --title " !!! Oups !!!! " \
-							--msgbox " $(gettext "You already have a copy of the original MBR, it will not be backup") " \
+							--msgbox " $(gettext "You already have a copy of the original MBR, I will not make a backup of it") " \
 							6 50
 						else
 							dialog --title " $(gettext "Good to know") " \
-							--msgbox " $(gettext "A copy of the original MBR is backup in the folder /boot/grub of your NuTyX. It will be then possible to restore it if need") " 10 60
+							--msgbox " $(gettext "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need") " 10 60
 						fi
 						if [ ! -f $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE ]; then
 							cat > $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE << "EOF"
@@ -1369,7 +1369,7 @@ EOF
 							env >> $log_file
 							# Restore MBR
 							dd if=$TMP/MBR of=`cat $TMP/disk` bs=512 count=1 > 2/dev/null
-							dialog --title " $(gettext "Something went wrong probably file system not supported") " \
+							dialog --title " $(gettext "Something went wrong probably the file system is not supported") " \
 							--msgbox "`cat $log_file`" 30 70
 							umount $TMP/boot_partition
 							umount /mnt/hd 2>/dev/null
@@ -1426,16 +1426,16 @@ setup_reboot() {
 	/sbin/reboot -f
 }
 setup_initrd() {
-	dialog --title "   $(gettext "Welcome in the NuTyX installer")   " \
+	dialog --title "   $(gettext "Welcome to the NuTyX installer")   " \
 	--colors --menu "    $(gettext "Main Menu")   "  0 0 0 \
-	"$(gettext "Help")" "$(gettext "How to do") ? " \
+	"$(gettext "Help")" "$(gettext "How to do it") ? " \
 	"$(gettext "Install")" "$(gettext "Install NuTyX")" \
 	"$(gettext "Partitioning")" "$(gettext "Create all your partitions") ($(gettext "optional"))" \
 	"$(gettext "Format")" "$(gettext "Format a partition") ($(gettext "optional"))" \
 	"$(gettext "Boot")" "$(gettext "Configure the boot of the PC") ($(gettext "optional"))" \
 	"$(gettext "Keyboard")" "$(gettext "Configure the keyboard") ($(gettext "optional"))" \
 	"$(gettext "Network")" "$(gettext "Configure the network") ($(gettext "optional"))" \
-	"$(gettext "Clock")" "$(gettext "Configure the clock") ($(gettext "optional"))" \
+	"$(gettext "Clock")" "$(gettext "Date and time settings") ($(gettext "optional"))" \
 	"$(gettext "Console")" "$(gettext "Open a console")" \
 	"$(gettext "Restart")" "$(gettext "Reboot the PC")" \
  	2>$TMP/choix
@@ -1493,17 +1493,17 @@ print_help() {
 	echo "usage: `basename $COMMAND` [options]"
 	echo "options:"
 	echo "   start,                 $(gettext "Start the service")"
-	echo "   -ok,   --check-all     $(gettext "Check the all configuration, return true or false")"
+	echo "   -ok,   --check-all     $(gettext "Checking the configuration, returning true or false")"
 	echo "   -sn,   --show-net      $(gettext "Show the network configuration")"
 	echo "   -sk,   --show-keymap   $(gettext "Show the keyboard configuration")"
-	echo "   -sc,   --show-clock    $(gettext "Show the clock configuration")"
+	echo "   -sc,   --show-clock    $(gettext "Show the date and time settings")"
 	echo "   -sl,   --show-locale   $(gettext "Show the locale and local time adjustment")"
-	echo "   -sa,   --show-all      $(gettext "Show the all configuration")"
+	echo "   -sa,   --show-all      $(gettext "Show all configurations")"
 	echo "   -cl,   --config-lang   $(gettext "Configure the language")"
 	echo "   -ck,   --config-keymap $(gettext "Configure the keyboard")"
 	echo "   -cn,   --config-net    $(gettext "Configure the network")"
-	echo "   -cc,   --config-clock  $(gettext "Configure the clock")"
-	echo "   -cu,   --create-user   $(gettext "add a user to the system")"
+	echo "   -cc,   --config-clock  $(gettext "Date and time settings")"
+	echo "   -cu,   --create-user   $(gettext "Add a user to the system")"
 	echo "   -ca,   --config-all    $(gettext "Configure the all system")"
 }
 initrd_only() {

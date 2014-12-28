@@ -28,10 +28,10 @@ msgid "Network card"
 msgstr "Nätverkskort"
 
 msgid "Select the card"
-msgstr "Välj det kort"
+msgstr "Välj kort"
 
 msgid "Card to configure"
-msgstr "Kort för att konfigurera"
+msgstr "Kort att konfigurera"
 
 msgid "Configuration of"
 msgstr "Konfiguration av"
@@ -46,7 +46,7 @@ msgid "Man"
 msgstr "Man"
 
 msgid "IP address automatically set from DHCP server"
-msgstr "IP adress automatiskt från DHCP-servern"
+msgstr "IP adress häntas automatiskt från DHCP-servern"
 
 msgid "Manually specify parameters"
 msgstr "Ange parametrar manuellt"
@@ -58,7 +58,7 @@ msgid "Enter a broadcast address"
 msgstr "Ange en broadcast-adress"
 
 msgid "in most cases the current value can be used"
-msgstr "i de flesta fall det aktuella värdet kan användas"
+msgstr "i de flesta fall kan det aktuella värdet kan användas"
 
 msgid "Enter the subnet mask"
 msgstr "Ange nätmasken"
@@ -67,7 +67,7 @@ msgid "Enter the gateway address"
 msgstr "Ange gateway-adress"
 
 msgid "it is normally the address of your router access point"
-msgstr "Det är normalt den adressen för din router åtkomstpunkt"
+msgstr "Det är normalt adressen för din router åtkomstpunkt"
 
 msgid "Enter the DNS address"
 msgstr "Ange DNS-adress"
@@ -76,19 +76,19 @@ msgid "DNS Search Suffix"
 msgstr "DNS-sökning Suffix"
 
 msgid "Enter the domain name"
-msgstr "Ange det domännamn"
+msgstr "Ange domännamn"
 
 msgid "this is only need if you are in a subdomain"
-msgstr "detta behöver bara om du är i en underdomän"
+msgstr "detta behövs bara om du är i en underdomän"
 
 msgid "Most of the time it's not need"
-msgstr "Merparten av tiden det inte behöver"
+msgstr "Men oftast behövs det inte göras"
 
 msgid "Start the service"
 msgstr "Starta tjänsten"
 
-msgid "Check the all configuration, return true or false"
-msgstr "Kontrollera all konfiguration, returnera sant eller falskt"
+msgid "Checking the configuration, returning true or false"
+msgstr "Kontrollerar inställningar, returnerar sant eller falskt"
 
 msgid "Show the network configuration"
 msgstr "Visa nätverkskonfigurationen"
@@ -96,17 +96,17 @@ msgstr "Visa nätverkskonfigurationen"
 msgid "Show the keyboard configuration"
 msgstr "Visa tangentbordskonfigurationen"
 
-msgid "Show the clock configuration"
-msgstr "Visar konfigurationen klockan"
+msgid "Show the date and time settings"
+msgstr "Visa tids och datum inställningar"
 
 msgid "Show the locale and local time adjustment"
-msgstr "Visa lokalen och lokal tid justering"
+msgstr "Visa tids zon och tid inställningar"
 
-msgid "Show the all configuration"
-msgstr "Visar all konfiguration"
+msgid "Show all configurations"
+msgstr "Visa all konfiguration"
 
 msgid "Configure the language"
-msgstr "Konfigurerar språket"
+msgstr "Språk inställning"
 
 msgid "Configure the keyboard"
 msgstr "Konfigurera tangentbordet"
@@ -114,11 +114,11 @@ msgstr "Konfigurera tangentbordet"
 msgid "Configure the network"
 msgstr "Konfigurera nätverket"
 
-msgid "Configure the clock"
-msgstr "Konfigurera klocka"
+msgid "Date and time settings"
+msgstr "Datum och tid inställningar"
 
-msgid "add a user to the system"
-msgstr "lägga till en användare i systemet"
+msgid "Add a user to the system"
+msgstr "Lägg till en användare i systemet"
 
 msgid "Configure the all system"
 msgstr "Konfigurera all system"
@@ -138,8 +138,8 @@ msgstr "Maskinvaruklockan är inställd på"
 msgid "Do you want to use this time as Coordinated Universal Time ?"
 msgstr "Vill du använda denna tid som Coordinated Universal Time ?"
 
-msgid "and have the summer/winter time changing automatically"
-msgstr "och har sommar / vintertid förändras automatiskt"
+msgid "so that the summer/winter time is changed automatically"
+msgstr "så att sommar / vintertid förändras automatiskt"
 
 msgid "Please enter the date"
 msgstr "Vänligen ange datum"
@@ -148,10 +148,10 @@ msgid "Please enter the time"
 msgstr "Ange tiden"
 
 msgid "Configuration of the boot of the machine (GRUB)"
-msgstr "Konfiguration av bagageutrymmet på maskinen (GRUB)"
+msgstr "Konfiguration av boot inställingar av maskinen (GRUB)"
 
 msgid "Select the disk on which you want to modify the MBR"
-msgstr "Välj den disk som du vill ändra MBR"
+msgstr "Välj den disk som du vill ändra MBR på"
 
 msgid "Select the partition on which should be located the GRUB files"
 msgstr "Välj den partition som ska placeras på GRUB-filer"
@@ -160,16 +160,49 @@ msgid "Note that the destination partition can contain NuTyX or any other distri
 msgstr "Observera att destinationen partition kan innehålla NuTyX eller någon annan distribution"
 
 msgid "No boot process configured"
-msgstr "Ingen startprocessen konfigureras"
+msgstr "Ingen boot process konfigurerad"
 
 msgid "You have installed NuTyX without configuring the boot process"
-msgstr "Du har installerat NuTyX utan konfiguration av startprocessen"
+msgstr "Du har installerat NuTyX utan konfiguration av boot process"
 
 msgid "Are you sure, you want to cancel the process ?"
 msgstr "Är du säker på att du vill avbryta processen ?"
 
-msgid "You already have a copy of the original MBR, it will not be backup"
-msgstr "Du har redan en kopia av den ursprungliga MBR, kommer det inte vara backup"
+msgid "You already have a copy of the original MBR, I will not make a backup of it"
+msgstr "Du har redan en kopia av den ursprungliga MBR, jag gör ingen backup på den"
+
+msgid "Everything OK, do you want to modify"
+msgstr "Allt är OK, vill du ändra"
+
+msgid "Something went wrong probably the file system is not supported"
+msgstr "Något gick fel, förmodligen stöds inte filsystemet"
+
+msgid "A new"
+msgstr "En ny"
+
+msgid "has been created"
+msgstr "har skapats"
+
+msgid "it has been adapted to launch the Maintenance system of NuTyX"
+msgstr "Den är anpassad för att starta underhålls systemet i NuTyX"
+
+msgid "if you choose"
+msgstr "Om du väljer"
+
+msgid "an simplify VI editor will allow you to modify it"
+msgstr "en förenklad VI editor låter dig ändra den"
+
+msgid "Enter the edit mode"
+msgstr "Starta edit läge"
+
+msgid "Exit the edit mode"
+msgstr "Avsluta edit läge"
+
+msgid "Cancel the modifications and exit VI"
+msgstr "Ångra ändringarna och gå ur VI"
+
+msgid "Save and exit VI"
+msgstr "Spara och gå ur VI"
 
 msgid "Good to know"
 msgstr "Bra att veta"
@@ -177,18 +210,167 @@ msgstr "Bra att veta"
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-msgid "Welcome in the NuTyX installer"
-msgstr "Välkommen i NuTyX installations"
+msgid "Welcome to the NuTyX installer"
+msgstr "Välkommen till NuTyX installationen"
 
 msgid "Create all your partitions"
-msgstr "Skapa alla dina partition"
+msgstr "Skapa alla dina partitioner"
 
 msgid "Format a partition"
 msgstr "Formatera en partition"
 
 msgid "Configure the boot of the PC"
-msgstr "Konfigurera bagageutrymmet på datorn"
+msgstr "Konfigurera datorns boot process"
 
 msgid "Reboot the PC"
 msgstr "Starta om datorn"
 
+msgid "Press OK to reboot the computer"
+msgstr "Tryck OK för att starta om datorn"
+
+msgid "optional"
+msgstr "valfritt"
+
+msgid "Install"
+msgstr "Installera"
+
+msgid "Partitioning"
+msgstr "Partitionering"
+
+msgid "Format"
+msgstr "Formatering"
+
+msgid "Boot"
+msgstr "Boot"
+
+msgid "Keyboard"
+msgstr "Tangentbord"
+
+msgid "Network"
+msgstr "Nätverk"
+
+msgid "Clock"
+msgstr "Klocka"
+
+msgid "Restart"
+msgstr "Omstart"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Choose the disk you want to use for this operation"
+msgstr "Välj hårddisken som du vill använda för denna operation"
+
+msgid "Choose the partition you want to use for this operation"
+msgstr "Välj partition som du vill använda för denna operation"
+
+msgid "Available file systems"
+msgstr "Tillgängliga filsystem"
+
+msgid "Choose the file system you want to use for the partition"
+msgstr "Välj filsystemet som du vill använda för partitionen"
+
+msgid "High performance journaling file system create by SGI"
+msgstr "Högprestandafilsystem skapad av SGI"
+
+msgid "Very stable file system but not maintain anymore"
+msgstr "Mycket stabilt filsystem som inte upprätthålls längre"
+
+msgid "Next generation of Ext3 file system"
+msgstr "Nästa generation av Ext3 filsystemet"
+
+msgid "Journaling version of Ext2 file system"
+msgstr "Journaling version av ext2 filsystem"
+
+msgid "Standard file system Ext2"
+msgstr "Standard fil system Ext2"
+
+msgid "New promising file system"
+msgstr "Nytt lovande fil system"
+
+msgid "Launch the format process ?"
+msgstr "Starta formatierings processen ?"
+
+msgid "The partition"
+msgstr "Partitionen"
+
+msgid "will be formatted in"
+msgstr "Kommer att formateras som"
+
+msgid "Are you sure you want to continue ?"
+msgstr "Är du säker på att du vill fortsätta ?"
+
+msgid "No disk available"
+msgstr "Ingen hårddisk tillgänglig"
+
+msgid "Please stop the PC and install a harddisk"
+msgstr "Stäng datorn och installera en hårddisk"
+
+msgid "No partition available"
+msgstr "Ingen partition tillgänglig"
+
+msgid "Please create/modify yours partitions"
+msgstr "Skapa / ändra dina partitioner"
+
+msgid "Choose your favorite tool"
+msgstr "Välj ditt favorit verktyg"
+
+msgid "Basic partitioning tool"
+msgstr "Grundläggande partitioneringsverktyg"
+
+msgid "Advanced partitioning tool"
+msgstr "Avancerad partitioneringsverktyg"
+
+msgid "Partitioning of the disk"
+msgstr "Partitionering av disken"
+
+msgid "Open a console"
+msgstr "Öppna konsolen"
+
+msgid "Please wait"
+msgstr "Var god vänta"
+
+msgid "This is a very basic tool, do not expect too much"
+msgstr "Detta är ett mycket grundläggande verktyg, förvänta dig inte för mycket"
+
+msgid "It will ask you on which partition you want to install NuTyX"
+msgstr "Den kommer att fråga dig om vilken partition du vill installera NuTyX på"
+
+msgid "If not yet created/formatted, it will prompt you to do so"
+msgstr "Om den ännu inte skapat / formaterad, kommer den att fråga dig att göra det"
+
+msgid "No futur plan to make this installer more sophisticated"
+msgstr "Ingen framtida plan för att göra den här installeraren mer sofistikerade"
+
+msgid "NuTyX goes on"
+msgstr "NuTyX läggs på"
+
+msgid "only ONE partition"
+msgstr "endast en partition"
+
+msgid "ONE exception, GRUB can be part of it, installed on a separate partition or not installed at all"
+msgstr "Ett undantag, GRUB kan vara en del av den, installeras på en separerad partition, eller inte installerad alls"
+
+msgid "As NuTyX users, we recommand you to install GRUB on a separate partition"
+msgstr "Som NuTyX användare, rekommenderar vi dig att installera GRUB på en separat partition"
+
+msgid "To do so"
+msgstr "För att göra så"
+
+msgid "Install GRUB first, then NuTyX"
+msgstr "Installerar GRUB först, sedan NuTyX"
+
+msgid "Have fun"
+msgstr "Ha det så kul"
+
+msgid "Thank you for trying NuTyX"
+msgstr "Tack för att du provar NuTyX"
+
+msgid "Help"
+msgstr "Hjälp"
+
+msgid "How to do it"
+msgstr "Anvisningar"
+
+msgid "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need"
+msgstr "En kopia av original MBR sparas i mappen /boot/grub i din NuTyX. Den kan då återställas om det behövs"

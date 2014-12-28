@@ -88,7 +88,7 @@ msgstr "La plus part du temps ce n'est pas necessaire"
 msgid "Start the service"
 msgstr "Lancer le service"
 
-msgid "Check the all configuration, return true or false"
+msgid "Checking the configuration, returning true or false"
 msgstr "Vérifie toutes les configurations, renvoie true ou false"
 
 msgid "Show the network configuration"
@@ -97,13 +97,13 @@ msgstr "Affiche la configuration réseau"
 msgid "Show the keyboard configuration"
 msgstr "Affiche la configuration du clavier"
 
-msgid "Show the clock configuration"
+msgid "Show the date and time settings"
 msgstr "Affiche la configuration de l'horloge"
 
 msgid "Show the locale and local time adjustment"
 msgstr "Affiche la locale et le configuration de l'heure locale"
 
-msgid "Show the all configuration"
+msgid "Show all configurations"
 msgstr "Affiche toute les configurations"
 
 msgid "Configure the language"
@@ -115,10 +115,10 @@ msgstr "Configure le clavier"
 msgid "Configure the network"
 msgstr "Configure le réseau"
 
-msgid "Configure the clock"
+msgid "Date and time settings"
 msgstr "Configure l'horloge"
 
-msgid "add a user to the system"
+msgid "Add a user to the system"
 msgstr "ajoute un utilisateur au système"
 
 msgid "Configure the all system"
@@ -139,7 +139,7 @@ msgstr "L'horloge matérielle est réglée sur"
 msgid "Do you want to use this time as Coordinated Universal Time ?"
 msgstr "Souhaitez-vous utiliser cette information comme temps universel coordonné ?"
 
-msgid "and have the summer/winter time changing automatically"
+msgid "so that the summer/winter time is changed automatically"
 msgstr "et avoir le changement d'heure d'été automatique"
 
 msgid "Please enter the date"
@@ -169,16 +169,16 @@ msgstr "Vous avez installez NuTyX sans configurer l'amorçage du PC"
 msgid "Are you sure, you want to cancel the process ?"
 msgstr "Etes-vous certain de vouloir annuler l'opération ?"
 
-msgid "You already have a copy of the original MBR, it will not be backup"
+msgid "You already have a copy of the original MBR, I will not make a backup of it"
 msgstr "Vous avez déjà une copie du MBR original, celui-ci ne sera pas sauvegardé"
 
-msgid "A copy of the original MBR is backup in the folder /boot/grub of your NuTyX. It will be then possible to restore it if need"
+msgid "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need"
 msgstr "Une copie du MBR original est sauvegardée dans le dossier /boot/grub de NuTyX. Il sera ainsi possible de la restaurer en cas de necessitée."
 
 msgid "Everything OK, do you want to modify"
 msgstr "Tout s'est bien passé, souhaitez-vous modifier"
 
-msgid "Something went wrong probably file system not supported"
+msgid "Something went wrong probably the file system is not supported"
 msgstr "Quelque chose s'est mal passée, probablement que le système de fichier n'est pas supporté"
 
 msgid "A new"
@@ -193,8 +193,8 @@ msgstr "il a été adapté pour lancer le système de maintenance de NuTyX"
 msgid "if you choose"
 msgstr "si vous choisissez"
 
-msgid "an simplify VI editor will allow you to adjust it"
-msgstr "un éditeur VI simplifié vous permettra de l'ajuster"
+msgid "an simplify VI editor will allow you to modify it"
+msgstr "un éditeur VI simplifié vous permettra de le modifier"
 
 msgid "Enter the edit mode"
 msgstr "Entrer dans le mode édition"
@@ -214,7 +214,7 @@ msgstr "Bon à savoir"
 msgid "Main Menu"
 msgstr "Menu Principal"
 
-msgid "Welcome in the NuTyX installer"
+msgid "Welcome to the NuTyX installer"
 msgstr "Bienvenue dans l'installateur de NuTyX"
 
 msgid "Create all your partitions"
@@ -274,7 +274,7 @@ msgstr "Systèmes de fichiers disponibles"
 msgid "Choose the file system you want to use for the partition"
 msgstr "Choisissez le système de fichiers que vous souhaitez utiliser pour cette partition"
 
-msgid "High performance journal file system create by SGI"
+msgid "High performance journaling file system create by SGI"
 msgstr "Système de fichiers à haute perfomance créé par SGI"
 
 msgid "Very stable file system but not maintain anymore"
@@ -283,7 +283,7 @@ msgstr "Système de fichiers très stable mais qui n'est plus maintenu"
 msgid "Next generation of Ext3 file system"
 msgstr "Nouvelle génération du système de fichiers Ext3"
 
-msgid "Journal version of Ext2 file system"
+msgid "Journaling version of Ext2 file system"
 msgstr "Version journalisée du système de fichiers Ext2"
 
 msgid "Standard file system Ext2"
@@ -298,7 +298,7 @@ msgstr "Lancer le processus de formatage ?"
 msgid "The partition"
 msgstr "La partition"
 
-msgid "will be format in"
+msgid "will be formatted in"
 msgstr "sera formatée en"
 
 msgid "Are you sure you want to continue ?"
@@ -334,7 +334,7 @@ msgstr "Ouvrir une console"
 msgid "Please wait"
 msgstr "Veuillez patienter"
 
-msgid "This is a very straightforward tool, do not expect too much"
+msgid "This is a very basic tool, do not expect too much"
 msgstr "Il s'agit d'un outil très simple, ne vous attendez pas à trop"
 
 msgid "It will ask you on which partition you want to install NuTyX"
@@ -352,16 +352,16 @@ msgstr "NuTyX s'installe sur"
 msgid "only ONE partition"
 msgstr "UNE seule partition"
 
-msgid "ONE exception, grub can be part of it, installed on a separated partition or not installed at all"
+msgid "ONE exception, GRUB can be part of it, installed on a separate partition or not installed at all"
 msgstr "UNE exception, grub peut faire partie de la NuTyX, être installée sur une autre partition ou ne pas être installé"
 
-msgid "As NuTyX users, we recommand you to install GRUB on a separated partition"
+msgid "As NuTyX users, we recommand you to install GRUB on a separate partition"
 msgstr "En tant qu'utilisateur NuTyX, nous vous recommandons d'installer GRUB sur une partition séparée"
 
 msgid "To do so"
 msgstr "Procédez comme ceci"
 
-msgid "Install grub first then NuTyX"
+msgid "Install GRUB first, then NuTyX"
 msgstr "Installez grub d'abord puis NuTyX"
 
 msgid "Have fun"
@@ -373,5 +373,5 @@ msgstr "Merci d'essayer NuTyX"
 msgid "Help"
 msgstr "Aide"
 
-msgid "How to do"
+msgid "How to do it"
 msgstr "Comment procéder"

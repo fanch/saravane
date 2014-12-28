@@ -87,7 +87,7 @@ msgstr "Die meiste Zeit ist es nicht brauchen"
 msgid "Start the service"
 msgstr "Starten Sie den Dienst"
 
-msgid "Check the all configuration, return true or false"
+msgid "Checking the configuration, returning true or false"
 msgstr "Überprüfen Sie die alle Konfigurations, return true oder false"
 
 msgid "Show the network configuration"
@@ -96,13 +96,13 @@ msgstr "Zeigen die Netzwerkkonfiguration"
 msgid "Show the keyboard configuration"
 msgstr "Zeigen die Tastaturkonfiguration"
 
-msgid "Show the clock configuration"
+msgid "Show the date and time settings"
 msgstr "Zeigen die Konfiguration Uhr"
 
 msgid "Show the locale and local time adjustment"
 msgstr "Zeigen das Gebietsschema und local time Einstellung"
 
-msgid "Show the all configuration"
+msgid "Show all configurations"
 msgstr "Zeigen die alle Konfigurations"
 
 msgid "Configure the language"
@@ -114,10 +114,10 @@ msgstr "Die Tastatur konfigurieren"
 msgid "Configure the network"
 msgstr "Konfigurieren Sie die Netzwerk"
 
-msgid "Configure the clock"
+msgid "Date and time settings"
 msgstr "Konfigurieren Sie die Uhr"
 
-msgid "add a user to the system"
+msgid "Add a user to the system"
 msgstr "fügen Sie einen Benutzer zum System"
 
 msgid "Configure the all system"
@@ -138,7 +138,7 @@ msgstr "Die Hardware-Uhr eingestellt ist"
 msgid "Do you want to use this time as Coordinated Universal Time ?"
 msgstr "Möchten Sie diese Zeit als koordinierte Weltzeit nutzen wollen ?"
 
-msgid "and have the summer/winter time changing automatically"
+msgid "so that the summer/winter time is changed automatically"
 msgstr "und haben den Sommer / Winterzeit automatisch ändert"
 
 msgid "Please enter the date"
@@ -168,7 +168,7 @@ msgstr "Sie haben NuTyX ohne die Konfiguration des Bootprozesses installiert"
 msgid "Are you sure, you want to cancel the process ?"
 msgstr "Sind Sie sicher, Sie den Vorgang abbrechen wollen ?"
 
-msgid "You already have a copy of the original MBR, it will not be backup"
+msgid "You already have a copy of the original MBR, I will not make a backup of it"
 msgstr "Sie haben bereits eine Kopie der Original-MBR, wird es nicht sein Backup"
 
 msgid "Good to know"
@@ -177,7 +177,7 @@ msgstr "Gut zu wissen"
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-msgid "Welcome in the NuTyX installer"
+msgid "Welcome to the NuTyX installer"
 msgstr "Willkommen in der NuTyX Installations"
 
 msgid "Create all your partitions"
