@@ -137,6 +137,7 @@ d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
 c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
+d87c242778fcf5ce4598de80a55ded28  xz-5.2.0.tar.xz
 d0456c2c3ea3c356369807eef1e2ae65  xz-5.0.7.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
@@ -157,7 +158,6 @@ ede5166f949d9a07163bc5b086be9759  perl-5.20.1.tar.bz2
 4df8ee253b7f3863ad0b86359cd39c43  gcc-4.9.2.tar.bz2
 948a6e06419a01bd51e97206861595b0  glibc-2.20.tar.xz
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
-48e4e96a60bfed41804aaecf4944f5d9  binutils-2.24-load_gcc_lto_plugin_by_default-1.patch
 d43ab9f680435a7fff35b4ace8d45b80  libcap-2.24.tar.xz
 ba56fb5bfd44acea83fc5dac4a9b7f15  kbd-2.0.2.tar.gz
 f75cca16a38da6caa7d52151f7136895  kbd-2.0.2-backspace-1.patch
