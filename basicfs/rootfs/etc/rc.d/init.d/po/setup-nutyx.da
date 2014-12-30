@@ -99,7 +99,7 @@ msgstr "Viser konfigurationen af tastaturet"
 msgid "Show the date and time settings"
 msgstr "Vise uret konfiguration"
 
-msgid "Show the locale and local time adjustment"
+msgid "Show the timezone and time adjustment"
 msgstr "Viser lokal og lokal tid justering"
 
 msgid "Show all configurations"
@@ -120,7 +120,7 @@ msgstr "Konfigurere uret"
 msgid "Add a user to the system"
 msgstr "tilføje en bruger til systemet"
 
-msgid "Configure the all system"
+msgid "Configure the system"
 msgstr "Konfigurere alle systemet"
 
 msgid "Install NuTyX"
@@ -147,13 +147,13 @@ msgstr "Angiv dato"
 msgid "Please enter the time"
 msgstr "Angiv tid"
 
-msgid "Configuration of the boot of the machine (GRUB)"
+msgid "Configuration of the boot of the computer (GRUB)"
 msgstr "Konfiguration af boot af maskinen (GRUB)"
 
 msgid "Select the disk on which you want to modify the MBR"
 msgstr "Vælg den disk, du ønsker at ændre MBR"
 
-msgid "Select the partition on which should be located the GRUB files"
+msgid "Select the partition on which you want to place the GRUB files"
 msgstr "Vælg den partition, hvor skal placeres GRUB filer"
 
 msgid "Note that the destination partition can contain NuTyX or any other distribution"

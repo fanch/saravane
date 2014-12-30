@@ -99,7 +99,7 @@ msgstr "De toetsenbord configuratie tonen"
 msgid "Show the date and time settings"
 msgstr "De klockconfiguratie tonen"
 
-msgid "Show the locale and local time adjustment"
+msgid "Show the timezone and time adjustment"
 msgstr "Regio tonen en locale tijd instellen"
 
 msgid "Show all configurations"
@@ -120,7 +120,7 @@ msgstr "Configureren van de klok"
 msgid "Add a user to the system"
 msgstr "voeg een gebruiker toe aan het systeem"
 
-msgid "Configure the all system"
+msgid "Configure the system"
 msgstr "Configureren van het hele systeem"
 
 msgid "Install NuTyX"
@@ -147,13 +147,13 @@ msgstr "Vul de datum in"
 msgid "Please enter the time"
 msgstr "Vul de tijd in"
 
-msgid "Configuration of the boot of the machine (GRUB)"
+msgid "Configuration of the boot of the computer (GRUB)"
 msgstr "Configuratie van de boot van de machine (GRUB)"
 
 msgid "Select the disk on which you want to modify the MBR"
 msgstr "Selecteer de schijf waarop u de MBR wil wijzigen"
 
-msgid "Select the partition on which should be located the GRUB files"
+msgid "Select the partition on which you want to place the GRUB files"
 msgstr "Selecteer de partitie voor de GRUB-bestanden"
 
 msgid "Note that the destination partition can contain NuTyX or any other distribution"
@@ -306,7 +306,7 @@ msgstr "Er wordt gevraagd op welke partitie je NuTyx wil installeren"
 msgid "If not yet created/formatted, it will prompt you to do so"
 msgstr "Indien je nog geen hebt gemaakt of gepartitioneerd, wordt je gevraagd dit te doen"
 
-msgid "No futur plan to make this installer more sophisticated"
+msgid "No future plan to make this installer more sophisticated"
 msgstr "Er zijn geen verdere plannen om de installatie-tool meer functies te geven"
 
 msgid "NuTyX goes on"
@@ -330,8 +330,8 @@ msgstr "Installeer je GRUB eerst en daarna pas NuTyx"
 msgid "Have fun"
 msgstr "Veel plezier"
 
-msgid "Thank you for trying NuTyX"
-msgstr "Hartelijk dank om NuTyx te proberen"
+msgid "Thank you for installing NuTyX"
+msgstr "Hartelijk dank om NuTyx te installeren"
 
 msgid "Help"
 msgstr "Hulp"

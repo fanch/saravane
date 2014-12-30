@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#  Copyright (c) 2014 by NuTyX team (http://nutyx.org)
+#  Copyright (c) 2014 by NuTyX team (http://NuTyX.org)
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation; either version 2 of the License, or
@@ -20,7 +20,7 @@
 
 # gettext initialization
 # 
-export TEXTDOMAIN='setup-nutyx'
+export TEXTDOMAIN='setup-NuTyX'
 export TEXTDOMAINDIR='/etc/rc.d/init.d/locale'
 . gettext.sh
 . /lib/lsb/init-functions
@@ -46,10 +46,10 @@ is_true()
 }
 _msgfmt() {
 	echo "locale ${1}" >> ${CARDS}
-	if [ -n /etc/rc.d/init.d/po/setup-nutyx.${1} ]; then
+	if [ -n /etc/rc.d/init.d/po/setup-NuTyX.${1} ]; then
 		mkdir -p $TEXTDOMAINDIR/${1}/LC_MESSAGES
-		msgfmt /etc/rc.d/init.d/po/setup-nutyx.${1} \
-		-o $TEXTDOMAINDIR/${1}/LC_MESSAGES/setup-nutyx.mo
+		msgfmt /etc/rc.d/init.d/po/setup-NuTyX.${1} \
+		-o $TEXTDOMAINDIR/${1}/LC_MESSAGES/setup-NuTyX.mo
 	fi
 }
 calc(){
@@ -198,7 +198,7 @@ EOF
 	fi
 fi
 cat > /etc/sysconfig/network << "EOF"
-HOSTNAME='nutyx'        # Hostname of this machine
+HOSTNAME='NuTyX'        # Hostname of this machine
 MANAGER=''              # Network manager (wicd/networkmanager/cli/nothing)
 NETWORKWAIT='no'        # Wait or not for network
 LINKDELAY='15'          # init delay for initialisation of Networkmanager
@@ -1039,7 +1039,7 @@ check_available_disk() {
 	local DISK_FULL_LIST
 	DISK_FULL_LIST=(`lsblk -p -n -d -o NAME -e 1,3,7,11`)
 	for i in ${DISK_FULL_LIST[@]}; do
-		[ "`lsblk -p -n -d -o LABEL $i`" == "nutyxcd" ] && continue
+		[ "`lsblk -p -n -d -o LABEL $i`" == "NuTyXcd" ] && continue
 		DISK_LIST="$DISK_LIST $i"
 	done
 	if [ -z "$DISK_LIST" ]; then
@@ -1077,7 +1077,7 @@ $(gettext "As NuTyX users, we recommand you to install GRUB on a separate partit
 $(gettext "To do so"): \
 $(gettext "Install GRUB first, then NuTyX") \n\n\
 $(gettext "Have fun") :) \n\n\
-$(gettext "Thank you for trying NuTyX") \
+$(gettext "Thank you for installing NuTyX") \
 " 0 0
 }	
 setup_partition() {
@@ -1169,7 +1169,7 @@ $(gettext "Are you sure you want to continue ?")" 7 60
 		fi
 	fi
 }
-install_nutyx() {
+install_NuTyX() {
 	local DIR REAL FILE
 	cd ${1}/boot
 	MAX=`ls *squashfs|wc -l`
@@ -1241,11 +1241,11 @@ setup_install() {
 					mount $PARTITION $MF || error "$(gettext "mounting") $PARTITION"
 					if [ -d /media/cdrom/isolinux/boot ]; then
 						# Installing from ISO
-						install_nutyx "/media/cdrom/isolinux" "$MF"
+						install_NuTyX "/media/cdrom/isolinux" "$MF"
 					else
 						# Installing from Maintenance this means
 						# TODO the initrd has to be rebuild at configuration time
-						install_nutyx "/" "$MF"
+						install_NuTyX "/" "$MF"
 					fi
 					umount $PARTITION
 					SETUP_INSTALL="yes"
@@ -1420,7 +1420,7 @@ setup_reboot() {
 		umount -f $i > /dev/null 2>&1
 	done
 	umount /media/cdrom 2>/dev/null
-	eject /dev/nutyx-cd 2>/dev/null
+	eject /dev/NuTyX-cd 2>/dev/null
 	dialog --title "    $(gettext "Reboot the PC")    " \
 	--msgbox "  $(gettext "Press OK to reboot the computer")  " 0 0 
 	/sbin/reboot -f
@@ -1497,14 +1497,14 @@ print_help() {
 	echo "   -sn,   --show-net      $(gettext "Show the network configuration")"
 	echo "   -sk,   --show-keymap   $(gettext "Show the keyboard configuration")"
 	echo "   -sc,   --show-clock    $(gettext "Show the date and time settings")"
-	echo "   -sl,   --show-locale   $(gettext "Show the locale and local time adjustment")"
+	echo "   -sl,   --show-locale   $(gettext "Show the timezone and time adjustment")"
 	echo "   -sa,   --show-all      $(gettext "Show all configurations")"
 	echo "   -cl,   --config-lang   $(gettext "Configure the language")"
 	echo "   -ck,   --config-keymap $(gettext "Configure the keyboard")"
 	echo "   -cn,   --config-net    $(gettext "Configure the network")"
 	echo "   -cc,   --config-clock  $(gettext "Date and time settings")"
 	echo "   -cu,   --create-user   $(gettext "Add a user to the system")"
-	echo "   -ca,   --config-all    $(gettext "Configure the all system")"
+	echo "   -ca,   --config-all    $(gettext "Configure the system")"
 }
 initrd_only() {
 	read -r cmdline < /proc/cmdline

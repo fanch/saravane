@@ -99,7 +99,7 @@ msgstr "Zeigen die Tastaturkonfiguration"
 msgid "Show the date and time settings"
 msgstr "Zeigen die Konfiguration Uhr"
 
-msgid "Show the locale and local time adjustment"
+msgid "Show the timezone and time adjustment"
 msgstr "Zeigen das Gebietsschema und local time Einstellung"
 
 msgid "Show all configurations"
@@ -120,7 +120,7 @@ msgstr "Konfigurieren Sie die Uhr"
 msgid "Add a user to the system"
 msgstr "fügen Sie einen Benutzer zum System"
 
-msgid "Configure the all system"
+msgid "Configure the system"
 msgstr "Konfigurieren Sie die gesamte System"
 
 msgid "Install NuTyX"
@@ -147,13 +147,13 @@ msgstr "Bitte geben Sie das Datum"
 msgid "Please enter the time"
 msgstr "Bitte geben Sie die Zeit"
 
-msgid "Configuration of the boot of the machine (GRUB)"
+msgid "Configuration of the boot of the computer (GRUB)"
 msgstr "Konfiguration des Boot der Maschine (GRUB)"
 
 msgid "Select the disk on which you want to modify the MBR"
 msgstr "Wählen Sie das Laufwerk, auf dem Sie den MBR ändern möchten"
 
-msgid "Select the partition on which should be located the GRUB files"
+msgid "Select the partition on which you want to place the GRUB files"
 msgstr "Wählen Sie die Partition, auf der sollte die GRUB-Dateien befinden"
 
 msgid "Note that the destination partition can contain NuTyX or any other distribution"

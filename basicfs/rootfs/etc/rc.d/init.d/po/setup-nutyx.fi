@@ -99,7 +99,7 @@ msgstr "Näytä näppäimistöasetuksilla"
 msgid "Show the date and time settings"
 msgstr "Kellonajan asetukset"
 
-msgid "Show the locale and local time adjustment"
+msgid "Show the timezone and time adjustment"
 msgstr "Näyttää sijainnin ja paikallisen ajan säätö"
 
 msgid "Show all configurations"
@@ -120,7 +120,7 @@ msgstr "Määrittää kellon"
 msgid "Add a user to the system"
 msgstr "lisätä käyttäjän järjestelmään"
 
-msgid "Configure the all system"
+msgid "Configure the system"
 msgstr "Määrittää kaikki järjestelmän"
 
 msgid "Install NuTyX"
@@ -147,13 +147,13 @@ msgstr "Syötä päivämäärä"
 msgid "Please enter the time"
 msgstr "Syötä aika"
 
-msgid "Configuration of the boot of the machine (GRUB)"
+msgid "Configuration of the boot of the computer (GRUB)"
 msgstr "Konfiguraatio pelaa kone (GRUB)"
 
 msgid "Select the disk on which you want to modify the MBR"
 msgstr "Valitse levy, jolle haluat muuttaa MBR"
 
-msgid "Select the partition on which should be located the GRUB files"
+msgid "Select the partition on which you want to place the GRUB files"
 msgstr "Valitse osio, johon tulisi sijaita GRUB tiedostot"
 
 msgid "Note that the destination partition can contain NuTyX or any other distribution"
@@ -342,7 +342,7 @@ msgstr "Se kysyy, johon osioon haluat asentaa NuTyX"
 msgid "If not yet created/formatted, it will prompt you to do so"
 msgstr "Jos ei vielä luonut / alustettu, se pyytää sinua tekemään niin"
 
-msgid "No futur plan to make this installer more sophisticated"
+msgid "No future plan to make this installer more sophisticated"
 msgstr "Ei ole tulevaa suunnitelmaa tehdä tämän asennusohjelman kehittyneemäksi"
 
 msgid "NuTyX goes on"
@@ -366,8 +366,8 @@ msgstr "Asenna GRUB ensin, sitten NuTyX"
 msgid "Have fun"
 msgstr "Pidä hauskaa"
 
-msgid "Thank you for trying NuTyX"
-msgstr "Kiitos että kokeilet NuTyX"
+msgid "Thank you for installing NuTyX"
+msgstr "Kiitos että asennat NuTyX"
 
 msgid "Help"
 msgstr "Apua"
