@@ -1,4 +1,4 @@
-version=1.6.14
+version=1.6.16
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.xz \
 	http://downloads.sourceforge.net/sourceforge/libpng-apng/$name-$version-apng.patch.gz)
