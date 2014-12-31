@@ -1,8 +1,9 @@
-version=2.7
-source=(http://links.twibright.com/download/links-2.7.tar.bz2)
+version=2.9
+source=(http://links.twibright.com/download/links-$version.tar.bz2)
 build() {
 cd $name-$version
-./configure --prefix=/usr --enable-graphics
+./configure --prefix=/usr --enable-graphics \
+--mandir=/usr/share/man
 make
 make DESTDIR=$PKG install
 }
