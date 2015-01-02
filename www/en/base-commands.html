@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
  <head>
-	<!-- En-tête de la page -->
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="../css/nutyx.css" />
-        <title>NuTyX Base commands</title>
- </head>
-    
- <body>
-    <header>
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
-        <ul>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+  <title>NuTyX - The base commands</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href=".">Home</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
             <li><a href="packages.html">Packages</a></li>
-        </ul>
-    </nav>
-  <h2>The base commands...</h2>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
+ <body>
+  <h1>The base commands...</h1>
      <p>To take full advantage of your newly installed NuTyX, here are the MUST commmands that you will have to use everyday. This article explain the essential commands and are NuTyX specifics. We strongly recommand to know them.
      </p>
      <p>NuTyX do not have (yet) a graphical interface tool for administrattion purpose. You will then used the terminal as normal interface. If you are not yet used to it, it's not a big deal, we will explain you the commands to type.
@@ -39,8 +41,7 @@
      </pre>
      <p>the -h give the possibility to printout an idea of all the availables options. They are also <b>--help</b> or <b>help</b> as options to printout the help of the command.
      </p>
-     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> It's good to know that somes commands are actually alias which are simplify command. It's some how a shortcut to the original command. To know all the availables alias, just type in your terminal <b>alias</b>
-     </div>
+     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> It's good to know that somes commands are actually alias which are simplify command. It's some how a shortcut to the original command. To know all the availables alias, just type in your terminal <b>alias</b></div>
    <h2>Add a user</h2>
      <p>To add a user under NuTyX, it's very simple, the command:
      </p>
@@ -54,7 +55,7 @@ User description: James Bond 007</pre>
      <p>If you wish to use the command with the options, those hve to be given in the order user description then user name:
      </p>
      <pre class="command"><kbd>nu "James Bond 007" james</kbd></pre>
-     <h2>Add a software</h2>
+   <h2>Add a software</h2>
      <p>To add a software, they is an alias for you, the command <b>get</b> followed by one or several software(s) names to install will be used:
      </p>
      <pre class="command"><kbd>get firefox</kbd></pre>
@@ -68,20 +69,23 @@ cards diff -b</kbd></pre>
      <pre class="output">synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Difference between installed packages and the depot of binaries:<br /><br />Package                      Installed                   Available in the depot of binaries<br /><br />sylpheed                      3.0.1-1                       3.2.0-1<br /></pre>
      <p>In this exemple, sylpheed could be updated.
      </p>
-     <h2>Updating a package</h2>
+   <h2>Updating a package</h2>
      <p>To update a package, the command <b>cards install -u</b> follow by the package will be used. It's important that the update is available:
      </p>
      <pre class="command"><kbd>cards install -u sylpheed</kbd>
      </pre>
      <p>The alias <b>up</b> is doing the same result.</p>
-     <h2>Conclusion</h2>
+   <h2>Conclusion</h2>
      <p>As you can see the only two commands to knows are:
      </p>
      <pre class="command"><kbd>nu
 cards</kbd></pre>
      <p>This last command has a more detail explaination in another article. I wish you a lot of fun with your new installed NuTyX.</p>
-     <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
-     </div>
-  </div>
+    <hr>
+    <p class="updated">Last updated 2015-01-02 21:21:13</p>
+     <footer>
+      <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+      &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+     </footer>
  </body>
 </html>
