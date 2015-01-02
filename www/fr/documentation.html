@@ -4,63 +4,62 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - documentation</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
-        <ul>
+  <title>NuTyX - Documentation</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="packages.html">Paquets</a></li>
-         </ul>
-         <ul>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-     
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
+ <body>
   <h1>Documentation</h1>      
       
   <table width="100%" cellspacing="0">
-   <tr>
+   <tr class="odd">
     <td width="30%" class="lien_article" ><h3><a class="url" href="base-commands.html">Les commandes de base</a></h3></td><td width="70%">Il n'y a pas encore de gestionnaire de paquets graphique, ces quelques commandes de base vont vous permettre de vous débrouiller très rapidement avec NuTyX</td>
    </tr>
-   <tr>
+   <tr class="even">
     <td width="30%" class="lien_article" ><h3><a class="url" href="saravane-man.html">Manuel de NuTyX de la version saravane</a></h3></td><td width="70%">Manuel de NuTyX version saravane. Vous y trouverez tout ce qu'il faut savoir pour la configuration et l'utiliisation de votre NuTyX</td>
    </tr>
 <!-- <tr>
     <td width="30%" class="lien_article" ><h3><a class="url" href="live.html">Création de son propre Live CD</a></h3></td><td width="70%">Vous souhaitez vous créér votre propre LIVE, avec NuTyX c'est un jeu d'enfant</td>
    </tr> -->
-   <tr>
+   <tr class="odd">
     <td width="30%" class="lien_article" ><h3><a class="url" href="why-contribute.html">Pourquoi contribuer ?</a></h3></td><td width="70%">NuTyX dispose actuellement de quelques <a href="packages.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">1100 applications</a> disponibles en binaires. C'est à la fois beaucoup et pas beaucoup en effet tous les jours ou presque sortent de nouvelles applications sous licence libre (ou pas)</td>
    </tr>
-   <tr>
+   <tr class="even">
     <td width="30%" class="lien_article" ><h3><a class="url" href="bash-basics.html">Quelles sont les connaissances requises ?</a></h3></td><td width="70%">Pour pouvoir contribuer il ne faut pas être un programmeur averti. Quelques notions rudimentaires du langage BASH suffisent, si vous n'avez aucune idée du langage BASH cet article vous expliquera les notions de base pour réaliser une recette sans se prendre la tête</td>
     </tr>
-    <tr>
+    <tr class="odd">
     <td width="30%" class="lien_article" ><h3><a class="url" href="recept.html">Qu'est-ce qu'un port (ou une recette) ?</a></h3></td><td width="70%">Le port est un dossier contenant un certain nombre de fichiers nécessaire pour la construction d'un paquet. La commande pkgmk permet de "construire" le paquet qui sera ensuite installable.</td>
    </tr>
-   <tr>
+   <tr class="even">
     <td width="30%" class="lien_article" ><h3><a class="url" href="port-syntax.html">Syntaxe minimale d'un port</a></h3></td><td width="70%">Voici un petit exemple de recette minimale avec tous les commentaires pour vous permettre de comprendre le principe de fonctionnement</td>
    </tr>
 
-   <tr>
+   <tr class="odd">
     <td width="30%" class="lien_article" ><h3><a class="url" href="build-receipt.html">Exemple pratique de recette</a></h3></td><td width="70%">Un exemple pratique complet d'une recette minimale pour vous permettre de comprendre le principe de fonctionnement</td>
    </tr>
 
-   <tr>
+   <tr class="even">
    </tr>
    <tr>
     <td width="30%" class="lien_article" ><h3><a class="url" href="build-package.html">Construire une recette dans les règles</a></h3></td><td width="70%">Cette section vous explique comment construire depuis zéro une recette pour NuTyX, il vous guide pas à pas.</td>
    </tr>
-   <tr>
+   <tr class="odd">
     <td width="30%" class="lien_article" ><h3><a class="url" href="build-pre.html">Construire sa NuTyX</a></h3></td><td width="70%">Cette section vous explique comment construire depuis zéro une distribution linux, en l'occurance une NuTyX en se basant sur l'excellent manuel en ligne de LFS se trouvant à l'adresse
     <a class="url" href="http://www.linuxfromscratch.org/lfs/view/development">http://www.linuxfromscratch.or...ew/development/</a>. <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Cet article s'adresse à un public maîtrisant sa distribution GNU/linux. Il est d'ailleurs vivement conseillé d'avoir construit une première fois une LFS à la main. <a class="url" href="http://git.tuxfamily.org/?p=nutyx/saravane.git">Ce projet étant en perpétuel évolution</a>, il est  posssible que vous rencontriez des erreurs lors de sa construction.</div> L'article sera divisé en quatres sections:
      <ol>
@@ -71,13 +70,12 @@
      </ol>
     </td>
    </tr>
-   <tr>
+   <tr class="even">
     <td width="30%" class="lien_article" ><h3><a class="url" href="build-kernel.html">Construire son propre kernel</a></h3></td><td  width="70%">Si vous avez choisi de compiler et installer votre propre kernel, suivez pas à pas cet article. Un minimum de connaissance sur votre matériel est recommandé pour mener à bien cette opération.</td>
    </tr>
   </table>
-     
-        <!-- DEBUT FOOTER -->
-     
+  <hr>
+  <p class="updated">Dernière mise à jour 02-01-2015 11:08:13</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
