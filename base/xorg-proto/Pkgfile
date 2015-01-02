@@ -32,7 +32,7 @@ a036dc2fcbf052ec10621fd48b68dbb1  xf86dgaproto-2.1.tar.bz2
 1d716d0dac3b664e5ee20c69d34bc10e  xf86driproto-2.1.1.tar.bz2
 e793ecefeaecfeabd1aed6a01095174e  xf86vidmodeproto-2.3.1.tar.bz2
 9959fe0bfb22a0e7260433b8d199590a  xineramaproto-1.2.1.tar.bz2
-4dc2464bfeade23dab5de38da0f6b1b5  xproto-7.0.26.tar.bz2
+6c3345111a8044f730984988aacfa567  xproto-7.0.27.tar.bz2
 EOF
 for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 	do
