@@ -129,6 +129,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/tcl/d" $LFS/sources/$i
    sed -i "/libtool-/d" $LFS/sources/$i
    sed -i "/tar-/d" $LFS/sources/$i
+   sed -i "/vim-/d" $LFS/sources/$i
    sed -i "/sysklogd-/d" $LFS/sources/$i
 done
 echo "a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
@@ -167,7 +168,6 @@ a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
 79c9b73a01e1dce0a4c28828496ef02c  linux-3.18.1.tar.xz
-fe2962824587070a2ec53f77e40b0fea  r8168-8.038.00.tar.bz2
 88d32360e2ed18e05de9b528ad336fd8  man-db-2.7.1.tar.xz
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
 c1f1db32fb6598d6a93e6e88796a8632  gperf-3.0.4.tar.gz
