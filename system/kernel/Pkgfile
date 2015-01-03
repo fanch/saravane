@@ -32,7 +32,7 @@ if ! [ -d /usr/src/linux-${_version} ]; then
         		cp $SRC/kernel.config ./.config;;
 	esac
 
-make menuconfig
+# make menuconfig
 fi
 make || make -j1
 
