@@ -68,9 +68,14 @@ ln -s lib $WDIR/lib64
 if [ -f /lib/lsb/init-functions ]; then
   cp /lib/lsb/init-functions $WDIR/lib/lsb/init-functions
 fi
-if [ -f /etc/fstab ]; then
-  cp /etc/fstab $WDIR/etc/fstab
-fi
+
+cat > $WDIR/etc/fstab << "EOF"
+proc           /proc        proc     nosuid,noexec,nodev 0     0
+sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
+devpts         /dev/pts     devpts   gid=5,mode=620      0     0
+tmpfs          /run         tmpfs    defaults            0     0
+devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
+EOF
 
 # echo is a bit wird
 cp /bin/echo $WDIR/bin/echo
