@@ -26,12 +26,12 @@ rm -rf $PKG/usr/share/info/dir
 mkdir $PKG/lib
 for lib in libopcodes libbfd
 do
-	mv $PKG/usr/lib/$lib-2.24.so \
-	$PKG/lib/$lib-2.24.so
-	ln -s $lib-2.24.so  $PKG/lib/$lib
-	ln -s ../../lib/$lib-2.24.so \
-	$PKG/usr/lib/$lib-2.24.so
-	ln -s ../../lib/$lib-2.24.so \
+	mv $PKG/usr/lib/$lib-$version.so \
+	$PKG/lib/$lib-$version.so
+	ln -s $lib-$version.so  $PKG/lib/$lib
+	ln -s ../../lib/$lib-$version.so \
+	$PKG/usr/lib/$lib-$version.so
+	ln -s ../../lib/$lib-$version.so \
 	$PKG/usr/lib/$lib
 done
 }
