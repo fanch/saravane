@@ -1,6 +1,6 @@
-version=2014
+version=2015.1
 PKGMK_GROUPS=(man)
-source=(http://downloads.nutyx.org/files/nutyx-basicfs-20141230.tar.bz2) 
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-20150103.tar.bz2) 
 build () {
 cd nutyx-basicfs/nutyx-saravane-basicfs/rootfs
 mv * $PKG/
