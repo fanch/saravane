@@ -1,4 +1,4 @@
-version=2.7.8
+version=2.7.9
 PKGMK_GROUPS=(devel man doc)
 
 _pybasever=2.7
