@@ -1,4 +1,4 @@
-version=10.3.5
+version=10.4.1
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-add_xdemos-1.patch)
@@ -11,12 +11,9 @@ patch -Np1 -i ../MesaLib-$version-add_xdemos-1.patch
 --enable-texture-float \
 --enable-gles1 \
 --enable-gles2 \
---enable-openvg \
 --enable-osmesa \
 --enable-xa \
 --enable-gbm \
---enable-gallium-egl \
---enable-gallium-gbm \
 --enable-glx-tls \
 --with-egl-platforms="drm,x11" \
 --with-gallium-drivers="nouveau,r300,r600,radeonsi,svga,swrast"
