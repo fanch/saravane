@@ -1,12 +1,8 @@
-version=1.1
-
+version=1.2
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libxshmfence-$version.tar.bz2)
-
 build() {
-	cd libxshmfence-$version
-
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-
-	make
-	make DESTDIR=$PKG install
+cd libxshmfence-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
 }
