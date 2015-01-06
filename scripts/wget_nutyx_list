@@ -9,6 +9,7 @@ http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1j-fix_par
 http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
+http://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz
 http://ftp.gnu.org/gnu/gettext/gettext-0.19.4.tar.xz
 http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 http://ftp.gnu.org/gnu/grep/grep-2.21.tar.xz
@@ -51,7 +52,7 @@ http://downloads.nutyx.org/files/ca-certificates-20141201.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.2.0.tar.xz
 http://downloads.nutyx.org/files/cards-0.10.82.1.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20150103.tar.bz2
+http://downloads.nutyx.org/files/nutyx-basicfs-20150106.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
