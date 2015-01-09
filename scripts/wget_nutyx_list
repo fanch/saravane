@@ -6,7 +6,6 @@ http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
 http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1j-fix_parallel_build-1.patch
-http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-4.9.1-upstream_fixes-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
 http://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz
