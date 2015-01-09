@@ -5,50 +5,52 @@
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
   <title>NuTyX - Préparaton de la construction</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-       
-    <nav>
-       <ul>
+   <table>
+    <tr>
+     <td width="30%">
+         <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+     </td>
+     <td>
+      <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-
-   <h2>Préparation de la construction</h2>
+      </nav>
+     </td>
+    </tr>
+   </table>
+  </head>
+  <hr>
+  <body>   
+   <h1>Préparation de la construction</h1>
     <p>
     Pour pouvoir commencer la première pass sans trop de soucis, nous allons voir les préparatifs à faire. C'est assez direct.
+    </p>
     <p>
     Normalement si l'on construit une linux, il faut prévoir une partition pour y mettre sa construction. Ce n'est cependant pas indispensable. On peut très bien construire la distribution dans un dossier et ensuite faire une sauvegarde de son contenu sur une clé USB ou directement utiliser la commande rsync pour transférer sur la partition ou le disque de destination.
+    </p>
     <p>
     Donc si vous décidez d'utilisez une partition, il faut la formater dans le système de fichier de votre choix ensuite la monter l sur le dossier qui est défini par la variable LFS.
+    </p>
     <p>
     Dans tous les articles, on utilisera le même dossier:
+    </p>
     <pre class="command"><kbd>/mnt/lfs</kbd></pre>
     Une fois la partition formatée, il suffit de créér le dossier et de monter la partition.  Dans mon exemple, je choisis la partition Nr 2 du premier disque, ajustez cette valeur à votre choix
     <pre class="command"><kbd>mkdir /mnt/lfs
 mount /dev/sda2 /mnt/lfs</kbd></pre>
     Pensez juste à toujours monter la partition avant de commencer la pass1 ou 2. Une fois la partition montée. On peut se lancer dans la première pass
- 
   <div class="pied_page"><a class="url" href="build-pass-1.html">Il est temps de commencer la pass 1...</a>
   </div>
+  <hr>
+  <p class="updated">Dernière mise à jour 07-01-2015 21:34:13</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
     </footer>
  </body>
 </html>
-
