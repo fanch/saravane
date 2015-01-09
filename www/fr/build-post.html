@@ -4,34 +4,30 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Post-construction et configuration</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-       
-    <nav>
-       <ul>
+  <title>NuTyX - Post-construction et génération de l'iso</title>
+   <table>
+    <tr>
+     <td width="30%">
+         <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+     </td>
+     <td>
+      <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-
-
-   <h2>Post-construction et configuration de la NuTyX</h2>
-    Tous les paquets d'un système de base sont désormais disponible. On peut finaliser et booter sur la NuTyX
-    </br></br>
+      </nav>
+     </td>
+    </tr>
+   </table>
+  </head>
+  <hr>
+  <body>
+   <h1>Post-construction et génération de l'iso</h1>
+    <p>Tous les paquets d'un système de base sont désormais disponible. On peut finaliser et produire une ISO installable de notre NuTyX</p>
   <ol>
    <li>On commence par réentrer correctement dans la NuTyX</li>
 <pre class="command"><kbd>exit</kbd></pre>
@@ -44,42 +40,105 @@ Doit retourner
 /bin/bash --login</kbd></pre>
 Aucune erreur ne doit apparaître:
 <pre class="output">root [ / ]# </pre>
-   <li>Il faut supprimer le lien bin pour profiter des scripts définitifs</li>
-<pre class="command"><kbd>cd
-rm bin</kbd></pre>
-    <li>On produit enfin l'initrd indispensable pour le démarrage de la saravane</li>
-<pre class="command"><kbd>mkinitramfs</kbd></pre>
-    <li>il suffit d'ajouter une entrée dans le menu.lst ou grub.cfg </li>
-    Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon : </br>
-    <pre class="command"><kbd>title NuTyX - Saravane sur sda2
-    root (hd0,1)
-    kernel /boot/kernel root=/dev/sda2 ro quiet rootdelay=5
-    initrd /boot/initrd
-    </kbd></pre>
-    Si vous avez déjà grub 2 installé, il suffit juste de modifier votre grub.cfg selon :
-    <pre class="command"><kbd>menuentry "NuTyX - Saravane sur /dev/sda2" {
-    set root=(hd0,2)
-    linux /boot/kernel root=/dev/sda2 ro quiet rootdelay=5
-    initrd /boot/initrd
-    }
-    
-    menuentry "Windows 8" {
-    set root=(hd0,3)
-    chainloader (hd0,3)+1
-    }</kbd></pre>
-    <li>On termine par spécifier la bonne partition dans le fichier /etc/fstab</li>
-<pre class="command"><kbd>echo "/dev/sda2    /    reiserfs  defaults   0   1" >> /etc/fstab</kbd></pre>
-A vous d'ajuster la partition  et le système de fichiers utilisé
+   <li>On commence par adapter le fichier cards.conf. En effet, on utilisera désormais uniquement les recettes issues du projet git. Adaptez si necessaire la langue et l'arch (<b>i686</b> si en 32 bits).</li>
+   <pre class="command"><kbd>cat > /etc/cards.conf << "EOF"
+dir /root/saravane/base
+dir /root/saravane/system
+logdir /var/log/pkgbuild
+arch x86_64
+locale fr
+base /root/saravane/system
+EOF</kbd></pre>
+   <li>Il faut sauvegarder les binaires produits. Afin de réduire la taille de l'iso qui sera produite, ceux-ci seront supprimés.</li>
+<pre class="command"><kbd>rsync -a /root/saravane/system /system</kbd></pre>
+   <p>Aucune erreur ne doit apparaître</p>
+    <li>On peut effacer les binaires du git</li>
+    <pre class="command"><kbd>find /root/saravane/system/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
+   <p>Aucune erreur ne doit apparaître</p>
+    <li>On déplace les logs qui ne doivent pas se trouver dans l'iso toujours pour une question de place</li>
+    <pre class="command"><kbd>mv /root/log /log</kbd></pre>
+    <li>On produit maintenant les fichiers squashfs qui seront utilisés par l'iso</li>
+<pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
+cd /
+for dir in opt bin etc lib root run sbin usr var
+do 
+  mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
+done</kbd></pre>
+    <li>On produit l'initrd.</li>
+    <pre class="command"><kbd>mkinitramfs</kbd></pre>
+    <pre class="output">Creating initrd... done</pre>
+    <li>On déplace celle-ci ainsi que le kernel au bon endroit</li>
+    <pre class="command"><kbd>mv boot/kernel-3.18.1 ISO/isolinux/kernel
+mv boot/initrd ISO/isolinux/</kbd></pre>
+    <li>On ajoute les fichiers necessaires au fonctionnement de l'iso</li>
+    <pre class="command"><kbd>cp -av /root/saravane/iso/isolinux/* /ISO/isolinux/</kbd></pre>
+    <pre class="output">'/root/saravane/iso/isolinux/boot.cat' -> '/ISO/isolinux/boot.cat'
+'/root/saravane/iso/isolinux/boot.msg' -> '/ISO/isolinux/boot.msg'
+'/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
+'/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
+    <li>Une petite simplification dans le script <b>mkiso</b> est à faire pour l'instant. Elle sera ajoutée dans la prochaine version</li>
+    <pre class="command"><kbd>sed -i "s/ROOTFS/LFS/" /root/saravane/scripts/mkiso
+sed -i "/^LFS=/d" /root/saravane/scripts/mkiso</kbd></pre>
+    <li>On peut maintenant sortir de la saravane pour produire l'iso.</li>
+    <pre class="command"><kbd>exit</kbd></pre>
+    <li>On peut enfin générer notre ISO dont la version est à la date du jour.</li>
+    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" />Avant de lancer la prochaine commande, assurez-vous que vous avez bien la variable <b>LFS</b> configurée et que les commandes <b>mkisofs</b> et <b>isohybrid</b> sont à disposition sur votre linux principale. Elles sont respectivement dans les paquets <b>cdrkit</b> et <b>syslinux</b>.</div>
+    <pre class="command"><kbd>sh $LFS/root/saravane/scripts/mkiso saravane-`date +%Y%m%d`</kbd></pre>
+    <pre class="output">Warning: creating filesystem that does not conform to ISO-9660.
+I: -input-charset not specified, using utf-8 (detected in locale settings)
+Size of boot image is 4 sectors -> No emulation
+  3.82% done, estimate finish Fri Jan  9 21:46:48 2015
+  7.63% done, estimate finish Fri Jan  9 21:46:48 2015
+ 11.44% done, estimate finish Fri Jan  9 21:46:48 2015
+ 15.25% done, estimate finish Fri Jan  9 21:46:48 2015
+ 19.06% done, estimate finish Fri Jan  9 21:46:48 2015
+ 22.88% done, estimate finish Fri Jan  9 21:46:48 2015
+ 26.68% done, estimate finish Fri Jan  9 21:46:48 2015
+ 30.50% done, estimate finish Fri Jan  9 21:46:48 2015
+ 34.31% done, estimate finish Fri Jan  9 21:46:48 2015
+ 38.12% done, estimate finish Fri Jan  9 21:46:48 2015
+ 41.94% done, estimate finish Fri Jan  9 21:46:48 2015
+ 45.74% done, estimate finish Fri Jan  9 21:46:48 2015
+ 49.56% done, estimate finish Fri Jan  9 21:46:48 2015
+ 53.37% done, estimate finish Fri Jan  9 21:46:48 2015
+ 57.19% done, estimate finish Fri Jan  9 21:46:48 2015
+ 60.99% done, estimate finish Fri Jan  9 21:46:48 2015
+ 64.81% done, estimate finish Fri Jan  9 21:46:48 2015
+ 68.62% done, estimate finish Fri Jan  9 21:46:48 2015
+ 72.43% done, estimate finish Fri Jan  9 21:46:48 2015
+ 76.24% done, estimate finish Fri Jan  9 21:46:48 2015
+ 80.06% done, estimate finish Fri Jan  9 21:46:48 2015
+ 83.86% done, estimate finish Fri Jan  9 21:46:48 2015
+ 87.68% done, estimate finish Fri Jan  9 21:46:48 2015
+ 91.49% done, estimate finish Fri Jan  9 21:46:48 2015
+ 95.31% done, estimate finish Fri Jan  9 21:46:48 2015
+ 99.11% done, estimate finish Fri Jan  9 21:46:48 2015
+Total translation table size: 2048
+Total rockridge attributes bytes: 1751
+Total directory bytes: 4096
+Path table size(bytes): 38
+Max brk space used 28000
+131167 extents written (256 MB)</pre>
+   <li>Vous avez désormais une ISO qui se trouve dans le dossier $LFS</li>
+   <pre class="command"><kbd>ls $LFS/</kbd></pre>
+   <pre class="output">bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso     root  sources  system  usr
+boot  home  lib64  NuTyX_x86_64-saravane-20150109.md5sum  run   srv      tmp     var
+dev   ISO   mnt    proc                                   sbin  sys      tools</pre>
+   <li>Il ne vous reste plus qu'à la transférer sur une clé usb et la tester</li>
+   <pre class="command"><kbd>dd if=$LFS/NuTyX_x86_64-saravane-20150109.iso of=/dev/sdb</kbd></pre>
+   <pre class="output">526336+0 enregistrements lus
+526336+0 enregistrements écrits
+269484032 octets (269 MB) copiés, 67.3208 s, 4.0 MB/s</pre>
    </ol>
-    Si votre NuTyX boot correctement et que le réseau fonctionne, vous pouvez supprimez les dossier /sources et /tools:
-<pre class="command"><kbd> rm -r /{sources,tools}</kbd></pre>
-    </br></br>
-Félicitations, vous avez maintenant entre les mains une NuTyX de base prête à l'emploi.
-  </div>
-    <footer>
+    <p>Félicitations, vous avez maintenant entre les mains une ISO NuTyX de base prête à être installée sur toutes vos machines.</p>
+    <hr>
+    <p class="updated">Dernière mise à jour 09-01-2015 21:55:40</p>
+     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>
-

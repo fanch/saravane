@@ -4,71 +4,140 @@
 	<!-- En-tête de la page -->
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../css/nutyx.css" />
-        <title>NuTyX-Documentation</title>
-    </head>
-    
- <body>
-    <header>
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
-        <ul>
-            <li><a href=".">Home</a></li>
+        <title>NuTyX - Post-construction and generation of the iso</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
             <li><a href="packages.html">Packages</a></li>
-        </ul>
-    </nav>
-  <h2>Post-construction and configuration of NuTyX</h2>
-    All the packages of a base system are now available. We can finalise and boot on NuTyX
-    </br></br>
-  <ol>
-   <li>We start to re-enter in the NuTyX</li>
-<pre class="command"><kbd>exit</kbd></pre>
-   <li>We re-define if needed the LFS variable</li>
-<pre class="command"><kbd>echo $LFS</kbd></pre>
-must return:
-<pre class="output">/mnt/lfs</pre>
-   <li>We can now enter in the new NuTyX to finalise the job</li>
-<pre class="command"><kbd>chroot $LFS /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u: \w\$' \
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
+ <body>
+  <h1>Post-construction and generation of the iso</h1>
+   <p>All the packages of a base system are now available. We can finalise and produce an installable ISO of our NuTyX</p>
+   <ol>
+    <li>We start to re-enter in the NuTyX</li>
+    <pre class="command"><kbd>exit</kbd></pre>
+    <li>We re-define if needed the LFS variable</li>
+    <pre class="command"><kbd>echo $LFS</kbd></pre>
+must return
+    <pre class="output">/mnt/lfs</pre>
+    <li>We can now enter in the new NuTyX to finalise the job</li>
+    <pre class="command"><kbd>chroot $LFS /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u: \w\$' \
 /bin/bash --login</kbd></pre>
 No error should be print:
-<pre class="output">root [ / ]# </pre>
-   <li>We can delete now the link <b>bin</b> to take advantage of the final scripts</li>
-<pre class="command"><kbd>cd
-rm bin</kbd></pre>
-   <li>We produce an new initrd needed for the boot and the final configuration</li>
-<pre class="command"><kbd>mkinitramfs</kbd></pre>
-   <li>We add an entry to the menu.lst or grub.cfg file regarding the version of the grub</li>
+    <pre class="output">root [ / ]# </pre>
+    <li>We begin by adjusting the cards.conf file. We used from now on only the recept coming from the git project. You need to adapt the language and arch if necessary (<b>i686</b> for the 32 bits version).</li>
+    <pre class="command"><kbd>cat > /etc/cards.conf << "EOF"
+dir /root/saravane/base
+dir /root/saravane/system
+logdir /var/log/pkgbuild
+arch x86_64
+locale fr
+base /root/saravane/system
+EOF</kbd></pre>
+    <li>We will save the produced binaries. To reduce the size of the iso, those will be removed.</li>
+    <pre class="command"><kbd>rsync -a /root/saravane/system /system</kbd></pre>
+    <p>no error should be printout</p>
+    <li>We can delete the binaries from the git</li>
+    <pre class="command"><kbd>find /root/saravane/system/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
+    <p>no error should be printout</p>
+    <li>We move the logs, they don't need to be in the iso, still for a space reason</li>
+    <pre class="command"><kbd>mv /root/log /log</kbd></pre>
+    <li>We produce the squashfs files used by the iso</li>
+    <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
+cd /
+for dir in opt bin etc lib root run sbin usr var
+do
+  mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
+done</kbd></pre>
+    <li>We produce an new initrd needed for the boot and the final configuration</li>
+    <pre class="command"><kbd>mkinitramfs</kbd></pre>
+    <pre class="output">Creating initrd... done</pre>
+    <li>We move the initrd and the kernel at the right place</li>
+    <pre class="command"><kbd>mv boot/kernel-3.18.1 ISO/isolinux/kernel
+mv boot/initrd ISO/isolinux/</kbd></pre>
+    <li>We add the necessary files for the iso</li>
+    <pre class="command"><kbd>cp -av /root/saravane/iso/isolinux/* /ISO/isolinux/</kbd></pre>
+    <pre class="output">'/root/saravane/iso/isolinux/boot.cat' -> '/ISO/isolinux/boot.cat'
+'/root/saravane/iso/isolinux/boot.msg' -> '/ISO/isolinux/boot.msg'
+'/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
+'/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
+    <li>A little simplification in the script <b>mkiso</b>. It will include in the next version</li>
+    <pre class="command"><kbd>sed -i "s/ROOTFS/LFS/" /root/saravane/scripts/mkiso
+sed -i "/^LFS=/d" /root/saravane/scripts/mkiso</kbd></pre>
+    <li>We can now go out of NuTyX saravane and produce the iso</li>
+    <pre class="command"><kbd>exit</kbd></pre>
+    <li>We can finally generate our ISO where the version is the date of today.</li>
+    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" /><img alt="[Important]" src="../graphics/caution.gif" />Before you start the next command, make shure the <b>LFS</b> variable is still set and the commands <b>mkisofs</b> and <b>isohybrid</b> are available on your host linux distribution. They are belonging to <b>cdrkit</b> and <b>syslinux</b> packages.</div>
+    <pre class="command"><kbd>sh $LFS/root/saravane/scripts/mkiso saravane-`date +%Y%m%d`</kbd></pre>
+    <pre class="output">Warning: creating filesystem that does not conform to ISO-9660.
+I: -input-charset not specified, using utf-8 (detected in locale settings)
+Size of boot image is 4 sectors -> No emulation
+  3.82% done, estimate finish Fri Jan  9 21:46:48 2015
+  7.63% done, estimate finish Fri Jan  9 21:46:48 2015
+ 11.44% done, estimate finish Fri Jan  9 21:46:48 2015
+ 15.25% done, estimate finish Fri Jan  9 21:46:48 2015
+ 19.06% done, estimate finish Fri Jan  9 21:46:48 2015
+ 22.88% done, estimate finish Fri Jan  9 21:46:48 2015
+ 26.68% done, estimate finish Fri Jan  9 21:46:48 2015
+ 30.50% done, estimate finish Fri Jan  9 21:46:48 2015
+ 34.31% done, estimate finish Fri Jan  9 21:46:48 2015
+ 38.12% done, estimate finish Fri Jan  9 21:46:48 2015
+ 41.94% done, estimate finish Fri Jan  9 21:46:48 2015
+ 45.74% done, estimate finish Fri Jan  9 21:46:48 2015
+ 49.56% done, estimate finish Fri Jan  9 21:46:48 2015
+ 53.37% done, estimate finish Fri Jan  9 21:46:48 2015
+ 57.19% done, estimate finish Fri Jan  9 21:46:48 2015
+ 60.99% done, estimate finish Fri Jan  9 21:46:48 2015
+ 64.81% done, estimate finish Fri Jan  9 21:46:48 2015
+ 68.62% done, estimate finish Fri Jan  9 21:46:48 2015
+ 72.43% done, estimate finish Fri Jan  9 21:46:48 2015
+ 76.24% done, estimate finish Fri Jan  9 21:46:48 2015
+ 80.06% done, estimate finish Fri Jan  9 21:46:48 2015
+ 83.86% done, estimate finish Fri Jan  9 21:46:48 2015
+ 87.68% done, estimate finish Fri Jan  9 21:46:48 2015
+ 91.49% done, estimate finish Fri Jan  9 21:46:48 2015
+ 95.31% done, estimate finish Fri Jan  9 21:46:48 2015
+ 99.11% done, estimate finish Fri Jan  9 21:46:48 2015
+Total translation table size: 2048
+Total rockridge attributes bytes: 1751
+Total directory bytes: 4096
+Path table size(bytes): 38
+Max brk space used 28000
+131167 extents written (256 MB)</pre>
+   <li>You have now an ISO located int the $LFS folder</li>
+   <pre class="command"><kbd>ls $LFS/</kbd></pre>
+   <pre class="output">bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso     root  sources  system  usr
+boot  home  lib64  NuTyX_x86_64-saravane-20150109.md5sum  run   srv      tmp     var
+dev   ISO   mnt    proc                                   sbin  sys      tools</pre>
+   <li>You just need to transfer it to your usb key and test it</li>
+   <pre class="command"><kbd>dd if=$LFS/NuTyX_x86_64-saravane-20150109.iso of=/dev/sdb</kbd></pre>
+   <pre class="output">526336+0 records in
+526336+0 records out
+269484032 bytes (269 MB) copied, 66.4757 s, 4.1 MB/s</pre>
   </ol>
-    <pre class="command"><kbd>title NuTyX on sda2
-    root (hd0,1)
-    kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
-    initrd /boot/initrd</kbd></pre>
-    If you have allready grub 2 installed, just modify your grub.cfg like:
-    <pre class="command"><kbd>menuentry "NuTyX on /dev/sda2" {
-    set root=(hd0,2)
-    linux /boot/kernel root=/dev/sda2 ro quiet
-    initrd /boot/initrd
-    }
-
-    menuentry "Windows 8" {
-    set root=(hd0,3)
-    chainloader (hd0,3)+1
-    }</kbd></pre>
-    If your NuTyX boot correctly and the network works, you can safely delete the /sources and /tools folders
-<pre class="command"><kbd> rm -r /{sources,tools}</kbd></pre>
-    </br></br>
-Congratulations, you have now a new base system NuTyX in your hands ready to use.
-  </div>
-   <footer>
+   <p>Congratulations, you have now a new base system NuTyX in your hands ready to be installed on all yours machines.</p>
+  <hr>
+  <p class="updated">Last updated on 2015-01-09 22:40:00</p>
+    <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>
