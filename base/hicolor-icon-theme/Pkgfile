@@ -1,6 +1,6 @@
 version=0.14
 
-source=(  http://icon-theme.freedesktop.org/releases/$name-$version.tar.gz)
+source=(  http://icon-theme.freedesktop.org/releases/$name-$version.tar.xz)
 
 
 build() {
