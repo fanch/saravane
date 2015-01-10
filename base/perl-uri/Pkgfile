@@ -1,5 +1,5 @@
 version=1.65
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-$version.tar.gz)
+source=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$version.tar.gz)
 
 build() {
 cd URI-$version
