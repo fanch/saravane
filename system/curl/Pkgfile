@@ -1,4 +1,4 @@
-version=7.39.0
+version=7.40.0
 
 source=(http://curl.haxx.se/download/$name-$version.tar.bz2)
 
