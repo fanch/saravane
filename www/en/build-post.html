@@ -28,13 +28,13 @@
   <h1>Post-construction and generation of the iso</h1>
    <p>All the packages of a base system are now available. We can finalise and produce an installable ISO of our NuTyX</p>
    <ol>
-    <li>We start to re-enter in the NuTyX</li>
+    <li>We start to exit from the NuTyX saravane</li>
     <pre class="command"><kbd>exit</kbd></pre>
-    <li>We re-define if needed the LFS variable</li>
+    <p>We check if the LFS variable is still set</p>
     <pre class="command"><kbd>echo $LFS</kbd></pre>
-must return
+    <p>It must return something</p>
     <pre class="output">/mnt/lfs</pre>
-    <li>We can now enter in the new NuTyX to finalise the job</li>
+    <li>We can now reenter in the new NuTyX to finalise the job</li>
     <pre class="command"><kbd>chroot $LFS /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u: \w\$' \
 /bin/bash --login</kbd></pre>
 No error should be print:
@@ -48,14 +48,44 @@ arch x86_64
 locale fr
 base /root/saravane/system
 EOF</kbd></pre>
-    <li>We will save the produced binaries. To reduce the size of the iso, those will be removed.</li>
-    <pre class="command"><kbd>rsync -a /root/saravane/system /system</kbd></pre>
-    <p>no error should be printout</p>
-    <li>We can delete the binaries from the git</li>
-    <pre class="command"><kbd>find /root/saravane/system/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
-    <p>no error should be printout</p>
-    <li>We move the logs, they don't need to be in the iso, still for a space reason</li>
-    <pre class="command"><kbd>mv /root/log /log</kbd></pre>
+    <li>We update the MD5SUM files from the base recepts in the <b>/root/saravane/base</b> directory</li>
+    <pre class="command"><kbd>cd /root/saravane/base
+for i in *
+do
+cd $i
+pkgmk -us||break
+cd ..
+done</kbd></pre>
+    <pre class="output">...
+..
+.
+=======> PKGMK_INSTALL: no
+=======> PKGMK_WORK_DIR: /root/saravane/base/zsh/work
+=======> PKGMK_SOURCE_DIR: /root/saravane/base/zsh
+=======> WARNING: CLEAN IGNORED
+=======> WARNING: KEEP SOURCES
+=======> PKGMK_UPDATE_SIGNATURE: yes
+=======> PKGMK_IGNORE_FOOTPRINT: yes
+=======> PKGMK_IGNORE_MD5SUM: yes
+=======> MD5SUM file will be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: zsh
+=======> version: 5.0.7</pre>
+    <li>We produce an new initrd</li>
+    <pre class="command"><kbd>mkinitramfs</kbd></pre>
+    <pre class="output">Creating initrd... done</pre>
+    <li>We add all the necessary files for a working iso</li>
+    <pre class="command"><kbd>cp -av /root/saravane/iso ISO</kbd></pre>
+    <pre class="output">'/root/saravane/iso' -> '/ISO'
+'/root/saravane/iso/isolinux' -> '/ISO/isolinux'
+'/root/saravane/iso/isolinux/boot.cat' -> '/ISO/isolinux/boot.cat'
+'/root/saravane/iso/isolinux/boot.msg' -> '/ISO/isolinux/boot.msg'
+'/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
+'/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
+    <pre class="command"><kbd>cp -v /boot/kernel-* /ISO/isolinux/kernel</kbd></pre>
+    <pre class="output">'/boot/kernel-3.18.2' -> '/ISO/isolinux/kernel'</pre>
+    <pre class="command"><kbd>cp -v /boot/initrd /ISO/isolinux/initrd</kbd></pre>
+    <pre class="output">'/boot/initrd' -> '/ISO/isolinux/initrd'</pre>
     <li>We produce the squashfs files used by the iso</li>
     <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
 cd /
@@ -63,21 +93,6 @@ for dir in opt bin etc lib root run sbin usr var
 do
   mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
 done</kbd></pre>
-    <li>We produce an new initrd needed for the boot and the final configuration</li>
-    <pre class="command"><kbd>mkinitramfs</kbd></pre>
-    <pre class="output">Creating initrd... done</pre>
-    <li>We move the initrd and the kernel at the right place</li>
-    <pre class="command"><kbd>mv boot/kernel-3.18.1 ISO/isolinux/kernel
-mv boot/initrd ISO/isolinux/</kbd></pre>
-    <li>We add the necessary files for the iso</li>
-    <pre class="command"><kbd>cp -av /root/saravane/iso/isolinux/* /ISO/isolinux/</kbd></pre>
-    <pre class="output">'/root/saravane/iso/isolinux/boot.cat' -> '/ISO/isolinux/boot.cat'
-'/root/saravane/iso/isolinux/boot.msg' -> '/ISO/isolinux/boot.msg'
-'/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
-'/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
-    <li>A little simplification in the script <b>mkiso</b>. It will include in the next version</li>
-    <pre class="command"><kbd>sed -i "s/ROOTFS/LFS/" /root/saravane/scripts/mkiso
-sed -i "/^LFS=/d" /root/saravane/scripts/mkiso</kbd></pre>
     <li>We can now go out of NuTyX saravane and produce the iso</li>
     <pre class="command"><kbd>exit</kbd></pre>
     <li>We can finally generate our ISO where the version is the date of today.</li>
@@ -118,7 +133,7 @@ Total directory bytes: 4096
 Path table size(bytes): 38
 Max brk space used 28000
 131167 extents written (256 MB)</pre>
-   <li>You have now an ISO located int the $LFS folder</li>
+   <p>You have now an ISO located in the $LFS folder</p>
    <pre class="command"><kbd>ls $LFS/</kbd></pre>
    <pre class="output">bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso     root  sources  system  usr
 boot  home  lib64  NuTyX_x86_64-saravane-20150109.md5sum  run   srv      tmp     var
@@ -130,8 +145,36 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
 269484032 bytes (269 MB) copied, 66.4757 s, 4.1 MB/s</pre>
   </ol>
    <p>Congratulations, you have now a new base system NuTyX in your hands ready to be installed on all yours machines.</p>
+  <h2>Options</h2>
+   <ol>
+    <li>If you want to produce an iso containing your favorites applications, you can then compile them before creating the iso. In the following exemple, we compile the package <b>xorg</b>
+    <pre class="command"><kbd>cd /root/saravane/base
+cards depends xorg > .list
+echo "xorg" >> .list
+pass</kbd></pre>
+    <p>The compilation start:</p>
+    <pre class="output">=======> PKGMK_INSTALL: install
+=======> PKGMK_WORK_DIR: /root/saravane/base/elfutils/work
+=======> PKGMK_SOURCE_DIR: /root/saravane/base/elfutils
+=======> PKGMK_KEEP_SOURCES: no
+=======> PKGMK_CLEAN: yes
+=======> WARNING: FOOTPRINT AND MD5SUM IGNORED
+=======> MD5SUM file will be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: elfutils
+=======> version: 0.161</pre>
+     <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 7</p>
+    <li>If you want to reduce the size of the final ISO, you can remove the binaries archives and the logs. If you want to keep the archives, give the following command</li>
+    <pre class="command"><kbd>rsync -a /root/saravane/system /system</kbd></pre>
+    <p>no error should be printout</p>
+    <p>We can delete the binaries from the git</p>
+    <pre class="command"><kbd>find /root/saravane/system/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
+    <p>no error should be printout</p>
+    <p>We erase the logs</p>
+    <pre class="command"><kbd>mv /root/log /log</kbd></pre>
+  </ol>
   <hr>
-  <p class="updated">Last updated on 2015-01-09 22:40:00</p>
+  <p class="updated">Last updated on 2015-01-10 21:03:50</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
