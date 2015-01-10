@@ -10,6 +10,7 @@ cd $name-$version
 --with-daemon-user=colord \
 --enable-vala \
 --enable-systemd-login=no \
+--disable-argyllcms-sensor \
 --disable-static \
 --with-systemdsystemunitdir=no \
 --disable-bash-completion
