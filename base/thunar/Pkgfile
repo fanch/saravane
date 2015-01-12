@@ -1,4 +1,4 @@
-version=1.6.3
+version=1.6.4
 
 source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2 )
 build() {
