@@ -1,7 +1,9 @@
-version=1.3.1
+version=1.4.0
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz )
 
 build() {
+sed -i -e '/^docdir/     s:$:/libjpeg-turbo-1.4.0:' \
+       -e '/^exampledir/ s:$:/libjpeg-turbo-1.4.0:' Makefile.in
 docsdir=/usr/share/doc/$name-$version
 cd $name-$version
 ./configure --prefix=/usr \
