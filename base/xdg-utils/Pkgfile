@@ -1,10 +1,9 @@
-version=1.1.0.rc1
-_version=1.1.0-rc1
+version=1.1.0-rc3
 
-source=(http://portland.freedesktop.org/download/$name-$_version.tar.gz)
+source=(http://portland.freedesktop.org/download/$name-$version.tar.gz)
 
 build() {
-cd $name-$_version
+cd $name-$version
 ./configure --prefix=/usr \
 --mandir=/usr/share/man
 make
