@@ -5,29 +5,26 @@
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
   <title>NuTyX - Comment construire un paquet</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
-        <ul>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
-        </ul>
-    </nav>
- 
-        <!-- FIN HEADER -->
-     
-      
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
  <h1>Comment construire un paquet ?</h1>    
   <h2>Sommaire</h2>
     <h5>
@@ -563,12 +560,14 @@ base /root/mes_paquets_a_conserver</pre>
    <p>
    <div>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</div>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
-
-        <!-- DEBUT FOOTER -->
-     
-    <footer>
+    <hr>
+    <p class="updated">Dernière mise à jour 09-01-2015 19:28:10</p>
+     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>

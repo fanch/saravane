@@ -1,6 +1,6 @@
-version=2.0.21
+version=2.0.22
 
-source=( https://github.com/downloads/$name/$name/$name-$version-stable.tar.gz)
+source=(http://downloads.sourceforge.net/levent/$name-$version-stable.tar.gz)
 build() {
 cd $name-$version-stable
 ./configure --prefix=/usr --disable-static

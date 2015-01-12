@@ -4,30 +4,27 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Compiler et installer son noyau</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-       
-    <nav>
-       <ul>
+  <title>NuTyX - Compiler et installer son propre noyau</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
   <h1>Compiler et installer son propre noyau</h1>
    <p>Cet article peut s'appliquer à toute autre distribution.</p>
    <p>Si vous avez décidé de compiler vous-même votre kernel, cet article vous explique sommairement comment compiler et installer un kernel personnalisé.</p>  
@@ -357,12 +354,14 @@ make menuconfig
 make -j4
 sudo make modules_install</kbd></pre>
    <p>Et c'est tout <img src="../graphics/smiley-cool.gif" border="0" alt="Cool" title="Cool" /> </p>
-  <p class="updated">
-     Dernière mise à jour 17-12-2014 21:30:00
-  </p>     
+  <hr>
+  <p class="updated">Dernière mise à jour 09-01-2015 20:13:00</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>

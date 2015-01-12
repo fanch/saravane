@@ -1,5 +1,4 @@
-ROOTFS=/mnt/lfs
-ISODIR=${ROOTFS}/ISO
+ISODIR=${LFS}/ISO
 VERSION_NUTYX=${1}
 VERSION_KERNEL="3.16.4"
 ARCH=`uname -m`
@@ -18,11 +17,11 @@ main() {
 	sed -i "s|#VERSION_KERNEL#|${VERSION_KERNEL}|" isolinux/boot.msg
 	sed -i "s|#VERSION_NUTYX#|${VERSION_NUTYX}|" isolinux/boot.msg
 	sed -i "s|#ARCH#|${ARCH}|" isolinux/boot.msg
-	mkisofs -R -l -L -D -o ${ROOTFS}/${ISO}.iso \
+	mkisofs -R -l -L -D -o ${LFS}/${ISO}.iso \
 	-b isolinux/isolinux.bin -c isolinux/boot.cat \
 	-no-emul-boot -boot-load-size 4 -boot-info-table \
 	-V "${LABEL}" .
-	cd ${ROOTFS}
+	cd ${LFS}
 	isohybrid ${ISO}.iso || error "isohybrid ${ISO}.iso"
 	md5sum ${ISO}.iso > ${ISO}.md5sum
 }

@@ -4,25 +4,28 @@
 	<!-- En-tête de la page -->
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../css/nutyx.css" />
-        <title>NuTyX - Build rules for binary packages</title>
-    </head>
-    
- <body>
-    <header>
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
-        <ul>
-            <li><a href=".">Home</a></li>
+        <title>NuTyX - Pratical exemple of a receipt to begin</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
-            <li><a href="information.html">Information</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
             <li><a href="packages.html">Packages</a></li>
-        </ul>
-    </nav>
-  <h2>Practical exemple of a receipt to begin</h2>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
+ <body>
+  <h1>Practical exemple of a receipt to begin</h1>
 <pre class="output">_name=libxfce4util
 version=4.10.1
 source=(http://downloads.nutyx.org/archives/xfce/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
@@ -37,12 +40,6 @@ make DESTDIR=$PKG install
 <h2>Explanations</h2>
 We wish always to describe what the package is about. The file <b>&lt;name_of_the_package.info&gt;</b> is going to be include in the binarie and will be used by the package manager <b>cards</b>. So the description is very important and should always be writen in english. It's important that it's all on one line.
 <pre class="output">The libxfce4util package is a basic utility library for the Xfce desktop environment</pre>
-The <b>maintainer</b> is (when possible) should point to the git location of the project in progress. The idea is that (in the future) cards can check and informed the packager in case of a new version available. If git is not available, the name of the maintainer(s) will be fine. It's important to mentionned them.
-<pre class="output">Maintainer:
-- git.xfce.org/xfce/xfce4-libutils</pre>
-The <b>packager</b> is actually you, once you are able to build the package following the rules, you will have access to the git repository of all the available packages. We will be please to have you as new <b>packager.</b>
-<pre class="output">Packager:
-- tyrry at nutyx dot org</pre>
 If you wish that the build server is able to build the package without trouble, it's important to specify the dependencies of your package. The file <b>&lt;name_of_the_package.deps&gt;</b> is specifying the list of dependencies. Dependencies are placed on one line each.
 <pre class="output">glib
 intltool
@@ -62,12 +59,15 @@ cd ${_name}-$version
 make
 make DESTDIR=$PKG install
 }</pre>
-        <!-- DEBUT FOOTER -->
-
+  <hr>
+  <p class="updated">Last updated on 2015-01-09 20:32:00</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
-
  </body>
 </html>
+

@@ -4,33 +4,28 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - exemple de recette de paquet</title>
- </head>
-    
- <body>
-     <header>    
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-       
-    <nav>
-        <ul>
+  <title>NuTyX - Exemple pratique de recette pour commencer</title>
+    <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-         </ul>
-         <ul>
-            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
-        </ul>
-    </nav>
-     
-        <!-- FIN HEADER -->
-     
-
-
-   <h2>Exemple pratique de recette pour commencer</h2>
+            <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ </head>
+ <hr>
+   <h1>Exemple pratique de recette pour commencer</h1>
    <pre class="output">_name=libxfce4util
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
@@ -77,13 +72,14 @@ L'avantage de la méthode qui suit est que vos ports personnels sont inclus dans
   <h2>Très Important</h2>
    <div>Il est essentiel que vous compiliez et testez vos ports en <b>CHROOT</b>. Dans le cas contraire vous créez des fichiers directement dans vos répertoires système avec tous les risques que cela comporte si votre port n'est pas au point.</div><p>
    <div>Il est essentiel que vous compiliez et testez vos ports à partir d'une NuTyX Base.</div>
-
-     
-        <!-- DEBUT FOOTER -->
-     
-    <footer>
+    <hr>
+    <p class="updated">Dernière mise à jour 09-01-2015 19:26:40</p>
+     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a>.
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
+    <p id="foot"><a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>
