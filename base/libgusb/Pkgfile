@@ -1,4 +1,4 @@
-version=0.2.3
+version=0.2.4
 source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
 
 build() {
