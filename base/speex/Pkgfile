@@ -1,4 +1,4 @@
-version=1.2rc1
+version=1.2rc2
 
 source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
 
