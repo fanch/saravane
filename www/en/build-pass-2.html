@@ -129,12 +129,12 @@ pass</kbd></pre>
       <li><div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Its very important that everything is done via the root account.</div></li>
       <li>The LFS variable is used all along the article, its important that it's correctly set and that it point always to the same folder. One way to solve this problem is to define ones for all in the .bash_profile file and to source it:</li>
 <pre class="command"><kbd>echo "export LFS=/mnt/lfs" >> /root/.bash_profile
-source  ~/.bash_profile</kbd></pre></li>
+source  ~/.bash_profile</kbd></pre>
       <li>Checking the LFS variable. If OK we change the owner and group of the contents of $LFS</li>
       <li>We create the folder to put the receiptes in place and the log folder as well. We create also a link so that the script <b>pass</b> is found.</li>
       <li>We will now compile the first package which is aaabasicfs. For this we need to go in the folder of the recept</li>
       <li>This package doent contains any code so it's just create all the folders and configuration files for the NuTyX.</li>
-      <li>We install the first package aaabasicfs into the NuTyX et</li>
+      <li>We install the first package aaabasicfs into the NuTyX and</li>
       <li>We check if it's corretly installed by looking at the database folder.</li>
       <li>It's time to mount all the necessary folders to be able to enter and to compile without problems the rest of the NuTyX.</li>
       <li>In case of a package need to download something (for exemple the kernel) we copy the resolv.conf file from the host to be able to resolve the adress.</li>
@@ -145,7 +145,7 @@ source  ~/.bash_profile</kbd></pre></li>
     </ol>
     <h2>You need to know:</h2>
     <ol>
-      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />If you have an error when compiling a package, it's not a big deal, when you restart the command <b>pass</b> the script will restart where it's stops. Up to you to inform us what kind of error it is. You can use <a class="url" href="http://webchat.freenode.net/?channels=nutyx">the irc channel</a> or <a class="url" href="http://forums.nutyx.org">the forum</a>.</div>
+      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />If you have an error when compiling a package, it's not a big deal, when you restart the command <b>pass</b> the script will restart where it's stops. Up to you to inform us what kind of error it is. You can use <a class="url" href="http://webchat.freenode.net/?channels=nutyx">the irc channel</a> or <a class="url" href="http://forums.nutyx.org">the forum</a>.</div></li>
       <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />You can build the pass 2 in serverall times. If you went out of the chroot, you MUST make shure to type the <u>12 et 13 commands</u> again. If you did stop the PC, make shure to type <u>the command 9</u> plus  commands 12 and 13.</div></li>
     </ol>
   </div>

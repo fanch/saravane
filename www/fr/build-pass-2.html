@@ -128,7 +128,7 @@ pass</kbd></pre>
       <li><div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Il est indispensable d'effectuer toutes les opérations via le compte root.</div></li>
       <li>La variable LFS est utilisé tout au long de l'article, il est indispensable qu'elle soit correctement définie et surtout qu'elle soit identique tout au long des 2 passes. Une solution radicale consiste à la définir une fois pour toute dans le fichier .bash_profile du compte root et de la sourcer:</li>
 <pre class="command"><kbd>echo "export LFS=/mnt/lfs" >> /root/.bash_profile
-source  ~/.bash_profile</kbd></pre></li>
+source  ~/.bash_profile</kbd></pre>
       <li>Vérification de la variable LFS. Si tout est ok, on change le propriétaire et le groupe du contenu du dossier $LFS</li>
       <li>On créer le dossier pour y placer les recettes ainsi qe le dossier logs qui recevra les resultats de la compilation de chaque recette. On créer également un lien pour que le script <b>pass</b> soit trouvé.</li>
       <li>On va maintenant compiler le premier paquet qui est aaabasicfs. Pour cela on se rend dans le dossier</li>
@@ -151,7 +151,7 @@ source  ~/.bash_profile</kbd></pre></li>
     </ol>
     <h2>Ce qu'il faut savoir:</h2>
     <ol>
-      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />Si vous avez une erreur lors de la compilation d'une recette, ce n'est pas grave, lorsque vous relancez la commande pass, le script reprend le travail là où il s'est arrêté. Afin de faire profiter un maximum de lecteurs, merci de nous informer du problème soit sur <a class="url" href="http://webchat.freenode.net/?channels=nutyx">le canal irc</a> ou sur <a class="url" href="http://forum.nutyx.org">le forum</a>.</div>
+      <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />Si vous avez une erreur lors de la compilation d'une recette, ce n'est pas grave, lorsque vous relancez la commande pass, le script reprend le travail là où il s'est arrêté. Afin de faire profiter un maximum de lecteurs, merci de nous informer du problème soit sur <a class="url" href="http://webchat.freenode.net/?channels=nutyx">le canal irc</a> ou sur <a class="url" href="http://forum.nutyx.org">le forum</a>.</div></li>
       <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />Vous pouvez effectuez la pass2 en plusieurs étapes. Si vous êtes sorti de la chroot, vous DEVEZ alors vous assurez de retaper <u>les commandes 12 et 13.</u> Si vous avez arrêtez la machine, assurez-vous de tapez <u>la commande 9</u> en plus des commandes 12 et 13.</div></li>
     </ol>
   </div>
