@@ -103,6 +103,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
    sed -i "/automake-/d" $LFS/sources/$i
    sed -i "/bash-/d" $LFS/sources/$i
+   sed -i "/bison-/d" $LFS/sources/$i
    sed -i "/binutils-/d" $LFS/sources/$i
    sed -i "/groff-/d" $LFS/sources/$i
    sed -i "/iproute2-/d" $LFS/sources/$i
@@ -136,6 +137,7 @@ done
 echo "9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
 a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
+673effdf277cd49304fc62dd0ddd2faf  bison-3.0.3.tar.xz
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
