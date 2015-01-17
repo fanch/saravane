@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Post-construction et génération de l'iso</title>
+    <title>NuTyX - Post-construction et génération de l'iso</title>
+ </head>
+ <body>
    <table>
     <tr>
      <td width="30%">
@@ -12,6 +14,7 @@
      </td>
      <td>
       <nav>
+       <ul>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
@@ -19,13 +22,12 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
+       </ul>
       </nav>
      </td>
     </tr>
    </table>
-  </head>
   <hr>
-  <body>
    <h1>Post-construction et génération de l'iso</h1>
     <p>Tous les paquets d'un système de base sont désormais disponible. On peut finaliser et produire une ISO installable de notre NuTyX</p>
   <ol>
@@ -88,11 +90,12 @@ done</kbd></pre>
    <pre class="command"><kbd>cp -v /boot/initrd /ISO/isolinux/initrd</kbd></pre>
    <pre class="output">'/boot/initrd' -> '/ISO/isolinux/initrd'</pre>
    <div class="note"><img alt="[Note]" src="../graphics/note.gif" />Consultez les options en bas de la page avant d'aller plus loin si vous souhaiter ajouter des paquets et donc personnaliser votre ISO ou si vous souhaitez réduire la taille de celle-ci en supprimant les archives des binaires ainsi que les logs de construction.</div>
-   <li>On produit maintenant les fichiers squashfs qui seront utilisés par l'iso</li>
+   <li>On produit maintenant les fichiers squashfs qui seront utilisés par l'iso et effacer les fichiers squash existant si necessaire puisque la commande mksquashfs ne peut pas les écraser.</li>
 <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
 cd /
 for dir in opt bin etc lib root run sbin usr var
-do 
+do
+  [ -f ISO/isolinux/boot/$dir.squashfs ] && rm ISO/isolinux/boot/$dir.squashfs
   mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
 done</kbd></pre>
    <li>On peut maintenant sortir de la saravane pour produire l'iso.</li>
@@ -177,11 +180,11 @@ pass</kbd></pre>
     <p>Si besoin est, les binaires et les logs se trouvent donc à la racine de la NuTyX</p>
    </ol>
    <hr>
-   <p class="updated">Dernière mise à jour 13-01-2015 19:44:15</p>
+   <p class="updated">Dernière mise à jour 17-01-2015 17:58:35</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
-   <p id="foot"><a href="http://www.wtfpl.net/"><img
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+        <a href="http://www.wtfpl.net/"><img
        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
        width="80" height="15" alt="WTFPL" /></a></p>
    </footer>

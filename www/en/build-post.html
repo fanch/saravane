@@ -5,6 +5,8 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../css/nutyx.css" />
         <title>NuTyX - Post-construction and generation of the iso</title>
+    </head>
+    <body>
     <table>
      <tr>
       <td width="30%">
@@ -12,19 +14,19 @@
       </td>
       <td>
        <nav>
+        <ul>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="packages.html">Packages</a></li>
             <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
+        </ul>
        </nav>
       </td>
      </tr>
     </table>
- </head>
  <hr>
- <body>
   <h1>Post-construction and generation of the iso</h1>
    <p>All the packages of a base system are now available. We can finalise and produce an installable ISO of our NuTyX</p>
    <ol>
@@ -87,11 +89,12 @@ done</kbd></pre>
     <pre class="command"><kbd>cp -v /boot/initrd /ISO/isolinux/initrd</kbd></pre>
     <pre class="output">'/boot/initrd' -> '/ISO/isolinux/initrd'</pre>
     <div class="note"><img alt="[Note]" src="../graphics/note.gif" />Consult options at the botton of the page before going further if you want to customize your ISO by adding some packages or if you want to get rid of the binaries archives and build logs to reduce the size of your ISO.</div>
-    <li>We produce the squashfs files used by the iso</li>
+    <li>We produce the squashfs files used by the iso and erase the existing one if necessary as the mksquashfs command is not able to overight existing file.</li>
     <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
 cd /
 for dir in opt bin etc lib root run sbin usr var
 do
+  [ -f ISO/isolinux/boot/$dir.squashfs ] && rm ISO/isolinux/boot/$dir.squashfs
   mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
 done</kbd></pre>
     <li>We can now go out of NuTyX saravane and produce the iso</li>
@@ -175,11 +178,11 @@ pass</kbd></pre>
     <pre class="command"><kbd>mv /root/log /log</kbd></pre>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-01-13 19:46:50</p>
+  <p class="updated">Last updated on 2015-01-15 19:01:39</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
-    <p id="foot"><a href="http://www.wtfpl.net/"><img
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+        <a href="http://www.wtfpl.net/"><img
        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
        width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
