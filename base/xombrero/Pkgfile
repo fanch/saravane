@@ -1,0 +1,12 @@
+name=xombrero
+version=1.6.3
+source=(https://opensource.conformal.com/snapshots/xombrero/xombrero-$version.tgz)
+build() {
+cd $name-$version/linux
+make
+mkdir -p $PKG/usr/share/applications
+make DESTDIR=$PKG  PREFIX=/usr install
+cd ..
+install -Dm644 xombrero.conf $PKG/etc/skel/.xombrero.conf
+install -Dm755 config-checker.pl $PKG/usr/bin/config-checker.pl
+}
