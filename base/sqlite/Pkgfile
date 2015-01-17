@@ -1,10 +1,10 @@
-version=3.8.7.4
+version=3.8.8
 
 
-_amalgamationver=3080704
+_amalgamationver=3080800
 
-source=(http://www.sqlite.org/2014/sqlite-autoconf-$_amalgamationver.tar.gz
-	http://www.sqlite.org/2014/sqlite-doc-$_amalgamationver.zip )
+source=(http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz
+	http://www.sqlite.org/2015/sqlite-doc-$_amalgamationver.zip )
 
 build() {
 cd $name-autoconf-$_amalgamationver
