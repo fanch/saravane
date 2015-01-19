@@ -12,8 +12,7 @@ f75b374c47969fb9b21d9c2134396400  xf86-input-wacom-0.27.0.tar.bz2
 29654190e37310b87e44a14c229967ee  xf86-video-ati-7.5.0.tar.bz2
 91fd6b677d62027cd3001debb587a6a6  xf86-video-cirrus-1.5.2.tar.bz2
 3931c0e19d441cc576dc088f9eb9fd73  xf86-video-fbdev-0.4.4.tar.bz2
-7e24551eae0b952f4d795e791e88ebe5  xf86-video-intel-2.99.916.tar.bz2
-f21abcdf87f73b5b547491281e894c87  xf86-video-openchrome-0.3.3.tar.bz2
+fa196a66e52c0c624fe5d350af7a5e7b  xf86-video-intel-2.99.917.tar.bz2
 a0d2932d84ba10c4933c8332c9afe157  xf86-video-nouveau-1.0.11.tar.bz2
 3690a5356ed121b1a7dfb59a6dcf4bf9  xf86-video-vesa-2.3.3.tar.bz2
 91d1d7d33181766714405ab013d31244  xf86-video-vmware-13.0.2.tar.bz2
@@ -41,14 +40,9 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
             --without-hal-callouts-dir \
             --without-hal-fdi-dir;;
 		xf86-video-intel-[0-9]*)		
-			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-			--enable-kms-only \
-			--with-default-accel=sna;;
+			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-kms-only;;
 		xf86-input-wacom-[0-9]*)
 			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-systemd-unit-dir=no;;
-		xf86-video-openchrome-[0-9]*)
-			sed -i "/via_3d.h/i #include <xorg-server.h>" src/via_3d.c
-			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
 		xf86-video-vmware-[0-9]*)
 			sed -i "/xf86xv.h/i #include <xorg-server.h>" vmwgfx/vmwgfx_overlay.c
 			./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var;;
