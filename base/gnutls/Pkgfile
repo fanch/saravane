@@ -1,4 +1,4 @@
-version=3.3.11
+version=3.3.12
 
 source=(ftp://ftp.gnutls.org/gcrypt/$name/v3.3/$name-$version.tar.xz)
 
