@@ -1,7 +1,7 @@
-version=10.4.1
+version=10.4.2
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$version-add_xdemos-1.patch)
+	http://www.linuxfromscratch.org/patches/downloads/MesaLib/MesaLib-$version-add_xdemos-1.patch)
 build() {
 cd Mesa-$version
 patch -Np1 -i ../MesaLib-$version-add_xdemos-1.patch 
