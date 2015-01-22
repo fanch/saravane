@@ -62,7 +62,7 @@ http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06.tar.xz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06-xdoc.tar.xz
 http://sites.google.com/site/e3editor/Home/e3-2.8.tgz
 http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
-http://www.openssl.org/source/openssl-1.0.1k.tar.gz
+http://www.openssl.org/source/openssl-1.0.1l.tar.gz
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20141112.tar.bz2
 http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
 http://curl.haxx.se/download/curl-7.40.0.tar.bz2
@@ -74,7 +74,7 @@ http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz
 http://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz
 ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.2.2.tar.gz
 http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
-https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-3.18.1.tar.xz
+https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v3.18.1.tar.xz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://www.sudo.ws/sudo/dist/sudo-1.8.11p1.tar.gz
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz
