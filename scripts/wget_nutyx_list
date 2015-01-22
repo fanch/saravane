@@ -5,7 +5,6 @@ http://www.linuxfromscratch.org/patches/downloads/mpfr/mpfr-3.1.2-upstream_fixes
 http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream_fixes-3.patch
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
-http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.1k-fix_parallel_build-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
 http://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz
@@ -29,6 +28,7 @@ http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
+http://downloads.nutyx.org/archives/openssl-1.0.1l-fix_parallel_build-1.patch
 http://downloads.nutyx.org/archives/linux-3.18.2.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2014j.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
@@ -52,7 +52,7 @@ http://downloads.nutyx.org/files/ca-certificates-20141201.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.2.0.tar.xz
 http://downloads.nutyx.org/files/cards-0.10.82.1.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20150106.tar.bz2
+http://downloads.nutyx.org/files/nutyx-basicfs-20150122.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
@@ -74,7 +74,7 @@ http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz
 http://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz
 ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.2.2.tar.gz
 http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
-http://crocla.cahouet.net/nutyx/btrfs-progs-3.14.2.tar.xz
+https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-3.18.1.tar.xz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://www.sudo.ws/sudo/dist/sudo-1.8.11p1.tar.gz
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz

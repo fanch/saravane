@@ -86,6 +86,7 @@ openssh
 libtirpc
 rpcbind
 nfs-utils
+btrfs-progs
 git
 linux-firmware
 kernel

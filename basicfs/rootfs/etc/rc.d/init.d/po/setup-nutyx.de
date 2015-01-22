@@ -171,6 +171,42 @@ msgstr "Sind Sie sicher, Sie den Vorgang abbrechen wollen ?"
 msgid "You already have a copy of the original MBR, I will not make a backup of it"
 msgstr "Sie haben bereits eine Kopie der Original-MBR, wird es nicht sein Backup"
 
+msgid "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need"
+msgstr "Eine Kopie der Original-MBR ist im Verzeichnis /boot/grub Ihrer NuTyX gespeichert. Es wird dann möglich, wenn es Bedarf wiederherstellen"
+
+msgid "Everything OK, do you want to modify"
+msgstr "Alles ok, tun Sie ändern möchten"
+
+msgid "Something went wrong probably the file system is not supported"
+msgstr "Ein Fehler ist wahrscheinlich das Dateisystem wird nicht unterstützt"
+
+msgid "A new"
+msgstr "Eine neue"
+
+msgid "has been created"
+msgstr "erstellt wurde"
+
+msgid "it has been adapted to launch the Maintenance system of NuTyX"
+msgstr "es wurde angepasst, um die Wartungssystem NuTyX starten"
+
+msgid "if you choose"
+msgstr "wenn Sie sich entscheiden"
+
+msgid "an simplify VI editor will allow you to modify it"
+msgstr "ein simplify VI-Editor ermöglicht es Ihnen, es zu ändern"
+
+msgid "Enter the edit mode"
+msgstr "Geben Sie den Bearbeitungsmodus"
+
+msgid "Exit the edit mode"
+msgstr "Verlassen Sie den Bearbeitungsmodus"
+
+msgid "Cancel the modifications and exit VI"
+msgstr "Brechen Sie die Änderung und verlassen VI"
+
+msgid "Save and exit VI"
+msgstr "Speichern und beenden VI Editor"
+
 msgid "Good to know"
 msgstr "Gut zu wissen"
 
@@ -191,3 +227,150 @@ msgstr "Konfigurieren Sie den boot des PC"
 
 msgid "Reboot the PC"
 msgstr "Starten Sie den PC"
+
+msgid "Press OK to reboot the computer"
+msgstr "Drücken Sie auf OK, um den Computer neu zu starten"
+
+msgid "optional"
+msgstr "fakultativ"
+
+msgid "Install"
+msgstr "Installieren"
+
+msgid "Partitioning"
+msgstr "Partitionierer"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Boot"
+msgstr "Starten"
+
+msgid "Keyboard"
+msgstr "Tastatur"
+
+msgid "Network"
+msgstr "Netzwerk"
+
+msgid "Clock"
+msgstr "Uhr"
+
+msgid "Restart"
+msgstr "Neustart"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Choose the disk you want to use for this operation"
+msgstr "Wählen Sie den Datenträger, den Sie für diesen Vorgang verwendet werden soll"
+
+msgid "Choose the partition you want to use for this operation"
+msgstr "Wählen Sie die Partition, die Sie für diesen Vorgang verwendet werden soll"
+
+msgid "Available file systems"
+msgstr "Verfügbare Dateisysteme"
+
+msgid "Choose the file system you want to use for the partition"
+msgstr "Wählen Sie das Dateisystem, die Sie für die Partition verwenden wollen"
+
+msgid "High performance journaling file system create by SGI"
+msgstr "ist ein von der Firma Silicon Graphics (SGI) entwickeltes Journaling-Dateisystem"
+
+msgid "Very stable file system but not maintain anymore"
+msgstr "ist ein Mehrzweck-Dateisystem, das von einer Entwicklergruppe um Hans Reiser"
+
+msgid "Next generation of Ext3 file system"
+msgstr "(fourth extended filesystem) ist ein Journaling-Dateisystem, das für den Linux-Kernel als Nachfolger von ext3 entwickelt wird"
+
+msgid "Journaling version of Ext2 file system"
+msgstr "(third extended filesystem) ist ein Journaling-Dateisystem, das für den Linux-Kernel entwickelt wurde"
+
+msgid "Standard file system Ext2"
+msgstr "oder auch second extended filesystem war viele Jahre lang das Standarddateisystem des Linux-Betriebssystems"
+
+msgid "New promising file system"
+msgstr "ist ein Copy-On-Write-Dateisystem, das von der Oracle Corporation entwickelt wird"
+
+msgid "Launch the format process ?"
+msgstr "Starten Sie den Formatierungsprozess ?"
+
+msgid "The partition"
+msgstr "Die Partition"
+
+msgid "will be formatted in"
+msgstr "wird formatiert"
+
+msgid "Are you sure you want to continue ?"
+msgstr "Sind Sie sicher, dass Sie den Vorgang fortsetzen ?"
+
+msgid "No disk available"
+msgstr "Nicht verfügbar Festplatte"
+
+msgid "Please stop the PC and install a harddisk"
+msgstr "Bitte stoppen Sie den PC und installieren Sie eine Festplatte"
+
+msgid "No partition available"
+msgstr "Keine Partition vorhanden"
+
+msgid "Please create/modify yours partitions"
+msgstr "Bitte Creëer / Partitionen ändern"
+
+msgid "Choose your favorite tool"
+msgstr "Wählen Sie Ihre Lieblings-Tool"
+
+msgid "Basic partitioning tool"
+msgstr "Grundlegende Partitionierungswerkzeug"
+
+msgid "Advanced partitioning tool"
+msgstr "Erweiterte Partitionierungswerkzeug"
+
+msgid "Partitioning of the disk"
+msgstr "Partitionieren der Festplatte"
+
+msgid "Open a console"
+msgstr "Öffnen Sie eine Konsole"
+
+msgid "Please wait"
+msgstr "warten Sie mal"
+
+msgid "This is a very basic tool, do not expect too much"
+msgstr "Dies ist ein sehr einfaches Werkzeug, nicht zu viel erwarten"
+
+msgid "It will ask you on which partition you want to install NuTyX"
+msgstr "Sie werden aufgefordert, auf der Partition, die Sie installieren möchten NuTyX"
+
+msgid "If not yet created/formatted, it will prompt you to do so"
+msgstr "Falls noch nicht erstellt / formatiert ist, werden Sie aufgefordert, dies zu tun"
+
+msgid "No future plan to make this installer more sophisticated"
+msgstr "Keine Zukunftsplan dieses Installationsanspruchsvoller zu machen"
+
+msgid "NuTyX goes on"
+msgstr "NuTyX geht weiter"
+
+msgid "only ONE partition"
+msgstr "nur EINE Partition"
+
+msgid "ONE exception, GRUB can be part of it, installed on a separate partition or not installed at all"
+msgstr "Eine Ausnahme, GRUB können ein Teil davon sein, auf einer separaten Partition installiert oder überhaupt nicht installiert"
+
+msgid "As NuTyX users, we recommand you to install GRUB on a separate partition"
+msgstr "Wie NuTyX Nutzer, empfehlen wir Ihnen, GRUB auf einer separaten Partition zu installieren"
+
+msgid "To do so"
+msgstr "Um dies zu tun"
+
+msgid "Install GRUB first, then NuTyX"
+msgstr "Installieren Sie GRUB zuerst, dann das NuTyX"
+
+msgid "Have fun"
+msgstr "Spaß haben"
+
+msgid "Thank you for installing NuTyX"
+msgstr "Danke, dass Sie für die Installation von NuTyX"
+
+msgid "Help"
+msgstr "die Hilfe"
+
+msgid "How to do it"
+msgstr "die Vorgehensweise"

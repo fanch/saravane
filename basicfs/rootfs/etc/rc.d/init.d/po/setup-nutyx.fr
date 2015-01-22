@@ -9,7 +9,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-
 msgid "Settings"
 msgstr "Réglages"
 
@@ -368,7 +367,7 @@ msgid "Have fun"
 msgstr "Amusez-vous bien"
 
 msgid "Thank you for installing NuTyX"
-msgstr "Merci d'avoir installer NuTyX"
+msgstr "Merci d'avoir installé NuTyX"
 
 msgid "Help"
 msgstr "Aide"

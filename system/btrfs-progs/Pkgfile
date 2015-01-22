@@ -1,0 +1,9 @@
+version=3.18.1
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz)
+
+build(){
+cd $name-v$version
+make CFLAGS="$CFLAGS"
+make prefix=/usr libdir=/lib \
+bindir=/sbin DESTDIR=$PKG install
+}
