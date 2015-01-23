@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - qu'est ce qu'un port</title>
+     <title>NuTyX - qu'est ce qu'un port</title>
+ <head/>
+ <body>
     <table>
      <tr>
       <td width="30%">
@@ -12,6 +14,7 @@
       </td>
       <td>
        <nav>
+        <ul>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
@@ -19,25 +22,84 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="packages.html">Paquets</a></li>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
+        </ul>
        </nav>
       </td>
      </tr>
     </table>
- </head>
-<hr>
-<h1>Qu'est-ce qu'un port ?</h1>
-<div>Le port est un dossier contenant un certain nombre de fichiers (au minimum 3) nécessaire pour la construction d'un paquet. La commande <b>pkgmk</b> permet de "construire" le paquet qui sera ensuite installable.</div>
+ <hr>
+ <h1>Qu'est-ce qu'un port ?</h1>
+  <h2>Introduction</h2>
+   <p>Le port est un dossier contenant un certain nombre de fichiers (au minimum 3) nécessaire pour la construction d'un paquet. La commande <b>pkgmk</b> permet de "construire" le paquet qui sera ensuite installable.</p>
+   <p>Pour être fonctionnel, ce dossier doit contenir au minimum un fichier appelé <b><span style="color: #007a00;">Pkgfile</span></b>. C'est grâce à ce fichier que la construction du paquet peut se faire. Le contenu de Pkgfile contient toutes les informations nécessaires pour la construction ou plus exactement la compilation du paquet depuis les sources.</p>
+   <p>La description du paquet se trouve dans un fichier appelé <b><span style="color: #007a00;">&lt;nom_du_port&gt;.info</span></b>. Il est important que la description se trouve en première ligne.</p>
+   <p>Et enfin si l'on souhaite gérer les dépendances du port, il faut créer un 3ième fichier appelé  <b><span style="color: #007a00;">&lt;nom_du_port&gt;.deps</span></b> dans lequel on listera les dépendances une par ligne du ports pour la compilation.</p>
+   <p>Le nom <em>port</em> est emprunté du monde BSD où un port réfère à un logiciel "porté" sur un système d'exploitation ou une plateforme. Dans notre cas, le port est simplement la définition de la construction d'un paquet.</p>
+  <h2>Syntaxe minimale d'un port</h2>
+   <p>Les informations minimales pour pouvoir produire le binaire sont:</p>
+    <ul>
+     <li> <em><strong>version</strong></em> spécifie la version des sources du paquet.</li>
+     <li> <em><strong>source</strong></em> contient l'adresse des sources du paquet que l'on souhaite empaqueter.</li>
+     <li> <em><strong>build()</strong></em> la fonction qui contient la recette proprement dite.</li>
+    </ul>
+   <p>Un petit exemple:</p>
+   <pre class="output"># Version du paquet
+version=2.6.4
 
-<p><div>Pour &ecirc;tre fonctionnel, ce dossier doit contenir au minimum un fichier appel&eacute; <strong><span style="color: #007a00;">Pkgfile</span></strong>. C'est gr&acirc;ce &agrave; ce fichier que la construction du paquet peut se faire. Le  contenu de Pkgfile contient toutes les informations n&eacute;cessaires pour la construction ou plus exactement  la compilation du paquet depuis les sources. La description du paquet se trouve dans un fichier appelé <strong><span style="color: #007a00;">&lt;nom_du_port&gt;.info</span></strong>. Il est important que la description se trouve en première ligne. Et enfin si l'on souhaite gérer les dépendances du port, il faut créer un 3 ième fichier appelé  <strong><span style="color: #007a00;">&lt;nom_du_port&gt;.deps</span></strong> dans lequel on listera les dépendances du ports pour la compilation une par ligne.</div>
+# Emplacement des sources du paquet qui sera empaqueté
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
 
-<p><div>Le nom <em>port</em> est emprunt&eacute; du monde BSD o&ugrave; un port r&eacute;f&egrave;re &agrave; un logiciel "port&eacute;" sur un syst&egrave;me d'exploitation ou une plateforme. Dans notre cas, le port est simplement la d&eacute;finition de la construction d'un paquet.</div>
-  </div>
+# Recette proprement dite, souvent constitué des trois commandes standards
+build() {
+cd $name-$version
+./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+}</pre>
+   <p>Si vous comparez cet exemple avec un port officiel de NuTyX, vous constaterez que ce dernier dispose de plus d'informations. C'est ce que nous verrons dans le prochain paragraphe. Une ligne vous a sans doute attiré l'attention:</p>
+   <pre class="output">http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/</pre>
+   <p>La syntaxe ${version%.*} permet de subsituer une valeur à N chiffres en une valeur à N-1 chiffres. C'est très souvent le cas pour les sources des paquets gnome. Dans notre exemple donc, la ligne:</p>
+   <pre class="output">http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/</pre>
+   <p>est identique à</p>
+   <pre class="output">http://ftp.gnome.org/pub/gnome/sources/$name/2.6/</pre>
+   <p>puisque la variable <u>version</u>=2.6.4</p>
+  <h2>Exemple pratique d'une recette</h2>
+   <h3>Le fichier xfce4-libutil/Pkgfile</h3>
+    <pre class="output">_name=libxfce4util
+
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}</pre>
+    <h3>Le fichier xfce4-libutil/xfce4-libutil.info</h3>
+     <pre class="output">libxfce4util, library of base for Xfce
+libxfce4util, bibliothèque de base pour Xfce
+
+http://ww.xfce.org/projects/libraries/
+
+Maintainers:
+
+- git.xfce.org/xfce/xfce4-libutils
+
+Packagers:
+
+tyrry at nutyx dot org</pre>
+   <p>Nous souhaitons toujours avoir une description du paquet avec diverses information comme le nom des mainteneurs, l'url du projet, le nom des packagers, etc.. Le fichier <b>&lt;nom_du_port.info&gt;</b> est utilisé à cet effet.</p>
+    <h3>Le fichier xfce4-libutil/xfce4-libutil.deps</h3>
+     <pre class="output">glib
+intltool</pre> 
+   <p>Si vous souhaitez que le serveur de construction puisse construire le paquet sans soucis, il est important de mentioner toutes les dépendances necessaires à la compilation de votre paquet, et ce en partant toujours d'une NuTyX de base. En effet le serveur construira toujours le paquet en partant de la même base. Le fichier <b>&lt;nom_du_port.deps&gt;</b> est utilisé à cet effet. On y trouve une dépendance par ligne.</p>
   <hr>
-  <p class="updated">Dernière mise à jour 09-01-2015 19:20:13</p>
+  <p class="updated">Dernière mise à jour 23-01-2015 13:32:13</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
-    <p id="foot"><a href="http://www.wtfpl.net/"><img
+        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a><br /><br />
+       <a href="http://www.wtfpl.net/"><img
        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
        width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
