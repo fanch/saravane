@@ -43,7 +43,6 @@ http://launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz
 http://prdownloads.sourceforge.net/expat/expat-2.1.0.tar.gz
 http://download.savannah.gnu.org/releases/man-db/man-db-2.7.1.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.2.tar.xz
-ftp://ftp.astron.com/pub/file/file-5.22.tar.gz
 http://prdownloads.sourceforge.net/flex/flex-2.5.39.tar.bz2
 http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-19.tar.xz
 http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
@@ -51,13 +50,14 @@ https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.18.0.tar.xz
 http://downloads.nutyx.org/files/ca-certificates-20141201.tar.gz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.2.0.tar.xz
+http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.82.1.tar.gz
 http://downloads.nutyx.org/files/nutyx-basicfs-20150122.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-sparce-mtree-01.patch
-http://downloads.nutyx.org/archives/btrfs-progs-man-v3.18.1.tar.xz
+http://downloads.nutyx.org/files/btrfs-progs-man-v3.18.1.tar.xz
 http://prdownloads.sourceforge.net/psmisc/psmisc-22.21.tar.gz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06.tar.xz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06-xdoc.tar.xz
