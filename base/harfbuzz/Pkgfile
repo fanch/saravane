@@ -1,4 +1,5 @@
-version=0.9.37
+# OpenType text shaping engine
+version=0.9.38
 source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
 
 build() {
