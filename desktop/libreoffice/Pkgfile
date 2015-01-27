@@ -1,3 +1,8 @@
+# Description: LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.
+# URL: http://www.libreoffice.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: apache-ant,openldap,python3,cups,curl,gperf,gtk,gtk3,perl-archive-zip,perl-xml-parser,boost,expat,gstreamer-plugins-base,libgsf,librsvg,libxml2,libxslt,neon,nss,poppler,postgresql,redland,icu,hunspell,gsfonts,dejavu-ttf,hunspell,p7zip,neon,graphite2,npapi-sdk,clucene,unixodbc
+
 PKGMK_IGNORE_UNPACK="yes"
 
 version=4.3.5.2
