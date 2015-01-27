@@ -82,6 +82,7 @@ lvm2
 cards
 mdadm
 rsync
+ports
 openssh
 libtirpc
 rpcbind

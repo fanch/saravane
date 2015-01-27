@@ -1,0 +1,21 @@
+# Description: Ports System for NuTyX 
+# URL: http://crux.nu
+# Packager: tnut at nutyx dot org
+# Depends on: rsync
+
+name=ports
+version=1.5
+source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz \
+	system.rsync console.rsync desktop.rsync)
+
+build () {
+cd $name-$version
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/usr/share/
+mv $PKG/usr/man \
+$PKG/usr/share
+install -m 0644 ../system.rsync $PKG/etc/ports/system.rsync
+install -m 0644 ../console.rsync $PKG/etc/ports/console.rsync
+install -m 0644 ../desktop.rsync $PKG/etc/ports/desktop.rsync
+}

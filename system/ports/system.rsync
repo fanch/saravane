@@ -1,0 +1,3 @@
+host=downloads.nutyx.org/nutyx
+collection=ports/saravane/system/
+destination=/usr/ports/system
