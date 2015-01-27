@@ -1,4 +1,11 @@
+# Description: Lightweight web browser based on the webkit gtk2 engine
+# URL: http://www.twotoasts.de
+# Packager: pierre at nutyx dot org
+# Depends on: cmake,gtk,webkit1,vala,libnotify,librsvg,libunique1,desktop-file-utils,libzeitgeist
+
+run=(desktop-file-utils gtk-update-icon-cache)
 version=0.5.9
+
 source=(http://www.midori-browser.org/downloads/midori_${version}_all_.tar.bz2)
 build () {
 cd $name-$version
