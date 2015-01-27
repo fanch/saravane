@@ -1,0 +1,16 @@
+# Description: Automatic management of removeable devices in Thunar
+# URL: http://thunar.xfce.org
+# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: udev-extras,libnotify,startup-notification,exo,xfce4-libui,desktop-file-utils
+
+version=0.8.0
+run=(desktop-file-utils)
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2 )
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

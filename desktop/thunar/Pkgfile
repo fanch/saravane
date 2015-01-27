@@ -1,0 +1,15 @@
+# Description: Modern file manager for Xfce
+# URL: http://thunar.xfce.org
+# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: libexif,exo,xfce4-libui,xfce4-panel,desktop-file-utils
+
+version=1.6.4
+run=(desktop-file-utils gtk-update-icon-cache)
+source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2 )
+build() {
+cd Thunar-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}
