@@ -1,6 +1,9 @@
+# Description: A Qt library that implements the Open Collaboration Services AP
+# URL: https://projects.kde.org/projects/kdesupport/attica
+# Packager: pierre at nutyx dot org
+# Depends on: cmake,qt
+
 version=0.4.2
-
-
 source=(http://download.kde.org/stable/$name/$name-$version.tar.bz2)
 
 build() {
