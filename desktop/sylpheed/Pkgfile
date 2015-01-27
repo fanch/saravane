@@ -1,6 +1,10 @@
+# Description: Lightweight and user-friendly e-mail client
+# URL: http://sylpheed.sraoss.jp/en/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk,gpgme,desktop-file-utils
+
 version=3.4.2
 source=(http://sylpheed.sraoss.jp/sylpheed/v${version%.*}/$name-$version.tar.bz2)
-
 
 build() {
         cd $name-$version
