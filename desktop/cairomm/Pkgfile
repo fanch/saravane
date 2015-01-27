@@ -1,0 +1,13 @@
+# Description: C++ bindings to Cairo vector graphics library
+# URL: http://cairographics.org/
+# Maintainer: Murray Cumming <murrayc@murrayc.com>
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: cairo,libsigc++
+version=1.10.0
+source=(http://cairographics.org/releases/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
