@@ -1,0 +1,25 @@
+# Description: The Gettext package contains utilities for internationalization and localization. These allow programs to be compiled with NLS (Native Language Support), enabling them to output messages in the user's native language.
+# URL: http://www.gnu.org/software/gettext/
+# Maintainer: Ulrich Drepper
+# Packager: pierre at nutyx dot org
+version=0.19.4
+source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
+build()
+{
+cd gettext-$version
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/gettext-$version
+make
+make check||true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel${PKGMK_BUILDVER}any.$PKGMK_PACKAGE_EXT \
+usr/include usr/share/aclocal usr/share/gettext
+
+rm -r usr/include usr/share/aclocal usr/share/gettext
+}

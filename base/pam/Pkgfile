@@ -1,0 +1,16 @@
+# Description: The Linux PAM package contains Pluggable Authentication Modules used to enable the local system administrator to choose how applications authenticate users.
+# URL: http://www.kernel.org/pub/libs/pam
+# Packager: tnut at nutyx dot org
+version=1.1.8
+source=(http://linux-pam.org/library/Linux-PAM-$version.tar.bz2)
+
+build() {
+mkdir -p $PKG/etc/pam.d
+cd Linux-PAM-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+--docdir=/usr/share/doc/Linux-PAM-$version \
+--disable-nis
+make
+make DESTDIR=$PKG install
+chmod -v 4755 $PKG/sbin/unix_chkpwd
+}

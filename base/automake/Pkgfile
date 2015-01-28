@@ -1,0 +1,20 @@
+# Description: The Automake package contains programs for generating Makefiles for use with Autoconf.
+# URL: http://www.gnu.org/software/automake/
+# Packager: tnut at nutyx dot org
+
+version=1.15
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+build() {
+cd automake-$version
+./configure --prefix=/usr \
+--docdir=$PKG/usr/share/doc/automake-$version
+make
+make prefix=$PKG/usr install
+cat > $PKG/usr/share/aclocal/dirlist << "EOF"
+/opt/xorg/share/aclocal
+/opt/kde/share/aclocal
+/opt/xfce4/share/aclocal
+/opt/gnome/share/aclocal
+EOF
+rm -rf $PKG/usr/share/info/dir
+}

@@ -1,5 +1,0 @@
-Dans la pass 2 il faut déactiver l'option ssl:
-./configure --prefix=/usr --without-ssl
-
-recompiler après pkgmk avec les options de configure :
-./configure --prefix=/usr --with-ca-path=/etc/ssl/certs

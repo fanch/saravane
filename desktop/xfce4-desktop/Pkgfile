@@ -1,6 +1,11 @@
-version=4.10.3
+# Description: Xfdesktop is a desktop manager for the Xfce Desktop Environment. Xfdesktop sets the background image / color, creates the right click menu and window list and displays the file icons on the desktop using Thunar libraries.
+# URL: http://www.xfce.org
+# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: exo libwnck xfce4-libui thunar xfce4-garcon
 
+version=4.10.3
 _name=xfdesktop
+run=(gtk-update-icon-cache)
 
 source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2
         http://downloads.nutyx.org/FondsEcrans/140203075407731241.png)

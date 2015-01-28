@@ -101,6 +101,9 @@ echo "link /home/lfs/config: OK"
 for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
+   sed -i "/expat-/d" $LFS/sources/$i
+   sed -i "/intltool-/d" $LFS/sources/$i
+   sed -i "/XML-/d" $LFS/sources/$i
    sed -i "/automake-/d" $LFS/sources/$i
    sed -i "/bash-/d" $LFS/sources/$i
    sed -i "/bison-/d" $LFS/sources/$i
@@ -167,7 +170,6 @@ ba56fb5bfd44acea83fc5dac4a9b7f15  kbd-2.0.2.tar.gz
 f75cca16a38da6caa7d52151f7136895  kbd-2.0.2-backspace-1.patch
 a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 1e6da4e434553d2811437aa42c7f7c76  gmp-6.0.0a.tar.xz
-2c9ca46832d8e7578bcda99eba3a47f1  XML-Parser-2.43.tar.gz
 23fbd879118253cb99aeac067da5f591  intltool-0.50.2.tar.gz
 cab3d7be354000f629bc601238b629b3  util-linux-2.25.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz

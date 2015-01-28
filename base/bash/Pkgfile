@@ -1,0 +1,22 @@
+# Description: The Bash package contains the Bourne-Again SHell.
+# Maintainers: Brian Fox,Chet Ramey and many more
+# Packager: tnut at nutyx dot org
+
+version=4.3.30
+source=(http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz)
+
+build()
+{
+cd bash-$version
+
+./configure --prefix=/usr --bindir=/bin \
+--htmldir=/usr/share/doc/bash-$version --without-bash-malloc \
+--with-installed-readline
+make
+
+make DESTDIR=$PKG install
+
+rm -rf $PKG/usr/share/info/dir
+
+ln -s bash $PKG/bin/sh
+}

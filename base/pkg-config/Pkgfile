@@ -1,0 +1,18 @@
+# Description: pkg-config is a helper tool used when compiling applications and libraries. It helps you insert the correct compiler options on the command line so an application can use gcc -o test test.cpkg-config --libs --cflags glib-2.0 for instance, rather than hard-coding values on where to find glib (or other libraries).
+# URL: http://pkgconfig.freedesktop.org/
+# Maintainer: Tollef Fog Heen tfheen at err dot no
+# Packager: tnut at nutyx dot org
+version=0.28
+PKGMK_GROUPS=(man doc)
+
+source=(http://pkgconfig.freedesktop.org/releases/pkg-config-$version.tar.gz)
+build()
+{
+cd  pkg-config-$version
+./configure --prefix=/usr \
+--with-internal-glib \
+--disable-host-tool \
+--docdir=/usr/share/doc/pkg-config-$version
+make
+make DESTDIR=$PKG install
+}

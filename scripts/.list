@@ -28,7 +28,6 @@ bash
 bc
 libtool
 gdbm
-expat
 inetutils
 perl
 autoconf
@@ -37,8 +36,6 @@ diffutils
 gawk
 findutils
 gettext
-perl-xml-parser
-intltool
 gperf
 groff
 xz

@@ -1,0 +1,100 @@
+# Description: The Glibc package contains the main C library. This library provides the basic routines for allocating memory,searching directories, opening and closing files,reading and writing files, string handling,pattern matching, arithmetic, and so on.
+# URL: https://www.gnu.org/software/libc/
+# Packagers: tnut at nutyx dot org
+version=2.20
+kernelversion=3.18.2
+PKGMK_GROUPS=(devel man doc)
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-$kernelversion.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-$version-fhs-1.patch
+	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz 
+	glibc.locales.supported )
+build() {
+
+# Headers
+cd linux-$kernelversion
+make mrproper
+make headers_check
+make INSTALL_HDR_PATH=dest headers_install
+find dest/include \( -name .install -o -name ..install.cmd \) -delete
+mkdir -p $PKG/usr/include
+cp -rv dest/include/* $PKG/usr/include
+
+cd ../glibc-$version
+
+patch -Np1 -i ../glibc-$version-fhs-1.patch
+
+mkdir -v ../glibc-build
+cd ../glibc-build
+
+../glibc-$version/configure --prefix=/usr \
+--disable-profile \
+--enable-kernel=2.6.32 \
+--enable-obsolete-rpc
+
+make
+
+# make -k check 2>&1 | tee glibc-check-log
+# grep Error glibc-check-log
+
+make install_root=$PKG install
+rm -rf $PKG/usr/share/info/dir
+
+mkdir -p $PKG/etc
+cp -v ../glibc-$version/nscd/nscd.conf $PKG/etc/nscd.conf
+mkdir -pv $PKG/var/cache/nscd
+
+touch $PKG/etc/ld.so.conf
+
+mkdir -pv $PKG/usr/lib/locale
+
+cp $SRC/glibc.locales.supported \
+../glibc-$version/localedata/SUPPORTED
+
+make install_root=$PKG localedata/install-locales
+
+cat > $PKG/etc/nsswitch.conf << "EOF"
+# Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf
+EOF
+
+
+cat > $PKG/etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/lib
+/lib64
+/usr/lib
+/usr/lib64
+/usr/local/lib
+/usr/local/lib64
+/opt/xorg/lib
+/opt/xfce4/lib
+/opt/xfce4/lib64
+/opt/kde/lib
+
+# Add an include directory
+include /etc/ld.so.conf.d/*.conf
+# End of  /etc/ld.so.conf
+EOF
+
+mkdir $PKG/etc/ld.so.conf.d
+}
+devel() {
+cd $PKG
+bsdtar -r -f \
+$PKGMK_PACKAGE_DIR/${name}.${group}${PKGMK_BUILDVER}`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/include
+rm -r usr/include
+}

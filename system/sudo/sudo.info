@@ -1,8 +1,0 @@
-Give certain users the ability to run some commands as root
-Permet à un administrateur système de donner à certains utilisateurs (ou à certains groupes d'utilisateurs) la possibilité de lancer tout ou partie des commandes en tant qu'utilisateur root ou qu'un autre utilisateur en enregistrant les commandes et les arguments.
-
-http://www.sudo.ws
-
-Packagers:
-
-pierre at nutyx dot org
