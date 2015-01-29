@@ -1,3 +1,8 @@
+# Description: X virtual keyboard library.
+# URL: URL: https://www.yoctoproject.org/tools-resources/projects/matchbox
+    https://www.yoctoproject.org/tools-resources/projects/matchbox
+# Packager:     pierre at nutyx dot org
+# Depends on: xorg-libxtst 
 version=0.1
 
 source=(http://downloads.yoctoproject.org/releases/matchbox/$name/$version/$name-$version.tar.bz2)

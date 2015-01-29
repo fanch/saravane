@@ -1,3 +1,7 @@
+# Description: pm-utils is a small collection of scripts that handle suspend and resume on behalf of HAL
+# URL: http://pm-utils.freedesktop.org/wiki/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=20100619
 # Depends on:
 

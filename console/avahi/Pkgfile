@@ -1,3 +1,8 @@
+# Description: Multicast/unicast DNS-SD framework
+# URL: http://www.avahi.org/
+- http://www.ohloh.net/p/avahi/contributors?sort=latest_commit
+# Packager: pierre at nutyx dot org
+# Depends on: intltool glib dbus-python gobject-introspection libdaemon 
 version=0.6.31
 
 source=(http://www.avahi.org/download/avahi-$version.tar.gz)

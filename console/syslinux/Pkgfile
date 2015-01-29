@@ -1,3 +1,7 @@
+# Description: Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE
+# URL: http://syslinux.org
+# Packager: pierre at nutyx dot org
+# Depends on: mtools nasm 
 version=6.03
 
 source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)

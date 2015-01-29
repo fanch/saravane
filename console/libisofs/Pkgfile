@@ -1,3 +1,7 @@
+# Description: libisofs is a library to create an ISO-9660 filesystem
+# URL: http://libburnia.pykix.org/
+# Packager: pierre at nutyx dot org
+# Depends on: acl attr 
 version=1.3.8
 
 source=(http://files.libburnia-project.org/releases/$name-$version.tar.gz)

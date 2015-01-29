@@ -1,3 +1,7 @@
+# Description: The Udev package contains programs for dynamic creation of device nodes.
+# URL: http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+# Packager: tnut at nutyx dot org
+# Depends on: glib gperf gobject-introspection 
 version=208
 lfs_version="lfs-$version-2"
 PKGMK_GROUPS=(devel doc)

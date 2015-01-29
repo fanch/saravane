@@ -1,3 +1,7 @@
+# Description: The Netsurf buildsystem
+# URL: http://www.netsurf-browser.org/projects/buildsystem/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.0
 
 source=(http://download.netsurf-browser.org/libs/releases/buildsystem-$version.tar.gz)

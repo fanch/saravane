@@ -1,3 +1,7 @@
+# Description: Thumbnailers for various graphics file formats
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs kde-libkexiv2 kde-libkdcraw 
 
 _name=kdegraphics-thumbnailers
 source=(http://download.kde.org/stable/$version/src/${_name}-$version.tar.xz)

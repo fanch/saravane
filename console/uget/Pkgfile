@@ -1,3 +1,7 @@
+# Description: administrator of downloading with importation HTML
+# URL: http://urlget.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libnotify gtk3 gstreamer curl hicolor-icon-theme xdg-utils 
 version=1.10.3
 
 source=(http://downloads.sourceforge.net/urlget/$name-$version.tar.gz)

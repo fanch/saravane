@@ -1,3 +1,8 @@
+# Description: bti (twitter/identi.ca console client)
+# URL: URL: http://gregkh.github.com/bti/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre 
 version=034
 source=(https://www.kernel.org/pub/software/web/bti/bti-$version.tar.xz)
 

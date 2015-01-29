@@ -1,3 +1,8 @@
+# Description: A low-latency audio server
+# URL: http://jackaudio.org
+http://jackaudio.org
+# Packager: pierre at nutyx dot org
+# Depends on: db libsamplerate readline doxygen celt 
 version=0.124.1
 _longname=jack-audio-connection-kit
 

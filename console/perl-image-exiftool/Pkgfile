@@ -1,3 +1,8 @@
+# Description: Generates and rewritten exif info in the raw files
+# URL: http://search.cpan.org/~exiftool/Image-ExifTool/
+# Packager: piernov  piernov at piernov dot org
+# Depends on: 
+run=( perl )
 version=9.60
 source=(http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-$version.tar.gz)
 

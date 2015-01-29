@@ -1,3 +1,7 @@
+# Description: library for the made of documents postscript
+# URL: http://libspectre.freedesktop.org/wiki/
+# Packager: pierre at nutyx dot org
+# Depends on: ghostscript 
 version=0.2.7
 
 source=(http://libspectre.freedesktop.org/releases/$name-$version.tar.gz)

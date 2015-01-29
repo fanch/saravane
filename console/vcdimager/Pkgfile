@@ -1,3 +1,7 @@
+# Description: A full-featured mastering suite for authoring disassembling and analyzing Video CDs
+# URL: http://www.vcdimager.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libcdio libxml2 
 version=0.7.24
 
 source=(http://ftp.twaren.net/Unix/GNU/gnu/$name/$name-$version.tar.gz)

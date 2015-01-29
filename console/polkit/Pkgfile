@@ -1,3 +1,7 @@
+# Description: Application development toolkit for controlling system-wide privileges
+# URL: http://hal.freedesktop.org/docs/polkit
+# Packager: pierre at nutyx dot org
+# Depends on: glib js gobject-introspection intltool libxslt docbook-xsl 
 version=0.112
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)

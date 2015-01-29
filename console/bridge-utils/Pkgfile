@@ -1,3 +1,7 @@
+# Description: Utilities for configuring the Linux Ethernet bridge
+# URL: http://sourceforge.net/projects/bridge/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.5
 source=( http://sourceforge.net/projects/bridge/files/bridge/$name-$version.tar.gz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/bridge-utils-1.5-linux_3.8_fix-1.patch)

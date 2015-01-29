@@ -1,3 +1,7 @@
+# Description: provides the links of Python 2 for the class GObject of GLib.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-cairo gobject-introspection xorg-libxxf86vm libffi 
 version=3.14.0
 source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
 

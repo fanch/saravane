@@ -1,3 +1,8 @@
+# Description: Suite of programs for CD/DVD recording, ISO image creation, and audio CD extraction
+# URL: http://cdrkit.org/
+- http://cdrkit.org/ Joerg Jaspert
+# Packager: pierre at nutyx dot org
+# Depends on: libcap 
 version=1.1.11
 
 source=(ftp://ftp.debian.org/debian/pool/main/c/cdrkit/cdrkit_${version}.orig.tar.gz)

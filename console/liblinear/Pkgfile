@@ -1,3 +1,8 @@
+# Description: This package provides a library for learning linear classifiers for large scale applications.
+# URL: http://www.csie.ntu.edu.tw/~cjlin/liblinear/
+- http://www.csie.ntu.edu.tw/~cjlin/index.html
+# Packager: - tnut at nutyx dot org
+# Depends on: 
 version=1.94
 source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
 build() {

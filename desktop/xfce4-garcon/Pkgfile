@@ -1,3 +1,7 @@
+# Description: garcon, implementation of standards Menus of freedesktop.org for Xfce
+# URL: http://wiki.xfce.org/releng/4.6/general-info
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libutil 
 version=0.2.1
 
 _name=garcon

@@ -1,3 +1,7 @@
+# Description: Generate scripting interfaces to C/C++ code
+# URL: http://www.swig.org/
+# Packager: pierre at nutyx dot org
+# Depends on: pcre 
 version=3.0.4
 
 

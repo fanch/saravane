@@ -1,3 +1,9 @@
+# Description: Perl extension for using OpenSSL
+# URL: http://search.cpan.org/dist/Net-SSLeay
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: openssl 
+run=( perl )
 version=1.63
 _cpanname=Net-SSLeay
 source=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$version.tar.gz)

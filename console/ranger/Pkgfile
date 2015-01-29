@@ -1,3 +1,8 @@
+# Description: ranger is a file manager with VI key bindings.
+# URL: URL: http://ranger.nongnu.org/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=1.6.1
 source=(http://ranger.nongnu.org/$name-$version.tar.gz
 )

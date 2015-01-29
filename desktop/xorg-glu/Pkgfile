@@ -1,3 +1,7 @@
+# Description: library graphic 3D table OpenGL
+# URL: http://www.xorg-mesa3d.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-mesa 
 version=9.0.0
 _name=glu
 

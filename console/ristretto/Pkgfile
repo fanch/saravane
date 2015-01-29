@@ -1,3 +1,7 @@
+# Description: Ristretto is a fast and lightweight picture-viewer for the Xfce desktop environment.
+# URL: http://goodies.xfce.org/projects/applications/ristretto
+# Packager: tyrry at nutyx dot org
+# Depends on: xorg-libxinerama xorg-libxrandr xorg-libsm thunar libexif 
 version=0.6.3
 
 source=(http://archive.xfce.org/src/apps/$name/0.6/$name-$version.tar.bz2)

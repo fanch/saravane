@@ -1,3 +1,7 @@
+# Description: A scalable cross-platform server that combines SQL/RDF/XML Data Management
+# URL: http://virtuoso.openlinksw.com/wiki/main/Main
+# Packager: pierre at nutyx dot org
+# Depends on: imagemagick pango xorg-pixman xorg-mesa xorg-libxt lcms2 
 version=6.1.8
 source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-opensource-$version.tar.gz)
 build() {

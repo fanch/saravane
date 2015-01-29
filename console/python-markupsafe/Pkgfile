@@ -1,3 +1,8 @@
+# Description: Python module that implements a XML/HTML/XHTML Markup safe string.
+# URL:    https://pypi.python.org/
+   https://pypi.python.org/
+# Packager:    pierre at nutyx dot fr
+# Depends on: python python3 python-setuptools 
 version=0.23
 source=(https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-$version.tar.gz)
 

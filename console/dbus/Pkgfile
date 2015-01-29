@@ -1,3 +1,7 @@
+# Description: Freedesktop.org message bus system
+# URL: http://www.freedesktop.org/wiki/Software/dbus/
+# Packager: pierre at nutyx dot org
+# Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
 version=1.8.14
 PKGMK_GROUPS=(doc devel)
 

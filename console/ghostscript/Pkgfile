@@ -1,3 +1,7 @@
+# Description: An interpreter for the PostScript language
+# URL: http://www.ghostscript.com/awki
+# Packager: pierre at nutyx dot org
+# Depends on: glib atk libpng libjpeg-turbo libtiff jasper lcms2 gnutls cups 
 version=9.14
 source=( http://downloads.ghostscript.com/public/$name-$version.tar.gz
          http://ghostscript.googlecode.com/files/ghostscript-fonts-std-8.11.tar.gz

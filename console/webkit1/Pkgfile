@@ -1,3 +1,7 @@
+# Description: engine of made Web free for the browsers web version 1
+# URL: http://webkitgtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libwebp libsecret geoclue gperf gtk curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby gtk-doc 
 version=2.4.8
 source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
 build() {

@@ -1,3 +1,7 @@
+# Description: JavaScript interpreter and libraries
+# URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
+# Packager: pierre at nutyx dot org
+# Depends on: nspr zip python 
 version=1.8.5
 source=( http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz )
 

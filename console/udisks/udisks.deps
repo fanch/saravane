@@ -1,9 +1,0 @@
-acl
-udev-extras
-dbus-glib
-libatasmart
-lvm2
-parted
-polkit
-sg3-utils
-docbook-xsl

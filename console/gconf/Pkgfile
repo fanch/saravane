@@ -1,3 +1,7 @@
+# Description: A configuration database system
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: dbus-glib intltool libxml2 gobject-introspection gtk3 polkit 
 version=3.2.6
 
 source=(http://ftp.gnome.org/pub/gnome/sources/GConf/${version%.*}/GConf-$version.tar.xz)

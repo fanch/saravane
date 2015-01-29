@@ -1,3 +1,7 @@
+# Description: ISO AAC audio decoder
+# URL: http://www.audiocoding.com
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2.7
 
 source=(http://downloads.sourceforge.net/sourceforge/faac/$name-$version.tar.gz

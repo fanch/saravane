@@ -1,3 +1,7 @@
+# Description: A Library for reading and editing the meta-data of several popular audio formats
+# URL: http://developer.kde.org/~wheeler/taglib.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.9.1
 source=( https://github.com/taglib/taglib/releases/download/v$version/$name-$version.tar.gz)
 

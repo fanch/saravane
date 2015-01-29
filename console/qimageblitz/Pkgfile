@@ -1,3 +1,7 @@
+# Description: A graphical effect and filter library for KDE
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: qt 
 version=0.0.6
 
 source=(http://download.kde.org/stable/$name/$name-$version.tar.bz2)

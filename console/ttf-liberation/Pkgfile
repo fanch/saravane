@@ -1,3 +1,9 @@
+# Description: Red Hats Liberation fonts.
+# URL: URL: https://www.redhat.com/promo/fonts/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( xorg-fontconfig xorg-font-util xorg-encodings fontforge )
 version=2.00.1
 source=(
 https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$version.tar.gz

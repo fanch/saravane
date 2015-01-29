@@ -1,3 +1,7 @@
+# Description: An IRC connection manager for Telepathy
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: telepathy-glib 
 version=0.1.16
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)

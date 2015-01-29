@@ -1,3 +1,7 @@
+# Description: libxklavier, library for the keyboard under X
+# URL:  http://www.freedesktop.org/wiki/Software/LibXklavier
+# Packager: pierre at nutyx dot org
+# Depends on: iso-codes libxml2 xorg-libx11 glib gobject-introspection xorg-libxkbfile 
 version=5.4
 _name=libxklavier
 

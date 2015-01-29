@@ -1,3 +1,8 @@
+# Description: Independent Open DataBase Connectivity for Linux
+# URL: http://www.iodbc.org
+http://www.iodbc.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=3.52.9
 source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
 build() {

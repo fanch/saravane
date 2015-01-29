@@ -1,3 +1,7 @@
+# Description: framework for defining and tracking users, login sessions, and seats
+# URL: http://www.freedesktop.org/wiki/Software/ConsoleKit
+# Packager: pierre at nutyx dot org
+# Depends on: acl dbus-glib xorg-libx11 polkit 
 version=0.4.6
 
 source=( http://anduin.linuxfromscratch.org/sources/BLFS/svn/c/ConsoleKit-0.4.6.tar.xz \

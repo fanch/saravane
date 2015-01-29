@@ -1,3 +1,7 @@
+# Description: libxaw, X Athena Widgets toolkit
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxt xorg-libxmu xorg-libxpm xorg-libxau 
 version=1.0.12
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXaw-$version.tar.bz2)

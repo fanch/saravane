@@ -1,3 +1,7 @@
+# Description: game of themes for the curseurs X
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-app 
 version=1.0.4
 _name=xcursor-themes
 

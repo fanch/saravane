@@ -1,3 +1,7 @@
+# Description: Automatic moc for Qt4
+# URL: http://www.kde.org
+# Packager: - pierre at nutyx dot org
+# Depends on: qt 
 version=0.9.88
 source=(http://download.kde.org/stable/$name/$version/$name-$version.tar.bz2)
 build() {

@@ -1,3 +1,9 @@
+# Description: Suite to create, manipulate and view DjVu ('déjà vu') documents
+# URL: URL: http://djvu.sourceforge.net
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: librsvg libtiff libjpeg-turbo hicolor-icon-theme 
+run=( librsvg hicolor-icon-theme )
 version=3.5.25.3
 source=(
 http://downloads.sourceforge.net/djvu/$name-$version.tar.gz)

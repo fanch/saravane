@@ -1,3 +1,7 @@
+# Description: calculator based on QT
+# URL: http://speedcrunch.org/
+# Packager: - speedcrunch.googlecode.com
+# Depends on: qt 
 version=0.10.1
 
 source=(http://speedcrunch.googlecode.com/files/speedcrunch-$version.tar.gz)

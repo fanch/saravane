@@ -1,3 +1,7 @@
+# Description: librairy bsd 
+# URL: http://libbsd.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.4.2
 
 source=(http://libbsd.freedesktop.org/releases/$name-$version.tar.gz)

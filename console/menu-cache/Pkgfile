@@ -1,3 +1,7 @@
+# Description: Cache of menus lxde
+# URL: http://lxde.org/
+# Packager: geantbrun at gmail dot com
+# Depends on: intltool glib 
 version=0.4.1
 
 source=(http://downloads.sourceforge.net/lxde/files/$name-$version.tar.gz)

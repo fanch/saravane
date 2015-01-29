@@ -1,3 +1,7 @@
+# Description: library graphic 3D table
+# URL: http://www.xorg-mesa3d.org
+# Packager: pierre at nutyx dot org
+# Depends on: patch autoconf automake m4 pkg-config libtool xorg-makedepend xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
 version=10.4.2
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2

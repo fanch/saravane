@@ -1,3 +1,7 @@
+# Description: Free version of OSF/Motif
+# URL: 
+# Packager: Version libre de OSF/Motif
+# Depends on: freetype xorg-libxp xorg-libxt xorg-libsm xorg-libice 
 version=0.95.2
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 build() {

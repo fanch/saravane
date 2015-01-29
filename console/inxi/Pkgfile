@@ -1,3 +1,7 @@
+# Description: inxi (a full featured system information script)
+# URL: URL: http://inxi.org
+# Packager: alienus at nutyx dot org
+# Depends on: 
 version=2.1.28
 source=(
 http://inxi.googlecode.com/svn/trunk/inxi

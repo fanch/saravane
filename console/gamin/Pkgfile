@@ -1,3 +1,7 @@
+# Description: File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor)
+# URL:  http://www.gnome.org/~veillard/gamin
+# Packager: pierre at nutyx dot org
+# Depends on: glib 
 version=0.1.10
 
 source=(http://www.gnome.org/~veillard/gamin/sources/$name-$version.tar.gz

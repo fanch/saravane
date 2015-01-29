@@ -1,3 +1,7 @@
+# Description: Lightweight color management development library/engine
+# URL: http://www.littlecms.com/
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo libtiff 
 version=2.6
 
 

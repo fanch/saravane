@@ -1,3 +1,7 @@
+# Description: kgamma utility of correction of temerature of color
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs 
 
 _name=kgamma
 

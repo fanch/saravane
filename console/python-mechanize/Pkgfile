@@ -1,3 +1,8 @@
+# Description: Stateful programmatic web browsing in Python.
+# URL: URL: http://wwwsearch.sourceforge.net/mechanize/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools 
 version=0.2.5
 source=(
 http://wwwsearch.sourceforge.net/mechanize/src/mechanize-$version.tar.gz)

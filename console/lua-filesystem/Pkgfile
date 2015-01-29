@@ -1,3 +1,8 @@
+# Description: File System Library for the Lua Programming Language
+# URL: URL: http://www.keplerproject.org/luafilesystem/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: lua 
 version=1.6.2
 source=(
 http://github.com/downloads/keplerproject/luafilesystem/luafilesystem-$version.tar.gz)

@@ -1,3 +1,7 @@
+# Description: libxfce4util, library of base for Xfce
+# URL: http://ww.xfce.org/projects/libraries/
+# Packager: tyrry at nutyx dot org
+# Depends on: glib intltool 
 version=4.10.1
 
 _name=libxfce4util

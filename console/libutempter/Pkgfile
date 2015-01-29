@@ -1,3 +1,7 @@
+# Description: Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files.
+# URL: # NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=1.1.6
 source=(ftp://ftp.altlinux.org/pub/people/ldv/utempter/$name-$version.tar.bz2)
 

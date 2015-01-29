@@ -1,3 +1,7 @@
+# Description: A movie player for linux
+# URL: http://www.mplayerhq.hu/
+# Packager: pierre at nutyx dot org
+# Depends on: x264 yasm cdparanoia libdvdread libdvdnav libdvdcss alsa-lib aalib giflib libmad lzo speex libtheora mpg123 liba52 faac faad2 xvid libvpx lame fribidi 
 version=1.1.1
 
 source=(http://www.mplayerhq.hu/MPlayer/releases/MPlayer-$version.tar.xz \

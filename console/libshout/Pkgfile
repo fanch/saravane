@@ -1,3 +1,8 @@
+# Description: Library for accessing a shoutcast/icecast server
+# URL: http://www.icecast.org/
+http://www.icecast.org/contact.php
+# Packager: pierre at nutyx dot org
+# Depends on: libvorbis libtheora speex 
 version=2.3.1
 source=(http://downloads.xiph.org/releases/$name/$name-$version.tar.gz)
 

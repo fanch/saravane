@@ -1,3 +1,7 @@
+# Description: Interface to enumerating power devices, listening to device events and querying history and statistics
+# URL: http://upower.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: dbus-glib libusb intltool polkit gobject-introspection udev-extras 
 version=0.9.23
 source=(http://upower.freedesktop.org/releases/$name-$version.tar.xz)
 

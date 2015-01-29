@@ -1,3 +1,7 @@
+# Description: libunistring is a library that provides functions for manipulating Unicode strings
+# URL: http://www.gnu.org/software/bison/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.9.3
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 

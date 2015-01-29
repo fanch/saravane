@@ -1,3 +1,9 @@
+# Description: ExtUtils::MakeMaker - Create a module Makefile
+# URL: URL: http://search.cpan.org/~bingos/ExtUtils-MakeMaker/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
 version=6.98
 source=(
 http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$version.tar.gz)

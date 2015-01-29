@@ -1,3 +1,8 @@
+# Description: KDE library for accessing Facebook services
+# URL: http://www.kde.org
+- KDE Project : https://projects.kde.org/projects/kde
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 boost kde-pimlibs 
 version=1.0
 
 source=(http://download.kde.org/stable/$name/1.0/src/$name-$version.tar.bz2)

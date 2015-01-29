@@ -1,3 +1,7 @@
+# Description: Exif and Iptc metadata manipulation library and tools
+# URL: http://www.exiv2.org/index.html
+# Packager: pierre at nutyx dot org
+# Depends on: expat 
 version=0.24
 
 source=(http://www.exiv2.org/$name-$version.tar.gz)

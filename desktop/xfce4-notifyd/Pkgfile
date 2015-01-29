@@ -1,3 +1,7 @@
+# Description: daemon of notification for Xfce
+# URL: http://git.xfce.org/kelnos/xfce4-notifyd/
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libui libnotify 
 version=0.2.4
 
 source=(http://archive.xfce.org/src/apps/$name/0.2/$name-$version.tar.bz2)

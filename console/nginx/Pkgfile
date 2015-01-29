@@ -1,3 +1,7 @@
+# Description: nginx [engine x] is a high-performance HTTP server and reverse proxy,
+# URL: URL: http://nginx.net/
+# Packager: alienus at nutyx dot org
+# Depends on: libxml2 libxslt pcre 
 version=1.6.2
 source=(http://nginx.org//download/$name-$version.tar.gz
 nginx.service

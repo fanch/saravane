@@ -1,3 +1,7 @@
+# Description: A console based real time MPEG Audio Player for Layer 1, 2 and 3
+# URL: http://mpg123.de/
+# Packager: pierre at nutyx dot org
+# Depends on: alsa-lib 
 version=1.20.1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)

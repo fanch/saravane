@@ -1,3 +1,7 @@
+# Description: A cross-platform open-source make system
+# URL: http://www.cmake.org
+# Packager: pierre at nutyx dot org
+# Depends on: curl expat 
 version=3.1.1
 source=(http://www.cmake.org/files/v3.1/$name-$version.tar.gz)
 

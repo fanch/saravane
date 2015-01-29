@@ -1,3 +1,7 @@
+# Description: libxfce4ui, library of the interface graphic for Xfce4
+# URL: http://www.xfce.org/projects/libraries/
+# Packager: tyrry at nutyx dot org
+# Depends on: gtk startup-notification xfce4-conf 
 version=4.10.0
 
 _name=libxfce4ui

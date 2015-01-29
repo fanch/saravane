@@ -1,3 +1,7 @@
+# Description: Library for id3 tagging
+# URL: http://www.mars.org/home/rob/proj/mpeg/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.15.1b
 
 source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\

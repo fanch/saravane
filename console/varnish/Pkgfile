@@ -1,3 +1,8 @@
+# Description: Varnish is a web application accelerator. You install it in front of your web application and it will speed it up significantly.
+# URL: URL: http://www.varnish-cache.org/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libedit pcre python-docutils 
 version=4.0.2
 source=(
 http://repo.varnish-cache.org/source/$name-$version.tar.gz

@@ -1,3 +1,7 @@
+# Description: util-macros, contains the macros m4 used by the packages xorg
+# URL: http://www.x.org
+# Packager: - pierre at nutyx dot org
+# Depends on: wget make 
 version=1.19.0
 PKGMK_GROUPS=()
 _name=util-macros

@@ -1,3 +1,10 @@
+# Description: OpenSSL glue that provides LWP https support
+# URL: OpenSSL glue that provides LWP https support
+http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-lwp-protocol-https perl-try-tiny perl-path-class 
+run=( perl )
 version=0.72
 source=(http://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$version.tar.gz)
 

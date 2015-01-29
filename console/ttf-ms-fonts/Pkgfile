@@ -1,3 +1,7 @@
+# Description: Core TTF Fonts from Microsoft
+# URL: URL: http://corefonts.sourceforge.net
+# Packager: 	pierre^ at nutyx dot org
+# Depends on: xorg-libx11 xorg-fontconfig libarchive p7zip 
 version=2.0
 _sfpath="http://downloads.sourceforge.net/corefonts"
 

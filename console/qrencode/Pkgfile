@@ -1,3 +1,7 @@
+# Description: C library for encoding data in a QR Code symbol.
+# URL: URL : http://megaui.net/fukuchi/works/qrencode/index.en.html
+# Packager: Packager: pierre^ at nutyx dot org
+# Depends on: libpng sdl 
 version=3.4.3
 source=(http://megaui.net/fukuchi/works/${name}/${name}-${version}.tar.bz2)
 

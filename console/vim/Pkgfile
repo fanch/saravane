@@ -1,3 +1,7 @@
+# Description: The Vim package contains a powerful text editor.
+# URL: http://www.vim.org/
+# Packager: pierre^
+# Depends on: 
 version=7.4
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
         http://downloads.nutyx.org/files/patchs/vim/vim-7.4-locale-1.patch)

@@ -1,3 +1,7 @@
+# Description: A C++ interface used to decode RAW picture
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs libraw 
 
 _name=libkdcraw
 

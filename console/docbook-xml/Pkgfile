@@ -1,3 +1,7 @@
+# Description: A widely used XML scheme for writing documentation and help
+# URL:  http://www.docbook.org
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 unzip 
 version=4.5
 
 

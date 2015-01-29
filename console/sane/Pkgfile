@@ -1,3 +1,7 @@
+# Description: Scanner Access Now Easy
+# URL: http://www.sane-project.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb-compat libjpeg-turbo libtiff gtk libexif cups 
 version=1.0.24
 
 source=(http://fossies.org/linux/misc//sane-backends-$version.tar.gz)

@@ -1,3 +1,9 @@
+# Description: Perl version of Nilsimsa code
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
 version=0.06
 source=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$version.tar.gz)
 

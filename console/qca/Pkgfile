@@ -1,3 +1,7 @@
+# Description: provide a API of encryption direct and of platform cross, using of types of data and of conventions Qt.
+# URL: http://delta.affinix.com/qca/
+# Packager: pierre at nutyx dot org
+# Depends on: qt 
 version=2.1.0
 
 source=(http://delta.affinix.com/download/$name/2.0/$name-$version.tar.gz)

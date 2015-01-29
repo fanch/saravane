@@ -1,3 +1,7 @@
+# Description: Gnome keyboard library
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk3 intltool xorg-libxkbfile xorg-libxklavier gobject-introspection 
 version=3.6.0
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)

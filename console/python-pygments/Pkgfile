@@ -1,3 +1,7 @@
+# Description: Python syntax highlighter
+# URL: # NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools 
 version=1.6
 source=(
 http://pypi.python.org/packages/source/P/Pygments/Pygments-$version.tar.gz)

@@ -1,3 +1,7 @@
+# Description: Xfburn is a GTK+ 2 GUI frontend for Libisoburn.
+# URL: http://www.xfce.org/projects/xfburn/
+# Packager: tnut at nutyx dot org
+# Depends on: gstreamer-plugins-base exo libisoburn xfce4-libgui xorg-pixman startup-notification gstreamer-plugins-good 
 version=0.5.2
 _name=xfburn
 

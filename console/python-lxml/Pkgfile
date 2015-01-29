@@ -1,3 +1,8 @@
+# Description: Python2 binding for the libxml2 and libxslt libraries.
+# URL: URL: http://lxml.de/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libxslt python-beautifulsoup3 python-cssselect 
 version=3.4.0
 source=(
 http://pypi.python.org/packages/source/l/lxml/lxml-$version.tar.gz)

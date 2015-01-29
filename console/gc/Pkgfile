@@ -1,3 +1,7 @@
+# Description: A garbage collector for C and C++
+# URL: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
+# Packager: pierre at nutyx dot org
+# Depends on: libatomic-ops 
 version=7.4.2
 
 source=(http://www.hboehm.info/gc/gc_source/gc-$version.tar.gz)

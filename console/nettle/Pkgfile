@@ -1,3 +1,7 @@
+# Description: A low-level cryptographic library
+# URL: http://www.lysator.liu.se/~nisse/nettle/
+# Packager: - www.linuxfromscratch.org/blfs/view/svn/postlfs/nettle.html
+# Depends on: 
 version=2.7.1
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)

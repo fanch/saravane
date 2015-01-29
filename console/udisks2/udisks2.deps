@@ -1,8 +1,0 @@
-acl
-udev-extras
-expat
-libatasmart
-libxslt
-polkit
-gobject-introspection
-docbook-xsl

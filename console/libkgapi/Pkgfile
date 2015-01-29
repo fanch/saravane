@@ -1,3 +1,8 @@
+# Description: A KDE-based library for accessing various Google services via their public API
+# URL: https://projects.kde.org/projects/kdereview/libkgapi
+- KDE Project : https://projects.kde.org/projects/kde
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 boost kde-pimlibs qjson 
 version=2.2.0
 
 source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.bz2)

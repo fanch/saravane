@@ -1,3 +1,7 @@
+# Description: contains the library xine
+# URL: http://xinehq.de/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
 version=1.2.6
 
 source=(http://downloads.sourceforge.net/xine/$name-$version.tar.xz)

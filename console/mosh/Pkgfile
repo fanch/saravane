@@ -1,3 +1,8 @@
+# Description: Mobile shell, surviving disconnects with local echo and line editing.
+# URL: URL: http://mosh.mit.edu/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libutempter perl-io-tty protobuf 
 version=1.2.4
 source=(http://mosh.mit.edu/$name-$version.tar.gz)
 

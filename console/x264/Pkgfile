@@ -1,3 +1,7 @@
+# Description: Library for encoding H264/AVC video streams
+# URL: http://www.videolan.org/developers/x264.html
+# Packager: pierre at nutyx dot org
+# Depends on: yasm 
 version=20141208-2245
 
 source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$version-stable.tar.bz2)

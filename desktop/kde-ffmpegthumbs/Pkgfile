@@ -1,3 +1,7 @@
+# Description: FFmpeg-based thumbnail creator for video files
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs 
 
 _name=ffmpegthumbs
 

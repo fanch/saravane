@@ -1,3 +1,7 @@
+# Description: An application finder for Xfce
+# URL: http://http://www.xfce.org/projects/xfce4-appfinder/
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libui xfce4-garcon 
 version=4.10.1
 
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

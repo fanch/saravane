@@ -1,3 +1,7 @@
+# Description: A system-independent interface for user-level packet capture
+# URL: http://www.tcpdump.org
+# Packager: pierre at nutyx dot org
+# Depends on: libnl libusb 
 version=1.5.3
 
 source=(http://www.tcpdump.org/release/$name-$version.tar.gz)

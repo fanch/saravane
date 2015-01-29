@@ -1,3 +1,7 @@
+# Description: The Kerberos network authentication system
+# URL: http://web.mit.edu/kerberos/
+# Packager: - thierryn1 at hispeed
+# Depends on: 
 version=1.13
 source=(http://web.mit.edu/$name/www/dist/krb5/1.13/krb5-$version-signed.tar
         http://www.linuxfromscratch.org/patches/blfs/7.5/mitkrb-$version-db2_fix-1.patch)

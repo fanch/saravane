@@ -1,3 +1,8 @@
+# Description: The D programming language reference compiler
+# URL: URL: http://www.dlang.org
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=2.065.0
 source=(http://downloads.dlang.org/releases/2014/dmd.$version.zip
 dmd.desktop dmd.logo_48.png)

@@ -1,3 +1,7 @@
+# Description: Backend of configuration of Xfce
+# URL: http://wiki.xfce.org/releng/4.6/general-info
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libutil dbus-glib perl-glib 
 version=4.10.0
 
 _name=xfconf

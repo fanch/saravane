@@ -1,3 +1,8 @@
+# Description: perl module
+# URL: http://www.gtkperl.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+run=( perl )
 version=0.304
 source=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$version.tar.gz)
 

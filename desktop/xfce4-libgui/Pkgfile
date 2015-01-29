@@ -1,3 +1,7 @@
+# Description: libxfcegui4, library of the interface graphic for Xfce4
+# URL: http://www.xfce.org/projects/libraries/
+# Packager: tyrry at nutyx dot org
+# Depends on: startup-notification gtk libglade xfce4-libutil 
 version=4.10.0
 
 _name=libxfcegui4

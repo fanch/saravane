@@ -1,3 +1,7 @@
+# Description: Activitymanager for KDE. 
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 cmake kde-libs xorg-libice 
 version=4.13.3
 
 _name=kactivities

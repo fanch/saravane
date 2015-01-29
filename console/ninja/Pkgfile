@@ -1,3 +1,7 @@
+# Description: Cross-platform IDE focused on Python application development
+# URL: http://martine.github.io/ninja/
+# Packager: pierre at nutyx dot org
+# Depends on: git re2c python 
 version=1.4.0
 
 source=()

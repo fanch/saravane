@@ -1,3 +1,7 @@
+# Description: Next generation of the python high-level scripting language
+# URL: URL: http://www.python.org
+# Packager: alienus at nutyx dot org
+# Depends on: libffi sqlite 
 version=2.7.9
 PKGMK_GROUPS=(devel man doc)
 

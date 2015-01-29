@@ -1,3 +1,8 @@
+# Description: The Hdparm package contains an utility that is useful for controlling ATA/IDE
+# URL: http://hdparm.sourceforge.net/
+http://sourceforge.net/u/ideguy/profile/
+# Packager:  
+# Depends on: 
 version=9.45
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {

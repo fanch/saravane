@@ -1,3 +1,8 @@
+# Description: ISO country, subdivision, language, currency and script definitions and their translations.
+# URL: URL: http://pypi.python.org/pypi/pycountry
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools python-lxml 
 version=1.5
 source=(
 http://pypi.python.org/packages/source/p/pycountry/pycountry-$version.tar.gz)

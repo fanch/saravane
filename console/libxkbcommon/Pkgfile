@@ -1,3 +1,8 @@
+# Description: Keymap compiler and support library which processes a reduced subset of keymaps as defined by the XKB specification
+# URL: http://xkbcommon.org/
+http://xkbcommon.org/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
 version=0.4.3
 
 source=(http://xkbcommon.org/download/libxkbcommon-$version.tar.xz)

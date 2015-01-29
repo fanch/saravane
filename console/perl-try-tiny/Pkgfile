@@ -1,3 +1,9 @@
+# Description: Minimal try/catch with proper localization of 
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
 version=0.22
 source=(http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Try-Tiny-$version.tar.gz)
 

@@ -1,3 +1,7 @@
+# Description: libXi, library X Input client
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxfixes 
 version=1.7.4
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXi-$version.tar.bz2)

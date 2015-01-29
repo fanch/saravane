@@ -1,3 +1,7 @@
+# Description: A library that feh uses as a wrapper to imlib2
+# URL: http://www.linuxbrit.co.uk/giblib
+# Packager: pierre at nutyx dot org
+# Depends on: imlib2 freetype 
 version=1.2.4
 
 source=(http://linuxbrit.co.uk/downloads/$name-$version.tar.gz)

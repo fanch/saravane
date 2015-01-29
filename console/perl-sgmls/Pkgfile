@@ -1,3 +1,9 @@
+# Description: A Post-Processor for SGMLS and NSGMLS
+# URL: URL: http://search.cpan.org/dist/SGMLSpm
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
 version=1.03ii
 source=(http://www.cpan.org/authors/id/D/DM/DMEGG/SGMLSpm-$version.tar.gz
 perl-sgmls.patch)

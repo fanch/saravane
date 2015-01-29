@@ -1,3 +1,7 @@
+# Description: Keyutils is a set of utilities for managing the key retention facility in the kernel.
+# URL: https://rhn.redhat.com/errata/RHEA-2006-0090.html
+# Packager: pierre  at nutyx dot org
+# Depends on: 
 version=1.5.8
 source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
 

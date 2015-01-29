@@ -1,3 +1,8 @@
+# Description: Collection of cryptographic algorithms and protocols implemented for use from Python
+# URL: URL: http://www.dlitz.net/software/pycrypto/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=2.6.1
 source=(
 http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-$version.tar.gz)

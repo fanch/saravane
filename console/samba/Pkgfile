@@ -1,3 +1,7 @@
+# Description: SMB Fileserver and AD Domain server
+# URL: http://www.samba.org
+# Packager: pierre at nutyx dot org
+# Depends on: python libtirpc acl cups gamin kerberos libcap 
 version=4.1.16
 
 source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)

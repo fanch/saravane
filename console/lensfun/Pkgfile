@@ -1,3 +1,7 @@
+# Description: Database of photographic lenses and a library that allows advanced access to the database
+# URL: http://lensfun.berlios.de
+# Packager: pierre at nutyx dot org
+# Depends on: glib libpng doxygen 
 version=0.2.8
 source=(http://sourceforge.net/projects/$name/files/$name-$version.tar.bz2
 	)

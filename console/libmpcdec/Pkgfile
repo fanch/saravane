@@ -1,3 +1,7 @@
+# Description: Musepack decoding library
+# URL: http://www.musepack.net/index.php?pg=home
+# Packager: pierre at nutyx dot org
+# Depends on: nasm 
 version=1.2.6
 
 source=( http://files.musepack.net/source/$name-$version.tar.bz2)

@@ -1,3 +1,9 @@
+# Description: Cross-platform path specification manipulation
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
 version=0.33
 source=(http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Path-Class-$version.tar.gz)
 

@@ -1,3 +1,7 @@
+# Description: Calendar for Xfce
+# URL: http://www.xfce.org/projects/orage/
+# Packager: tyrry33 at gmail dot com
+# Depends on: exo intltool xfce4-panel libnotify 
 version=4.10.0
 
 _name=orage

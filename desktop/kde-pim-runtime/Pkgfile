@@ -1,3 +1,7 @@
+# Description: This package provides additional resources for Akonadi.
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs kde-runtime kde-pimlibs libkgapi libkfbapi xorg-libxscrnsaver 
 
 _name=kdepim-runtime
 

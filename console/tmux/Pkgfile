@@ -1,3 +1,7 @@
+# Description: A terminal multiplexer
+# URL: 
+# Packager: - tnut at nutyx.org
+# Depends on: libevent 
 version=1.9a
 source=(http://sourceforge.net/projects/tmux/files/tmux/tmux-1.9/$name-$version.tar.gz)
 build() {

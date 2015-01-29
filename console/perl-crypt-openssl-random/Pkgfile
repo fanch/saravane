@@ -1,3 +1,9 @@
+# Description: Interface to OpenSSL PRNG methods
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl openssl 
+run=( perl )
 version=0.06
 source=(http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-$version.tar.gz)
 

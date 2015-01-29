@@ -1,3 +1,7 @@
+# Description: A library which implements a protocol for transmission of raster page images.
+# URL: http://www.linuxfoundation.org/collaborate/workgroups/openprinting
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.35
 
 source=(http://www.openprinting.org/download/$name/download/$name-$version.tar.bz2)

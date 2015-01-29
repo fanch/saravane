@@ -1,3 +1,8 @@
+# Description: C library for parsing and emitting YAML (YAML Ain't Markup Language)
+# URL:  http://pyyaml.org/
+ http://pyyaml.org/
+# Packager:  pierre at nutyx dot org
+# Depends on: doxygen 
 version=0.1.6
 source=(http://pyyaml.org/download/libyaml/yaml-$version.tar.gz)
 

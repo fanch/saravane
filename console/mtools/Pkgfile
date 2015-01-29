@@ -1,3 +1,7 @@
+# Description: Collection of tools for accessing the file system MS-DOS
+# URL: http://mtools.linux.lu/
+# Packager:  pierre at nutyx dot org
+# Depends on: 
 version=4.0.17
 
 source=(ftp://ftp.gnu.org/gnu/mtools/$name-$version.tar.bz2)

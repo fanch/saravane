@@ -1,3 +1,7 @@
+# Description: Set of free outline fonts covering the Unicode character set
+# URL: http://www.nongnu.org/freefont/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-server 
 version=20120503
 
 source=(http://ftp.gnu.org/gnu/freefont/$name-$version.zip)

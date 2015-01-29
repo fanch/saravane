@@ -1,3 +1,9 @@
+# Description: Date formating subroutines
+# URL: URL: http://search.cpan.org/dist/TimeDate/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
 version=2.30
 source=(
 http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$version.tar.gz)

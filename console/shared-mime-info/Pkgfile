@@ -1,3 +1,7 @@
+# Description: Freedesktop.org Shared MIME Info
+# URL:  http://freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 intltool glib 
 version=1.3
 
 source=( http://freedesktop.org/~hadess/$name-$version.tar.xz)

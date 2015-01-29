@@ -1,3 +1,8 @@
+# Description: A decentralized revision control system (bazaar)
+# URL: URL: http://bazaar.canonical.com/en/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python python-paramiko 
 version=2.6.0
 source=(
 http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)

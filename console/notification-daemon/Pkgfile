@@ -1,3 +1,7 @@
+# Description: Notification daemon for the desktop notifications framework
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool gtk3 libcanberra 
 version=0.7.6
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)

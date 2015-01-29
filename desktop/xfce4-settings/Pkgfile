@@ -1,3 +1,7 @@
+# Description: Interface independante of configuration of applications of Xfce
+# URL: http://wiki.xfce.org/releng/4.10/
+# Packager: tyrry at nutyx dot org
+# Depends on: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile 
 version=4.10.1
 
 source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2)

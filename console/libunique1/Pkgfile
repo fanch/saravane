@@ -1,3 +1,7 @@
+# Description: Library for writing single instance applications
+# URL: http://live.gnome.org/LibUnique
+# Packager: pierre at nutyx dot org
+# Depends on: gtk 
 version=1.1.6
 
 _name=libunique

@@ -1,3 +1,7 @@
+# Description: Screen Capture Program
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs kde-libkipi 
 
 _name=ksnapshot
 

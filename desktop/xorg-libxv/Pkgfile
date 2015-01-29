@@ -1,3 +1,7 @@
+# Description: libxv, library X Video extension client
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxext 
 version=1.0.10
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXv-$version.tar.bz2)

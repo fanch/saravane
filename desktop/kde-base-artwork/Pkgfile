@@ -1,3 +1,7 @@
+# Description: Provides the default splash screen for KDE. 
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs 
 
 
 source=(http://download.kde.org/stable/$version/src/$name-$version.tar.xz)

@@ -1,3 +1,7 @@
+# Description: Scientific Calculator
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs kde-runtime kde-baseapps 
 
 _name=kcalc
 

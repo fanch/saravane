@@ -1,3 +1,7 @@
+# Description: A library which provides a secure layer over a reliable transport layer
+# URL: http://www.gnu.org/software/gnutls/
+# Packager: pierre at nutyx dot org
+# Depends on: libtasn1 nettle libidn p11-kit 
 version=3.3.12
 
 source=(ftp://ftp.gnutls.org/gcrypt/$name/v3.3/$name-$version.tar.xz)

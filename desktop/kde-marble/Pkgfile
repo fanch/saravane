@@ -1,3 +1,7 @@
+# Description: Desktop Globe
+# URL: http://edu.kde.org/marble/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake kde-libs 
 
 _name=marble
 

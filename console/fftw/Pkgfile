@@ -1,3 +1,7 @@
+# Description: A library for computing the discrete Fourier transform (DFT)
+# URL: http://www.fftw.org/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=3.3.4
 source=(http://www.fftw.org/$name-$version.tar.gz)
 

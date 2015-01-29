@@ -1,3 +1,8 @@
+# Description: USB Device Utilities
+# URL: http://downloads.sourceforge.net/linux-usb/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb-compat 
+run=( wget )
 version=008
 
 source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar.xz)

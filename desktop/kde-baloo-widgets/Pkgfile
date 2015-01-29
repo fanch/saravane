@@ -1,3 +1,7 @@
+# Description: Widgets for the baloo search framework
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 cmake kde-baloo 
 
 
 _name=baloo-widgets

@@ -1,3 +1,7 @@
+# Description: An high dynamic-range image file format library
+# URL: http://www.openexr.org
+# Packager: pierre at nutyx dot org
+# Depends on: ilmbase 
 version=2.1.0
 source=( http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
 

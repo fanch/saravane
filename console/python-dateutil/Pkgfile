@@ -1,3 +1,8 @@
+# Description: Provides powerful extensions to the standard datetime module.
+# URL: URL: http://labix.org/python-dateutil
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-six python-setuptools 
 version=2.2
 source=(
 http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$version.tar.gz)

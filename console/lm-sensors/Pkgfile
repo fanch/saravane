@@ -1,3 +1,7 @@
+# Description: Collection of user space tools for general SMBus access and hardware monitoring
+# URL: http://dl.lm-sensors.org/lm-sensors/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=3.3.5
 
 source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2)

@@ -1,3 +1,7 @@
+# Description: XCB utilities library
+# URL: http://xcb.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: libxcb xcb-util 
 version=0.4.1
 
 source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)

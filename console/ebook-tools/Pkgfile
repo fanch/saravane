@@ -1,3 +1,8 @@
+# Description: Tools for accessing and converting various ebook file formats
+# URL: http://sourceforge.net/projects/ebook-tools/
+    http://sourceforge.net/projects/ebook-tools/
+# Packager:     pierre at nutyx dot fr
+# Depends on: convertlit libxml2 libzip 
 version=0.2.2
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 

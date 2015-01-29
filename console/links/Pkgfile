@@ -1,3 +1,8 @@
+# Description: A text WWW browser, similar to Lynx
+# URL: http://links.twibright.com/
+- http://links.twibright.com/
+# Packager: pierre at nutyx dot org
+# Depends on: gpm libpng libtiff libjpeg-turbo 
 version=2.9
 source=(http://links.twibright.com/download/links-$version.tar.bz2)
 build() {

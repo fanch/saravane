@@ -1,3 +1,7 @@
+# Description: OpenGL Extension Wrangler Library 
+# URL: http://glew.sourceforge.net/
+# Packager: http://glew.sourceforge.net/
+# Depends on: xorg-mesa xorg-libxmu xorg-libxi 
 version=1.9.0
 
 source=(http://downloads.sourceforge.net/project/glew/glew/$version/$name-$version.tgz)

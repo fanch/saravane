@@ -1,3 +1,7 @@
+# Description: A daemon which implements the Point-to-Point Protocol for dial-up networking
+# URL: http://samba.org/ppp
+# Packager: pierre at nutyx dot org
+# Depends on: libpcap 
 version=2.4.5
 
 source=(http://samba.org/ftp/$name/$name-$version.tar.gz

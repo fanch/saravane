@@ -1,3 +1,9 @@
+# Description: The World-Wide Web library for Perl
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-encode-locale perl-file-listing perl-html-parser perl-http-cookies perl-http-daemon perl-http-date perl-http-negotiate perl-lwp-mediatypes perl-net-http perl-uri perl-www-robotrules perl-http-message 
+run=( perl )
 version=6.06
 source=(http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/libwww-perl-$version.tar.gz)
 

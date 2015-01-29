@@ -1,3 +1,7 @@
+# Description: Compact Disc Digital Audio extraction tool
+# URL: http://xiph.org/paranoia/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=10.2
 
 source=(http://downloads.xiph.org/releases/cdparanoia/$name-III-$version.src.tgz \

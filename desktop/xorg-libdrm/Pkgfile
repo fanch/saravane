@@ -1,3 +1,7 @@
+# Description: libdrm, Interface space user for the services DRM of kernel
+# URL: http://dri.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: autoconf automake m4 libtool xorg-libpciaccess 
 version=2.4.59
 _name=libdrm
 

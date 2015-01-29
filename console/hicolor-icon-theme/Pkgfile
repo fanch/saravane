@@ -1,3 +1,7 @@
+# Description: Freedesktop.org Hicolor icon theme
+# URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.14
 
 source=(  http://icon-theme.freedesktop.org/releases/$name-$version.tar.xz)

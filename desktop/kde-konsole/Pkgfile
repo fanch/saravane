@@ -1,3 +1,7 @@
+# Description: Terminal emulator for KDE. 
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs kde-baseapps 
 
 _name=konsole
 

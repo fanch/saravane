@@ -1,3 +1,7 @@
+# Description: Complete and free Internet live audio and video broadcasting solution
+# URL: http://ffmpeg.org/
+# Packager: pierre at nutyx dot org
+# Depends on: x264 liba52 lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes 
 version=2.5.3
 source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.bz2)
 

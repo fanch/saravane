@@ -1,3 +1,7 @@
+# Description: Lightweight C library that eases the writing of UNIX daemons
+# URL: http://0pointer.de/lennart/projects/libdaemon/ 
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.14
 
 source=( http://pkgs.fedoraproject.org/repo/pkgs/libdaemon/libdaemon-0.14.tar.gz/509dc27107c21bcd9fbf2f95f5669563/$name-$version.tar.gz)

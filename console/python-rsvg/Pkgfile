@@ -1,3 +1,7 @@
+# Description: connector python for the library librsvg
+# URL: http://www.gnome.org
+# Packager: pierre at nutyx dot org
+# Depends on: python-gtk librsvg 
 version=2.32.0
 
 _name=gnome-python-desktop

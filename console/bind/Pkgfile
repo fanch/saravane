@@ -1,3 +1,8 @@
+# Description: The most widely used Domain Name System (DNS) software on the Internet.
+# URL: URL: http://www.isc.org/downloads/bind/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: kerberos libxml2 
 version=9.9.5
 source=(ftp://ftp.isc.org/isc/bind9/9.9.5/bind-9.9.5.tar.gz
 bind.use_iproute2-1.patch)

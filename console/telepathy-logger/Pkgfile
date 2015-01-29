@@ -1,3 +1,7 @@
+# Description: Telepathy framework logging daemon
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool sqlite telepathy-glib gobject-introspection 
 version=0.8.0
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.bz2)

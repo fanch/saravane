@@ -1,3 +1,7 @@
+# Description: Keyboard plugin  for Xfce
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
+# Packager: pierre at nutyx dot org
+# Depends on: libsoup xfce4-panel xfce4-libgui 
 version=0.5.6
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/0.5/$name-$version.tar.bz2)

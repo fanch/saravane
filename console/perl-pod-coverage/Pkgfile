@@ -1,3 +1,9 @@
+# Description: Checks if the documentation of a module is comprehensive
+# URL: URL: http://search.cpan.org/dist/Pod-Coverage
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: perl-devel-symdump 
+run=( perl )
 version=0.23
 source=(
 http://www.cpan.org/authors/id/R/RC/RCLAMP/Pod-Coverage-$version.tar.gz)

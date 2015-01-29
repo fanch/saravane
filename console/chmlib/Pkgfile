@@ -1,3 +1,8 @@
+# Description: Library for dealing with Microsoft ITSS/CHM format files
+# URL: URL: http://morte.jedrea.com/~jedwin/projects/chmlib/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=0.40
 source=(
 http://morte.jedrea.com/~jedwin/projects/$name/$name-$version.tar.bz2)

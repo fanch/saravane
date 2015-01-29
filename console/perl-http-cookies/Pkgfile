@@ -1,3 +1,9 @@
+# Description: HTTP cookie jars
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-http-date perl-http-message 
+run=( perl )
 version=6.01
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Cookies-$version.tar.gz)
 

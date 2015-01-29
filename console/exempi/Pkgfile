@@ -1,3 +1,7 @@
+# Description: Implementation of xmp (Adobe's Extensible Metadata Platform)
+# URL: http://libopenraw.freedesktop.org/wiki/Exempi/
+# Packager: tnut at nutyx dot org
+# Depends on: expat boost 
 version=2.2.2
 source=( http://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
 

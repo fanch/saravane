@@ -1,3 +1,8 @@
+# Description: Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
+# URL: URL: http://www.transmissionbt.com/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libevent 
 version=2.84
 source=(
 http://mirrors.m0k.org/transmission/files/transmission-$version.tar.xz

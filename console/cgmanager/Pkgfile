@@ -1,3 +1,8 @@
+# Description: Another daemon for managing control groups
+# URL: URL: https://github.com/cgmanager/cgmanager
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libtool libnih help2man 
 version=0.23
 source=(https://github.com/cgmanager/cgmanager/archive/v${version}.tar.gz)
 

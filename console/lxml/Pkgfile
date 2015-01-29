@@ -1,3 +1,7 @@
+# Description: python library for XML processing
+# URL: http://pypi.python.org/pypi/lxml
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 libxslt 
 version=3.0.1
 
 source=(http://pypi.python.org/packages/source/l/$name/$name-$version.tar.gz)

@@ -1,3 +1,8 @@
+# Description: PostgreSQL is an advanced object-relational database management system (ORDBMS),
+# URL: http://www.postgresql.org/docs
+http://www.postgresql.org/developer/
+# Packager: - pierre at nutyx dot org
+# Depends on: python libxml2 libxslt openldap 
 version=9.4.0
 # variable groupe
 PKGMK_GROUPS=(lib doc man devel service)

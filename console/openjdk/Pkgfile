@@ -1,3 +1,7 @@
+# Description: A set of programs called a Java Development Kit (JDK).
+# URL: 
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.7.0.40
 
 

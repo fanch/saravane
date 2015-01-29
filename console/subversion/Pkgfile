@@ -1,3 +1,7 @@
+# Description: Version control System (Remplacement de cvs)
+# URL: http://subversion.tigris.org
+# Packager: pierre at nutyx dot org
+# Depends on: apr-util neon expat sqlite db cyrus-sasl 
 version=1.8.11
 
 source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)

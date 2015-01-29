@@ -1,3 +1,7 @@
+# Description: A small and lightweight implementation of the XDG Sound Theme Specification
+# URL: http://0pointer.de/lennart/projects/libcanberra
+# Packager: pierre at nutyx dot org
+# Depends on: gtk libvorbis alsa-lib gconf gstreamer1 gtk3 pulseaudio 
 version=0.30
 
 source=(http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-$version.tar.xz )

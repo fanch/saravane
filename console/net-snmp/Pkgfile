@@ -1,3 +1,7 @@
+# Description: Simple Network Management Protocol (SNMP) is a widely used protocol for monitoring the health and welfare of network equipment (eg. routers), computer equipment and even devices like UPSs. 
+# URL: 
+# Packager:   pierre at nutyx dot org
+# Depends on: python python-setuptools libnl openssl pciutils 
 version=5.7.2.1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz{,.asc})
 

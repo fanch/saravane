@@ -1,3 +1,7 @@
+# Description: A fast and easy to use image viewer for KDE
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-runtime kde-baseapps kde-libkexiv2 libjpeg-turbo kde-libkipi kipi-plugins kde-kamera 
 
 _name=gwenview
 

@@ -1,3 +1,7 @@
+# Description: libxft, library X are rendering client
+# URL: http://xorg.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libxrender freetype xorg-fontconfig 
 version=2.3.2
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXft-$version.tar.bz2)
 

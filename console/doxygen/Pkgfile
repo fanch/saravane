@@ -1,3 +1,7 @@
+# Description: A documentation system for C++, C, Java, IDL and PHP
+# URL:  http://www.doxygen.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python 
 version=1.8.9.1
 
 source=(http://ftp.stack.nl/pub/$name/$name-$version.src.tar.gz)

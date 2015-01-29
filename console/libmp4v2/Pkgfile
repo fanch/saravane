@@ -1,3 +1,8 @@
+# Description: MPEG-4 library
+# URL: http://code.google.com/p/mp4v2
+http://code.google.com/p/mp4v2
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2.0.0
 source=(http://mp4v2.googlecode.com/files/mp4v2-$version.tar.bz2)
 

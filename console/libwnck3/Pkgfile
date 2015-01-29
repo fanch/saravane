@@ -1,3 +1,7 @@
+# Description: contains a kit of contruction of navigator of windows
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk3 intltool gobject-introspection startup-notification 
 version=3.14.0
 
 source=(http://ftp.gnome.org/pub/gnome/sources/libwnck/${version%.*}/libwnck-$version.tar.xz)

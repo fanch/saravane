@@ -1,3 +1,7 @@
+# Description: Generic Graphics Library
+# URL: http://gegl.org/
+# Packager: pierre at nutyx dot org
+# Depends on: babl gtk librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 
 version=0.2.0
 
 source=(http://ftp.gimp.org/pub/$name/0.2/$name-$version.tar.bz2

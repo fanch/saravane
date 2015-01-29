@@ -1,3 +1,7 @@
+# Description: Legacy polkit authentication agent for GNOME
+# URL: http://hal.freedesktop.org/docs/polkit-gnome
+# Packager: b at juglas dot name
+# Depends on: polkit gtk3 
 version=0.105
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/0.105/$name-$version.tar.xz)

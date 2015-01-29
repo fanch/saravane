@@ -1,3 +1,10 @@
+# Description: A simple http server class
+# URL: A simple http server class
+http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-http-date perl-http-message perl-lwp-mediatypes 
+run=( perl )
 version=6.01
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$version.tar.gz)
 

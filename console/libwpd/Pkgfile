@@ -1,3 +1,7 @@
+# Description: Library for importing WordPerfect (tm) documents
+# URL: http://libwpd.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libgsf 
 version=0.9.8
 
 source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)

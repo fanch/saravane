@@ -1,3 +1,7 @@
+# Description: Scientific tools for Python
+# URL: http://numpy.scipy.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python lapack 
 version=1.9.0
 
 source=(http://downloads.sourceforge.net/numpy/numpy-$version.tar.gz)

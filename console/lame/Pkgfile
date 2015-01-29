@@ -1,3 +1,7 @@
+# Description: A high quality MPEG Audio Layer III (MP3) encoder
+# URL: http://downloads.source.net/lame
+# Packager: pierre at nutyx dot org
+# Depends on: libsndfile nasm 
 version=3.99.5
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {

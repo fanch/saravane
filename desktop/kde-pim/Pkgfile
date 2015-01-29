@@ -1,3 +1,7 @@
+# Description: KDE programs for managing personal information.
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-pim-runtime kde-pimlibs boost libassuan grantlee kde-baloo 
 
 
 _name=kdepim

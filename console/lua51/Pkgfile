@@ -1,3 +1,8 @@
+# Description: A programming language designed for extending applications (version 5.1)
+# URL: URL: http://www.lua.org
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=5.1.5
 source=(
 http://www.lua.org/ftp/lua-$version.tar.gz

@@ -1,3 +1,9 @@
+# Description: Check for POD errors in files
+# URL: URL: http://search.cpan.org/dist/Test-Pod/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
 version=1.48
 source=(
 http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/Test-Pod-$version.tar.gz)

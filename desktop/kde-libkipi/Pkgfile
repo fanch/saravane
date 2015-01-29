@@ -1,3 +1,7 @@
+# Description: An interface to use kipi-plugins from a KDE application
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs 
 
 _name=libkipi
 

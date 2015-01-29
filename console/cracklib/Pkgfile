@@ -1,3 +1,7 @@
+# Description: Next generation version of libCrack password checking library.
+# URL: http://sourceforge.net/projects/cracklib/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2.9.2
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)

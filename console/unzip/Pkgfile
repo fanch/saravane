@@ -1,3 +1,7 @@
+# Description: Unpacks .zip archives such as those made by PKZIP
+# URL: http://www.info-zip.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=6.0
 # Depends on:
 

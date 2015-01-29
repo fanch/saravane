@@ -1,3 +1,8 @@
+# Description: library Python XML
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+run=( python )
 version=0.8.4
 
 source=(http://downloads.sourceforge.net/pyxml/PyXML-0.8.4.tar.gz)

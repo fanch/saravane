@@ -1,3 +1,8 @@
+# Description: Text document format for short documents, articles, books and UNIX man pages
+# URL: URL: http://www.methods.co.nz/asciidoc/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: docbook-xsl libxslt python 
 version=8.6.9
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 

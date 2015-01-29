@@ -1,3 +1,8 @@
+# Description: Show technical and tag informations about video or audio file.
+# URL: URL: http://mediainfo.sourceforge.net/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libmediainfo 
 version=0.7.69
 source=(
 http://downloads.sourceforge.net/mediainfo/${name}_${version}.tar.bz2)

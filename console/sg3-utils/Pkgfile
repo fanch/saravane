@@ -1,3 +1,7 @@
+# Description: Generic SCSI utilities
+# URL: http://sg.danny.cz/sg/sg3_utils.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.40
 
 source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)

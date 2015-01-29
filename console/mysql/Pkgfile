@@ -1,3 +1,7 @@
+# Description: Server MySQL database
+# URL: http://www.mysql.com
+# Packager: pierre at nutyx dot org
+# Depends on: libevent 
 version=5.6.21
 
 source=(http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-${version%.*}/$name-$version.tar.gz)

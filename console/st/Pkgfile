@@ -1,3 +1,8 @@
+# Description: st is a simple terminal implementation for X
+# URL: URL: http://st.suckless.org/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: xorg-libxext xorg-libxft 
 version=0.5
 source=(http://dl.suckless.org/st/$name-$version.tar.gz)
 

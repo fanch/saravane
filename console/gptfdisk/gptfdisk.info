@@ -1,8 +1,0 @@
-A text-mode partitioning tool that works on Globally Unique Identifier (GUID) Partition Table (GPT) disks
-Outil pour la gestion des disques ayant une table de partition GUID (cad les disques supérieurs à 2 Tera Octets. L'interface est similaire à l'outil classique fdisk.
-
-http://www.rodsbooks.com/gdisk/index.html
-
-Packagers:
-
-pierre at nutyx dot org

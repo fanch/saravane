@@ -1,3 +1,7 @@
+# Description: Foomatic - database extension consisting of manufacturer-supplied PPD files released under non-free licenses
+# URL: http://www.linuxprinting.org/foomatic.html
+# Packager: pierre at nutyx dot org
+# Depends on: cups perl libxml2 
 version=current
 
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)

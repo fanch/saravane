@@ -1,3 +1,9 @@
+# Description: Permits access from Perl to the gettext() family of functions
+# URL: URL: http://search.cpan.org/dist/gettext/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: gettext 
+run=( perl )
 version=1.05
 source=(
 http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-$version.tar.gz

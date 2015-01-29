@@ -1,3 +1,7 @@
+# Description: A tool that makes it easy to create Python bindings for C and C++ libraries
+# URL: http://www.riverbankcomputing.co.uk/software/sip/intro
+# Packager: pierre at nutyx dot org
+# Depends on: python 
 version=4.16.3
 
 source=(http://sourceforge.net/projects/pyqt/files/sip/sip-$version/sip-$version.tar.gz )

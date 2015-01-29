@@ -1,3 +1,7 @@
+# Description: Codec designed for interactive speech and audio transmission over the Internet
+# URL: http://www.opus-codec.org/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.1
 source=(http://downloads.xiph.org/releases/$name/$name-$version.tar.gz)
 

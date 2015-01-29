@@ -1,3 +1,8 @@
+# Description: Command line editor library providing generic line editing, history, and tokenization functions.
+# URL: URL: http://thrysoee.dk/editline/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=20140620-3.1
 source=(http://www.thrysoee.dk/editline/libedit-$version.tar.gz)
 

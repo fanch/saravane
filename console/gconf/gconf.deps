@@ -1,6 +1,0 @@
-dbus-glib
-intltool
-libxml2
-gobject-introspection
-gtk3
-polkit

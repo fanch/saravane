@@ -1,3 +1,8 @@
+# Description: Comprehensive HTTP client library, supporting many features.
+# URL: URL: http://code.google.com/p/httplib2/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=0.9
 source=(
 https://github.com/jcgregorio/httplib2/archive/v${version}.tar.gz

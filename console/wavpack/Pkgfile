@@ -1,3 +1,7 @@
+# Description: Audio compression format with lossless, lossy and hybrid compression modes
+# URL: http://www.wavpack.com/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=4.70.0
 
 source=(http://www.wavpack.com/$name-$version.tar.bz2)

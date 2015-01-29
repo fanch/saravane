@@ -1,3 +1,7 @@
+# Description: GNU Compact Disc Input and Control Library
+# URL: http://www.gnu.org/software/libcdio/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.92
 # Depends on:
 

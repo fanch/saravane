@@ -1,3 +1,7 @@
+# Description: Screen saver and locker for the X Window System
+# URL: http://www.jwz.org/xscreensaver/
+# Packager: pierre at nutyx dot org
+# Depends on: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
 version=5.32
 
 source=(http://www.jwz.org/xscreensaver/$name-$version.tar.gz)

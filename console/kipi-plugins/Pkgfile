@@ -1,3 +1,7 @@
+# Description: Plugins graphics
+# URL: http://www.digikam.org/
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 imagemagick sqlite doxygen kde-libksane kde-libkdcraw kde-libkipi kde-libkexiv2 opencv qjson kde-marble mysql lensfun 
 version=4.4.0
 
 source=(http://download.kde.org/stable/digikam/digikam-$version.tar.bz2

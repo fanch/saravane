@@ -1,3 +1,7 @@
+# Description: library for access generic PCI
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.13.2
 
 _name=libpciaccess

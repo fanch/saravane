@@ -1,3 +1,7 @@
+# Description: administrator of windows minimalist useful for tester Xorg and its components
+# URL: http://xorg.freedesktop.org 
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-server 
 version=1.0.8
 _name=twm
 

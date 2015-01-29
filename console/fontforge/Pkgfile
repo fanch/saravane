@@ -1,3 +1,7 @@
+# Description: Outline and bitmap font editor
+# URL: http://fontforge.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libxi libxml2 pango giflib libtiff 
 version=20141126
 
 source=(https://github.com/fontforge/fontforge/releases/download/${version}/fontforge-2014-11-26-Unix-Source.tar.gz)

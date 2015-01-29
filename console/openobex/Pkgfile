@@ -1,3 +1,8 @@
+# Description: Library that implements Object Exchange Protocol used for binary file transfers between devices. 
+# URL: http://dev.zuckschwerdt.org/openobex/
+http://dev.zuckschwerdt.org/openobex/wiki/ContactUs
+# Packager: pierre at nutyx dot org
+# Depends on: bluez libusb 
 version=1.7.1
 source=( http://downloads.sourceforge.net/$name/$name-$version-Source.tar.gz)
 build() {

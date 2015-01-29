@@ -1,3 +1,7 @@
+# Description: xterm, the emulator of terminal X
+# URL: http://invisible-island.net/xorg-term/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-app xorg-fontconfig xorg-libxft 
 version=314
 _name=xterm
 

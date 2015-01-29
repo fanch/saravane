@@ -1,3 +1,7 @@
+# Description: A free codec for free speech
+# URL: http://www.speex.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libogg 
 version=1.2rc2
 
 source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)

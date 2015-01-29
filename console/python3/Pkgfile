@@ -1,3 +1,7 @@
+# Description: Next generation of the python high-level scripting language
+# URL: URL: http://www.python.org
+# Packager: alienusat nutyx dot org
+# Depends on: sqlite expat 
 version=3.4.2
 source=(
 http://www.python.org/ftp/python/$version/Python-$version.tar.xz

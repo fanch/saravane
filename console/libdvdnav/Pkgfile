@@ -1,3 +1,7 @@
+# Description: The library for xine-dvdnav plugin
+# URL: http://mplayerhq.hu
+# Packager: pierre at nutyx dot org
+# Depends on: libdvdread 
 version=4.2.1
 
 source=( http://dvdnav.mplayerhq.hu/releases/$name-$version.tar.xz)

@@ -1,3 +1,8 @@
+# Description: Urwid is a curses-based user interface library for Python.
+# URL: URL: http://excess.org/urwid/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools 
 version=1.2.1
 source=(
 https://pypi.python.org/packages/source/u/urwid/urwid-$version.tar.gz)

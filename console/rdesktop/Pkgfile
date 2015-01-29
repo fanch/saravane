@@ -1,3 +1,7 @@
+# Description: allows access the terminal windows
+# URL: http://www.rdesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libx11 
 version=1.8.2
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz

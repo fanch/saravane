@@ -1,3 +1,8 @@
+# Description: Conversion tool to create man files
+# URL: URL: http://www.gnu.org/software/help2man/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: perl-locale-gettext 
 version=1.44.1
 source=(http://ftp.gnu.org/gnu/help2man/help2man-$version.tar.xz)
 

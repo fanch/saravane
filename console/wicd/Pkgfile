@@ -1,3 +1,8 @@
+# Description: Wired and wireless network manager for Linux
+# URL: http://wicd.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
+run=( python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd )
 version=1.7.2.4
 
 source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \

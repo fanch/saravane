@@ -1,3 +1,7 @@
+# Description: connector python for libnotify
+# URL: http://www.galago-project.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libnotify python-gtk dbus-glib 
 version=0.1.1
 
 

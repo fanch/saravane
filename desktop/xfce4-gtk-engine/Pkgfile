@@ -1,3 +1,7 @@
+# Description: gtk-xfce-engine, engine of library GTK2 for Xfce
+# URL: http://www.xfce.org
+# Packager: tyrry at nutyx dot org
+# Depends on: gtk 
 version=3.0.1
 
 _name=gtk-xfce-engine

@@ -1,3 +1,7 @@
+# Description: The librep package contains a Lisp system.
+# URL: http://librep.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libffi 
 version=0.92.4
 
 source=(http://download.tuxfamily.org/$name/$name-$version.tar.xz)

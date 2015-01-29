@@ -1,3 +1,8 @@
+# Description: Perl connector for pkgconfig
+# URL: http://www.gtkperl.org
+# Packager: pierre at nutyx dot org
+# Depends on: perl-extutils-depends 
+run=( perl )
 version=1.15
 source=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$version.tar.gz)
 

@@ -1,3 +1,7 @@
+# Description: makedepend, created the dependencies in the Makefiles
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: pkg-config xorg-proto 
 version=1.0.5
 _name=makedepend
 

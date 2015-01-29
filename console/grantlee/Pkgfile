@@ -1,3 +1,7 @@
+# Description: A string template engine based on the Django template system and written in Qt
+# URL: http://www.gitorious.org/grantlee/pages/Home
+# Packager: pierre at nutyx dot org
+# Depends on: qt 
 version=0.5.1
 
 source=(http://downloads.grantlee.org/$name-$version.tar.gz)

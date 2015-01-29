@@ -1,3 +1,7 @@
+# Description: KDE volume control program
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: kde-libs libcanberra pulseaudio 
 
 _name=kmix
 

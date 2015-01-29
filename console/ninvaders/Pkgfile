@@ -1,3 +1,8 @@
+# Description: ninvaders (Space Invaders clone based on ncurses for ASCII output)
+# URL: URL: http://ninvaders.sourceforge.net/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=0.1.1
 source=(
 http://downloads.sourceforge.net/sourceforge/ninvaders/$name-$version.tar.gz)

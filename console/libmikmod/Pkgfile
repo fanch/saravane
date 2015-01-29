@@ -1,3 +1,7 @@
+# Description: A portable sound library
+# URL: http://mikmod.raphnet.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=3.3.6
 
 source=( http://downloads.sourceforge.net/mikmod/$name-$version.tar.gz)

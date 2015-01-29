@@ -1,3 +1,7 @@
+# Description: System daemon for managing color devices
+# URL: http://www.freedesktop.org/software/colord/
+# Packager: pierre at nutyx dot org
+# Depends on: sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb 
 version=1.2.8
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)

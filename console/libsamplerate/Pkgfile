@@ -1,3 +1,7 @@
+# Description: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio.
+# URL: http://www.mega-nerd.com/SRC/index.html
+# Packager: pierre at nutyx dot org
+# Depends on: libsndfile flac 
 version=0.1.8
 
 source=(http://www.mega-nerd.com/SRC/$name-$version.tar.gz)

@@ -1,3 +1,7 @@
+# Description: Userspace tools and conversion library for Video 4 Linux
+# URL: http://freshmeat.net/projects/libv4l
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo 
 version=1.6.0
 
 source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2

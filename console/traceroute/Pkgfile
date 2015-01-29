@@ -1,3 +1,8 @@
+# Description: Display the network route that packets take to reach a specified host.
+# URL: URL: http://traceroute.sourceforge.net/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=2.0.20
 source=(http://downloads.sourceforge.net/traceroute/traceroute-$version.tar.gz)
 

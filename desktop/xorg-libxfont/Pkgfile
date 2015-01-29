@@ -1,3 +1,7 @@
+# Description: libxfont, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: freetype xorg-proto xorg-xtrans xorg-libfontenc 
 version=1.5.0
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfont-$version.tar.bz2)

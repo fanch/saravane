@@ -1,3 +1,8 @@
+# Description: A free, cross-platform, open source, audio I/O library
+# URL: http://www.portaudio.com
+http://www.portaudio.com
+# Packager: pierre at nutyx dot org
+# Depends on: jack 
 version=19_20140130
 source=(http://www.portaudio.com/archives/pa_stable_v${version}.tgz)
 

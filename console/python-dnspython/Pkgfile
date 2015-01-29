@@ -1,3 +1,8 @@
+# Description: A DNS toolkit for Python.
+# URL: URL: http://www.dnspython.org/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=1.11.1
 source=(
 http://www.dnspython.org/kits/$version/dnspython-$version.tar.gz)

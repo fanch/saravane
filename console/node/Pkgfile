@@ -1,3 +1,7 @@
+# Description: Node (Evented I/O for V8 JavaScript)
+# URL: http://nodejs.org/
+# Packager: alienus at nutyx dot org
+# Depends on: python 
 version=0.10.28
 source=(http://nodejs.org/dist/v$version/node-v$version.tar.gz
 node.npm.sh)

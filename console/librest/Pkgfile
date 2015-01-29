@@ -1,3 +1,7 @@
+# Description: Gives more easily access to internet services which says be "RESTful".
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libsoup gobject-introspection 
 version=0.7.90
 
 source=(http://ftp.gnome.org/pub/gnome/sources/rest/${version%.*}/rest-$version.tar.xz)

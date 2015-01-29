@@ -1,3 +1,7 @@
+# Description: GStreamer Multimedia Framework ffmpeg Plugins
+# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer gstreamer-plugins-base yasm sdl 
 version=0.10.13
 
 source=(http://gstreamer.freedesktop.org/src/gst-ffmpeg/gst-ffmpeg-$version.tar.bz2

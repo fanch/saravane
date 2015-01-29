@@ -1,3 +1,7 @@
+# Description: contains of services D-Bus bidder a function of client and of server OBEX.
+# URL: http://www.bluez.org/
+# Packager: pierre at nutyx dot org
+# Depends on: bluez libical 
 version=0.48
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)

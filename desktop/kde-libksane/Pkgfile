@@ -1,3 +1,7 @@
+# Description: An image scanning library
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: cmake automoc4 kde-libs sane 
 
 _name=libksane
 

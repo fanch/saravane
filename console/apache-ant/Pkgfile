@@ -1,3 +1,8 @@
+# Description: Ant package is a Java-based build tool.
+# URL: http://ant.apache.org/
+- http://ant.apache.org/contributors.html
+# Packager: pierre at nutyx dot org
+# Depends on: glib openjdk 
 version=1.9.2
 
 source=(http://archive.apache.org/dist/ant/source/$name-$version-src.tar.bz2 )

@@ -1,3 +1,7 @@
+# Description: S-Lang is a powerful interpreted language
+# URL:  http://gd.tuwien.ac.at/editors/davis/slang
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2.2.4
 
 source=( ftp://space.mit.edu/pub/davis/$name/v2.2/$name-$version.tar.bz2)

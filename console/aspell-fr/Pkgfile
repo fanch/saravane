@@ -1,3 +1,7 @@
+# Description: French dictionaries for Aspell
+# URL: http://aspell.net
+# Packager: tnut at nutyx dot org
+# Depends on: aspell 
 version=0.50.3
 _version=0.50-3
 

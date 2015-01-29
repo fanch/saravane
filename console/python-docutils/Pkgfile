@@ -1,3 +1,8 @@
+# Description: Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX
+# URL: URL: http://docutils.sourceforge.net
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=0.12
 source=(http://downloads.sourceforge.net/docutils/docutils-$version.tar.gz)
 

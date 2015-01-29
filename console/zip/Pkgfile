@@ -1,3 +1,7 @@
+# Description: Creates PKZIP-compatible .zip files
+# URL: http://infozip.sourceforge.net/Zip.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=3.0
 source=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
 

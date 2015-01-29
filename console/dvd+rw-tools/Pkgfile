@@ -1,3 +1,7 @@
+# Description: DVD+-RW/R tools
+# URL: http://fy.chalmers.se/~appro/linux/DVD+RW/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=7.1
 
 source=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$version.tar.gz \

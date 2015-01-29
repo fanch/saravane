@@ -1,3 +1,7 @@
+# Description: Perl Compatible Regular Expression libraries.
+# URL: http://www.pcre.org/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=8.35
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
 PKGMK_GROUPS=(devel man doc)

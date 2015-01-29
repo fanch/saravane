@@ -1,3 +1,7 @@
+# Description: Runtime applications and libraries essential for KDE. 
+# URL: http://www.kde.org
+# Packager: pierre at nutyx dot org
+# Depends on: automoc4 cmake kde-libs kde-pimlibs alsa-lib libjpeg-turbo exiv2 pulseaudio xine-lib libcanberra networkmanager libssh openexr samba kde-activities qca 
 
 
 _name=kde-runtime

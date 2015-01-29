@@ -1,3 +1,8 @@
+# Description: Openbox is a highly configurable window manager.
+# URL: http://openbox.org/wiki/Main_Page
+# Packager: ~          
+# Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 
+run=( xorg startup-notification dbus )
 version=3.5.2
 source=(http://icculus.org/openbox/releases/$name-$version.tar.gz \
         openbox.xinitrc)

@@ -1,3 +1,8 @@
+# Description: Python CUPS Bindings
+# URL: URL: http://cyberelk.net/tim/software/pycups/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: cups python 
 version=1.9.66
 source=(
 http://cyberelk.net/tim/data/pycups/pycups-$version.tar.bz2)

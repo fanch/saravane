@@ -1,3 +1,7 @@
+# Description: XviD is an open source MPEG-4 video codec
+# URL: http://xvid.org
+# Packager: pierre at nutyx dot org
+# Depends on: yasm 
 version=1.3.3
 source=( http://downloads.xvid.org/downloads/xvidcore-$version.tar.gz )
 build() {

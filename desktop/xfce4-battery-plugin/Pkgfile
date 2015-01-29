@@ -1,3 +1,7 @@
+# Description: A battery monitor plugin for the Xfce panel
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-panel xfce4-libgui 
 version=1.0.5
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/1.0/$name-$version.tar.bz2)

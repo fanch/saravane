@@ -1,3 +1,8 @@
+# Description: Tool to create isolated Python environments.
+# URL: URL: https://virtualenv.pypa.io/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
 version=1.11.6
 source=(
 http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$version.tar.gz)

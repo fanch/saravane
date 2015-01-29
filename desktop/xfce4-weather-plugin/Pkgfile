@@ -1,3 +1,7 @@
+# Description: plugin Weather for Xfce
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
+# Packager: pierre at nutyx dot org
+# Depends on: libsoup xfce4-panel xfce4-libgui 
 version=0.8.4
 
 source=(http://archive.xfce.org/src/panel-plugins/xfce4-weather-plugin/0.8/$name-$version.tar.bz2)

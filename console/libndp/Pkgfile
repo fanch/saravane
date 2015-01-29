@@ -1,3 +1,7 @@
+# Description: The libndp package provides a wrapper for IPv6 Neighbor Discovery Protocol. 
+# URL: 
+# Packager: - tnut at nutyx dot org
+# Depends on: 
 version=1.4
 source=(http://libndp.org/files/$name-$version.tar.gz)
 build() {

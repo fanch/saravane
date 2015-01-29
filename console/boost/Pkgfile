@@ -1,3 +1,7 @@
+# Description: Free peer-reviewed portable C++ source libraries
+# URL: http://boost.sourceforge.net/
+# Packager: tnut at nutyx dot org
+# Depends on: icu 
 version=1.57.0
 
 source=(http://downloads.sourceforge.net/$name/${name}_${version//./_}.tar.bz2)

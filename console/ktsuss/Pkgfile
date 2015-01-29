@@ -1,3 +1,7 @@
+# Description: allows l'execution of program root in environment not root
+# URL: http://developer.berlios.de/projects/ktsuss
+# Packager: pierre at nutyx dot org
+# Depends on: atk xorg-fontconfig gtk pango libxcb xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama 
 version=2.1
 
 source=(https://github.com/nomius/ktsuss/releases/download/$version/ktsuss-$version.tar.gz \

@@ -1,3 +1,7 @@
+# Description: Protocol definitions and daemon for D-Bus at-spi
+# URL: http://www.gtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool glib dbus gobject-introspection xorg-libx11 xorg-libxtst 
 version=2.14.0
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)

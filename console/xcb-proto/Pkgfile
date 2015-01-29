@@ -1,3 +1,7 @@
+# Description: XCB X protocol descriptions
+# URL: http://xcb.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: python 
 version=1.10
 PKGMK_GROUPS=()
 source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)

@@ -1,3 +1,7 @@
+# Description: A C library for reading and writing files containing sampled sound
+# URL: http://www.mega-nerd.com/libsndfile/
+# Packager: pierre at nutyx dot org
+# Depends on: flac alsa-lib libogg libvorbis 
 version=1.0.25
 source=( http://www.mega-nerd.com/$name/files/$name-$version.tar.gz)
 

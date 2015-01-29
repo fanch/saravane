@@ -1,3 +1,7 @@
+# Description: A text widget adding syntax highlighting and more to GNOME
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk libxml2 
 version=2.10.5
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtksourceview/2.10/gtksourceview-${version}.tar.bz2)

@@ -1,3 +1,7 @@
+# Description: Color ASCII Art Library
+# URL: http://libcaca.zoy.org/
+# Packager: pierre at nutyx dot org
+# Depends on: imlib2 
 version=0.99.beta18
 
 source=(http://libcaca.zoy.org/files/libcaca/libcaca-$version.tar.gz)

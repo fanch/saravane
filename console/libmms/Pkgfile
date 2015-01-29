@@ -1,3 +1,8 @@
+# Description: MMS stream protocol library
+# URL: URL: http://sourceforge.net/projects/libmms/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
 version=0.6.4
 source=(
 http://download.sourceforge.net/libmms/$name-$version.tar.gz)

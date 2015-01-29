@@ -1,3 +1,7 @@
+# Description: CIFS filesystem user-space tools
+# URL: http://www.samba.org
+# Packager: pierre at nutyx dot org
+# Depends on: samba 
 version=6.1
 
 source=( http://ftp.samba.org/pub/linux-cifs/$name/$name-$version.tar.bz2)

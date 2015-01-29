@@ -1,3 +1,7 @@
+# Description: glamor-egl, library of made based on GL
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-util-macros xorg-server 
 version=0.6.0
 _name=glamor-egl
 

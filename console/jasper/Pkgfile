@@ -1,3 +1,7 @@
+# Description: A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard
+# URL: http://www.ece.uvic.ca/~mdadams/jasper/
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo 
 version=1.900.1
 
 source=(http://www.ece.uvic.ca/~mdadams/$name/software/$name-$version.zip \

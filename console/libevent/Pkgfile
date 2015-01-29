@@ -1,3 +1,7 @@
+# Description: An event notification library
+# URL: http://www.monkey.org/~provos/libevent/ 
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2.0.22
 
 source=(http://downloads.sourceforge.net/levent/$name-$version-stable.tar.gz)

@@ -1,3 +1,7 @@
+# Description: The elfutils package contains set of utilities and libraries for handling elf files.
+# URL: http://xiph.org/ao/
+# Packager: tnut at nutyx dot org
+# Depends on: 
 version=0.161
 
 source=( https://fedorahosted.org/releases/e/l/$name/$version/$name-$version.tar.bz2)

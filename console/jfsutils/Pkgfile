@@ -1,3 +1,7 @@
+# Description: JFS filesystem utilities
+# URL: http://jfs.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.1.15
 source=(http://jfs.sourceforge.net/project/pub/$name-$version.tar.gz)
 build() {

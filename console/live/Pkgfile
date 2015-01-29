@@ -1,3 +1,7 @@
+# Description: A set of C++ libraries for multimedia streaming
+# URL: http://www.live555.com/liveMedia/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=2014.07.04
 
 source=(http://downloads.nutyx.org/files/$name.$version.tar.gz)

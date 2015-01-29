@@ -1,3 +1,9 @@
+# Description: Data tables useful in parsing HTML
+# URL: http://search.cpan.org/
+http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
 version=3.20
 source=(http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-$version.tar.gz)
 

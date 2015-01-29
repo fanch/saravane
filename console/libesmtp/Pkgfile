@@ -1,3 +1,7 @@
+# Description: Contains the libESMTP libraries which are used by some programs to manage email submission to a mail transport layer
+# URL: http://www.stafford.uklinux.net/libesmtp/
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=1.0.6
 source=( http://www.stafford.uklinux.net/$name/$name-$version.tar.bz2)
 

@@ -1,3 +1,7 @@
+# Description: Library that provides a high-level interface to RDF data
+# URL: http://download.librdf.org/source/
+# Packager: pierre at nutyx dot org
+# Depends on: rasqal db sqlite libiodbc virtuoso 
 version=1.0.17
 
 source=(http://download.librdf.org/source/$name-$version.tar.gz)

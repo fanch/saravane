@@ -1,3 +1,7 @@
+# Description: An object-oriented language for quick and easy programming
+# URL: http://ruby-lang.org
+# Packager: pierre at nutyx dot org
+# Depends on: doxygen 
 version=2.2.0
 source=(http://cache.ruby-lang.org/pub/ruby/2.2/ruby-$version.tar.xz)
 

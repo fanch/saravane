@@ -1,3 +1,7 @@
+# Description: A featureful, general-purpose sound server
+# URL: http://www.pulseaudio.org
+# Packager: pierre at nutyx dot org
+# Depends on: json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
 version=5.0
 
 source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)

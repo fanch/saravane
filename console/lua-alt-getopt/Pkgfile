@@ -1,3 +1,8 @@
+# Description: Lua module for processing options similar to getopt_long
+# URL: URL: http://luaforge.net/projects/alt-getopt/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: lua 
 version=0.7.0
 source=(
 http://mova.org/~cheusov/pub/lua_alt_getopt/lua-alt-getopt-$version.tar.gz)

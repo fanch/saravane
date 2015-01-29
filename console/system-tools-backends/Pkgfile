@@ -1,3 +1,7 @@
+# Description: Games of scripts multiplatforme for Linux and other systems unix
+# URL: http://www.gnome.org
+# Packager: b at juglas dot name
+# Depends on: perl-xml-parser dbus-glib polkit 
 version=2.10.2
 
 source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.bz2)

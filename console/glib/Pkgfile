@@ -1,3 +1,7 @@
+# Description: The GLib package contains a low-level libraries useful for providing data structure handling
+# URL: http://www.gtk.org/
+# Packager: tnut at nutyx dot org
+# Depends on: libffi pcre python elfutils 
 version=2.42.1
 PKGMK_GROUPS=(man devel doc )
 

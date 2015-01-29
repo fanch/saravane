@@ -1,3 +1,7 @@
+# Description: A library to parse an EXIF file and read the data from those tags
+# URL: http://libexif.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: 
 version=0.6.21
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)

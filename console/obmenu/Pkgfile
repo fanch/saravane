@@ -1,3 +1,7 @@
+# Description: tool of configuration for openbox
+# URL: http://obmenu.sourceforge.net
+# Packager: geantbrun at gmail dot com
+# Depends on: python-gtk 
 version=1.0
  
  

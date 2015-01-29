@@ -1,3 +1,7 @@
+# Description: allows display d'images for X
+# URL: 
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libxext libpng libjpeg-turbo 
 version=1
 
 source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz

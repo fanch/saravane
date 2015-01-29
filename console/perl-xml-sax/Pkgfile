@@ -1,3 +1,9 @@
+# Description: Simple API for XML
+# URL: URL: http://search.cpan.org/dist/XML-SAX
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: perl-xml-namespacesupport perl-xml-sax-base 
+run=( perl )
 version=0.99
 source=(
 http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-$version.tar.gz

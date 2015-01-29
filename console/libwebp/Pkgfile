@@ -1,3 +1,7 @@
+# Description: WebP library and conversion tools
+# URL: https://developers.google.com/speed/webp/
+# Packager: pierre at nutyx dot org
+# Depends on: libpng libjpeg-turbo 
 version=0.4.2
 
 source=(http://downloads.webmproject.org/releases/webp/$name-$version.tar.gz)

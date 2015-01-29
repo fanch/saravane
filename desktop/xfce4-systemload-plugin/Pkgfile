@@ -1,3 +1,7 @@
+# Description: monitor system for the panel
+# URL: http://goodies.xfce.org/
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-panel xfce4-libgui 
 version=1.1.1
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/1.1/$name-$version.tar.bz2)

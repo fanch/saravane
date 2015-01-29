@@ -1,3 +1,7 @@
+# Description: Graphical user interface toolkit for X
+# URL: http://www.fltk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo libpng xorg-libxft xorg-libxi xorg-libxinerama xorg-mesa doxygen 
 version=1.3.3
 source=(http://fltk.org/pub/fltk/$version/fltk-$version-source.tar.gz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/fltk-$version-dynamic_libs-1.patch)

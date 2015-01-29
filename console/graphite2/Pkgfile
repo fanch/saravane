@@ -1,3 +1,7 @@
+# Description: Graphite2 is a rendering engine for graphite fonts
+# URL: http://projects.palaso.org/projects/graphitedev
+# Packager: pierre at nutyx dot org
+# Depends on: freetype python harfbuzz 
 version=1.2.4
 source=( http://downloads.sourceforge.net/silgraphite/graphite2-$version.tgz)
 

@@ -1,3 +1,7 @@
+# Description: library for the manipulation of pixels
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: libpng 
 version=0.32.6
 _name=pixman
 
