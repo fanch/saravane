@@ -2,7 +2,7 @@
 # URL: http://www.freedesktop.org/wiki/Software_2fXKeyboardConfig
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-app intltool 
-version=2.12
+version=2.14
 _name=xkeyboard-config
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}/${_name}-$version.tar.bz2)
