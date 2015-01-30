@@ -17,9 +17,9 @@ if [ ! -f .list ];then
 else
 	LIST=".list"
 fi
-for NAME in `cat $LIST`
+for DIR in `cat $LIST`
 do
-   NAME=`basename $NAME`
+   NAME=`basename $DIR`
    BUILD="yes"
    PKGMK="pkgmk.passes"
    if [ -f ${LOG}/$NAME.log ]; then
@@ -31,12 +31,12 @@ do
 
    fi
    if [ "$BUILD" == "yes" ]; then
-      cd $NAME
+      cd $DIR
       case $PASS in
        chroot)
         PKGMK="pkgmk.passes"
         $PKGMK -cf ../../../bin/pkgmk.conf.passes -kw 2>&1|tee ${LOG}/$NAME.log || exit 1;;
-       system)
+       base)
         PKGMK="pkgmk"
         case $NAME in
 	  gcc)

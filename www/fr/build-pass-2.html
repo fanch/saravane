@@ -32,7 +32,7 @@
     <p>C'est le moment de construire votre NuTyX. Une seule condition: Avoir terminé avec succès la Construction de la CHROOT ( pass 1 ). <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />L'auteur n'est pas responsable pour les pertes de données ou autre qui pourrait engendrer une mauvaise manipulation. Cet article s'adresse à un public averti.</div>
     Toutes les opérations vont devoir se faire en compte root. Il est donc INDISPENSABLE d'être très vigilent sinon vous pouvez "casser" votre distribution actuelle.</p>
     <p>La variable LFS pointe dans notre exemple sur /mnt/lfs. A vous d'ajuster si vous avez choisi un autre emplacement.</p>
-    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Veuillez notez que la pass 2 peut s'avérez beaucoup plus "aventureuse" dans le sens qu'il est tout à fait possible qu'un paquet ne se compile pas du premier coup. Il est important de le signaler dans la rubrique Aide->Soupsons de bugs ou sur le canal irc</div>
+    <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Veuillez notez que la pass 2 peut s'avérez beaucoup plus "aventureuse" dans le sens qu'il est tout à fait possible qu'un paquet ne se compile pas du premier coup. Il est important de le signaler <a href="http://forum.nutyx.org/index.php?board=16.0" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">sur le forum</a> ou sur le canal irc</div>
     <p>Pour éviter tout risque de dispersion et pour faciliter la lecture, l'article sera divisé en deux parties. La première reprend chaque action numérotée une à une et la deuxième donne une explication de chaque action.</p> 
     <p>Il y a 21 actions. Donc encore une fois: <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Toutes les opértations se font dans le compte root</div></p>
    <h2>Les actions</h2>
@@ -51,7 +51,7 @@
 ln -s saravane/scripts $LFS/root/bin</kbd></pre>
       <li>On déplace les recettes et l'on se place dans le dossier adéquat</li>
         <pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
-cd $LFS/root/saravane/system/aaabasicfs</kbd></pre>
+cd $LFS/root/saravane/base/aaabasicfs</kbd></pre>
       <li>On compile le premier paquet de NuTyX</li>
         <pre class="command"><kbd>/tools/bin/pkgmk -cf ../../../bin/pkgmk.conf.passes</kbd></pre>
       <li>On installe aaabasicfs dans la NuTyX</li>
@@ -96,7 +96,7 @@ bash: tput: command not found
       <li>On redéfinie la variable PATH</li>
        <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
       <li> On lance la compilation des paquets</li>
-       <pre class="command"><kbd>cd /root/saravane/system
+       <pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
 	retourne
        <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
@@ -106,7 +106,7 @@ pass</kbd></pre>
      <li>En français cela signifie qu'il faut installer le paquet <b>bash</b> à la main. Il faut donc le faire en dehors de la NuTyX. Il faut donc sortir:</li>
       <pre class="command"><kbd>exit</kbd></pre>
      <li>Nous allons maintenant dans le bon dossier et installons le paquet <b>bash</b>:</li>
-      <pre class="command"><kbd>cd $LFS/root/saravane/system/bash
+      <pre class="command"><kbd>cd $LFS/root/saravane/base/bash
 for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
      <li>Nous entrons à nouveau dans la NuTyX et finissons le travail:</li>
       <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
@@ -116,7 +116,7 @@ for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
      <li>Nous définissons la variable PATH une dernière fois:</li>
       <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
      <li>Nous relançons la compilation des paquets restants:</li>
-      <pre class="command"><kbd>cd /root/saravane/system
+      <pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
       <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
@@ -159,7 +159,7 @@ source  ~/.bash_profile</kbd></pre>
   </div>
   <div class="pied_page"><a class="url" href="build-post.html">Une fois la passe 2 terminée, vous pouvez passer à la post-installation et génération de l'iso</a></div>
   <hr>
-  <p class="updated"> Dernière mise à jour 10-01-2015 17:09:30</p>
+  <p class="updated"> Dernière mise à jour 30-01-2015 21:09:30</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

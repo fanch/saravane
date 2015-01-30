@@ -33,7 +33,7 @@
     All the operations will be done in the root account. It's then ABSOLUTLY necessary to be very carefull otherwise you could broker your actual distribution.
     <p>
     The LFS variable in our exemple is pointing to /mnt/lfs. Up to you to adjust to your need if necessary.
-<div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Please note that the pass2 can be much more an "aventure" as it can always have problems when compiling a package the first time. Up to you to give us a feedback with all the details of the error. You can use the forum or the irc channel for that.</div>
+<div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Please note that the pass2 can be much more an "aventure" as it can always have problems when compiling a package the first time. Up to you to give us a feedback with all the details of the error. You can use <a href="http://forums.nutyx.org/index.php?board=8.0" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">the forums</a> or the irc channel for that.</div>
 <div>To avoid any confusion and avoid dispersion in the actions to take, the article is split in two parts. The first shows every step to do and the second gives an explaignation about each step.</div> 
 <div>They are 14 actions. SO again: <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />All the manipulations should be done in the root account.</div></div>
     <ol>
@@ -51,7 +51,7 @@
 ln -s saravane/scripts $LFS/root/bin</kbd></pre>
       <li>We move the receipts to the right folder and go in this folder</li>
 <pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
-cd $LFS/root/saravane/system/aaabasicfs</kbd></pre>
+cd $LFS/root/saravane/base/aaabasicfs</kbd></pre>
       <li>We compile the first package of NuTyX</li>
 <pre class="command"><kbd>/tools/bin/pkgmk -cf ../../../bin/pkgmk.conf.passes</kbd></pre>
       <li>We install aaabasicfs in the NuTyX</li>
@@ -96,7 +96,7 @@ bash: tput: command not found
      <li>We redefine the PATH variable</li>
 <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
      <li> We launch the compilation of the packages</li>
-<pre class="command"><kbd>cd /root/saravane/system
+<pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
 	return
 <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
@@ -106,7 +106,7 @@ pass</kbd></pre>
     <li>As it's says, the <b>bash</b> packages needs to be installed manually. So let's do it from outside the NuTyX. We got out first:</li>
     <pre class="command"><kbd>exit</kbd></pre>
     <li>Now we go to the right place and install the <b>bash</b> packages:</li>
-    <pre class="command"><kbd>cd $LFS/root/saravane/system/bash
+    <pre class="command"><kbd>cd $LFS/root/saravane/base/bash
 for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
     <li>We enter again into NuTyX and we finish the job:</li>
     <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
@@ -116,7 +116,7 @@ for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
            <li>We redefine AGAIN the PATH variable:</li>
 <pre class="command"><kbd>export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin:/root/bin</kbd></pre>
      <li> We launch AGAIN the compilation of the packages:</li>
-<pre class="command"><kbd>cd /root/saravane/system
+<pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
 <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
@@ -155,7 +155,7 @@ source  ~/.bash_profile</kbd></pre>
   <div class="pied_page"><a class="url" href="build-post.html">One pass 2 is done, you can start the post-construction and generation of the iso</a></div>
 <p>
   <hr>
-  <p class="updated">Last updated on 2015-01-10 17:12:40</p>
+  <p class="updated">Last updated on 2015-01-30 21:10:40</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

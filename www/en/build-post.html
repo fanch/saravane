@@ -43,36 +43,14 @@ No error should be print:
     <pre class="output">root [ / ]# </pre>
     <li>We begin by adjusting the cards.conf file. We used from now on only the recept coming from the git project. You need to adapt the language and arch if necessary (<b>i686</b> for the 32 bits version).</li>
     <pre class="command"><kbd>cat > /etc/cards.conf << "EOF"
+dir /root/saravane/desktop
+dir /root/saravane/console
 dir /root/saravane/base
-dir /root/saravane/system
 logdir /var/log/pkgbuild
 arch x86_64
 locale fr
-base /root/saravane/system
+base /root/saravane/base
 EOF</kbd></pre>
-    <li>We update the MD5SUM files from the base recepts in the <b>/root/saravane/base</b> directory</li>
-    <pre class="command"><kbd>cd /root/saravane/base
-for i in *
-do
-cd $i
-pkgmk -us||break
-cd ..
-done</kbd></pre>
-    <pre class="output">...
-..
-.
-=======> PKGMK_INSTALL: no
-=======> PKGMK_WORK_DIR: /root/saravane/base/zsh/work
-=======> PKGMK_SOURCE_DIR: /root/saravane/base/zsh
-=======> WARNING: CLEAN IGNORED
-=======> WARNING: KEEP SOURCES
-=======> PKGMK_UPDATE_SIGNATURE: yes
-=======> PKGMK_IGNORE_FOOTPRINT: yes
-=======> PKGMK_IGNORE_MD5SUM: yes
-=======> MD5SUM file will be generated
-=======> PKGMK_COMPRESS_PACKAGE: no
-=======> name: zsh
-=======> version: 5.0.7</pre>
     <li>We produce an new initrd</li>
     <pre class="command"><kbd>mkinitramfs</kbd></pre>
     <pre class="output">Creating initrd... done</pre>
@@ -139,7 +117,7 @@ Max brk space used 28000
 131167 extents written (256 MB)</pre>
    <p>You have now an ISO located in the $LFS folder</p>
    <pre class="command"><kbd>ls $LFS/</kbd></pre>
-   <pre class="output">bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso     root  sources  system  usr
+   <pre class="output">bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso     root  sources  base  usr
 boot  home  lib64  NuTyX_x86_64-saravane-20150109.md5sum  run   srv      tmp     var
 dev   ISO   mnt    proc                                   sbin  sys      tools</pre>
    <li>You just need to transfer it to your usb key and test it</li>
@@ -152,14 +130,13 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
   <h2>Options</h2>
    <ol>
     <li>If you want to produce an iso containing your favorites applications, you can then compile them before creating the iso. In the following exemple, we compile the package <b>xorg</b>
-    <pre class="command"><kbd>cd /root/saravane/base
+    <pre class="command"><kbd>cd /root/saravane
 cards depends xorg > .list
-echo "xorg" >> .list
 pass</kbd></pre>
     <p>The compilation start:</p>
     <pre class="output">=======> PKGMK_INSTALL: install
-=======> PKGMK_WORK_DIR: /root/saravane/base/elfutils/work
-=======> PKGMK_SOURCE_DIR: /root/saravane/base/elfutils
+=======> PKGMK_WORK_DIR: /root/saravane/console/elfutils/work
+=======> PKGMK_SOURCE_DIR: /root/saravane/console/elfutils
 =======> PKGMK_KEEP_SOURCES: no
 =======> PKGMK_CLEAN: yes
 =======> WARNING: FOOTPRINT AND MD5SUM IGNORED
@@ -167,19 +144,19 @@ pass</kbd></pre>
 =======> PKGMK_COMPRESS_PACKAGE: no
 =======> name: elfutils
 =======> version: 0.161</pre>
-     <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 7</p>
+     <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 6</p>
     <li>If you want to reduce the size of the final ISO, you can remove the binaries archives and the logs. If you want to keep the archives, give the following command</li>
-    <pre class="command"><kbd>rsync -a /root/saravane/system /system</kbd></pre>
+    <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
     <p>no error should be printout</p>
     <p>We can delete the binaries from the git</p>
-    <pre class="command"><kbd>find /root/saravane/system/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
+    <pre class="command"><kbd>find /root/saravane/base/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
     <p>no error should be printout</p>
     <p>We erase the logs</p>
     <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
     <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-01-25 21:35:39</p>
+  <p class="updated">Last updated on 2015-01-30 20:49:39</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

@@ -3,7 +3,7 @@
 # Maintainer: tnut at nutyx dot org
 # Packager: tnut at nutyx dot org
 
-version=0.10.82.1
+version=0.10.82.91
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
 #	http://downloads.nutyx.org/files/patchs/$name/$name-$version-upstream_fixes-1.patch
 	)
