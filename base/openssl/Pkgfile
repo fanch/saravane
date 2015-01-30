@@ -1,7 +1,7 @@
 # Description: The OpenSSL package contains management tools and libraries relating to cryptography. These are useful for providing cryptography functions to other packages, such as OpenSSH, email applications and web browsers (for accessing HTTPS sites).
 # URL: http://www.openssl.org/
 # Packager: tnut at nutyx dot org
-version=1.0.1l
+version=1.0.2
 source=(http://www.openssl.org/source/$name-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-fix_parallel_build-1.patch)
 PKGMK_GROUPS=(devel man doc)
