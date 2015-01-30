@@ -109,6 +109,6 @@ do
       if ( grep "^=======>" ${LOG}/$NAME.log| tail -1 |grep "ERROR"  > /dev/null);then
          exit 1
       fi
-      cd ..
+      cd -
    fi
 done
