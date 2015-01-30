@@ -1,7 +1,6 @@
 # Description: libxvmc, library X Video Motion Compensation extension client
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
-# Depends on: 
 # Depends on: xorg-libx11 xorg-libxext xorg-libxv
 version=1.0.8
 
