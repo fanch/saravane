@@ -14,5 +14,5 @@ sed -i -e '/^docdir/     s:$:/libjpeg-turbo-1.4.0:' \
 --mandir=/usr/share/man \
 --with-jpeg8 --disable-static
 make
-make docdir=$docsdir exampledir=$docsdir DESTDIR=$PKG install
+make DESTDIR=$PKG install
 }
