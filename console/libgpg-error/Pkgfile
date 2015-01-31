@@ -12,4 +12,5 @@ make
 make DESTDIR=$PKG install
 install -v -m644 -D README \
 $PKG/usr/share/doc/$name-$version/README
+rm -f $PKG/usr/share/info/dir
 }
