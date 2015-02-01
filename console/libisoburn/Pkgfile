@@ -11,4 +11,5 @@ cd $name-$version
 --enable-pkg-check-modules
 make
 make DESTDIR=$PKG install
+rm -f $PKG/usr/share/info/dir
 } 

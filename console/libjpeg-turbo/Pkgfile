@@ -1,19 +1,18 @@
 # Description: libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
 # URL: http://libjpeg-turbo.virtualgl.org/
-http://www.libjpeg-turbo.org/About/Contact
 # Packager: pierre at nutyx dot org
 # Depends on: nasm 
 version=1.4.0
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz )
 
 build() {
+cd $name-$version
 sed -i -e '/^docdir/     s:$:/libjpeg-turbo-1.4.0:' \
        -e '/^exampledir/ s:$:/libjpeg-turbo-1.4.0:' Makefile.in
-docsdir=/usr/share/doc/$name-$version
-cd $name-$version
+
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --with-jpeg8 --disable-static
 make
-make docdir=$docsdir exampledir=$docsdir DESTDIR=$PKG install
+make DESTDIR=$PKG install
 }
