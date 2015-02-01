@@ -2,7 +2,7 @@
 # URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
 # Packager: tnut at nutyx dot org
 
-version=20141201
+version=20150201
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
 build() {

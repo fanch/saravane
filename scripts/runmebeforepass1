@@ -178,7 +178,7 @@ c1f1db32fb6598d6a93e6e88796a8632  gperf-3.0.4.tar.gz
 38373013fc85c790aabf8837969c5eba  openssl-1.0.2.tar.gz
 efad5a503f66329bb9d2f4308b5de98a  libarchive-3.1.2.tar.gz
 b6b0db5e3ee71ceba26d0a5accbd0666  xfsprogs-3.2.2.tar.gz
-d5f6685d0c54646ac87236126bcdd20a  ca-certificates-20141201.tar.gz
+fc0e8a86a9e5b85e0937e0baada04d3a  ca-certificates-20150201.tar.gz
 8d30594212e65657a5c32030f0998fa9  curl-7.40.0.tar.bz2
 d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 5065deec62e8cd514fb04d1d1253db03  sudo-1.8.11p1.tar.gz
