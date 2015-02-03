@@ -1,9 +1,9 @@
 # Description: Programe Perl for creating, manipulating and writing Zip archive files
 # URL: http://search.cpan.org/~adamk/Archive-Zip-1.23/lib/Archive/Zip.pm
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 run=( perl )
-version=1.39
+version=1.45
 
 source=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$version.tar.gz)
 
