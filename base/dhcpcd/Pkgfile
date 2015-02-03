@@ -1,9 +1,9 @@
-# Description: Implementation of the DHCP client specified in RFC2131. A DHCP client is useful for connecting your computer to a network which uses DHCP to assign network addresses.
+# Description: Implementation of the DHCP client specified in RFC2131. A DHCP client is useful for connecting your computer to a network which uses DHCP to assign network addresses. dhcpcd strives to be a fully featured, yet very lightweight DHCP client. 
 # URL: http://roy.marples.name/projects/dhcpcd
 # Maintainer: Roy Marples
 # Packager: tnut at nutyx dot org
 
-version=6.6.6
+version=6.7.1
 source=(http://roy.marples.name/downloads/$name/$name-$version.tar.bz2)
 
 build() {

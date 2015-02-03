@@ -2,7 +2,7 @@
 # URL: http://www.kernel.org
 # Packagers: pierre at nutyx dot org,tnut at nutyx dot org
 
-version=3.18.2
+version=3.18.5
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 

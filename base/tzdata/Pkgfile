@@ -1,7 +1,7 @@
 # Description: The zoneinfo database or IANA Time Zone
 # URL: http://www.gnu.org/software/libc/
 # Packager: tnut at nutyx dot org
-version=2014j
+version=2015a
 source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz)
 build() {
 timezones=('africa' 'antarctica' 'asia' 'australasia'

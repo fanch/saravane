@@ -101,6 +101,7 @@ echo "link /home/lfs/config: OK"
 for i in  wget-list md5sums
 do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    -O $LFS/sources/$i
+   sed -i "/patch-/d" $LFS/sources/$i
    sed -i "/expat-/d" $LFS/sources/$i
    sed -i "/intltool-/d" $LFS/sources/$i
    sed -i "/XML-/d" $LFS/sources/$i
@@ -140,9 +141,10 @@ done
 echo "9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
 a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
-673effdf277cd49304fc62dd0ddd2faf  bison-3.0.3.tar.xz
+c342201de104cc9ce0a21e0ad10d4021  bison-3.0.4.tar.xz
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
-dec70c35d9d700abc36ee79a1b49c259  eudev-2.1.tar.gz
+dd945ce34314b4544e9036153d3a97e9  eudev-2.1.1.tar.gz
+5be15528788635818104146957171f5d  eudev-2.1.1-manpages.tar.bz2
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
 c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
 d87c242778fcf5ce4598de80a55ded28  xz-5.2.0.tar.xz
@@ -152,15 +154,15 @@ db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
 997c9070354eff5517115feaea6038f0  gettext-0.19.4.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
 8fb13e5259fe447e02c4a37bc7225add  file-5.22.tar.gz
-51bf400de3354687d68dfa2392506b7e  libtool-2.4.4.tar.xz
+ee9c087775aeb98ce53a9c69da865a55  libtool-2.4.5.tar.xz
 a08643f814aa4efc12211c6e5909f4d9  kmod-19.tar.xz
 43c48064d6409862b8a850db83c8038a  grep-2.21.tar.xz
 38263d115d784c17aa3b959ce94be8b8  check-0.9.14.tar.gz
-5be15528788635818104146957171f5d  eudev-2.1-manpages.tar.bz2
 c2d6b127f89261513b23b6d458484099  udev-lfs-20140408.tar.bz2
 ede5166f949d9a07163bc5b086be9759  perl-5.20.1.tar.bz2
+abc59498fcdddd44e0d07764aa105fd2  patch-2.7.4.tar.xz
 68255f51be017a93f2f6402fab06c2bf  e2fsprogs-1.42.12.tar.gz
-2d7ea9c309f0d4e162e426e568290ca3  tzdata2014j.tar.gz
+4ed11c894a74a5ea64201b1c6dbb8831  tzdata2015a.tar.gz
 2b958e9f5d200641e6fc9564977aecc5  nasm-2.11.06.tar.xz
 4df8ee253b7f3863ad0b86359cd39c43  gcc-4.9.2.tar.bz2
 948a6e06419a01bd51e97206861595b0  glibc-2.20.tar.xz
@@ -184,8 +186,8 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 5065deec62e8cd514fb04d1d1253db03  sudo-1.8.11p1.tar.gz
 3c19adf32a8457983b71ff376ef7dafe  pciutils-3.3.0.tar.xz
 fc4c780b38d7aad40b85f471789a0c4d  cards-0.10.82.91.tar.gz
-de826e0736070aed70148ea5ec0ecff9  LVM2.2.02.114.tgz
-af3e6cfb1f4e4657035a36716be1c1f6  dhcpcd-6.6.6.tar.bz2
+3a1104e3d1dc4d5e92a40228161cd660  LVM2.2.02.116.tgz
+ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
 43bd6676f0b404326eee2d63be3cdcfe  rsync-3.1.1.tar.gz
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
 8cd41a5ef5a9b50d0fb6abb98af15368  libtirpc-0.2.5.tar.bz2
