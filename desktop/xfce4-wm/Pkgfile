@@ -2,9 +2,12 @@
 # URL: http://www.xfce.org/projects/xfwm4/
 # Packager: tyrry at nutyx dot org
 # Depends on: xorg-libxres libwnck xfce4-libui xfce4-libutil startup-notification 
-version=4.10.1
 
 _name=xfwm4
+
+name=xfce4-wm
+version=4.10.1
+release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2)
 

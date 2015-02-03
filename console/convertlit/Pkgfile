@@ -3,7 +3,10 @@
     http://www.convertlit.com/
 # Packager:     pierre at nutyx dot org
 # Depends on: libtommath 
+name=convertlit
 version=1.8
+release=1
+
 source=(http://www.convertlit.com/clit18src.zip)
 
 build() {

@@ -4,7 +4,10 @@ http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl 
 run=( perl )
+name=perl-path-class
 version=0.33
+release=1
+
 source=(http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Path-Class-$version.tar.gz)
 
 build() {

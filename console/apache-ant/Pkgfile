@@ -3,7 +3,10 @@
 - http://ant.apache.org/contributors.html
 # Packager: pierre at nutyx dot org
 # Depends on: glib openjdk 
+
+name=apache-ant
 version=1.9.2
+release=1
 
 source=(http://archive.apache.org/dist/ant/source/$name-$version-src.tar.bz2 )
 	

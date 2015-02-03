@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-setuptools 
+name=python-netifaces
 version=0.10.4
+release=1
+
 source=(
 https://pypi.python.org/packages/source/n/netifaces/netifaces-$version.tar.gz)
 

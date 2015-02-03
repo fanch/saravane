@@ -3,7 +3,10 @@
 http://www.hpl.hp.com/people/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=libatomic-ops
 version=7.2e
+release=1
+
 source=(http://www.hpl.hp.com/research/linux/atomic_ops/download/libatomic_ops-$version.tar.gz)
 
 build() {

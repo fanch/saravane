@@ -2,7 +2,10 @@
 # URL: http://pypi.python.org/pypi/lxml
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 libxslt 
+
+name=lxml
 version=3.0.1
+release=1
 
 source=(http://pypi.python.org/packages/source/l/$name/$name-$version.tar.gz)
 

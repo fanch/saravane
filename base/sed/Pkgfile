@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/sed//sed.html
 # Maintainers: Ken Pizzini ken at gnu dot org,Paolo Bonzini bonzini at gnu dot org
 # Packager: pierre at nutyx dot org
+name=sed
 version=4.2.2
+release=1
+
 source=(http://ftp.gnu.org/gnu/sed/sed-$version.tar.bz2)
 
 build()

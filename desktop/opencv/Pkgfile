@@ -2,10 +2,13 @@
 # URL: http://opencv.willowgarage.com/wiki/
 # Packager: pierre at nutyx dot org
 # Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg gstreamer xine-lib 
-version=2.4.9
 
 _pybin=python2
 _pydir=python2.7
+
+name=opencv
+version=2.4.9
+release=1
 
 source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip )
 

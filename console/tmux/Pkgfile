@@ -2,7 +2,10 @@
 # URL: 
 # Packager: - tnut at nutyx.org
 # Depends on: libevent 
+name=tmux
 version=1.9a
+release=1
+
 source=(http://sourceforge.net/projects/tmux/files/tmux/tmux-1.9/$name-$version.tar.gz)
 build() {
 cd $name-$version

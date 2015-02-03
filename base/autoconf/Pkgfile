@@ -3,7 +3,10 @@
 # Maintainers: David MacKenzie,François Pinard,Karl Berry,Richard Pixley,Ian Lance Taylor,Roland McGrath,Noah Friedman,David d zuhn, and many others.
 # Packager: tnut at nutyx dot org
 
+name=autoconf
 version=2.69
+release=1
+
 source=(http://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.xz)
 build()
 {

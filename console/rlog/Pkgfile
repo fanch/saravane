@@ -2,9 +2,12 @@
 # URL: http://www.arg0.net/rlog
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=1.4
 # Depends on:
 
+
+name=rlog
+version=1.4
+release=1
 
 source=(http://rlog.googlecode.com/files/$name-$version.tar.gz 
        $name-section.patch)

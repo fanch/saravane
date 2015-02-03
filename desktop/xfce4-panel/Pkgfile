@@ -2,7 +2,10 @@
 # URL: http://www.xfce.org/projects/xfce4-panel/
 # Packager: tyrry at nutyx dot org
 # Depends on: exo xfce4-garcon libwnck xfce4-libui 
+
+name=xfce4-panel
 version=4.10.1
+release=1
 
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
 

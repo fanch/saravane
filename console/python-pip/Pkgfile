@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python python-setuptools 
+name=python-pip
 version=1.5.6
+release=1
+
 source=(http://pypi.python.org/packages/source/p/pip/pip-$version.tar.gz)
 
 build() {

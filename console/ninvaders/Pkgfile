@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=ninvaders
 version=0.1.1
+release=1
+
 source=(
 http://downloads.sourceforge.net/sourceforge/ninvaders/$name-$version.tar.gz)
 

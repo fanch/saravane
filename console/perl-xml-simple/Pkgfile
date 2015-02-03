@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: 
 run=( perl )
+name=perl-xml-simple
 version=2.20
+release=1
+
 source=(http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-$version.tar.gz)
 
 build() {

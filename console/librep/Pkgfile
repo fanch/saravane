@@ -2,7 +2,10 @@
 # URL: http://librep.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: libffi 
+
+name=librep
 version=0.92.4
+release=1
 
 source=(http://download.tuxfamily.org/$name/$name-$version.tar.xz)
 

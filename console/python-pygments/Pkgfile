@@ -2,7 +2,10 @@
 # URL: # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-setuptools 
+name=python-pygments
 version=1.6
+release=1
+
 source=(
 http://pypi.python.org/packages/source/P/Pygments/Pygments-$version.tar.gz)
 

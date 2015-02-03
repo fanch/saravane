@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=perldoc
 version=5.20.1
+release=1
+
 source=(
 http://perldoc.perl.org/perldoc-html.tar.gz
 perldoc.desktop

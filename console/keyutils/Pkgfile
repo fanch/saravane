@@ -2,7 +2,10 @@
 # URL: https://rhn.redhat.com/errata/RHEA-2006-0090.html
 # Packager: pierre  at nutyx dot org
 # Depends on: 
+name=keyutils
 version=1.5.8
+release=1
+
 source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
 
 build() {

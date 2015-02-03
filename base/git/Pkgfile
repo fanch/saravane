@@ -4,7 +4,10 @@
 # Packagers: tnut at nutyx dot org, pierre at nutyx dot org
 # Depends on: openssh
 
+name=git
 version=2.2.2
+release=1
+
 source=( https://www.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
 run=(openssh)
 

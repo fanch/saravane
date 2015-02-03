@@ -2,7 +2,10 @@
 # URL: http://nodejs.org/
 # Packager: alienus at nutyx dot org
 # Depends on: python 
+name=node
 version=0.10.28
+release=1
+
 source=(http://nodejs.org/dist/v$version/node-v$version.tar.gz
 node.npm.sh)
 build() {

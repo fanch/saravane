@@ -2,7 +2,10 @@
 # URL: http://github.com/ayoy/qoauth
 # Packager: pierre at nutyx dot org
 # Depends on: qt qca 
+
+name=qoauth
 version=1.0.1
+release=1
 
 source=(http://files.ayoy.net/qoauth/release/current/src/$name-$version-src.tar.bz2 )
 	

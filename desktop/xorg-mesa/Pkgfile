@@ -2,7 +2,10 @@
 # URL: http://www.xorg-mesa3d.org
 # Packager: pierre at nutyx dot org
 # Depends on: patch autoconf automake m4 pkg-config libtool xorg-makedepend xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
+
+name=xorg-mesa
 version=10.4.2
+release=1
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/downloads/MesaLib/MesaLib-$version-add_xdemos-1.patch)

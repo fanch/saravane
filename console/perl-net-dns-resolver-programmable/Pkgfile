@@ -4,7 +4,10 @@ http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-net-dns 
 run=( perl )
+name=perl-net-dns-resolver-programmable
 version=0.003
+release=1
+
 source=(http://www.cpan.org/authors/id/J/JM/JMEHNLE/net-dns-resolver-programmable/Net-DNS-Resolver-Programmable-v$version.tar.gz)
 
 build() {

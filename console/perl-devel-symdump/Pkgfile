@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( perl )
+name=perl-devel-symdump
 version=2.11
+release=1
+
 source=(http://www.cpan.org/authors/id/A/AN/ANDK/Devel-Symdump-$version.tar.gz)
 
 build() {

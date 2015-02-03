@@ -2,9 +2,12 @@
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Packager: tyrry at nutyx dot org
 # Depends on: xfce4-libutil 
-version=0.2.1
 
 _name=garcon
+
+name=xfce4-garcon
+version=0.2.1
+release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 		

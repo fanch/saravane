@@ -2,7 +2,10 @@
 # URL: http://scons.org
 # Packager: pierre at nutyx dot org
 # Depends on: python 
+
+name=scons
 version=2.3.4
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build () 

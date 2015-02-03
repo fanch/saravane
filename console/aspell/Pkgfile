@@ -2,7 +2,10 @@
 # URL: http://aspell.net
 # Packager: tnut at nutyx dot org
 # Depends on: 
+name=aspell
 version=0.60.6.1
+release=1
+
 source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {

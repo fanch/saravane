@@ -2,7 +2,10 @@
 # URL: http://www.mpfr.org/
 # Maintainer: Guillaume Hanrot,Vincent Lefèvre,Patrick Pélissier,Philippe Théveny and Paul Zimmermann
 # Packager: pierre at nutyx dot org
+name=mpfr
 version=3.1.2
+release=1
+
 source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-2.patch)
 

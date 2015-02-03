@@ -2,7 +2,10 @@
 # URL: 	http://www.gnupg.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libcap 
+
+name=pinentry
 version=0.9.0
+release=1
 
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 

@@ -3,7 +3,10 @@
 - KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 boost kde-pimlibs 
+
+name=libkfbapi
 version=1.0
+release=1
 
 source=(http://download.kde.org/stable/$name/1.0/src/$name-$version.tar.bz2)
 

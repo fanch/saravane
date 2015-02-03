@@ -2,8 +2,11 @@
 # URL: http://www.galago-project.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libnotify python-gtk dbus-glib 
-version=0.1.1
 
+
+name=python-notify
+version=0.1.1
+release=1
 
 source=(http://www.galago-project.org/files/releases/source/notify-python/notify-python-$version.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/python-notify-0.1.1-fix-gtk-symbols-1.patch

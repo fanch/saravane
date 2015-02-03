@@ -3,11 +3,14 @@
 http://www.postgresql.org/developer/
 # Packager: - pierre at nutyx dot org
 # Depends on: python libxml2 libxslt openldap 
-version=9.4.0
 # variable groupe
 PKGMK_GROUPS=(lib doc man devel service)
 
 # sources
+name=postgresql
+version=9.4.0
+release=1
+
 source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
 build() {
 # service

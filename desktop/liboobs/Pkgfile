@@ -2,7 +2,10 @@
 # URL: http://libopenraw.freedesktop.org/wiki/Exempi
 # Packager: pierre at nutyx dot org
 # Depends on: system-tools-backends 
+
+name=liboobs
 version=3.0.0
+release=1
 
 source=(ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/3.0/$name-$version.tar.gz )
 

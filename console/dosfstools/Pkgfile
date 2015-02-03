@@ -2,7 +2,10 @@
 # URL: 
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=dosfstools
 version=3.0.13
+release=1
 
 source=( ftp://ftp.debian.org/debian/pool/main/d/$name/$name\_$version.orig.tar.xz)
 

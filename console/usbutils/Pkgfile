@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: libusb-compat 
 run=( wget )
+
+name=usbutils
 version=008
+release=1
 
 source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar.xz)
 

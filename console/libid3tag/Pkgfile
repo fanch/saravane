@@ -2,7 +2,10 @@
 # URL: http://www.mars.org/home/rob/proj/mpeg/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=libid3tag
 version=0.15.1b
+release=1
 
 source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\
 	http://downloads.nutyx.org/files/patchs/$name/id3tag.pc)

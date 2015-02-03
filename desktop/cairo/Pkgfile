@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libpng,glib,xorg-pixman,xorg-fontconfig,xcb-util,xorg-libxrender,xorg-mesa,xorg-glu,xorg-libxxf86vm
 
+
+name=cairo
 version=1.14.0
+release=1
 
 source=( http://cairographics.org/releases/$name-$version.tar.xz)
 

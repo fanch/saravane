@@ -3,7 +3,10 @@
 http://oligarchy.co.uk/contact.html
 # Packager: - tnut at nutyx dot org
 # Depends on: 
+name=xapian
 version=1.2.18
+release=1
+
 source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
 build() {
 cd $name-core-$version

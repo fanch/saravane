@@ -2,8 +2,11 @@
 # URL:  http://www.docbook.org
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 unzip 
-version=4.5
 
+
+name=docbook-xml
+version=4.5
+release=1
 
 source=(http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip \
 	http://www.docbook.org/xml/4.4/docbook-xml-4.4.zip \

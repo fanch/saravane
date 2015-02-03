@@ -2,7 +2,10 @@
 # URL: http://freshmeat.net/projects/libv4l
 # Packager: pierre at nutyx dot org
 # Depends on: libjpeg-turbo 
+
+name=v4l-utils
 version=1.6.0
+release=1
 
 source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2
 	http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2.asc)

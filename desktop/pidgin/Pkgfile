@@ -2,7 +2,10 @@
 # URL:  http://www.pidgin.im
 # Packager: pierre at nutyx dot org
 # Depends on: gtk libxml2 perl-xml-parser gnutls nss nspr xorg-libxscrnsaver xorg-libxrandr xorg-libxinerama xorg-libsm gstreamer xscreensaver startup-notification hicolor-icon-theme libidn farstream dbus networkmanager 
+
+name=pidgin
 version=2.10.11
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 

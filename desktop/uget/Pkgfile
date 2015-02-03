@@ -2,7 +2,10 @@
 # URL: http://urlget.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: libnotify gtk3 gstreamer curl hicolor-icon-theme xdg-utils 
+
+name=uget
 version=1.10.3
+release=1
 
 source=(http://downloads.sourceforge.net/urlget/$name-$version.tar.gz)
 build() {

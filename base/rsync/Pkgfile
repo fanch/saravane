@@ -1,7 +1,10 @@
 # Description: The rsync package contains the rsync utility. This is useful for synchronizing large file archives over a network. It does this by sending just the differences in the files across the link, without requiring that both sets of files are present at one of the ends of the link beforehand.
 # URL: http://samba.anu.edu.au/rsync/
 # Packager: tnut at nutyx dot org
+name=rsync
 version=3.1.1
+release=1
+
 source=( http://rsync.samba.org/ftp/$name/$name-$version.tar.gz
 	rsync.driver )
 

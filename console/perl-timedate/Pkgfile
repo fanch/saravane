@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( perl )
+name=perl-timedate
 version=2.30
+release=1
+
 source=(
 http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$version.tar.gz)
 

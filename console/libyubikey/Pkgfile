@@ -3,7 +3,10 @@
 - https://github.com/Yubico/yubico-c.git
 # Packager: - https://github.com/Yubico/yubico-c.git
 # Depends on: libusb 
+name=libyubikey
 version=1.10
+release=1
+
 source=(https://github.com/Yubico/yubico-c/archive/libyubikey-$version.tar.gz
 	libyubikey.70-yubikey.rules)
 build ()

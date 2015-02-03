@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: libmnl 
+name=libnftnl
 version=1.0.1
+release=1
+
 source=(http://netfilter.org/projects/libnftnl/files/libnftnl-$version.tar.bz2)
 
 build(){

@@ -2,8 +2,11 @@
 # URL: http://dri.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: autoconf automake m4 libtool xorg-libpciaccess 
-version=2.4.59
 _name=libdrm
+
+name=xorg-libdrm
+version=2.4.59
+release=1
 
 source=( http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
 

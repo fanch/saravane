@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
 run=( python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd )
+
+name=wicd
 version=1.7.2.4
+release=1
 
 source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
 	 http://downloads.nutyx.org/files/patchs/$name/dbus_string_fix.patch)

@@ -4,7 +4,10 @@
 # Depends on: autoconf m4 libtool xcb-proto xorg-libxdmcp xorg-libxau libxslt 
 # Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt
 
+name=libxcb
 version=1.10
+release=1
+
 source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
 
 build() {

@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: gettext 
 run=( perl )
+name=perl-locale-gettext
 version=1.05
+release=1
+
 source=(
 http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-$version.tar.gz
 perl-locale-gettext.compatibility-with-POSIX-module.patch)

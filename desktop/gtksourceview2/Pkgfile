@@ -2,7 +2,10 @@
 # URL: http://www.gnome.org/
 # Packager: pierre at nutyx dot org
 # Depends on: gtk libxml2 
+
+name=gtksourceview2
 version=2.10.5
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtksourceview/2.10/gtksourceview-${version}.tar.bz2)
 

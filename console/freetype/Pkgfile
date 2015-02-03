@@ -2,7 +2,10 @@
 # URL: http://www.freetype.org
 # Packager: pierre at nutyx dot org
 # Depends on: libpng 
+
+name=freetype
 version=2.5.5
+release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 

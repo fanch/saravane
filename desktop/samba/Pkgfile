@@ -2,7 +2,10 @@
 # URL: http://www.samba.org
 # Packager: pierre at nutyx dot org
 # Depends on: python libtirpc acl cups gamin kerberos libcap 
+
+name=samba
 version=4.1.16
+release=1
 
 source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
 

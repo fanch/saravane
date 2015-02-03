@@ -3,7 +3,10 @@
 http://dev.zuckschwerdt.org/openobex/wiki/ContactUs
 # Packager: pierre at nutyx dot org
 # Depends on: bluez libusb 
+name=openobex
 version=1.7.1
+release=1
+
 source=( http://downloads.sourceforge.net/$name/$name-$version-Source.tar.gz)
 build() {
 cd $name-$version-Source

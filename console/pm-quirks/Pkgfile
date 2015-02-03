@@ -2,9 +2,12 @@
 # URL: http://pm-utils.freedesktop.org/wiki/
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=20100619
 # Depends on:
 
+
+name=pm-quirks
+version=20100619
+release=1
 
 source=(http://pm-utils.freedesktop.org/releases/pm-quirks-${version}.tar.gz)
 

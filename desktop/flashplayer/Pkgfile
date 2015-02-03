@@ -2,7 +2,6 @@
 # URL: http://www.macromedia.com
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=11.2.202.440
 
 
 case `uname -m` in

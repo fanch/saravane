@@ -4,7 +4,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 shared-mime-info boost sqlite mysql 
 run=( mysql )
+
+name=akonadi
 version=1.13.0
+release=1
 
 source=(http://download.kde.org/stable/$name/src/$name-$version.tar.bz2)
 

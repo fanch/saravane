@@ -3,7 +3,10 @@
 # Maintainers: Andreas Gruenbacher <agruen>, Brandon Philips <philips>
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
+name=attr
 version=2.4.47
+release=1
+
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
 PKGMK_GROUPS=(devel man doc)
 build() {

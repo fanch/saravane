@@ -4,8 +4,11 @@ http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: openssl 
 run=( perl )
-version=1.63
 _cpanname=Net-SSLeay
+name=perl-net-ssleay
+version=1.63
+release=1
+
 source=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$version.tar.gz)
 
 build() {

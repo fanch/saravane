@@ -2,9 +2,12 @@
 # URL: http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 # Packager: tnut at nutyx dot org
 # Depends on: glib gperf gobject-introspection 
-version=208
 lfs_version="lfs-$version-2"
 PKGMK_GROUPS=(devel doc)
+name=udev-extras
+version=208
+release=1
+
 source=(http://anduin.linuxfromscratch.org/sources/other/udev-${lfs_version}.tar.bz2 \
 http://www.freedesktop.org/software/systemd/systemd-$version.tar.xz)
 

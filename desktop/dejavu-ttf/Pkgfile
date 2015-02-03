@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libx11,xorg-fontconfig
 
+name=dejavu-ttf
 version=2.34
+release=1
+
 source=(http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-$version.tar.bz2)
 build() {
 	cd dejavu-fonts-ttf-$version/ttf

@@ -1,8 +1,11 @@
 # Description: The Kmod package contains libraries and utilities for loading kernel modules.
 # URL: http://www.kernel.org/pub/linux/kernel/people/rusty/modules
 # Packager: pierre at nutyx dot org
-version=19
 PKGMK_GROUPS=(devel doc man)
+
+name=kmod
+version=19
+release=1
 
 source=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz )
 

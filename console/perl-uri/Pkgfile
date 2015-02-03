@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: 
 run=( perl )
+name=perl-uri
 version=1.65
+release=1
+
 source=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$version.tar.gz)
 
 build() {

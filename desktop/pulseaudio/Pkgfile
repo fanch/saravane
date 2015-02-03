@@ -2,7 +2,10 @@
 # URL: http://www.pulseaudio.org
 # Packager: pierre at nutyx dot org
 # Depends on: json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
+
+name=pulseaudio
 version=5.0
+release=1
 
 source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
 

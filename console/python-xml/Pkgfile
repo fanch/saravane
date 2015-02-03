@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: 
 run=( python )
+
+name=python-xml
 version=0.8.4
+release=1
 
 source=(http://downloads.sourceforge.net/pyxml/PyXML-0.8.4.tar.gz)
 

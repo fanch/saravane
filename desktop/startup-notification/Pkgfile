@@ -2,7 +2,10 @@
 # URL: http://freedesktop.org/wiki/Software/startup-notification
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libx11 xcb-util 
+
+name=startup-notification
 version=0.12
+release=1
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
 

@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: lua 
+name=lua-alt-getopt
 version=0.7.0
+release=1
+
 source=(
 http://mova.org/~cheusov/pub/lua_alt_getopt/lua-alt-getopt-$version.tar.gz)
 

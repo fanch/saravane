@@ -2,7 +2,10 @@
 # URL: http://hal.freedesktop.org/docs/polkit
 # Packager: pierre at nutyx dot org
 # Depends on: glib js gobject-introspection intltool libxslt docbook-xsl 
+
+name=polkit
 version=0.112
+release=1
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
 

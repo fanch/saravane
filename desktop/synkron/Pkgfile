@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 qt xdg-utils 
 run=( xdg-utils )
+name=synkron
 version=1.6.2
+release=1
+
 source=(http://downloads.sourceforge.net/project/synkron/synkron/$version/Synkron-$version-src.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/$name-$version-config-1.patch
 	$name.desktop )

@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: zsh 
+name=grml-zsh-config
 version=0.10.1
+release=1
+
 source=(
 http://deb.grml.org/pool/main/g/grml-etc-core/grml-etc-core_${version}.tar.gz)
 

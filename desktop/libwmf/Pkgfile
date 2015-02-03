@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: gsfonts libjpeg-turbo xorg-libx11 gdk-pixbuf gtk xorg-libxt 
+name=libwmf
 version=0.2.8.4
+release=1
+
 source=(
 http://downloads.sourceforge.net/sourceforge/wvware/$name-$version.tar.gz
 libwmf.0.2.8.4-libpng-1.5.patch

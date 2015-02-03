@@ -2,7 +2,10 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libx11 xorg-proto 
+
+name=xorg-libxfixes
 version=5.0.1
+release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfixes-$version.tar.bz2)
 

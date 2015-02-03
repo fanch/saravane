@@ -2,7 +2,10 @@
 # URL: http://gftp.seul.org/
 # Packager: pierre at nutyx dot org
 # Depends on: gtk xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama 
+
+name=gftp
 version=2.0.19
+release=1
 
 source=(http://www.gftp.org/$name-$version.tar.bz2)
 

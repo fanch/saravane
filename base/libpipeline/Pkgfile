@@ -2,7 +2,10 @@
 # URL: http://libpipeline.nongnu.org/
 # Maintainer: Colin Watson cjwatson at debian dot org
 # Packager: tnuttens at gmail dot com
+
+name=libpipeline
 version=1.4.0
+release=1
 
 source=(http://download.savannah.gnu.org/releases/libpipeline/libpipeline-$version.tar.gz)
 

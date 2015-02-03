@@ -3,7 +3,10 @@
 http://httpd.apache.org/
 # Packager: http://httpd.apache.org/
 # Depends on: pcre apr-util sqlite expat 
+
+name=apache
 version=2.4.10
+release=1
 
 source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
 	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)

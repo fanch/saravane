@@ -2,7 +2,10 @@
 # URL: http://telepathy.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: intltool sqlite telepathy-glib gobject-introspection 
+
+name=telepathy-logger
 version=0.8.0
+release=1
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.bz2)
 

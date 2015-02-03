@@ -2,7 +2,10 @@
 # URL: http://fcron.free.fr
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=fcron
 version=3.2.0
+release=1
 
 source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
 build() {

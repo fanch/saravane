@@ -3,8 +3,11 @@
 http://jackaudio.org
 # Packager: pierre at nutyx dot org
 # Depends on: db libsamplerate readline doxygen celt 
-version=0.124.1
 _longname=jack-audio-connection-kit
+
+name=jack
+version=0.124.1
+release=1
 
 source=(http://jackaudio.org/downloads/${_longname}-$version.tar.gz
         jack-99-audio.conf

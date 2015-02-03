@@ -2,7 +2,10 @@
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: pierre at nutyx dot org
 # Depends on: cups perl libxml2 
+
+name=foomatic-db-nonfree
 version=current
+release=1
 
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
 

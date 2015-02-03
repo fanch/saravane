@@ -3,7 +3,10 @@
  http://pyyaml.org/
 # Packager:  pierre at nutyx dot org
 # Depends on: doxygen 
+name=yaml
 version=0.1.6
+release=1
+
 source=(http://pyyaml.org/download/libyaml/yaml-$version.tar.gz)
 
 build() {

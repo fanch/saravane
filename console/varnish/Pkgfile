@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: libedit pcre python-docutils 
+name=varnish
 version=4.0.2
+release=1
+
 source=(
 http://repo.varnish-cache.org/source/$name-$version.tar.gz
 varnish.service)

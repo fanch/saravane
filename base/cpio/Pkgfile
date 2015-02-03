@@ -3,7 +3,10 @@
 # Maintainer: Sergey Poznyakoff
 # Packager: pierre at nutyx dot org
 
+
+name=cpio
 version=2.11
+release=1
 
 source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2\
 )

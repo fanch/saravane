@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( perl )
+name=perl-xml-namespacesupport
 version=1.11
+release=1
+
 source=(
 http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-$version.tar.gz)
 

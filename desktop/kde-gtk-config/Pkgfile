@@ -2,7 +2,10 @@
 # URL: http://www.kde.org
 # Packager: pierre at nutyx dot org
 # Depends on: cmake kde-runtime 
-version=2.2.1
+
+name=kde-gtk-config
+version=4.14.32.2.1
+release=1
 
 source=(http://download.kde.org/stable/kde-gtk-config/$version/src/$name-$version.tar.xz)
 

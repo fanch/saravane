@@ -1,7 +1,10 @@
 # Description: Base system of NuTyX, contains all folders and startup scripts.
 
-version=2015.1
 PKGMK_GROUPS=(man)
+name=aaabasicfs
+version=2015.1
+release=1
+
 source=(http://downloads.nutyx.org/files/nutyx-basicfs-20150122.tar.bz2) 
 build () {
 cd nutyx-basicfs/nutyx-saravane-basicfs/rootfs

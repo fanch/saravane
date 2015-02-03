@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( perl )
+name=perl-xml-sax-base
 version=1.08
+release=1
+
 source=(
 http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-$version.tar.gz)
 

@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/groff/
 # Maintainer: Werner Lemberg  wl at gnu dot org
 # Packager: pierre at nutyx dot org
+name=groff
 version=1.22.3
+release=1
+
 source=(http://ftp.gnu.org/gnu/groff/groff-$version.tar.gz)
 
 build()

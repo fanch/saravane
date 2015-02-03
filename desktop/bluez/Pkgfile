@@ -3,7 +3,10 @@
 - http://www.bluez.org/development/credits/
 # Packager: pierre at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+name=bluez
 version=5.27
+release=1
+
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
 	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-obexd_without_systemd-1.patch)
 build() {

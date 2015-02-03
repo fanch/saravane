@@ -2,7 +2,10 @@
 # URL: http://www.isc.org/downloads/bind/ 
 # Packager: tnut at nutyx dot org
 # Depends on: kerberos libxml2 
+name=bind
 version=9.10.1-P1
+release=1
+
 source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
 
 build(){

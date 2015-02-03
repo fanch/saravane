@@ -2,8 +2,11 @@
 # URL: http://www.swig.org/
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: pcre 
-version=3.0.5
 
+
+name=swig
+version=3.0.5
+release=1
 
 source=("http://downloads.sourceforge.net/$name/$name-$version.tar.gz")
 

@@ -2,7 +2,10 @@
 # URL: http://libbsd.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=libbsd
 version=0.4.2
+release=1
 
 source=(http://libbsd.freedesktop.org/releases/$name-$version.tar.gz)
 build () {

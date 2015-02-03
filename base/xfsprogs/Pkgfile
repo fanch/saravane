@@ -1,7 +1,10 @@
 # Description: XFS filesystem utilities
 # URL: http://oss.sgi.com/projects/xfs/
 # Packager: pierre at nutyx dot org
+
+name=xfsprogs
 version=3.2.2
+release=1
 
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 

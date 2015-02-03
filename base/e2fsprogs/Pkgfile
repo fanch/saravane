@@ -3,7 +3,10 @@
 # Maintainers: Ted Ts'o tytso at mit dot edu,tytso at alum dot mit dot edu
 # Packagers: tnut at nutyx dot org
 
+name=e2fsprogs
 version=1.42.12
+release=1
+
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 PKGMK_GROUPS=(devel man doc)

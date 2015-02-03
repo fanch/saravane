@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=libzen
 version=0.4.29
+release=1
+
 source=(
 http://downloads.sourceforge.net/zenlib/${name}_${version}.tar.bz2)
 

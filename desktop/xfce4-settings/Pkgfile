@@ -2,7 +2,10 @@
 # URL: http://wiki.xfce.org/releng/4.10/
 # Packager: tyrry at nutyx dot org
 # Depends on: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile 
+
+name=xfce4-settings
 version=4.10.1
+release=1
 
 source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2)
 build() {

@@ -2,7 +2,10 @@
 # URL: http://libburnia.pykix.org/
 # Packager: pierre at nutyx dot org
 # Depends on: acl attr 
+
+name=libisofs
 version=1.3.8
+release=1
 
 source=(http://files.libburnia-project.org/releases/$name-$version.tar.gz)
 

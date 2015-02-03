@@ -2,7 +2,10 @@
 # URL: http://www.vorbis.com/
 # Packager: pierre at nutyx dot org
 # Depends on: libogg doxygen 
+name=libvorbis
 version=1.3.4
+release=1
+
 source=( http://downloads.xiph.org/releases/vorbis/$name-$version.tar.gz)
 
 build() {

@@ -2,8 +2,11 @@
 # URL: http://www.gnu.org/software/libcdio/
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=0.92
 # Depends on:
+
+name=libcdio
+version=0.92
+release=1
 
 source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 

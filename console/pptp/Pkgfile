@@ -2,7 +2,10 @@
 # URL: http://pptpclient.sourceforge.net/
 # Packager: guy_
 # Depends on: ppp 
+
+name=pptp
 version=1.7.2
+release=1
 
 source=(http://downloads.sourceforge.net/sourceforge/pptpclient/$name-$version.tar.gz)
 

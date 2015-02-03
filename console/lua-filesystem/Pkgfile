@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: lua 
+name=lua-filesystem
 version=1.6.2
+release=1
+
 source=(
 http://github.com/downloads/keplerproject/luafilesystem/luafilesystem-$version.tar.gz)
 

@@ -2,8 +2,11 @@
 # URL: http://gmplib.org/
 # Maintainers: Torb,Granlund and many more
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
-version=6.0.0a
 baseversion=6.0.0
+name=gmp
+version=6.0.0a
+release=1
+
 source=(ftp://ftp.gmplib.org/pub/gmp-$baseversion/gmp-$version.tar.xz)
 
 build()

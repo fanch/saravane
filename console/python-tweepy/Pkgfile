@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-simplejson 
+name=python-tweepy
 version=2.2
+release=1
+
 source=(
 http://pypi.python.org/packages/source/t/tweepy/tweepy-$version.tar.gz)
 

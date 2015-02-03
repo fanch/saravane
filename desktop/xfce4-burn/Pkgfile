@@ -2,8 +2,11 @@
 # URL: http://www.xfce.org/projects/xfburn/
 # Packager: tnut at nutyx dot org
 # Depends on: gstreamer-plugins-base exo libisoburn xfce4-libgui xorg-pixman startup-notification gstreamer-plugins-good 
-version=0.5.2
 _name=xfburn
+
+name=xfce4-burn
+version=0.5.2
+release=1
 
 source=( http://archive.xfce.org/src/apps/xfburn/${version%.*}/xfburn-$version.tar.bz2)
 

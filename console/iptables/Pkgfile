@@ -2,7 +2,10 @@
 # URL: http://www.iptables.org/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=iptables
 version=1.4.21
+release=1
+
 source=( http://www.netfilter.org/projects/iptables/files/$name-$version.tar.bz2)
 build() {
 source /etc/blfs-bootscripts

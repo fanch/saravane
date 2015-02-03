@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-httplib2 python-setuptools 
+name=python-oauth2
 version=1.5.211
+release=1
+
 source=(
 https://pypi.python.org/packages/source/o/oauth2/oauth2-$version.tar.gz)
 

@@ -2,7 +2,10 @@
 # URL: http://xvid.org
 # Packager: pierre at nutyx dot org
 # Depends on: yasm 
+name=xvid
 version=1.3.3
+release=1
+
 source=( http://downloads.xvid.org/downloads/xvidcore-$version.tar.gz )
 build() {
 cd xvidcore/build/generic

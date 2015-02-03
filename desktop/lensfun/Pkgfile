@@ -2,7 +2,10 @@
 # URL: http://lensfun.berlios.de
 # Packager: pierre at nutyx dot org
 # Depends on: glib libpng doxygen 
+name=lensfun
 version=0.2.8
+release=1
+
 source=(http://sourceforge.net/projects/$name/files/$name-$version.tar.bz2
 	)
 build(){

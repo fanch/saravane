@@ -2,7 +2,10 @@
 # URL: http://telepathy.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: telepathy-glib 
+
+name=telepathy-idle
 version=0.1.16
+release=1
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
 

@@ -3,8 +3,11 @@
 http://www.vamp-plugins.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libsndfile 
-version=2.5
 _dir=690
+
+name=vamp-plugin-sdk
+version=2.5
+release=1
 
 source=(http://code.soundsoftware.ac.uk/attachments/download/$_dir/$name-$version.tar.gz)
 

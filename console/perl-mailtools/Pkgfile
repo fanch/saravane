@@ -4,7 +4,10 @@ http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-timedate 
 run=( perl )
+name=perl-mailtools
 version=2.13
+release=1
+
 source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/MailTools-$version.tar.gz)
 
 build() {

@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/parted/index.shtml
 # Packager: pierre at nutyx dot org
 # Depends on: lvm2 
+
+name=parted
 version=3.1
+release=1
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 

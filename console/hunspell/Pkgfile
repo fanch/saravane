@@ -2,7 +2,10 @@
 # URL: http://hunspell.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=hunspell
 version=1.2.12
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 

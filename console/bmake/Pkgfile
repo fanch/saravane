@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=bmake
 version=20140522
+release=1
+
 source=(http://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz)
 
 build(){

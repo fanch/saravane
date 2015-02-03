@@ -2,8 +2,11 @@
 # URL: http://pkgconfig.freedesktop.org/
 # Maintainer: Tollef Fog Heen tfheen at err dot no
 # Packager: tnut at nutyx dot org
-version=0.28
 PKGMK_GROUPS=(man doc)
+
+name=pkg-config
+version=0.28
+release=1
 
 source=(http://pkgconfig.freedesktop.org/releases/pkg-config-$version.tar.gz)
 build()

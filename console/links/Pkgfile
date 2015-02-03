@@ -3,7 +3,10 @@
 - http://links.twibright.com/
 # Packager: pierre at nutyx dot org
 # Depends on: gpm libpng libtiff libjpeg-turbo 
+name=links
 version=2.9
+release=1
+
 source=(http://links.twibright.com/download/links-$version.tar.bz2)
 build() {
 cd $name-$version

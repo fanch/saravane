@@ -2,7 +2,10 @@
 # URL: URL: http://www.python.org
 # Packager: alienusat nutyx dot org
 # Depends on: sqlite expat 
+name=python3
 version=3.4.2
+release=1
+
 source=(
 http://www.python.org/ftp/python/$version/Python-$version.tar.xz
 python3.desktop

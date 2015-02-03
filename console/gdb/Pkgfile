@@ -2,7 +2,10 @@
 # URL: http://www.sourceware.org/gdb/
 # Packager: - tnuttens at gmail dot com
 # Depends on: 
+name=gdb
 version=7.8.2
+release=1
+
 source=(http://ftp.gnu.org/gnu/gdb/$name-$version.tar.xz)
 build() {
 cd $name-$version

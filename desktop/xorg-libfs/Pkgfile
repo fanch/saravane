@@ -2,7 +2,10 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-xtrans 
+
+name=xorg-libfs
 version=1.0.6
+release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libFS-$version.tar.bz2)
 

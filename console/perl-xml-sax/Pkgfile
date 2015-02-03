@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: perl-xml-namespacesupport perl-xml-sax-base 
 run=( perl )
+name=perl-xml-sax
 version=0.99
+release=1
+
 source=(
 http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-$version.tar.gz
 perl-xml-sax.patch)

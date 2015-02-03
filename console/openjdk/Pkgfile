@@ -2,8 +2,11 @@
 # URL: 
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=1.7.0.40
 
+
+name=openjdk
+version=1.7.0.40
+release=1
 
 source=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-$version/OpenJDK-$version-`uname -m`-bin.tar.xz )
 	

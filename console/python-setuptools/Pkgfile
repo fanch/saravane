@@ -2,7 +2,10 @@
 # URL: URL: https://bitbucket.org/pypa/setuptools
 # Packager: alienus at nutyx dot org
 # Depends on: python 
+
+name=python-setuptools
 version=6.0.2
+release=1
 
 source=(http://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
 

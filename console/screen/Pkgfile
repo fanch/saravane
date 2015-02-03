@@ -2,7 +2,10 @@
 # URL: 
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=screen
 version=4.2.1
+release=1
+
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {

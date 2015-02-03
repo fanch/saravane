@@ -3,7 +3,10 @@
 # Packager: ~          
 # Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 
 run=( xorg startup-notification dbus )
+name=openbox
 version=3.5.2
+release=1
+
 source=(http://icculus.org/openbox/releases/$name-$version.tar.gz \
         openbox.xinitrc)
 

@@ -2,7 +2,10 @@
 # URL: http://shadow.pld.org.pl/
 # Maintainer: pkg-shadow-devel@lists.alioth.debian.org
 # Packager: pierre at nutyx dot org
+name=shadow
 version=4.2.1
+release=1
+
 source=( http://pkg-shadow.alioth.debian.org/releases/shadow-$version.tar.xz)
 
 build()

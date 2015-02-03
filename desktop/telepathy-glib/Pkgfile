@@ -2,7 +2,10 @@
 # URL: http://telepathy.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: dbus-glib libxslt gobject-introspection vala 
+
+name=telepathy-glib
 version=0.20.1
+release=1
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
 

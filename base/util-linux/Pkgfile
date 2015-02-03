@@ -2,7 +2,10 @@
 # URL: http://freshmeat.net/projects/util-linux/
 # Maintainer: Karel Zak kzak at redhat dot com 
 # Packager: tnut at nutyx dot org
+name=util-linux
 version=2.25.2
+release=1
+
 source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-$version.tar.xz
 	)
 

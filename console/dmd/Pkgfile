@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=dmd
 version=2.065.0
+release=1
+
 source=(http://downloads.dlang.org/releases/2014/dmd.$version.zip
 dmd.desktop dmd.logo_48.png)
 

@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-cssselect
 version=0.9.1
+release=1
+
 source=(
 http://pypi.python.org/packages/source/c/cssselect/cssselect-$version.tar.gz)
 

@@ -2,7 +2,10 @@
 # URL: http://pkg-isocodes.alioth.debian.org/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=iso-codes
 version=3.54
+release=1
+
 source=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$version.tar.xz)
 
 build() {

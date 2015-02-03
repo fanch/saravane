@@ -2,7 +2,10 @@
 # URL: 
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libxext libpng libjpeg-turbo 
+
+name=xli
 version=1
+release=1
 
 source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/xli-1.16-makefile-1.patch)

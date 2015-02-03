@@ -2,7 +2,10 @@
 # URL: http://martine.github.io/ninja/
 # Packager: pierre at nutyx dot org
 # Depends on: git re2c python 
+
+name=ninja
 version=1.4.0
+release=1
 
 source=()
 	

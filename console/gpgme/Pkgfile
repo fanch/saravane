@@ -2,7 +2,10 @@
 # URL: http://www.gnupg.org/related_software/gpgme/
 # Packager: pierre at nutyx dot org
 # Depends on: libassuan 
+
+name=gpgme
 version=1.5.3
+release=1
 
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 build() {

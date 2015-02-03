@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-crypto
 version=2.6.1
+release=1
+
 source=(
 http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-$version.tar.gz)
 

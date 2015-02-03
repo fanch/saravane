@@ -2,7 +2,10 @@
 # URL: http://txt2tags.sourceforge.net
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=txt2tags
 version=2.6
+release=1
 
 source=(http://txt2tags.googlecode.com/files/$name-$version.tgz)
 

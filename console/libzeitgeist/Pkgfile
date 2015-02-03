@@ -2,7 +2,10 @@
 # URL: http://www.gnome.org/
 # Packager: pierre at nutyx dot org
 # Depends on: glib 
+name=libzeitgeist
 version=0.3.18
+release=1
+
 source=(http://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz)
 
 build() {

@@ -3,7 +3,10 @@
 http://www.gnupg.org/index.html
 # Packager: pierre at nutyx dot org
 # Depends on: libgpg-error 
+name=libassuan
 version=2.2.0
+release=1
+
 source=( ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 build() {
 cd $name-$version

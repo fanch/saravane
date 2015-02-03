@@ -3,7 +3,10 @@
 http://www.codenix.com/~tolua
 # Packager: pierre at nutyx dot org
 # Depends on: lua51 scons 
+name=tolua++5.1
 version=1.0.93
+release=1
+
 source=(http://www.codenix.com/~tolua/tolua++-$version.tar.bz2)
        
 build() {

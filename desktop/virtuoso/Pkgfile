@@ -2,7 +2,10 @@
 # URL: http://virtuoso.openlinksw.com/wiki/main/Main
 # Packager: pierre at nutyx dot org
 # Depends on: imagemagick pango xorg-pixman xorg-mesa xorg-libxt lcms2 
+name=virtuoso
 version=6.1.8
+release=1
+
 source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-opensource-$version.tar.gz)
 build() {
 cd $name-opensource-$version

@@ -2,7 +2,10 @@
 # URL: http://downloads.source.net/lame
 # Packager: pierre at nutyx dot org
 # Depends on: libsndfile nasm 
+name=lame
 version=3.99.5
+release=1
+
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {
 cd $name-$version

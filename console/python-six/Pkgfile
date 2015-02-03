@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-six
 version=1.7.3
+release=1
+
 source=(
 http://pypi.python.org/packages/source/s/six/six-$version.tar.gz)
 

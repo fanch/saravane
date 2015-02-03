@@ -2,7 +2,10 @@
 # URL: http://dl.lm-sensors.org/lm-sensors/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=lm-sensors
 version=3.3.5
+release=1
 
 source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2)
 

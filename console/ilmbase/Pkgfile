@@ -2,8 +2,11 @@
 # URL: http://openexr.com/
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=2.0.1
 # Depends on:
+
+name=ilmbase
+version=2.0.1
+release=1
 
 source=( http://download.savannah.nongnu.org/releases/openexr/$name-$version.tar.gz)
 build() {

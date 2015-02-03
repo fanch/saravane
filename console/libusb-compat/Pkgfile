@@ -2,12 +2,15 @@
 # URL: http://libusb.wiki.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: libusb 
-version=0.1.5
 # Description: The libusb-compat package aims to look, feel and behave exactly like libusb-0.1. It is a compatibility layer needed by packages that have not been upgraded to the libusb-1.0 API.
 # URL: http://libusb.wiki.sourceforge.net/
 # Maintainer: Daniel Drake, dsd at gentoo dot org
 # Packager: pierre at nutyx dot org
 # Depends on: libusb
+
+name=libusb-compat
+version=0.1.5
+release=1
 
 source=( http://downloads.sourceforge.net/libusb/$name-$version.tar.bz2)
 

@@ -2,7 +2,10 @@
 # URL: http://www.gimp.org/
 # Packager: pierre at nutyx dot org
 # Depends on: shared-mime-info gtk python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl poppler libmng alsa-lib babl 
+
+name=gimp
 version=2.8.14
+release=1
 
 source=(http://download.gimp.org/pub/gimp/v2.8/gimp-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-device_info-1.patch)

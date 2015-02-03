@@ -2,8 +2,11 @@
 # URL: http://www.alsa-project.org
 # Packager: pierre at nutyx dot org
 # Depends on: alsa-lib dialog xmlto libsamplerate 
-version=1.0.28
 PKGMK_GROUPS=(man)
+name=alsa-utils
+version=1.0.28
+release=1
+
 source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
 
 build() {

@@ -2,7 +2,10 @@
 # URL: http://www.sane-project.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libusb-compat libjpeg-turbo libtiff gtk libexif cups 
+
+name=sane
 version=1.0.24
+release=1
 
 source=(http://fossies.org/linux/misc//sane-backends-$version.tar.gz)
 

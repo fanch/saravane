@@ -1,7 +1,10 @@
 # Description: Netscape Portable Runtime library (NSPR) 
 # URL: http://www.mozilla.org/projects/nspr/
 # Packager: pierre at nutyx dot org
+name=nspr
 version=4.10.8
+release=1
+
 source=( http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
 build () {
 

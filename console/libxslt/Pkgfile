@@ -3,7 +3,10 @@
 http://xmlsoft.org/XSLT/contribs.html
 # Packager: pierre at pierre dot org
 # Depends on: libxml2 libgcrypt 
+name=libxslt
 version=1.1.28
+release=1
+
 source=( ftp://xmlsoft.org/libxml2/$name-$version.tar.gz)
 
 build() {

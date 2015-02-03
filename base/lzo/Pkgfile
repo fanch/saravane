@@ -2,7 +2,10 @@
 # URL: http://www.oberhumer.com/opensource/lzo
 # Maintainer: Markus F.X.J. Oberhumer
 # Packager: pierre at nutyx dot org
+name=lzo
 version=2.08
+release=1
+
 source=(  http://www.oberhumer.com/opensource/$name/download/$name-$version.tar.gz)
 
 build() {

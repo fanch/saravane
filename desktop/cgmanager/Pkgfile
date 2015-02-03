@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: libtool libnih help2man 
+name=cgmanager
 version=0.23
+release=1
+
 source=(https://github.com/cgmanager/cgmanager/archive/v${version}.tar.gz)
 
 build(){

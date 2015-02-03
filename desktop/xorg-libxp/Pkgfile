@@ -2,7 +2,10 @@
 # URL: 
 # Packager: X11 X Print Library
 # Depends on: xorg-proto xorg-libxext 
+
+name=xorg-libxp
 version=1.0.2
+release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$version.tar.bz2)
 

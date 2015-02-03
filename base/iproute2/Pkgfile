@@ -1,8 +1,11 @@
 # Description: The IPRoute2 package contains programs for basic and advanced IPV4-based networking.
 # URL: http://linux-net.osdl.org/index.php/Iproute2
 # Packager: pierre at nutyx dot org
-version=3.18.0
 PKGMK_GROUPS=(devel man doc)
+
+name=iproute2
+version=3.18.0
+release=1
 
 source=(http://www.kernel.org/pub/linux/utils/net/$name/iproute2-$version.tar.xz)
 

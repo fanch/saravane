@@ -2,7 +2,10 @@
 # URL: http://pcmanfm.sourceforge.net/
 # Packager: geantbrun at gmail dot com
 # Depends on: udisks shared-mime-info xorg-libxinerama xorg-libxrandr xorg-libxdamage gtk menu-cache dbus-glib desktop-file-utils vala 
+
+name=libfm
 version=1.1.0
+release=1
 
 source=(http://downloads.sourceforge.net/pcmanfm/${name}-$version.tar.gz)
 

@@ -3,7 +3,10 @@
    https://pypi.python.org/
 # Packager:    pierre at nutyx dot org
 # Depends on: python python3 python-markupsafe 
+name=python-jinja2
 version=2.7.3
+release=1
+
 source=(https://pypi.python.org/packages/source/J/Jinja2/Jinja2-$version.tar.gz)
 
 build() {

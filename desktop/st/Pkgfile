@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: xorg-libxext xorg-libxft 
+name=st
 version=0.5
+release=1
+
 source=(http://dl.suckless.org/st/$name-$version.tar.gz)
 
 build(){

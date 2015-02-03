@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: perl-test-pod perl-test-pod-coverage 
 run=( perl )
+name=perl-time-duration
 version=1.1
+release=1
+
 source=(
 http://www.cpan.org/authors/id/A/AV/AVIF/Time-Duration-$version.tar.gz)
 

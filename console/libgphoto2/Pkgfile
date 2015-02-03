@@ -2,7 +2,10 @@
 # URL: http://www.gphoto.org/proj/libgphoto2/
 # Packager: pierre at nutyx dot org
 # Depends on: libjpeg-turbo libexif libusb-compat 
+
+name=libgphoto2
 version=2.5.2
+release=1
 
 source=(http://downloads.sourceforge.net/gphoto/$name-$version.tar.bz2)
 

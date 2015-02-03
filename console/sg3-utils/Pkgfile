@@ -2,7 +2,10 @@
 # URL: http://sg.danny.cz/sg/sg3_utils.html
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=sg3-utils
 version=1.40
+release=1
 
 source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
 build() {

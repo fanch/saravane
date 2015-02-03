@@ -2,7 +2,10 @@
 # URL: http://speedcrunch.org/
 # Packager: - speedcrunch.googlecode.com
 # Depends on: qt 
+
+name=speedcrunch
 version=0.10.1
+release=1
 
 source=(http://speedcrunch.googlecode.com/files/speedcrunch-$version.tar.gz)
 build ()

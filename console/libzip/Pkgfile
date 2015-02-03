@@ -3,7 +3,10 @@
     http://www.nih.at/libzip/index.html
 # Packager:     pierre at nutyx dot org
 # Depends on: 
+name=libzip
 version=0.11.2
+release=1
+
 source=(http://www.nih.at/$name/$name-$version.tar.xz)
 
 build() {

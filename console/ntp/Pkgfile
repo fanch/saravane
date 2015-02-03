@@ -2,7 +2,10 @@
 # URL: http://www.ntp.org/ 
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=ntp
 version=4.2.8
+release=1
 
 source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
 

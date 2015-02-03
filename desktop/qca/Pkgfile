@@ -2,7 +2,10 @@
 # URL: http://delta.affinix.com/qca/
 # Packager: pierre at nutyx dot org
 # Depends on: qt 
+
+name=qca
 version=2.1.0
+release=1
 
 source=(http://delta.affinix.com/download/$name/2.0/$name-$version.tar.gz)
 

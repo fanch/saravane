@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-httplib2
 version=0.9
+release=1
+
 source=(
 https://github.com/jcgregorio/httplib2/archive/v${version}.tar.gz
 $name.ssl_hostname.patch

@@ -2,7 +2,10 @@
 # URL: http://www.ece.uvic.ca/~mdadams/jasper/
 # Packager: pierre at nutyx dot org
 # Depends on: libjpeg-turbo 
+
+name=jasper
 version=1.900.1
+release=1
 
 source=(http://www.ece.uvic.ca/~mdadams/$name/software/$name-$version.zip \
 	 http://www.linuxfromscratch.org/patches/blfs/svn/jasper-1.900.1-security_fixes-2.patch)

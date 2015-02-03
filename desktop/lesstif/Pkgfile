@@ -2,7 +2,10 @@
 # URL: 
 # Packager: Version libre de OSF/Motif
 # Depends on: freetype xorg-libxp xorg-libxt xorg-libsm xorg-libice 
+name=lesstif
 version=0.95.2
+release=1
+
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 build() {
 cd $name-$version

@@ -2,8 +2,11 @@
 # URL: http://invisible-island.net/xorg-term/
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-app xorg-fontconfig xorg-libxft 
-version=314
 _name=xterm
+
+name=xorg-term
+version=314
+release=1
 
 source=(ftp://invisible-island.net/${_name}/${_name}-$version.tgz
 	$name.list)

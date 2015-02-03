@@ -3,7 +3,10 @@
 - http://www.gtk.org/development.php
 # Packager: pierre at nutyx dot org
 # Depends on: glib pcre gobject-introspection 
+
+name=atk
 version=2.14.0
+release=1
 
 source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 

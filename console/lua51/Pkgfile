@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=lua51
 version=5.1.5
+release=1
+
 source=(
 http://www.lua.org/ftp/lua-$version.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/7.4/lua-5.1.5-shared_library-2.patch)

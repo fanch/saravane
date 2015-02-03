@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=libseccomp
 version=2.1.1
+release=1
+
 source=(
 http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
 

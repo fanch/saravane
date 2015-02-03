@@ -2,7 +2,10 @@
 # URL: http://www.ijg.org/
 # Packager: pierre at nutyx dot org
 # Depends on: lcms2 libpng libtiff 
+
+name=openjpeg
 version=1.5.1
+release=1
 
 source=(http://openjpeg.googlecode.com/files/openjpeg-1.5.1.tar.gz )
 

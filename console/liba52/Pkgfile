@@ -2,7 +2,10 @@
 # URL: http://liba52.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=liba52
 version=0.7.4
+release=1
 
 source=(http://liba52.sourceforge.net/files/a52dec-$version.tar.gz)
 

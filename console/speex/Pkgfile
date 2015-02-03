@@ -2,7 +2,10 @@
 # URL: http://www.speex.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libogg 
+
+name=speex
 version=1.2rc2
+release=1
 
 source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
 

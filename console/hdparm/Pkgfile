@@ -3,7 +3,10 @@
 http://sourceforge.net/u/ideguy/profile/
 # Packager:  
 # Depends on: 
+name=hdparm
 version=9.45
+release=1
+
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 build() {
 cd $name-$version && make

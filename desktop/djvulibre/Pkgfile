@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: librsvg libtiff libjpeg-turbo hicolor-icon-theme 
 run=( librsvg hicolor-icon-theme )
+name=djvulibre
 version=3.5.25.3
+release=1
+
 source=(
 http://downloads.sourceforge.net/djvu/$name-$version.tar.gz)
 

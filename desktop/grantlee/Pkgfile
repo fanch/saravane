@@ -2,7 +2,10 @@
 # URL: http://www.gitorious.org/grantlee/pages/Home
 # Packager: pierre at nutyx dot org
 # Depends on: qt 
+
+name=grantlee
 version=0.5.1
+release=1
 
 source=(http://downloads.grantlee.org/$name-$version.tar.gz)
 

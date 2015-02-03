@@ -3,7 +3,10 @@
 - http://www.csie.ntu.edu.tw/~cjlin/index.html
 # Packager: - tnut at nutyx dot org
 # Depends on: 
+name=liblinear
 version=1.94
+release=1
+
 source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
 build() {
 cd $name-$version

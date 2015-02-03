@@ -2,7 +2,10 @@
 # URL: http://www.digikam.org/
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 imagemagick sqlite doxygen kde-libksane kde-libkdcraw kde-libkipi kde-libkexiv2 opencv qjson kde-marble mysql lensfun 
+
+name=kipi-plugins
 version=4.4.0
+release=1
 
 source=(http://download.kde.org/stable/digikam/digikam-$version.tar.bz2
        kipi-plugins.libkexiv2.patch)

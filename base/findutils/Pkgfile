@@ -3,7 +3,10 @@
 # Maintainers: Eric B. Decker,Michael Rendell,James A. Woods
 # Packager: tnut at nutyx dot org
 
+name=findutils
 version=4.4.2
+release=1
+
 source=(http://ftp.gnu.org/gnu/findutils/findutils-$version.tar.gz)
 
 build()

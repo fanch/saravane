@@ -1,8 +1,11 @@
 # Description: portmap replacement which supports RPC over various protocols
 # URL: http://rpcbind.sourceforge.net/
 # Packager: alienus at nutyx dot org
-version=0.2.2
 PKGMK_GROUPS=(man)
+name=rpcbind
+version=0.2.2
+release=1
+
 source=(http://downloads.sourceforge.net/rpcbind/rpcbind-$version.tar.bz2 )
 
 build() {

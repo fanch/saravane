@@ -2,7 +2,10 @@
 # URL: http://phonon.kde.org
 # Packager: pierre at nutyx dot org
 # Depends on: phonon gstreamer1 gstreamer1-plugins-base 
+
+name=phonon-backend-gstreamer
 version=4.8.2
+release=1
 
 source=(http://download.kde.org/stable/phonon/$name/$version/$name-$version.tar.xz)
 

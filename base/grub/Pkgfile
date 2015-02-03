@@ -1,7 +1,10 @@
 # Description: The GRUB package contains the GRand Unified Bootloader.
 # URL: http://www.gnu.org/software/grub/
 # Packager: pierre at nutyx dot org
+name=grub
 version=2.00
+release=1
+
 source=(ftp://ftp.gnu.org/gnu/grub/grub-2.00.tar.xz\
 	grub.cfg)
 

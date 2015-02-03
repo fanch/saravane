@@ -2,8 +2,11 @@
 # URL: http://xorg-fontconfig.org/wiki/
 # Packager: pierre at nutyx dot org
 # Depends on: freetype expat libpng 
-version=2.11.1
 _name=fontconfig
+
+name=xorg-fontconfig
+version=2.11.1
+release=1
 
 source=( http://fontconfig.org/release/${_name}-$version.tar.gz)
 

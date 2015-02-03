@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: libxslt python-beautifulsoup3 python-cssselect 
+name=python-lxml
 version=3.4.0
+release=1
+
 source=(
 http://pypi.python.org/packages/source/l/lxml/lxml-$version.tar.gz)
 

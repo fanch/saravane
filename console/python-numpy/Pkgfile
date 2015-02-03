@@ -2,7 +2,10 @@
 # URL: http://numpy.scipy.org/
 # Packager: pierre at nutyx dot org
 # Depends on: python lapack 
+
+name=python-numpy
 version=1.9.0
+release=1
 
 source=(http://downloads.sourceforge.net/numpy/numpy-$version.tar.gz)
 

@@ -2,7 +2,10 @@
 # URL: http://cgit.freedesktop.org/media-player-info/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=media-player-info
 version=18
+release=1
 
 source=(http://www.freedesktop.org/software/$name/$name-$version.tar.gz )
 

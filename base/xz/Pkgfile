@@ -2,9 +2,12 @@
 # URL: http://tukaani.org/xz/
 # Maintainer: Lasse Collin, lasse dot collin at tukaani dot org
 # Packager: tnut at nutyx dot org
-version=5.2.0
 
 PKGMK_GROUPS=(devel man doc)
+
+name=xz
+version=5.2.0
+release=1
 
 source=(http://tukaani.org/xz/xz-$version.tar.xz)
 build()

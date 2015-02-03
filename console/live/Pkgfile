@@ -2,7 +2,10 @@
 # URL: http://www.live555.com/liveMedia/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=live
 version=2014.07.04
+release=1
 
 source=(http://downloads.nutyx.org/files/$name.$version.tar.gz)
 

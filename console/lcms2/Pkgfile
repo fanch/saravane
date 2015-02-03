@@ -2,8 +2,11 @@
 # URL: http://www.littlecms.com/
 # Packager: pierre at nutyx dot org
 # Depends on: libjpeg-turbo libtiff 
-version=2.6
 
+
+name=lcms2
+version=2.6
+release=1
 
 source=( http://downloads.sourceforge.net/lcms/$name-$version.tar.gz )
 

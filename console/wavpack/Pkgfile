@@ -2,7 +2,10 @@
 # URL: http://www.wavpack.com/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=wavpack
 version=4.70.0
+release=1
 
 source=(http://www.wavpack.com/$name-$version.tar.bz2)
 

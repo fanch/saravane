@@ -2,10 +2,13 @@
 # URL: http://www.sqlite.org/
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=3.8.8.2
 
 
 _amalgamationver=3080802
+
+name=sqlite
+version=3.8.8.2
+release=1
 
 source=(http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz
 	http://www.sqlite.org/2015/sqlite-doc-$_amalgamationver.zip )

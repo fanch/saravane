@@ -2,7 +2,10 @@
 # URL: http://www.kde.org
 # Packager: - pierre at nutyx dot org
 # Depends on: qt 
+name=automoc4
 version=0.9.88
+release=1
+
 source=(http://download.kde.org/stable/$name/$version/$name-$version.tar.bz2)
 build() {
 cd $name-$version

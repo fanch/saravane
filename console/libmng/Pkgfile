@@ -2,7 +2,10 @@
 # URL: http://sourceforge.net/projects/libmng/
 # Packager: tnut at nutyx dot org
 # Depends on: libjpeg-turbo lcms 
+name=libmng
 version=2.0.2
+release=1
+
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
 
 build() {

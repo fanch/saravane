@@ -2,9 +2,12 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=0.13.2
 
 _name=libpciaccess
+name=xorg-libpciaccess
+version=0.13.2
+release=1
+
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
 
 build() {

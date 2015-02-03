@@ -2,7 +2,10 @@
 # URL: http://www.centerim.org/
 # Packager: pierre at nutyx dot org
 # Depends on: curl 
+
+name=centerim
 version=4.22.10
+release=1
 
 source=(http://www.centerim.org/download/releases/$name-$version.tar.gz
 	   http://downloads.nutyx.org/files/patchs/centerim/$name-$version-gcc-1.patch)

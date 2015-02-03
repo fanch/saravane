@@ -2,7 +2,10 @@
 # URL: URL : http://megaui.net/fukuchi/works/qrencode/index.en.html
 # Packager: Packager: pierre^ at nutyx dot org
 # Depends on: libpng sdl 
+name=qrencode
 version=3.4.3
+release=1
+
 source=(http://megaui.net/fukuchi/works/${name}/${name}-${version}.tar.bz2)
 
 build() {

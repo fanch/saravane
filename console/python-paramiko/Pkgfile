@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python python-crypto python-ecdsa 
+name=python-paramiko
 version=1.15.1
+release=1
+
 source=(
 http://pypi.python.org/packages/source/p/paramiko/paramiko-$version.tar.gz)
 

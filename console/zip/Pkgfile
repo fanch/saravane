@@ -2,7 +2,10 @@
 # URL: http://infozip.sourceforge.net/Zip.html
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=zip
 version=3.0
+release=1
+
 source=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
 
 build() {

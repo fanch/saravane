@@ -2,7 +2,10 @@
 # URL: http://developer.kde.org/~wheeler/taglib.html
 # Packager: pierre at nutyx dot org
 # Depends on: cmake
+name=taglib
 version=1.9.1
+release=1
+
 source=( https://github.com/taglib/taglib/releases/download/v$version/$name-$version.tar.gz)
 
 build() {

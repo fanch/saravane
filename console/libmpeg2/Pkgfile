@@ -2,7 +2,10 @@
 # URL: http://mpg123.de/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=libmpeg2
 version=0.5.1
+release=1
 
 source=( http://$name.sourceforge.net/files/$name-$version.tar.gz)
 build() {

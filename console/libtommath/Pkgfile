@@ -3,7 +3,10 @@
    http://www.libtom.org/
 # Packager:    pierre at nutyx dot org
 # Depends on: 
+name=libtommath
 version=0.42.0
+release=1
+
 source=(http://libtom.org/files/ltm-$version.tar.bz2)
 
 build() {

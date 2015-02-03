@@ -2,7 +2,10 @@
 # URL: URL: http://nginx.net/
 # Packager: alienus at nutyx dot org
 # Depends on: libxml2 libxslt pcre 
+name=nginx
 version=1.6.2
+release=1
+
 source=(http://nginx.org//download/$name-$version.tar.gz
 nginx.service
 nginx.logrotate)

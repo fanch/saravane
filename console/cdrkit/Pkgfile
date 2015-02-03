@@ -3,7 +3,10 @@
 - http://cdrkit.org/ Joerg Jaspert
 # Packager: pierre at nutyx dot org
 # Depends on: libcap 
+
+name=cdrkit
 version=1.1.11
+release=1
 
 source=(ftp://ftp.debian.org/debian/pool/main/c/cdrkit/cdrkit_${version}.orig.tar.gz)
 

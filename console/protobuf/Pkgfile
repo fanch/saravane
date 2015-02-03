@@ -2,7 +2,10 @@
 # URL: http://code.google.com/p/protobuf/
 # Packager: pierre at nutyx dot org
 # Depends on: python-setuptools 
+
+name=protobuf
 version=2.6.1
+release=1
 
 source=(https://github.com/google/protobuf/releases/download/$version/protobuf-$version.tar.bz2)
 build () 

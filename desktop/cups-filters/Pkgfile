@@ -2,7 +2,10 @@
 # URL: http://www.cups.org
 # Packager: pierre at nutyx dot org
 # Depends on: bc cups lcms poppler qpdf libjpeg-turbo libpng libtiff ghostscript avahi ijs harfbuzz 
+name=cups-filters
 version=1.0.62
+release=1
+
 source=( http://www.openprinting.org/download/$name/$name-$version.tar.xz)
 
 build() {

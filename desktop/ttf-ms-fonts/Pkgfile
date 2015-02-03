@@ -2,8 +2,11 @@
 # URL: URL: http://corefonts.sourceforge.net
 # Packager: 	pierre^ at nutyx dot org
 # Depends on: xorg-libx11 xorg-fontconfig libarchive p7zip 
-version=2.0
 _sfpath="http://downloads.sourceforge.net/corefonts"
+
+name=ttf-ms-fonts
+version=2.0
+release=1
 
 source=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
         $_sfpath/comic32.exe  $_sfpath/courie32.exe $_sfpath/georgi32.exe

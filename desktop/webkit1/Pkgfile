@@ -2,7 +2,10 @@
 # URL: http://webkitgtk.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libwebp libsecret geoclue gperf gtk curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby gtk-doc 
+name=webkit1
 version=2.4.8
+release=1
+
 source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
 build() {
 cd webkitgtk-$version

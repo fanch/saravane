@@ -3,7 +3,10 @@
 # Maintainer: Roy Marples
 # Packager: tnut at nutyx dot org
 
+name=dhcpcd
 version=6.7.1
+release=1
+
 source=(http://roy.marples.name/downloads/$name/$name-$version.tar.bz2)
 
 build() {

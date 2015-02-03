@@ -2,7 +2,10 @@
 # URL: http://www.zlib.net/
 # Maintainer: Jean-loup Gailly (compression), Mark Adler (decompression)
 # Packager: pierre at nutyx dot org
+name=zlib
 version=1.2.8
+release=1
+
 source=(http://www.zlib.net/zlib-$version.tar.xz)
 
 PKGMK_GROUPS=(devel man)

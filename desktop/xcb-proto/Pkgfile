@@ -2,8 +2,11 @@
 # URL: http://xcb.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: python 
-version=1.10
 PKGMK_GROUPS=()
+name=xcb-proto
+version=1.10
+release=1
+
 source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
 
 build() {

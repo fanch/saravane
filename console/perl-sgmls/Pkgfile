@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( perl )
+name=perl-sgmls
 version=1.03ii
+release=1
+
 source=(http://www.cpan.org/authors/id/D/DM/DMEGG/SGMLSpm-$version.tar.gz
 perl-sgmls.patch)
 

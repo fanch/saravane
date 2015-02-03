@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libxinerama,xorg-libxrandr,xorg-libxcursor,at-spi2-atk,cups,colord,xorg-libxi,atk,cairo,pango,pangox-compat,gdk-pixbuf,gtk-update-icon-cache
 
+
+name=gtk3
 version=3.14.8
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 

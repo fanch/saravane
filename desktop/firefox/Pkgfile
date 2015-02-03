@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org,tnut at nutyx dot org
 # Depends on: yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk,xorg-app,zip,unzip,gstreamer,gstreamer-plugins-base
 
+
+name=firefox
 version=35.0.1
+release=1
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.bz2)
 

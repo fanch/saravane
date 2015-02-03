@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-setuptools python-lxml 
+name=python-pycountry
 version=1.5
+release=1
+
 source=(
 http://pypi.python.org/packages/source/p/pycountry/pycountry-$version.tar.gz)
 

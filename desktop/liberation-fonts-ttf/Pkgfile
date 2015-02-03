@@ -2,7 +2,10 @@
 # URL: https://fedorahosted.org/liberation-fonts
 # Packager: pierre at nutyx dot org
 # Depends on: python-fonttools xorg-libx11 xorg-fontconfig fontforge 
+
+name=liberation-fonts-ttf
 version=2.00.1
+release=1
 
 source=(http://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-$version.tar.gz)
 

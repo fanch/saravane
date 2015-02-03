@@ -3,7 +3,10 @@
 http://portmedia.sourceforge.net
 # Packager: pierre at nutyx dot org
 # Depends on: glib alsa-lib openjdk 
+
+name=portmidi
 version=217
+release=1
 
 source=(http://downloads.sourceforge.net/project/portmedia/$name/$version/$name-src-$version.zip \
         portmidi-217-build-fix.patch)

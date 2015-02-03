@@ -2,7 +2,10 @@
 # URL: http://goodies.xfce.org/projects/applications/xfce4-power-manager
 # Packager: tyrry at nutyx dot org
 # Depends on: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
+name=xfce4-power-manager
 version=1.2.0
+release=1
+
 source=(http://archive.xfce.org/xfce/4.10/src/$name-$version.tar.bz2)
 build() {
 cd $name-$version

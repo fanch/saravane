@@ -2,7 +2,10 @@
 # URL: http://sourceforge.net/projects/cracklib/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=cracklib
 version=2.9.2
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 

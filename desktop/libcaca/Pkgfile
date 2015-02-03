@@ -2,7 +2,10 @@
 # URL: http://libcaca.zoy.org/
 # Packager: pierre at nutyx dot org
 # Depends on: imlib2 
+
+name=libcaca
 version=0.99.beta18
+release=1
 
 source=(http://libcaca.zoy.org/files/libcaca/libcaca-$version.tar.gz)
 

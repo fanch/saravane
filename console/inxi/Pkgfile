@@ -2,7 +2,10 @@
 # URL: URL: http://inxi.org
 # Packager: alienus at nutyx dot org
 # Depends on: 
+name=inxi
 version=2.1.28
+release=1
+
 source=(
 http://inxi.googlecode.com/svn/trunk/inxi
 http://inxi.googlecode.com/svn/trunk/inxi.1)

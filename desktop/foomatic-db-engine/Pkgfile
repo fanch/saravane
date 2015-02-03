@@ -2,7 +2,10 @@
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 cups 
+
+name=foomatic-db-engine
 version=4.0.11
+release=1
 
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
 

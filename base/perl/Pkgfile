@@ -1,7 +1,10 @@
 # Description: The Perl package contains the Practical Extraction and Report Language. Perl was originally a language optimized for scanning arbitrary text files, extracting information from those text files, and printing reports based on that information.
 # URL: http://www.perl.org/
 # Packager: pierre at nutyx dot org
+name=perl
 version=5.20.1
+release=1
+
 source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-infinite_recurse_fix-1.patch)
 build()

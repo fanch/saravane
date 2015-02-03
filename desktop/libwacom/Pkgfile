@@ -2,7 +2,10 @@
 # URL: http://linuxwacom.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: glib udev-extras 
+
+name=libwacom
 version=0.9
+release=1
 
 source=(http://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-$version.tar.bz2)
 

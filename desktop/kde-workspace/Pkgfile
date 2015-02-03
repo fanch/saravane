@@ -2,7 +2,10 @@
 # URL: http://www.kde.org
 # Packager: pierre at nutyx dot org
 # Depends on: kde-activities qimageblitz xcb-util-image xcb-util-renderutil libxcb xcb-proto xcb-util xcb-util-keysyms xcb-util-wm kde-pimlibs boost freetype pciutils consolekit libusb libusb-compat networkmanager lm-sensors qjson xorg-libx11 xorg-xkeyboard-config 
-version=4.11.14
+
+name=kde-workspace
+version=4.14.34.11.14
+release=1
 
 source=(http://download.kde.org/stable/4.14.3/src/$name-$version.tar.xz
         kde-workspace.pam

@@ -2,7 +2,10 @@
 # URL: http://www.stafford.uklinux.net/libesmtp/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=libesmtp
 version=1.0.6
+release=1
+
 source=( http://www.stafford.uklinux.net/$name/$name-$version.tar.bz2)
 
 build() {

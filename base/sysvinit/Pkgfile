@@ -2,7 +2,10 @@
 # URL: ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/
 # Maintainer: sysvinit-devel@nongnu.org
 # Packager: pierre at nutyx dot org
+name=sysvinit
 version=2.88dsf
+release=1
+
 source=(http://ftp.twaren.net/Unix/NonGNU/sysvinit/sysvinit-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/sysvinit-2.88dsf-consolidated-1.patch)
 

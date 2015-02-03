@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python sqlite 
+name=python-apsw
 version=3.8.4.3
+release=1
+
 source=(
 https://github.com/rogerbinns/apsw/archive/$version-r1.tar.gz)
 

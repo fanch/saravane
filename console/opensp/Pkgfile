@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: sgml-common 
+name=opensp
 version=1.5.2
+release=1
+
 source=(http://downloads.sourceforge.net/openjade/OpenSP-$version.tar.gz)
 
 build(){

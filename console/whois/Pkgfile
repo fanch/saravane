@@ -2,7 +2,10 @@
 # URL: URL: http://ftp.debian.org/debian/pool/main/w/whois
 # Packager: alienus at nutyx dot org
 # Depends on: 
+
+name=whois
 version=5.2.3
+release=1
 
 source=(ftp://ftp.debian.org/debian/pool/main/w/$name/${name}_$version.tar.xz)
 

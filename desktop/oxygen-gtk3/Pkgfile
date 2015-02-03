@@ -2,8 +2,11 @@
 # URL: https://projects.kde.org/projects/playground/artwork/oxygen-gtk/
 # Packager: pierre at nutyx dot org
 # Depends on: gtk3 dbus-glib cairo 
-version=1.4.1
 
+
+name=oxygen-gtk3
+version=1.4.1
+release=1
 
 source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.bz2)
 

@@ -3,7 +3,10 @@
 - KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 kde-libs qjson xcb-util-image xcb-util-renderutil libxcb 
+
+name=libkscreen
 version=1.0.5
+release=1
 
 source=(http://download.kde.org/stable/libkscreen/$version/src/libkscreen-$version.tar.xz)
 

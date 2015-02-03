@@ -2,8 +2,11 @@
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
 # Packager: pierre at nutyx dot org
 # Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
-version=1.8.14
 PKGMK_GROUPS=(doc devel)
+
+name=dbus
+version=1.8.14
+release=1
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
        dbus.system-local.conf)

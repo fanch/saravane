@@ -1,7 +1,10 @@
 # Description: POSIX 1003.1e capabilities library
 # URL: http://www.kernel.org/pub/linux/libs/security/linux-privs/
 # Packager: pierre at nutyx dot org
+
+name=libcap
 version=2.24
+release=1
 
 source=(  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz)
 

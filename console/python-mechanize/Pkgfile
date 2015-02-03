@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-setuptools 
+name=python-mechanize
 version=0.2.5
+release=1
+
 source=(
 http://wwwsearch.sourceforge.net/mechanize/src/mechanize-$version.tar.gz)
 

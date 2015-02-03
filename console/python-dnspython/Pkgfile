@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-dnspython
 version=1.11.1
+release=1
+
 source=(
 http://www.dnspython.org/kits/$version/dnspython-$version.tar.gz)
 

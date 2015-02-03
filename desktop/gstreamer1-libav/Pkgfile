@@ -2,9 +2,12 @@
 # URL: http://gstreamer.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: gstreamer1-plugins-base yasm 
-version=1.0.7
 
 _name=gst-libav
+
+name=gstreamer1-libav
+version=1.4.51.0.7
+release=1
 
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
 

@@ -2,7 +2,10 @@
 # URL:  http://downloads.sourceforge.net/giflib/
 # Packager: pierre at nutyx dot org
 # Depends on: xmlto 
+name=giflib
 version=5.1.1
+release=1
+
 source=(http://downloads.sourceforge.net/giflib/giflib-$version.tar.bz2 )
 build() {
 cd $name-$version

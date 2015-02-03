@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: cgmanager libseccomp python lua lua-alt-getopt lua-filesystem docbook2x 
+name=lxc
 version=1.0.4
+release=1
+
 source=(
 http://linuxcontainers.org/downloads/$name-$version.tar.gz)
 

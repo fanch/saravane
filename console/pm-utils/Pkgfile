@@ -2,8 +2,11 @@
 # URL: http://pm-utils.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: pm-quirks 
-version=1.4.1
 
+
+name=pm-utils
+version=1.4.1
+release=1
 
 source=(http://pm-utils.freedesktop.org/releases/pm-utils-${version}.tar.gz
         http://downloads.nutyx.org/files/patchs/$name/02-logging-append.patch

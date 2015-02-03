@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=sgml-common
 version=0.6.3
+release=1
+
 source=(
 ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$version.tgz
 http://www.linuxfromscratch.org/patches/blfs/7.5/sgml-common-$version-manpage-1.patch)

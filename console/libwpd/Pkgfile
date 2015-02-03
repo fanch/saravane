@@ -2,7 +2,10 @@
 # URL: http://libwpd.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: libgsf 
+
+name=libwpd
 version=0.9.8
+release=1
 
 source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)
 

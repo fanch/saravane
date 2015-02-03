@@ -2,7 +2,10 @@
 # URL:  http://ftp.gnupg.org/gcrypt/libgcrypt/
 # Packager: pierre at nutyx dot org
 # Depends on: libgpg-error 
+
+name=libgcrypt
 version=1.6.2
+release=1
 
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2 )
 

@@ -2,7 +2,10 @@
 # URL: http://www.infodrom.org/projects/sysklogd/
 # Maintainer: Dr. Greg Wettstein, greg at wind dot enjellic dot com
 # Packager: pierre at nutyx dot org
+name=sysklogd
 version=1.5.1
+release=1
+
 source=(http://www.infodrom.org/projects/sysklogd/download/sysklogd-$version.tar.gz)
 
 build()

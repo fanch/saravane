@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/ncurses/ncurses.html
 # Maintainers: Thomas E. Dickey TD,Juergen Pfeifer JPF,Eric S Raymond ESR,Alexander V Lukyanov,Philippe Blain PB,Sven Verdoolaege SV
 # Packager: tnut at nutyx dot org
+name=ncurses
 version=5.9
+release=1
+
 source=(ftp://invisible-island.net/ncurses/ncurses-$version.tar.gz)
 
 build()

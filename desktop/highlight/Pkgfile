@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: qt boost lua 
 run=( lua )
+name=highlight
 version=3.18
+release=1
+
 source=(
 http://www.andre-simon.de/zip/$name-$version.tar.bz2)
 

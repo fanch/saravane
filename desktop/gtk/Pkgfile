@@ -6,7 +6,6 @@
 # The run variable define the runtime dependencies
 run=(gtk-update-icon-cache)
 
-version=2.24.25
 
 
 # Seul les paquets devel, doc et man sont splité, gtk étant une lib incontournable et le nombre
@@ -14,6 +13,10 @@ version=2.24.25
 # Ici, le groupe lib ne sera pas construit
 
 PKGMK_GROUPS=(devel man doc)
+
+name=gtk
+version=2.24.25
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 

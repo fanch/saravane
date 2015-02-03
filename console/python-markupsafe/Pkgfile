@@ -3,7 +3,10 @@
    https://pypi.python.org/
 # Packager:    pierre at nutyx dot fr
 # Depends on: python python3 python-setuptools 
+name=python-markupsafe
 version=0.23
+release=1
+
 source=(https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-$version.tar.gz)
 
 build() {

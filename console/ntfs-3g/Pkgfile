@@ -2,7 +2,10 @@
 # URL: http://www.ntfs-3g.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=ntfs-3g
 version=2014.2.15
+release=1
+
 source=(http://tuxera.com/opensource/${name}_ntfsprogs-$version.tgz)
 build() {
 cd ${name}_ntfsprogs-$version

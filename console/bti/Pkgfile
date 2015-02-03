@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre 
+name=bti
 version=034
+release=1
+
 source=(https://www.kernel.org/pub/software/web/bti/bti-$version.tar.xz)
 
 build(){

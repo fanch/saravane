@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: xorg-app xorg-fontconfig xorg-font-util 
+name=terminus-font
 version=4.39
+release=1
+
 source=(
 http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
 

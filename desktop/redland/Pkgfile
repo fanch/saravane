@@ -2,7 +2,10 @@
 # URL: http://download.librdf.org/source/
 # Packager: pierre at nutyx dot org
 # Depends on: rasqal db sqlite libiodbc virtuoso 
+
+name=redland
 version=1.0.17
+release=1
 
 source=(http://download.librdf.org/source/$name-$version.tar.gz)
 

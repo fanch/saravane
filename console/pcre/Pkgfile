@@ -2,7 +2,10 @@
 # URL: http://www.pcre.org/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=pcre
 version=8.35
+release=1
+
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
 PKGMK_GROUPS=(devel man doc)
 build() {

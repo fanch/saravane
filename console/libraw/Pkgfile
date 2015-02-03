@@ -2,7 +2,10 @@
 # URL: http://www.libraw.org/
 # Packager: - git://github.com/LibRaw/LibRaw.git
 # Depends on: libjpeg-turbo jasper lcms2 
+
+name=libraw
 version=0.16.0
+release=1
 
 source=(http://www.libraw.org/data/LibRaw-$version.tar.gz)
 build ()

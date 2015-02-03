@@ -3,7 +3,10 @@
   http://code.google.com/p/sparsehash
 # Packager:   pierre at nutyx dot org
 # Depends on: 
+
+name=sparsehash
 version=2.0.2
+release=1
 
 source=(http://sparsehash.googlecode.com/files/$name-$version.tar.gz)
 

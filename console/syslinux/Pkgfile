@@ -2,7 +2,10 @@
 # URL: http://syslinux.org
 # Packager: pierre at nutyx dot org
 # Depends on: mtools nasm 
+
+name=syslinux
 version=6.03
+release=1
 
 source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
 

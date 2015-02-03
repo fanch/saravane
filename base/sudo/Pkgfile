@@ -3,7 +3,10 @@
 # Packagers: pierre at nutyx dot org
 # Depends on: pam
 
+name=sudo
 version=1.8.11p1
+release=1
+
 source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)
 
 build() {

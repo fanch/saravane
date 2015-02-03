@@ -3,7 +3,10 @@
 - http://sourceforge.net/projects/gtkmm/
 # Packager: pierre at nutyx dot org
 # Depends on: atk glibmm libsigc++ m4 
+name=atkmm
 version=2.22.7
+release=1
+
 source=( http://ftp.gnome.org/pub/gnome/sources/$name/2.22/$name-$version.tar.xz)
 build (){
 cd $name-$version

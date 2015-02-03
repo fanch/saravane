@@ -2,7 +2,10 @@
 # URL: https://github.com/anholt/libepoxy
 # Packager:    pierre at nutyx dot fr
 # Depends on: glibc xorg-mesa python xorg-util-macros 
+
+name=libepoxy
 version=1.2
+release=1
 
 source=(http://crux.nu/files/libepoxy-$version.tar.gz)
 

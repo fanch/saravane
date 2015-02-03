@@ -4,7 +4,10 @@
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
 run=( xorg-fontconfig xorg-font-util xorg-encodings fontforge )
+name=ttf-liberation
 version=2.00.1
+release=1
+
 source=(
 https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$version.tar.gz
 ttf-liberation.30-0-liberation-mono.conf

@@ -2,7 +2,10 @@
 # URL: http://www.gnome.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libsoup gobject-introspection 
+
+name=librest
 version=0.7.90
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/rest/${version%.*}/rest-$version.tar.xz)
 

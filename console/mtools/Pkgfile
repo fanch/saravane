@@ -2,7 +2,10 @@
 # URL: http://mtools.linux.lu/
 # Packager:  pierre at nutyx dot org
 # Depends on: 
+
+name=mtools
 version=4.0.17
+release=1
 
 source=(ftp://ftp.gnu.org/gnu/mtools/$name-$version.tar.bz2)
 

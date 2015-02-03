@@ -2,7 +2,10 @@
 # URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
 # Packager: tnut at nutyx dot org
 
+name=ca-certificates
 version=20150201
+release=1
+
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
 build() {

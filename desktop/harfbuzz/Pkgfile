@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: cairo glib icu freetype 
 # OpenType text shaping engine
+name=harfbuzz
 version=0.9.38
+release=1
+
 source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
 
 build() {

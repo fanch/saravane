@@ -2,7 +2,10 @@
 # URL:  http://scrollkeeper.sourceforge.net/docbook.shtml
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 docbook-xml 
+
+name=docbook-xsl
 version=1.78.1
+release=1
 
 source=(http://downloads.sourceforge.net/docbook/$name-$version.tar.bz2
 	 http://downloads.sourceforge.net/docbook/docbook-xsl-doc-$version.tar.bz2)

@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: fuse glib openssh 
+name=sshfs-fuse
 version=2.5
+release=1
+
 source=(
 http://downloads.sourceforge.net/sourceforge/fuse/$name-$version.tar.gz)
 

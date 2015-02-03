@@ -2,7 +2,10 @@
 # URL: URL: http://miniupnp.free.fr
 # Packager: Packager: pierre^ at nutyx dot org
 # Depends on: 
+name=miniupnpc
 version=1.9
+release=1
+
 source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)
 
 build() {

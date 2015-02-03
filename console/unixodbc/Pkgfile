@@ -3,7 +3,10 @@
 - http://www.linuxfromscratch.org/blfs/view/svn/general/unixodbc.html
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=unixodbc
 version=2.3.2
+release=1
 
 source=(http://www.unixodbc.org/unixODBC-$version.tar.gz)
 build() { 

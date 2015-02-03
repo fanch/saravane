@@ -2,7 +2,10 @@
 # URL: http://xiph.org/paranoia/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=cdparanoia
 version=10.2
+release=1
 
 source=(http://downloads.xiph.org/releases/cdparanoia/$name-III-$version.src.tgz \
 	 http://www.linuxfromscratch.org/patches/blfs/svn/cdparanoia-III-10.2-gcc_fixes-1.patch)

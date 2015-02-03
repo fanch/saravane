@@ -2,7 +2,10 @@
 # URL: http://www.lua.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=lua
 version=5.2.3
+release=1
 
 source=(http://www.lua.org/ftp/$name-$version.tar.gz 
 	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-shared_library-1.patch)

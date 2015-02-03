@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python-six python-setuptools 
+name=python-dateutil
 version=2.2
+release=1
+
 source=(
 http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$version.tar.gz)
 

@@ -2,9 +2,12 @@
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Packager: tyrry at nutyx dot org
 # Depends on: xfce4-libutil dbus-glib perl-glib 
-version=4.10.0
 
 _name=xfconf
+
+name=xfce4-conf
+version=4.10.0
+release=1
 
 source=(http://archive.xfce.org/xfce/4.10/src/${_name}-$version.tar.bz2)
 

@@ -2,7 +2,10 @@
 # URL: http://www.openldap.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=openldap
 version=2.4.40
+release=1
+
 source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/openldap-$version-blfs_paths-1.patch
 	 http://www.linuxfromscratch.org/patches/blfs/svn/openldap-$version-symbol_versions-1.patch)

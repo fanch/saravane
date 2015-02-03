@@ -3,7 +3,10 @@
 # Maintainer: tnut at nutyx dot org
 # Packager: tnut at nutyx dot org
 
+name=cards
 version=0.10.82.91
+release=1
+
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
 #	http://downloads.nutyx.org/files/patchs/$name/$name-$version-upstream_fixes-1.patch
 	)

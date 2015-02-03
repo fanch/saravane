@@ -2,7 +2,10 @@
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 
+
+name=foomatic-db
 version=4.0
+release=1
 
 source=(http://www.openprinting.org/download/foomatic/foomatic-db-4.0-current.tar.gz)
 

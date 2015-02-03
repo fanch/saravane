@@ -2,8 +2,11 @@
 # URL: http://sourceware.org/libffi/
 # Packager: pierre at nutyx dot org
 # Depends on: 
-version=3.1
 PKGMK_GROUPS=(devel man)
+
+name=libffi
+version=3.1
+release=1
 
 source=( ftp://sourceware.org/pub/$name/$name-$version.tar.gz )
 

@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-pycurl
 version=7.19.5
+release=1
+
 source=(
 http://pycurl.sourceforge.net/download/pycurl-$version.tar.gz)
 

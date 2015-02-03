@@ -2,8 +2,11 @@
 # URL: URL: http://poppler.freedesktop.org/
 # Packager: alienus at nutyx dot org
 # Depends on: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
-version=0.30.0
 dataversion=0.4.7
+
+name=poppler
+version=0.30.0
+release=1
 
 source=(
 http://poppler.freedesktop.org/$name-$version.tar.xz

@@ -4,7 +4,10 @@ http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-digest-sha1 
 run=( perl )
+name=perl-digest-hmac
 version=1.03
+release=1
+
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-HMAC-$version.tar.gz)
 
 build() {

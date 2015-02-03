@@ -3,7 +3,10 @@
 # Maintainer: Daniel Stenberg
 # Packager: tnut at nutyx dot org
 
+
+name=curl
 version=7.40.0
+release=1
 
 source=(http://curl.haxx.se/download/$name-$version.tar.bz2)
 

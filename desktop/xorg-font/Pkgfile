@@ -3,10 +3,13 @@
 # Packager: tnut at nutyx dot org
 # Depends on: xorg-font-util,xorg-encodings,xorg-xcursor-themes,xorg-fontconfig
 
-version=7.7
 
 run=(xorg-fontconfig xorg-app)
 section="font"
+name=xorg-font
+version=7.7
+release=1
+
 source=()
 
 build() {

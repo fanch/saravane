@@ -2,8 +2,11 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: libpng 
-version=0.32.6
 _name=pixman
+
+name=xorg-pixman
+version=0.32.6
+release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
 

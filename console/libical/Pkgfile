@@ -2,7 +2,10 @@
 # URL: http://sourceforge.net/projects/freeassociation/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=libical
 version=1.0.1
+release=1
+
 source=( https://github.com/libical/libical/archive/v$version.tar.gz)
 
 build() {

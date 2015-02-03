@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: 
+name=libmnl
 version=1.0.3
+release=1
+
 source=(
 http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 

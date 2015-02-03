@@ -2,7 +2,10 @@
 # URL: http://fuse.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=fuse
 version=2.9.3
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 

@@ -3,7 +3,10 @@
 - KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 boost kde-pimlibs qjson 
+
+name=libkgapi
 version=2.2.0
+release=1
 
 source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.bz2)
 

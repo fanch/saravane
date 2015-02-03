@@ -2,7 +2,10 @@
 # URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
 # Packager: pierre at nutyx dot org
 # Depends on: nspr zip python 
+name=js
 version=1.8.5
+release=1
+
 source=( http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz )
 
 build () {

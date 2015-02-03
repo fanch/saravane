@@ -2,7 +2,10 @@
 # URL: http://musicbrainz.org/doc/libmusicbrainz
 # Packager: pierre at nutyx dot org
 # Depends on: expat neon 
+
+name=libmusicbrainz
 version=5.1.0
+release=1
 
 source=( https://github.com/downloads/metabrainz/libmusicbrainz/$name-$version.tar.gz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-build_system-1.patch)

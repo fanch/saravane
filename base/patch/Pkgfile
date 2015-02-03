@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/patch/patch.html
 # Maintainers: Larry Wall,Paul Eggert,Wayne Davison,David MacKenzie,Andreas Gruenbacher
 # Packager: tnut at nutyx dot org
+name=patch
 version=2.7.4
+release=1
+
 source=(http://ftp.gnu.org/gnu/patch/patch-$version.tar.xz)
 
 build()

@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: glib 
 run=( perl )
+name=irssi
 version=0.8.16
+release=1
+
 source=(http://irssi.org/files/$name-$version.tar.bz2)
 
 build() {

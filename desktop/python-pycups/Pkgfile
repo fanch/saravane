@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: cups python 
+name=python-pycups
 version=1.9.66
+release=1
+
 source=(
 http://cyberelk.net/tim/data/pycups/pycups-$version.tar.bz2)
 

@@ -2,7 +2,10 @@
 # URL: http://libusb.wiki.sourceforge.net/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=libusb
 version=1.0.19
+release=1
+
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 
 build() {

@@ -2,9 +2,12 @@
 # URL: http://projects.gnome.org/NetworkManager/
 # Packager: pierre at nutyx dot org
 # Depends on: libndp udev-extras dbus-glib iptables libnl nss wireless-tools consolekit dhcpcd wpa-supplicant gobject-introspection 
-version=1.0.0
 
 _name=NetworkManager
+
+name=networkmanager
+version=1.0.0
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$_name/${version%.*.*}/$_name-$version.tar.xz)
 

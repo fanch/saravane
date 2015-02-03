@@ -2,7 +2,10 @@
 # URL: http://libjpeg-turbo.virtualgl.org/
 # Packager: pierre at nutyx dot org
 # Depends on: nasm 
+name=libjpeg-turbo
 version=1.4.0
+release=1
+
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz )
 
 build() {

@@ -3,7 +3,10 @@
 - http://gegl.org/babl/#Authors
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=babl
 version=0.1.10
+release=1
+
 source=(http://download.gimp.org/pub/$name/0.1/$name-$version.tar.bz2)
 
 build() {

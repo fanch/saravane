@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: cmake,qt
 
+name=attica
 version=0.4.2
+release=1
+
 source=(http://download.kde.org/stable/$name/$name-$version.tar.bz2)
 
 build() {

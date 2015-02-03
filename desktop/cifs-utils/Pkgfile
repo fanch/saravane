@@ -2,7 +2,10 @@
 # URL: http://www.samba.org
 # Packager: pierre at nutyx dot org
 # Depends on: samba 
+
+name=cifs-utils
 version=6.1
+release=1
 
 source=( http://ftp.samba.org/pub/linux-cifs/$name/$name-$version.tar.bz2)
 

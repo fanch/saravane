@@ -3,7 +3,10 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: python 
+name=python-cherrypy
 version=3.6.0
+release=1
+
 source=(
 https://pypi.python.org/packages/source/C/CherryPy/CherryPy-$version.tar.gz)
 

@@ -4,7 +4,10 @@
 # Depends on: rsync
 
 name=ports
+name=ports
 version=1.5
+release=1
+
 source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz \
 	base.rsync console.rsync desktop.rsync)
 

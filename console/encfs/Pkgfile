@@ -2,8 +2,11 @@
 # URL: http://www.arg0.net/encfs
 # Packager: pierre at nutyx dot org
 # Depends on: boost fuse rlog 
-version=1.7.4
 
+
+name=encfs
+version=1.7.4
+release=1
 
 source=(http://encfs.googlecode.com/files/$name-$version.tgz )
 

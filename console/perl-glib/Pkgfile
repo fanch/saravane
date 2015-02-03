@@ -3,7 +3,10 @@
 # Packager: pierre at nutyx dot org
 # Depends on: perl-extutils-depends gobject-introspection perl-extutils-pkgconfig 
 run=( perl )
+name=perl-glib
 version=1.304
+release=1
+
 source=(http://www.cpan.org/authors/id/X/XA/XAOC/Glib-$version.tar.gz)
 
 build() {

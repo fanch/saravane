@@ -2,7 +2,10 @@
 # URL: http://musicbrainz.org/doc/libmusicbrainz
 # Packager: pierre at nutyx dot org
 # Depends on: expat neon 
+
+name=libmusicbrainz3
 version=3.0.3
+release=1
 
 source=( ftp://ftp.musicbrainz.org/pub/musicbrainz/libmusicbrainz-$version.tar.gz )
 

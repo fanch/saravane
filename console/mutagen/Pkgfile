@@ -2,7 +2,10 @@
 # URL: http://code.google.com/p/mutagen/
 # Packager: pierre at nutyx dot org
 # Depends on: python 
+
+name=mutagen
 version=1.23
+release=1
 
 source=(https://bitbucket.org/lazka/mutagen/downloads/$name-$version.tar.gz)
 

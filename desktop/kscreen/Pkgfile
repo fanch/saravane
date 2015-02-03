@@ -3,7 +3,10 @@
 - KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 libkscreen kde-runtime 
+
+name=kscreen
 version=1.0.2.1
+release=1
 
 source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
 

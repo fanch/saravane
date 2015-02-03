@@ -2,10 +2,13 @@
 # URL: URL: http://www.python.org
 # Packager: alienus at nutyx dot org
 # Depends on: libffi sqlite 
-version=2.7.9
 PKGMK_GROUPS=(devel man doc)
 
 _pybasever=2.7
+
+name=python
+version=2.7.9
+release=1
 
 source=(
 http://www.python.org/ftp/python/$version/Python-$version.tar.xz

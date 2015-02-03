@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/gsl/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+name=gsl
 version=1.16
+release=1
+
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
 
 build() {

@@ -2,7 +2,10 @@
 # URL: http://www.netlib.org/blas
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
+name=lapack
 version=3.5.0
+release=1
 
 source=(http://www.netlib.org/$name/$name-$version.tgz )
 

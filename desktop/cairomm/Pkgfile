@@ -3,7 +3,10 @@
 # Maintainer: Murray Cumming <murrayc@murrayc.com>
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: cairo,libsigc++
+name=cairomm
 version=1.10.0
+release=1
+
 source=(http://cairographics.org/releases/$name-$version.tar.gz)
 build() {
 cd $name-$version

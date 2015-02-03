@@ -2,7 +2,10 @@
 # URL: http://www.gnu.org/software/grep/
 # Maintainers: Jim Meyering jim at meyering dot net,Paolo Bonzini bonzini at gnu dot org
 # Packager: pierre at nutyx dot org
+name=grep
 version=2.21
+release=1
+
 source=(http://ftp.gnu.org/gnu/grep/grep-$version.tar.xz)
 
 build()

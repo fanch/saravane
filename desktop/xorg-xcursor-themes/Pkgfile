@@ -2,8 +2,11 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-app 
-version=1.0.4
 _name=xcursor-themes
+
+name=xorg-xcursor-themes
+version=1.0.4
+release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}-$version.tar.bz2)
 
