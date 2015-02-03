@@ -50,6 +50,8 @@ http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://tukaani.org/xz/xz-5.2.0.tar.xz
 http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.82.91.tar.gz
+http://downloads.nutyx.org/files/prt-get-5.19.tar.gz
+http://crux.nu/files/pkgutils-5.35.6.tar.gz
 http://downloads.nutyx.org/files/nutyx-basicfs-20150122.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch

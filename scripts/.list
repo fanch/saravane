@@ -76,7 +76,8 @@ pciutils
 sudo
 lzo
 lvm2
-cards
+pkgutils
+prt-get
 mdadm
 rsync
 ports
