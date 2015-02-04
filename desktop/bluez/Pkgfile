@@ -1,10 +1,9 @@
 # Description: Daemons for the bluetooth protocol stack
 # URL: http://www.bluez.org/
-- http://www.bluez.org/development/credits/
 # Packager: pierre at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
 name=bluez
-version=5.27
+version=5.28
 release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
