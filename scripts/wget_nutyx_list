@@ -30,7 +30,7 @@ http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
-http://downloads.nutyx.org/archives/linux-3.18.5.tar.xz
+https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.5.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2015a.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/tcl/Tcl/8.6.3/tcl8.6.3-src.tar.gz
@@ -52,7 +52,7 @@ http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.82.91.tar.gz
 http://downloads.nutyx.org/files/prt-get-5.19.tar.gz
 http://crux.nu/files/pkgutils-5.35.6.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20150122.tar.bz2
+http://downloads.nutyx.org/files/nutyx-basicfs-20150205.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
