@@ -195,7 +195,7 @@ ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
 97f157f954edb6d4d4385a0c5986f36f  nfs-utils-1.3.1.tar.bz2
 3246aa79317b1d23cae783a3bf8275d6  openssh-6.7p1.tar.gz
 dc7afb7e2dc5002344b99d5e7b14510c  btrfs-progs-v3.18.1.tar.xz
-f694e8c911a6f7cfd7aec7b99454ed1f  git-2.2.2.tar.xz
+e5880760d1f43f4f49b3bf94b9046eee  git-2.3.0.tar.xz
 5f4ba23340492548ebf58b0ce7109e69  pkgutils-5.35.6.tar.gz
 a37751f1627a4e0125c8ffadfa85be80  prt-get-5.19.tar.gz
 78942cc0cce0a23e18114d982789e360  wget-1.16.1.tar.xz" >> $LFS/sources/md5sums
