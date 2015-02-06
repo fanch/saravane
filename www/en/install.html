@@ -31,7 +31,7 @@
    <p>Make shure you have enough space on your hard disk. A size of 8Go to 15Go will make it.</p>
     <h2>Download the last version of NuTyX</h2>
      <p>The actual version of NuTyX is named <b>saravane</b>. The available iso can be used to install all the packages from internel. It's also to used it for a minimum of maintenance on your machine before the actual installation of NuTyX.</p>
-     <p>The size of an iso is <b>+- 175 Mb</b>.</p>
+     <p>The size of the isos are <b>+- 175 Mb</b> for the 64 bits and <b>+- 100 Mb</b> for the 32 bits.</p>
      <p>All the available iso can be download at: <a class="url" href="http://downloads.nutyx.org/"  target="_blank" >http://downloads.nutyx.org</a></p>
     <h2>Create a bootable USB key</h2>
      <p>If you are currently running GNU/linux on your machine: </p>
@@ -51,14 +51,14 @@
      <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
     set root=(hd0,2)
     linux /boot/kernel root=/dev/sda2 ro quiet
-    initrd /boot/nutyx-initrd
+    initrd /boot/initrd
     }
     menuentry "Windows 8" {
     set root=(hd0,3)
     chainloader (hd0,3)+1
     }</kbd></pre>
    <hr>
-   <p class="updated">Last updated 2015-01-02 11:27:00</p>
+   <p class="updated">Last updated 2015-01-06 19:37</p>
   <footer>
    <p id="foot"> ... <img src="../graphics/logo_nutyx_25.png" alt="small nutyx logo"> ...<br />
       &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a>.<br /><br />
