@@ -5,7 +5,7 @@ http://www.linuxfromscratch.org/patches/downloads/mpfr/mpfr-3.1.2-upstream_fixes
 http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream_fixes-3.patch
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
-http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.20-fhs-1.patch
+http://downloads.nutyx.org/files/patchs/glibc/glibc-2.21-fhs-1.patch
 http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2-fix_parallel_build-1.patch
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
 http://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz
@@ -17,7 +17,7 @@ http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz
 http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz
 http://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
-http://ftp.gnu.org/gnu/glibc/glibc-2.20.tar.xz
+http://ftp.gnu.org/gnu/glibc/glibc-2.21.tar.xz
 http://ftp.gnu.org/gnu/patch/patch-2.7.4.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
 http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.xz
@@ -30,7 +30,7 @@ http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
-https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.5.tar.xz
+https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.6.tar.xz
 http://www.iana.org/time-zones/repository/releases/tzdata2015a.tar.gz
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/tcl/Tcl/8.6.3/tcl8.6.3-src.tar.gz
