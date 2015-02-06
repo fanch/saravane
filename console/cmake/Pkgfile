@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 # Depends on: curl expat 
 name=cmake
-version=3.1.1
+version=3.1.2
 release=1
 
 source=(http://www.cmake.org/files/v3.1/$name-$version.tar.gz)
