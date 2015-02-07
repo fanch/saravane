@@ -48,19 +48,18 @@
         <pre class="command"><kbd>chown -R root:root $LFS</kbd></pre>
       <li>On créé les dossiers et lien pour y placer les recettes.</li>
         <pre class="command"><kbd>install -dv -m0750  $LFS/root
-ln -s saravane/scripts $LFS/root/bin</kbd></pre>
+ln -sv saravane/scripts $LFS/root/bin</kbd></pre>
       <li>On déplace les recettes et l'on se place dans le dossier adéquat</li>
         <pre class="command"><kbd>mv /home/lfs/saravane $LFS/root/
 cd $LFS/root/saravane/base/aaabasicfs</kbd></pre>
       <li>On compile le premier paquet de NuTyX</li>
         <pre class="command"><kbd>/tools/bin/pkgmk -cf ../../../bin/pkgmk.conf.passes</kbd></pre>
       <li>On installe aaabasicfs dans la NuTyX</li>
-        <pre class="command"><kbd>/tools/bin/pkgadd -r $LFS aaabasicfs1*
-/tools/bin/pkgadd -r $LFS aaabasicfs.man1*</kbd></pre>
+        <pre class="command"><kbd>/tools/bin/pkgadd -r $LFS aaabasicfs#*</kbd></pre>
       <li>On vérifie sa présence</li>
-        <pre class="command"><kbd>ls $LFS/var/lib/pkg/DB</kbd></pre>
+        <pre class="command"><kbd>/tools/bin/pkginfo -r $LFS -i</kbd></pre>
 retourne
-        <pre class="output" style="color: blue;">aaabasicfs aaabasicfs.man</pre>
+        <pre class="output">aaabasicfs 2015.2-1</pre>
       <li>On monte les différents dossiers</li>
         <pre class="command"><kbd>mount -v --bind /dev $LFS/dev
 mount -vt devpts devpts $LFS/dev/pts -o gid=5,mode=620
@@ -99,15 +98,20 @@ bash: tput: command not found
        <pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
 	retourne
-       <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.16.1.tar.xz
+       <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.18.6.tar.xz
 ...</pre>
       <li>On attend le message suivant:</li>
-      <pre class="output">need to install bash manually</pre>
+      <pre class="output">=======> Building '/root/saravane/base/bash/bash...' succeeded.
+need to install bash manually</pre>
      <li>En français cela signifie qu'il faut installer le paquet <b>bash</b> à la main. Il faut donc le faire en dehors de la NuTyX. Il faut donc sortir:</li>
       <pre class="command"><kbd>exit</kbd></pre>
      <li>Nous allons maintenant dans le bon dossier et installons le paquet <b>bash</b>:</li>
       <pre class="command"><kbd>cd $LFS/root/saravane/base/bash
-for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
+/tools/bin/pkgadd -r $LFS bash#*</kbd></pre>
+     <li>On vérifie qu'il est bien ajouté:</li>
+     <pre class="command"><kbd>/tools/bin/pkginfo -r $LFS -i|grep bash</kbd></pre>
+retourne
+        <pre class="output">bash 4.3.30-2</pre>
      <li>Nous entrons à nouveau dans la NuTyX et finissons le travail:</li>
       <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
 /bin/bash --login +h</kbd></pre>
@@ -121,9 +125,7 @@ pass</kbd></pre>
       <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
      <li>La compilation se termine par le kernel:</li>
-      <pre class="output">ADD: kernel-3.17.6, 1282 files: 100%
-=======> Installing 'kernel1418739487x86_64.cards.tar' succeeded.
-=======> compress kernel1418739487x86_64.cards.tar</pre>
+      <pre class="output">=======> Installing 'kernel#...' succeeded.</pre>
     </ol>
     <h2>Explications relative à chaque action</h2>
     <ol>
@@ -159,7 +161,7 @@ source  ~/.bash_profile</kbd></pre>
   </div>
   <div class="pied_page"><a class="url" href="build-post.html">Une fois la passe 2 terminée, vous pouvez passer à la post-installation et génération de l'iso</a></div>
   <hr>
-  <p class="updated"> Dernière mise à jour 30-01-2015 21:09:30</p>
+  <p class="updated"> Dernière mise à jour 07-02-2015 15:44</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

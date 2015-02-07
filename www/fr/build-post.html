@@ -42,17 +42,7 @@
 /bin/bash --login</kbd></pre>
 Aucune erreur ne doit apparaître:
 <pre class="output">root [ / ]# </pre>
-   <li>On commence par adapter le fichier cards.conf. En effet, on utilisera désormais uniquement les recettes issues du projet git. Adaptez si necessaire la langue et l'arch (<b>i686</b> si en 32 bits).</li>
-   <pre class="command"><kbd>cat > /etc/cards.conf << "EOF"
-dir /root/saravane/desktop
-dir /root/saravane/console
-dir /root/saravane/base
-logdir /var/log/pkgbuild
-arch x86_64
-locale fr
-base /root/saravane/base
-EOF</kbd></pre>
-   <li>On produit l'initrd.</li>
+   <li>On commence par produire l'initrd.</li>
    <pre class="command"><kbd>mkinitramfs</kbd></pre>
    <pre class="output">Creating initrd... done</pre>
    <li>On ajoute les fichiers necessaires au fonctionnement de l'iso</li>
@@ -64,7 +54,7 @@ EOF</kbd></pre>
 '/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
 '/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
    <pre class="command"><kbd>cp -v /boot/kernel-* /ISO/isolinux/kernel</kbd></pre>
-   <pre class="output">'/boot/kernel-3.18.2' -> '/ISO/isolinux/kernel'</pre>
+   <pre class="output">'/boot/kernel-3.18.6' -> '/ISO/isolinux/kernel'</pre>
    <pre class="command"><kbd>cp -v /boot/initrd /ISO/isolinux/initrd</kbd></pre>
    <pre class="output">'/boot/initrd' -> '/ISO/isolinux/initrd'</pre>
    <div class="note"><img alt="[Note]" src="../graphics/note.gif" />Consultez les options en bas de la page avant d'aller plus loin si vous souhaiter ajouter des paquets et donc personnaliser votre ISO ou si vous souhaitez réduire la taille de celle-ci en supprimant les archives des binaires ainsi que les logs de construction.</div>
@@ -119,10 +109,10 @@ Max brk space used 28000
    <p>Vous avez désormais une ISO qui se trouve dans le dossier $LFS</p>
    <pre class="command"><kbd>ls $LFS/</kbd></pre>
    <pre class="output">base   bin   etc   lib    NuTyX_x86_64-saravane-20150109.iso   root  sources  usr
-boot  home  lib64  NuTyX_x86_64-saravane-20150109.md5sum  run   srv      tmp     var
+boot  home  lib64  NuTyX_x86_64-saravane-20150207.md5sum  run   srv      tmp     var
 dev   ISO   mnt    proc                                   sbin  sys      tools</pre>
    <li>Il ne vous reste plus qu'à la transférer sur une clé usb et la tester</li>
-   <pre class="command"><kbd>dd if=$LFS/NuTyX_x86_64-saravane-20150109.iso of=/dev/sdb</kbd></pre>
+   <pre class="command"><kbd>dd if=$LFS/NuTyX_x86_64-saravane-20150207.iso of=/dev/sdb</kbd></pre>
    <pre class="output">526336+0 enregistrements lus
 526336+0 enregistrements écrits
 269484032 octets (269 MB) copiés, 67.3208 s, 4.0 MB/s</pre>
@@ -131,33 +121,25 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
    <h2>Options</h2>
     <ol>
      <li>Si vous souhaitez produire une iso contenant vos applications favorites, vous pouvez les compiler et les installer avant de produire l'iso. Dans l'exemple ci-dessus, c'est l'interface graphique <b>xorg</b> qui sera ajoutée</li>
-     <pre class="command"><kbd>cd /root/saravane
-cards depends xorg > .list
-pass</kbd></pre>
+     <pre class="command"><kbd>ports -u</kbd></pre>
+     <p>Une fois tous les ports rapatriés, on peut lancer la compilation de notre paquet favori. Par exemple xorg</p>
+     <pre class="command"><kbd>prt-get depinst xorg</kbd></pre>
      <p>La compilation commence:</p>
-     <pre class="output">=======> PKGMK_INSTALL: install
-=======> PKGMK_WORK_DIR: /root/saravane/console/elfutils/work
-=======> PKGMK_SOURCE_DIR: /root/saravane/console/elfutils
-=======> PKGMK_KEEP_SOURCES: no
-=======> PKGMK_CLEAN: yes
-=======> WARNING: FOOTPRINT AND MD5SUM IGNORED
-=======> MD5SUM file will be generated
-=======> PKGMK_COMPRESS_PACKAGE: no
-=======> name: elfutils
-=======> version: 0.161</pre>
-     <p>Une fois la compilation terminée, vous pouvez soit choisir l'option ci-dessous, soit continuer la génération des fichiers squashfs au point 6.</p>
-    <li>Si vous souhaitez réduire la taille finale de l'ISO, vous pouvez supprimer les binaires et les logs produits. Si vous souhaitez les conservez, lancez la commande ci-dessus.</li>
+     <pre class="output">prt-get: installing /usr/ports/console/mtdev
+=======> Downloading 'http://...</pre>
+     <p>Une fois la compilation terminée, vous pouvez soit choisir l'option ci-dessous, soit continuer la génération des fichiers squashfs au point 5.</p>
+    <li>Si vous souhaitez réduire la taille finale de l'ISO, vous pouvez supprimer les binaires du git et les logs produits, ils ne serviront plus. Si vous souhaitez conserver les binaires, lancez la commande ci-dessus.</li>
 <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
     <p>Aucune erreur ne doit apparaître</p>
     <p>On peut maintenant effacer les binaires du git</p>
-    <pre class="command"><kbd>find /root/saravane/base/ -name "*.cards.*" -exec rm {} \;</kbd></pre>
+    <pre class="command"><kbd>find /root/saravane/base/ -name "*.pkg.*" -exec rm {} \;</kbd></pre>
     <p>Aucune erreur ne doit apparaître</p>
     <p>On efface les logs.</p>
     <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
     <p>Si besoin est, les binaires et les logs se trouvent donc à la racine de la NuTyX</p>
    </ol>
    <hr>
-   <p class="updated">Dernière mise à jour 30-01-2015 20:48:35</p>
+   <p class="updated">Dernière mise à jour 07-02-2015 16:34</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

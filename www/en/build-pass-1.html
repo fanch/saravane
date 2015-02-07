@@ -93,16 +93,17 @@ pass</kbd></pre>
 
 <p>Let's the show begin ... </p>
 
-<pre class="output">+ mkdir -pv /mnt/lfs/var/lib/pkg/DB
+<pre class="output">+ mkdir -pv /mnt/lfs/var/lib/pkg
 mkdir: created directory '/mnt/lfs/var'
 mkdir: created directory '/mnt/lfs/var/lib'
 mkdir: created directory '/mnt/lfs/var/lib/pkg'
-mkdir: created directory '/mnt/lfs/var/lib/pkg/DB'
-=======> Building '/home/lfs/MakeNuTyX/CHROOT/cards/Pkgfile' succeeded.</pre>
++ touch /mnt/lfs/var/lib/pkg/db
+=======> Building '/home/lfs/saravane/chroot/pkgutils/Pkgfile' succeeded.
+/home/lfs/saravane/chroot</pre>
     <p>Note that you can follow the evolution of the construction and then check that everything goes well by consulting the folder /home/lfs/logs/chroot/ . For each build package is a log corresponding</p>
   <div class="pied_page"><a class="url" href="build-pass-2.html">We will see in a next article how to enter the CHROOT and to build a NuTyX from scratch by using a second time the same script.</a></div>
   <hr>
-  <p class="updated">Last updated on 2015-01-09 20:44:10</p>
+  <p class="updated">Last updated on 2015-02-07 15:23</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
