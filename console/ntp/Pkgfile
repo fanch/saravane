@@ -1,10 +1,9 @@
-# Description: Network Time Protocol reference implementation
+# Description: The ntp package contains a client and server to keep the time synchronized between various computers over a network. This package is the official reference implementation of the NTP protocol.
 # URL: http://www.ntp.org/ 
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
 name=ntp
-version=4.2.8
+version=4.2.8p1
 release=1
 
 source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
@@ -46,7 +45,7 @@ server 0.north-america.pool.ntp.org
 # South America
 server 2.south-america.pool.ntp.org
 
-driftfile /var/cache/ntp.drift
+driftfile /var/lib/ntp/ntp.drift
 pidfile   /var/run/ntpd.pid
 EOF
 }
