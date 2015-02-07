@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 name=rsync
 version=3.1.1
-release=1
+release=2
 
 source=( http://rsync.samba.org/ftp/$name/$name-$version.tar.gz
 	rsync.driver )
@@ -19,10 +19,12 @@ cd $name-$version
 make
 make DESTDIR=$PKG install
 
-# driver
+# drivers
 mkdir -p $PKG/etc/ports/drivers
 install -m 755 $SRC/rsync.driver \
 $PKG/etc/ports/drivers/rsync
+sed "s@rsync -c@rsync -a@" $SRC/rsync.driver \
+> $PKG/etc/ports/drivers/nutyx
 
 # service
 cd $SRC
