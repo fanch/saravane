@@ -1,9 +1,6 @@
 # Description: lftp is a sophisticated ftp/http client.
 # URL: lftp is a sophisticated ftp/http client.
-lftp est un client ftp/http sophistiqué.
-http://lftp.yar.ru/
-# Packager: alienus at nutyx dot org
-# Depends on: 
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
 name=lftp
 version=4.6.1
 release=1
