@@ -1,14 +1,13 @@
-# Description: PostgreSQL is an advanced object-relational database management system (ORDBMS),
+# Description: PostgreSQL is an advanced object-relational database management system (ORDBMS), derived from the Berkeley Postgres database management system. 
 # URL: http://www.postgresql.org/docs
-http://www.postgresql.org/developer/
-# Packager: - pierre at nutyx dot org
-# Depends on: python libxml2 libxslt openldap 
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: python libxml2 libxslt openldap
+
 # variable groupe
 PKGMK_GROUPS=(lib doc man devel service)
 
-# sources
 name=postgresql
-version=9.4.0
+version=9.4.1
 release=1
 
 source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
@@ -22,8 +21,6 @@ tar xvf $scripts-$scriptsversion.tar.bz2
 cd $name-$version
 # prepare
 sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h
-sed -i -e 's@psql\\"@& -h /tmp@' src/test/regress/pg_regress{,_main}.c
-sed -i -e 's@gres\\"@& -k /tmp@' src/test/regress/pg_regress.c
 
 # configure
 ./configure --prefix=/usr \
