@@ -1,10 +1,10 @@
-# Description: Server MySQL database
+# Description: The world's most popular open source database
 # URL: http://www.mysql.com
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libevent 
 
 name=mysql
-version=5.6.21
+version=5.6.23
 release=1
 
 source=(http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-${version%.*}/$name-$version.tar.gz)
