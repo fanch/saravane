@@ -1,6 +1,6 @@
 Pour lancer le service rsync, 2 choix:
 
-- 1. installer soit le port: service-rsync
+- 1. installer soit le port: rsync.service
 - 2. http://www.linuxfromscratch.org/blfs/view/svn/basicnet/rsync.html
      En bas de la page, télécharger et lancer
 	  make install-rsyncd dans le dossier où sont les fichiers extraits.
