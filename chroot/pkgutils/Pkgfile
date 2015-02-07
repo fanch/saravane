@@ -8,13 +8,13 @@ cd $name-$version
 PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 make
 
-install -m755 src/pkgadd /tools/bin/pkgadd
+install -m755 pkgadd /tools/bin/pkgadd
 
 ln -sv pkgadd /tools/bin/pkginfo
 ln -sv pkgadd /tools/bin/pkgrm
 
-sed -e "s/#VERSION#/$VERSION/" scripts/pkgmk.in > /tools/bin/pkgmk
+sed -e "s/#VERSION#/$VERSION/" pkgmk.in > /tools/bin/pkgmk
 chmod 755 /tools/bin/pkgmk
-install -m666 scripts/pkgmk.conf /tools/etc/pkgmk.conf
+install -m666 pkgmk.conf /tools/etc/pkgmk.conf
 mkdir -pv $LFS/var/lib/pkg/db
 }
