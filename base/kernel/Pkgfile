@@ -25,7 +25,7 @@ if [ -d /usr/src/linux-${_version} ]; then
 	fi
 else
 
-	bsdtar -p -o -C $SRC -xf linux-${version}.tar.xz
+	[ -f linux-${version}.tar.xz ] && bsdtar -p -o -C $SRC -xf linux-${version}.tar.xz
 fi
 
 cd linux-${_version}
