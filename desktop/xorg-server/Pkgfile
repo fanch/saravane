@@ -1,10 +1,10 @@
 # Description: server X Window
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
-# Depends on: xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
+# Depends on: libepoxy xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
 name=xorg-server
-version=1.16.3
+version=1.17.0
 release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$version.tar.bz2
@@ -14,11 +14,9 @@ build() {
 cd $name-$version
 patch -Np1 -i ../$name-$version-add_prime_support-1.patch
 
-sed -i "/scrnintstr/i #include <xorg-server.h>" exa/exa.h glamor/glamor.h
-
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 --with-xkb-output=/var/lib/xkb \
---enable-dmx \
+--enable-glamor \
 --with-fontrootdir=/usr/share/fonts \
 --enable-install-setuid \
 --enable-suid-wrapper
