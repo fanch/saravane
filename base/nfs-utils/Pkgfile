@@ -4,7 +4,7 @@
 # Depends on: libtirpc,rpcbind
 
 name=nfs-utils
-version=1.3.1
+version=1.3.2
 release=1
 
 source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2)
@@ -31,4 +31,5 @@ make DESTDIR=$PKG install
 
 cd ../$scripts-$scriptsversion
 make DESTDIR=$PKG install-nfs-client
+make DESTDIR=$PKG install-nfs-server
 }
