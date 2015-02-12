@@ -5,7 +5,7 @@
 run=( xdg-utils )
 PKGMK_GROUPS=(man devel)
 name=cups
-version=2.0.1
+version=2.0.2
 release=1
 
 source=( http://cups.org/software/$version/cups-$version-source.tar.gz)
@@ -31,7 +31,7 @@ build() {
 
 	rm -rf $PKG/tmp/cupsinit
 	mkdir -p $PKG/usr/share/doc
-	ln -svnf ../cups/doc-2.0.0 $PKG/usr/share/doc/cups-2.0.0
+	ln -svnf ../cups/doc-$version $PKG/usr/share/doc/cups-$version
 	
 	# Lanceur
 	if [ ! -f $PKG/usr/share/applications/cups.desktop ]; then
