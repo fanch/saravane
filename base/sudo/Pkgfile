@@ -1,10 +1,10 @@
-# Description:Give certain users the ability to run some commands as root
+# Description: The Sudo package allows a system administrator to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while logging the commands and arguments.
 # URL: http://www.sudo.ws
-# Packagers: pierre at nutyx dot org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: pam
 
 name=sudo
-version=1.8.11p1
+version=1.8.12
 release=1
 
 source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)
