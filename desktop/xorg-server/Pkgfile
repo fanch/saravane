@@ -4,7 +4,7 @@
 # Depends on: libepoxy xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
 name=xorg-server
-version=1.17.0
+version=1.17.2
 release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$version.tar.bz2
