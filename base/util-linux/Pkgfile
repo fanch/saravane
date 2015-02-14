@@ -5,8 +5,7 @@
 name=util-linux
 version=2.25.2
 release=1
-
-source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-$version.tar.xz
+source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version%.*}/util-linux-$version.tar.xz
 	)
 
 PKGMK_GROUPS=(devel doc man)
