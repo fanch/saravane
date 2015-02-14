@@ -1,4 +1,4 @@
-# Description: The most widely used Domain Name System (DNS) software on the Internet.
+# Description: The BIND package includes the client side programs nslookup, dig and host. 
 # URL: http://www.isc.org/downloads/bind/ 
 # Packager: tnut at nutyx dot org
 # Depends on: kerberos libxml2 
@@ -21,10 +21,8 @@ build(){
                 --localstatedir=/var \
                 --mandir=/usr/share/man \
                 --enable-threads \
-                --with-libtool \
-                --disable-static \
                 --with-randomdev=/dev/urandom &&
-	make C lib/dns &&
+	make -C lib/dns &&
 	make -C lib/isc &&
 	make -C lib/bind9 &&
 	make -C lib/isccfg &&
