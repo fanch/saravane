@@ -4,7 +4,7 @@
 # Depends on: kde-activities qimageblitz xcb-util-image xcb-util-renderutil libxcb xcb-proto xcb-util xcb-util-keysyms xcb-util-wm kde-pimlibs boost freetype pciutils consolekit libusb libusb-compat networkmanager lm-sensors qjson xorg-libx11 xorg-xkeyboard-config 
 
 name=kde-workspace
-version=4.14.34.11.14
+version=4.11.14
 release=1
 
 source=(http://download.kde.org/stable/4.14.3/src/$name-$version.tar.xz
@@ -27,8 +27,6 @@ make
 make DESTDIR=$PKG install
 
 cd ..
-sed -i "s/AllowRootLogin=false/AllowRootLogin=true/" $PKG/usr/share/config/kdm/kdmrc
-sed -i "s/#Language=de_DE/Language=fr_FR/" $PKG/usr/share/config/kdm/kdmrc
 
 chown -R root:root $PKG
 mkdir -p $PKG/var/lib/kdm
