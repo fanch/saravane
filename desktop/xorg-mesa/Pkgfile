@@ -1,6 +1,6 @@
 # Description: Mesa is an OpenGL compatible 3D graphics library.
 # URL: http://www.xorg-mesa3d.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: patch autoconf automake m4 pkg-config libtool xorg-makedepend xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
 
 name=xorg-mesa
@@ -12,7 +12,8 @@ source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/MesaLib-$version.tar.bz2
 build() {
 cd Mesa-$version
 patch -Np1 -i ../MesaLib-$version-add_xdemos-1.patch 
-./autogen.sh CFLAGS="-O2" CXXFLAGS="-O2" \
+autoreconf -f -i &&
+./configure CFLAGS="-O2" CXXFLAGS="-O2" \
 --prefix=/usr \
 --sysconfdir=/etc \
 --enable-texture-float \
