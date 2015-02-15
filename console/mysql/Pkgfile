@@ -1,7 +1,7 @@
 # Description: The world's most popular open source database
 # URL: http://www.mysql.com
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: libevent 
+# Depends on: cmake libevent 
 
 name=mysql
 version=5.6.23
@@ -22,12 +22,14 @@ build () {
 		-DSYSCONFDIR=/etc/mysql \
 		-DMYSQL_DATADIR=/srv/mysql \
 		-DMYSQL_UNIX_ADDR=/var/run/mysql/mysql.sock \
-		-DINSTALL_INFODIR=share/mysql/docs \
+		-DINSTALL_INFODIR=share/info \
 		-DINSTALL_MANDIR=share/man \
 		-DINSTALL_PLUGINDIR=/usr/lib/mysql/plugin \
 		-DINSTALL_SCRIPTDIR=bin \
 		-DINSTALL_INCLUDEDIR=include/mysql \
-		-DINSTALL_DOCREADMEDIR=share/mysql \
+		-DINSTALL_DOCDIR=share/doc/$name-$version \
+		-DINSTALL_DOCREADMEDIR=share/doc/$name-$version \
+		-DMYSQL_DOCS_LOCATION=share/doc/$name-$version \
 		-DINSTALL_SUPPORTFILESDIR=share/mysql \
 		-DINSTALL_MYSQLSHAREDIR=share/mysql \
 		-DINSTALL_SHAREDIR=share/mysql \
@@ -36,10 +38,11 @@ build () {
 		-DENABLED_LOCAL_INFILE=ON \
 		-DWITH_READLINE=ON \
 		-DWITH_ZLIB=system \
-		-DWITH_SSL=system \
+		-DWITH_SSL=bundled \
 		-DWITH_MYSQLD_LDFLAGS="${LDFLAGS}" \
 		-DWITH_EXTRA_CHARSETS=complex \
 		-DWITH_EMBEDDED_SERVER=ON \
+		-DWITH_UNIT_TESTS=OFF \
 		-DWITH_INNOBASE_STORAGE_ENGINE=1 \
 		-DWITH_PARTITION_STORAGE_ENGINE=1 \
 		-DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 \
@@ -48,12 +51,13 @@ build () {
 		-DWITHOUT_FEDERATED_STORAGE_ENGINE=1
 
         make
-
-	cd $SRC/build
 	make DESTDIR=$PKG install
 
+	# No need the test
+	rm -rf $PKG/usr/mysql-test
+
+	rm -rf $PKG/usr/share/info/dir
 	# These shouldn't be here
-	rm -r $PKG/usr/docs
 	install -d $PKG/srv/mysql
 	cp -r $PKG/usr/data/* $PKG/srv/mysql/
 	rm -r $PKG/usr/data
