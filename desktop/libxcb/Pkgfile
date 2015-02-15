@@ -1,22 +1,18 @@
-# Description: XCB library
+# Description: The libxcb package provides an interface to the X Window System protocol, which replaces the current Xlib interface. Xlib can also use XCB as a transport layer, allowing software to make requests and receive responses with both.
 # URL: http://xcb.freedesktop.org
-# Packager: pierre at nutyx dot org
-# Depends on: autoconf m4 libtool xcb-proto xorg-libxdmcp xorg-libxau libxslt 
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt
 
 name=libxcb
-version=1.10
+version=1.11
 release=1
 
 source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
 
 build() {
 	cd $name-$version
-	sed -e "s/pthread-stubs//" -i configure.ac
-	autoreconf -fiv
+	sed -e "s/pthread-stubs//" -i configure
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install
-
-	rm -rf $PKG/usr/share
 }
