@@ -1,10 +1,10 @@
-# Description: server X Window
+# Description: The Xorg Server is the core of the X Window system.
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libepoxy xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
 name=xorg-server
-version=1.17.2
+version=1.17.1
 release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$version.tar.bz2
