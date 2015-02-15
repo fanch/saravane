@@ -1,4 +1,4 @@
-# Description: libfs, library X Font Service client
+# Description: libFS, library X Font Service client
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-xtrans 

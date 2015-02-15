@@ -1,4 +1,4 @@
-# Description: X Resize and Rotate extension client library
+# Description: Library libXrandr, resize and rotate extension client library
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxrender 

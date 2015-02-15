@@ -1,4 +1,4 @@
-# Description: libxv, library X Video extension client
+# Description: libXv, library X Video extension client
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-libx11 xorg-libxext 

@@ -1,4 +1,4 @@
-# Description: libxft, library X are rendering client
+# Description: libXft, library X are rendering client
 # URL: http://xorg.freedesktop.org/
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libxrender freetype xorg-fontconfig 

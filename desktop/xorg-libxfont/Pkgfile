@@ -1,4 +1,4 @@
-# Description: libxfont, library Xorg
+# Description: libXfont, library Xorg
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: freetype xorg-proto xorg-xtrans xorg-libfontenc 

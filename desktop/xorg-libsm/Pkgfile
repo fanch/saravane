@@ -1,4 +1,4 @@
-# Description: libsmi, library X Session Management client
+# Description: libSM, library X Session Management client
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libice xorg-proto xorg-xtrans 

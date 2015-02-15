@@ -1,4 +1,4 @@
-# Description: libxcursor, library Xorg
+# Description: libXcursor, library Xorg
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-libxrender xorg-libxfixes xorg-libx11 

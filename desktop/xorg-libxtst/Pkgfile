@@ -1,4 +1,4 @@
-# Description: libxtst, library Xorg
+# Description: libXtst, library Xorg
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxi 

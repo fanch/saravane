@@ -1,4 +1,4 @@
-# Description: libxmu, library Xorg
+# Description: libXmu, library Xorg
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libxt xorg-proto xorg-libxext xorg-libx11 
