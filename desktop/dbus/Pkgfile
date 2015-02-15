@@ -5,7 +5,7 @@
 PKGMK_GROUPS=(doc devel)
 
 name=dbus
-version=1.8.18
+version=1.8.16
 release=1
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
@@ -19,6 +19,9 @@ build() {
 	cd $name-$version
 	./configure --prefix=/usr --with-x \
 		--localstatedir=/var \
+		--disable-doxygen-docs \
+		--disable-xml-docs \
+		--docdir=/usr/share/doc/$name-$version \
 		--sysconfdir=/etc \
 		--with-console-auth-dir=/run/console \
 		--without-systemdsystemunitdir \
@@ -26,10 +29,9 @@ build() {
 
 	make
 	make DESTDIR=$PKG install
-	mv -v $PKG/usr/share/doc/dbus \
-	$PKG/usr/share/doc/dbus-$version
         mkdir -p $PKG/etc/dbus-1
         mv ../dbus.system-local.conf $PKG/etc/dbus-1/system-local.conf
+	# service
         cd ../$scripts-$scriptsversion
         make DESTDIR=$PKG install-dbus
 	mkdir -p $PKG/usr/lib/dbus-1.0/services
