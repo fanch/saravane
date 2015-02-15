@@ -1,10 +1,10 @@
-# Description: XCB utilities library
+# Description: The xcb-util-keysyms package contains a library for handling standard X key constants and conversion to/from keycodes.
 # URL: http://xcb.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libxcb 
 
 name=xcb-util-keysyms
-version=0.3.9
+version=0.4.0
 release=1
 
 source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
