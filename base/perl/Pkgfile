@@ -2,11 +2,10 @@
 # URL: http://www.perl.org/
 # Packager: pierre at nutyx dot org
 name=perl
-version=5.20.1
+version=5.20.2
 release=1
 
-source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-infinite_recurse_fix-1.patch)
+source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2)
 build()
 {
 cd $name-$version
@@ -20,7 +19,6 @@ fi
 echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
-patch -Np1 -i ../$name-$version-infinite_recurse_fix-1.patch
 
 sh Configure -des  -Dusethreads \
 	-Dprefix=/usr -Duseshrplib -Dscriptdir=/usr/bin \
@@ -52,4 +50,5 @@ find $PKG -iname 'TODO*' -or \
 	-name perllocal.pod | xargs rm
 find $PKG -depth -empty -exec rmdir {} \;
 chmod -R +w $PKG
+unset BUILD_ZLIB BUILD_BZIP2
 }

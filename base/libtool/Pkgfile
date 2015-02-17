@@ -3,7 +3,7 @@
 # Maintainer: Gordon Matzigkeit  gord at gnu dot org
 # Packager: pierre at nutyx dot org
 name=libtool
-version=2.4.5
+version=2.4.6
 release=1
 
 source=(http://ftp.gnu.org/gnu/libtool/libtool-$version.tar.xz)

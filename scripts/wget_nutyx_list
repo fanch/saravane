@@ -1,6 +1,5 @@
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20150209.tar.bz2
 http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3.30-upstream_fixes-1.patch
-http://www.linuxfromscratch.org/patches/downloads/perl/perl-5.20.1-infinite_recurse_fix-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
 http://www.linuxfromscratch.org/patches/downloads/mpfr/mpfr-3.1.2-upstream_fixes-3.patch
@@ -41,7 +40,7 @@ http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz
 http://ftp.gnu.org/gnu/wget/wget-1.16.1.tar.xz
 http://ftp.gnu.org/gnu/cpio/cpio-2.11.tar.bz2
 http://ftp.gnu.org/gnu/make/make-4.1.tar.bz2
-http://ftp.gnu.org/gnu/libtool/libtool-2.4.5.tar.xz
+http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz
 http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 
@@ -54,12 +53,12 @@ http://download.savannah.gnu.org/releases/man-db/man-db-2.7.1.tar.xz
 http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
 
 
-https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.7.tar.xz
+https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
 https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.2.tar.gz
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.2.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-19.tar.xz
-https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.18.0.tar.xz
+https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.19.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-2.3.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-manpages-2.3.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.0.tar.xz
@@ -87,7 +86,7 @@ http://downloads.nutyx.org/files/ca-certificates-20150201.tar.gz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06.tar.xz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06-xdoc.tar.xz
 
-http://www.cpan.org/src/5.0/perl-5.20.1.tar.bz2
+http://www.cpan.org/src/5.0/perl-5.20.2.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
 http://www.iana.org/time-zones/repository/releases/tzdata2015a.tar.gz
 http://dev.gentoo.org/~blueness/eudev/eudev-2.1.1.tar.gz
