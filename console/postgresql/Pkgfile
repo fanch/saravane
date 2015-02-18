@@ -38,5 +38,5 @@ make DESTDIR=$PKG install-docs
 # install service
 
 cd $SRC/$scripts-$scriptsversion
-make install-$name
+make DESTDIR=$PKG install-$name
 }
