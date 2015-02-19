@@ -23,7 +23,7 @@ f75b374c47969fb9b21d9c2134396400  xf86-input-wacom-0.27.0.tar.bz2
 fa196a66e52c0c624fe5d350af7a5e7b  xf86-video-intel-2.99.917.tar.bz2
 a0d2932d84ba10c4933c8332c9afe157  xf86-video-nouveau-1.0.11.tar.bz2
 3690a5356ed121b1a7dfb59a6dcf4bf9  xf86-video-vesa-2.3.3.tar.bz2
-91d1d7d33181766714405ab013d31244  xf86-video-vmware-13.0.2.tar.bz2
+0cba22fed4cb639d5c4276f7892c543d  xf86-video-vmware-13.1.0,tar.bz2
 EOF
 unset MAKEFLAGS
 for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
