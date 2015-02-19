@@ -1,31 +1,34 @@
 # Description: The Udev package contains programs for dynamic creation of device nodes.
 # URL: http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
-# Packager: tnut at nutyx dot org
+# Packager: tnut at nutyx dot org, fanch at nutyx dot org
 # Depends on: glib gperf gobject-introspection 
-lfs_version="lfs-$version-2"
-PKGMK_GROUPS=(devel doc)
+
 name=udev-extras
-version=208
+_name=eudev
+version=2.1.1
 release=1
 
-source=(http://anduin.linuxfromscratch.org/sources/other/udev-${lfs_version}.tar.bz2 \
-http://www.freedesktop.org/software/systemd/systemd-$version.tar.xz)
+source=(http://dev.gentoo.org/~blueness/eudev/${_name}-$version.tar.gz)
+build() {
+cd ${_name}-$version
+sed -r -i 's|/usr(/bin/test)|\1|'         test/udev-test.pl  
 
-build()
-{
-cd systemd-$version
-mv ../udev-${lfs_version} .
-make -f udev-${lfs_version}/Makefile.lfs keymap ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs keymap
-make -f udev-${lfs_version}/Makefile.lfs gudev ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs gudev
-make -f udev-${lfs_version}/Makefile.lfs gir-data ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs gir-data
+./configure --prefix=/usr           \
+            --bindir=/sbin          \
+            --sbindir=/sbin         \
+            --libdir=/usr/lib       \
+            --sysconfdir=/etc       \
+            --libexecdir=/lib       \
+            --with-rootprefix=      \
+            --with-rootlibdir=/lib  \
+            --enable-split-usr      \
+            --enable-libkmod        \
+            --enable-rule_generator \
+            --enable-keymap         \
+            --disable-introspection \
+            --disable-gtk-doc-html  \
+            --with-firmware-path=/lib/firmware 
 
-make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-keymap ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-keymap
-make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gudev ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gudev
-make -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gir-data ||
-make -j1 -f udev-${lfs_version}/Makefile.lfs DESTDIR=$PKG install-gir-data
+make
+make DESTDIR=$PKG install
 }
