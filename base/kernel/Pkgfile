@@ -64,7 +64,7 @@ case `uname -m` in
                 $PKG/boot/kernel-$version ;;
 esac
 ln -sf kernel-$version $PKG/boot/kernel
-cd $PKG/lib/modules/${version}/
+cd $PKG/lib/modules/${version}*/
 rm -f {build,source}
 ln -sv /usr/src/linux-${version} build
 ln -sv /usr/src/linux-${version} source
