@@ -26,12 +26,17 @@ TMP=`mktemp -d`
 for file in *
 do
         name="$file"
-        if [ ! -f $file/$name.info ]; then
+        if [ ! -f $file/$name.info ] && [ ! -f $file/Pkgfile ]; then
                 echo "$file is obsolete, removed folder $file..."
                 rm -rf $file
                 continue
         else
+		if [ -f $file/.MD5SUM ]; then 
+			echo "`md5sum $file/.MD5SUM|cut -d " " -f1`:$file" >> $TMP/.MD5SUM
+		fi
+		#### TODO to make it compatible I will remove it sometimes
                 echo "`md5sum $file/MD5SUM|cut -d " " -f1`:$file" >> $TMP/MD5SUM
+		#### 
         fi
 done
 mv $TMP/MD5SUM .

@@ -56,7 +56,7 @@ http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
 https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
 https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.2.tar.gz
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz
-https://www.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.2.tar.xz
+https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-19.tar.xz
 https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.19.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-2.3.0.tar.xz
@@ -90,7 +90,7 @@ http://www.cpan.org/src/5.0/perl-5.20.2.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
 http://www.iana.org/time-zones/repository/releases/tzdata2015a.tar.gz
 http://dev.gentoo.org/~blueness/eudev/eudev-2.1.1.tar.gz
-
+http://jfs.sourceforge.net/project/pub/jfsutils-1.1.15.tar.gz
 http://tukaani.org/xz/xz-5.2.0.tar.xz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://sites.google.com/site/e3editor/Home/e3-2.8.tgz

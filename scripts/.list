@@ -86,6 +86,7 @@ libtirpc
 rpcbind
 nfs-utils
 btrfs-progs
+jfsutils
 git
 linux-firmware
 kernel
