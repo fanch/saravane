@@ -8,7 +8,6 @@ bzip2.devel
 curl.devel
 e2fsprogs.devel
 eudev.devel
-expat.devel
 file.devel
 flex.devel
 gawk
@@ -27,7 +26,6 @@ ncurses.devel
 openssl.devel
 pam.devel
 perl
-perl-xml-parser
 procps-ng.devel
 readline.devel
 libtool
