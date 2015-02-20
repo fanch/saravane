@@ -42,13 +42,22 @@ do_mount_root()
        no_device $device
        problem
    done
-
+   if  [ "$rootfstype" == "auto" ]; then
+	rootfstype=`print_file_system $device`
+   fi
+   if [ "$rootfstype" == "no" ]; then
+       no_mount $device
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+   fi
+   modprobe $rootfstype
    if ! mount -n -t "$rootfstype" -o "$rootflags" "$device" /.root ; then
        no_mount $device
        cat /proc/partitions
        while true ; do sleep 10000 ; done
    else
-       echo "Successfully mounted device $root"
+       log_info_msg "Mounting root file system ${root} in read-only mode..."
+       evaluate_retval
    fi
 }
 
@@ -97,17 +106,11 @@ do_install()
    done
    # We need to check if entry exist in /etc/fstab
    if [ "`cat /.root/etc/fstab |sed "s/ \+/ /g"|sed "s/\t\+/ /g"|sed "s/ /:/g"|cut -d ":" -f1-2|grep $root|cut -d ":" -f2`" != "/" ]; then
-      # blkid will tell us the file system so we need udev running for that
-      ${UDEV_PATH}/udevd --daemon --resolve-names=never
-      udevadm trigger
-      udevadm settle
-
+      # blkid will tell us the file system
       TYPE=`print_file_system $root`
       echo -n "."
-
       echo "$root   /   $TYPE   defaults     0      1" >> /.root/etc/fstab
-
-      killall -w ${UDEV_PATH}/udevd
+      do_stop_udev
    fi
 
    umount /.root
@@ -122,6 +125,8 @@ do_mount_in_ram()
 {
 	# squasfs files are in ${1} on the initrd
 	# RW folders
+	modprobe squashfs
+	modprobe loop
 	for DIR in var run etc root
 	do
 		if [ -f ${1}/$DIR.squashfs ];then
@@ -147,6 +152,7 @@ do_mount_in_ram()
 }
 
 find_media() {
+   modprobe usb-storage
    EXPECT_LABEL="nutyxcd"
    echo ""
    for SYS in /sys/block/sd* /sys/block/sr* ; do
@@ -157,6 +163,7 @@ find_media() {
       if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
          ln -s $DEV /dev/nutyx-cd
          mkdir  -p /media/cdrom 2>/dev/null
+	 modprobe isofs
          mount -n /dev/nutyx-cd /media/cdrom
          if [ -d /media/cdrom/depot ]; then
             echo $DEV > /tmp/depot
@@ -183,7 +190,7 @@ rootfstype=auto
 ro="ro"
 rootflags=
 device=
-UDEV_PATH=/sbin
+verbose="no"
 
 . /lib/lsb/init-functions
 
@@ -200,6 +207,7 @@ for param in $cmdline ; do
     rootflags=* ) rootflags=${param#rootflags=}   ;;
     ro          ) ro="ro"                         ;;
     rw          ) ro="rw"                         ;;
+    quiet       ) export verbose="no"             ;;
   esac
 done
 
@@ -217,8 +225,10 @@ if [ -n "$rootdelay" ] ; then
 	echo "... wait $rootdelay seconds"
 	sleep "$rootdelay"
 fi
-
-# If variable root not define we are in maintenance mode
+if [ -d /lib/modules ]; then
+        do_start_localnet
+        do_start_udev
+fi
 if [ "$root" == "" ]; then
 	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
 		find_media
@@ -239,12 +249,13 @@ if [ "$root" == "" ]; then
 		no_mount
 		sh
 	fi
-	${UDEV_PATH}/udevd --daemon --resolve-names=never
-	udevadm trigger
-	udevadm settle
+	do_stop_udev
+        do_start_udev
+	sleep 1
+	clear
 	MainLoop
 	root=`cat /root/boot`
-	killall -w ${UDEV_PATH}/udevd
+	do_stop_udev
 	for DIR in usr lib sbin bin opt
 	do
 		umount /$DIR > /dev/null 2>&1
@@ -259,10 +270,7 @@ if ! [ -d /.root/bin -a -d /.root/dev -a -d /.root/etc -a -d /.root/lib \
       -a -d /.root/usr -a -d /.root/var  -a -d /.root/run -a -d /.root/sys ]; then
   do_install
 fi
-
-# killall -w ${UDEV_PATH}/udevd
-
-clear
+do_stop_udev
 cd /.root
 exec switch_root /.root "$init" "$@" > /dev/null 2>&1
 

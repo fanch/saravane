@@ -24,7 +24,7 @@
 ## Environmental setup
 # Setup default values for environment
 umask 022
-export PATH="/bin:/usr/bin:/sbin:/usr/sbin"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
 ## Screen Dimensions
 # Find current screen size
@@ -75,7 +75,9 @@ FAILURE_SUFFIX="${BRACKET}[${FAILURE} FAIL ${BRACKET}]${NORMAL}"
 WARNING_SUFFIX="${BRACKET}[${WARNING} WARN ${BRACKET}]${NORMAL}"
 
 BOOTLOG=/run/bootlog
-KILLDELAY=3
+KILLDELAY=0
+
+[ "$verbose" == "no" ] && echo "" > $BOOTLOG
 
 # Set any user specified environment variables e.g. HEADLESS
 [ -r /etc/sysconfig/rc.site ]  && . /etc/sysconfig/rc.site
@@ -569,6 +571,9 @@ timespec()
 ################################################################################
 log_success_msg()
 {
+    if [ "$verbose"  == "no" ]; then 
+      return 0
+    fi
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
 
@@ -583,6 +588,9 @@ log_success_msg()
 
 log_success_msg2()
 {
+    if [ "$verbose"  == "no" ]; then 
+      return 0
+    fi
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
 
@@ -659,6 +667,9 @@ log_warning_msg()
 ################################################################################
 log_info_msg()
 {
+    if [ "$verbose"  == "no" ]; then 
+       return 0
+    fi
     /bin/echo -n -e "${BMPREFIX}${@}"
 
     # Strip non-printable characters from log file
@@ -671,6 +682,9 @@ log_info_msg()
 
 log_info_msg2()
 {
+    if [ "$verbose"  == "no" ] ; then 
+       return 0
+    fi
     /bin/echo -n -e "${@}"
 
     # Strip non-printable characters from log file
@@ -690,10 +704,13 @@ log_info_msg2()
 ################################################################################
 evaluate_retval()
 {
+   
    local error_value="${?}"
 
    if [ ${error_value} = 0 ]; then
-      log_success_msg2
+      if [ "$verbose" != "no" ]; then
+        log_success_msg2
+      fi
    else
       log_failure_msg2
    fi
@@ -788,7 +805,65 @@ is_true()
    [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||  [ "$1" = "y" ] ||
    [ "$1" = "t" ]
 }
+################################################################################
+# create_files()                                                               #
+#                                                                              #
+#  Purpose: create files from ${name}, ${maj}, ${min}, ${usr}, ${grp}, ${perm} #
+#                             ${type} ${dtype}                                 #
+################################################################################
+create_files()
+{
+   # Input to file descriptor 9 and output to stdin (redirection)
+   exec 9>&0 < /etc/sysconfig/createfiles
 
+   while read name type perm usr grp dtype maj min junk
+   do
+      # Ignore comments and blank lines.
+      case "${name}" in
+         ""|\#*) continue ;;
+      esac
+
+      # Ignore existing files.
+      if [ ! -e "${name}" ]; then
+         # Create stuff based on its type.
+         case "${type}" in
+            dir)
+               mkdir "${name}"
+               ;;
+            file)
+               :> "${name}"
+               ;;
+            dev)
+               case "${dtype}" in
+                  char)
+                     mknod "${name}" c ${maj} ${min}
+                     ;;
+                  block)
+                     mknod "${name}" b ${maj} ${min}
+                     ;;
+                  pipe)
+                     mknod "${name}" p
+                     ;;
+                  *)
+                     log_warning_msg "\nUnknown device type: ${dtype}"
+                     ;;
+               esac
+               ;;
+            *)
+               log_warning_msg "\nUnknown type: ${type}"
+               continue
+               ;;
+         esac
+      fi
+      # Set up the permissions, too even if it exist allready
+      chown ${usr}:${grp} "${name}"
+      chmod ${perm} "${name}"
+   done
+
+   # Close file descriptor 9 (end redirection)
+   exec 0>&9 9>&-
+   return 0
+}
 ################################################################################
 # do_mount_virtualfs()                                                         #
 #                                                                              #
@@ -820,7 +895,470 @@ do_mount_virtualfs()
 	(exit ${failed})
 	evaluate_retval
 }
+################################################################################
+# do_start_localnet() do_stop_localnet()                                       #
+#                                                                              #
+# Purpose: Sets the hostname of the machine and starts the                     #
+#          loopback interface.                                                 #
+################################################################################
+do_start_localnet()
+{
+  [ -r /etc/hostname ] && HOSTNAME=`cat /etc/hostname`
+  log_info_msg "Bringing up the loopback interface..."
+  ip addr add 127.0.0.1/8 label lo dev lo
+  ip link set lo up
+  evaluate_retval
 
+  log_info_msg "Setting hostname to ${HOSTNAME}..."
+  hostname ${HOSTNAME}
+  evaluate_retval
+}
+do_stop_localnet()
+{
+  log_info_msg "Bringing down the loopback interface..."
+  ip link set lo down
+  evaluate_retval
+}
+################################################################################
+# do_load_modules()                                                            #
+#                                                                              #
+# Purpose: Module auto-loading function                                        #
+#                                                                              #
+################################################################################
+do_load_modules()
+{
+  # Assure that the kernel has module support.
+  [ -e /proc/modules ] || return 0
+  # Return if there's no modules file or there are no
+  # valid entries
+  [ -r /etc/sysconfig/modules ]|| return 0
+  egrep -qv '^($|#)' /etc/sysconfig/modules || return 0
+
+  log_info_msg "Loading modules:"
+
+  # Only try to load modules if the user has actually given us
+  # some modules to load.
+
+  while read module args; do
+
+    # Ignore comments and blank lines.
+    case "$module" in
+      ""|"#"*) continue ;;
+    esac
+
+    # Attempt to load the module, passing any arguments provided.
+    modprobe ${module} ${args} >/dev/null
+
+    # Print the module name if successful, otherwise take note.
+    if [ $? -eq 0 ]; then
+       log_info_msg2 " ${module}"
+    else
+       failedmod="${failedmod} ${module}"
+    fi
+  done < /etc/sysconfig/modules
+
+  # Print a message about successfully loaded modules on the correct line.
+  log_success_msg2
+
+  # Print a failure message with a list of any modules that
+  # may have failed to load.
+  if [ -n "${failedmod}" ]; then
+     log_failure_msg "Failed to load modules:${failedmod}"
+     return 1
+  fi
+  return 0
+}
+################################################################################
+# do_start_udev do_stop_udev                                                   #
+#                                                                              #
+# Purpose: Udev cold-plugging start and shutdown functions                     #
+#                                                                              #
+################################################################################
+
+do_start_udev()
+{
+  log_info_msg "Populating /dev with device nodes... "
+  if ! grep -q '[[:space:]]sysfs' /proc/mounts; then
+     log_failure_msg2
+     msg="FAILURE:\n\nUnable to create "
+     msg="${msg}devices without a SysFS filesystem\n\n"
+     msg="${msg}After you press Enter, this system "
+     msg="${msg}will be halted and powered off.\n\n"
+     log_info_msg "$msg"
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+  fi
+
+  # Udev handles uevents itself, so we don't need to have
+  # the kernel call out to any binary in response to them
+  [ -f /proc/sys/kernel/hotplug ] && echo > /proc/sys/kernel/hotplug
+
+  # Start the udev daemon to continually watch for, and act on,
+  # uevents
+  /sbin/udevd --daemon --resolve-names=never
+
+  # Now traverse /sys in order to "coldplug" devices that have
+  # already been discovered
+  /sbin/udevadm trigger --action=add    --type=subsystems
+  /sbin/udevadm trigger --action=add    --type=devices
+  /sbin/udevadm trigger --action=change --type=devices
+
+  # Now wait for udevd to process the uevents we triggered
+  if ! is_true "$OMIT_UDEV_SETTLE"; then
+     /sbin/udevadm settle
+  fi
+
+  # If any LVM based partitions are on the system, ensure they
+  # are activated so they can be used.
+  if [ -x /sbin/vgchange ]; then /sbin/vgchange -a y >/dev/null; fi
+
+  log_success_msg2
+}
+do_stop_udev()
+{
+  udevadm control --exit
+  udevadm info --cleanup-db
+
+}
+################################################################################
+# do_start_clock() do_stop_clock()                                             #
+#                                                                              #
+# Purpose: On boot, system time is obtained from hwclock.  The                 #
+#          hardware clock can also be set on shutdown.                         #
+################################################################################
+do_start_clock()
+{
+   [ -r /etc/sysconfig/clock ] && . /etc/sysconfig/clock
+   case "${UTC}" in
+    yes|true|1)
+      CLOCKPARAMS="${CLOCKPARAMS} --utc"
+      CLOCKMODE="utc"
+      ;;
+
+    no|false|0)
+      CLOCKPARAMS="${CLOCKPARAMS} --localtime"
+      CLOCKMODE="localtime"
+      ;;
+
+   esac
+   hwclock --hctosys ${CLOCKPARAMS} >/dev/null
+   log_info_msg "Setting hardware clock to ${CLOCKMODE}..."
+   evaluate_retval
+}
+do_stop_clock()
+{
+   log_info_msg "Setting hardware clock..."
+   hwclock --systohc ${CLOCKPARAMS} >/dev/null
+   evaluate_retval
+}
+################################################################################
+# do_start_checkfs()                                                           #
+#                                                                              #
+# Purpose:         Checks local filesystmes before mounting.                   #
+#                                                                              #
+################################################################################
+do_start_checkfs()
+{
+   if [ -f /fastboot ]; then
+     msg="/fastboot found, will omit "
+     msg="${msg} file system checks as requested.\n"
+     log_info_msg "${msg}"
+     return 0
+   fi
+
+   log_info_msg "Mounting root file system in read-only mode... "
+   mount -n -o remount,ro / >/dev/null
+
+   if [ ${?} != 0 ]; then
+     log_failure_msg2
+     msg="\n\nCannot check root "
+     msg="${msg}filesystem because it could not be mounted "
+     msg="${msg}in read-only mode.\n\n"
+     msg="${msg}After you press Enter, this system will be "
+     msg="${msg}halted and powered off.\n\n"
+     log_failure_msg "${msg}"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+   else
+     log_success_msg2
+   fi
+
+   if [ -f /forcefsck ]; then
+     msg="\n/forcefsck found, forcing file"
+     msg="${msg} system checks as requested."
+     log_success_msg "$msg"
+     options="-f"
+   else
+     options=""
+   fi
+
+   log_info_msg "Checking file systems..."
+   # Note: -a option used to be -p; but this fails e.g. on fsck.minix
+   if is_true "$VERBOSE_FSCK"; then
+     fsck ${options} -a -A -C -T
+   else
+     fsck ${options} -a -A -C -T >/dev/null
+   fi
+
+   error_value=${?}
+
+   if [ "${error_value}" = 0 ]; then
+     log_success_msg2
+   fi
+
+   if [ "${error_value}" = 1 ]; then
+     msg="\nWARNING:\n\nFile system errors "
+     msg="${msg}were found and have been corrected.\n"
+     msg="${msg}You may want to double-check that "
+     msg="${msg}everything was fixed properly."
+     log_warning_msg "$msg"
+   fi
+
+   if [ "${error_value}" = 2 -o "${error_value}" = 3 ]; then
+     msg="\nWARNING:\n\nFile system errors "
+     msg="${msg}were found and have been been "
+     msg="${msg}corrected, but the nature of the "
+     msg="${msg}errors require this system to be rebooted.\n\n"
+     msg="${msg}After you press enter, "
+     msg="${msg}this system will be rebooted\n\n"
+     log_failure_msg "$msg"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     reboot -f
+   fi
+   if [ "${error_value}" -gt 3 -a "${error_value}" -lt 16 ]; then
+     msg="\nFAILURE:\n\nFile system errors "
+     msg="${msg}were encountered that could not be "
+     msg="${msg}fixed automatically.  This system "
+     msg="${msg}cannot continue to boot and will "
+     msg="${msg}therefore be halted until those "
+     msg="${msg}errors are fixed manually by a "
+     msg="${msg}System Administrator.\n\n"
+     msg="${msg}After you press Enter, this system will be "
+     msg="${msg}halted and powered off.\n\n"
+     log_failure_msg "$msg"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+   fi
+
+   if [ "${error_value}" -ge 16 ]; then
+     msg="\nFAILURE:\n\nUnexpected Failure "
+     msg="${msg}running fsck.  Exited with error "
+     msg="${msg} code: ${error_value}."
+     log_failure_msg $msg
+     return ${error_value}
+   fi
+
+   return 0
+}
+do_start_mountfs()
+{
+  log_info_msg "Remounting root file system in read-write mode..."
+  mount -o remount,rw / >/dev/null
+  evaluate_retval
+
+  # Remove fsck-related file system watermarks.
+  rm -f /fastboot /forcefsck
+
+  # Make sure /dev/pts exists
+  mkdir -p /dev/pts
+
+  # This will mount all filesystems that do not have _netdev in
+  # their option list.  _netdev denotes a network filesystem.
+
+  log_info_msg "Mounting remaining file systems..."
+  mount -a -O no_netdev >/dev/null
+  evaluate_retval
+  return $failed
+
+}
+do_stop_mountfs()
+{
+  # Don't unmount virtual file systems like /run
+  log_info_msg "Unmounting all other currently mounted file systems..."
+  umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts >/dev/null
+  evaluate_retval
+
+  # Make sure / is mounted read only (umount bug)
+  mount -o remount,ro /
+
+  # Make all LVM volume groups unavailable, if appropriate
+  # This fails if swap or / are on an LVM partition
+  #if [ -x /sbin/vgchange ]; then /sbin/vgchange -an > /dev/null; fi
+ 
+}
+do_start_cleanfs()
+{
+  log_info_msg "Cleaning file systems:"
+
+  if [ "${SKIPTMPCLEAN}" = "" ]; then
+    log_info_msg2 " /tmp"
+    chmod 1777 /tmp
+    cd /tmp &&
+    find . -xdev -mindepth 1 ! -name lost+found -delete || failed=1
+  fi
+
+   > /var/run/utmp
+
+  if grep -q '^utmp:' /etc/group ; then
+    chmod 664 /var/run/utmp
+    chgrp utmp /var/run/utmp
+  fi
+
+  (return ${failed})
+  evaluate_retval
+
+  if egrep -qv '^(#|$)' /etc/sysconfig/createfiles 2>/dev/null; then
+    log_info_msg "Creating files and directories... "
+    create_files      # Always returns 0
+    evaluate_retval
+  fi
+
+  return $failed
+}
+###############################################################################
+# do_start_udev_retry()                                                       #
+# Description: Replays any failed uevents that were skipped due to            #
+#              slow hardware initialization, and creates those needed         #
+#              device nodes                                                   #
+###############################################################################
+do_start_udev_retry()
+{
+  log_info_msg "Retrying failed uevents, if any..."
+
+  # As of udev-186, the --run option is no longer valid
+  #rundir=$(/sbin/udevadm info --run)
+  rundir=/run/udev
+  # From Debian: "copy the rules generated before / was mounted
+  # read-write":
+
+  for file in ${rundir}/tmp-rules--*; do
+    dest=${file##*tmp-rules--}
+    [ "$dest" = '*' ] && break
+    cat $file >> /etc/udev/rules.d/$dest
+    rm -f $file
+  done
+
+  # Re-trigger the uevents that may have failed,
+  # in hope they will succeed now
+  /bin/sed -e 's/#.*$//' /etc/sysconfig/udev_retry | /bin/grep -v '^$' | \
+  while read line ; do
+    for subsystem in $line ; do
+      /sbin/udevadm trigger --subsystem-match=$subsystem --action=add
+    done
+  done
+
+  # Now wait for udevd to process the uevents we triggered
+  if ! is_true "$OMIT_UDEV_RETRY_SETTLE"; then
+    /sbin/udevadm settle
+  fi
+
+  evaluate_retval
+}
+################################################################################
+# do_start_swap() do_stop_swap()                                               #
+#                                                                              #
+# Description: Mounts and unmounts swap partitions defined in                  #
+#              /etc/fstab.                                                     #
+################################################################################
+do_start_swap()
+{
+  log_info_msg "Activating all swap files/partitions..."
+  swapon -a
+  evaluate_retval
+}
+do_stop_swap()
+{
+  log_info_msg "Deactivating all swap files/partitions..."
+  swapoff -a
+  evaluate_retval
+}
+do_start_console()
+{
+  failed=0
+  [ -r /etc/sysconfig/console ] && . /etc/sysconfig/console
+
+  # See if we need to do anything
+  if [ -z "${KEYMAP}"         ] && [ -z "${KEYMAP_CORRECTIONS}" ] &&
+     [ -z "${FONT}"           ] && [ -z "${LEGACY_CHARSET}"     ] &&
+     ! is_true "${UNICODE}"; then
+    return 0
+  fi
+
+  # There should be no bogus failures below this line!
+  log_info_msg "Setting up Linux console..."
+
+  # Figure out if a framebuffer console is used
+  [ -d /sys/class/graphics/fb0 ] && use_fb=1 || use_fb=0
+
+  # Figure out the command to set the console into the
+  # desired mode
+  is_true "${UNICODE}" &&
+  MODE_COMMAND="echo -en '\033%G' && kbd_mode -u" ||
+  MODE_COMMAND="echo -en '\033%@\033(K' && kbd_mode -a"
+
+  # On framebuffer consoles, font has to be set for each vt in
+  # UTF-8 mode. This doesn't hurt in non-UTF-8 mode also.
+
+  ! is_true "${use_fb}" || [ -z "${FONT}" ] ||
+    MODE_COMMAND="${MODE_COMMAND} && setfont ${FONT}"
+
+  # Apply that command to all consoles mentioned in
+  # /etc/inittab. Important: in the UTF-8 mode this should
+  # happen before setfont, otherwise a kernel bug will
+  # show up and the unicode map of the font will not be
+  # used.
+
+  for TTY in `grep '^[^#].*respawn:/sbin/agetty' /etc/inittab |
+     grep -o '\btty[[:digit:]]*\b'`
+   do
+     openvt -f -w -c ${TTY#tty} -- \
+       /bin/sh -c "${MODE_COMMAND}" || failed=1
+   done
+
+  # Set the font (if not already set above) and the keymap
+  [ "${use_fb}" == "1" ] || [ -z "${FONT}" ] || setfont $FONT || failed=1
+
+  [ -z "${KEYMAP}" ] ||
+    loadkeys ${KEYMAP} >/dev/null 2>&1 ||
+    failed=1
+
+  [ -z "${KEYMAP_CORRECTIONS}" ] ||
+    loadkeys ${KEYMAP_CORRECTIONS} >/dev/null 2>&1 ||
+    failed=1
+
+  # Convert the keymap from $LEGACY_CHARSET to UTF-8
+  [ -z "$LEGACY_CHARSET" ] ||
+     dumpkeys -c "$LEGACY_CHARSET" | loadkeys -u >/dev/null 2>&1 ||
+     failed=1
+
+  # If any of the commands above failed, the trap at the
+  # top would set $failed to 1
+  ( return $failed )
+  evaluate_retval
+
+  return $failed
+}
+################################################################################
+# do_start_sysctl()                                                            #
+#                                                                              #
+# Description : File uses /etc/sysctl.conf to set kernel runtime               #
+#                                                                              #
+################################################################################
+do_start_sysctl()
+{
+  if [ -f "/etc/sysctl.conf" ]; then
+    log_info_msg "Setting kernel runtime parameters..."
+    sysctl -q -p
+    evaluate_retval
+  fi
+}
 ################################################################################
 # print_file_system()                                                          #
 #                                                                              #

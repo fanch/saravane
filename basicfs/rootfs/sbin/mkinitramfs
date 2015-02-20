@@ -27,6 +27,7 @@ if [ -z $1 ] ; then
 else
   KERNEL_VERSION=$1
   INITRAMFS_FILE=initrd-$KERNEL_VERSION
+  sbinfiles="udevd udevadm ip"
 fi
 
 if [ -n "$KERNEL_VERSION" ] && [ ! -d "/lib/modules/$1" ] ; then
@@ -36,10 +37,10 @@ fi
 
 printf "Creating $INITRAMFS_FILE... "
 
-binfiles="sh cat clear cut date grep cp dd hostname killall ls mkdir mknod mount mountpoint chmod"
+binfiles="sh cat clear cut date grep cp dd hostname killall ls mkdir mknod more mount mountpoint chmod"
 binfiles="$binfiles umount stty sed sleep ln rm uname"
 
-sbinfiles="blkid switch_root"
+sbinfiles="$sbinfiles blkid switch_root"
 
 #Optional files and locations
 if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
@@ -54,10 +55,9 @@ WDIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 
 # Create base directory structure
 # mkdir -p $WDIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
-mkdir -p $WDIR/{bin,dev,lib/{lsb,firmware},run,sbin,sys,proc,tmp,etc}
-
-# mkdir -p $WDIR/etc/{modprobe.d,udev/rules.d}
-# touch $WDIR/etc/modprobe.d/modprobe.conf
+mkdir -p $WDIR/{bin,dev,lib/{lsb,firmware},run,sbin,sys,proc,tmp,etc,usr/share}
+mkdir -p $WDIR/etc/{sysconfig,modprobe.d,udev/{rules.d,hwdb.d}}
+touch $WDIR/etc/modprobe.d/modprobe.conf
 ln -s lib $WDIR/lib64
 
 # Create necessary device nodes
@@ -68,7 +68,9 @@ ln -s lib $WDIR/lib64
 if [ -f /lib/lsb/init-functions ]; then
   cp /lib/lsb/init-functions $WDIR/lib/lsb/init-functions
 fi
-
+if [ -n "$KERNEL_VERSION" ] ; then
+   cp /etc/group $WDIR/etc
+fi
 cat > $WDIR/etc/fstab << "EOF"
 proc           /proc        proc     nosuid,noexec,nodev 0     0
 sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
@@ -77,17 +79,54 @@ tmpfs          /run         tmpfs    defaults            0     0
 devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
 EOF
 
-# echo is a bit wird
+# echo and false are a bit wird
 cp /bin/echo $WDIR/bin/echo
+cp /bin/false $WDIR/bin/false
 
+# terminal stuff
+mkdir -p $WDIR/lib/ncurses/terminfo/l
+cp /lib/ncurses/terminfo/l/linux \
+ $WDIR/lib/ncurses/terminfo/l
+ln -s ../../lib/ncurses/terminfo $WDIR/usr/share/terminfo
 # Install the udev configuration files
-# if [ -f /etc/udev/udev.conf ]; then
-#   cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
-# fi
+if [ -f /etc/udev/udev.conf ]; then
+  cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
+fi
 
-# for file in $(find /etc/udev/rules.d/ -type f) ; do
-#  cp $file $WDIR/etc/udev/rules.d
-# done
+for file in $(find /etc/udev/rules.d/ -type f) ; do
+ cp $file $WDIR/etc/udev/rules.d
+done
+
+for file in $(find /etc/udev/hwdb.d/ -type f) ; do
+  cp $file $WDIR/etc/udev/hwdb.d
+done
+cat > $WDIR/etc/udev/rules.d/55-lfs.rules << "EOF"
+# /etc/udev/rules.d/55-lfs.rules: Rule definitions for LFS.
+
+# Core kernel devices
+
+# This causes the system clock to be set as soon as /dev/rtc becomes available.
+SUBSYSTEM=="rtc", ACTION=="add", MODE="0644", RUN="do_start_clock"
+KERNEL=="rtc", ACTION=="add", MODE="0644", RUN="do_start_clock"
+
+# Comms devices
+
+KERNEL=="ippp[0-9]*",       GROUP="dialout"
+KERNEL=="isdn[0-9]*",       GROUP="dialout"
+KERNEL=="isdnctrl[0-9]*",   GROUP="dialout"
+KERNEL=="dcbri[0-9]*",      GROUP="dialout"
+EOF
+
+# Hostname
+if [ -f /etc/hostname ] ; then
+   cp /etc/hostname $WDIR/etc/hostname
+else
+   echo "nutyx" > $WDIR/etc/hostname
+fi
+# Clock setting
+if [ -f /etc/sysconfig/clock ] ; then
+  cp /etc/sysconfig/clock $WDIR/etc/sysconfig
+fi
 
 # Install any firmware present
 # cp -a /lib/firmware $WDIR/lib
@@ -100,14 +139,15 @@ cp /bin/echo $WDIR/bin/echo
 # Install the init file
 install -m0755 $DATADIR/$INITIN $WDIR/init
 
-# if [  -n "$KERNEL_VERSION" ] ; then
-#  if [ -x /bin/kmod ] ; then
-#    binfiles="$binfiles kmod"
-#  else
-#    binfiles="$binfiles lsmod"
-#    sbinfiles="$sbinfiles insmod"
-#  fi
-# fi
+if [  -n "$KERNEL_VERSION" ] ; then
+  binfiles="$binfiles groups"
+  if [ -x /bin/kmod ] ; then
+    binfiles="$binfiles kmod"
+  else
+    binfiles="$binfiles lsmod"
+    sbinfiles="$sbinfiles insmod"
+  fi
+fi
 
 # Install basic binaries
 for f in $binfiles ; do
@@ -129,10 +169,11 @@ if [ -x /lib/udev/udevd ] ; then
 fi
 
 # Add module symlinks if appropriate
-# if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
-#   ln -s kmod $WDIR/bin/lsmod
-#   ln -s kmod $WDIR/bin/insmod
-# fi
+if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
+  ln -s kmod $WDIR/bin/lsmod
+  ln -s ../bin/kmod $WDIR/sbin/insmod
+  ln -s ../bin/kmod $WDIR/sbin/modprobe
+fi
 
 # Add lvm symlinks if appropriate
 # Also copy the lvm.conf file
@@ -171,13 +212,21 @@ done
 
 cp -a /lib/udev $WDIR/lib
 
+# The Hardware clock setting maybe could be faster done
+cat > $WDIR/lib/udev/do_start_clock << "EOF"
+#!/bin/sh -e
+. /lib/lsb/init-functions
+do_start_clock
+EOF
+chmod 755 $WDIR/lib/udev/do_start_clock
+
 # Install the kernel modules if requested
 if [ -n "$KERNEL_VERSION" ]; then
-  find                                                                        \
-     /lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib}                      \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,md,firewire}      \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio} \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage}           \
+  find                                                                               \
+     /lib/modules/$KERNEL_VERSION/kernel/{arch,crypto,fs,kernel,lib,mm,security}     \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/{ata,base,block,cdrom,md,firewire} \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio}        \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{core,common,host,storage}      \
      -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
 
   cp /lib/modules/$KERNEL_VERSION/modules.{builtin,order}                     \
@@ -185,7 +234,7 @@ if [ -n "$KERNEL_VERSION" ]; then
 
   depmod -b $WDIR $KERNEL_VERSION
 fi
-# rm /boot/$INITRAMFS_FILE
+rm /boot/$INITRAMFS_FILE
 # cp -a /boot $WDIR
 # rm -v $WDIR/boot/kernel*
 
