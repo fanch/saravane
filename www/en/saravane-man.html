@@ -37,7 +37,7 @@
      <ol>
       <li><h4>The keyboard</h4></li>
          <div>The file <b>/etc/sysconfig/console</b> define the configuration of the keyboard in console mode means no graphical mode. Here is an exemple of configuration of the console:</div>
-         <pre class="command"><kbd>cat &gt;  /etc/sysconfig/console &lt;&gt; "EOF"
+         <pre class="command"><kbd>cat &gt;  /etc/sysconfig/console &lt;&lt; "EOF"
 FONT="LatGrkCyr-8x16"
 UNICODE="1"
 LOGLEVEL=1
@@ -51,7 +51,7 @@ KEYMAP=fr_CH-latin1.map
          <div>The variable <b>MANAGER</b> find in the file <b>/etc/sysconfig/network</b> is not specify. The script taking care of the network will adapt by checking which application is installed. If <b>wicd</b> is found, the service wicd will be started, if <b>networkmanager</b> is found, the service networkmanager will be started. If both applications are installed, It will be the service <b>networkmanager</b> started. If none of those  2 is found, the cli script will be started. If you want to chose manually your own configuration mode, read the instructions below.</div>
          <li><b>Manual configuration:</b></li>
          <div>Each network connection is define in a file ending by the name of the connection. The name of a network card can be named eth0, eth1, etc ou wlan0, wlan1, etc. To know the name of the reconise network cards on the system, check  the content of the folder <b>/sys/class/net</b>. Use the command <pre class="command"><kbd>ls /sys/class/net</kbd></pre>. Note that  wlan0, wlan1, etc are in most cases representing  the wireless connections. The card <b>lo</b> don't have to be configured. Exemple: the  file <b>/etc/sysconfig/ifconfig.eth0</b> define the configuration of the <b>eth0</b>. This first exemple define the eth0 card in static address. The content of <b>/etc/sysconfig/ifconfig.eth0</b> will be:</div>
-         <pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.eth0 &lt;&gt; "EOF"
+         <pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.eth0 &lt;&lt; "EOF"
 ONBOOT=yes
 SERVICE=ipv4-static
 IP=192.168.1.10
@@ -61,14 +61,14 @@ BROADCAST=192.168.1.255
 EOF
 </kbd></pre>
          <div>In the case of a static adress configuration, it's necessary to specify the DNS address manually. For exemple, if you wish to use the google DNS servers, put this in the file <b>/etc/resolv.conf</b>:</div>
-<pre class="command"><kbd>cat &gt; /etc/resolv.conf &lt;&gt; "EOF"
+<pre class="command"><kbd>cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 </kbd></pre>
          <div>In most of the case, your router is also DNS server, you can in this case specify the adress of your router.</div>
          <div>The second exemple shows a dynamic address configurationon wlan0, the content of <b>/etc/sysconfig/ifconfig.wlan0</b> will be:
-<pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.wlan0 &lt;&gt; "EOF"
+<pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.wlan0 &lt;&lt; "EOF"
 ONBOOT="yes"
 SERVICE="dhcpcd"
 DHCP_START=""
