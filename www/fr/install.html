@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
  <head>
   <meta charset="utf-8" />
@@ -39,7 +39,9 @@
       <p>A l'aide de fdisk, déterminez où se trouve votre clé USB:</p>
       <pre class="command"><kbd>fdisk -l</kbd></pre>
       <p>A l'aide de <b>dd</b>, créez votre clé bootable:</p>
-      <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX </b>valeur donnée par fdisk -l</kbd></pre>
+      <pre class="command"><kbd>dd if=NuTyX_x86_64-saravane-14.11.iso of=/dev/sdX</kbd></pre>
+      <p>La valeur <b>sdX</b> est donnée par la commande:</p>
+      <pre class="command"><kbd>fdisk -l</kbd></pre>
       <p>Si vous êtes sous Windows:</p>
       <p>Utilisez votre outils de gravure favori pour graver l'iso sur un CD-RW (si possible) ...</p>
      <h2>Installation de l'amorçage de la machine</h2>
@@ -62,7 +64,7 @@
     chainloader (hd0,3)+1
     }</kbd></pre>
   <hr>
-  <p class="updated">Dernière mise à jour 02-01-2015 11:33:00</p>
+  <p class="updated">Dernière mise à jour 21-02-2015 11:39</p>
   <footer>
    <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
     &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a>.<br /><br />
