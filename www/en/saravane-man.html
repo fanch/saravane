@@ -37,7 +37,7 @@
      <ol>
       <li><h4>The keyboard</h4></li>
          <div>The file <b>/etc/sysconfig/console</b> define the configuration of the keyboard in console mode means no graphical mode. Here is an exemple of configuration of the console:</div>
-         <pre class="command"><kbd>cat >  /etc/sysconfig/console << "EOF"
+         <pre class="command"><kbd>cat &gt;  /etc/sysconfig/console &lt;&gt; "EOF"
 FONT="LatGrkCyr-8x16"
 UNICODE="1"
 LOGLEVEL=1
@@ -51,7 +51,7 @@ KEYMAP=fr_CH-latin1.map
          <div>The variable <b>MANAGER</b> find in the file <b>/etc/sysconfig/network</b> is not specify. The script taking care of the network will adapt by checking which application is installed. If <b>wicd</b> is found, the service wicd will be started, if <b>networkmanager</b> is found, the service networkmanager will be started. If both applications are installed, It will be the service <b>networkmanager</b> started. If none of those  2 is found, the cli script will be started. If you want to chose manually your own configuration mode, read the instructions below.</div>
          <li><b>Manual configuration:</b></li>
          <div>Each network connection is define in a file ending by the name of the connection. The name of a network card can be named eth0, eth1, etc ou wlan0, wlan1, etc. To know the name of the reconise network cards on the system, check  the content of the folder <b>/sys/class/net</b>. Use the command <pre class="command"><kbd>ls /sys/class/net</kbd></pre>. Note that  wlan0, wlan1, etc are in most cases representing  the wireless connections. The card <b>lo</b> don't have to be configured. Exemple: the  file <b>/etc/sysconfig/ifconfig.eth0</b> define the configuration of the <b>eth0</b>. This first exemple define the eth0 card in static address. The content of <b>/etc/sysconfig/ifconfig.eth0</b> will be:</div>
-         <pre class="command"><kbd>cat > /etc/sysconfig/ifconfig.eth0 << "EOF"
+         <pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.eth0 &lt;&gt; "EOF"
 ONBOOT=yes
 SERVICE=ipv4-static
 IP=192.168.1.10
@@ -61,14 +61,14 @@ BROADCAST=192.168.1.255
 EOF
 </kbd></pre>
          <div>In the case of a static adress configuration, it's necessary to specify the DNS address manually. For exemple, if you wish to use the google DNS servers, put this in the file <b>/etc/resolv.conf</b>:</div>
-<pre class="command"><kbd>cat > /etc/resolv.conf << "EOF"
+<pre class="command"><kbd>cat &gt; /etc/resolv.conf &lt;&gt; "EOF"
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 </kbd></pre>
          <div>In most of the case, your router is also DNS server, you can in this case specify the adress of your router.</div>
          <div>The second exemple shows a dynamic address configurationon wlan0, the content of <b>/etc/sysconfig/ifconfig.wlan0</b> will be:
-<pre class="command"><kbd>cat > /etc/sysconfig/ifconfig.wlan0 << "EOF"
+<pre class="command"><kbd>cat &gt; /etc/sysconfig/ifconfig.wlan0 &lt;&gt; "EOF"
 ONBOOT="yes"
 SERVICE="dhcpcd"
 DHCP_START=""
@@ -92,7 +92,7 @@ eth1       IEEE 802.11abg
            Encryption key:off
            Power Management:off</pre></div>
      <div>In this exemple above, the eth1 card support the wifi, we just have to provide  the configuration file which will be used by the network connection. <b>ATTENTION</b> it is important to respect the name of the configuration file so that the script can find it. In this exemple, the name of the card will be <b>eth1</b>, the name of the wifi network will be named <b>casabianca</b> and the access key will be <b>Gg6!-@1234</b>. Based on thoses informations, we produces the configuration file like this:</div>
-     <pre class="command"><kbd>wpa_passphrase "<b>casabianca</b>" "<b>Gg6!-@1234</b>" > /etc/wpa_supplicant.conf.eth1</kbd></pre>
+     <pre class="command"><kbd>wpa_passphrase "<b>casabianca</b>" "<b>Gg6!-@1234</b>" &gt; /etc/wpa_supplicant.conf.eth1</kbd></pre>
      <div>Then we add the configuration file as explain in the manual configuration. In this exemple, we have to create the file <b>/etc/sysconfig/ifconfig.eth1</b>. Once, this is done, you can restart the network by restarting the service:
 <pre class="command"><kbd>/etc/rc.d/init.d/network restart</kbd></pre> Make shure to adjust the definition of the variable <b>MANAGER</b> define in the file <b>/etc/sysconfig/network</b>. The management of the network service can be done through the command line. The value of the variable is then <b>cli</b>. or if via wicd, put <b>wicd</b> as a value, if via networkmanager means you install the gnome graphical interface, put then <b>networkmanager</b>.
    </div>
@@ -115,10 +115,10 @@ rm -r *</kbd></pre>
 /dev/sda2       /           reiserfs  defaults     0        1
 /dev/sda3       swap        swap      pri=1        0        0</pre>
 <div>We wish to add the <b>second</b> partition format in <b>ext4</b> of the <b>second disk</b> installed on the mounting point <b>/home</b>, we just have to specify the following line:</div>
-     <pre class="command"><kbd>echo "/dev/sdb2  /home  ext4     defaults   0   0" >> /etc/fstab</kbd></pre>
+     <pre class="command"><kbd>echo "/dev/sdb2  /home  ext4     defaults   0   0" &gt;&gt; /etc/fstab</kbd></pre>
      <div>To add a NFS folder <b>/srv</b> located on a remote server with the IP address 192.168.254.254 to the mounting point <b>/server</b>, we add the following line:</div>
      <pre class="command"><kbd>cat "192.168.254.254:/srv /server  nfs  rw,vers=3,_netdev,rsize=8192,wsize=8192   0   0" \
->> /etc/fstab</kbd></pre>
+&gt;&gt; /etc/fstab</kbd></pre>
      <div>Once the configuration done, you can activate the mounting points via the command:</div>
      <div>The folder <b>/server</b> must be created before on your local machine. The values of rsize and wsize are the one per default. Feel free to experiment your owns. Make shure the package <b>nfs-utils</b> and the associated services are launch. Note that the version 3 of NFS has been choose.</div>
      <pre class="command"><kbd>mount -a</kbd></pre>
@@ -141,7 +141,7 @@ tar xf /root/users.tar</kbd></pre>
 <pre class="command"><kbd>mkswap /SWAP
 swapon /SWAP</kbd></pre>
      <div>And add the entry in the <b>/etc/fstab</b>:</div>
-<pre class="command"><kbd>echo "/SWAP     swap       swap     pri=1       0        0" >> /etc/fstab</kbd></pre>
+<pre class="command"><kbd>echo "/SWAP     swap       swap     pri=1       0        0" &gt;&gt; /etc/fstab</kbd></pre>
      <li><h4>Create a new account</h4></li>
       <div>The command <b>nu</b> (New User) is a script able to add a new user on your system, the created user will be automatically added to the essentials groups used in NuTyX. If a graphical interface is installed, it will be used and automatic logon by the <b>first</b> register user. If you wish to deactivate this functionnality, edit the file <b>/etc/kdm/kdmrc</b> for kde, <b>/etc/gdm/custom.conf</b> for gnome and <b>/etc/lxdm/lxdm.conf</b> for xfce or lxde. The commands <b>useradd/userdel</b> are used to add/delete users accounts.</div>
      <li><h4>The clock</h4></li>
@@ -310,22 +310,6 @@ Copyright (C) 2013 - 2015 Thierry Nuttens
 
 This free document is publish under the free license WTFPL - Do What The Fuck You Want To Public License.
 ( http://www.wtfpl.net/ ) </pre>
-
-
-  <ol>
-   <li><h3>aaa</h3></li>
-    <ol>
-      <li><h4>aaa</h4></li>
-      <li><h4>aaa</h4></li>
-      <li><h4>aaa</h4></li>
-    </ol>
-   <li><h3>aaa</h3></li>
-   <li><h3>aaa</h3></li>
-  </ol>
-
-
-
-
   <hr>
   <p class="updated">Last updated 2015-02-21 21:53</p>
     <footer>
