@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
 	<!-- En-tête de la page -->
@@ -42,8 +42,8 @@
 No error should be print:
     <pre class="output">root [ / ]# </pre>
     <li>We begin by produce an new initrd</li>
-    <pre class="command"><kbd>mkinitramfs</kbd></pre>
-    <pre class="output">Creating initrd... done</pre>
+    <pre class="command"><kbd>mkinitramfs `basename /lib/modules/*`</kbd></pre>
+    <pre class="output">Creating initrd-3.19.0... done</pre>
     <li>We add all the necessary files for a working iso</li>
     <pre class="command"><kbd>cp -av /root/saravane/iso /ISO</kbd></pre>
     <pre class="output">'/root/saravane/iso' -> '/ISO'
@@ -53,9 +53,9 @@ No error should be print:
 '/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
 '/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
     <pre class="command"><kbd>cp -v /boot/kernel-* /ISO/isolinux/kernel</kbd></pre>
-    <pre class="output">'/boot/kernel-3.18.6' -> '/ISO/isolinux/kernel'</pre>
-    <pre class="command"><kbd>cp -v /boot/initrd /ISO/isolinux/initrd</kbd></pre>
-    <pre class="output">'/boot/initrd' -> '/ISO/isolinux/initrd'</pre>
+    <pre class="output">'/boot/kernel-3.19.0' -> '/ISO/isolinux/kernel'</pre>
+    <pre class="command"><kbd>cp -v /boot/initrd-* /ISO/isolinux/initrd</kbd></pre>
+    <pre class="output">'/boot/initrd-3.19.0' -> '/ISO/isolinux/initrd'</pre>
     <div class="note"><img alt="[Note]" src="../graphics/note.gif" />Consult options at the botton of the page before going further if you want to customize your ISO by adding some packages or if you want to get rid of the binaries archives and build logs to reduce the size of your ISO.</div>
     <li>We produce the squashfs files used by the iso and erase the existing one if necessary as the mksquashfs command is not able to overight existing file.</li>
     <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
@@ -138,7 +138,7 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
     <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-02-07 16:34</p>
+  <p class="updated">Last updated on 2015-02-21 22:33</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

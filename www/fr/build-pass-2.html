@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
  <head>
      <meta charset="utf-8" />
@@ -9,7 +9,7 @@
  <body>
    <table>
     <tr>
-     <td width="30%">
+     <td>
         <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
      </td>
      <td>
@@ -30,11 +30,11 @@
   <hr>    
    <h1>Construction de la NuTyX (pass 2)</h1>
     <p>C'est le moment de construire votre NuTyX. Une seule condition: Avoir terminé avec succès la Construction de la CHROOT ( pass 1 ). <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />L'auteur n'est pas responsable pour les pertes de données ou autre qui pourrait engendrer une mauvaise manipulation. Cet article s'adresse à un public averti.</div>
-    Toutes les opérations vont devoir se faire en compte root. Il est donc INDISPENSABLE d'être très vigilent sinon vous pouvez "casser" votre distribution actuelle.</p>
+    Toutes les opérations vont devoir se faire en compte root. Il est donc INDISPENSABLE d'être très vigilent sinon vous pouvez "casser" votre distribution actuelle.
     <p>La variable LFS pointe dans notre exemple sur /mnt/lfs. A vous d'ajuster si vous avez choisi un autre emplacement.</p>
     <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Veuillez notez que la pass 2 peut s'avérez beaucoup plus "aventureuse" dans le sens qu'il est tout à fait possible qu'un paquet ne se compile pas du premier coup. Il est important de le signaler <a href="http://forum.nutyx.org/index.php?board=16.0" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">sur le forum</a> ou sur le canal irc</div>
     <p>Pour éviter tout risque de dispersion et pour faciliter la lecture, l'article sera divisé en deux parties. La première reprend chaque action numérotée une à une et la deuxième donne une explication de chaque action.</p> 
-    <p>Il y a 21 actions. Donc encore une fois: <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Toutes les opértations se font dans le compte root</div></p>
+    <p>Il y a 21 actions. Donc encore une fois: <div class="important"><img alt="[Important]" src="../graphics/caution.gif" />Toutes les opértations se font dans le compte root</div>
    <h2>Les actions</h2>
     <ol>
       <li>On passe en chroot</li>
@@ -158,7 +158,6 @@ source  ~/.bash_profile</kbd></pre>
       <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />Si vous avez une erreur lors de la compilation d'une recette, ce n'est pas grave, lorsque vous relancez la commande pass, le script reprend le travail là où il s'est arrêté. Afin de faire profiter un maximum de lecteurs, merci de nous informer du problème soit sur <a class="url" href="http://webchat.freenode.net/?channels=nutyx">le canal irc</a> ou sur <a class="url" href="http://forum.nutyx.org">le forum</a>.</div></li>
       <li><div class="note"><img alt="[Note]" src="../graphics/note.gif" />Vous pouvez effectuez la pass2 en plusieurs étapes. Si vous êtes sorti de la chroot, vous DEVEZ alors vous assurez de retaper <u>les commandes 12 et 13.</u> Si vous avez arrêtez la machine, assurez-vous de tapez <u>la commande 9</u> en plus des commandes 12 et 13.</div></li>
     </ol>
-  </div>
   <div class="pied_page"><a class="url" href="build-post.html">Une fois la passe 2 terminée, vous pouvez passer à la post-installation et génération de l'iso</a></div>
   <hr>
   <p class="updated"> Dernière mise à jour 07-02-2015 15:44</p>
