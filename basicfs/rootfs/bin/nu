@@ -12,7 +12,7 @@ default_groups=(users disk network floppy fuse video lp tty audio cdrom scanner 
 OLD_IFS=$IFS
 IFS="|
 "
-KDM_CONFFILE="/usr/share/config/kdm/kdmrc"
+KDM_CONFFILE="/etc/kde/kdmrc"
 GDM_CONFFILE="/etc/gdm/custom.conf"
 LXDM_CONFFILE="/etc/lxdm/lxdm.conf"
 
@@ -283,15 +283,14 @@ LoginMode=DefaultLocal
 PreselectUser=Previous
 
 [X-:0-Core]
-AutoLoginEnable=false
+AutoLoginEnable=true
 AutoLoginLocked=false
 AutoLoginUser=$name
 ClientLogFile=.xsession-errors
 
 [Xdmcp]
 Enable=false
-Willing=/usr/share/config/kdm/Xwilling" > /etc/kde/kdmrc
-ln -sf /etc/kde/kdmrc $KDM_CONFFILE
+Willing=/usr/share/config/kdm/Xwilling" > $KDM_CONFFILE
 
 fi
 exit 0

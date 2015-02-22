@@ -1048,6 +1048,11 @@ check_available_disk() {
 		--msgbox " $(gettext "Please stop the PC and install a harddisk") " 6 60
 		CHECK_HD_OK="no"
 	else
+		# Only one disk ?
+		if [ "`lsblk -p -n -d -o NAME -e 1,3,7,11|wc -l`" == "1" ]; then
+			DISK=`lsblk -p -n -d -o NAME -e 1,3,7,11`
+			echo "$DISK" > $TMP/disk
+		fi
 		CHECK_HD_OK="yes"
 	fi
 }
@@ -1127,6 +1132,7 @@ setup_format() {
 				--menu " $(gettext "Choose the file system you want to use for the partition") \
 $PARTITION" 0 0 0 \
 				"xfs" "$(gettext "High performance journaling file system create by SGI")" \
+				"jfs" "$(gettext "Journaling file system create by IBM")" \
 				"reiserfs" "$(gettext "Very stable file system but not maintain anymore")" \
 				"ext4" "$(gettext "Next generation of Ext3 file system")" \
 				"ext3" "$(gettext "Journaling version of Ext2 file system")"  \
@@ -1160,6 +1166,9 @@ $(gettext "Are you sure you want to continue ?")" 7 60
 								;;
 							xfs)
 								mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
+								;;
+							jfs)
+								mkfs.jfs -f $PARTITION > /dev/tty2 || error "mkfs.jfs -f $PARTITION"
 								;;
 						esac;;
 					1|255)
@@ -1251,18 +1260,17 @@ setup_install() {
 					SETUP_INSTALL="yes"
 					echo "$PARTITION" > /root/boot
 					echo "$PARTITION" > $TMP/boot
-					setup_grub
+					dialog --title "   $(gettext "Configuration of the boot of the computer (GRUB)")   " \
+					--yesno "$(gettext "Configure the boot of the PC") ? " 0 0
+					retval=$?
+					case $retval in
+						0)
+							setup_grub;;
+					esac
 				fi
 			fi
 		fi
 	fi
-}
-maintenance_entry_grub2() {
-	echo " " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-	echo 'menuentry "Maintenance NuTyX" {' >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-	echo "  linux /${GRUB_DESTINATION_DIR}kernel ro quiet" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-	echo "  initrd /${GRUB_DESTINATION_DIR}initrd" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-	echo "}" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
 }
 MBR_ok() {
 	local retval
@@ -1297,10 +1305,14 @@ setup_grub() {
 		CHECK_PART_OK="no"
 		check_available_partition
 		if [ "$CHECK_PART_OK" != "no" ]; then
-			select_disk "$(gettext "Configure the boot of the PC")"
-			if [ "$DISK" != "no" ]; then
+			if [ -z "$DISK" ]; then
+				select_disk "$(gettext "Configure the boot of the PC")"
 				PARTITION="no"
-				select_partition "$(gettext "Configure the boot of the PC")"
+			fi
+			if [ "$DISK" != "no" ]; then
+				if [ -z "$PARTITION" ] || [ "$PARTITION" == "no" ] ; then
+					select_partition "$(gettext "Configure the boot of the PC")"
+				fi
 				if [ "$PARTITION" != "no" ]; then
 					FORMAT=`print_file_system $PARTITION`
 					if [ "$FORMAT" != "no" ]; then
@@ -1336,6 +1348,8 @@ setup_grub() {
 							--msgbox " $(gettext "You already have a copy of the original MBR, I will not make a backup of it") " \
 							6 50
 						else
+							cp $TMP/MBR \
+							$GRUB_CONFIG_DIR/MBR.original
 							dialog --title " $(gettext "Good to know") " \
 							--msgbox " $(gettext "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need") " 10 60
 						fi
@@ -1392,11 +1406,58 @@ EOF
 							echo " linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro quiet " >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
 							echo " initrd /${GRUB_DESTINATION_DIR}initrd" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
 							echo "}" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
-							maintenance_entry_grub2
-							MBR_ok
+							echo " " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+							echo "menuentry \"NuTyX Verbose ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+							echo "  linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+							echo "  initrd /${GRUB_DESTINATION_DIR}initrd" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+							echo "}" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
 						else # NuTyX is not yet installed
-							maintenance_entry_grub2
-							if [ ! -f $TMP/boot_partitio/${GRUB_DESTINATION_DIR}initrd ]; then
+							cat >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE  << "EOF"
+#################################################################
+#                                                               #
+#               Example of a menuentry:                         #
+#                                                               #
+#   The NuTyX distribution to boot on is locate:                #
+#      on the SECOND harddisk ( HDD 2 ) AND                     #
+#      the second harddisk have THREE partitions.               #
+#      NuTyX IS installed on the third partition.               #
+#                                                               #
+# NOTE:                                                         #
+# -----                                                         #
+#                                                               #
+#  ==>>>    Harddisk start AT ZERO                              #
+#  ==>>>    Partition start AT ONE                              #
+#                                                               #
+# We need to inform GRUB that we use the kernel on              #
+# the Partition Number 3 of Harddisk Number 2                   #
+#                                                               #
+#  ======>  set root=(hd1,3)                                    #
+#                                                               #
+# And we need to inform the kernel to look at the right place:  #
+#                                                               #
+#  ======>  root=/dev/sdb3                                      #
+#                                                               #
+#           Below the menuentry of this example:                #
+#       ( adjust to your needs and remove the '#' )             #
+#                                                               #
+#################################################################
+#
+#menuentry  "Harddisk number 2 and partition number 3" {
+#   set root=(hd1,3)
+#   linux /boot/kernel root=/dev/sdb3 ro quiet
+#   initrd /boot/initrd
+#}
+#
+# The same one for debug purpose:
+#
+#menuentry  "Harddisk number 2 and partition number 3 verbose mode" {
+#   set root=(hd1,3)
+#   linux /boot/kernel root=/dev/sdb3 ro
+#   initrd /boot/initrd
+#}
+#
+EOF
+							if [ ! -f $TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd ]; then
 								cp /media/cdrom/isolinux/initrd \
 								$TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd 2> /dev/null
 								cp /media/cdrom/isolinux/kernel \

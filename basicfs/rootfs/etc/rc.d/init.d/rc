@@ -25,7 +25,7 @@ print_error_msg()
   
    MSG="${MSG}If you're able to track this error down to a bug in one of\n"
    MSG="${MSG}the files provided by the files provided by\n"
-   MSG="${MSG}the ${DISTRO_MINI} book, please be so kind to inform us at\n"
+   MSG="${MSG}the ${DISTRO_MINI} distribution, please be so kind to inform us at\n"
    MSG="${MSG}${DISTRO_CONTACT}.\n"
    log_failure_msg "${MSG}"
 
@@ -84,9 +84,9 @@ run()
 # Read any local settings/overrides
 [ -r /etc/sysconfig/rc.site ] && source /etc/sysconfig/rc.site
 
-DISTRO=${DISTRO:-"Linux From Scratch"}
-DISTRO_CONTACT=${DISTRO_CONTACT:-"lfs-dev@linuxfromscratch.org (Registration required)"}
-DISTRO_MINI=${DISTRO_MINI:-"LFS"}
+DISTRO=${DISTRO:-"NuTyX"}
+DISTRO_CONTACT=${DISTRO_CONTACT:-"nutyx-dev@nutyx.org (Registration required)"}
+DISTRO_MINI=${DISTRO_MINI:-"nutyx"}
 IPROMPT=${IPROMPT:-"no"}
 
 # These 3 signals will not cause our script to exit
