@@ -43,6 +43,34 @@
      <p>The <b>sdX</b> value is given by the command:</p>
      <pre class="command"><kbd>fdisk -l</kbd></pre>
      <p>If you are under Windows, the easiest way is to burn the ISO on a CD.</p>
+    <h2>Typical installation of NuTyX on a single partition illustrated in screenshots</h2>
+     <p>Thoses screenshots will show you a typical installation on one single partition. The hard disk have a size of 8 Gbytes and used the all size for NuTyX. It means only one partition is created for the installation of NuTyX.</p>
+     <table align="center">
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/SearchMedia.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/SelectLanguage.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/HowToProceed.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/CreateYoursPartitions.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/CreatePartitions1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/PartitionTools.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/PartitionTypeSelection.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/EmptyDisk1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/PartitionCreate1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/FormatPartition.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/FormatSda1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/AvailableFileSystems.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/LaunchFormatFormatSda1Xfs.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/InstallNuTyX.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/InstallNuTyXonSda1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/InstallInProgress.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/GoodToKnowMBR.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/Init1.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/ConfigureEth0.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/ConfigureUTC.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/ConfigureDate.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/en/ConfigureTime.png"></td></tr>
+      <tr><td><img src="http://downloads.nutyx.org/img/saravane/install/fr/RequiredChangePasswordAtFirstRootLogin.png"></td></tr>
+     </table>
+     <p>The default password is <b>nutyx</b>. As soon you successfully been login first time, it will be required to change the password before you can go to the prompt.</p>
     <h2>Installation of the boot process</h2>
      <p>If you used grub version 0.99, the following entry can be added to your menu.list:</p>
      <pre class="command"><kbd>title NuTyX - Saravane on sda2
@@ -60,7 +88,7 @@
     chainloader (hd0,3)+1
     }</kbd></pre>
    <hr>
-   <p class="updated">Last updated 2015-02-21 11:39</p>
+   <p class="updated">Last updated 2015-02-23 00:48</p>
   <footer>
    <p id="foot"> ... <img src="../graphics/logo_nutyx_25.png" alt="small nutyx logo"> ...<br />
       &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a>.<br /><br />
