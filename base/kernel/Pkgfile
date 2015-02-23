@@ -71,4 +71,11 @@ ln -sv /usr/src/linux-${version} source
 
 # Firmware are in linux-firmware
 rm -rf $PKG/lib/firmware
+
+# post-install autogen
+INITRD_VERSION="`basename $PKG/lib/modules/*`"
+echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/kernel.post-install
+echo "rm boot/initrd" >> $PKGMK_ROOT/kernel.post-install
+echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/kernel.post-install
+unset INITRD_VERSION
 }
