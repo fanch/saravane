@@ -1,6 +1,6 @@
 # Description: The popt libraries which are used by some programs to parse command-line options.
 # URL: http://freshmeat.net/projects/popt/
-- n3npq <http://freecode.com/users/n3npq>
+# Maintainer: - n3npq <http://freecode.com/users/n3npq>
 # Packager: pierre at nutyx dot org
 # Depends on: 
 PKGMK_GROUPS=(devel man doc)
