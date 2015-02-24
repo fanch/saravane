@@ -5,7 +5,7 @@
 _name=wicd-kde
 
 name=kde-wicd
-version=4.14.30.3.1
+version=0.3.1
 release=1
 
 source=(http://kde-apps.org/CONTENT/content-files/132366-${_name}-${version}.tar.gz )
