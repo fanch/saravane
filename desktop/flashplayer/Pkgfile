@@ -1,7 +1,10 @@
 # Description: Adobe Flash Player
 # URL: http://www.macromedia.com
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
+name=flashplayer
+version=11.2.202.442
+release=1
 
 
 case `uname -m` in
