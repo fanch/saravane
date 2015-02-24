@@ -276,6 +276,9 @@ msgstr "Wählen Sie das Dateisystem, die Sie für die Partition verwenden wollen
 msgid "High performance journaling file system create by SGI"
 msgstr "ist ein von der Firma Silicon Graphics (SGI) entwickeltes Journaling-Dateisystem"
 
+msgid "Journaling file system create by IBM"
+msgstr "ist ein von der Firma IBM entwickeltes Journaling-Dateisystem"
+
 msgid "Very stable file system but not maintain anymore"
 msgstr "ist ein Mehrzweck-Dateisystem, das von einer Entwicklergruppe um Hans Reiser"
 

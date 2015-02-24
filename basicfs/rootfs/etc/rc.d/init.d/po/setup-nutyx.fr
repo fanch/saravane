@@ -276,6 +276,9 @@ msgstr "Choisissez le système de fichiers que vous souhaitez utiliser pour cett
 msgid "High performance journaling file system create by SGI"
 msgstr "Système de fichiers à haute perfomance créé par SGI"
 
+msgid "Journaling file system create by IBM"
+msgstr "Système de fichiers journalisé mis au point par IBM"
+
 msgid "Very stable file system but not maintain anymore"
 msgstr "Système de fichiers très stable mais qui n'est plus maintenu"
 

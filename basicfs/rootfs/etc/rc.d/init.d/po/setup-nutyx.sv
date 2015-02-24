@@ -273,6 +273,9 @@ msgstr "Välj filsystemet som du vill använda för partitionen"
 msgid "High performance journaling file system create by SGI"
 msgstr "Högprestandafilsystem skapad av SGI"
 
+msgid "Journaling file system create by IBM"
+msgstr "Journalförings fil system skapad av IBM"
+
 msgid "Very stable file system but not maintain anymore"
 msgstr "Mycket stabilt filsystem som inte upprätthålls längre"
 
