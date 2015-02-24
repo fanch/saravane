@@ -73,16 +73,11 @@
      <p>Le mot de passe par défaut est <b>nutyx</b>. Dès que vous aurez entrez ce mot de passe. On vous demandera de le changer immédiatement</p>
     <h2>Installation de l'amorçage de la machine</h2>
       <p><a class="url" href="grub-install.html">Cet article vous explique comment installer depuis zero l'amorçage de la machine</a></p>
-      <p>Pour les plus pressé et les plus callés, voici un résumé</p>
-      <p>Si vous avez déjà grub 1 installé, il suffit juste de modifier votre menu.list selon:</p>
-      <pre class="command"><kbd>title NuTyX - Saravane sur sda2
-    root (hd0,1)
-    kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
-    initrd /boot/initrd</kbd></pre>
+      <p>Pour les plus pressé et les plus callés, voici un résumé:</p>
       <p>Si vous avez déjà grub 2 installé, il suffit de modifier votre grub.cfg selon:</p>
-      <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
-    set root=(hd0,2)
-    linux /boot/kernel root=/dev/sda2 ro quiet
+      <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda1" {
+    set root=(hd0,1)
+    linux /boot/kernel root=/dev/sda1 ro quiet
     initrd /boot/initrd
     }
     

@@ -20,7 +20,6 @@
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="install.html">Installation</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="packages.html">Paquets</a></li>
             <li><a href="http://forum.nutyx.org/index.php?action=recent">Forum</a></li>
             <li><a href="packages.html">Paquets</a></li>
         </ul>
@@ -49,7 +48,7 @@
    <img src="http://downloads.nutyx.org/img/saravane/install/fr/ModifyGrubCfg.png" alt="Figure 4: Modifier le fichier de configuration" title="Figure 4: Modifier le fichier de configuration"/>
    <div class="important"><img src="../graphics/caution.gif" alt="caution" /> Attention à la syntaxe de la dénomination des disques et des partitions, c'est un peu spéciale.</div>
    <img src="http://downloads.nutyx.org/img/saravane/install/DefaultGrubCfg.png" alt="Figure 5: Configuration par défaut" title="Figure 5: Configuration par défaut"/>
-   <p>Sous grub 2.00 le premier disque commence à 0 et la première partition commence à 1, donc dans l'exemple suivant:</p>
+   <p>Sous grub 2.00 le premier disque commence à <b>0</b> et la première partition commence à <b>1</b>, donc dans l'exemple suivant:</p>
    <pre class="output">set root=(hd0,5)</pre>
    <p>définit donc la cinquième partition sur le premier disque</p>
    <p>Dans l'exemple ci-dessous, on trouve 3 entrées dont 2 entrées NuTyX, la première entrée lancera la NuTyX qui se trouve sur la partition <b>/dev/sda2</b>. La deuxième entrée lancera la maintenance de NuTyX qui se trouve sur la partition <b>/dev/sda1</b> et enfin la troisième entrée lancera Windows 8 qui se trouve sur la partition <b>/dev/sda3</b></p>
@@ -75,10 +74,13 @@ menuentry "Windows 8" {
 }
 </pre>
     <hr>
-    <p class="updated">Dernière mise à jour 23-02-2015 21:13</p> 
+    <p class="updated">Dernière mise à jour 24-02-2015 20:05</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2014 <a href="http://nutyx.org">NuTyX</a></p>
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /> <br />
+       <a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
  </body>
 </html>

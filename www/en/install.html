@@ -71,17 +71,14 @@
      </table>
      <p>The default password is <b>nutyx</b>. As soon you successfully been login first time, it will be required to change the password before you can go to the prompt.</p>
     <h2>Installation of the boot process</h2>
-     <p>If you used grub version 0.99, the following entry can be added to your menu.list:</p>
-     <pre class="command"><kbd>title NuTyX - Saravane on sda2
-    root (hd0,1)
-    kernel /boot/kernel root=/dev/sda2 ro quiet vga=791
-    initrd /boot/initrd</kbd></pre>
+      <p><a class="url" href="grub-install.html">This topic will explain you how to install from scratch the configuration of the boot process of your PC</a></p>
      <p>If you used the latest grub version 2.XX , the following entry can be added to your grub.cfg:</p>
-     <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda2" {
-    set root=(hd0,2)
-    linux /boot/kernel root=/dev/sda2 ro quiet
+      <pre class="command"><kbd>menuentry "NuTyX sur /dev/sda1" {
+    set root=(hd0,1)
+    linux /boot/kernel root=/dev/sda1 ro quiet
     initrd /boot/initrd
     }
+
     menuentry "Windows 8" {
     set root=(hd0,3)
     chainloader (hd0,3)+1
