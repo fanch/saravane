@@ -29,14 +29,55 @@
     </table>
  <hr>
   <h1>Les commandes de base...</h1>
+   <h2>Première prise en main</h2>
     <p>Afin de profiter pleinement de votre NuTyX fraîchement installée, voici les commandes indispensables que vous allez utiliser quotidiennement. Cet article reprend les commandes essentielles et spécifiques à NuTyX. Il est conseillé de les bien les connaître.</p>
     <p>NuTyX ne dispose pas (encore) d'outils graphiques pour son administration. Vous allez donc utiliser le terminal comme interface. Si vous n'y êtes pas habitué, ce n'est pas grave. Cet article vous expliquera pas à pas les commandes à taper au clavier.</p>
     <p>Sous NuTyX (contrairement à d'autres systèmes d'exploitation) la <a href="http://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse">casse</a> doit être respectée, il faut donc toujours veiller à taper les commandes <b>en minuscules</b>.</p>
-     <p>Commençons donc par ouvrir un terminal... ça y est ? alors on peut commencer <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></p>
-     <p>Une commande peut être composée d'un seul mot dans le cas où aucune option n'est nécessaire. Mais la majorité des commandes peut être entrée à l'aide d'options diverses. Sachez par exemple que l'option la plus utile sera (en fonction de la commande)</p>
-     <pre class="command_user"><kbd>nomdelacommande -h</kbd></pre>
-     <p>le <em>-h</em> permet d'obtenir un aperçu des possibilitées de la <b>nomdelacommande</b>, <em>--help</em> ou <em>help</em> sont aussi des options permettant l'affichage de l'aide.</p>
-     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> Il faut savoir que certaines commandes mentionnées dans cet article sont en réalité des alias, c'est à dire un racourci de la commande originale. Si vous souhaitez connaître la liste des alias, utilisez la commande:
+    <p>Commençons donc par ouvrir un terminal... ça y est ? alors on peut commencer <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></p>
+    <p>Une commande peut être composée d'un seul mot dans le cas où aucune option n'est nécessaire. Mais la majorité des commandes peut être entrée à l'aide d'options diverses. Sachez par exemple que l'option la plus utile sera (en fonction de la commande)</p>
+    <pre class="command_user"><kbd>nomdelacommande help</kbd></pre> ou
+    <pre class="command_user"><kbd>nomdelacommande --help</kbd></pre> ou
+    <pre class="command_user"><kbd>nomdelacommande -h</kbd></pre>
+    <p>le <i>help</i> permet d'obtenir un aperçu des possibilitées de la <b>nomdelacommande</b>, <i>--help</i> ou <i>-h</i> sont aussi des options permettant l'affichage de l'aide.</p>
+   <h2>Vérifier si il y a des mises à jour disponible</h2>
+    <p>La commande <b>cards sync -i</b> permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
+    <p>La commande <b>cards diff -b</b> affichera une liste de paquets pouvant être mis à jour</p>
+    <p>Essayez les commandes:</p>
+    <pre class="command"><kbd>cards sync -i
+cards diff -b</kbd></pre>
+    <pre class="output">Synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Differences between installed packages and the depot of binaries:<br /><br />Package                        Installed                 Available in the depot of binaries
+
+gcc                             4.9.1                     4.9.2
+glibc                           2.20                      2.21</pre>
+
+   <h2>Mettre à jour un paquet</h2>
+    <p>Pour mettre à jour un paquet, la commande <b>cards install -u</b> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
+    <pre class="command"><kbd>cards install -u gcc</kbd></pre>
+    <p>Mettra le paquet <b>gcc</b> à jour</p>
+   <h2>Recherche d'un paquet</h2>
+    <p>Pour rechercher un paquet sous NuTyX, c'est très simple, la commande :</p>
+    <pre class="command_user"><kbd>cards search <b>chaîne_à_trouver</b></kbd></pre>
+    <p>retournera tous les paquets dont le nom ou la description contient la <b>chaîne_à_trouver</b>. Par exemple si vous souhaitez connaître les navigateurs disponible</p>
+    <pre class="command_user"><kbd>cards search browser</kbd></pre>
+    <p>devrait retourner quelque chose comme :</p>
+    <pre class="output">chromium           The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser. Include PepperFlash and libpdf plugins
+firefox            Standalone web browser from mozilla.org
+...</pre>
+   <h2>Ajout d'un paquet</h2>
+    <p>Pour ajouter un paquet, la commande <b>cards install</b> suivi du nom du paquet à installer sera utilisée :</p>
+    <pre class="command"><kbd>cards install xfce4</kbd></pre>
+    <p>Le téléchargement de l'application <b>xfce4</b> commence imnmédiatement, une fois le paquet téléchargé, ses dépendances seront à leurs tours téléchargées. Quand le téléchargement est terminé, tous les paquets seront installés dans le bon ordre. Dans cet exemple, une fois la commande terminée, vous aurez un bureau <a href="http://www.xfce.org">xfce4</a> installé sur votre NuTyX.</p>
+   <h2>Ajout d'un utilisateur</h2>
+    <p>Pour ajouter un utilisateur sous NuTyX, c'est également très simple, la commande :</p>
+     <pre class="command"><kbd>nu</kbd></pre>
+     <p>permet d'ajouter un utilisateur, elle peut être utilisée sous 2 formes avec et sans options, si elle est utilisée sans options, 2 questions vous seront demandées:</p>
+<pre class="output">Nom de l'utilisateur: francois
+Description de l'utilisateur: François Perrin</pre>
+     <p>Vous devez bien noter que le nom d'utilisateur ne peut pas contenir certains caractères et ne peut pas contenir d'espace ni de majuscule.</p>
+     <p>Si par contre vous souhaitez utiliser la commande avec ses options, ces derniers sont dans l'ordre la description de l'utilisateur suivi du nom de l'utilisateur:</p>
+     <pre class="command"><kbd>nu "François Perrin" francois</kbd></pre>
+    <h2>Les alias</h2>
+     <div class="note"><img alt="[Note]" src="../graphics/note.gif"> Il faut savoir que certaines commandes mentionnées dans cet article peuvent être remplacés par des alias, c'est à dire un racourci de la commande originale. Si vous souhaitez connaître la liste des alias, utilisez la commande:
 <pre class="command_user"><kbd>alias</kbd></pre></div>
      <div class="important"><img alt="[Important]" src="../graphics/caution.gif">Bien que ce ne soit absolument pas necessaire, si vous souhaitez malgré tout modifier les alias définis dans votre NuTyX, vous devez éditer le fichier <b><span style="color: #007a00;">.bashrc</span></b> qui se trouve dans le dossier personnel du compte concerné. Encore une fois, cette opération n'est pas du tout indispensable et il est vivement conseillé de bien connaître le principe avant de modifier les alias prédéfinis</div>
      <pre class="output">/root/.bashrc</pre>
@@ -64,53 +105,15 @@ alias duh='du -h --max-depth=1'
 alias dfh='df -h'
 alias pkgfind='cards list -i | grep -i'
 # End ~/.bashrc</pre>
-   
-   <h2>Recherche d'un paquet</h2>
-    <p>Pour rechercher un paquet sous NuTyX, c'est très simple, la commande :</p>
-    <pre class="command_user"><kbd>search <em>chaîne_à_trouver</em></kbd></pre>
-    <p>retournera tous les paquets dont le nom ou la description contient la <em>chaîne_à_trouver</em>.Par exemple si vous souhaitez connaître les navigateurs disponible (en binaire)</p>
-    <pre class="command_user"><kbd>search browser</kbd></pre>
-    <p>devrait retourner quelque chose comme :</p>
-    <pre class="output">
-chromium           The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser. Include PepperFlash and libpdf plugins
-firefox            Standalone web browser from mozilla.org
-...</pre>
-
-   <h2>Ajout d'un utilisateur</h2>
-    <p>Pour ajouter un utilisateur sous NuTyX, c'est également très simple, la commande :</p>
-     <pre class="command"><kbd>nu</kbd></pre>
-     <p>permet d'ajouter un utilisateur, elle peut être utilisée sous 2 formes avec et sans options, si elle est utilisée sans options, 2 questions vous seront demandées:</p>
-<pre class="output">Nom de l'utilisateur: francois
-Description de l'utilisateur: François Perrin</pre>
-     <p>Vous devez bien noter que le nom d'utilisateur ne peut pas contenir certains caractères et ne peut pas contenir d'espace ni de majuscule.</p>
-     <p>Si par contre vous souhaitez utiliser la commande avec ses options, ces derniers sont dans l'ordre la description de l'utilisateur suivi du nom de l'utilisateur:</p>
-     <pre class="command"><kbd>nu "François Perrin" francois</kbd></pre>
-     
-   <h2>Ajout d'un logiciel</h2>
-    <p>Pour ajouter un logiciel, un alias existe pour vous, la commande <b>get</b> suivi du ou des noms des logiciels à installer sera utilisée :</p>
-    <pre class="command"><kbd>get firefox</kbd></pre>
-    <p>Le téléchargement de l'application <b>firefox</b> commence imnmédiatement, une fois le paquet téléchargé, ses dépendances seront à leur tour téléchargées. Quand le téléchargement est terminé, tous les paquets seront installés dans le bon ordre.</p>
-     
-   <h2>Vérifier si il y a des mises à jour disponible</h2>
-    <p>La commande <b>check</b> permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
-    <pre class="command"><kbd>check</kbd></pre>
-    <pre class="output">Synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Differences between installed packages and the depot of binaries:<br /><br />Package                        Installed                    Available in the depot of binaries
-
-sylpheed                      3.0.1-1                     3.2.0-1</pre>
-    <p>Dans cet exemple sylpheed peut être mis à jour.</p>
-   <h2>Mettre à jour un logiciel</h2>
-    <p>Pour mettre à jour un logiciel, la commande <b>cards install -u</b> suivi du logiciel sera utilisée. Il faut evidement que la mise à jour soit possible :</p>
-    <pre class="command"><kbd>cards install -u sylpheed</kbd></pre>
-    <p>Si vous avez l'alias <b>up</b> configuré, il fera la même chose.</p>
    <h2>Conclusion</h2>
     <p>Vous l'avez compris les seules commandes à connaître pour commencer à utiliser NuTyX sont donc les 2 commandes :</p>
     <pre class="command"><kbd>nu
 cards</kbd></pre>
     <p>Cette dernière est d'ailleurs expliquée plus en détail via son aide:</p>
-    <pre class="command_user"><kbd>cards</kbd></pre>
+    <pre class="command_user"><kbd>cards help</kbd></pre>
     <p>Je vous souhaite beaucoup de plaisir avec votre nouvelle NuTyX installée.</p>
     <hr>
-    <p class="updated">Dernière mise à jour 02-01-2015 21:32:13</p>
+    <p class="updated">Dernière mise à jour 25-02-2015 21:21</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
