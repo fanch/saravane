@@ -5,7 +5,7 @@ kernelversion=3.19
 PKGMK_GROUPS=(devel man doc)
 name=glibc
 version=2.21
-release=1
+release=2
 
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-$kernelversion.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-$version-fhs-1.patch
@@ -25,6 +25,10 @@ cp -rv dest/include/* $PKG/usr/include
 cd ../glibc-$version
 
 patch -Np1 -i ../glibc-$version-fhs-1.patch
+
+sed -e '/ia32/s/^/1:/' \
+    -e '/SSE2/s/^1://' \
+    -i  sysdeps/i386/i686/multiarch/mempcpy_chk.S
 
 mkdir -v ../glibc-build
 cd ../glibc-build
