@@ -4,10 +4,10 @@
 # Depends on: 
 
 
-_amalgamationver=3080802
+_amalgamationver=3080803
 
 name=sqlite
-version=3.8.8.2
+version=3.8.8.3
 release=1
 
 source=(http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz
