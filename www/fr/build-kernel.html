@@ -4,14 +4,17 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Compiler et installer son propre noyau</title>
+      <title>NuTyX - Compiler et installer son propre noyau</title>
+  </head>
+  <body>
     <table>
      <tr>
-      <td width="30%">
+      <td>
             <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
       </td>
       <td>
        <nav>
+        <ul>
             <li><a href=".">Accueil</a></li>
             <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
@@ -19,11 +22,11 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="packages.html">Paquets</a></li>
             <li><a href="http://forum.nutyx.org/index.php?board=20.0">Forum</a></li>
+        </ul>
        </nav>
       </td>
      </tr>
     </table>
- </head>
  <hr>
   <h1>Compiler et installer son propre noyau</h1>
    <p>Cet article peut s'appliquer à toute autre distribution.</p>
@@ -50,12 +53,13 @@
 02:00.0 Network controller: Broadcom Corporation BCM4313 802.11b/g/n Wireless LAN Controller (rev 01)                                                                              
 03:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS5209 PCI Express Card Reader (rev 01)</pre>
    <p>On retiendra donc:</p>
-    <li>processeur Atom</li>
-    <li>Audio device Intel</li>
-    <li>Controlleur SATA Intel</li>
-    <li>Carte réseau: Realtek RTL8101E/RTL8102E</li>
-    <li>Carte graphique. Intel  Atom Processor D2xxx/N2xxx </li>
-   
+    <ul>
+     <li>processeur Atom</li>
+     <li>Audio device Intel</li>
+     <li>Controlleur SATA Intel</li>
+     <li>Carte réseau: Realtek RTL8101E/RTL8102E</li>
+     <li>Carte graphique. Intel  Atom Processor D2xxx/N2xxx </li>
+    </ul>
    <p>Voici un résumé de ce que l'on va faire. Il faut savoir que <b>les étapes 4 et 5</b> peuvent être refaites à l'infini (dans le cas où le kernel ne booterai pas par exemple). Voici les différentes étapes à suivre :</p>  
     <ol>
      <li>Télécharger les sources du kernel sur le site <a href="http://kernel.org" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">http://kernel.org</a></li>
@@ -304,11 +308,9 @@ Configuration targets:
      <tr class="odd"><td>CRC32/CRC32c functions</td>
      </tr>
     </table> 
-   <table>
-    <p>
-    <tr>Une fois le choix effectué, vous chosissez l'option <span style="color: #ff0000;">Exit</span> jusqu'au retour au prompt de la console.</tr>
-    <tr>Un nouveau message vous demande si vous souhaitez sauvergarder votre configuration, chosissez simplement l'option de défaut <span style="color: #ff0000;">Yes</span>. Un joli message apparait dans votre terminal <img src="../graphics/smiley-cool.gif" border="0" alt="Cool" title="Cool" /> :</tr>
-       </table>
+    <p>Une fois le choix effectué, vous chosissez l'option <span style="color: #ff0000;">Exit</span> jusqu'au retour au prompt de la console.</p>
+    <p>Un nouveau message vous demande si vous souhaitez sauvergarder votre configuration, chosissez simplement l'option de défaut <span style="color: #ff0000;">Yes</span>.</p>
+    <p>Un joli message apparait dans votre terminal <img src="../graphics/smiley-cool.gif" border="0" alt="Cool" title="Cool" /> :</p>
    <pre class="output">#
 # configuration written to .config
 #
@@ -358,8 +360,8 @@ sudo make modules_install</kbd></pre>
   <p class="updated">Dernière mise à jour 09-01-2015 20:13:00</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
-        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a></p>
-    <p id="foot"><a href="http://www.wtfpl.net/"><img
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a>.<br /><br />
+        <a href="http://www.wtfpl.net/"><img
        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
        width="80" height="15" alt="WTFPL" /></a></p>
     </footer>
