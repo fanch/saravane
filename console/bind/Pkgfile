@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 # Depends on: kerberos libxml2 
 name=bind
-version=9.10.1-P1
+version=9.10.2
 release=1
 
 source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
