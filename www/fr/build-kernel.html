@@ -30,8 +30,8 @@
  <hr>
   <h1>Compiler et installer son propre noyau</h1>
    <p>Cet article peut s'appliquer à toute autre distribution.</p>
-   <p>Si vous avez décidé de compiler vous-même votre kernel, cet article vous explique sommairement comment compiler et installer un kernel personnalisé.</p>  
-   <p>Il existe beaucoup de raisons de vouloir compiler son propre kernel. Avoir un kernel optimisé en taille et pour son propre matériel est sans doute la raison la plus fréquente.</p>
+   <p>Si vous avez décidé de compiler vous-même votre noyau, cet article vous explique sommairement comment compiler et installer un noyau personnalisé.</p>  
+   <p>Il existe beaucoup de raisons de vouloir compiler son propre noyau. Avoir un noyau optimisé en taille et pour son propre matériel est sans doute la raison la plus fréquente.</p>
    <p>On va commencer par prendre connaîssance de son matériel avec la commande:</p>
    <pre class="command_user"><kbd>lspci</kbd></pre>
    <pre class="output">00:00.0 Host bridge: Intel Corporation Atom Processor D2xxx/N2xxx DRAM Controller (rev 03)
@@ -60,18 +60,17 @@
      <li>Carte réseau: Realtek RTL8101E/RTL8102E</li>
      <li>Carte graphique. Intel  Atom Processor D2xxx/N2xxx </li>
     </ul>
-   <p>Voici un résumé de ce que l'on va faire. Il faut savoir que <b>les étapes 4 et 5</b> peuvent être refaites à l'infini (dans le cas où le kernel ne booterai pas par exemple). Voici les différentes étapes à suivre :</p>  
+   <p>Voici un résumé de ce que l'on va faire. Il faut savoir que <b>les étapes 4 et 5</b> peuvent être refaites à l'infini (dans le cas où le noyau ne booterai pas par exemple). Voici les différentes étapes à suivre :</p>  
     <ol>
-     <li>Télécharger les sources du kernel sur le site <a href="http://kernel.org" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">http://kernel.org</a></li>
-     <li>Extraire les sources du kernel téléchargées</li>
-     <li>Se rendre dans le dossier des sources du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles</li>
+     <li>Télécharger les sources du noyau sur le site <a href="http://kernel.org" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">http://kernel.org</a></li>
+     <li>Extraire les sources du noyau téléchargées</li>
+     <li>Se rendre dans le dossier des sources du noyau et taper les commandes magiques pour configurer les options qui nous semblent utiles</li>
      <li>Configurer les options de compilation</li>
-     <li>Compiler le kernel</li>
+     <li>Compiler le noyau</li>
      <li>Créer une nouvelle entrée dans le fichier grub.cfg ou menu.lst</li>
     </ol>
-  <ol>
-  <li><h2>Télécharger les sources du kernel</h2></li>
-   <p>Pour pouvoir compiler un kernel, il faut donc commencer par récupérer les sources d'une version de kernel. Au moment de l'écriture de l'article, la version 3.17.4 est disponible. Nous allons donc prendre le risque de le compiler...</p>
+  <h2>Télécharger les sources du noyau</h2>
+   <p>Pour pouvoir compiler un noyau, il faut donc commencer par récupérer les sources d'une version de noyau. Au moment de l'écriture de l'article, la version 3.17.4 est disponible. Nous allons donc prendre le risque de le compiler...</p>
    <p>Ouvrez un terminal et tapez la commande :</p>
    <pre class="command_user"><kbd>wget http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.17.4.tar.xz</kbd></pre>
    <p>Les sources commencent à se télécharger dans votre dossier personnel</p>
@@ -86,17 +85,17 @@ Sauvegarde en : &laquo;linux-3.17.4.tar.bz2&raquo;
 
 2012-09-01 17:50:31 (2,13 MB/s) - &laquo;linux-3.17.4.tar.xz&raquo; sauvegardé [82259123/82259123]</pre>
      
-   <li><h2>Extraire les sources du kernel</h2></li>
-   <p>On extrait les sources du kernel téléchargées :</p>
+  <h2>Extraire les sources du noyau</h2>
+   <p>On extrait les sources du noyau téléchargées :</p>
    <pre class="command_user"><kbd>tar xf linux-3.17.4.tar.xz</kbd></pre>
-   <p>Après quelques minutes, le prompt sera à nouveau disponible et les sources du kernel seront en place. Se rendre dans le dossier du kernel et taper les commandes magiques pour configurer les options qui nous semblent utiles. Pour pouvoir compiler le kernel, il faut être dans le dossier sources de celui-ci, tapez dans votre console :</p>
+   <p>Après quelques minutes, le prompt sera à nouveau disponible et les sources du noyau seront en place. Se rendre dans le dossier du noyau et taper les commandes magiques pour configurer les options qui nous semblent utiles. Pour pouvoir compiler le noyau, il faut être dans le dossier sources de celui-ci, tapez dans votre console :</p>
 
    <li><h2>Se rendre dans le dossier des sources</h2></li>
    <pre class="command_user"><kbd>cd linux-3.17.4</kbd></pre>
    <p>Nous sommes maintenant pr&ecirc;t &agrave; lancer quelques commandes magiques.
    <p>Je vous conseille pour commencer histoire de se faire une id&eacute;e des possibilit&eacute;es du makefile d'utiliser la commande :</p>
    <pre class="command_user"><kbd>make help|more</kbd></pre>
-   <p>Elle vous donnera TOUTES les options qui vous sont disponibles pour la compilation du kernel et de ses modules.</p>
+   <p>Elle vous donnera TOUTES les options qui vous sont disponibles pour la compilation du noyau et de ses modules.</p>
    <pre class="output">Cleaning targets:
   clean           - Remove most generated files but keep the config and
                     enough build support to build external modules
@@ -126,17 +125,17 @@ Configuration targets:
 ......
 ....</pre>
     <p>Je vous ai mis que le début <img src="../graphics/smiley-wink.gif" alt="Wink" title="Wink">. On va donc commencer par s'assurer que les sources sont propres et dépourvus de toute partie de code déjà compilée</p>
-    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> cette commande n'est à faire qu'à la première tentative de compilation du kernel. Il n'est plus necessaire de taper cette commande ci-dessous si vous souhaitez recompiler le kernel pour diverses raisons</div>
+    <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" /> cette commande n'est à faire qu'à la première tentative de compilation du noyau. Il n'est plus necessaire de taper cette commande ci-dessous si vous souhaitez recompiler le noyau pour diverses raisons</div>
    <pre class="command_user"><kbd>make mrproper</kbd></pre>
-   <p>Aucun message ne doit appara&icirc;tre. Nous allons maintenant lancer l'outil de configuration afin de choisir le minimum d'options necessaire pour avoir un kernel fonctionnel. J'ai volontairement choisi l'interface non graphique en effet, vous pouvez la lancer dans une chroot , une console non graphique ou graphique.</p>
+   <p>Aucun message ne doit appara&icirc;tre. Nous allons maintenant lancer l'outil de configuration afin de choisir le minimum d'options necessaire pour avoir un noyau fonctionnel. J'ai volontairement choisi l'interface non graphique en effet, vous pouvez la lancer dans une chroot , une console non graphique ou graphique.</p>
 
-   <li><h2>Configurer les options de compilation</h2></li>
+ <h2>Configurer les options de compilation</h2>
    
    <p>L'&eacute;quipe de Linuxfromscratch recommande de d&eacute;activer la variable LC_ALL :</p>
    <pre class="command_user"><kbd>make LC_ALL= menuconfig</kbd></pre>
-   <div>Vous voici devant le menu principal de configuration du kernel:</div><br />
+   <div>Vous voici devant le menu principal de configuration du noyau:</div><br />
    <img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/menuprincipal.png" alt="Configuration menu principal" title="http://download.tuxfamily.org/nutyx/img/installer_kernel/menuprincipal.png" width="578" height="517" /> 
-   <p>Dans cet article, je ne vais que choisir les options indispensables au bon amor&ccedil;age du kernel et donc optenir un nombre de modules plus petit. Il faut savoir que le kernel disponible en binaire en contient plus de 3000.</p>
+   <p>Dans cet article, je ne vais que choisir les options indispensables au bon amor&ccedil;age du noyau et donc optenir un nombre de modules plus petit. Il faut savoir que le noyau disponible en binaire en contient plus de 3000.</p>
    <p>Naviguez à travers tous les menus et activez UNIQUEMENT les options mentionés ci-dessous. Comme vous pouvez le voir nous déactivons tous les modules, puisque ils ne sont pas necessaires dans une configuration minimaliste:</p>
      
    <h3>General Setup</h3>
@@ -319,45 +318,39 @@ Configuration targets:
 <b>* End of the configuration.
 *</b> Execute 'make' to start the build or try 'make help'</pre>
 
-   <li><h2>Compiler le kernel</h2></li>
-   <p>La compilation du kernel peut commencer. Tapez dans la console</p>
+  <h2>Compiler le noyau</h2>
+   <p>La compilation du noyau peut commencer. Tapez dans la console</p>
    <pre class="command_user"><kbd>make -j4</kbd></pre>
    <p>La compilation est démarrée, si vous avez plus ou moins de processeurs à disposition, adaptez la valeur <b>-j4</b> à votre nombre de processeurs</p>
    <img src="http://download.tuxfamily.org/nutyx/img/installer_kernel/Compile.png" border="0" alt="Compilation en cours" width="578" height="517" />
-   <p>Quelques minutes (ou quelques heures plus tard, ... Vous voilà avec un kernel prêt à être utilisé.</p>    
+   <p>Quelques minutes (ou quelques heures plus tard, ... Vous voilà avec un noyau prêt à être utilisé.</p>    
    <pre class="output">Kernel: arch/x86/boot/bzImage is ready  (#1)</pre>
 
-   <li><h2>Créer une nouvelle entrée dans le fichier grub.cfg ou menu.lst</h2></li>
-   </ol>
+  <h2>Créer une nouvelle entrée dans le fichier grub.cfg ou menu.lst</h2>
    <p> Il ne nous reste plus qu'à ajouter la bonne entrée dans les fichiers de configuration <strong><span style="color: #339966;">grub.cfg</span> </strong> de grub 2.0 ou eventuellement dans <strong><span style="color: #339966;">menu.lst</span> </strong> de grub 0.97.</p>    
    <p>1. /boot/grub/grub.cfg</p>
    
-   <pre class="output"> ....
- 
-menuentry "NuTyX avec kernel experimental sur /dev/sda2" {
+   <pre class="output">menuentry "NuTyX avec noyau experimental sur /dev/sda2" {
   set root=(hd0,2)
   linux /home/thierry/linux-3.17.4/arch/x86/boot/bzImage root=/dev/sda2 ro quiet
-}
-   </pre>
+}</pre>
 
    <p>2. /boot/grub/menu.lst</p>
 
-   <pre class="output">...
-# (3) NuTyX sur /dev/sda2
-title NuTyX avec kernel experimental sur /dev/sda2
+   <pre class="output"># (3) NuTyX sur /dev/sda2
+title NuTyX avec noyau experimental sur /dev/sda2
 root (hd0,1)
-kernel /home/thierry/linux-3.17.4/arch/x86/boot/bzImage root=/dev/sda2 ro quiet
-   </pre>
+kernel /home/thierry/linux-3.17.4/arch/x86/boot/bzImage root=/dev/sda2 ro quiet</pre>
 
-   <p>Et voilà de cette façon, vous pourrez toujours choisir au démarrage de votre NuTyX sur quel kernel celle-ci doit être lancée.</p>
-   <p>Et surtout, pour expérimenter d'autres options de votre kernel fonctionnel (ou pas), c'est très simple. Vous taperez donc toujours les 4 mêmes commandes:</p>
+   <p>Et voilà de cette façon, vous pourrez toujours choisir au démarrage de votre NuTyX sur quel noyau celle-ci doit être lancée.</p>
+   <p>Et surtout, pour expérimenter d'autres options de votre noyau fonctionnel (ou pas), c'est très simple. Vous taperez donc toujours les 4 mêmes commandes:</p>
   <pre class="command_user"><kbd>cd linux-3.17.4
 make menuconfig
 make -j4
 sudo make modules_install</kbd></pre>
    <p>Et c'est tout <img src="../graphics/smiley-cool.gif" border="0" alt="Cool" title="Cool" /> </p>
   <hr>
-  <p class="updated">Dernière mise à jour 09-01-2015 20:13:00</p>
+  <p class="updated">Dernière mise à jour 27-02-2015 18:18</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a>.<br /><br />
