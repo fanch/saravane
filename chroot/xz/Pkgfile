@@ -1,4 +1,4 @@
-version=5.2.0
+version=5.2.1
 source=(http://tukaani.org/xz/xz-$version.tar.xz)
 build() {
 cd xz-$version
