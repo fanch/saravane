@@ -4,7 +4,7 @@
 # Depends on: alsa-lib dialog xmlto libsamplerate 
 PKGMK_GROUPS=(man)
 name=alsa-utils
-version=1.0.28
+version=1.0.29
 release=1
 
 source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
