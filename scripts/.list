@@ -28,6 +28,7 @@ bash
 bc
 libtool
 gdbm
+expat
 inetutils
 perl
 autoconf
