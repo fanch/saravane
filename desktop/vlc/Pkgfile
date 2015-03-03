@@ -4,7 +4,7 @@
 # Depends on: qt x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex 
 
 name=vlc
-version=2.1.5
+version=2.2.0
 release=1
 
 source=( http://download.videolan.org/pub/videolan/vlc/$version/vlc-$version.tar.xz)
