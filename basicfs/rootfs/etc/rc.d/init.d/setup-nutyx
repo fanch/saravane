@@ -1000,10 +1000,10 @@ select_disk() {
 		1|255)
 			break;;
 	esac
-DISK=`cat $TMP/disk|sed 's/"//g'`
-if [ -z $DISK ]; then
-	DISK="no"
-fi
+	DISK=`cat $TMP/disk|sed 's/"//g'`
+	if [ -z $DISK ]; then
+		DISK="no"
+	fi
 }
 select_partition() {
 	local retval result
@@ -1026,13 +1026,13 @@ select_partition() {
 				break;;
 		esac
 	done
-PARTITION=`cat $TMP/part|sed 's/"//g'`
-if [ -z $PARTITION ];then
+	PARTITION=`cat $TMP/part|sed 's/"//g'`
+	if [ -z $PARTITION ];then
 		dialog --no-cancel \
 		--title " $(gettext "No partition available") " \
 		--msgbox " $(gettext "Please create/modify yours partitions") " 0 0
 		PARTITION="no"
-fi
+	fi
 }
 check_available_disk() {
 	unset DISK_LIST
@@ -1046,7 +1046,6 @@ check_available_disk() {
 		dialog --no-cancel \
 		--title " $(gettext "No disk available") " \
 		--msgbox " $(gettext "Please stop the PC and install a harddisk") " 6 60
-		CHECK_HD_OK="no"
 	else
 		# Only one disk ?
 		if [ "`lsblk -p -n -d -o NAME -e 1,3,7,11|wc -l`" == "1" ]; then
@@ -1057,6 +1056,11 @@ check_available_disk() {
 	fi
 }
 check_available_partition() {
+	unset PARTITION_LIST
+	if [ "$CHECK_HD_OK" == "no" ]; then
+		check_available_disk
+		 [ "$CHECK_HD_OK" == "no" ] && return
+	fi
 	PARTITION_LIST=(`for i in $DISK_LIST; do  lsblk -p -l -n -o NAME $i| tail -n +2; done`)
 	if [ -z "$PARTITION_LIST" ];then
 		dialog --no-cancel \
@@ -1065,6 +1069,17 @@ check_available_partition() {
 		CHECK_PART_OK="no"
 		setup_partition
 	else
+		# Only one partition ?
+		if [ "`lsblk -p -n -d -o NAME -e 1,3,7,11|wc -l`" == "1" ]; then
+			# Only one disk
+			DISK=`lsblk -p -n -d -o NAME -e 1,3,7,11`
+			if [ "`lsblk -p -n -l -o NAME -e 1,3,7,11 $DISK|tail -n +2|wc -l`" == "1" ]; then
+				echo "PARTITION=$PARTITION" > /dev/tty2
+				PARTITION=`lsblk -p -n -l -o NAME -e 1,3,7,11 $DISK|tail -1`
+				CHECK_SINGLE_PARTITION="yes"
+				echo "CHECK_SINGLE_PARTITION=$CHECK_SINGLE_PARTITION"  > /dev/tty2
+			fi
+		fi
 		CHECK_PART_OK="yes"
 	fi
 }
@@ -1087,96 +1102,98 @@ $(gettext "Thank you for installing NuTyX") \
 }	
 setup_partition() {
 	local retval result
-	CHECK_HD_OK="no"
-	retval=""
-	check_available_disk
-	if [ "$CHECK_HD_OK" == "yes" ]; then
-		select_disk "$(gettext "Create all your partitions")"
-		if [ "$DISK" != "no" ]; then
-			dialog --title " $(gettext "Choose your favorite tool") " \
-			--menu "$(gettext "Partitioning of the disk"): $result" 15 55 2 \
-			"cfdisk" "$(gettext "Basic partitioning tool")" \
-			"fdisk" "$(gettext "Advanced partitioning tool")" 2>$TMP/choix
-			retval=$?
-			choice=`cat $TMP/choix`
-			case $retval in
-				0|2)
-					case $choice in
-						cfdisk)
-							cfdisk $DISK;;
-						fdisk)
-							fdisk $DISK;;
-					esac
-					;;
-				1|2544)
-					break;;
-			esac
-			check_available_partition
-		fi
+	if [ "$CHECK_HD_OK" == "no" ]; then
+		check_available_disk
+		[ "$CHECK_HD_OK" == "no" ] && return
 	fi
+	retval=""
+	if [ -z $DISK ]; then
+		select_disk "$(gettext "Create all your partitions")"
+		[ "$DISK" == "no" ] && return
+	fi
+	dialog --title " $(gettext "Choose your favorite tool") " \
+	--menu "$(gettext "Partitioning of the disk"): $result" 15 55 2 \
+	"cfdisk" "$(gettext "Basic partitioning tool")" \
+	"fdisk" "$(gettext "Advanced partitioning tool")" 2>$TMP/choix
+	retval=$?
+	choice=`cat $TMP/choix`
+	case $retval in
+		0|2)
+			case $choice in
+				cfdisk)
+					cfdisk $DISK;;
+				fdisk)
+					fdisk $DISK;;
+			esac
+			;;
+		1|2544)
+			break;;
+	esac
+	check_available_partition
 }
 setup_format() {
 	local retval retval2 result
-	CHECK_HD_OK="no"
 	retval=""
 	retval2=""
-	check_available_disk
-	if [ "$CHECK_HD_OK" == "yes" ]; then
-		CHECK_PART_OK=no
+	if [ "$CHECK_HD_OK" == "no" ]; then
+		check_available_disk
+		[ "$CHECK_HD_OK" == "no" ] && return
+	fi
+	if [ "$CHECK_PART_OK" == "no" ]; then
 		check_available_partition
-		if [ "$CHECK_PART_OK" == "yes" ]; then
-			PARTITION="no"
-			select_partition "$(gettext "Format a partition")"
-			if [ "$PARTITION" != "no" ]; then
-				dialog --title " $(gettext "Available file systems") " \
-				--menu " $(gettext "Choose the file system you want to use for the partition") \
-$PARTITION" 0 0 0 \
-				"xfs" "$(gettext "High performance journaling file system create by SGI")" \
-				"jfs" "$(gettext "Journaling file system create by IBM")" \
-				"reiserfs" "$(gettext "Very stable file system but not maintain anymore")" \
-				"ext4" "$(gettext "Next generation of Ext3 file system")" \
-				"ext3" "$(gettext "Journaling version of Ext2 file system")"  \
-				"ext2" "$(gettext "Standard file system Ext2")" \
-				"btrfs" "$(gettext "New promising file system")" 2> $TMP/result
-				result=`cat $TMP/result`
-				if [ ! "$result" == "" ]; then
-					dialog --title " $(gettext "Launch the format process ?") " \
-					--colors --yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
+		[ "$CHECK_PART_OK" == "no" ] && return
+	fi
+	if [ -z "$PARTITION" ]; then
+		select_partition "$(gettext "Format a partition")"
+		[ "$PARTITION" == "no" ] && return
+	fi
+	dialog --title " $(gettext "Available file systems") " \
+	--colors --menu " $(gettext "Choose the file system you want to use for the partition") \
+\Zb\Z1$PARTITION\Zn" 0 0 0 \
+		"xfs" "$(gettext "High performance journaling file system create by SGI")" \
+		"jfs" "$(gettext "Journaling file system create by IBM")" \
+		"reiserfs" "$(gettext "Very stable file system but not maintain anymore")" \
+		"ext4" "$(gettext "Next generation of Ext3 file system")" \
+		"ext3" "$(gettext "Journaling version of Ext2 file system")"  \
+		"ext2" "$(gettext "Standard file system Ext2")" \
+		"btrfs" "$(gettext "New promising file system")" 2> $TMP/result
+		result=`cat $TMP/result`
+		if [ ! "$result" == "" ]; then
+			dialog --title " $(gettext "Launch the format process ?") " \
+			--colors --yesno "$(gettext "The partition") \Zb\Z1$PARTITION\Zn \
 $(gettext "will be formatted in") \Zb\Z1$result\Zn.\n\n\
 $(gettext "Are you sure you want to continue ?")" 7 60
-					retval2=$?
-				fi
-				case $retval2 in
-					0)
-						case $result in
-							ext2)
-								mkfs.ext2 -F $PARTITION > /dev/tty2 || error "mkfs.ext2 $PARTITION"
-								;;
-							ext3)
-								mkfs.ext3 -F $PARTITION > /dev/tty2 || error "mkfs.ext3 $PARTITION"
-								;;
-							ext4)
-								mkfs.ext4 -F $PARTITION > /dev/tty2 || error "mkfs.ext4 $PARTITION"
-								;;
-							reiserfs)
-								mkreiserfs -q $PARTITION > /dev/tty2 || error "mkreiserfs -q $PARTITION"
-								;;
-							btrfs)
-								mkfs.btrfs -f $PARTITION > /dev/tty2 || error "mkfs.btrfs -f $PARTITION"
-								;;
-							xfs)
-								mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
-								;;
-							jfs)
-								mkfs.jfs -f $PARTITION > /dev/tty2 || error "mkfs.jfs -f $PARTITION"
-								;;
-						esac;;
-					1|255)
-						break;;
-				esac
-			fi
+				retval2=$?
 		fi
-	fi
+		case $retval2 in
+			0)
+				case $result in
+					ext2)
+						mkfs.ext2 -F $PARTITION > /dev/tty2 || error "mkfs.ext2 $PARTITION"
+						;;
+					ext3)
+						mkfs.ext3 -F $PARTITION > /dev/tty2 || error "mkfs.ext3 $PARTITION"
+						;;
+					ext4)
+						mkfs.ext4 -F $PARTITION > /dev/tty2 || error "mkfs.ext4 $PARTITION"
+						;;
+					reiserfs)
+						mkreiserfs -q $PARTITION > /dev/tty2 || error "mkreiserfs -q $PARTITION"
+						;;
+					btrfs)
+						mkfs.btrfs -f $PARTITION > /dev/tty2 || error "mkfs.btrfs -f $PARTITION"
+						;;
+					xfs)
+						mkfs.xfs -f $PARTITION > /dev/tty2 || error "mkfs.xfs -f $PARTITION"
+						;;
+					jfs)
+						mkfs.jfs -f $PARTITION > /dev/tty2 || error "mkfs.jfs -f $PARTITION"
+						;;
+				esac;;
+			1|255)
+				break;;
+		esac
+		FORMAT=`print_file_system $PARTITION`
 }
 install_nutyx() {
 	local DIR REAL FILE
@@ -1229,48 +1246,57 @@ install_nutyx() {
 	dialog --title "$(gettext "Install NuTyX")" --gauge "$(gettext "Please wait") ..." 6 50
 }
 setup_install() {
-	local MF
-	CHECK_HD_OK="no"
-	check_available_disk
-	if [ "$CHECK_HD_OK" == "yes" ]; then
-		CHECK_PART_OK=no
-		check_available_partition
-		if [ "$CHECK_PART_OK" == "yes" ]; then
-			PARTITION="no"
-			select_partition "$(gettext "Install NuTyX")"
-			if [ "$PARTITION" != "no" ]; then
-				FORMAT=`print_file_system $PARTITION`
-				if [ "$FORMAT" == "no" ]; then
-					setup_format
-				fi
-				if [ "$FORMAT" != "no" ]; then
-					SETUP_INSTALL="no"
-					MF=/mnt/hd
-					mkdir -p $MF
-					mount $PARTITION $MF || error "$(gettext "mounting") $PARTITION"
-					if [ -d /media/cdrom/isolinux/boot ]; then
-						# Installing from ISO
-						install_nutyx "/media/cdrom/isolinux" "$MF"
-					else
-						# Installing from Maintenance this means
-						# TODO the initrd has to be rebuild at configuration time
-						install_nutyx "/" "$MF"
-					fi
-					umount $PARTITION
-					SETUP_INSTALL="yes"
-					echo "$PARTITION" > /root/boot
-					echo "$PARTITION" > $TMP/boot
-					dialog --title "   $(gettext "Configuration of the boot of the computer (GRUB)")   " \
-					--yesno "$(gettext "Configure the boot of the PC") ? " 0 0
-					retval=$?
-					case $retval in
-						0)
-							setup_grub;;
-					esac
-				fi
-			fi
-		fi
+	local MF retval
+	retval=""
+  if [ "$CHECK_HD_OK" == "no" ]; then
+    check_available_disk
+    [ "$CHECK_HD_OK" == "no" ] && return
+  fi
+  if [ "$CHECK_PART_OK" == "no" ]; then
+    check_available_partition
+    [ "$CHECK_PART_OK" == "no" ] && return
+  fi
+  if [ -z $DISK ]; then
+		select_disk "$(gettext "Install NuTyX")"
+		[ "$DISK" == "no" ] && return
 	fi
+	echo "PARTITION=$PARTITION" > /dev/tty2
+	echo "CHECK_SINGLE_PARTITION=$CHECK_SINGLE_PARTITION" > /dev/tty2
+	[ "$CHECK_SINGLE_PARTITION" == "no" ] && unset PARTITION
+	if [ -z $PARTITION ]; then
+		select_partition "$(gettext "Install NuTyX")"
+		[ "$PARTITION" == "no" ] && return
+	fi
+	echo "PARTITION=$PARTITION" > /dev/tty2
+	FORMAT=`print_file_system $PARTITION`
+	echo "FORMAT=$FORMAT" > /dev/tty2
+	if [ "$FORMAT" == "no" ]; then
+		setup_format
+		[ "$FORMAT" == "no" ] && return
+	fi
+	SETUP_INSTALL="no"
+	MF=/mnt/hd
+	mkdir -p $MF
+	mount $PARTITION $MF || error "$(gettext "mounting") $PARTITION"
+	if [ -d /media/cdrom/isolinux/boot ]; then
+		# Installing from ISO
+		install_nutyx "/media/cdrom/isolinux" "$MF"
+	else
+		# Installing from Maintenance this means
+		# TODO the initrd has to be rebuild at configuration time
+		install_nutyx "/" "$MF"
+	fi
+	umount $PARTITION
+	SETUP_INSTALL="yes"
+	echo "$PARTITION" > /root/boot
+	echo "$PARTITION" > $TMP/boot
+	dialog --title "   $(gettext "Configuration of the boot of the computer (GRUB)")   " \
+	--yesno "$(gettext "Configure the boot of the PC") ? " 0 0
+	retval=$?
+	case $retval in
+		0)
+			setup_grub;;
+	esac
 }
 MBR_ok() {
 	local retval
@@ -1293,68 +1319,58 @@ $(gettext "an simplify VI editor will allow you to modify it").\n\n \
 	esac
 }
 setup_grub() {
-	local log_file device_map retval Root Part
+	local GRUB_CONFIG_FILE GRUB_CONFIG_DIR GRUB_DESTINATION_DIR GRUB_LOG_FILE
 	GRUB_CONFIG_FILE="grub.cfg"
 	GRUB_CONFIG_DIR=""
 	GRUB_DESTINATION_DIR=""
-	log_file=$TMP/grub.log
-	retval=""
-	CHECK_HD_OK="no"
-	check_available_disk
-	if [ "$CHECK_HD_OK" != "no" ]; then
-		CHECK_PART_OK="no"
+	GRUB_LOG_FILE=$TMP/grub.log
+	if [ "$CHECK_HD_OK" == "no" ]; then
+		check_available_disk
+		[ "$CHECK_HD_OK" == "no" ] && return
+	fi
+	if [ "$CHECK_PART_OK" == "no" ]; then
 		check_available_partition
-		if [ "$CHECK_PART_OK" != "no" ]; then
-			if [ -z "$DISK" ]; then
-				select_disk "$(gettext "Configure the boot of the PC")"
-				PARTITION="no"
-			fi
-			if [ "$DISK" != "no" ]; then
-				if [ -z "$PARTITION" ] || [ "$PARTITION" == "no" ] ; then
-					select_partition "$(gettext "Configure the boot of the PC")"
-				fi
-				if [ "$PARTITION" != "no" ]; then
-					FORMAT=`print_file_system $PARTITION`
-					if [ "$FORMAT" != "no" ]; then
-						# We saved the current MBR if no yet saved
-						dd if=$DISK of=$TMP/MBR bs=512 count=1 2>/dev/null
-						GRUB_DISK=`cat $TMP/disk|sed "s/ //g"`
-						LINUX_PART=`cat $TMP/part |sed -e 's%.*/[sh]d[a-z]\([0-9]*\)$%\1%' \
--e 's%.*d[0-9]*p%%' \
--e 's%.*/fd[0-9]*$%%' \
--e 's%.*/floppy/[0-9]*$%%' \
--e 's%.*/\(disc\|part\([0-9]*\)\)$%\2%' \
--e 's%.*c[0-7]d[0-9]*p%%'`
-						LINUX_DISK=`cat /tmp/part| sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
--e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
--e 's%\(fd[0-9]*\)$%\1%' \
--e 's%/part[0-9]*$%/disc%' \
--e 's%\(c[0-7]d[0-9]*\).*$%\1%'`
-						echo "$Root" | sed "s%)$%,`expr $LINUX_PART - 0`)%" > $TMP/grub
-						Root=`cat $TMP/grub`
-						Part=`cat $TMP/part`
-						# Copy all the necessary files
-						mkdir $TMP/boot_partition
-						mount $Part $TMP/boot_partition
-						echo "$Part" > $TMP/boot_part
-						if [ -d $TMP/boot_partition/boot ]; then
-							# NuTyX is installed
-							GRUB_DESTINATION_DIR="boot/"
-						fi
-						GRUB_CONFIG_DIR="$TMP/boot_partition/${GRUB_DESTINATION_DIR}grub"
-						mkdir $GRUB_CONFIG_DIR 2> /dev/null
-						if [ -f $GRUB_CONFIG_DIR/MBR.original ]; then
-							dialog --title " !!! Oups !!!! " \
-							--msgbox " $(gettext "You already have a copy of the original MBR, I will not make a backup of it") " \
-							6 50
-						else
-							cp $TMP/MBR \
-							$GRUB_CONFIG_DIR/MBR.original
-							dialog --title " $(gettext "Good to know") " \
-							--msgbox " $(gettext "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need") " 10 60
-						fi
-						if [ ! -f $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE ]; then
-							cat > $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE << "EOF"
+		[ "$CHECK_PART_OK" == "no" ] && return
+	fi
+	if [ -z $DISK ]; then
+		select_disk "$(gettext "Configure the boot of the PC")"
+		[ "$DISK" == "no" ] && return
+	fi
+	if [ "$SETUP_INSTALL" != "yes" ]; then
+		[ "$CHECK_SINGLE_PARTITION" == "no" ] && unset PARTITION
+	fi
+	if [ -z $PARTITION ]; then
+		select_partition "$(gettext "Configure the boot of the PC")"
+		[ "$PARTITION" == "no" ] && return
+	fi
+	FORMAT=`print_file_system $PARTITION`
+	if [ "$FORMAT" == "no" ]; then
+		setup_format
+		[ "$FORMAT" == "no" ] && return
+	fi
+	# We saved the current MBR if no yet saved
+	dd if=$DISK of=$TMP/MBR bs=512 count=1 2>/dev/null
+	# Copy all the necessary files
+	mkdir $TMP/boot_partition
+	mount $PARTITION $TMP/boot_partition
+	echo "$PARTITION" > $TMP/boot_part
+	if [ -d $TMP/boot_partition/boot ]; then
+		# NuTyX is installed means we install GRUB after install
+		GRUB_DESTINATION_DIR="boot/"
+	fi
+	GRUB_CONFIG_DIR="$TMP/boot_partition/${GRUB_DESTINATION_DIR}grub"
+	mkdir $GRUB_CONFIG_DIR 2> /dev/null
+	if [ -f $GRUB_CONFIG_DIR/MBR.original ]; then
+		dialog --title " !!! Oups !!!! " \
+		--msgbox " $(gettext "You already have a copy of the original MBR, I will not make a backup of it") " \
+		6 50
+	else
+		cp $TMP/MBR $GRUB_CONFIG_DIR/MBR.original
+		dialog --title " $(gettext "Good to know") " \
+		--msgbox " $(gettext "A copy of the original MBR is saved in the folder /boot/grub of your NuTyX. It will then be possible to restore it if need") " 10 60
+	fi
+	if [ ! -f $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE ]; then
+		cat > $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE << "EOF"
 # Begin grub.cfg
 # By default boot the first menu entry.
 set default=0
@@ -1366,53 +1382,50 @@ set color_normal=cyan/black
 # insmod jpeg
 # terminal_output gfxterm
 EOF
-						fi
-						# Writing of NEW MBR
-						BOOT_FS="`print_file_system $Part`"
-						LANG=C /sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} ${GRUB_DISK} > $log_file 2>&1
-						if ! (grep finished $log_file > /dev/null); then
-							echo "/sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} [`echo $GRUB_DISK`]" >> $log_file
-							mount >> $log_file
-							echo "GRUB_DISK=${GRUB_DISK}" >> $log_file
-							echo "GRUB_DESTINATION_DIR=${GRUB_DESTINATION_DIR}" >> $log_file
-							echo "GRUB_CONFIG_DIR=${GRUB_CONFIG_DIR}" >> $log_file
-							echo "NuTyX_PART=${NuTyX_PART}" >> $log_file
-							echo "BOOT_FS=${BOOT_FS}" >> $log_file
-							echo "NuTyX_FS=${NuTyX_FS}" >> $log_file
-							echo "PATH=$PATH" >> $log_file
-							env >> $log_file
-							# Restore MBR
-							dd if=$TMP/MBR of=`cat $TMP/disk` bs=512 count=1 > 2/dev/null
-							dialog --title " $(gettext "Something went wrong probably the file system is not supported") " \
-							--msgbox "`cat $log_file`" 30 70
-							umount $TMP/boot_partition
-							umount /mnt/hd 2>/dev/null
-							error "Sorry, I cannot install GRUB" # die now
-						fi
-						if [ -f $TMP/boot ]; then # The $TMP/boot file contains the NuTyX partition
-							NuTyX_PART="`cat $TMP/boot`"
-							BOOT_FS="`print_file_system $Part`"
-							NuTyX_FS="`print_file_system $NuTyX_PART`"
-							# Check if it is a separated partition
-							if [ ! "$GRUB_DESTINATION_DIR" == "boot/" ]; then
-								mkdir -p /mnt/hd 2> /dev/null
-								mount ${NuTyX_PART} /mnt/hd
-								mv /mnt/hd/boot/* /mnt/boot_partition/
-								# Add the entry to the fstab
-								echo "$Part   /boot ${BOOT_FS} auto 0 0" \
-								>> /mnt/hd/etc/fstab
-							fi
-							echo "menuentry \"NuTyX ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
-							echo " linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro quiet " >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
-							echo " initrd /${GRUB_DESTINATION_DIR}initrd" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
-							echo "}" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
-							echo " " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-							echo "menuentry \"NuTyX Verbose ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-							echo "  linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-							echo "  initrd /${GRUB_DESTINATION_DIR}initrd" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-							echo "}" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
-						else # NuTyX is not yet installed
-							cat >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE  << "EOF"
+	fi
+	# Writing of NEW MBR
+	BOOT_FS="`print_file_system $PARTITION`"
+	LANG=C /sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} ${DISK} > ${GRUB_LOG_FILE} 2>&1
+	if ! (grep finished ${GRUB_LOG_FILE} > /dev/null); then
+		echo "/sbin/grub-install --recheck --force --boot-directory=$TMP/boot_partition/${GRUB_DESTINATION_DIR} [`echo $DISK`]" >> ${GRUB_LOG_FILE}
+		mount >> ${GRUB_LOG_FILE}
+		echo "DISK=${DISK}" >> ${GRUB_LOG_FILE}
+		echo "GRUB_DESTINATION_DIR=${GRUB_DESTINATION_DIR}" >> ${GRUB_LOG_FILE}
+		echo "GRUB_CONFIG_DIR=${GRUB_CONFIG_DIR}" >> ${GRUB_LOG_FILE}
+		echo "NuTyX_PART=${NuTyX_PART}" >> ${GRUB_LOG_FILE}
+		echo "BOOT_FS=${BOOT_FS}" >> ${GRUB_LOG_FILE}
+		echo "NuTyX_FS=${NuTyX_FS}" >> ${GRUB_LOG_FILE}
+		echo "PATH=$PATH" >> ${GRUB_LOG_FILE}
+		env >> ${GRUB_LOG_FILE}
+		# Restore MBR
+		dd if=$TMP/MBR of=$DISK bs=512 count=1 > 2/dev/null
+		dialog --title " $(gettext "Something went wrong probably the file system is not supported") " \
+		--msgbox "`cat ${GRUB_LOG_FILE}`" 30 70
+		umount $TMP/boot_partition
+		umount /mnt/hd 2>/dev/null
+		error "Sorry, I cannot install GRUB" # die now
+	fi
+	if [ -f $TMP/boot ]; then
+		#
+		# The $TMP/boot file contains the NuTyX partition
+		#
+		NuTyX_PART="`cat $TMP/boot`"
+		BOOT_FS="`print_file_system $PARTITION`"
+		NuTyX_FS="`print_file_system $NuTyX_PART`"
+		echo "menuentry \"NuTyX ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+		echo " linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro quiet " >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+		echo " initrd /${GRUB_DESTINATION_DIR}initrd" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+		echo "}" >> ${GRUB_CONFIG_DIR}/${GRUB_CONFIG_FILE}
+		echo " " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+		echo "menuentry \"NuTyX Verbose ${SETUP_ARCH} ${NuTyX_FS} on ${NuTyX_PART}\" {" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+		echo "  linux /${GRUB_DESTINATION_DIR}kernel root=${NuTyX_PART} ro " >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+		echo "  initrd /${GRUB_DESTINATION_DIR}initrd" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+		echo "}" >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE
+	else
+		#
+		# NuTyX is not yet installed
+		#
+		cat >> $GRUB_CONFIG_DIR/$GRUB_CONFIG_FILE  << "EOF"
 #################################################################
 #                                                               #
 #               Example of a menuentry:                         #
@@ -1457,20 +1470,15 @@ EOF
 #}
 #
 EOF
-							if [ ! -f $TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd ]; then
-								cp /media/cdrom/isolinux/initrd \
-								$TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd 2> /dev/null
-								cp /media/cdrom/isolinux/kernel \
-								$TMP/boot_partition/${GRUB_DESTINATION_DIR}kernel 2> /dev/null
-							fi
-							MBR_ok
-						fi
-						umount $Part
-					fi
-				fi
-			fi
+		if [ ! -f $TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd ]; then
+			cp /media/cdrom/isolinux/initrd \
+			$TMP/boot_partition/${GRUB_DESTINATION_DIR}initrd 2> /dev/null
+			cp /media/cdrom/isolinux/kernel \
+			$TMP/boot_partition/${GRUB_DESTINATION_DIR}kernel 2> /dev/null
 		fi
+		MBR_ok
 	fi
+	umount $PARTITION
 }
 setup_reboot() {
 	cd /
@@ -1509,15 +1517,21 @@ setup_initrd() {
 				setup_help
 				;;
 			"$(gettext "Install")")
+				echo "CHECK_SINGLE_PARTITION=$CHECK_SINGLE_PARTITION" > /dev/tty2
+				[ "$CHECK_SINGLE_PARTITION" == "no" ] && unset PARTITION
 				setup_install
 				;;
 			"$(gettext "Partitioning")")
 				setup_partition
 				;;
 			"$(gettext "Format")")
+				echo "CHECK_SINGLE_PARTITION=$CHECK_SINGLE_PARTITION" > /dev/tty2
+				[ "$CHECK_SINGLE_PARTITION" == "no" ] && unset PARTITION
 				setup_format
 				;;
 			"$(gettext "Boot")")
+				echo "CHECK_SINGLE_PARTITION=$CHECK_SINGLE_PARTITION" > /dev/tty2
+				[ "$CHECK_SINGLE_PARTITION" == "no" ] && unset PARTITION
 				setup_grub
 				;;
 			"$(gettext "Keyboard")")
@@ -1751,6 +1765,10 @@ SETUP_CONFIG_LANGUAGE="no"
 SETUP_CONFIG_KEYBOARD="no"
 SETUP_CONFIG_NETWORK="no"
 SETUP_CONFIG_CLOCK="no"
+
+CHECK_HD_OK="no"
+CHECK_PART_OK="no"
+CHECK_SINGLE_PARTITION="no"
 
 main "$@"
 
