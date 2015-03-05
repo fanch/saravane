@@ -1,9 +1,9 @@
-# Description: Vorbis codec library
+# Description: Ogg Vorbis is a new audio compression format. It is roughly comparable to other formats used to store and play digital music, such as MP3, VQF, AAC, and other digital audio formats. It is different from these other formats because it is completely free, open, and unpatented.
 # URL: http://www.vorbis.com/
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libogg doxygen 
 name=libvorbis
-version=1.3.4
+version=1.3.5
 release=1
 
 source=( http://downloads.xiph.org/releases/vorbis/$name-$version.tar.gz)
