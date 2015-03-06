@@ -5,7 +5,7 @@
 
 name=e2fsprogs
 version=1.42.12
-release=1
+release=2
 
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
@@ -15,7 +15,9 @@ build()
 {
 cd $name-$version
 
-sed -i -e 's|^LD_LIBRARY_PATH.*|&:/tools/lib|' tests/test_config
+sed -e '/int.*old_desc_blocks/s/int/blk64_t/' \
+    -e '/if (old_desc_blocks/s/super->s_first_meta_bg/desc_blocks/' \
+    -i lib/ext2fs/closefs.c
 
 mkdir -v build
 cd build
