@@ -4,10 +4,10 @@
 # Depends on: libxml2 
 
 name=foomatic-db
-version=4.0
+version=4.0-20150214
 release=1
 
-source=(http://www.openprinting.org/download/foomatic/foomatic-db-4.0-current.tar.gz)
+source=(http://www.openprinting.org/download/foomatic/foomatic-db-$version.tar.gz)
 
 build() {
 	cd $name-*

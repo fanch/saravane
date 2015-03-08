@@ -4,7 +4,7 @@
 # Depends on: cups perl libxml2 
 
 name=foomatic-db-nonfree
-version=current
+version=20150214
 release=1
 
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)

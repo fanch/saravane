@@ -3,15 +3,17 @@
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 cups cups-filters 
 name=foomatic-filters
-version=4.0-20141029
+version=4.0-20150214
 release=1
 
 source=(http://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
 build() {
 cd $name-*
-./configure --prefix=/usr\
+autoreconf
+./configure --prefix=/usr \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
-rm $PKG/usr/lib/cups/filter/foomatic-rip
+rm $PKG/{usr/bin/foomatic-rip,usr/lib/cups/filter/foomatic-rip,\
+usr/share/man/man1/foomatic-rip.1}
 }
