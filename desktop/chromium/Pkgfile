@@ -4,7 +4,7 @@
 # Depends on: ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio kde-baseapps xorg-libxscrnsaver xorg-libxtst libexif.devel
 
 name=chromium
-version=40.0.2214.115
+version=41.0.2272.76
 release=1
 
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$name-$version.tar.xz
@@ -87,7 +87,7 @@ local _chromium_conf=(
 	install -Dm4755 -o root -g root out/Release/chrome_sandbox $PKG/opt/chromium/chrome-sandbox
 	install -D out/Release/chromedriver $PKGr/opt/chromium/chromedriver
 
-	cp out/Release/{*.pak,libffmpegsumo.so} $PKG/opt/chromium/
+	cp out/Release/{*.pak,*.bin,libffmpegsumo.so,libpdf.so} $PKG/opt/chromium/
 	cp -a out/Release/locales $PKG/opt/chromium/
 	cp -a out/Release/icudtl.dat $PKG/opt/chromium/
 	
