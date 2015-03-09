@@ -127,6 +127,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/make-/d" $LFS/sources/$i
    sed -i "/tzdata/d" $LFS/sources/$i
    sed -i "/kbd-/d" $LFS/sources/$i
+   sed -i "/procps-ng-/d" $LFS/sources/$i
    sed -i "/perl-/d" $LFS/sources/$i
    sed -i "/file-/d" $LFS/sources/$i
    sed -i "/e2fsprogs-/d" $LFS/sources/$i
@@ -153,6 +154,7 @@ cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
 c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
 b5e2dd95dc8498cea5354377ed89aa65  xz-5.2.1.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
+1fb7f3f6bf92ce6c5c9ed9949ae858fe  procps-ng-3.3.10.tar.xz
 db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
 237083a1e3c388cde7a115a5724dc72a  iproute2-3.19.0.tar.xz
 997c9070354eff5517115feaea6038f0  gettext-0.19.4.tar.xz
