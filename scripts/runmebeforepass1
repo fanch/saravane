@@ -208,7 +208,7 @@ dc7afb7e2dc5002344b99d5e7b14510c  btrfs-progs-v3.18.1.tar.xz
 a37751f1627a4e0125c8ffadfa85be80  prt-get-5.19.tar.gz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz
 8809465cd48a202895bc2a12e1923b5d  jfsutils-1.1.15.tar.gz
-50b67a11971ecc6d142e634e8436fc0f  wget-1.16.2.tar.xz" >> $LFS/sources/md5sums
+d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" >> $LFS/sources/md5sums
 
 for i in `cat $LFS/sources/wget-list`
 do
