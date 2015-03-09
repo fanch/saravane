@@ -12,18 +12,18 @@ if [ $EUID -eq 0 ] ; then
         alias del='cards remove'
         alias get='cards install'
         alias up='cards install -u'
-        alias check='cards sync -i;cards diff -b'
+        alias check='cards sync;cards diff'
 else
         alias del='sudo cards remove'
         alias get='sudo cards install'
         alias up='sudo cards install -u'
-        alias check='sudo cards sync -i;sudo cards diff -b'
+        alias check='sudo cards sync;sudo cards diff'
 fi
 alias search='cards search'
 alias ll='ls -l'
 alias l='ls -alh'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
-alias pkgfind='cards list -i | grep -i'
+alias pkgfind='cards list | grep -i'
 
 # End ~/.bashrc
