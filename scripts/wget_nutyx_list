@@ -1,4 +1,4 @@
-http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20150209.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20150304.tar.bz2
 http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3.30-upstream_fixes-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
@@ -31,12 +31,13 @@ http://ftp.gnu.org/gnu/gettext/gettext-0.19.4.tar.xz
 http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.5.2.tar.gz
 http://ftp.gnu.org/gnu/grep/grep-2.21.tar.xz
+http://ftp.gnu.org/gnu/grub/grub-2.00.tar.xz
 http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz
 http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz
 http://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
 http://ftp.gnu.org/gnu/glibc/glibc-2.21.tar.xz
-http://ftp.gnu.org/gnu/patch/patch-2.7.4.tar.xz
+http://ftp.gnu.org/gnu/patch/patch-2.7.5.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
 http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.xz
 http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz
@@ -90,6 +91,7 @@ http://downloads.nutyx.org/files/ca-certificates-20150201.tar.gz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06.tar.xz
 http://www.nasm.us/pub/nasm/releasebuilds/2.11.06/nasm-2.11.06-xdoc.tar.xz
 
+http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz
 http://www.cpan.org/src/5.0/perl-5.20.2.tar.bz2
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
 http://www.iana.org/time-zones/repository/releases/tzdata2015a.tar.gz

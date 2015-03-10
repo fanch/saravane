@@ -3,7 +3,7 @@
 # Maintainer: Andreas Enge,Philipe Théveny,Paul Zimmermann
 # Packager: pierre at nutyx dot org
 name=mpc
-version=1.0.2
+version=1.0.3
 release=1
 
 source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz )
