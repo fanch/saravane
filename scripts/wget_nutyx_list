@@ -58,7 +58,7 @@ http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
 
 
 https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
-https://www.kernel.org/pub/linux/kernel/patch-3.19.1.xz
+https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.1.xz
 https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.2.tar.gz
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.tar.xz
