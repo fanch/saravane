@@ -42,6 +42,6 @@ cd $SRC
 
 tar xf $scripts-$scriptsversion.tar.bz2
 cd $SRC/$scripts-$scriptsversion
-patch -Np1 ../service-saravane-01.patch
+patch -Np1 -i ../service-saravane-01.patch
 make DESTDIR=$PKG install-sshd
 }
