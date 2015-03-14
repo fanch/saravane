@@ -3,9 +3,9 @@
 PKGMK_GROUPS=(man)
 name=aaabasicfs
 version=2015.3
-release=1
+release=2
 
-source=(http://downloads.nutyx.org/files/nutyx-basicfs-20150310.tar.bz2)
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-20150314.tar.bz2)
 build () {
 cd nutyx-basicfs/nutyx-saravane-basicfs/rootfs
 mv * $PKG/
