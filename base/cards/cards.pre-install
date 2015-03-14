@@ -1,8 +1,9 @@
+. lib/lsb/init-functions
 if [ -f etc/pkgadd.conf ]; then 
 	mv etc/pkgadd.conf etc/pkgadd.conf.backup
-	echo "/etc/pkgadd.conf saved in /etc/pkgadd.conf.backup"
+	log_success_msg "${WARNING} /etc/pkgadd.conf saved in /etc/pkgadd.conf.backup ${NORMAL}"
 fi
 if [ -f etc/cards.conf ]; then
 	mv etc/cards.conf etc/cards.conf.backup
-	echo "/etc/cards.conf saved in /etc/cards.conf.backup"
+	log_success_msg "${WARNING} /etc/cards.conf saved in /etc/cards.conf.backup ${NORMAL}"
 fi
