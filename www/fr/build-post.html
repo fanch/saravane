@@ -42,10 +42,7 @@
 /bin/bash --login</kbd></pre>
 Aucune erreur ne doit apparaître:
 <pre class="output">root [ / ]# </pre>
-   <li>On commence par produire l'initrd.</li>
-   <pre class="command"><kbd>mkinitramfs `basename /lib/modules/*`</kbd></pre>
-   <pre class="output">Creating initrd-3.19.0... done</pre>
-   <li>On ajoute les fichiers necessaires au fonctionnement de l'iso</li>
+   <li>On commence par ajouter les fichiers necessaires au fonctionnement de l'iso</li>
    <pre class="command"><kbd>cp -av /root/saravane/iso /ISO</kbd></pre>
    <pre class="output">'/root/saravane/iso' -> '/ISO'
 '/root/saravane/iso/isolinux' -> '/ISO/isolinux'
@@ -127,7 +124,7 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
      <p>La compilation commence:</p>
      <pre class="output">prt-get: installing /usr/ports/console/mtdev
 =======> Downloading 'http://...</pre>
-     <p>Une fois la compilation terminée, vous pouvez soit choisir l'option ci-dessous, soit continuer la génération des fichiers squashfs au point 5.</p>
+     <p>Une fois la compilation terminée, vous pouvez soit choisir l'option ci-dessous, soit continuer la génération des fichiers squashfs au point 4.</p>
     <li>Si vous souhaitez réduire la taille finale de l'ISO, vous pouvez supprimer les binaires du git et les logs produits, ils ne serviront plus. Si vous souhaitez conserver les binaires, lancez la commande ci-dessus.</li>
 <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
     <p>Aucune erreur ne doit apparaître</p>
@@ -139,7 +136,7 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
     <p>Si besoin est, les binaires et les logs se trouvent donc à la racine de la NuTyX</p>
    </ol>
    <hr>
-   <p class="updated">Dernière mise à jour 21-02-2015 22:36</p>
+   <p class="updated">Dernière mise à jour 15-03-2015 02:17</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
