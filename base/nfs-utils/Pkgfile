@@ -17,9 +17,9 @@ http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.
 tar xvf $scripts-$scriptsversion.tar.bz2 
 	
 # build package
-sed -i "/daemon_init/s:\!::" utils/statd/statd.c
 
 cd $name-$version
+sed -i "/daemon_init/s:\!::" utils/statd/statd.c
 ./configure --prefix=/usr     \
 --sysconfdir=/etc \
 --disable-nfsv4   \
