@@ -21,7 +21,6 @@ PKG_CONFIG_PATH="/usr/lib/pkgconfig" ./configure --prefix=/usr \
 --with-zlib
 
 make
-make check
 make DESTDIR=$PKG pkgconfigdir=/usr/lib/pkgconfig install
 mkdir $PKG/sbin
 for target in depmod insmod modinfo modprobe rmmod; do
