@@ -234,12 +234,11 @@ if [ -n "$KERNEL_VERSION" ]; then
 
   depmod -b $WDIR $KERNEL_VERSION
 
-  mkdir $WDIR/lib/firmware
   cp -a /lib/firmware/rtlwifi \
   $WDIR/lib/firmware
   cp -a /lib/firmware/ath6k \
   $WDIR/lib/firmware
-  cp -a /lib/firmware/RTL8192E
+  cp -a /lib/firmware/RTL8192E \
   $WDIR/lib/firmware
   cp -a /lib/firmware/bnx2x-* \
   $WDIR/lib/firmware

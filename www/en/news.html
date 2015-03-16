@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+     <title>NuTyX - Last news 2015-03-16</title>
+ </head>
+ <body>
+   <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
+        <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?board=4.0">Forums</a></li>
+        </ul>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ <hr>
+  <h1>Last news 2015-03-16</h1>
+   <h2>New 32bits and 64 bits iso available</h2>
+    <p>I'm please to propose you news 32 bits and 64 bits isos :</p>
+    <a href="http://download.nutyx.org/NuTyX_x86_64-saravane-20150315.iso">In 64 bits</a> and <a href="http://download.nutyx.org/NuTyX_i686-saravane-20150315.iso">in 32 bits</a>
+    <p>The installer is even more simple. From now on if you configure and format the destination partition before launching the installer, soon you start the installation from the iso, <a href="http://nutyx.org/en/install.html#4">no questions will be ask and the installation will start immediatly</a> means a matter of 15 seconds max</p>
+    <p>Openssh service is available from the moment you have installed the base. It means you can connect from a terminal from the host machine if you did an installation in virtualbox (with the network configured as bridge). Also very usefull if you have two PC in the network</p>
+    <p>Wifi should works again after xcfe4 / kde installation</p>
+    <p>About the package:</p>
+
+<li>kernel 3.19.1-NuTyX</li>
+<li>initrd 3.19.1-NuTyX</li>
+<li>glibc 2.21</li>
+<li>gcc 4.9.2</li>
+<li>binutils 2.25</li>
+<li>cards 0.10.82.96a</li>
+<li>curl 7.41.0</li>
+<li>openssh 6.7p1</li>
+<li>openssl  1.0.2</li>
+    <p>New commands:</p>
+
+<pre class="command"><kbd>cards files <package></kbd></pre>
+list the file(s) of the package.
+
+<pre class="command"><kbd>cards query <file></kbd></pre>
+list owner(s) of file(s) matching the query
+
+<pre class="command"><kbd>cards install <file></kbd></pre>
+Can install a file if available on the pc. The file must be a valid downloaded package. The name is irrelevant, cards will check it before install it.
+
+<pre class="command"><kbd>cards install -f &lt;paquet&gt; | &lt;file&gt;</kbd></pre>
+Force installation in case of duplicate files
+
+<p>The commands:</p>
+
+<pre class="command"><kbd>cards sync -i
+cards list -i
+cards info -i <paquet>
+cards diff -b</kbd></pre>
+
+are simplify and becomes:
+
+<pre class="command"><kbd>cards sync
+cards list
+cards info <paquet>
+cards diff</kbd></pre>
+
+
+
+<p>The help has been completly re write</p>
+
+<img src="http://downloads.tuxfamily.org/nutyx/archives/cards_0.10.82.96.jpg"  alt="Help summary" title="cards Help summary" width="578"/>
+    <p class="updated">Updated 2015-03-16 23:37</p>
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+    <a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
+    </footer>
+ </body>
+</html>
