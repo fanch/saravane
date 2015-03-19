@@ -159,7 +159,7 @@ c70599ab0d037fde724f7210c2c8d7f8  sysklogd-1.5.1.tar.gz
 b5e2dd95dc8498cea5354377ed89aa65  xz-5.2.1.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 1fb7f3f6bf92ce6c5c9ed9949ae858fe  procps-ng-3.3.10.tar.xz
-db382feca91754b7f93da16dc4cdad1f  tcl8.6.3-src.tar.gz
+8b8c9d85469d8dbe32e51117b8ef11e3  tcl-core8.6.4-src.tar.gz
 237083a1e3c388cde7a115a5724dc72a  iproute2-3.19.0.tar.xz
 997c9070354eff5517115feaea6038f0  gettext-0.19.4.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
@@ -187,7 +187,7 @@ a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
 2308850946766677f3fabe0685e85de8  util-linux-2.26.1.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
 d3fc8316d4d4d04b65cbc2d70799e763  linux-3.19.tar.xz
-2f2822cf2d84a8ec3a8b044e732cf45b  patch-3.19.1.xz
+6f7128647a2fc0912958ac1cbf96a95a  patch-3.19.2.xz
 88d32360e2ed18e05de9b528ad336fd8  man-db-2.7.1.tar.xz
 c1f1db32fb6598d6a93e6e88796a8632  gperf-3.0.4.tar.gz
 38373013fc85c790aabf8837969c5eba  openssl-1.0.2.tar.gz
@@ -208,7 +208,7 @@ ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
 1e2f3c1ed468dee02d00c534c002ea10  nfs-utils-1.3.2.tar.bz2
 3246aa79317b1d23cae783a3bf8275d6  openssh-6.7p1.tar.gz
 edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
-56701b3b1815c8bbfd7b43b4773adad7  git-2.3.2.tar.xz
+14a885da3b432455b606cc1a25a6c681  git-2.3.3.tar.xz
 5f4ba23340492548ebf58b0ce7109e69  pkgutils-5.35.6.tar.gz
 a37751f1627a4e0125c8ffadfa85be80  prt-get-5.19.tar.gz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz

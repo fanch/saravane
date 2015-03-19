@@ -1545,6 +1545,8 @@ setup_initrd() {
 				;;
 			"$(gettext "Console")")
 				source /etc/profile
+				/sbin/pwconv
+				/sbin/grpconv
 				sh
 				;;
 			"$(gettext "Restart")")
