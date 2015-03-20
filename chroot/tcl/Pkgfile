@@ -1,9 +1,9 @@
-version=8.6.3
-source=(http://prdownloads.sourceforge.net/tcl/tcl${version}-src.tar.gz)
+version=8.6.4
+source=( http://sourceforge.net/projects/tcl/files/Tcl/$version/tcl-core${version}-src.tar.gz)
 
 build()
 {
-cd tcl$version
+cd tcl-core$version
 
 
 cd unix
