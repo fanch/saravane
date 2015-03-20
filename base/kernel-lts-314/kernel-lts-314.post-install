@@ -1,0 +1,4 @@
+mkinitramfs 3.14.36-NuTyX-lts-314
+[ -f boot/initrd ] && rm boot/initrd
+ln -sf initrd-3.14.36-NuTyX-lts-314 boot/initrd
+ln -sf kernel-3.14.36 boot/kernel
