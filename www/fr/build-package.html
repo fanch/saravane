@@ -9,7 +9,7 @@
  <body>
     <table>
      <tr>
-      <td width="30%">
+      <td>
             <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
       </td>
       <td>
@@ -30,14 +30,16 @@
  <hr>
  <h1>Comment construire un paquet ?</h1>    
   <h2>Sommaire</h2>
-    <h5>
-     <p>Quel paquet choisir ?</p>
-     <p>Construire un environnement isolé aussi appelé chroot</p>
-     <p>Mise en service de la chroot</p>
-     <p>Configurer la chroot</p>
-     <p>Mon premier paquet</p>
-     <p>Installer mon premier paquet sur la NuTyX principale</p>
-    </h5>
+    <h3>
+     <a href="#1">Quel paquet choisir ?</a><br />
+     <a href="#2">Construire un environnement isolé aussi appelé chroot</a><br />
+     <a href="#3">Mise en service de la chroot</a><br />
+     <a href="#4">Configurer la chroot</a><br />
+     <a href="#5">Mon premier paquet</a><br />
+     <a href="#6">Installer mon premier paquet sur la NuTyX principale</a><br />
+     <a href="#7">Un paquet avec quelques dépendances</a><br />
+    </h3>
+  <a name='1'></a>
   <h2>Quel paquet choisir ?</h2>
    <p>Choix très difficile, il serait en tout cas bon de prendre 4 ou 5 exemples cad:</p>
    <ol>
@@ -56,6 +58,7 @@
 ...</pre>
    <p>Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 185 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" /></p>
    <p>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 185 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /></p>
+  <a name='2'></a>
   <h2>Construire un environnement isolé appelé "chroot"</h2>
    <p>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</p>
    <p>On l'appelera désormais la<b> chroot</b>.<p>
@@ -99,6 +102,7 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
 "*                                                 *"
 "***************************************************"</pre>
    <p>Une fois l'installation terminée on peut mettre notre chroot en service.</p>
+  <a name='3'></a>
   <h2>Mise en service de la chroot</h2>
    <p>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:</p>
    <pre class="command"><kbd>mkdir -p /root/bin
@@ -124,6 +128,7 @@ EOF</kbd></pre>
    <pre class="output">le mode de &laquo;&nbsp;bin/EntrerChroot&nbsp;&raquo; a été modifié de 0644 (rw-r--r--) à 0755 (rwxr-xr-x)</pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />Désormais pour entrer dans votre chroot, utilisez UNIQUEMENT la commande en root:</div>
    <pre class="command"><kbd>EntrerChroot</kbd></pre>
+  <a name='4'></a>
   <h2>Configurer la chroot</h2>
    <p>Ca y est nous y sommes, nous pouvons commencer à travailler dans l'environnement, vous êtes maintenant dans la chroot si non tapez en root</p>
    <pre class="command"><kbd>EntrerChroot</kbd></pre>
@@ -187,13 +192,13 @@ ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
      <li><b>PKGMK_SYNC_FILES="no"</b> si des dépendances sont réclamées, elle ne seront pas téléchargées</li>
     </ol>
    <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire son premier paquet.</div>
+  <a name='5'></a>
   <h2>Mon premier paquet</h2>
    <p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</p>
    <p>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></p>
-    <li><h3>Création du dossier du paquet joe</h3>
+    <h3>Création du dossier du paquet joe</h3>
      <pre class="command"><kbd>mkdir -pv /usr/ports/personnel/joe</kbd></pre>
-      </li>
-   <li><h3>Création de la recette</h3>
+   <h3>Création de la recette</h3>
     <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
     <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
 # Description: Petit éditeur non graphique emulant emuler, wordStar
@@ -228,8 +233,8 @@ pkgmk -us</kbd></pre>
 =======> PKGMK_COMPRESS_PACKAGE: no
 =======> name: joe
 =======> version: 3.7</pre>
-    <p>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</p></li>
-   <li><h3>Compilation de la recette</h3>
+    <p>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</p>
+   <h3>Compilation de la recette</h3>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />N'intérrompez JAMAIS la commande <b>cards create </b> via ctrl+c, cela aurait pour effet de rendre votre chroot inutilisable.</div>
     <p>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></p>
     <pre class="command"><kbd>cards create -r joe</kbd></pre>
@@ -307,8 +312,8 @@ Build date     : Sun Oct 26 22:27:45 2014
 Size           : 1117696
 Number of Files: 70
 Arch           : x86_64</pre>
-   </li>
-   <li><h3>Installer mon premier paquet sur la NuTyX principale</h3>
+   <a name='6'></a>
+   <h2>Installer mon premier paquet sur la NuTyX principale</h2>
     <div><img src="../graphics/wall.gif" alt="wall" /> Super j'ai un nouveau paquet...</div><br />
    <div><img src="../graphics/question.gif" width="16" height="15" alt="?" /> Mais comment je fais pour l'installer dans ma NuTyX principale... ?</div><br />
    <div><img src="../graphics/answer.gif" width="15" height="15" alt="!!" /> Pas de problème tout est prévu, quelques préparatifs s'imposent, je vous préviens c'est un peu chaud <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /></div><br />
@@ -340,7 +345,7 @@ total size is 1,986,341  speedup is 1.00</pre>
    <p>Comme nous avons construit un seul paquet, c'est très rapide. On peut maintenant quitter la chroot:</p>
    <pre class="command"><kbd>exit</kbd></pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous êtes de nouveau dans votre NuTyX principale</div>
-   <p>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</div>
+   <p>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</p>
    <pre class="command_user"><kbd>get apache
 get apache.service</kbd></pre>
    <p>Malheureusement la configuration de apache n'étant parfaite, un minimum d'actions s'impose.</p>
@@ -375,14 +380,14 @@ Url            : http://localhost/personnel
 Local Directory: /var/lib/pkg/saravane/personnel</pre>
     <div><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></div>
     <p>Il ne nous reste plus qu'a l'installer <img src="../graphics/smiley-surprised.gif" alt="Surprised" title="Surprised" /></p>
-    <pre class="command_user"><kbd>get joe</kbd></pre></li>
+    <pre class="command_user"><kbd>get joe</kbd></pre>
     <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
 /var/lib/pkg/saravane/desktop/MD5SUM
 /var/lib/pkg/saravane/server/MD5SUM
 /var/lib/pkg/saravane/system/MD5SUM
 Retrieve info about the 622 packages: 100 %
 ADD: joe-3.7, 71 files: 100 %</pre>
-    </ol>
+    <a name='7'></a>
    <h2>Un paquet avec quelques dépendances</h2>
     <p>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</p>
     <p>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées. Par principe, sous NuTyX nous essayons de proposer le maximum de fonctionalitées.</p>
@@ -524,9 +529,8 @@ clipit Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk14145
     <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
     <li><h3>Quelques explications au sujet de la chroot:</h3>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="*"/>Les explications qui suivent necessite que vous soyer dans la chroot</div>
-     <ul>
-      <li>le fichier <b>clipit.deps</b> contenant  <b>gtk</b>: est la seule dépendance necessaire en effet <b>gtk</b> réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</li>
-     </ul>
+   </ol>
+   <p>La ligne <b># Depends on: gtk</b> dans le fichier <b>Pkgfile</b> ou le fichier <b>clipit.deps</b> contenant  <b>gtk</b>: est la seule dépendance necessaire en effet <b>gtk</b> réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</p>
    <p>Pour terminer, il faut savoir qu'avant de commencer un nouveau paquet, il est important de toujours revenir sur une NuTyX de base afin de bien connaître les dépendances necessaires. La commande:</p>
    <pre class="command"><kbd>cards base -r</kbd></pre>
    <p>nous permet de revenir sur une NuTyX de base. Si l'on souhaite que certains paquets soient conservés lors de cette manipulation, on peut les ajouter dans un dossier dédié, et ce dossier est mentionné à la ligne:</p>
