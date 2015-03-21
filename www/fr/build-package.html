@@ -87,14 +87,17 @@ Retrieve info about the 62 packages: 100 %
 pre-install: start
 pre-install: finish
 ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  ]
-***********************************************
-* Installation finish. Tanks for trying NuTyX *
-* For more info, come to visit us:            *
-*                                             *
-*           http://www.nutyx.org              *
-*                                             *
-***********************************************
-</pre>
+"***************************************************"
+"* Installation finish. Tanks for installing NuTyX *"
+"*                                                 *"
+"* Dont forget to choose a valid kernel before you *"
+"*      want to boot on your install NuTyX         *"
+"*                                                 *"
+"*        For more info, come to visit us:         *"
+"*                                                 *"
+"*              http://www.nutyx.org               *"
+"*                                                 *"
+"***************************************************"</pre>
    <p>Une fois l'installation terminée on peut mettre notre chroot en service.</p>
   <h2>Mise en service de la chroot</h2>
    <p>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:</p>
@@ -193,7 +196,10 @@ ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
    <li><h3>Création de la recette</h3>
     <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
     <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
+# Description: Petit éditeur non graphique emulant emuler, wordStar
+name=joe
 version=3.7
+release=1
 source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
 build() {
 cd $name-$version
@@ -202,6 +208,7 @@ make
 make DESTDIR=$PKG install
 }
 EOF</kbd></pre>
+<p>Si vous êtes sur une version de cards plus ancienne que la version <b>0.10.82.96a</b>, créez le fichier:</p>
 <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/joe.info &lt;&lt; "EOF"
 Petit éditeur non graphique emulant emuler, wordStar
 EOF</kbd></pre>
@@ -392,14 +399,23 @@ ADD: joe-3.7, 71 files: 100 %</pre>
      <li><h3>Créer les fichiers</h3>
       <h4>Le fichier Pkgfile</h4> 
        <p>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</p>
-       <pre class="command"><kbd>version=1.4.2
+       <pre class="command"><kbd># Description: ClipIt is a lightweight GTK+ clipboard manager.
+# URL: http://clipit.rspwn.com/
+# Maintainer: Gilberto Xyhthyx &lt;xyhthyx at gmail dot com&gt;
+# Packager: François Perrin
+# Depends on: gtk
+
+name=clipit
+version=1.4.2
+release=1
 source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
 cd $name-$version
-./configure --prefix=/usr
+./configure --prefix=/usr \
+--sysconfdir=/etc
 make
 make DESTDIR=$PKG install
 }</kbd></pre>
-    <h4>Le fichier clipit.info</h4>
+    <h4>Le fichier clipit.info (plus necessaire si version de cards >= 0.10.82.96a)</h4>
     <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.info</b> avec ceci:</p>
     <pre class="command"><kbd>ClipIt is a lightweight GTK+ clipboard manager.
 
@@ -413,7 +429,7 @@ Packager:
 
 - François Perrin
 </kbd></pre>
-   <h4>Le fichier clipit.deps</h4>
+   <h4>Le fichier clipit.deps (plus necessaire si version de cards >= 0.10.82.96a)</h4>
     <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.deps</b> avec ceci:</p>
     <pre class="command"><kbd>gtk</kbd></pre> 
    </li>
@@ -462,27 +478,13 @@ clipit/
 clipit/MD5SUM
 clipit/Pkgfile
 clipit/clipit-1.4.2.tar.gz
-clipit/clipit.cs1414792356any.cards.tar
 clipit/clipit.da1414792356any.cards.tar
 clipit/clipit.de1414792356any.cards.tar
-clipit/clipit.deps
 clipit/clipit.es1414792356any.cards.tar
-clipit/clipit.es_ES1414792356any.cards.tar
-clipit/clipit.et1414792356any.cards.tar
 clipit/clipit.fr1414792356any.cards.tar
-clipit/clipit.hu1414792356any.cards.tar
-clipit/clipit.info
 clipit/clipit.it1414792356any.cards.tar
-clipit/clipit.ja1414792356any.cards.tar
 clipit/clipit.man1414792356any.cards.tar
-clipit/clipit.nb1414792356any.cards.tar
-clipit/clipit.pl1414792356any.cards.tar
-clipit/clipit.pt_BR1414792356any.cards.tar
-clipit/clipit.ro1414792356any.cards.tar
-clipit/clipit.ru1414792356any.cards.tar
 clipit/clipit.sv1414792356any.cards.tar
-clipit/clipit.tr1414792356any.cards.tar                                                                                                 
-clipit/clipit.zh_CN1414792356any.cards.tar                                                                                              
 clipit/clipit1414792356x86_64.cards.tar                                                                                                 
                                                                                                                                         
 sent 588,560 bytes  received 515 bytes  1,178,150.00 bytes/sec
@@ -514,11 +516,11 @@ ADD: clipit-1.4.2, 17 files: 100 %
 ADD: clipit.fr-1.4.2, 3 files: 100 %</pre>
     <p>Vous avez installé un paquet contenant des dépendances. La preuve si vous demandez les informations de votre nouvelle archive en faisant:</p>
     <pre class="command_user"><kbd>/chroot/usr/bin/pkginfo -a /var/lib/pkg/saravane/personnel/clipit/clipit1*</kbd></pre>
-    <pre class="output">Name           : clipit
-Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
-Version        : 1.4.2
-Build date     : 1414792356
-Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk1414590782 xorg-libx111411748195</pre>
+    <pre class="output">clipit Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
+clipit Version        : 1.4.2
+clipit Release        : 1
+clipit Build date     : 1414792356
+clipit Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk1414590782 xorg-libx111411748195</pre>
     <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
     <li><h3>Quelques explications au sujet de la chroot:</h3>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="*"/>Les explications qui suivent necessite que vous soyer dans la chroot</div>
@@ -534,7 +536,7 @@ base /root/mes_paquets_a_conserver</pre>
    <p>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</p>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
     <hr>
-    <p class="updated">Dernière mise à jour 21-03-2015 08:57</p>
+    <p class="updated">Dernière mise à jour 21-03-2015 12:56</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
