@@ -7,7 +7,7 @@ http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.21-fhs-1.patch
-http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2-fix_parallel_build-1.patch
+http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2a-fix_parallel_build-1.patch
 
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
@@ -101,7 +101,7 @@ http://tukaani.org/xz/xz-5.2.1.tar.xz
 http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 http://sites.google.com/site/e3editor/Home/e3-2.8.tgz
 http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
-http://www.openssl.org/source/openssl-1.0.2.tar.gz
+http://www.openssl.org/source/openssl-1.0.2a.tar.gz
 http://curl.haxx.se/download/curl-7.41.0.tar.bz2
 http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.7.1.tar.bz2
 http://linux-pam.org/library/Linux-PAM-1.1.8.tar.bz2
@@ -111,4 +111,4 @@ http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
 http://www.sudo.ws/sudo/dist/sudo-1.8.12.tar.gz
 ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.117.tgz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
-ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz
+ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.8p1.tar.gz
