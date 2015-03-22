@@ -3,7 +3,7 @@ source=( http://sourceforge.net/projects/tcl/files/Tcl/$version/tcl-core${versio
 
 build()
 {
-cd tcl-core$version
+cd tcl$version
 
 
 cd unix
