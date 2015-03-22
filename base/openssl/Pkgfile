@@ -17,7 +17,7 @@ patch -Np1 -i ../$name-$version-fix_parallel_build-1.patch
 	--openssldir=/etc/ssl \
 	shared zlib-dynamic
 
-make
+make || make -j1
 make INSTALL_PREFIX=$PKG MANDIR=/usr/share/man \
 MANSUFFIX=ssl install
 
