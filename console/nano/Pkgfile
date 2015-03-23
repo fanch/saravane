@@ -1,10 +1,9 @@
 # Description: Pico editor clone with enhancements
 # URL: http://www.nano-editor.org/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 
 name=nano
-version=2.3.2
+version=2.4.0
 release=1
 
 source=(http://www.nano-editor.org/dist/v2.3/$name-$version.tar.gz)
