@@ -87,7 +87,6 @@ echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
 echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
-unset INITRD_VERSION
 }
 devel() {
 

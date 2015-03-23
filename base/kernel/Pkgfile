@@ -63,7 +63,6 @@ case `uname -m` in
                 cp  arch/i386/boot/bzImage \
                 $PKG/boot/kernel-$version ;;
 esac
-ln -sf kernel-$version $PKG/boot/kernel
 
 cd $PKG/lib/modules/${version}*/
 
@@ -87,7 +86,7 @@ INITRD_VERSION="`basename $PKG/lib/modules/*`"
 echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
 echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
-unset INITRD_VERSION
+echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
 }
 devel() {
 
