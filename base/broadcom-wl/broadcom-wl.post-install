@@ -1,2 +1,5 @@
+. lib/lsb/init-functions
+log_info_msg "depmod..."
 depmod
-insmod wl
+evaluate_retval
+log_success_msg "Please reboot ..."
