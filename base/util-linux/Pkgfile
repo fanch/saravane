@@ -4,7 +4,7 @@
 # Packager: tnut at nutyx dot org
 name=util-linux
 version=2.26.1
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version%.*}/util-linux-$version.tar.xz
 	)
 
@@ -21,7 +21,7 @@ mkdir -pv $PKG/var/lib/hwclock
 --disable-runuser --disable-pylibmount \
 --without-python --without-systemd \
 --disable-su --disable-login \
---disable-sulogin --without-systemdsystemunitdir
+--without-systemdsystemunitdir
 
 make
 make DESTDIR=$PKG  install
