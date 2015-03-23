@@ -465,7 +465,7 @@ pkgmk -us</kbd></pre>
    <p>Il faut commencer par rappatrier toutes les infos concernant les ports, lancez la commande en root:</p>
    <pre class="command"><kbd>cards sync -p</kbd></pre>
    <p>L'opération peut prendre plusieurs minutes. Une fois terminée, on va demander à <b>cards</b> de télécharger les dépendances necessaires à notre petit paquet:</p>
-   <pre class="command"><kbd>for i in `cards depends -a clipit`;do cd $i; pkgmk -d; done</kbd></pre>
+   <pre class="command"><kbd>for i in `cards depends -a clipit`;do cd $i; pkgmk -d -i; done</kbd></pre>
    <p>Les dépendances necessaire à la compilation de notre petit paquet <b>clipit</b> sont maintenant téléchargées. Cela prendra quelques minutes.</p>
    </li>
    <li><h3>Compilez le paquet.</h3>
@@ -540,7 +540,7 @@ base /root/mes_paquets_a_conserver</pre>
    <p>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</p>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
     <hr>
-    <p class="updated">Dernière mise à jour 21-03-2015 13:43</p>
+    <p class="updated">Dernière mise à jour 23-03-2015 22:46</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
