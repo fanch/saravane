@@ -63,9 +63,9 @@ https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.t
 https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.1.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-20.tar.xz
 https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.19.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-2.3.3.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-manpages-2.3.3.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.3.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.3.4.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-manpages-2.3.4.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.4.tar.xz
 https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.3.1.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.0.tar.xz
 https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz
@@ -109,6 +109,6 @@ ftp://dickey.his.com/dialog/dialog-1.2-20140911.tgz
 ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.2.2.tar.gz
 http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
 http://www.sudo.ws/sudo/dist/sudo-1.8.12.tar.gz
-ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.117.tgz
+ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.118.tgz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
 ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.8p1.tar.gz
