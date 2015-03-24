@@ -188,7 +188,7 @@ ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
     <ol>
      <li><b>PKGMK_SOURCE_DIR="$PWD"</b> les sources des paquets binaires seront dans le dossier du paquet et seront effacé si le paquet s'est compilé avec succès.</li>
      <li><b>PKGMK_COMPRESS_PACKAGE="no"</b> le paquet binaire ne sera pas compressé.</li>
-     <li><b>PKGMK_CLEAN="no"</b> le paquet binaire cad le fichier  &lt;nom_du_port&gt;1234567890x86_64.cards.tar ne sera pas supprimé une fois installé</li>
+     <li><b>PKGMK_CLEAN="yes"</b> le paquet binaire cad le fichier  &lt;nom_du_port&gt;1234567890x86_64.cards.tar sera supprimé une fois installé</li>
      <li><b>PKGMK_SYNC_FILES="no"</b> si des dépendances sont réclamées, elle ne seront pas téléchargées</li>
     </ol>
    <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire son premier paquet.</div>
@@ -196,8 +196,10 @@ ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
   <h2>Mon premier paquet</h2>
    <p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</p>
    <p>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></p>
+    <a name='51'></a>
     <h3>Création du dossier du paquet joe</h3>
      <pre class="command"><kbd>mkdir -pv /usr/ports/personnel/joe</kbd></pre>
+   <a name='52'></a>
    <h3>Création de la recette</h3>
     <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
     <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
@@ -234,6 +236,7 @@ pkgmk -us</kbd></pre>
 =======> name: joe
 =======> version: 3.7</pre>
     <p>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</p>
+   <a name='53'></a>
    <h3>Compilation de la recette</h3>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />N'intérrompez JAMAIS la commande <b>cards create </b> via ctrl+c, cela aurait pour effet de rendre votre chroot inutilisable.</div>
     <p>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></p>
@@ -398,10 +401,13 @@ ADD: joe-3.7, 71 files: 100 %</pre>
     <p><i>* gtk+ >= 2.10.0</i></p>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
     <ol>
+     <a name='71'></a>
      <li><h3>Créer le dossier</h3>
       <pre class="command"><kbd>mkdir -p /usr/ports/personnel/clipit</kbd></pre>
      </li>
+     <a name='72'></a>
      <li><h3>Créer les fichiers</h3>
+      <a name='721'></a>
       <h4>Le fichier Pkgfile</h4> 
        <p>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</p>
        <pre class="command"><kbd># Description: ClipIt is a lightweight GTK+ clipboard manager.
@@ -420,6 +426,7 @@ cd $name-$version
 make
 make DESTDIR=$PKG install
 }</kbd></pre>
+    <a name='722'></a>
     <h4>Le fichier clipit.info (plus necessaire si version de cards >= 0.10.82.96a)</h4>
     <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.info</b> avec ceci:</p>
     <pre class="command"><kbd>ClipIt is a lightweight GTK+ clipboard manager.
@@ -434,10 +441,12 @@ Packager:
 
 - François Perrin
 </kbd></pre>
+   <a name='723'></a>
    <h4>Le fichier clipit.deps (plus necessaire si version de cards >= 0.10.82.96a)</h4>
     <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.deps</b> avec ceci:</p>
     <pre class="command"><kbd>gtk</kbd></pre> 
    </li>
+   <a name='73'></a>
    <li><h3>Générer le fichier MD5SUM</h3>
     <p>Vous venez de créer la recette de votre deuxième paquet. Il faut à nouveau faire une opération avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</p>
     <pre class="command"><kbd>cd /usr/ports/personnel/clipit
@@ -458,6 +467,7 @@ pkgmk -us</kbd></pre>
 =======> version: 1.4.2</pre>
    <p>Le fichier <b>MD5SUM</b> est créé.</p>
    </li>
+   <a name='74'></a>
    <li><h3>Télécharger les dépendances automatiquement</h3>
    <p>Pour cet exercice, nous choisissons d'utiliser les dépendances disponibles sur le dépot de NuTyX. Il est tout à fait possible de choisir si oui ou non on souhaite utiliser les dépendances disponibles. La variable <b>PKGMK_SYNC_FILES="no"</b> qui est dans le fichier /etc/pkgmk.conf est là pour cela. Si <b>"yes"</b> vous ne devez pas compiler les dépendances vous-même mais celle du dépot. Si <b>"no"</b>, vous désirez compiler vos propre versions des dépendances.</p> 
    <p>Nous ajustons donc la variable ds le fichier <b>/etc/pkgmk.conf</b></p>
@@ -468,9 +478,11 @@ pkgmk -us</kbd></pre>
    <pre class="command"><kbd>for i in `cards depends -a clipit`;do cd $i; pkgmk -d -i; done</kbd></pre>
    <p>Les dépendances necessaire à la compilation de notre petit paquet <b>clipit</b> sont maintenant téléchargées. Cela prendra quelques minutes.</p>
    </li>
+   <a name='75'></a>
    <li><h3>Compilez le paquet.</h3>
     <pre class="command"><kbd>cards create -r clipit</kbd></pre>
     <p>La commande <b>cards</b> remet la chroot dans une "installation minimale", recherche toutes les dépendances du paquet et comme ces dépendances n'existent pas dans votre chroot, il télécharge les binaires déjà à jour et enfin compile le paquet.</p></li>
+    <a name='76'></a>
     <li><h3>Envoyer le paquet</h3>
      <p>Dernière étape, il faut "envoyer" les binaires sur "votre serveur http":</p>
      <pre class="command"><kbd>cd /usr/ports
@@ -494,6 +506,7 @@ clipit/clipit1414792356x86_64.cards.tar
                                                                                                                                         
 sent 588,560 bytes  received 515 bytes  1,178,150.00 bytes/sec
 total size is 2,572,451  speedup is 4.37</pre>
+    <a name='77'></a>
     <li><h3>Installer notre paquet dans la principale</h3>
      <p>On commence par sortir de la chroot</p>
      <pre class="command"><kbd>exit</kbd></pre>
@@ -527,6 +540,7 @@ clipit Release        : 1
 clipit Build date     : 1414792356
 clipit Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk1414590782 xorg-libx111411748195</pre>
     <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
+    <a name='78'></a>
     <li><h3>Quelques explications au sujet de la chroot:</h3>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="*"/>Les explications qui suivent necessite que vous soyer dans la chroot</div>
    </ol>
@@ -540,7 +554,7 @@ base /root/mes_paquets_a_conserver</pre>
    <p>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</p>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
     <hr>
-    <p class="updated">Dernière mise à jour 23-03-2015 22:46</p>
+    <p class="updated">Dernière mise à jour 24-03-2015 15:04</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

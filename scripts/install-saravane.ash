@@ -475,12 +475,31 @@ done
 # *****************************************************************************************************
 # Begin of Installer
 # *****************************************************************************************************
-
-# Checking if we use the right interpreter
-if ! (bash --version >/dev/null 2>&1)  then
-	error " Wrong interpreter, please use bash as interpreter"
+# Checking root account
+if [ "$UID" != "0" ]; then
+	error " You are not root, cannot continue"
 fi
-
+# Checking if we use the right interpreter
+BASH_VERSION=`bash --version|head -n1 | cut -d " " -f4|cut -d "(" -f1|sed "s/\.//g"`
+if [ -z ${BASH_VERSION} ]; then
+	error " Wrong interpreter, please use 'bash' as interpreter"
+fi
+# Checking bash version
+if [ ${BASH_VERSION} -lt 4333 ]; then
+	error " Please use 'bash' version 4.3.33 or newer"
+fi
+# Checking wget
+if ! (`which wget > /dev/null`); then
+	error " Command 'wget' not found, please install wget"
+fi
+# Checking tar
+if ! (`which tar > /dev/null`); then
+	error " Command 'tar' not found, please install tar"
+fi
+# Checking gawk
+if ! (`which gawk > /dev/null`); then
+	error " Command 'gawk' not found, please install gawk"
+fi
 # On a disk or in a Folder
 MIG=`echo $1|cut -d "/" -f 2`
 # echo $MIG
@@ -585,7 +604,6 @@ if [ "$MIG" == "0" ]; then
 	# Checking the device exist ?
 	if ! [ -b  $1 ]; then
 		error "Mounting point $1 not existing"
-		exit 0
 	fi
 	# Mounting the System files
 	if ! mountpoint /$MountFolder > /dev/null; then
@@ -615,7 +633,6 @@ if [ ! -f $TMP/usr/bin/pkgadd ]; then
 	basepackagefile=`getPackageName cards`
 	if [ "$basepackagefile" == "" ]; then
 		error "$basepackagefile not found"
-		exit 0
 	fi
 	packagefile=`echo ${basepackagefile}|sed "s|^cards|cards.devel|"`
 	echo "Downloads of $packagefile"
