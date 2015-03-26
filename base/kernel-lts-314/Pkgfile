@@ -7,7 +7,7 @@ PKGMK_NO_STRIP="yes"
 
 
 name=kernel-lts-314
-version=3.14.36
+version=3.14.37
 release=1
 _version=${version%.*}
 
