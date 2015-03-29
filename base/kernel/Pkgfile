@@ -13,8 +13,9 @@ _version=${version%.*}
 
 AAABASICFS=20150329
 
-source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
-https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-${AAABASICFS}.tar.bz2
+	http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
 	$name.config $name.config_64 )
 
 build(){
@@ -95,10 +96,7 @@ echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
 cd $SRC
 if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
  echo ". lib/lsb/init-functions" >  $PKGMK_ROOT/$name.pre-install
- for FILE in lib/lsb/init-functions \
-  etc/mkinitramfs/init.in \
-  sbin/mkinitramfs \
-  var/lib/pkg/DB/aaabasicfs/files
+ for FILE in `tar --list --file aaabasicfs-${AAABASICFS}.tar.xz|grep -v /$`
  do
    echo "log_info_msg \"update $FILE\"" >> $PKGMK_ROOT/$name.pre-install
    echo "cat  > $FILE << \"END_OF_FILE\"" >> $PKGMK_ROOT/$name.pre-install

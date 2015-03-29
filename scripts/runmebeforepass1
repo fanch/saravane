@@ -144,7 +144,8 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/sysklogd-/d" $LFS/sources/$i
    sed -i "/xz-/d" $LFS/sources/$i
 done
-echo "9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
+echo "47aaad4cfe891fb5d096a7e7cf6bb3ec  aaabasicfs-20150329.tar.xz
+9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
 a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
 c342201de104cc9ce0a21e0ad10d4021  bison-3.0.4.tar.xz
