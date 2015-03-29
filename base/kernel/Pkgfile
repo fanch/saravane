@@ -2,7 +2,7 @@
 # URL: http://www.kernel.org
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
-# PKGMK_IGNORE_UNPACK="yes"
+PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 
 
@@ -19,6 +19,8 @@ source=(http://downloads.nutyx.org/files/aaabasicfs-${AAABASICFS}.tar.xz
 	$name.config $name.config_64 )
 
 build(){
+
+bsdtar -p -o -C $SRC -xf linux-${_version}.tar.xz
 
 cd linux-${_version}
 
@@ -95,6 +97,7 @@ echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
 
 cd $SRC
 if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
+ bsdtar -p -o -C $SRC -xf aaabasicfs-${AAABASICFS}.tar.xz
  echo ". lib/lsb/init-functions" >  $PKGMK_ROOT/$name.pre-install
  for FILE in `tar --list --file aaabasicfs-${AAABASICFS}.tar.xz|grep -v /$`
  do
