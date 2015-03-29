@@ -1,2 +1,0 @@
-[ -d  etc/mkinitramfs ] && rm -r etc/mkinitramfs
-[ -f etc/blfs-bootscripts ]  && rm etc/blfs-bootscripts
