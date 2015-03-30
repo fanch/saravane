@@ -235,21 +235,21 @@ if [ -n "$KERNEL_VERSION" ]; then
   depmod -b $WDIR $KERNEL_VERSION
 
   cp -a /lib/firmware/rtlwifi \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/ath6k \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/RTL8192E \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/bnx2x-* \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/brcm \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/iwlwifi-* \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/radeon \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
   cp -a /lib/firmware/ar3k \
-  $WDIR/lib/firmware
+  $WDIR/lib/firmware > /dev/null 2>&1
 fi
 rm -f /boot/$INITRAMFS_FILE
 # cp -a /boot $WDIR
