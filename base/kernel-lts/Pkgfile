@@ -2,20 +2,25 @@
 # URL: http://www.kernel.org
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
-# PKGMK_IGNORE_UNPACK="yes"
+PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 
 
 name=kernel-lts
 version=3.18.10
-release=1
+release=2
 _version=${version%.*}
 
-source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
-https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
-	kernel-lts.config kernel-lts.config_64 )
+AAABASICFS=20150330
+
+source=(http://downloads.nutyx.org/files/aaabasicfs-${AAABASICFS}.tar.xz
+	http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
+	$name.config $name.config_64 )
 
 build(){
+
+bsdtar -p -o -C $SRC -xf linux-${_version}.tar.xz
 
 cd linux-${_version}
 
@@ -26,9 +31,9 @@ fi
 make mrproper
 case `uname -m` in
 	x86_64)
-		cp $SRC/kernel-lts.config_64 ./.config;;
+		cp $SRC/$name.config_64 ./.config;;
 	i?86)
-		cp $SRC/kernel-lts.config ./.config;
+		cp $SRC/$name.config ./.config;
 esac
 
 # make menuconfig
@@ -37,9 +42,9 @@ make || make -j1
 
 case `uname -m` in
         x86_64)
-		cp .config $SRC/kernel-lts.config_64;;
+		cp .config $SRC/$name.config_64;;
         i?86)
-		cp .config $SRC/kernel-lts.config;;
+		cp .config $SRC/$name.config;;
 esac
 
 # Install modules
@@ -87,6 +92,21 @@ echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
 echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
+
+#pre-install autogen
+cd $SRC
+if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
+ bsdtar -p -o -C $SRC -xf aaabasicfs-${AAABASICFS}.tar.xz
+ echo ". lib/lsb/init-functions" >  $PKGMK_ROOT/$name.pre-install
+ for FILE in `tar --list --file aaabasicfs-${AAABASICFS}.tar.xz|grep -v /$`
+ do
+   echo "log_info_msg \"update $FILE\"" >> $PKGMK_ROOT/$name.pre-install
+   echo "cat  > $FILE << \"END_OF_FILE\"" >> $PKGMK_ROOT/$name.pre-install
+   cat $SRC/$FILE >> $PKGMK_ROOT/$name.pre-install
+   echo "END_OF_FILE" >> $PKGMK_ROOT/$name.pre-install
+   echo "evaluate_retval" >> $PKGMK_ROOT/$name.pre-install
+ done
+fi
 }
 devel() {
 
