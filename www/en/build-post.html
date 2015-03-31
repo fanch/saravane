@@ -41,7 +41,17 @@
 /bin/bash --login</kbd></pre>
 No error should be print:
     <pre class="output">root [ / ]# </pre>
-    <li>We begin to add all the necessary files for a working iso</li>
+    <li>We begin by adjusting the cards.conf file. We used from now on only the recept coming from the git project. You need to adapt the language and arch if necessary (<b>i686</b> for the 32 bits version).</li>
+    <pre class="command"><kbd>cat > /etc/cards.conf << "EOF"
+dir /root/saravane/desktop
+dir /root/saravane/console
+dir /root/saravane/base
+logdir /var/log/pkgbuild
+arch x86_64
+locale fr
+base /root/saravane/base
+EOF</kbd></pre>
+    <li>We add all the necessary files for a working iso</li>
     <pre class="command"><kbd>cp -av /root/saravane/iso /ISO</kbd></pre>
     <pre class="output">'/root/saravane/iso' -> '/ISO'
 '/root/saravane/iso/isolinux' -> '/ISO/isolinux'
@@ -50,14 +60,14 @@ No error should be print:
 '/root/saravane/iso/isolinux/isolinux.bin' -> '/ISO/isolinux/isolinux.bin'
 '/root/saravane/iso/isolinux/isolinux.cfg' -> '/ISO/isolinux/isolinux.cfg'</pre>
     <pre class="command"><kbd>cp -v /boot/kernel-* /ISO/isolinux/kernel</kbd></pre>
-    <pre class="output">'/boot/kernel-3.19.0' -> '/ISO/isolinux/kernel'</pre>
+    <pre class="output">'/boot/kernel-3.19.3' -> '/ISO/isolinux/kernel'</pre>
     <pre class="command"><kbd>cp -v /boot/initrd-* /ISO/isolinux/initrd</kbd></pre>
-    <pre class="output">'/boot/initrd-3.19.0' -> '/ISO/isolinux/initrd'</pre>
+    <pre class="output">'/boot/initrd-3.19.3' -> '/ISO/isolinux/initrd'</pre>
     <div class="note"><img alt="[Note]" src="../graphics/note.gif" />Consult options at the botton of the page before going further if you want to customize your ISO by adding some packages or if you want to get rid of the binaries archives and build logs to reduce the size of your ISO.</div>
     <li>We produce the squashfs files used by the iso and erase the existing one if necessary as the mksquashfs command is not able to overight existing file.</li>
     <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
 cd /
-for dir in opt bin etc lib root run sbin usr var
+for dir in opt bin etc lib root run sbin usr var home
 do
   [ -f ISO/isolinux/boot/$dir.squashfs ] && rm ISO/isolinux/boot/$dir.squashfs
   mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
@@ -117,25 +127,33 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
   <h2>Options</h2>
    <ol>
     <li>If you want to produce an iso containing your favorites applications, you can then compile them before creating the iso. In the following exemple, we compile the package <b>xorg</b>
-    <pre class="command"><kbd>ports -u</kbd></pre>
-    <p>Once all the ports downloaded, we can start the compilation of our favorit package. For example <b>xorg</b>
-    <pre class="command"><kbd>prt-get depinst xorg</kbd></pre>
+    <pre class="command"><kbd>cd /root/saravane
+cards depends xorg > .list
+pass</kbd></pre>
     <p>The compilation start:</p>
-    <pre class="output">prt-get: installing /usr/ports/console/mtdev
-=======> Downloading 'http://...</pre>
-     <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 4</p>
+    <pre class="output">=======> PKGMK_INSTALL: install
+=======> PKGMK_WORK_DIR: /root/saravane/console/elfutils/work
+=======> PKGMK_SOURCE_DIR: /root/saravane/console/elfutils
+=======> PKGMK_KEEP_SOURCES: no
+=======> PKGMK_CLEAN: yes
+=======> WARNING: FOOTPRINT AND MD5SUM IGNORED
+=======> MD5SUM file will be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: elfutils
+=======> version: 0.161</pre>
+     <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 5</p>
     <li>If you want to reduce the size of the final ISO, you can remove the binaries archives and the logs, they won't be needed. If you want to keep the archives, give the following command</li>
     <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
     <p>no error should be printout</p>
     <p>We can now delete the binaries from the git</p>
-    <pre class="command"><kbd>find /root/saravane/base/ -name "*.pkg.*" -exec rm {} \;</kbd></pre>
+    <pre class="command"><kbd>find /root/saravane/base/ -name "*.cards.*" -exec rm -v {} \;</kbd></pre>
     <p>no error should be printout</p>
     <p>We erase the logs</p>
     <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
     <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-03-15 02:18</p>
+  <p class="updated">Last updated on 2015-03-31 21:19</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

@@ -55,11 +55,13 @@ cd $LFS/root/saravane/base/aaabasicfs</kbd></pre>
       <li>We compile the first package of NuTyX</li>
 <pre class="command"><kbd>/tools/bin/pkgmk -cf ../../../bin/pkgmk.conf.passes</kbd></pre>
       <li>We install aaabasicfs in the NuTyX</li>
-<pre class="command"><kbd>/tools/bin/pkgadd -r $LFS aaabasicfs#*</kbd></pre>
+<pre class="command"><kbd>/tools/bin/pkgadd -r $LFS aaabasicfs1*
+/tools/bin/pkgadd -r $LFS aaabasicfs.man1*</kbd></pre>
       <li>We check if it's present</li>
 <pre class="command"><kbd>/tools/bin/pkginfo -r $LFS -i</kbd></pre>
 should return
-<pre class="output">aaabasicfs 2015.2-1</pre>
+<pre class="output">aaabasicfs 2015.3
+aaabasicfs.man 2015.3</pre>
       <li>We mount all different folders</li>
 <pre class="command"><kbd>mount -v -B /dev $LFS/dev
 mount -vt devpts devpts $LFS/dev/pts
@@ -98,7 +100,7 @@ bash: tput: command not found
 <pre class="command"><kbd>cd /root/saravane/base
 pass</kbd></pre>
 	return
-<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.18.6.tar.xz
+<pre class="output">tar -p -o -C /tmp/work/src -xf /sources/linux-3.19.3.tar.xz
 ...</pre>
     <li>Wait for the following message to appear</li>
     <pre class="output">need to install bash manually</pre>
@@ -106,11 +108,14 @@ pass</kbd></pre>
     <pre class="command"><kbd>exit</kbd></pre>
     <li>Now we go to the right place and install the <b>bash</b> packages:</li>
     <pre class="command"><kbd>cd $LFS/root/saravane/base/bash
-/tools/bin/pkgadd -r $LFS bash#*</kbd></pre>
+for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done</kbd></pre>
      <li>We check if it has been added:</li>
      <pre class="command"><kbd>/tools/bin/pkginfo -r $LFS -i|grep bash</kbd></pre>
 return
-        <pre class="output">bash 4.3.30-2</pre>
+        <pre class="output">bash 4.3.33
+bash.fr 4.3.33
+bash.de 4.3.33
+...</pre>
     <li>We enter again into NuTyX and we finish the job:</li>
     <pre class="command"><kbd>chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
 /bin/bash --login +h</kbd></pre>
@@ -124,7 +129,9 @@ pass</kbd></pre>
 <pre class="output">tar -p -o -C /tmp/work/src -xf /sources/bc-1.06.95.tar.bz2
 ....</pre>
     <li>The compilation ends with the kernel:</li>
-    <pre class="output">=======> Installing 'kernel#...' succeeded.</pre>
+    <pre class="output">ADD: kernel-3.17.6, 1282 files: 100%
+=======> Installing 'kernel1418739487x86_64.cards.tar' succeeded.
+=======> compress kernel1418739487x86_64.cards.tar</pre>
  
     </ol>
     <h2>Explanation to each step</h2>
@@ -155,7 +162,7 @@ source  ~/.bash_profile</kbd></pre>
   <div class="pied_page"><a class="url" href="build-post.html">One pass 2 is done, you can start the post-construction and generation of the iso</a></div>
 <p>
   <hr>
-  <p class="updated">Last updated on 2015-02-07 15:50</p>
+  <p class="updated">Last updated on 2015-03-31 21:14</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
