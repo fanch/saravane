@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+     <title>NuTyX - Produce a customised ISO</title>
+ </head>
+ <body>
+   <table>
+    <tr>
+     <td width="30%">
+         <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+     </td>
+     <td>
+      <nav>
+       <ul>
+            <li><a href=".">Home</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?board=19.0">Forums</a></li>
+            <li><a href="packages.html">Packages</a></li>
+       </ul>
+      </nav>
+     </td>
+    </tr>
+   </table>
+  <hr>
+   <h1> Produce a customised ISO</h1>
+    <div class="note"><img alt="[NOTE IMPORTANTE]" src="../graphics/note.gif"/>All the commands should be enter in the root account</div>
+    <ol>
+    <li>
+     <h2>Get all the tools</h2>
+      <pre class="command"><kbd>git clone git://git.tuxfamily.org/gitroot/nutyx/saravane.git
+wget http://downloads.nutyx.org/EnterChroot
+wget http://downloads.nutyx.org/install-saravane.ash</kbd></pre>
+    </li>
+    <li>
+     <h2>Make shure you have cdrkit and syslinux installed, in worth case:</h2>
+      <pre class="command"><kbd>get cdrkit
+get syslinux</kbd></pre>
+    </li>
+    <li>
+     <h2>A variable will be used during the all process</h2>
+      <p>The LFS variable MUST be defined</p>
+      <pre class="command"><kbd>export LFS=/ISO-MINI</kbd></pre>
+      <p>The chroot will be in the "/ISO-MINI" directory. Up to you to choose another place.</p>
+    </li>
+    <li>
+     <h2>Install the base somewhere</h2>
+      <pre class="command"><kbd>sh install-saravane.ash $LFS</kbd></pre>
+    </li>
+    <li>
+     <h2>Copy the files for the iso</h2>
+      <pre class="command"><kbd>cp -av saravane/iso $LFS/ISO</kbd></pre>
+    </li>
+    <li>
+     <h2>Enter the base</h2>
+      <pre class="command"><kbd>sh EnterChroot</kbd></pre>
+    </li>
+    <li>
+     <h2>Optionnal: if you have everything on your local host</h2>
+      <pre class="command"><kbd>sed -i "s@downloads.nutyx.org@localhost@" etc/cards.conf</kbd></pre>
+    </li>
+    <li>
+     <h2>Create the directories and get the meta datas</h2>
+      <pre class="command"><kbd>mkdir -p /usr/ports/desktop
+mkdir -p /usr/ports/console
+cards sync</kbd></pre>
+    </li>
+    <li>
+     <h2>Install a kernel</h2>
+      <pre class="command"><kbd>get kernel</kbd></pre>
+      <p>ou</p>
+      <pre class="command"><kbd>get kernel-lts</kbd></pre>
+    </li>
+    <li>
+     <h2>Put the kernel and the initrd in the right place</h2>
+      <pre class="command"><kbd>cp -v /boot/kernel-* /ISO/isolinux/kernel
+cp -v /boot/initrd-* /ISO/isolinux/initrd</kbd></pre>
+    </li>
+    <li>
+     <h2>Optionnal: Reset the default adress of the NuTyX mirror</h2>
+      <pre class="command"><kbd>sed -i "s@localhost@downloads.nutyx.org@" etc/cards.conf</kbd></pre>
+    </li>
+    <li>
+     <h2>Flush the binaries archives</h2>
+      <pre class="command"><kbd>find /var/lib/pkg/saravane/ -name "*.cards.*" -exec rm -v {} \;</kbd></pre>
+    </li>
+    <li>
+     <h2>Generate the squashfs files </h2>
+      <pre class="command"><kbd>mkdir -p /ISO/isolinux/boot/
+cd /
+for dir in opt bin etc lib root run sbin usr var home
+do
+  [ -f ISO/isolinux/boot/$dir.squashfs ] && rm ISO/isolinux/boot/$dir.squashfs
+  mksquashfs $dir ISO/isolinux/boot/$dir.squashfs
+done</kbd></pre>
+    </li>
+    <li>
+     <h2>Quit the NuTyX chroot</h2>
+     <pre class="command"><kbd>exit</kbd></pre>
+    </li>
+    <li>
+     <h2>Generate the ISO</h2>
+     <pre class="command"><kbd>sh saravane/scripts/mkiso saravane-`date +%Y%m%d`</kbd></pre>
+    </li>
+    <li>
+     <h2>Conclusion</h2>
+     <p>The size shoul'nd be bigger then 150 MB if you didn't put anything else then a kernel as extra package. You will find the iso in the $LFS directory.</p>
+     <pre class="command"><kbd>ls $LFS</kbd></pre>
+     <pre class="output">bin   dev  home  lib  NuTyX_i686-saravane-20150331.iso     proc  run   srv  tmp  var
+boot  etc  ISO   mnt  NuTyX_i686-saravane-20150331.md5sum  root  sbin  sys  usr</pre>
+    </li>
+   </ol>
+  <hr>
+  <p class="updated">Last updated 2015-04-01 0:05</p>
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+    <a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>    </footer>
+ </body>
+</html>
