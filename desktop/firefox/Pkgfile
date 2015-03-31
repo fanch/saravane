@@ -5,7 +5,7 @@
 
 
 name=firefox
-version=36.0.4
+version=37.0
 release=1
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.bz2)
