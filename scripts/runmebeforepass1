@@ -199,7 +199,7 @@ fc0e8a86a9e5b85e0937e0baada04d3a  ca-certificates-20150201.tar.gz
 d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 87558f3a55c62bc9244b19594f103ffa  sudo-1.8.12.tar.gz
 3c19adf32a8457983b71ff376ef7dafe  pciutils-3.3.0.tar.xz
-7aa40acdd381448ffcb4562b17866b51  cards-0.10.82.96a.tar.gz
+7bd03e7d2ff0c3edffb4c80083b7b440  cards-0.10.82.97.tar.gz
 27f028974e8f067a9791d685b4e0fa90  LVM2.2.02.118.tgz
 ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
 43bd6676f0b404326eee2d63be3cdcfe  rsync-3.1.1.tar.gz
@@ -209,7 +209,7 @@ ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
 1e2f3c1ed468dee02d00c534c002ea10  nfs-utils-1.3.2.tar.bz2
 08f72de6751acfbd0892b5f003922701  openssh-6.8p1.tar.gz
 edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
-eab424a66d52447eecc3fc688967ec03  git-2.3.4.tar.xz
+be8c0bbb0c5ee6ab7cdcffd2c9375fe6  git-2.3.5.tar.xz
 5f4ba23340492548ebf58b0ce7109e69  pkgutils-5.35.6.tar.gz
 a37751f1627a4e0125c8ffadfa85be80  prt-get-5.19.tar.gz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz

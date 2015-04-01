@@ -47,7 +47,6 @@ http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz
 http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
 http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 
-http://anduin.linuxfromscratch.org/sources/other/eudev-2.1.1-manpages.tar.bz2
 http://anduin.linuxfromscratch.org/sources/other/udev-lfs-20140408.tar.bz2
 
 http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz
@@ -63,11 +62,10 @@ https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.t
 https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.1.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-20.tar.xz
 https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.19.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-2.3.4.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-manpages-2.3.4.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.4.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.3.5.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-manpages-2.3.5.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.5.tar.xz
 https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.3.1.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.3.0.tar.xz
 https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz
 https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v3.19.tar.xz
 https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
@@ -78,10 +76,9 @@ http://crux.nu/files/tools/ports/ports-1.5.tar.gz
 http://downloads.nutyx.org/files/aaabasicfs-20150330.tar.xz
 http://downloads.nutyx.org/files/nutyx-basicfs-20150330.tar.bz2
 http://downloads.nutyx.org/files/file-5.22.tar.gz
-http://downloads.nutyx.org/files/cards-0.10.82.96a.tar.gz
+http://downloads.nutyx.org/files/cards-0.10.82.97.tar.gz
 http://downloads.nutyx.org/files/prt-get-5.19.tar.gz
 http://downloads.nutyx.org/files/rsync-3.1.1.tar.gz
-http://downloads.nutyx.org/files/nutyx-basicfs-20150329.tar.bz2
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-acl-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
