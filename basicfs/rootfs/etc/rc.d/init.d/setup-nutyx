@@ -1758,7 +1758,7 @@ CONSOLE="/etc/sysconfig/console"
 LOCALE="/etc/profile.d/i18n.sh"
 LOCALTIME="/etc/localtime"
 ZONEINFO="/usr/share/zoneinfo/"
-NETWORK="/etc/sysconfig/ifconfig.eth*"
+NETWORK="/etc/sysconfig/ifconfig.*"
 CLOCK="/etc/sysconfig/clock"
 
 SETUP_INITRD="no"

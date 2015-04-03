@@ -7,7 +7,7 @@ http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream
 http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
 http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.21-fhs-1.patch
-http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2a-fix_parallel_build-1.patch
+http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2a-fix_parallel_build-2.patch
 
 http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.12/e2fsprogs-1.42.12.tar.gz
@@ -73,8 +73,8 @@ https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reise
 http://crux.nu/files/pkgutils-5.35.6.tar.gz
 http://crux.nu/files/tools/ports/ports-1.5.tar.gz
 
-http://downloads.nutyx.org/files/aaabasicfs-20150330.tar.xz
-http://downloads.nutyx.org/files/nutyx-basicfs-20150330.tar.bz2
+http://downloads.nutyx.org/files/aaabasicfs-20150403.tar.xz
+http://downloads.nutyx.org/files/nutyx-basicfs-20150403.tar.bz2
 http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.82.97.tar.gz
 http://downloads.nutyx.org/files/prt-get-5.19.tar.gz
