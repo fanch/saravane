@@ -463,7 +463,7 @@ dhcpcd diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
 gettext glibc gmp gperf grep grub gzip dialog mdadm \
 iana-etc inetutils iproute2 kbd kmod \
 libarchive libcap libpipeline lvm2 mpc mpfr ncurses openssl pam \
-procps-ng psmisc readline lzo \
+procps-ng psmisc readline lzo rsync perl ports \
 reiserfsprogs sed shadow squashfs sudo \
 sysklogd sysvinit tar tzdata util-linux xfsprogs xz zlib \
 cards ca-certificates
