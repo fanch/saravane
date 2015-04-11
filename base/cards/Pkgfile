@@ -4,7 +4,7 @@
 # Packager: tnut at nutyx dot org
 
 name=cards
-version=0.10.83
+version=0.10.85
 release=1
 
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
