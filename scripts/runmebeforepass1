@@ -144,7 +144,7 @@ do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
    sed -i "/sysklogd-/d" $LFS/sources/$i
    sed -i "/xz-/d" $LFS/sources/$i
 done
-echo "61315ac99703229d410bddc11e5b4a4a  aaabasicfs-20150330.tar.xz
+echo "f26c5ec47fdd4da6c34fa83e7016a736  aaabasicfs-20150413.tar.xz
 9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
 a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
 d9f3303f802a5b6b0bb73a335ab89d66  binutils-2.25.tar.bz2
@@ -152,7 +152,6 @@ c342201de104cc9ce0a21e0ad10d4021  bison-3.0.4.tar.xz
 97a86a21c92ac456641a97f712ea40ac  dejagnu-1.5.2.tar.gz
 660f4ac9340834a231d1516746d03d28  libpipeline-1.4.0.tar.gz
 a2706a1413723b6b82eecb7d6982763c  eudev-3.0.tar.gz
-5be15528788635818104146957171f5d  eudev-2.1.1-manpages.tar.bz2
 dd7dab7a5fea97d2a6a43f511449b7cd  expat-2.1.0.tar.gz
 cc825fa64bc7306a885f2fb2268d3ec5  groff-1.22.3.tar.gz
 a1043102fbc7bcedbf53e7ee3d17ab91  grub-2.00.tar.xz
@@ -201,7 +200,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 3c19adf32a8457983b71ff376ef7dafe  pciutils-3.3.0.tar.xz
 24b4d5f97aff73c3e547faaed2fa19d7  cards-0.10.86.tar.gz
 27f028974e8f067a9791d685b4e0fa90  LVM2.2.02.118.tgz
-ffb716b0e9327968e7200d519e1d4c0d  dhcpcd-6.7.1.tar.bz2
+2a60bd16cf04c9479b895d3f9223bc95   dhcpcd-6.8.1.tar.bz2
 43bd6676f0b404326eee2d63be3cdcfe  rsync-3.1.1.tar.gz
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
 8cd41a5ef5a9b50d0fb6abb98af15368  libtirpc-0.2.5.tar.bz2

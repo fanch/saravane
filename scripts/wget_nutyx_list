@@ -73,7 +73,7 @@ https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reise
 http://crux.nu/files/pkgutils-5.35.6.tar.gz
 http://crux.nu/files/tools/ports/ports-1.5.tar.gz
 
-http://downloads.nutyx.org/files/aaabasicfs-20150403.tar.xz
+http://downloads.nutyx.org/files/aaabasicfs-20150413.tar.xz
 http://downloads.nutyx.org/files/nutyx-basicfs-20150403.tar.bz2
 http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.86.tar.gz
@@ -102,7 +102,7 @@ http://sites.google.com/site/e3editor/Home/e3-2.8.tgz
 http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
 http://www.openssl.org/source/openssl-1.0.2a.tar.gz
 http://curl.haxx.se/download/curl-7.41.0.tar.bz2
-http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.7.1.tar.bz2
+http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.8.1.tar.bz2
 http://linux-pam.org/library/Linux-PAM-1.1.8.tar.bz2
 ftp://dickey.his.com/dialog/dialog-1.2-20140911.tgz
 ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.2.2.tar.gz
