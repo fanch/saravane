@@ -8,10 +8,10 @@ PKGMK_NO_STRIP="yes"
 
 name=kernel
 version=3.19.3
-release=1
+release=2
 _version=${version%.*}
 
-AAABASICFS=20150330
+AAABASICFS=20150413
 
 source=(http://downloads.nutyx.org/files/aaabasicfs-${AAABASICFS}.tar.xz
 	http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
