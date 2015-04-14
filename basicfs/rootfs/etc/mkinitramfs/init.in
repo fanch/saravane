@@ -42,7 +42,7 @@ do_mount_root()
        no_device $device
        problem
    done
-   if  [ "$rootfstype" == "auto" ]; then
+   if  [ "$rootfstype" != "auto" ]; then
 	rootfstype=`print_file_system $device`
    fi
    if [ "$rootfstype" == "no" ]; then
@@ -221,13 +221,13 @@ if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then
     fi
   fi
 fi
-if [ -n "$rootdelay" ] ; then
-	echo "... wait $rootdelay seconds"
-	sleep "$rootdelay"
-fi
 if [ -d /lib/modules ]; then
         do_start_localnet
         do_start_udev
+fi
+if [ -n "$rootdelay" ] ; then
+	echo "... wait $rootdelay seconds"
+	sleep "$rootdelay"
 fi
 if [ "$root" == "" ]; then
 	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
