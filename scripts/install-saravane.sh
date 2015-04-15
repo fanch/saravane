@@ -486,7 +486,8 @@ if [ -z ${BASH_VERSION} ]; then
 fi
 # Checking bash version
 if [ ${BASH_VERSION} -lt 4333 ]; then
-	error " Please use 'bash' version 4.3.33 or newer"
+	boot_mesg " You not use 'bash' version 4.3.33 or newer..."
+	echo_warning
 fi
 # Checking wget
 if ! (`which wget > /dev/null`); then
@@ -515,85 +516,39 @@ DEVICE=$1
 
 # Welcome
 
-                        echo "*******************************************"
+echo "*******************************************"
 if [ "$MIG" == "0" ]; then
-	if [ ! -z "${KEYMAP}" ] || [ -f /etc/sysconfig/console ]; then
-		if [ $# -lt 2 ]; then
-			echo "* You didn't specify enough arguments     *"
-			echo "* Argument 1: Destination partition       *"
-			echo "* Argument 2: Filesystem to be used       *"
-			echo "*                                         *"	
-			echo "* Please re-enter the command with the    *"
-			echo "* corrects arguments                      *"
-			echo "*******************************************"
-			echo ""
-			echo "example: install-$version.ash /dev/sda1 ext3"
+	if [ $# -lt 2 ]; then
+		echo "* You didn't specify enough arguments     *"
+		echo "* Argument 1: Destination partition       *"
+		echo "* Argument 2: Filesystem to be used       *"
+		echo "*                                         *"	
+		echo "* Please re-enter the command with the    *"
+		echo "* corrects arguments                      *"
+		echo "*******************************************"
+		echo ""
+		echo "example: install-$version.ash /dev/sda1 ext3"
 
-			exit 1
-		fi
-		if [ ! -z "${KEYMAP}" ]; then
-			clavier=$KEYMAP
-		else
-			clavier=`grep "^KEYMAP" /etc/sysconfig/console|sed 's/KEYMAP=//'|sed 's/.map//'`
-		fi
-	else
-		if [ $# -lt 3 ]; then
-			echo "* You didn't specify enough arguments     *"
-			echo "* Argument 1: Destination partition       *"
-			echo "* Argument 2: Filesystem to be used       *"
-			echo "* Argument 3: Keyboard layout             *"
-			echo "*                                         *"
-			echo "* Please re-enter the command with the    *"
-			echo "* corrects arguments                      *"	
-			echo "*******************************************"
-			echo ""
-			echo "example: install-$version.ash /dev/sda1 ext4 fr-latin1"
-			exit 1
-		fi
-		clavier=$3
+		exit 1
 	fi
 	echo "Le système de fichier sera $2"
 	echo_info
 	FILESYSTEM=$2
 else
-	if [ ! -z "${KEYMAP}" ] || [ -f /etc/sysconfig/console ]; then
-		clavier=`grep "^KEYMAP" /etc/sysconfig/console|sed 's/KEYMAP=//'|sed 's/.map//'`
-		if [ $# -lt 1 ]; then
-                        echo "* You didn't specify enough arguments     *"
-                        echo "* Argument 1: Folder destionation         *"
-                        echo "*                                         *"
-                        echo "* Please re-enter the command with the    *"
-                        echo "* corrects arguments                      *"
-                        echo "*******************************************"
-                        echo ""
-			echo "example: install-$version.ash /chroot"
-                        exit 1
-		fi
-		if [ ! -z "${KEYMAP}" ]; then
-                        clavier=$KEYMAP
-                else
-                        clavier=`grep "^KEYMAP" /etc/sysconfig/console|sed 's/KEYMAP=//'|sed 's/.map//'`
-                fi
-	else
-                if [ $# -lt 2 ]; then
-                        echo "* You didn't specify enough arguments     *"
-                        echo "* Argument 1: Folder destionation         *"
-                        echo "* Argument 2: Keyboard layout             *"
-                        echo "*                                         *"
-                        echo "* Please re-enter the command with the    *"
-                        echo "* corrects arguments                      *"
-                        echo "*******************************************"
-                        echo ""
-                        echo "example: install-$version.ash /chroot fr-latin1"
-                        exit 1
-		fi
-		clavier=$2
-	fi	
+	if [ $# -lt 1 ]; then
+		echo "* You didn't specify enough arguments     *"
+		echo "* Argument 1: Folder destionation         *"
+		echo "*                                         *"
+		echo "* Please re-enter the command with the    *"
+		echo "* corrects arguments                      *"
+		echo "*******************************************"
+		echo ""
+		echo "example: install-$version.ash /chroot"
+		exit 1
+	fi
 fi
 TMP=`mktemp -d`
-echo $clavier > $TMP/locale.check
 
-CLAVIER=$clavier
 
 # Checking the MountFolder
 if ! [ -d $MountFolder ]; then
