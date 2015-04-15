@@ -70,13 +70,13 @@
    <p>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <b>le tiret</b>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</p>
    <p>Nous voilà donc en root, (la couleur du prompt est passée en rouge)</p>
    <p>Nous allons installer une autre nutyx dans un repertoire et nous y accederons en chroot. Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</p>
-   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash</kbd></pre>
+   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.sh</kbd></pre>
    <p>Optionnellement on vérifie la somme md5 du script:</p>
-   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.ash.md5sum
-md5sum -c install-saravane.ash.md5sum</kbd></pre>
-   <pre class="output">install-saravane.ash: Réussi</pre>
+   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.sh.md5sum
+md5sum -c install-saravane.sh.md5sum</kbd></pre>
+   <pre class="output">install-saravane.sh: Réussi</pre>
    <p>On peut maintenant lancer l'installation sans grosse crainte</p>
-   <pre class="command"><kbd>sh install-saravane.ash /chroot</kbd></pre>
+   <pre class="command"><kbd>bash install-saravane.sh /chroot</kbd></pre>
    <p>Et l'installation commence.</p>
    <pre class="output">This installation will be on /chroot                                     [ INFO ]
 *******************************************
@@ -554,7 +554,7 @@ base /root/mes_paquets_a_conserver</pre>
    <p>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</p>
 <pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
     <hr>
-    <p class="updated">Dernière mise à jour 24-03-2015 15:04</p>
+    <p class="updated">Dernière mise à jour 15-04-2015 20:56</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

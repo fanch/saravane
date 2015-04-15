@@ -445,9 +445,9 @@ done
 getPackageName()
 {
 local BUILD_DATE EXT HEAD
-wget $Packagebase/${1}/MD5SUM  -O $TMP/MD5SUM > /dev/null  2>&1
+wget $Packagebase/${1}/.PKGREPO  -O $TMP/.PKGREPO > /dev/null  2>&1
 
-HEAD=`head -1 $TMP/MD5SUM`
+HEAD=`head -1 $TMP/.PKGREPO`
 if [ "${HEAD:10:1}" == ":" ]; then
 	BUILD_DATE="`echo $HEAD|cut -d ":" -f1`"
 	EXT="`echo $HEAD|cut -d ":" -f2`"
