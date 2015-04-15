@@ -448,9 +448,9 @@ local BUILD_DATE EXT HEAD
 wget $Packagebase/${1}/.PKGREPO  -O $TMP/.PKGREPO > /dev/null  2>&1
 
 HEAD=`head -1 $TMP/.PKGREPO`
-if [ "${HEAD:10:1}" == ":" ]; then
-	BUILD_DATE="`echo $HEAD|cut -d ":" -f1`"
-	EXT="`echo $HEAD|cut -d ":" -f2`"
+if [ "${HEAD:10:1}" == "#" ]; then
+	BUILD_DATE="`echo $HEAD|cut -d "#" -f1`"
+	EXT="`echo $HEAD|cut -d "#" -f2`"
 	echo "${1}${BUILD_DATE}${ARCH}${EXT}"
 fi
 }
