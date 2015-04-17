@@ -45,11 +45,11 @@
    <h3>Qu'est-ce qu'un scénario <img src="../graphics/confused.gif" alt="" /> dans le contexte d'une distribution linux ?</h3>
     <p>Ne demandez pas (encore) à google, je ne crois pas que ce concept existe déjà sur d'autres distributions <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <p>
     <p>C'est un concept que j'ai imaginé en crééant le gestionnaire de paquets <b>cards</b>.</p>
-    <p>Au fil des années, je me suis rendu compte que le public cible pour l'utilisation d'une distribution comme NuTyX est très très large. Chaque utilisateur (plus ou moins averti) souhaite évoluer dans une distribution de sa manière.</p> 
-    <p>La plus part des utilisateurs se dirigeant vers NuTyX souhaitent compiler leurs paquets à leur guise. Certains ne choisiront peut-être pas toutes les sections proposées par défaut. D'autres utilisateurs souhaiteront mélanger les paquets standards proposé en binaire avec leur propres paquets. Toutes ces approchent sont différentes, je les appelle <b>scénario</b> d'utilisation de la NuTyX.</p>
+    <p>Au fil des années, je me suis rendu compte que le public cible pour l'utilisation d'une distribution comme NuTyX était très très large. Chaque utilisateur (plus ou moins averti) souhaite évoluer sur sa distribution à sa manière.</p> 
+    <p>La plus part des utilisateurs se dirigeant vers NuTyX souhaitent compiler leurs paquets à leur guise. Certains ne choisiront peut-être pas toutes les sections proposées par défaut. D'autres utilisateurs souhaiteront mélanger les paquets standards proposés en binaire avec leur propres paquets. Toutes ces approchent sont différentes, je les appelle <b>scénarios</b> d'utilisation de la NuTyX.</p>
    <h3>Quels sont les scénarios possibles (cad ce que je peux imaginer aujourd'hui)</h3>
     <ol>
-     <li><a href="#21">Scénario <b>A</b></a>: Je ne veux rien compiler, les binaires disponibles me suffisent<img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />. Cela peut vous paraître absurde d'en parler ici, mais comme vous êtes très interessés par le sujet, sachez que ce scenario vous permet de garder votre distribution favorite la plus légère possible.</li>
+     <li><a href="#21">Scénario <b>A</b></a>: Je ne veux rien compiler, les binaires disponibles me suffisent<img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />. Cela peut vous paraître absurde d'en parler ici, mais comme vous êtes très interessés par le sujet, sachez que ce scénario vous permet de garder votre distribution favorite la plus légère possible.</li>
      <li><a href="#22">Scénario <b>B</b></a>: Les binaires disponibles ne me suffisent pas, je voudrais ajouter un ou deux paquets.</li>
      <li><a href="#23">Scénario <b>C</b></a>: Je ne souhaite pas installer les binaires des sections <b>console</b> et <b>desktop</b>. Je les compile moi-même. </li>
      <li><a href="#24">Scénario <b>D</b></a>: Je souhaite utiliser les binaires disponibles des sections <b>console</b> et <b>desktop</b>. Je souhaite que mes ports personnels utilisent les dépendances provenant des binaires déjà disponibles. Seul mes ports personnels doivent être compilés.</li>
@@ -77,7 +77,8 @@ arch x86_64
 locale fr
 locale de
 base /var/lib/pkg/saravane/base</pre>
-    <p>Les trois sections standards <b>base</b>, <b>console</b> et <b>desktop</b> sont activées. La machine est une 64 bits <b>x86_64</b>. Les langues qui doivent être installées sont le français <b>fr</b> et l'allemand <b>de</b>. Le dossier contenant les paquets de base est celui de la section standard <b>base</b>. <b>base /var/lib/pkg/saravane/base</b>. 
+    <p>Les trois sections standards <b>base</b>, <b>console</b> et <b>desktop</b> sont activées. La machine est une 64 bits <b>x86_64</b>. Les langues qui doivent être installées sont le français <b>fr</b> et l'allemand <b>de</b>. Le dossier contenant les paquets de base est celui de la section standard <b>base</b>.</p>
+    <pre class="output">base /var/lib/pkg/saravane/base</b></pre>
     <h4>Le fichier /etc/pkgmk.conf</h4>
      <p>Pour le scénario <b>A</b>, le fichier <b>/etc/pkgmk.conf</b> n'est pas présent puisque vous ne devez rien compiler. Les outils de développement ne sont pas présents.</p>
     <h4>Conclusion</h4>
@@ -100,9 +101,7 @@ base /var/lib/pkg/saravane/base</pre>
       <pre class="output">/var/lib/pkg/saravane/desktop/.PKGREPO
 /var/lib/pkg/saravane/console/.PKGREPO
 /var/lib/pkg/saravane/base/.PKGREPO</pre>
-cards install cards.devel</kbd></pre>
-      <pre class="output">
-</pre>
+      <pre class="command"><kbd>cards install cards.devel</kbd></pre>
      <h4>Le fichier /etc/cards.conf</h4>
       <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ne <u> doit jamais</u> être mis à jour par la commande <b>cards sync</b>, donc on ne doit pas spécifier d'adresse URL associées.</p>
       <p>Les sections binaires sont activées, cela me permettra d'ajouter facilement les éventuelles dépendances manquantes...</p>
@@ -183,7 +182,8 @@ PKGMK_CLEAN="yes"</pre>
       <p>Voilà pour ce qui est de la configuration du fichier <b>/etc/pkgmk.conf</b>
      <h4>Conclusion</h4>
       <p><a href="#4">On verra plus tard, comment créer, compiler et installer un paquet</a> <u>sans dépendances</u> ou dont les dépendances sont déjà installées. Pour ce scénario, la seule commande à retenir est:
-      <pre class="command"><kbd>pkgmk</kbd></pre>
+      <pre class="command"><kbd>pkgmk
+pkgadd</kbd></pre>
       <p>Cette commande sera <u>toujours</u> lancée dans le dossier de la recette.</p>
     <a name='23'></a>
     <h3>Scénario C</h3>
@@ -287,7 +287,8 @@ Updating collection base
  Checkout aaabasicfs/Pkgfile
 ...</pre>
       <p><a href="#5">On verra plus tard, comment créer, compiler et installer une ensemble de paquets</a>. Pour ce scénario, les commandes à retenir sont:</p>
-      <pre class="command"><kbd>ports -d
+      <pre class="command"><kbd>ports -u
+ports -d
 cards depends
 cards depcreate
 cards level</kbd></pre>
@@ -408,6 +409,9 @@ rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
    <p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</p>
    <p>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></p>
    <a name='41'></a>
+   <h3>Création du dossier</h3>
+    <pre class="command"><kbd>mkdir -p /usr/ports/personnel/joe</kbd></pre>
+   <a name='42'></a>
    <h3>Création de la recette</h3>
     <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>, tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
     <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
@@ -427,7 +431,7 @@ make
 make DESTDIR=$PKG install
 }
 EOF</kbd></pre>
-   <a name='42'></a>
+   <a name='43'></a>
    <h3>Compilation de la recette</h3>
     <p>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></p>
     <pre class="command"><kbd>cd /usr/ports/personnel/joe
@@ -464,7 +468,7 @@ make[2]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
 make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
 =======> WARNING: Footprint ignored.</pre>
 
-   <a name='43'></a>
+   <a name='44'></a>
    <h3>Installer mon paquet</h3>
     <p>Pour installer notre paquet, il suffit de taper la commande:</p>
     <pre class="command"><kbd>pkgadd joe1414362465x86_64.cards.tar</kbd></pre>
@@ -604,7 +608,7 @@ Local Directory: /chroot/usr/ports/personnel</pre>
     <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: joe-3.7, 71 files: 100 %</pre>
  <hr>
- <p class="updated">Dernière mise à jour 15-04-2015 20:56</p>
+ <p class="updated">Dernière mise à jour 18-04-2015 00:44</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
