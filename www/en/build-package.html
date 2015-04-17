@@ -1,289 +1,65 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <!-- En-tête de la page -->
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="../css/nutyx.css" />
-  <title>NuTyX - Comment construire un paquet </title>
- </head>
- <body>
-    <header>
-      <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
-    </header>
-    <nav>
+  <head>
+   <!-- En-tête de la page -->
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="../css/nutyx.css" />
+   <title>NuTyX - How to build a package ? </title>
+  </head>
+  <body>
+    <table>
+     <tr>
+      <td>
+       <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
         <ul>
             <li><a href=".">Home</a></li>
-            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forums</a></li>
-            <li><a href="irc.html">IRC channel</a></li>
+            <li><a href="information.html">Information</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="installation.html">Installation</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="https://twitter.com/nutyx_linux">Twitter</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="packages.html">Packages</a></li>
+            <li><a href="http://forums.nutyx.org/index.php?action=recent">Forum</a></li>
         </ul>
-    </nav>
-<h1><span>Comment construire un paquet ?</span></h1>
-<div class="introduction">Nous connaissons les <a href="/articles/view.php?id=131&amp;action=pourquoi-vouloir-contribuer">raisons de contribuer</a>, les  <a href="/articles/view.php?id=137&amp;action=quelle-sont-les-connaissances-informatiques-necessaires-pour-contribuer">connaîssances requises</a>,les <a href="/articles/view.php?id=132&amp;action=quels-sont-les-outils-a-votre-disposition">outils à notre disposition</a>, le <a href="/articles/view.php?id=123&amp;action=syntaxe-minimale-d-un-port-recette-de-fabrication">format minimum d'une recette</a> et enfin quel sont <a href="/articles/view.php?id=92&amp;action=depot-des-ports">les recettes existantes</a>. Il est temps de passer à l'action et de construire son premier paquet dans les règles de l'art et de NuTyX.</div>
-<div class="description"><h4>Sommaire</h4>
-<p>Quel paquet choisir</p>
-<p>Construire un environnement isol&eacute; ausi appel&eacute; chroot</p>
-<p>Mise en service de la chroot</p>
-<p>Configurer la chroot</p>
-<p>Mon premier paquet</p>
-<p>Installer mon premier paquet sur la NuTyX principale</p>
-<h4>Quel paquet choisir ?</h4>
-<p>Choix tr&egrave;s difficile, il serait en tout cas bon de prendre 4 ou 5 exemples cad:</p>
-<p>1. un paquet sans d&eacute;pendance pour commencer en douceur... <img src="/included/tiny_mce/plugins/emotions/img/smiley-laughing.gif" border="0" alt="Laughing" title="Laughing" /></p>
-<p>2. un pilote xorg pour sa sp&eacute;cificit&eacute; dans l'&eacute;criture de la recette.</p>
-<p>3. un module perl, car il en existe des milliers</p>
-<p>4. un module python car comme pour perl, il en existe des milliers</p>
-<p>5. et enfin une application pour KDE car en g&eacute;n&eacute;ral ce sont celles qui n&eacute;cessite le plus grand nombre d'options dans le code de la recette et le plus grand nombre de d&eacute;pendances. Si vous ne me croyez pas je vous invite &agrave; tester la commande</p>
-<pre>[ ~ ] pkg-get quickdep konsole
-libtiff libjpeg lcms libmng dbus...
-Nombre de d&eacute;pendances : 193
-</pre>
-<p>&nbsp; <img src="/skins/_reference/smileys/confused.gif" alt="" />  193 d&eacute;pendances ...  <img src="/skins/_reference/smileys/confused.gif" alt="" /> </p>
-<p>Je vous rassure tout de suite, vous n'aurez pas &agrave; sp&eacute;cifier les 193 d&eacute;pendances. <img src="/included/tiny_mce/plugins/emotions/img/smiley-tongue-out.gif" border="0" alt="Tongue out" title="Tongue out" /></p>
-<h4>Construire un environnement isol&eacute; appel&eacute; "chroot"</h4>
-<p>Pour pouvoir construire une recette en toute tranquilit&eacute;e c'est &agrave; dire sans risque de "casser" la NuTyX qu'on utilise tous les jours, il est INDISPENSABLE de se construire un environnement qui sera isol&eacute; de votre NuTyX sur laquelle vous &ecirc;tes actuellement. On l'appelera d&eacute;sormais la<em><strong> chroot</strong></em>.</p>
-<p>Vous allez voir que l'on a tout pr&eacute;vu pour vous simplifier la vie dans la construction d'une chroot.</p>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> AVERTISSEMENT: A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez tr&egrave;s attentif lorsque vous tapez les commandes.</div><p>Commen&ccedil;ons donc par basculer en <strong><span style="color: #ff0000;">compte root</span></strong></p>
-<pre>[ ~ ] su -
-Password:
-</pre>
-<p>J'esp&egrave;re que vous vous rappelez du mot de passe <img src="/included/tiny_mce/plugins/emotions/img/smiley-cool.gif" border="0" alt="Cool" title="Cool" />. Notez bien <strong>le tiret</strong>, il est indispensable pour que vous ex&eacute;cutiez les fichiers de configuration du compte root. Ceci a d&eacute;j&agrave; expliqu&eacute; dans <a href="/articles/view.php?id=169&amp;action=les-commandes-de-base--." title="Voir la page" class="article">Les commandes de base ...</a>.</p>
-<p>Nous voil&agrave; donc en root, (la couleur du prompt est pass&eacute;e en rouge)</p>
-<p>Une chroot consiste tout simplement &agrave; installer une NuTyX dans un dossier au lieu d'une partition. Je propose de choisir le dossier <em><strong>/chroot</strong></em> comme dossier de destination, la commande est donc:</p>
-<pre>install-sekong.5.ash /chroot
-
-</pre>
-<p><ul><li>Il est possible que vous obteniez des erreurs en raison du dossier  /chroot/srv/NuTyX/test inexistant.</li></ul></p>
-<p>Dans ce cas, vous supprimez la ligne test dans le fichier <strong><em>/etc/pkg-get.conf</em></strong> et supprimez &eacute;galement le dossier <strong><em>/chroot</em></strong> avant de retenter la commande ci-dessus.</p>
-<pre>cd /
-rm -r chroot
-</pre>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> J'ai volontairement diviser la manipulation en 2 commandes. Il est en effet JAMAIS recommand&eacute; de supprimer un dossier &agrave; la racine de votre syst&egrave;me de fichiers en sp&eacute;cifiant le chemin absolu</div><p><ul><li>Si vous avez le message:</li></ul></p>
-<pre>Le script d'installation peut d&eacute;sormais utiliser dialog
-pour pouvoir faire une installation personnalis&eacute;e.
-Si vous souhaitez profiter de cette fonctionnalit&eacute;e,
-veuillez installer l'application dialog
-
-Par ailleurs vous avez choisi de compilez votre propre kernel
-
-Souhaitez-vous continuer sans dialog et sans kernel ? Tapez o pour continuer
-</pre>
-<p>C'est parfait, tapez la lettre <em><strong>o</strong></em></p>
-<p>Et l'installation commence.</p>
-<p>Si vous avez l'application dialog install&eacute;e, vous arriverez sur le choix de kernel. Comme il n'est pas necessaire d'installer de kernel dans la chroot: Ne selectionnez RIEN: Pas de kernel, pas d'environnement graphique.E</p>
-<p>Une fois l'installation termin&eacute;e, le script vous demande un mot de passe pour le compte root, vous pouvez l'ignorer. Si vous avez proc&eacute;d&eacute; comme expliqu&eacute; plus haut (sans installation de kernel), voici ce que vous devriez obtenir:</p>
-<pre><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b>*
-
-Vous &ecirc;tes TOUJOURS dans la NuTyX sekong.1.
-
-Vous avez choisis de compiler votre kernel.
-....
-
-Pour sortir de la NuTyX sekong, tapez:
-
-exit
-<b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b><b>**</b>*
-</pre>
-<p>Tapez exit pour sortir de la chroot fraichement install&eacute;e.</p>
-<h4>Mise en service de la chroot</h4>
-<p>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous &ecirc;tes toujours en root tapez donc ceci dans votre terminal:</p>
-<pre class="userinput">cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
-echo "Entrer dans la chroot..."
-mount -v -B /dev /chroot/dev
-mount -vt devpts devpts /chroot/dev/pts
-mount -vt proc proc /chroot/proc
-mount -vt sysfs sysfs /chroot/sys
-cp /etc/resolv.conf /chroot/etc/resolv.conf
-chroot /chroot /usr/bin/env -i \
-HOME=/root TERM="$TERM" PS1='\u@\h:\w\$ ' \
-PATH=/bin:/usr/bin:/sbin:/usr/sbin:/root/bin \
-/bin/bash -l
-umount /chroot/proc
-umount /chroot/sys
-umount /chroot/dev/pts
-umount /chroot/dev
-echo "Sortie de la chroot..."
-EOF
-</pre>
-<p>Ce petit script vous permettra d'entrer et de sortir tr&egrave;s simplement de votre chroot. Notez bien le /binbash -l qui permet de se comporter comme un login et donc de r&eacute;cup&eacute;rer toutes les variables indispensables. Il vous reste juste &agrave; le rendre executable:</p>
-<pre>chmod -v 755 /root/bin/EntrerChroot
-le mode de &laquo;&nbsp;bin/EntrerChroot&nbsp;&raquo; a &eacute;t&eacute; modifi&eacute; de 0644 (rw-r--r--) &agrave; 0755 (rwxr-xr-x)
-</pre>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> D&eacute;sormais pour entrer dans votre chroot, utilisez UNIQUEMENT la commande en root:</div><pre>EntrerChroot</pre>
-<h4>Configurer la chroot</h4>
-<p>Ca y est nous y sommes, nous pouvons commencer &agrave; travailler dans l'environnement, vous &ecirc;tes maintenant dans la chroot si non tapez en root</p>
-<pre>EntrerChroot
-</pre>
-<p>Le gros avantage de travailler dans une chroot est que si&nbsp; vous fa&icirc;tes une manipulation douteuse et comme vous &ecirc;tes en root, ce ne sera jamais tr&egrave;s grave.</p>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'&ecirc;tes pas dans la chroot, et que vous tapez certaines commandes mentionn&eacute;e dans cet article,&nbsp; je ne peux vous garantir du r&eacute;sultat et donc du fonctionnement de votre NuTyX.</div><p>Nous avons donc l'environnement et les outils, il ne nous reste plus qu'&agrave; choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <strong><em>/etc/prt-get.conf</em></strong></p>
-<p><div class="note"><img src="/skins/_reference/codes/note.gif" width="10" height="10" alt="*" /> <p>Il est important de choisir un dossier diff&eacute;rent de ceux fournis par NuTyX cad les dossiers:<em><strong> /usr/ports/base</strong></em> et <em><strong>/usr/ports/extra</strong></em>. Sinon, &agrave; la prochaine demande de synchronisation des ports NuTyX via la commande:</p>
-<pre>ports -u</pre>
-vos recettes seront supprim&eacute;es.</div></p>
-<p>Je propose d'utiliser le dossier <strong><em>/usr/ports/personnel. </em></strong>Si celui-ci n'existe pas encore, cr&eacute;ez le dossier<strong><em>:</em></strong></p>
-<pre>mkdir -pv /usr/ports/personnel
-</pre>
-<p>V&eacute;rifiez le contenu du fichier <em><strong>/etc/prt-get.conf</strong></em> le cas &eacute;ch&eacute;ant, on ajoute ensuite l'information dans le fichier de configuration <strong><em>/etc/prt-get.conf. </em></strong>Celui-ci doit ressembler &agrave; ceci</p>
-<p>&nbsp;</p>
-<pre><code>#
-#</code> prt-get conf
-###
-
-# note: L'ordre importe: Le premier paquet qui sera trouv&eacute;, sera utilis&eacute;
-prtdir /usr/ports/personnel
-prtdir /usr/ports/base
-prtdir /usr/ports/extra
-...
-</pre>
-<div class="note"><img src="/skins/_reference/codes/note.gif" width="10" height="10" alt="*" /> Vous noterez donc que ce sont les paquets trouv&eacute;s dans /usr/ports/personnel qui seront trait&eacute;s en premier lieu m&ecirc;me si le m&ecirc;me port existe dans les dossiers base ou extra</div><p>Pour que vous puissiez installez vos paquets binaires dans votre NuTyX principale, il est important de v&eacute;rifier quelques variables dans le fichier <strong><em>/etc/pkgmk.conf</em></strong></p>
-<p>Si ce n'est pas encore le cas, remplacez</p>
-<pre># PKGMK_COMPRESSION_MODE="gz"</pre>
-<p>par</p>
-<pre>PKGMK_COMPRESSION_MODE="xz"</pre>
-<p>Pour que les paquets binaires atterissent dans le dossier /srv/NuTyX/release, on ajuste la variable:</p>
-<pre>PKGMK_PACKAGE_DIR="/srv/www/htdocs/nutyx/release"</pre>
-<p>Optionnellement vous pouvez &eacute;galement ajuster les dossiers et optimisation dans le fichier <strong><em>/etc/pkgmk.conf</em></strong>. Si vous ne changez rien, sachez que les sources des paquets binaires seront dans le dossier <strong><em>/tmp</em></strong>.</p>
-<p>&nbsp;</p>
-<p><code> <img src="/skins/_reference/smileys/yippee.gif" alt="yippee" /> </code> Tout est en place, on peut maintenant construire son premier paquet.</p>
-<h4>Mon premier paquet</h4>
-<p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe d&eacute;j&agrave;, peu importe, l'id&eacute;e ici est de se faire la main sur un paquet simple.</p>
-<p>Pour qu'une recette se compile et s'installe correctement il est&nbsp; important de donner au nom du dossier de la recette, le m&ecirc;me nom que celui d&eacute;fini par la variable name. Dans notre cas, le nom est: <strong>joe</strong></p>
-<p>1. Cr&eacute;ation du dossier du paquet joe</p>
-<pre>mkdir -pv /usr/ports/personnel/joe</pre>
-<p>2. Cr&eacute;ation de la recette, si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="/included/tiny_mce/plugins/emotions/img/smiley-laughing.gif" border="0" alt="Laughing" title="Laughing" /></p>
-<pre>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
-name=joe
-version=3.7
-release=1
-source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
-build() {
-cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc
-make
-make DESTDIR=$PKG install
-}
-EOF
-</pre>
-<p>Vous venez de cr&eacute;er la recette de votre premier paquet. On va maintenant demander &agrave; <strong>prt-get</strong> de le compiler et de l'installer:</p>
-<pre>[ ~ ] prt-get install joe
-[Config error: can't access /usr/ports/base]
-[Config error: can't access /usr/ports/extra]
-prt-get: installing /usr/ports/perso/joe
-Building '/srv/NuTyX/release/joe#3.7-1.pkg.tar.gz'
-bsdtar -p -o -C /tmp/work/src -xf /tmp/joe-3.7.tar.gz
-+ build
-+ ./configure --prefix=/usr --sysconfdir=/etc
-checking build system type... i686-pc-linux-gnu
-...
-..
-.
--rwxr-xr-x  0 root   root   459336 Jun 30 23:28 usr/bin/joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/rjoe -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jmacs -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jpico -&gt; joe
-lrwxrwxrwx  0 root   root        0 Jun 30 23:28 usr/bin/jstar -&gt; joe
--rwxr-xr-x  0 root   root     4312 Jun 30 23:23 usr/bin/termidx
-WARNING: Footprint not found, creating new.
-Building '/srv/NuTyX/release/joe#3.7-1.pkg.tar.gz' succeeded.
-prt-get: installing joe 3.7-1
-
--- Packages installed
-joe
-
-prt-get: installed successfully
-</pre>
-<p><code> <img src="/skins/_reference/smileys/clap.gif" alt="clap" />  </code>Ca c'est vraiment cool non&nbsp; <code> <img src="/skins/_reference/smileys/clap.gif" alt="clap" /> </code></p>
-<p>Votre premier paquet est compil&eacute; et install&eacute;. Le gestionnaire de paquet (de votre chroot) l'a int&eacute;gr&eacute; dans sa base de donn&eacute;es. Petite remarque, si vous avez suivi ce tuto, vous avez sans doute remarquez que toutes les commandes ont &eacute;t&eacute; effectuer depuis la racine de votre chroot ... <img src="/included/tiny_mce/plugins/emotions/img/smiley-cool.gif" border="0" alt="Cool" title="Cool" />. Il est temps de se familiariser avec son nouveau paquet install&eacute;. Ca tombe bien, on vient d'installer ... un &eacute;diteur de texte.</p>
-<p>Les deux erreurs</p>
-<pre>[Config error: can't access /usr/ports/base]
-[Config error: can't access /usr/ports/extra]
-</pre>
-<p>n'ont pas du vous &eacute;chapper. C'est tout simplement parce que les dossiers base et extra ne contiennent aucune recette. Pour rem&eacute;dier &agrave; ce petit soucis faites simplement:</p>
-<pre>[ ~ ] ports -u
-</pre>
-<p>Et toutes les recettes seront t&eacute;l&eacute;charg&eacute;es dans votre environnement.</p>
-<p>Les deux WARNING</p>
-<pre>WARNING: Md5sum not found, creating new.
-WARNING: Footprint not found, creating new.
-</pre>
-<p>S'expliquent normalement, comme c'est la premi&egrave;re compilation du paquet, le script pkgmk cr&eacute;e pour vous les 2 fichiers .md5sum et .footprint</p>
-<p>Maintenant que l'on a un &eacute;diteur de texte, on va s'en servir pour la suite. Fini les cat ...</p>
-<p>Tapez maintenant la commande suivante:</p>
-<pre>prt-get info joe
-Name:      joe
-Path:      /usr/ports/perso
-Version:   3.7
-Release:   1
-</pre>
-<p>En r&eacute;alit&eacute;, la commande prt-get reconna&icirc;t d'autres infos si elles sont pr&eacute;sentes dans le Pkgfile: - Description - URL - Packager - Maintainer - Depends on: Nous allons donc ajouter ces information au d&eacute;but du Pkgfile. Veuillez ajoutez cette info avant la premi&egrave;re ligne (name=joe)</p>
-<pre># Description: Petit &eacute;diteur non graphique emulant emuler, wordStar
-# URL: http://sourceforge.net/projects/joe-editor/
-# Maintainer: sourceforge.net/projects/joe-editor/files/JOE%20sources/joe-3.7/
-# Packager: Fran&ccedil;ois Perrin
-# Depends on: glibc
-</pre>
-<p>Maintenant que la recette est "habill&eacute;e", <strong>prt-get</strong> nous livre es nouvelles informations:</p>
-<pre>[ ~ ] prt-get info joe
-Name:         joe
-Path:         /usr/ports/perso
-Version:      3.7
-Release:      1
-Description:  Petit &eacute;diteur non graphique
-URL:          http://sourceforge.net/projects/joe-editor/
-Maintainer:   sourceforge.net/projects/joe-editor/files/JOE%20sources/joe-3.7/
-Packager:     Fran&ccedil;ois Perrin
-Dependencies: glibc</pre>
-<h4>Installer mon premier paquet sur la NuTyX principale</h4>
-<p><code> <img src="/skins/_reference/smileys/wall.gif" alt="wall" /> </code></p>
-<p>Super j'ai un nouveau paquet...</p>
-<p><img src="/skins/_reference/codes/question.gif" width="16" height="15" alt="?" /> mais comment je fais pour l'installer dans ma NuTyX principale... ?</p>
-<p><img src="/skins/_reference/codes/answer.gif" width="23" height="30" alt="!!" /> Pas de probl&egrave;me tout est pr&eacute;vu, on a un petit programme pour cela.</p>
-<p>Ce petit programme va nous permettre de mettre &agrave; jour l'info utilis&eacute;e par l'application pkg-get. On se rend donc dans le dossier des paquets binaires et on reg&eacute;n&egrave;re les infos necessaires:</p>
-<pre>cd /srv/www/htdocs/nutyx/release
-pkg-repgen
-</pre>
-<p>En fonction du nombre de paquets, la reg&eacute;n&eacute;ration peut prendre un certain temps. En attendant la fin de la reg&eacute;n&eacute;ration, on peut d&eacute;j&agrave; ajuster le fichier <em><strong>/etc/pkg-get.conf</strong></em> de votre NuTyX <span style="text-decoration: underline;"><strong>PRINCIPALE</strong></span> .</p>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous &ecirc;tes de nouveau dans votre NuTyX principale</div><p>Ouvrez un nouveau terminal et passez en compte root et ajustez le fichier <em><strong>/etc/pkg-get.conf</strong></em> comme ceci:</p>
-<pre>pkgdir /chroot/srv/www/htdocs/nutyx/release
-pkgdir /srv/NuTyX/test|http://...
-pkgdir /srv/NuTyX/release|http://...
-</pre>
-<p>La ligne qui nous int&eacute;resse est uniquement la premi&egrave;re:</p>
-<p><strong><em>pkgdir /chroot/srv/www/htdocs/nutyx/release </em></strong>SANS AUTRE information permet de profiter d'un d&eacute;pot local de votre NuTyX. Et comme vous le remarquez, vous utilisez donc le d&eacute;pot de votre ... <strong><span style="text-decoration: underline;">chroot</span></strong> <img src="/included/tiny_mce/plugins/emotions/img/smiley-cool.gif" border="0" alt="Cool" title="Cool" /> C'est cool non ? et en plus y a m&ecirc;me pas besoin de faire de sync puisque l'info utile est "locale":</p>
-<p>Donc si vous faites maintenant:</p>
-<pre>[ ~ ] pkg-get info joe
-<span style="font-family: courier new,courier;">Nom         : joe<br />Paquet      : /chroot/srv/www/htdocs/nutyx/release/joe#3.7-1.pkg.tar.xz<br />Description : Petit editeur non graphique<br />URL mirroir : (null)<br />URL sources : http://sourceforge.net/projects/joe-editor/<br />Mainteneur  : sourceforge.net/projects/joe-editor/files/JOE%20sources/joe-3.7/<br />Packager    : Fran&ccedil;ois Perrin<br />Taille      : approx. 314 KBytes (314408 octets)<br />Somme MD5   : 8427c171124a2db4c9391b8e9e1c9d3 [local copy OK]<br />Version     : 3.7-1<br /></span></pre>
-<p>Il ne nous reste plus qu'a l'installer <img src="/included/tiny_mce/plugins/emotions/img/smiley-surprised.gif" border="0" alt="Surprised" title="Surprised" /></p>
-<pre>pkg-get install joe</pre>
-<h4>Un paquet avec quelques d&eacute;pendances</h4>
-<p>Les d&eacute;pendances d'un paquet sont souvent le casse t&ecirc;te d'un empaqueteur. Il est en effet jamais facile de conna&icirc;tre exactement quelles sont les d&eacute;pendances indispensables pour que le paquet en chantier se compile sans probl&egrave;me. En plus des d&eacute;pendances indispensables, il y a aussi les d&eacute;pendance optionnelles qui permettent d'avoir plus de fonctionnalit&eacute;es</p>
-<p>Vous&nbsp; avez sans doute remarquer les lignes suivantes dans le Pkgfile pr&eacute;c&eacute;dent:</p>
-<pre># Depends on: glibc (1)
-# Run on: glibc (2)</pre>
-<p>Ces deux ligne d&eacute;finissent quels sont les paquets n&eacute;cessaire pour&nbsp; que (1) le paquet se compile correctement et que (2) le paquet fonctionne correctement. Dans 90 % des cas les 2 lignes sont identiques. Nous allons donc maintenant construire&nbsp; un paquet (un pilote Xorg ) qui necessite de tr&egrave;s nombreuses d&eacute;pendances. Mais vous allez voir que finalement c'est pas bien sorcier. Assez parler au travail maintenant:</p>
-<p>Le paquet que nous allons construire n'apportera certainement pas grand chose &agrave; votre NuTyX, c'est surtout l'aspect qui importe ici: Nous allons donc prendre le pilote xf86-video-sisusb qui d'apr&egrave;s le README est (en anglais dans le texte)</p>
-<address>SiS Net2280-based USB video driver for the Xorg X server</address>
-<div class="caution"><img src="/skins/_reference/codes/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <em><strong>chroot</strong></em></div><p>1. Cr&eacute;er le dossier</p>
-<pre>mkdir -p /usr/ports/perso/xorg-xf86-video-sisusb</pre>
-<p>2. Cr&eacute;er le fichier /usr/ports/perso/xorg-xf86-video-sisusb Pkgfile avec ceci:</p>
-<pre># Description: Pilote video pour les cartes sis usb<br /># URL: http://xorg.freedesktop.org<br /># Maintainer: cgit.freedesktop.org/xorg/driver/xf86-video-sisusb/<br /># Packager: Fran&ccedil;ois Perrin<br /># Depends on: xorg-server<br /># Run on: xorg-server<br />name=xorg-xf86-video-sisusb<br />version=0.9.5<br />release=1<br />_name=xf86-video-sisusb<br />source=(<a href="http://xorg.freedesktop.org/archive/individual/driver/xf86-video-sisusb-0.9.5.tar.bz2">http://xorg.freedesktop.org/archive/individual/driver/${_name}-$version.tar.bz2)</a><br />build() {<br />cd ${_name}-$version<br />./configure $XORG_CONFIG<br />make<br />make DESTDIR=$PKG install<br />}<br /></pre>
-<p>3. Compilez le paquet.</p>
-<pre>prt-get depinst xorg-xf86-video-sisusb</pre>
-<p>La commande <strong><em>prt-get</em></strong> cherche toutes les d&eacute;pendance du paquet et comme ces d&eacute;pendances n'existent pas dans votre chroot, il t&eacute;l&eacute;charge les binaires d&eacute;j&agrave; &agrave; jour.</p>
-<p>Quelques explications:</p>
-<p><ul><li>$XORG_CONFIG et $XORG_PREFIX: sont des variables d&eacute;finie dans le script de d&eacute;marrage de NuTyX et proviennent du paquet aaabasicfs. Le fichiers se trouve dans /etc/profile.d/xorg.sh.</li></ul></p>
-<p><ul><li>Depends on: xorg-server: est la seule d&eacute;pendance necessaire en effet xorg-server r&eacute;clame d'autres d&eacute;pendances qui elles m&ecirc;me en r&eacute;clament d'autre ainsi de suite...</li></ul></p>
-<div class="note"><img src="/skins/_reference/codes/note.gif" width="10" height="10" alt="*" /> Pour pouvoir installer ce paquet dans votre NuTyX principale il faut proc&eacute;der comme expliquer dans le chapitre pr&eacute;c&eacute;dent</div><p>Pour terminer, il faut savoir qu'avant de commencer un nouveau paquet, il est important de toujours revenir sur une NuTyX de base afin de bien conna&icirc;tre les d&eacute;pendances necessaires. La commande:</p>
-<pre>pkg-get base</pre>
-<p>nous permet de revenir sur une NuTyX de base. Si l'on souhaite que certains paquets soient concerv&eacute;s lors de cette manipulation, on peut les ajouter &agrave; la liste de paquets que constitue une base. Cette liste se trouve dans le fichier <em>/etc/pkg-get.conf</em></p>
-<pre>base: aaabasicfs,pkgutils,glibc,zlib,...</pre>
-<p>L'ordre des paquets n'a pas d'importance, ce qui est important c'est que la liste soit sur une seule ligne. Vous pouvez donc ajouter vos paquets avant <strong><em>aaabasicfs</em></strong> par exemple</p>
-<pre>base: ports,prt-get,aaabasicfs,...</pre>
-  </div>
-  <div class="pied_page"> ... <img src="../graphics/logo_nutyx_25.png"> ...
-  </div>
+       </nav>
+      </td>
+     </tr>
+    </table>
+   <hr>
+   <h1><span>How to build a package ?</span></h1>
+    <h2>Introduction</h2>
+     <p>We knows  <a href="why-contribute.html">why contribute</a>, the <a href="bash-basics.html">required Know-how</a>, the <a href="base-commands.html">available base commands</a>, the <a href="recept.html">minimum syntax of a receipt</a> and finaly what are the <a href="packages.html">available packages</a>. It's time to give a try and build your first package following the (NuTyX) rules <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
+    <h2>Contents</h2>
+     <h3>
+      <a href="#1">Which scenario you want ?</a><br />
+      <a href="#3">Adjust the configuration files according your scenario</a><br />
+      <a href="#4">A first package without dependencies</a><br />
+      <a href="#5">Install my first package</a><br />
+      <a href="#6">Isolated environment construction method call "chroot"</a><br />
+      <a href="#7">A package with a few dependencies</a><br />
+     </h3>
+    <a name='1'></a>
+    <h2>Which scenario you want ?</h2>
+    <a name='3'></a>
+    <h2>Adjust the configuration files according your scenario</h2>
+    <a name='4'></a>
+    <h2>A first package without dependencies</h2>
+    <a name='5'></a>
+    <h2>Install my first package</h2>
+    <a name='6'></a>
+    <h2>Isolated environment construction method call "chroot"</h2>
+    <a name='7'></a>
+    <h2>A package with a few dependencies</h2>
+   <hr>
+   <p class="updated">Last updated on 2015-04-17 21:14</p>
+    <footer>
+     <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+     &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+     <a href="http://www.wtfpl.net/"><img
+        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+        width="80" height="15" alt="WTFPL" /></a></p>
+    </footer>
  </body>
 </html>

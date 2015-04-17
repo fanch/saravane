@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-     <title>NuTyX - Comment construire un paquet</title>
+     <title>NuTyX - Comment construire un paquet ?</title>
  </head>
  <body>
     <table>
@@ -28,59 +28,508 @@
      </tr>
     </table>
  <hr>
- <h1>Comment construire un paquet ?</h1>    
+ <h1>Comment construire un paquet ?</h1>
+  <h2>Introduction</h2>
+   <p>Nous connaissons les <a href="why-contribute.html">raisons de contribuer</a>, <a href="bash-basics.html">les connaissances requises</a>, <a href="base-commands.html">les commandes de base à notre disposition</a>, le <a href="recept.html">format minimum d'une recette</a> et enfin quel sont <a href="packages.html">les recettes existantes</a>. Il est temps de passer à l'action et de construire son premier paquet dans les règles de l'art (de NuTyX) <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
+   <p>Si vous êtes sur une version de cards plus ancienne que la version <b>0.10.90</b>, il est temps de mettre à jour votre gestionnaire de paquets</p>
   <h2>Sommaire</h2>
     <h3>
-     <a href="#1">Quel paquet choisir ?</a><br />
-     <a href="#2">Construire un environnement isolé aussi appelé chroot</a><br />
-     <a href="#3">Mise en service de la chroot</a><br />
-     <a href="#4">Configurer la chroot</a><br />
-     <a href="#5">Mon premier paquet</a><br />
-     <a href="#6">Installer mon premier paquet sur la NuTyX principale</a><br />
-     <a href="#7">Un paquet avec quelques dépendances</a><br />
+     <a href="#1">Quel scénario choisissez-vous ?</a><br />
+     <a href="#2">Ajuster les fichiers de configuration en fonction de votre scénario</a><br />
+     <a href="#4">Scénario B: un paquet sans dépendances</a><br />
+     <a href="#5">Scénario C: Un paquet avec quelques dépendances</a><br />
+     <a href="#6">Methode de construction dans un environnement isolé aussi appelé "chroot"</a><br />
     </h3>
   <a name='1'></a>
-  <h2>Quel paquet choisir ?</h2>
-   <p>Choix très difficile, il serait en tout cas bon de prendre 4 ou 5 exemples cad:</p>
-   <ol>
-    <li>un paquet sans dépendance pour commencer en douceur... <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></li>
-    <li>un pilote xorg pour sa spécificité dans l'écriture de la recette.</li>
-    <li>une application pour KDE car en général ce sont celles qui necessite le plus grand nombre d'options dans le code de la recette et le plus grand nombre de dépendances. Si vous ne me croyez pas je vous invite à tester la commande</li>
-   </ol>
-   <pre class="command_user"><kbd>cards depends -a kde-konsole</kbd></pre>
-   <pre class="output">/var/lib/pkg/saravane/system/gcc
-/var/lib/pkg/saravane/system/glibc
-/var/lib/pkg/saravane/server/libtiff
-/var/lib/pkg/saravane/server/libjpeg
-/var/lib/pkg/saravane/server/lcms
-/var/lib/pkg/saravane/server/libmng
-/var/lib/pkg/saravane/desktop/dbus
-...</pre>
-   <p>Si je compte bien ça fait: <img src="../graphics/confused.gif" alt="" /> 185 d&eacute;pendances ...  <img src="../graphics/confused.gif" alt="" /></p>
-   <p>Je vous rassure tout de suite, vous n'aurez pas à spécifier les 185 dépendances. <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /></p>
+  <h2>Quel scénario choisissez-vous ?</h2>
+   <h3>Qu'est-ce qu'un scénario <img src="../graphics/confused.gif" alt="" /> dans le contexte d'une distribution linux ?</h3>
+    <p>Ne demandez pas (encore) à google, je ne crois pas que ce concept existe déjà sur d'autres distributions <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <p>
+    <p>C'est un concept que j'ai imaginé en crééant le gestionnaire de paquets <b>cards</b>.</p>
+    <p>Au fil des années, je me suis rendu compte que le public cible pour l'utilisation d'une distribution comme NuTyX est très très large. Chaque utilisateur (plus ou moins averti) souhaite évoluer dans une distribution de sa manière.</p> 
+    <p>La plus part des utilisateurs se dirigeant vers NuTyX souhaitent compiler leurs paquets à leur guise. Certains ne choisiront peut-être pas toutes les sections proposées par défaut. D'autres utilisateurs souhaiteront mélanger les paquets standards proposé en binaire avec leur propres paquets. Toutes ces approchent sont différentes, je les appelle <b>scénario</b> d'utilisation de la NuTyX.</p>
+   <h3>Quels sont les scénarios possibles (cad ce que je peux imaginer aujourd'hui)</h3>
+    <ol>
+     <li><a href="#21">Scénario <b>A</b></a>: Je ne veux rien compiler, les binaires disponibles me suffisent<img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />. Cela peut vous paraître absurde d'en parler ici, mais comme vous êtes très interessés par le sujet, sachez que ce scenario vous permet de garder votre distribution favorite la plus légère possible.</li>
+     <li><a href="#22">Scénario <b>B</b></a>: Les binaires disponibles ne me suffisent pas, je voudrais ajouter un ou deux paquets.</li>
+     <li><a href="#23">Scénario <b>C</b></a>: Je ne souhaite pas installer les binaires des sections <b>console</b> et <b>desktop</b>. Je les compile moi-même. </li>
+     <li><a href="#24">Scénario <b>D</b></a>: Je souhaite utiliser les binaires disponibles des sections <b>console</b> et <b>desktop</b>. Je souhaite que mes ports personnels utilisent les dépendances provenant des binaires déjà disponibles. Seul mes ports personnels doivent être compilés.</li>
+     <li><a href="#25">Scénario <b>E</b></a>: Je souhaite construire mes recettes dans un environnement isolé et garder ma distribution intacte et vierge de tout paquets de développement. Mes paquets produits dans mon environnement isolé pourront être installés dans ma NuTyX principale.</li>
+    </ol>
   <a name='2'></a>
-  <h2>Construire un environnement isolé appelé "chroot"</h2>
-   <p>Cette étape n'est pas indispensable mais fortement recommandée. Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Avec un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre. Vous voilà donc prévenu.</p>
-   <p>On l'appelera désormais la<b> chroot</b>.<p>
-   <p>Vous allez voir que l'on a tout prévu pour vous simplifier la vie dans la construction d'une chroot.</p>
+  <h2>Ajuster les fichiers de configuration en fonction de votre scénario</h2>
+   <h3>Introduction</h3>
+    <p>Voyons en détail chaque scénario mentionné plus haut et comment ajuster le mieux les fichiers de configuration pour chacun d'entre eux.</p>
+   <a name='21'></a>
+   <h3>Scénario A</h3>
+    <h4>Introduction</h4>
+     <p>Comme expliqué plus haut, vous ne souhaitez pas compilez dans votre NuTyX. Ce qui est tout à fait possible si vous n'avez pas besoin de programmes particuliers et que les binaires proposés vous suffisent. Ce scenario est aussi valable dans le cas où vous gérer plusieurs installation sur les quelles aucune compilation n'est necessaire.</p>
+    <h4>Le fichier /etc/cards.conf</h4>
+     <p>Les sections binaires sont activées</p>
+     <p>L'arch de la machine est vérfiée</p>
+     <p>La(les) langue(s) utilisée(s) sur la machine est ajustée(s)</p>
+     <p>Le dossier définissant le système de base, en cas de retour à un système de base est défini</p>
+     <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b>:</p>
+     <pre class="output">
+dir /var/lib/pkg/saravane/desktop|http://downloads.nutyx.org/saravane/x86_64/desktop
+dir /var/lib/pkg/saravane/console|http://downloads.nutyx.org/saravane/x86_64/console
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/x86_64/base
+arch x86_64
+locale fr
+locale de
+base /var/lib/pkg/saravane/base</pre>
+    <p>Les trois sections standards <b>base</b>, <b>console</b> et <b>desktop</b> sont activées. La machine est une 64 bits <b>x86_64</b>. Les langues qui doivent être installées sont le français <b>fr</b> et l'allemand <b>de</b>. Le dossier contenant les paquets de base est celui de la section standard <b>base</b>. <b>base /var/lib/pkg/saravane/base</b>. 
+    <h4>Le fichier /etc/pkgmk.conf</h4>
+     <p>Pour le scénario <b>A</b>, le fichier <b>/etc/pkgmk.conf</b> n'est pas présent puisque vous ne devez rien compiler. Les outils de développement ne sont pas présents.</p>
+    <h4>Conclusion</h4>
+     <p>C'est tout ce qu'il faut savoir pour la configuration de votre NuTyX. Vous souhaitez mettre à jour votre base de données et voir si il y a des maj disponibles</p>
+     <pre class="command"><kbd>check</kbd></pre>
+     <p>Vous souhaitez installer un paquet:</p>
+     <pre class="command"><kbd>get firefox</kbd></pre>
+     <p>Vous souhaitez supprimer un paquet:</p>
+     <pre class="command"><kbd>del firefox</kbd></pre>
+     <p>C'est tout ce qu'il faut savoir <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />. J'espère que vous allez vous en sortir.</p>
+    <a name='22'></a>
+    <h3>Scénario B</h3>
+     <h4>Introduction</h4>
+      <p>Vous êtes satisfait de votre NuTyX, il y a juste un ou deux paquets qui vous manquent, vous décidez donc de les compilez vous-même.</p>
+      <p>Armez-vous de courage et de patience <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /><img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
+      <p>Un bon conseil, dans ce scénario, <u>évitez à tout prix de compiler des recettes réclamant des dépendances non comprises dans la section <b>base</b></u> de votre NuTyX. Si tel est le cas, vous serez confrontez aux nombreuses erreurs liées aux dépendances devel non installées par défaut. Dans un tel cas, préférez le scenario <b>C</b>.</p>
+     <h4>Installation des outils de développement</h4>
+      <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.</p>
+      <pre class="command"><kbd>cards sync</kbd></pre>
+      <pre class="output">/var/lib/pkg/saravane/desktop/.PKGREPO
+/var/lib/pkg/saravane/console/.PKGREPO
+/var/lib/pkg/saravane/base/.PKGREPO</pre>
+cards install cards.devel</kbd></pre>
+      <pre class="output">
+</pre>
+     <h4>Le fichier /etc/cards.conf</h4>
+      <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ne <u> doit jamais</u> être mis à jour par la commande <b>cards sync</b>, donc on ne doit pas spécifier d'adresse URL associées.</p>
+      <p>Les sections binaires sont activées, cela me permettra d'ajouter facilement les éventuelles dépendances manquantes...</p>
+      <p>L'arch de la machine est vérfiéei, nous sommes en 64 bits.</p>
+      <p>La(les) langue(s) utilisée(s) sur la machine est ajustée(s)</p>
+      <p>Le dossier définissant le système de base, en cas de retour à un système de base est défini</p>
+      <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b> pour le scénario <b>B</b>:</p>
+      <pre class="output">
+dir /usr/ports/personnel
+dir /var/lib/pkg/saravane/desktop|http://downloads.nutyx.org/saravane/x86_64/desktop
+dir /var/lib/pkg/saravane/console|http://downloads.nutyx.org/saravane/x86_64/console
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/x86_64/base
+arch x86_64
+locale fr
+locale de
+base /var/lib/pkg/saravane/base</pre>
+     <h4>Installation des outils de développement</h4>
+      <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.. Commençons par créer le dossier <b>/usr/ports/personnel</b>.</p>
+      <pre class="command_user"><kbd>sudo mkdir -p /usr/ports/personnel</kbd></pre>
+      <p>Et maintenant on installe les outils:</p>
+      <pre class="command_user"><kbd>sudo cards sync</kbd></pre>
+      <pre class="output">/var/lib/pkg/saravane/desktop/.PKGREPO
+/var/lib/pkg/saravane/console/.PKGREPO
+/var/lib/pkg/saravane/base/.PKGREPO</pre>
+      <pre class="command_user"><kbd>sudo cards install cards.devel</kbd></pre>
+      <pre class="output">Retrieve info about the 66 packages: 100 %
+/var/lib/pkg/saravane/base/cards/.PKGREPO
+/var/lib/pkg/saravane/base/cards/cards.devel1429192050x86_64.cards.tar.xz
+661020 Bytes - 671821 Bytes/Sec - 100% - 0 Sec remain  remain 
+/var/lib/pkg/saravane/base/acl/.PKGREPO
+/var/lib/pkg/saravane/base/acl/acl.devel1412540285x86_64.cards.tar.xz
+...</pre>
+     <h4>Le fichier /etc/pkgmk.conf</h4>
+      <p>Dans ce scénario, il est bon de vérifier quelques variables:</p>
+      <p>Mon processeur est un 8 coeurs, donc autant en profiter:</p>
+<pre class="output">export MAKEFLAGS="-j8"</pre>
+      <p>Les sources doivent être stockées dans le dossier contenant la recette ou dans un dossier séparé. Personnellement, je préfère les mettre ensemble dans un dossier séparé. Et pourquoi pas un dossier qui sera nettoyé au prochain boot, je choisi le dossier <b>/tmp</b>. Je souhaite que les sources soient effacées une fois le paquet compilé et installé avec succès. Et enfin, je préfère que le dossier de travail soit également sous le dossier <b>/tmp/work</b> en lieu du dossier défini par défaut:</p>
+      <pre class="output">PKGMK_SOURCE_DIR="/tmp"
+PKGMK_KEEP_SOURCES="no"
+PKGMK_WORK_DIR="/tmp/work"</pre>
+      <p>Je n'ai pas envie de spécifier à chaque fois la demande de téléchargement des sources si pas disponible. Une variable permet de le faire automatiquement:</p>
+      <pre class="output">PKGMK_DOWNLOAD="yes"</pre>
+      <p>Dans ce scénario, je ne souhaites pas gérer les dépendances de façon automatique lors de la compilation et donc je n'ai pas besoin du fichier <b>.PKGREPO</b>... Je n'utilise que la commande <b>pkgmk</b>:</p>
+      <pre class="output">PKGMK_IGNORE_REPO="yes"
+PKGMK_IGNORE_CATEGORY="yes"</pre>
+      <p>Je ne souhaite pas que <b>pkgmk</b> split le binaire en paquet et sous paquets (devel, doc, man, etc). Je me contente du paquet de base puisque je le compile moi-même. Pour les locales, si elles existent, je me contenterai des locale françaises et allemandes <b>fr</b> et <b>de</b>:
+      <pre class="output">PKGMK_GROUPS=()
+PKGMK_LOCALES=(fr de)</pre>
+      <p>Je ne souhaite pas que <b>pkgmk</b> compresse mon paquet une fois construit et ne souhaite pas le conserver une fois installé:</p>
+      <pre class="output">PKGMK_COMPRESSION_PACKAGE="no"
+PKGMK_CLEAN="yes"</pre>
+      <p>Voici à quoi peut ressembler votre fichier <b>/etc/pkgmk.conf</b> pour le scénario <b>B</b>:</p>
+      <pre class="output">export CFLAGS="-O2 -pipe"
+export CXXFLAGS="${CFLAGS}"
+case ${PKGMK_ARCH} in
+    "x86_64"|"")
+       export MAKEFLAGS="-j8"
+       ;;
+    "i686")
+       export CFLAGS="${CFLAGS} -m32"
+       export CXXFLAGS="${CXXFLAGS} -m32"
+       export LDFLAGS="${LDFLAGS} -m32"
+       ;;
+    *)
+       echo "Unknown architecture selected! Exiting."
+       exit 1
+       ;;
+esac
+PKGMK_SOURCE_DIR="/tmp"
+PKGMK_KEEP_SOURCES="no"
+PKGMK_WORK_DIR="/tmp/work"
+PKGMK_IGNORE_REPO="yes"
+PKGMK_IGNORE_CATEGORY="yes"
+PKGMK_GROUPS=()
+PKGMK_LOCALES=(fr de)
+PKGMK_COMPRESSION_PACKAGE="no"
+PKGMK_CLEAN="yes"</pre>
+      <p>Voilà pour ce qui est de la configuration du fichier <b>/etc/pkgmk.conf</b>
+     <h4>Conclusion</h4>
+      <p><a href="#4">On verra plus tard, comment créer, compiler et installer un paquet</a> <u>sans dépendances</u> ou dont les dépendances sont déjà installées. Pour ce scénario, la seule commande à retenir est:
+      <pre class="command"><kbd>pkgmk</kbd></pre>
+      <p>Cette commande sera <u>toujours</u> lancée dans le dossier de la recette.</p>
+    <a name='23'></a>
+    <h3>Scénario C</h3>
+     <h4>Introduction</h4>
+      <p>Vous avez des envies de compilation à grande échelle, vous êtes convaincu que c'est le meilleur scénario pour gérer une NuTyX. Vous n'avez aucune envie d'utiliser les binaires proposés.</p>
+      <p>La plus part des paquets que vous utilisés ne sont pas présent et ceux qui le sont, seront compiler par vous-même.</p>
+      <p>Vous souhaitez obtenir les maj des ports disponibles.</p>
+      <p> Et bien évidement, vous souhaitez que les dépendances soient compilées automatiquement.</p>
+      <p> Vous l'avez compris, ce scenario est sans doute le plus "attirant" et le plus proche des distributions "dite" sources telle que CRUX ou gentoo.</p>
+     <h4>Le fichier /etc/cards.conf</h4>
+      <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ainsi que les sections ne <u>doivent jamais</u> être mis à jour par la commande <b>cards sync</b>, donc on ne spécifie aucune adresse URL.</p>
+      <p>Seule la section <b>base</b> doit rester active afin de pouvoir installer les outils de développement.</p>
+      <p>L'arch de la machine est vérfiée, nous sommes en 32 bits.</p>
+      <p>Le dossier contenant les logs de compilation est défini</p>
+      <p>Les dossiers définissant le système de base, en cas de retour à un système de base sont définis</p>
+      <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b> pour le scénario <b>C</b>:</p>
+      <pre class="output">
+dir /usr/ports/personnel
+dir /usr/ports/gnome
+dir /usr/ports/desktop
+dir /usr/ports/console
+dir /usr/ports/base
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/i686/base
+arch i686
+logdir /var/log/pkgbuild
+locale fr
+locale it
+base /usr/ports/base
+base /usr/ports/aconserver</pre>
+     <h4>Installation des outils de développement</h4>
+      <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.. . On commence par créer les dossiers necessaires:</p>
+      <pre class="command_user"><kbd>sudo mkdir -p /usr/ports/{personnel,gnome,aconserver}</kbd></pre>
+      <p>Et maintenant on installe les outils</p>
+      <pre class="command_user"><kbd>sudo cards sync</kbd></pre>
+      <pre class="output">/var/lib/pkg/saravane/base/.PKGREPO</pre>
+      <pre class="command_user"><kbd>sudo cards install cards.devel</kbd></pre>
+      <pre class="output">Retrieve info about the 66 packages: 100 %
+/var/lib/pkg/saravane/base/cards/.PKGREPO
+/var/lib/pkg/saravane/base/cards/cards.devel1429192050x86_64.cards.tar.xz
+661020 Bytes - 671821 Bytes/Sec - 100% - 0 Sec remain  remain 
+/var/lib/pkg/saravane/base/acl/.PKGREPO
+/var/lib/pkg/saravane/base/acl/acl.devel1412540285x86_64.cards.tar.xz
+...</pre>
+      <pre class="command_user"><kbd>sudo cards install rsync
+sudo cards install ports</kbd></pre>
+     <h4>Le fichier /etc/pkgmk.conf</h4>
+      <p>Pour ce scénario, il est indispensable de vérifier toutes les variables necessaires pour le bon fonctionnement du duo <b> pkgmk/cards</b></p>
+      <p>Mon processeur est un 4 coeurs mais je suis sur une NuTyX 32 bits.</p>
+      <pre class="output">export MAKEFLAGS="-j4"</pre>
+      <p>Les sources sont stockées dans un dossier commun, je ne souhaite pas qu'elles soient effacées. Je souhaite que le dossier de travail reste dans le dossier du port, cela me permettra eventuellement de compiler plusieurs ports sans perdre le travail. C'est très utile pour vérifier.</p>
+      <pre class="output">PKGMK_SOURCE_DIR="/srv/www/sources"
+PKGMK_KEEP_SOURCES="yes"
+PKGMK_WORK_DIR="$PWD/work"</pre>
+      <p>Je n'ai pas besoin de spécifier la demande de téléchargement des sources si pas disponible.</p>
+      <pre class="output">PKGMK_DOWNLOAD="no"</pre>
+      <p>Dans ce scénario, je souhaite gérer les dépendances de façon automatique lors de la compilation et donc j'ai besoin du fichier <b>.PKGREPO</b> généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles.  La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de la section concernée (dossier parent). Je utilise le duo <b>cards/pkgmk</b>:</p>
+      <pre class="output">PKGMK_IGNORE_REPO="no"
+PKGMK_IGNORE_CATEGORY="no"</pre>
+      <p>Je ne souhaite pas que <b>pkgmk</b> split le binaire en paquet et sous paquets (devel, doc, man, etc). Je me contente du paquet de base puisque je le compile moi-même. Pour les locales, si elles existent, je me contenterai des locale françaises et italiennes <b>fr</b> et <b>it</b>:
+      <pre class="output">PKGMK_GROUPS=()
+PKGMK_LOCALES=(fr it)</pre>
+      <p>Je souhaite que <b>pkgmk</b> compresse mon paquet au format gz (parce que l'algo  est beaucoup plus rapide qu'en xz ) une fois construit et qu'il soit conservé une fois installé pour usage ultérieur. Par exemple si je souhaite revenir à un système de base via la commande <b>cards base</b>:</p>
+      <pre class="output">PKGMK_COMPRESSION_PACKAGE="yes"
+PKGMK_COMPRESSION_MODE="gz"
+PKGMK_CLEAN="no"</pre>
+      <p>Voici à quoi peut ressembler votre fichier <b>/etc/pkgmk.conf</b> pour le scénario <b>C</b>:</p>
+      <pre class="output">export CFLAGS="-O2 -pipe"
+export CXXFLAGS="${CFLAGS}"
+case ${PKGMK_ARCH} in
+    "x86_64"|"")
+       export MAKEFLAGS="-j4"
+       ;;
+    "i686")
+       export CFLAGS="${CFLAGS} -m32"
+       export CXXFLAGS="${CXXFLAGS} -m32"
+       export LDFLAGS="${LDFLAGS} -m32"
+       export MAKEFLAGS="-j4"
+       ;;
+    *)
+       echo "Unknown architecture selected! Exiting."
+       exit 1
+       ;;
+esac
+PKGMK_SOURCE_DIR="/srv/www/sources"
+PKGMK_KEEP_SOURCES="yes"
+PKGMK_WORK_DIR="$PWD/work"
+PKGMK_IGNORE_REPO="no"
+PKGMK_IGNORE_CATEGORY="no"
+PKGMK_GROUPS=()
+PKGMK_LOCALES=(fr it)
+PKGMK_COMPRESSION_PACKAGE="yes"
+PKGMK_COMPRESSION_MODE="gz"
+PKGMK_CLEAN="no"</pre>
+     <h4>Conclusion</h4>
+      <p>On peut maintenant récupérer les ports disponibles de NuTyX:</p>
+      <pre class="command_user"><kbd>sudo ports -u</kbd></pre>
+      <pre class="output">Updating file list from downloads.nutyx.org::nutyx/ports/saravane/base/
+Updating collection base
+ Checkout ./
+ Checkout aaabasicfs/
+ Checkout aaabasicfs/Pkgfile
+...</pre>
+      <p><a href="#5">On verra plus tard, comment créer, compiler et installer une ensemble de paquets</a>. Pour ce scénario, les commandes à retenir sont:</p>
+      <pre class="command"><kbd>ports -d
+cards depends
+cards depcreate
+cards level</kbd></pre>
+    <a name='24'></a>
+    <h3>Scénario D</h3>
+     <h4>Introduction</h4>
+      <p>Vous n'avez pas envie de vouloir tout compiler, vous êtes satisfait avec les binaires disponibles. Vos nouvelles recettes utilisent les dépendances provenant des binaires existants. Ce scénario est probablement le plus long à mettre en oeuvre mais une fois tout en place, l'ajout de paquets personnel se fait très rapidement.</p>
+     <h4>Le fichier /etc/cards.conf</h4>
+      <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ainsi que les sections ne <u>doivent jamais</u> être mis à jour par la commande <b>cards sync</b>. On ne spécifie aucune URL.</p>
+      <p>Seule la section <b>base</b> doit rester active le temps de récupérer la commande <b>rsync</b> si pas encore installée.</p>
+      <p>L'arch de la machine est vérfiée, nous sommes en 64 bits.</p>
+      <p>Le dossier contenant les logs de compilation est défini</p>
+      <p>Je n'ai pas besoin de spécifier les locales, elles seront toujours toutes installées</p>
+      <p>Les dossiers définissant le système de base, en cas de retour à un système de base sont définis</p>
+      <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b> pour le scénario <b>D</b>:
+      <pre class="output">dir /srv/www/saravane/personnel
+dir /srv/www/saravane/x86_64/desktop
+dir /srv/www/saravane/x86_64/console
+dir /srv/www/saravane/x86_64/base
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/i686/base
+arch x86_64
+logdir /var/log/pkgbuild
+base /srv/www/saravane/x86_64/base
+base /srv/www/saravane/aconserver</pre>
+     <h4>Installation de rsync et suppression du dossier concerné</h4>
+      <p>Pour ce scénario, nous allons synchroniser tous les binaires disponible sur le miroir de NuTyX et allons restés "callés" sur la version de ceux-ci.</p>
+      <p>Commençons par installer la commande <b>rsync</b> si ce n'est pas encore le cas:</p>
+      <pre class="command_user"><kbd>get rsync</kbd></pre>
+      <p>On peut maintenant supprimer la ligne pointant sur l'url du miroir de NuTyX pour déactiver définitivement la commande <b>cards sync</b>.</p>
+      <p>Le nouveau fichier <b>/etc/cards.conf</b>:</p>
+      <pre class="output">dir /srv/www/saravane/personnel
+dir /srv/www/saravane/x86_64/desktop
+dir /srv/www/saravane/x86_64/console
+dir /srv/www/saravane/x86_64/base
+arch x86_64
+logdir /var/log/pkgbuild
+base /srv/www/saravane/x86_64/base
+base /srv/www/saravane/aconserver</pre>
+     <h4>Synchronisation des binaires via rsync</h4>
+      <p>Cette opération consiste à rappatrier les quelques 11000 paquets disponible en binaires. Elle peut durer entre quelques minutes et quelques heures en fonction de votre connection.</p>
+      <p>Heureusement, cette opération n'est longue que la première fois <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
+      <p>Notez bien le dossier de destination, j'ai choisi de "déposer" les binaires à la racine du serveur http <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />. </p>
+      <p>Il faut commencer par créer les dossiers</p>
+      <pre class="command_user"><kbd>sudo mkdir -p /srv/www/saravane/{x86_64,personnel,aconserver}</kbd></pre>
+      <p>On peut maintenant synchroniser l'ensemble des binaires:</p>
+      <pre class="command_user"><kbd>sudo rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
+/srv/www/saravane/x86_64/</kbd></pre>
+      <p>Allez peut-être boire un café, manger une pizza ou un bon paquet de frites <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />, ça peut-être long...</p>
+     <h4>Le fichier /etc/pkgmk.conf</h4>
+      <p>Pour ce scénario, il est indispensable de vérifier toutes les variables necessaires pour le bon fonctionnement du duo <b>pkgmk/cards</b>.</p>
+      <p>Mon processeur est un double coeur et je suis en 64bits.</p>
+      <p>Les sources sont stockées dans un dossier commun, je ne souhaite pas qu'elles soient effacées. Pour ne pas polué ni perdre le travail effectué lors d'un <b>rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ /srv/www/saravane/x86_64/</b>, je préfère utiliser un dossier de travail temporaire:</p>
+      <pre class="output">PKGMK_SOURCE_DIR="/srv/www/sources"
+PKGMK_KEEP_SOURCES="yes"
+PKGMK_WORK_DIR="/tmp/work"</pre>
+      <p>Je n'ai pas besoin de spécifier la demande de téléchargement des sources si pas disponible.</p>
+      <pre class="output">PKGMK_DOWNLOAD="no"</pre>
+      <p>Dans ce scénario, je souhaite que les dépendances soient installées mais non compilées. J'ai besoin du fichier .PKGREPO généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles. La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de ma section personnelle.</p>
+      <pre class="output">PKGMK_IGNORE_REPO="no"
+PKGMK_IGNORE_CATEGORY="no"</pre>
+      <p>Puisque les dépendances proviennent des binaires exisantes et que ces binaires sont splités. Il est préférable de concerver cette fonctionnalitée pour les paquets personnels. Les locales produites seront les 11 locales produites par défaut.</p>
+      <pre class="output">PKGMK_GROUPS=(devel man doc service)
+PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)</pre>
+      <p>Les binaires produits seront dans le même format de compression que les binaires officielles, même si ce n'est pas une obligation, on veut garder une certaine cohérence entre les binaires. Je ne souhaite pas supprimer mes binaires produits une fois installés.</p>
+      <pre class="output">PKGMK_COMPRESSION_PACKAGE="yes"
+PKGMK_COMPRESSION_MODE="gz"
+PKGMK_CLEAN="no"</pre>
+     <p>Voici à quoi peut ressembler votre fichier /etc/pkgmk.conf pour le scénario <b>D</b>:
+     <pre class="output">export CFLAGS="-O2 -pipe"
+export CXXFLAGS="${CFLAGS}"
+case ${PKGMK_ARCH} in
+    "x86_64"|"")
+       export MAKEFLAGS="-j2"
+       ;;
+    "i686")
+       export CFLAGS="${CFLAGS} -m32"
+       export CXXFLAGS="${CXXFLAGS} -m32"
+       export LDFLAGS="${LDFLAGS} -m32"
+       ;;
+    *)
+       echo "Unknown architecture selected! Exiting."
+       exit 1
+       ;;
+esac
+PKGMK_SOURCE_DIR="/srv/www/sources"
+PKGMK_KEEP_SOURCES="yes"
+PKGMK_WORK_DIR="/tmp/work"
+PKGMK_DOWNLOAD="no"
+PKGMK_IGNORE_REPO="no"
+PKGMK_IGNORE_CATEGORY="no"
+PKGMK_GROUPS=(devel man doc service)
+PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)
+PKGMK_COMPRESSION_PACKAGE="yes"
+PKGMK_COMPRESSION_MODE="xz"
+PKGMK_CLEAN="no"</pre>
+     <h4>Conclusion</h4>
+     <p>Pour ce scénario, les commandes à retenir sont:</p>
+     <pre class="command"><kbd>cards level
+cards base -r
+cards create
+rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
+/srv/www/saravane/x86_64/</kbd></pre>
+    <a name='25'></a>
+    <h3>Scénario E</h3>
+     <h4>Introduction</h4>
+     <h4>Le fichier /etc/cards.conf</h4>
+     <h4>Le fichier /etc/pkgmk.conf</h4>
+     <h4>Conclusion</h4>
+  <a name='4'></a>
+  <h2>Scénario B: un paquet sans dépendances</h2>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez très attentif lorsque vous tapez les commandes.</div>
    <p>Commençons donc par basculer en <b><span style="color: #ff0000;">compte root</span></b></p>
    <pre class="command_user"><kbd>su -</kbd></pre>
    <pre class="output">Password:</pre>
    <p>J'espère que vous vous rappelez du mot de passe <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />. Notez bien <b>le tiret</b>, il est indispensable pour que vous exécutiez les fichiers de configuration du compte root.</p>
    <p>Nous voilà donc en root, (la couleur du prompt est passée en rouge)</p>
-   <p>Nous allons installer une autre nutyx dans un repertoire et nous y accederons en chroot. Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</p>
-   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.sh</kbd></pre>
-   <p>Optionnellement on vérifie la somme md5 du script:</p>
-   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane.sh.md5sum
-md5sum -c install-saravane.sh.md5sum</kbd></pre>
-   <pre class="output">install-saravane.sh: Réussi</pre>
+   <p>Si vous lisez ceci, assurez-vous d'avoir effectué toutes les manipulations pour le scénario concerné, <a href="#22">dans notre exemple il s'agit du scénario <b>B</b></a>.</p>
+   <p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</p>
+   <p>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></p>
+   <a name='41'></a>
+   <h3>Création de la recette</h3>
+    <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>, tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
+    <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
+# Description: Petit éditeur non graphique emulant emuler, wordStar
+# URL: http://joe-editor.sourceforge.net/
+# Maintainer: JHallen, JJJordan, Marx_sk, shallot
+# Packager: François Perrin
+
+name=joe
+version=3.7
+release=1
+source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}
+EOF</kbd></pre>
+   <a name='42'></a>
+   <h3>Compilation de la recette</h3>
+    <p>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></p>
+    <pre class="command"><kbd>cd /usr/ports/personnel/joe
+pkgmk -d</kbd></pre>
+
+    <pre class="output">=======> PKGMK_SYNC_FILES: no
+=======> PKGMK_INSTALL: no
+=======> PKGMK_WORK_DIR: /usr/ports/personnel/joe/work
+=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/joe
+=======> WARNING: CLEAN IGNORED
+=======> WARNING: KEEP SOURCES
+=======> PKGMK_UPDATE_SIGNATURE:
+=======> PKGMK_IGNORE_FOOTPRINT: yes
+=======> PKGMK_IGNORE_MD5SUM: yes
+=======> .PKGREPO file will not be generated
+=======> PKGMK_COMPRESS_PACKAGE: no
+=======> name: joe
+=======> version: 3.7
+=======> Downloading 'http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz'.
+...
+...
+Saving to: '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial'
+2014-10-26 22:27:47 (1.01 MB/s) - '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial' saved [696036/696036]
+
+=======> Building '/usr/ports/personnel/joe/joe1414362465x86_64.cards.tar.xz'.
+bsdtar -p -o -C /usr/ports/personnel/joe/work/src -xf /usr/ports/personnel/joe/joe-3.7.tar.gz
++ build
++ cd joe-3.7
++ ./configure --prefix=/usr --sysconfdir=/etc
+...
+...
+make[3]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+make[2]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
+=======> WARNING: Footprint ignored.</pre>
+
+   <a name='43'></a>
+   <h3>Installer mon paquet</h3>
+    <p>Pour installer notre paquet, il suffit de taper la commande:</p>
+    <pre class="command"><kbd>pkgadd joe1414362465x86_64.cards.tar</kbd></pre>
+  <a name='5'></a>
+  <h2>Un paquet avec quelques dépendances</h2>
+   <p>Si vous lisez ceci, assurez-vous d'avoir effectué toutes les manipulations pour le scénario concerné, <a href="#23">dans notre exemple il s'agit su scénario <b>C</b></a></p>.
+   <p>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</p>
+    <p>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées. Par principe, sous NuTyX nous essayons de proposer le maximum de fonctionalitées.</p>
+    <p>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le paquet <b>clipit</b> qui d'après le README est (en anglais dans le texte)</p>
+    <p><i>ClipIt is a lightweight GTK+ clipboard manager.</i></p>
+    <p><i>Project website: http://clipit.rspwn.com/</i></p>
+    <p><i>Requirements:</i></p>
+    <p><i>* gtk+ >= 2.10.0</i></p>
+    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
+    <ol>
+     <a name='71'></a>
+     <li><h3>Créer le dossier</h3>
+      <pre class="command"><kbd>mkdir -p /usr/ports/personnel/clipit</kbd></pre>
+     </li>
+     <a name='72'></a>
+     <li><h3>Créer le fichier Pkgfile</h3>
+       <p>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</p>
+       <pre class="command"><kbd># Description: ClipIt is a lightweight GTK+ clipboard manager.
+# URL: http://clipit.rspwn.com/
+# Maintainer: Gilberto Xyhthyx &lt;xyhthyx at gmail dot com&gt;
+# Packager: François Perrin
+# Depends on: gtk
+
+name=clipit
+version=1.4.2
+release=1
+source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}</kbd></pre>
+   <a name='75'></a>
+   <li><h3>Compilez le paquet.</h3>
+    <pre class="command"><kbd>cards depcreate clipit</kbd></pre>
+    <p>La commande <b>cards depcreate</b> compile les dépendances, installe les dépendances, compile le paquet final et l'installe.</p></li>
+    <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
+
+  <a name='6'></a>
+  <h2>Methode de construction dans un environnement isolé aussi appelé "chroot"</h2>
+   <p>Cette methode n'est pas indispensable mais fortement recommandée.</p>
+   <p>Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Dans un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre.</p>
+   <p>On appelera désormais notre environnement isolé: <b> chroot</b>.<p>
+   <p>On va commencer par récupérer les bon scripts:</p>
+   <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane{,.md5sum}
+wget http://downloads.nutyx.org/enter-chroot{,.md5sum}</kbd></pre>
+md5sum -c install-saravane.md5sum</kbd></pre>
+   <pre class="output">install-saravane: Réussi</pre>
+   <pre class="command"><kbd>md5sum -c enter-chroot.md5sum</kbd></pre>
+   <pre class="output">enter-chroot: Réussi</pre>
+   <p>Nous allons définir une fois pour toute la variable LFS, elle définiera le dossier dans lequel sera installée <b>la chroot</b>:</p>
+   <p>Comme je suis un grand original, je vous propose de choisir le dossier ...<b>/chroot</b> comme dossier de destination, la commande est donc:</p>
+   <pre class="command"><kbd>export LFS=/chroot</kbd></pre>
    <p>On peut maintenant lancer l'installation sans grosse crainte</p>
-   <pre class="command"><kbd>bash install-saravane.sh /chroot</kbd></pre>
+   <pre class="command"><kbd>bash install-saravane</kbd></pre>
    <p>Et l'installation commence.</p>
    <pre class="output">This installation will be on /chroot                                     [ INFO ]
 *******************************************
-Downloads of cards.devel1412543016x86_64.cards.tar.xz
+downloads of cards.devel1412543016x86_64.cards.tar.xz
 
 .....
 ...
@@ -102,459 +551,60 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
 "*                                                 *"
 "***************************************************"</pre>
    <p>Une fois l'installation terminée on peut mettre notre chroot en service.</p>
-  <a name='3'></a>
-  <h2>Mise en service de la chroot</h2>
    <p>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:</p>
-   <pre class="command"><kbd>mkdir -p /root/bin
-cat &gt; /root/bin/EntrerChroot &lt;&lt; "EOF"
-echo "Entrer dans la chroot..."
-mount -v -B /dev /chroot/dev
-mount -vt devpts devpts /chroot/dev/pts
-mount -vt proc proc /chroot/proc
-mount -vt sysfs sysfs /chroot/sys
-cp /etc/resolv.conf /chroot/etc/resolv.conf
-chroot /chroot /usr/bin/env -i \
-HOME=/root TERM="$TERM" PS1='\u@\h:\w\$ ' \
-PATH=/bin:/usr/bin:/sbin:/usr/sbin:/root/bin \
-/bin/bash -l
-umount /chroot/proc
-umount /chroot/sys
-umount /chroot/dev/pts
-umount /chroot/dev
-echo "Sortie de la chroot..."
-EOF</kbd></pre>
-   <p>Ce petit script vous permettra d'entrer et de sortir très simplement de votre chroot. Notez bien le /binbash -l qui permet de se comporter comme un login et donc de récupérer toutes les variables indispensables. Il vous reste juste à le rendre executable:</p>
-   <pre class="command"><kbd>chmod -v 755 /root/bin/EntrerChroot</kbd></pre>
-   <pre class="output">le mode de &laquo;&nbsp;bin/EntrerChroot&nbsp;&raquo; a été modifié de 0644 (rw-r--r--) à 0755 (rwxr-xr-x)</pre>
+   <pre class="command"><kbd>bash enter-chroot</kbd></pre>
+   <p>Ce petit script vous permet d'entrer et de sortir très simplement de votre chroot.</p>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />Désormais pour entrer dans votre chroot, utilisez UNIQUEMENT la commande en root:</div>
-   <pre class="command"><kbd>EntrerChroot</kbd></pre>
-  <a name='4'></a>
-  <h2>Configurer la chroot</h2>
-   <p>Ca y est nous y sommes, nous pouvons commencer à travailler dans l'environnement, vous êtes maintenant dans la chroot si non tapez en root</p>
-   <pre class="command"><kbd>EntrerChroot</kbd></pre>
+   <pre class="command"><kbd>bash enter-chroot</kbd></pre>
    <p>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</p>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
-   <p>Nous avons donc l'environnement, il ne nous reste plus qu'à choisir un dossier de travail pour nos nouvelles recettes et de configurer le fichier <b>/etc/cards.conf</b> et d'installer les outils de travail.</p>
-   <div class="important"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Il est INDISPENSABLE de choisir un dossier différent de ceux fournis par NuTyX cad les dossiers:
-    <ul>
-     <li>/var/lib/pkg/saravane/desktop</li>
-     <li>/var/lib/pkg/saravane/server</li>
-     <li>/var/lib/pkg/saravane/system</li>
-    </ul>
-    <p>Sinon:</p>
-    <ul>
-     <li>Vous aurez des messages d'erreurs lors de la tentative de compilation de votre paquet</li>
-     <li>Lors de la prochaine demande de synchronisation des ports NuTyX vos recettes seront supprimées.</li>
-    </ul>
-   </div>
-   <p>Je vous propose d'utiliser le dossier <b>/usr/ports/personnel</b>. Si celui-ci n'existe pas encore, créez-le:</p>
-   <pre class="command"><kbd>mkdir -pv /usr/ports/personnel</kbd></pre>
-   <p>Vérifiez le contenu du fichier <b>/etc/cards.conf</b> le cas échéant, on ajoute ensuite l'information dans le fichier de configuration <b>/etc/cards.conf. </b>Celui-ci doit ressembler à ceci:</p>
-   <pre class="output">#
-# cards conf
-###
+   <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire <a href="#4">un paquet sans dépendances</a> ou un <a href="#5">un paquet avec quelques dépendances</a>.</div>
 
-# note: L'ordre importe: Le premier paquet qui sera trouvé sera utilisé
-dir /usr/ports/personnel
-dir /var/lib/pkg/saravane/desktop|http://downloads.nutyx.org/...
-dir /var/lib/pkg/saravane/server|http://downloads.nutyx.org/..
-dir /var/lib/pkg/saravane/system|http://downloads.nutyx.org/.
-...</pre>
-   <div class="note"><img src="../graphics/note.gif" width="10" height="10" alt="*" />Vous noterez donc que ce sont les paquets trouvés dans le dossier <b>personnel</b> qui seront traités en premier lieu même si le même port existe dans les dossiers <b>desktop</b>, <b>server</b> ou <b>system</b></div>
-   <p>Il est temps d'installer les outils de travail c'est à dire les paquets necessaire au développement: compilateur et autres, cette opération peut durer plusieurs minutes:</p>
-   <pre class="command"><kbd>get cards.devel</kbd></pre>
-   <pre class="output">/var/lib/pkg/saravane/desktop/MD5SUM                                                                                                                                  
-/var/lib/pkg/saravane/server/MD5SUM                                                                                                                                    
-/var/lib/pkg/saravane/system/MD5SUM
-...
-...
-/var/lib/pkg/saravane/system/zlib/MD5SUM
-Retrieve info about the 63 packages: 100 %
-/var/lib/pkg/saravane/system/cards/cards.devel1412543016x86_64.cards.tar.xz
-...
-...
-/var/lib/pkg/saravane/system/bison/bison.fr1412540451any.cards.tar.xz
-9044 Bytes - 3830580 Bytes/Sec - 100% - 0 Sec remain c remain 
-ADD: perl-5.20.1, 1773 files: 100 %
-ADD: gcc.devel-4.9.1, 1136 files: 100 %
-...
-...
-ADD: make.fr-4.0, 3 files: 100 %
-ADD: gawk.fr-4.1.1, 3 files: 100 %
-ADD: bison.fr-3.0.2, 4 files: 100 %</pre>
 
-   <p>Pour que vous puissiez compiler vos paquets binaires et ensuite eventuellement les installer dans votre NuTyX principale, il est important de vérifier quelques variables dans le fichier <b>/etc/pkgmk.conf</b>. La variable <b>PKGMK_CLEAN</b> doit être mise à <b>no</b></p>
-   <p>Optionnellement vous pouvez également ajuster les dossiers et optimisation dans le fichier <b>/etc/pkgmk.conf</b>. Si vous ne changez rien, sachez que:</p>
-    <ol>
-     <li><b>PKGMK_SOURCE_DIR="$PWD"</b> les sources des paquets binaires seront dans le dossier du paquet et seront effacé si le paquet s'est compilé avec succès.</li>
-     <li><b>PKGMK_COMPRESS_PACKAGE="no"</b> le paquet binaire ne sera pas compressé.</li>
-     <li><b>PKGMK_CLEAN="yes"</b> le paquet binaire cad le fichier  &lt;nom_du_port&gt;1234567890x86_64.cards.tar sera supprimé une fois installé</li>
-     <li><b>PKGMK_SYNC_FILES="no"</b> si des dépendances sont réclamées, elle ne seront pas téléchargées</li>
-    </ol>
-   <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire son premier paquet.</div>
-  <a name='5'></a>
-  <h2>Mon premier paquet</h2>
-   <p>Je vous propose de construire le petit editeur de texte JOE. Vous me direz, il existe déjà, peu importe, l'idée ici est de se faire la main sur un paquet simple.</p>
-   <p>Pour qu'une recette se compile et s'installe correctement il est important de donner au nom du dossier de la recette, le même nom que celui défini par la variable name. Dans notre cas, le nom est: <b>joe</b></p>
-    <a name='51'></a>
-    <h3>Création du dossier du paquet joe</h3>
-     <pre class="command"><kbd>mkdir -pv /usr/ports/personnel/joe</kbd></pre>
-   <a name='52'></a>
-   <h3>Création de la recette</h3>
-    <p>Si je me base sur la recette de <a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/joe.html" title="Lire dans une autre fenêtre" class="external" onclick="window.open(this.href); return false;">BLFS</a>,tapez donc ce texte dans votre terminal et DANS votre chroot <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /></p>
-    <pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/Pkgfile &lt;&lt; "EOF"
-# Description: Petit éditeur non graphique emulant emuler, wordStar
-name=joe
-version=3.7
-release=1
-source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
-build() {
-cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc
-make
-make DESTDIR=$PKG install
-}
-EOF</kbd></pre>
-<p>Si vous êtes sur une version de cards plus ancienne que la version <b>0.10.82.96a</b>, créez le fichier:</p>
-<pre class="command"><kbd>cat &gt; /usr/ports/personnel/joe/joe.info &lt;&lt; "EOF"
-Petit éditeur non graphique emulant emuler, wordStar
-EOF</kbd></pre>
-    <p>Vous venez de créer la recette de votre premier paquet. Il nous reste une petite opération à faire avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</p>
-    <pre class="command"><kbd>cd /usr/ports/personnel/joe
-pkgmk -us</kbd></pre>
-    <p>Observez ATTENTIVEMENT le résultat, si vous n'avez rien changé dans le fichier de configuration <b>/etc/pkgmk.conf</b> vous devriez avoir ceci comme résultat:</p>
-    <pre class="output">=======> PKGMK_SYNC_FILES: no
-=======> PKGMK_INSTALL: no
-=======> PKGMK_WORK_DIR: /usr/ports/personnel/joe/work
-=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/joe
-=======> WARNING: CLEAN IGNORED
-=======> WARNING: KEEP SOURCES
-=======> PKGMK_UPDATE_SIGNATURE: yes
-=======> PKGMK_IGNORE_FOOTPRINT: yes
-=======> PKGMK_IGNORE_MD5SUM: yes
-=======> PKGMK_COMPRESS_PACKAGE: no
-=======> name: joe
-=======> version: 3.7</pre>
-    <p>Toutes les variables importante sont affichées ainsi que leur valeur. Ce sont bien les variables définies dans le fichier <b>/etc/pkgmk.conf</b>. Je vous invite à relire <a href="saravane-man.html" onclick="window.open(this.href); return false;">le man de NuTyX</a> pour en avoir une définition plus détaillée</p>
-   <a name='53'></a>
-   <h3>Compilation de la recette</h3>
-    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" />N'intérrompez JAMAIS la commande <b>cards create </b> via ctrl+c, cela aurait pour effet de rendre votre chroot inutilisable.</div>
-    <p>Ca y est tout est en place pour la compilation de notre nouveau paquet... Oui je l'ai déjà dis celle-là <img src="../graphics/yippee.gif" alt="yippee"/></p>
-    <pre class="command"><kbd>cards create -r joe</kbd></pre>
-    <pre class="output">var/lib/pkg/saravane/desktop/xfce4-settings/xfce4-settings.deps: No such file or directory
-Failed to open /var/lib/pkg/saravane/desktop/xfce4-systemload-plugin/xfce4-systemload-plugin.deps
-/var/lib/pkg/saravane/desktop/xfce4-systemload-plugin/xfce4-systemload-plugin.deps: No such file or directory
-Failed to open /var/lib/pkg/saravane/desktop/xfce4-taskmanager/xfce4-taskmanager.deps
-...
-...
-Failed to open /var/lib/pkg/saravane/system/zlib/zlib.deps
-/var/lib/pkg/saravane/system/zlib/zlib.deps: No such file or directory
-/usr/ports/personnel/joe has no deps
-Retrieve info about the 120 packages: 100 %
-cards create: /usr/ports/personnel/joe package(s) starting build Sun Oct 26 22:27:45 2014
-
-=======> PKGMK_SYNC_FILES: no
-=======> PKGMK_INSTALL: no
-=======> PKGMK_WORK_DIR: /usr/ports/personnel/joe/work
-=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/joe
-=======> WARNING: CLEAN IGNORED
-=======> WARNING: KEEP SOURCES
-=======> PKGMK_UPDATE_SIGNATURE:
-=======> PKGMK_IGNORE_FOOTPRINT: yes
-=======> PKGMK_IGNORE_MD5SUM: yes
-=======> MD5SUM file will be generated
-=======> PKGMK_COMPRESS_PACKAGE: no
-=======> name: joe
-=======> version: 3.7
-=======> Downloading 'http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz'.
-...
-...
-Saving to: '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial'
-
-     0K .......... .......... .......... .......... ..........  7%  523K 1s
-..
-   650K .......... .......... .........                       100% 11.6M=0.7s
-
-2014-10-26 22:27:47 (1.01 MB/s) - '/usr/ports/personnel/joe/joe-3.7.tar.gz.partial' saved [696036/696036]
-
-=======> Building '/usr/ports/personnel/joe/joe1414362465x86_64.cards.tar.xz'.
-bsdtar -p -o -C /usr/ports/personnel/joe/work/src -xf /usr/ports/personnel/joe/joe-3.7.tar.gz
-+ build
-+ cd joe-3.7
-+ ./configure --prefix=/usr --sysconfdir=/etc
-...
-...
-make[3]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
-make[2]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
-make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
-=======> WARNING: Footprint ignored.
-=======> Adding meta data to Archive joe
-=======> Adding meta data to Archive joe.man
-=======> Adding meta data to Archive joe.doc
-
-cards create: build done Sun Oct 26 22:27:59 2014
-
-ADD FOR INSTALL: joe
-ADD FOR INSTALL: joe.doc
-ADD FOR INSTALL: joe.man
-
-cards create: finish Sun Oct 26 22:27:59 2014
-
-</pre>
    <div><img src="../graphics/clap.gif" alt="clap" />Ca c'est vraiment cool non <img src="../graphics/clap.gif" alt="clap" /></div>
    <p>Votre premier paquet est compilé et installé. Le gestionnaire de paquet (de votre chroot) l'a intégré dans sa base de données. Petite remarque, si vous avez suivi ce tuto, vous avez sans doute remarquez que toutes les commandes ont été effectuées depuis la racine de votre chroot ... <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />.</p>
    <p>Il est temps de se familiariser avec son nouveau paquet installé. Ca tombe bien, on vient d'installer ... un éditeur de texte.</p>
    <p>Maintenant que l'on a un éditeur de texte, on va s'en servir pour la suite. Fini les cat ...</p>
    <p>Tapez maintenant la commande suivante:</p>
-   <pre class="command"><kbd>cards info -i joe</kbd></pre>
-   <pre class="output">Retrieve info about the 123 packages: 100 %                                                         
-Name           : joe                                                                                
-Description    : Petit éditeur non graphique emulant emuler, wordStar                               
+   <pre class="command"><kbd>cards info joe</kbd></pre>
+   <pre class="output">Retrieve info about the 123 packages: 100 %
+Name           : joe
+Description    : Petit éditeur non graphique emulant emuler, wordStar
+Maintainer     : JHallen, JJJordan, Marx_sk, shallot
+Packager       : François Perrin
 Version        : 3.7
+Release        : 1
 Build date     : Sun Oct 26 22:27:45 2014
 Size           : 1117696
 Number of Files: 70
 Arch           : x86_64</pre>
-   <a name='6'></a>
-   <h2>Installer mon premier paquet sur la NuTyX principale</h2>
+
+   <h3>Installer mon premier paquet sur la NuTyX principale</h3>
     <div><img src="../graphics/wall.gif" alt="wall" /> Super j'ai un nouveau paquet...</div><br />
    <div><img src="../graphics/question.gif" width="16" height="15" alt="?" /> Mais comment je fais pour l'installer dans ma NuTyX principale... ?</div><br />
-   <div><img src="../graphics/answer.gif" width="15" height="15" alt="!!" /> Pas de problème tout est prévu, quelques préparatifs s'imposent, je vous préviens c'est un peu chaud <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /></div><br />
-   <p>Il faut commencer par mettre à jour les info meta qui seront necessaires pour cards. On va utilisée le script update_MD5SUM. On se rend donc dans le dossier <b>parent</b> des paquets binaires et on regénère les infos necessaires du bon dossier après avoir crééer le dossier destinée au service http de la principale:</p>
-   <pre class="command"><kbd>get rsync
-mkdir /NFS
-mkdir /root/bin
-wget http://downloads.nutyx.org/files/update_MD5SUM -O /root/bin/update_MD5SUM
-chmod 755 /root/bin/update_MD5SUM
-export PATH=/root/bin:$PATH
-cd /usr/ports
-update_MD5SUM personnel</kbd></pre>
-   <pre class="output">/usr/ports
-building file list ... done
-created directory /NFS/personnel
-./
-MD5SUM
-joe/
-joe/MD5SUM
-joe/Pkgfile
-joe/joe-3.7.tar.gz
-joe/joe.doc1414362465any.cards.tar
-joe/joe.info
-joe/joe.man1414362465any.cards.tar
-joe/joe1414362465x86_64.cards.tar
-
-sent 1,987,463 bytes  received 210 bytes  3,975,346.00 bytes/sec
-total size is 1,986,341  speedup is 1.00</pre>
-   <p>Comme nous avons construit un seul paquet, c'est très rapide. On peut maintenant quitter la chroot:</p>
+   <div><img src="../graphics/answer.gif" width="15" height="15" alt="!!" /> Pas de problème tout est prévu.</div><br />
+   <p>On peut maintenant quitter la chroot:</p>
    <pre class="command"><kbd>exit</kbd></pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous êtes de nouveau dans votre NuTyX principale</div>
-   <p>La commande <b>cards install</b> a besoin de télécharger le paquet que vous venez de créer, il faut donc installer et activer le service http (si vous ne l'avez pas encore fait), vous allez voir c'est très simple. On ouvre un terminal:</p>
-   <pre class="command_user"><kbd>get apache
-get apache.service</kbd></pre>
-   <p>Malheureusement la configuration de apache n'étant parfaite, un minimum d'actions s'impose.</p>
-   <p>On terminera par un petit lien bien placé et la magie va bientôt opérer. <img src="../graphics/beer.gif" alt="Cool" title="Cool"/> En root donc:</p>
-   <pre class="command"><kbd>ln -svf /chroot/NFS/personnel /srv/www</kbd></pre> 
-   <div>Il est temps d'ajustez le fichier <b>/etc/cards.conf</b> comme ceci:</div>
-   <pre class="command"><kbd>dir /var/lib/pkg/saravane/personnel|http://localhost/personnel
-dir /var/lib/pkg/saravane/desktop|http://...
-dir /var/lib/pkg/saravane/server|http://...</kbd></pre>
-   <p>La ligne qui nous intéresse est uniquement la première:</p>
-   <p>Et comme vous le remarquez, vous utilisez donc le dépot de votre ... <b><u>chroot</u></b> <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /> C'est cool non ?</p>
-   <p>On active le service http via le terminal toujours en root:</p>
-   <pre class="command"><kbd>/etc/rc.d/init.d/httpd start</kbd></pre>
-   <pre class="output">     Starting Apache HTTP daemon...AH00558: httpd: 
-Could not reliably determine the server's fully qualified domain name,
-using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
-  *                                                                      [  OK  ]</pre>
-   <p>Pour le message d'avertissement, on verra plus tard. <img src="../graphics/champion.gif" />. Donc si vous faites maintenant:</p>
-   <p>Vous pouvez vérifier le bon fonctionnement de votre serveur http, en allant à l'adresse: <a href=http://localhost/personnel/>http://localhost/personnel/</a> avec votre navigateur favori</p>
    <p>Donc si vous faites maintenant:</p>
    <pre class="command"><kbd>cards info -b joe</kbd></pre>
-   <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
-/var/lib/pkg/saravane/desktop/MD5SUM
-/var/lib/pkg/saravane/server/MD5SUM
-/var/lib/pkg/saravane/system/MD5SUM
-Name           : joe
+   <pre class="output">Name           : joe
 Description    : Petit éditeur non graphique emulant emuler, wordStar
+Maintainer     : JHallen, JJJordan, Marx_sk, shallot
+Packager       : François Perrin
 Version        : 3.7
+Release        : 1
 Build date     : Sun Oct 26 23:27:45 2014
 Arch           : x86_64
 Url            : http://localhost/personnel
-Local Directory: /var/lib/pkg/saravane/personnel</pre>
+Local Directory: /chroot/usr/ports/personnel</pre>
     <div><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></div>
     <p>Il ne nous reste plus qu'a l'installer <img src="../graphics/smiley-surprised.gif" alt="Surprised" title="Surprised" /></p>
     <pre class="command_user"><kbd>get joe</kbd></pre>
-    <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
-/var/lib/pkg/saravane/desktop/MD5SUM
-/var/lib/pkg/saravane/server/MD5SUM
-/var/lib/pkg/saravane/system/MD5SUM
-Retrieve info about the 622 packages: 100 %
+    <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: joe-3.7, 71 files: 100 %</pre>
-    <a name='7'></a>
-   <h2>Un paquet avec quelques dépendances</h2>
-    <p>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</p>
-    <p>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées. Par principe, sous NuTyX nous essayons de proposer le maximum de fonctionalitées.</p>
-    <p>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le paquet <b>clipit</b> qui d'après le README est (en anglais dans le texte)</p>
-    <p><i>ClipIt is a lightweight GTK+ clipboard manager.</i></p>
-    <p><i>Project website: http://clipit.rspwn.com/</i></p>
-    <p><i>Requirements:</i></p>
-    <p><i>* gtk+ >= 2.10.0</i></p>
-    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
-    <ol>
-     <a name='71'></a>
-     <li><h3>Créer le dossier</h3>
-      <pre class="command"><kbd>mkdir -p /usr/ports/personnel/clipit</kbd></pre>
-     </li>
-     <a name='72'></a>
-     <li><h3>Créer les fichiers</h3>
-      <a name='721'></a>
-      <h4>Le fichier Pkgfile</h4> 
-       <p>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</p>
-       <pre class="command"><kbd># Description: ClipIt is a lightweight GTK+ clipboard manager.
-# URL: http://clipit.rspwn.com/
-# Maintainer: Gilberto Xyhthyx &lt;xyhthyx at gmail dot com&gt;
-# Packager: François Perrin
-# Depends on: gtk
-
-name=clipit
-version=1.4.2
-release=1
-source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
-make
-make DESTDIR=$PKG install
-}</kbd></pre>
-    <a name='722'></a>
-    <h4>Le fichier clipit.info (plus necessaire si version de cards >= 0.10.82.96a)</h4>
-    <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.info</b> avec ceci:</p>
-    <pre class="command"><kbd>ClipIt is a lightweight GTK+ clipboard manager.
-
-URL: http://clipit.rspwn.com/
-
-Maintainer:
-
--  Gilberto "Xyhthyx" Miralla &lt;xyhthyx at gmail dot com&gt;
-
-Packager:
-
-- François Perrin
-</kbd></pre>
-   <a name='723'></a>
-   <h4>Le fichier clipit.deps (plus necessaire si version de cards >= 0.10.82.96a)</h4>
-    <p>Completez le fichier <b>/usr/ports/personnel/clipit/clipit.deps</b> avec ceci:</p>
-    <pre class="command"><kbd>gtk</kbd></pre> 
-   </li>
-   <a name='73'></a>
-   <li><h3>Générer le fichier MD5SUM</h3>
-    <p>Vous venez de créer la recette de votre deuxième paquet. Il faut à nouveau faire une opération avant de pouvoir demander à <b>cards</b> de le compiler et de l'installer:</p>
-    <pre class="command"><kbd>cd /usr/ports/personnel/clipit
-pkgmk -us</kbd></pre>
-    <pre class="output">=======> WARNING: PKGMK_SYNC_FILES: yes
-=======> WARNING: URL not found for /usr/ports/personnel in /etc/cards.conf, ignore synchronising
-=======> PKGMK_INSTALL: no
-=======> PKGMK_WORK_DIR: /usr/ports/personnel/clipit/work
-=======> PKGMK_SOURCE_DIR: /usr/ports/personnel/clipit
-=======> WARNING: CLEAN IGNORED
-=======> WARNING: KEEP SOURCES
-=======> PKGMK_UPDATE_SIGNATURE: yes
-=======> PKGMK_IGNORE_FOOTPRINT: yes
-=======> PKGMK_IGNORE_MD5SUM: yes
-=======> MD5SUM file will be generated
-=======> PKGMK_COMPRESS_PACKAGE: no
-=======> name: clipit
-=======> version: 1.4.2</pre>
-   <p>Le fichier <b>MD5SUM</b> est créé.</p>
-   </li>
-   <a name='74'></a>
-   <li><h3>Télécharger les dépendances automatiquement</h3>
-   <p>Pour cet exercice, nous choisissons d'utiliser les dépendances disponibles sur le dépot de NuTyX. Il est tout à fait possible de choisir si oui ou non on souhaite utiliser les dépendances disponibles. La variable <b>PKGMK_SYNC_FILES="no"</b> qui est dans le fichier /etc/pkgmk.conf est là pour cela. Si <b>"yes"</b> vous ne devez pas compiler les dépendances vous-même mais celle du dépot. Si <b>"no"</b>, vous désirez compiler vos propre versions des dépendances.</p> 
-   <p>Nous ajustons donc la variable ds le fichier <b>/etc/pkgmk.conf</b></p>
-   <pre class="output">PKGMK_SYNC_FILES="yes"</pre>
-   <p>Il faut commencer par rappatrier toutes les infos concernant les ports, lancez la commande en root:</p>
-   <pre class="command"><kbd>cards sync -p</kbd></pre>
-   <p>L'opération peut prendre plusieurs minutes. Une fois terminée, on va demander à <b>cards</b> de télécharger les dépendances necessaires à notre petit paquet:</p>
-   <pre class="command"><kbd>for i in `cards depends -a clipit`;do cd $i; pkgmk -d -i; done</kbd></pre>
-   <p>Les dépendances necessaire à la compilation de notre petit paquet <b>clipit</b> sont maintenant téléchargées. Cela prendra quelques minutes.</p>
-   </li>
-   <a name='75'></a>
-   <li><h3>Compilez le paquet.</h3>
-    <pre class="command"><kbd>cards create -r clipit</kbd></pre>
-    <p>La commande <b>cards</b> remet la chroot dans une "installation minimale", recherche toutes les dépendances du paquet et comme ces dépendances n'existent pas dans votre chroot, il télécharge les binaires déjà à jour et enfin compile le paquet.</p></li>
-    <a name='76'></a>
-    <li><h3>Envoyer le paquet</h3>
-     <p>Dernière étape, il faut "envoyer" les binaires sur "votre serveur http":</p>
-     <pre class="command"><kbd>cd /usr/ports
-update_MD5SUM personnel</kbd></pre>
-     <pre class="output">/usr/ports
-building file list ... done
-./
-MD5SUM
-clipit/
-clipit/MD5SUM
-clipit/Pkgfile
-clipit/clipit-1.4.2.tar.gz
-clipit/clipit.da1414792356any.cards.tar
-clipit/clipit.de1414792356any.cards.tar
-clipit/clipit.es1414792356any.cards.tar
-clipit/clipit.fr1414792356any.cards.tar
-clipit/clipit.it1414792356any.cards.tar
-clipit/clipit.man1414792356any.cards.tar
-clipit/clipit.sv1414792356any.cards.tar
-clipit/clipit1414792356x86_64.cards.tar                                                                                                 
-                                                                                                                                        
-sent 588,560 bytes  received 515 bytes  1,178,150.00 bytes/sec
-total size is 2,572,451  speedup is 4.37</pre>
-    <a name='77'></a>
-    <li><h3>Installer notre paquet dans la principale</h3>
-     <p>On commence par sortir de la chroot</p>
-     <pre class="command"><kbd>exit</kbd></pre>
-     <p>On vérifie si il est dispo pour téléchargement et installation</p>
-     <pre class="command"><kbd>cards info -b clipit</kbd></pre>
-   <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
-/var/lib/pkg/saravane/desktop/MD5SUM
-/var/lib/pkg/saravane/server/MD5SUM
-/var/lib/pkg/saravane/system/MD5SUM
-Name           : clipit
-Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
-Version        : 1.4.2
-Build date     : Fri Oct 31 22:52:36 2014
-Arch           : x86_64
-Url            : http://localhost/personnel
-Local Directory: /var/lib/pkg/saravane/personnel</pre>
-     <p>On peut maintenant installer notre nouveau paquet:</p>
-     <pre class="command_user"><kbd>get clipit</kbd></pre></li>
-     <pre class="output">/var/lib/pkg/saravane/personnel/MD5SUM
-/var/lib/pkg/saravane/desktop/MD5SUM
-/var/lib/pkg/saravane/server/MD5SUM
-/var/lib/pkg/saravane/system/MD5SUM
-Retrieve info about the 635 packages: 100 %
-ADD: clipit-1.4.2, 17 files: 100 %
-ADD: clipit.fr-1.4.2, 3 files: 100 %</pre>
-    <p>Vous avez installé un paquet contenant des dépendances. La preuve si vous demandez les informations de votre nouvelle archive en faisant:</p>
-    <pre class="command_user"><kbd>/chroot/usr/bin/pkginfo -a /var/lib/pkg/saravane/personnel/clipit/clipit1*</kbd></pre>
-    <pre class="output">clipit Description    : Lightweight GTK+ clipboard manager (fork of Parcellite)
-clipit Version        : 1.4.2
-clipit Release        : 1
-clipit Build date     : 1414792356
-clipit Dependencies   : clipit1414792356 glib1411657204 glibc1412539418 gtk1414590782 xorg-libx111411748195</pre>
-    <div><img src="../graphics/yippee.gif" alt="yippee"/> C'est magique <img src="../graphics/yippee.gif" alt="yippee"/></div>
-    <a name='78'></a>
-    <li><h3>Quelques explications au sujet de la chroot:</h3>
-    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="*"/>Les explications qui suivent necessite que vous soyer dans la chroot</div>
-   </ol>
-   <p>La ligne <b># Depends on: gtk</b> dans le fichier <b>Pkgfile</b> ou le fichier <b>clipit.deps</b> contenant  <b>gtk</b>: est la seule dépendance necessaire en effet <b>gtk</b> réclame d'autres dépendances qui elles même en réclament d'autre ainsi de suite...</p>
-   <p>Pour terminer, il faut savoir qu'avant de commencer un nouveau paquet, il est important de toujours revenir sur une NuTyX de base afin de bien connaître les dépendances necessaires. La commande:</p>
-   <pre class="command"><kbd>cards base -r</kbd></pre>
-   <p>nous permet de revenir sur une NuTyX de base. Si l'on souhaite que certains paquets soient conservés lors de cette manipulation, on peut les ajouter dans un dossier dédié, et ce dossier est mentionné à la ligne:</p>
-   <pre class="output">base /var/lib/pkg/saravane/system
-base /root/mes_paquets_a_conserver</pre>
-   <p>du fichier <b>/etc/cards.conf</b></p>
-   <p>Les paquets à conserver seront répertoriés par dossier. Si par exemple vous souhaitez conserver les paquets <b>joe</b> et <b>rsync</b>, crééez les dossiers /root/mes_paquets_a_conserver/joe et /root/mes_paquets_a_conserver/rsync et le tour est joué:</p>
-<pre class="command"><kbd>mkdir -p /root/mes_paquets_a_conserver/{joe,rsync}</kbd></pre>
-    <hr>
-    <p class="updated">Dernière mise à jour 15-04-2015 20:56</p>
+ <hr>
+ <p class="updated">Dernière mise à jour 15-04-2015 20:56</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

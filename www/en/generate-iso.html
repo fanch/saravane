@@ -34,8 +34,12 @@
     <li>
      <h2>Get all the tools</h2>
       <pre class="command"><kbd>git clone git://git.tuxfamily.org/gitroot/nutyx/saravane.git
-wget http://downloads.nutyx.org/EnterChroot
-wget http://downloads.nutyx.org/install-saravane.sh</kbd></pre>
+wget http://downloads.nutyx.org/enter-chroot{,.md5sum}
+wget http://downloads.nutyx.org/install-saravane{,.md5sum}
+md5sum -c enter-chroot.md5sum</kbd></pre>
+      <pre class="output">enter-chroot: OK</pre>
+      <pre class="command"><kbd>md5sum -c install-saravane.md5sum</kbd></pre>
+      <pre class="output">install-saravane: OK</pre>
     </li>
     <li>
      <h2>Make shure you have cdrkit and syslinux installed, in worth case:</h2>
@@ -49,26 +53,35 @@ get syslinux</kbd></pre>
       <p>The chroot will be in the "/ISO-MINI" directory. Up to you to choose another place.</p>
     </li>
     <li>
-     <h2>Install the base somewhere</h2>
-      <pre class="command"><kbd>bash install-saravane.sh $LFS</kbd></pre>
+     <h2>Install the saravane base system</h2>
+      <pre class="command"><kbd>bash install-saravane</kbd></pre>
+      <p>If you are not on NuTyX saravane and get an error about the version of bash. you can try to update the <b>bash</b> interpreter by doing:</p>
+      <pre class="command"><kbd>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+tar xf bash-4.3.tar.gz
+wget http://ftp.gnu.org/gnu/bash/bash-4.3-patches/bash43-0{01..33}
+cd bash-4.3
+for i in ../bash43-0* ; do patch -p0 < ${i}; done
+./configure --prefix=/usr
+make
+make install</kbd></pre>
+     <p>Make shure you have all the tools for compilation on your distro. The interpreter will be in <b>/usr/bin/bash</b></p>
+     <pre class="command"><kbd>/usr/bin/bash install-saravane</kbd></pre>
     </li>
     <li>
      <h2>Copy the files for the iso</h2>
       <pre class="command"><kbd>cp -av saravane/iso $LFS/ISO</kbd></pre>
     </li>
     <li>
-     <h2>Enter the base</h2>
-      <pre class="command"><kbd>sh EnterChroot</kbd></pre>
+     <h2>Enter the saravane base system</h2>
+      <pre class="command"><kbd>bash enter-chroot</kbd></pre>
     </li>
     <li>
      <h2>Optionnal: if you have everything on your local host</h2>
       <pre class="command"><kbd>sed -i "s@downloads.nutyx.org@localhost@" etc/cards.conf</kbd></pre>
     </li>
     <li>
-     <h2>Create the directories and get the meta datas</h2>
-      <pre class="command"><kbd>mkdir -p /usr/ports/desktop
-mkdir -p /usr/ports/console
-cards sync</kbd></pre>
+     <h2>Get the meta datas</h2>
+      <pre class="command"><kbd>cards sync</kbd></pre>
     </li>
     <li>
      <h2>Install a kernel</h2>
@@ -87,7 +100,7 @@ cp -v /boot/initrd-* /ISO/isolinux/initrd</kbd></pre>
     </li>
     <li>
      <h2>Flush the binaries archives</h2>
-      <pre class="command"><kbd>find /var/lib/pkg/saravane/ -name "*.cards.*" -exec rm -v {} \;</kbd></pre>
+      <pre class="command"><kbd>cards purge</kbd></pre>
     </li>
     <li>
      <h2>Generate the squashfs files </h2>
@@ -111,12 +124,12 @@ done</kbd></pre>
      <h2>Conclusion</h2>
      <p>The size shoul'nd be bigger then 150 MB if you didn't put anything else then a kernel as extra package. You will find the iso in the $LFS directory.</p>
      <pre class="command"><kbd>ls $LFS</kbd></pre>
-     <pre class="output">bin   dev  home  lib  NuTyX_i686-saravane-20150331.iso     proc  run   srv  tmp  var
-boot  etc  ISO   mnt  NuTyX_i686-saravane-20150331.md5sum  root  sbin  sys  usr</pre>
+     <pre class="output">bin   dev  home  lib  NuTyX_i686-saravane-20150417.iso     proc  run   srv  tmp  var
+boot  etc  ISO   mnt  NuTyX_i686-saravane-20150417.md5sum  root  sbin  sys  usr</pre>
     </li>
    </ol>
   <hr>
-  <p class="updated">Last updated 2015-04-15 20:56</p>
+  <p class="updated">Last updated 2015-04-17 16:34</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
