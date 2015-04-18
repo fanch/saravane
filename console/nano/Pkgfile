@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 
 name=nano
-version=2.4.0
+version=2.4.1
 release=1
 
 source=(http://www.nano-editor.org/dist/v${version%.*}/$name-$version.tar.gz)
