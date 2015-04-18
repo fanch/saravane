@@ -38,7 +38,7 @@
      <a href="#2">Ajuster les fichiers de configuration en fonction de votre scénario</a><br />
      <a href="#4">Scénario B: un paquet sans dépendances</a><br />
      <a href="#5">Scénario C: Un paquet avec quelques dépendances</a><br />
-     <a href="#6">Methode de construction dans un environnement isolé aussi appelé "chroot"</a><br />
+     <a href="#6">Scénario E: construction dans un environnement isolé aussi appelé "chroot"</a><br />
     </h3>
   <a name='1'></a>
   <h2>Quel scénario choisissez-vous ?</h2>
@@ -394,9 +394,80 @@ rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
     <a name='25'></a>
     <h3>Scénario E</h3>
      <h4>Introduction</h4>
-     <h4>Le fichier /etc/cards.conf</h4>
+      <p>Ce scénario est un peu l'aboutissement de mon travail. Ici on propose un mélange de différents scénarios. On installe une NuTyX dans un dossier dédié dans laquelle on produit nos paquets personnels. Cela signifie que l'on doit parler de DEUX NuTyX</p>
+      <p>Ce scénario est donc la combinaison de DEUX scénario, dont un sera ... le scénario A ( <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /> maintenant vous savez pourquoi j'ai tenu à en parler ). Le deuxième scénario qui est celui de votre environnement isolé celui que vous préféré entre les 3 autres (B, C et D). A partir de maintenant on ne parle plus d'environnement isolée mais de la <b>chroot</b>.</p>
+      <p>Quelques avantages par rapports aux précédents:</p>
+      <ol>
+       <li>Comme vous n'installerez jamais de paquets de developpement sur votre NuTyX principale, celle ci gardera une taille raisonnable.</li>
+       <li>Bien que vous devez prévoir quelques Giga pour votre <b>chroot</b>, sachez que si vous devez la supprimer, un simple:
+       <pre class="command"><kbd>rm -r /&lt;chemin-de-votre-chroot&gt;</kbd></pre> et vous retrouvez votre NuTyX principale.</li>
+       <li>Tous vos paquets seront donc compilé dans la  <b>chroot</b>, ce qui épargne toute fausse manoeuvre sur votre NuTyX principale.</li>
+       <li>Votre <b>chroot</b> peut être un système de base, c'est même vivement recommandé alors que sur votre principale, vous utilisez très probablement une interface graphique.</li>
+      </ol>
+      <p>Ma machine est une 64 bits à 4 coeurs</p>
+     <h4>Les fichiers /etc/cards.conf</h4>
+        <u>   *** NuTyX Principale ***   </u>
+        <pre class="output">
+dir /chroot/usr/ports/personnel
+dir /var/lib/pkg/saravane/desktop|http://downloads.nutyx.org/saravane/x86_64/desktop
+dir /var/lib/pkg/saravane/console|http://downloads.nutyx.org/saravane/x86_64/console
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/x86_64/base
+arch x86_64
+locale fr
+base /var/lib/pkg/saravane/base</pre>
+        <p>Vous noterez que j'ai volontairement ajouter la ligne:
+        <pre class="output">dir /chroot/usr/ports/personnel</pre>
+        <p>En effet, on veut pouvoir installer les paquets de la <b>chroot</b> dans la principale</b>
+        <p>Je choisis le scenario <b>C</b> pour ma <b>chroot</b></p>
+        <u>   *** NuTyX chroot     *** Scénario C ***  </u>
+        <pre class="output">
+dir /usr/ports/personnel
+dir /usr/ports/desktop
+dir /usr/ports/console
+dir /usr/ports/base
+dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/i686/base
+arch x86_64
+logdir /var/log/pkgbuild
+locale fr
+base /usr/ports/base
+base /usr/ports/aconserver</pre>
      <h4>Le fichier /etc/pkgmk.conf</h4>
+      <p>Comme dis plus haut, le scenario <b>A</b> n'a pas besoin de fichier de configuration <b>/etc/pkgmk.conf</b>. On peut directement configurer le <b>/etc/pkgmk.conf</b> de notre <b>chroot</b>.</p>
+      <u>   *** NuTyX chroot     *** Scénario C ***  </u>
+      <pre class="output">export CFLAGS="-O2 -pipe"
+export CXXFLAGS="${CFLAGS}"
+case ${PKGMK_ARCH} in
+    "x86_64"|"")
+       export MAKEFLAGS="-j4"
+       ;;
+    "i686")
+       export CFLAGS="${CFLAGS} -m32"
+       export CXXFLAGS="${CXXFLAGS} -m32"
+       export LDFLAGS="${LDFLAGS} -m32"
+       ;;
+    *)
+       echo "Unknown architecture selected! Exiting."
+       exit 1
+       ;;
+esac
+PKGMK_SOURCE_DIR="/srv/www/sources"
+PKGMK_KEEP_SOURCES="yes"
+PKGMK_WORK_DIR="$PWD/work"
+PKGMK_IGNORE_REPO="no"
+PKGMK_IGNORE_CATEGORY="no"
+PKGMK_GROUPS=()
+PKGMK_LOCALES=(fr)
+PKGMK_COMPRESSION_PACKAGE="yes"
+PKGMK_COMPRESSION_MODE="gz"
+PKGMK_CLEAN="no"</pre>      
      <h4>Conclusion</h4>
+     <p>Dans ce scénario, (une petite piqure de rappel ne fait jamais de tord), sur la principale, ce seront les commandes:</p>
+     <pre class="command"><kbd>cards install
+cards install -u
+cards remove</kbd></pre> et dans la <b>chroot</b>, on utilisera:</p>
+     <pre class="command"><kbd>cards depcreate
+cards level
+cards base -r</kbd></pre>
   <a name='4'></a>
   <h2>Scénario B: un paquet sans dépendances</h2>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez très attentif lorsque vous tapez les commandes.</div>
@@ -562,7 +633,7 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
    <pre class="command"><kbd>bash enter-chroot</kbd></pre>
    <p>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</p>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
-   <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire <a href="#4">un paquet sans dépendances</a> ou un <a href="#5">un paquet avec quelques dépendances</a>.</div>
+   <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire un <a href="#5">un paquet avec quelques dépendances</a>.</div>
 
 
    <div><img src="../graphics/clap.gif" alt="clap" />Ca c'est vraiment cool non <img src="../graphics/clap.gif" alt="clap" /></div>
@@ -570,13 +641,13 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
    <p>Il est temps de se familiariser avec son nouveau paquet installé. Ca tombe bien, on vient d'installer ... un éditeur de texte.</p>
    <p>Maintenant que l'on a un éditeur de texte, on va s'en servir pour la suite. Fini les cat ...</p>
    <p>Tapez maintenant la commande suivante:</p>
-   <pre class="command"><kbd>cards info joe</kbd></pre>
+   <pre class="command"><kbd>cards info clipit</kbd></pre>
    <pre class="output">Retrieve info about the 123 packages: 100 %
-Name           : joe
-Description    : Petit éditeur non graphique emulant emuler, wordStar
-Maintainer     : JHallen, JJJordan, Marx_sk, shallot
+Name           : clipit
+Description    : ClipIt is a lightweight GTK+ clipboard manager.
+Maintainer     : Gilberto Xyhthyx &lt;xyhthyx at gmail dot com&gt;
 Packager       : François Perrin
-Version        : 3.7
+Version        : 1.4.2
 Release        : 1
 Build date     : Sun Oct 26 22:27:45 2014
 Size           : 1117696
@@ -591,24 +662,24 @@ Arch           : x86_64</pre>
    <pre class="command"><kbd>exit</kbd></pre>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, vous êtes de nouveau dans votre NuTyX principale</div>
    <p>Donc si vous faites maintenant:</p>
-   <pre class="command"><kbd>cards info -b joe</kbd></pre>
-   <pre class="output">Name           : joe
-Description    : Petit éditeur non graphique emulant emuler, wordStar
-Maintainer     : JHallen, JJJordan, Marx_sk, shallot
+   <pre class="command"><kbd>cards info -b clipit</kbd></pre>
+   <pre class="output">Name           : clipit
+Description    : ClipIt is a lightweight GTK+ clipboard manager.
+Maintainer     : Gilberto Xyhthyx &lt;xyhthyx at gmail dot com&gt;
 Packager       : François Perrin
-Version        : 3.7
+Version        : 1.4.2
 Release        : 1
 Build date     : Sun Oct 26 23:27:45 2014
 Arch           : x86_64
-Url            : http://localhost/personnel
+Url            :
 Local Directory: /chroot/usr/ports/personnel</pre>
     <div><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /><img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></div>
     <p>Il ne nous reste plus qu'a l'installer <img src="../graphics/smiley-surprised.gif" alt="Surprised" title="Surprised" /></p>
-    <pre class="command_user"><kbd>get joe</kbd></pre>
+    <pre class="command_user"><kbd>get clipit</kbd></pre>
     <pre class="output">Retrieve info about the 622 packages: 100 %
-ADD: joe-3.7, 71 files: 100 %</pre>
+ADD: clipit-1.4.2, 71 files: 100 %</pre>
  <hr>
- <p class="updated">Dernière mise à jour 18-04-2015 00:44</p>
+ <p class="updated">Dernière mise à jour 18-04-2015 16:40</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
