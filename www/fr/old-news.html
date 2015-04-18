@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+     <link rel="shortcut icon" href="../favicon.ico">
+     <link rel="stylesheet" href="../css/nutyx.css" />
+     <title>NuTyX - Anciennes nouvelles</title>
+ </head>
+ <body>
+   <table>
+     <tr>
+      <td width="30%">
+            <a href=".."><img id="logo" src="../graphics/logo_nutyx_120.png" alt="logo nutyx" /></a>
+      </td>
+      <td>
+       <nav>
+        <ul>
+            <li><a href=".">Accueil</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="packages.html">Paquets</a></li>
+            <li><a href="http://forum.nutyx.org/index.php?board=10.0">Forum</a></li>
+        </ul>
+       </nav>
+      </td>
+     </tr>
+    </table>
+ <hr>
+  <h1>Le 2015-03-16</h1>
+   <h2>Nouvelles iso en 32 et 64 bits disponible.</h2>
+    <p>J'ai le grand plaisir de vous proposer des nouvelles iso 32 bits et 64 bits:</p>
+    <a href="http://download.nutyx.org/NuTyX_x86_64-saravane-20150315.iso">en 64 bits</a> et <a href="http://download.nutyx.org/NuTyX_i686-saravane-20150315.iso">en 32 bits</a>
+    <p>L'installateur a encore été simplifié. Désormais si vous configurez la partition de destination et que vous la formatez avant de lancer l'installateur, <a href="http://nutyx.org/fr/install.html#4">aucune question ne sera posée et l'installation débutera immédiatement</a> cad l'affaire de 15 secondes.</p>
+    <p>Le service Openssh est désormais disponible dès l'install et donc permet d'accéder à votre NuTyX fraichement installée depuis un terminal de la machine host (si test en virtualbox avec carte réseau configuré <b>en pont</b>). Très utile si vous avez deux PC.</p>
+    <p>Le wifi devrait fonctionné après installation de xfce4 / kde.</p>
+    <p>Nouveaux paquets:</p>
+
+<li>kernel 3.19.1-NuTyX</li>
+<li>initrd 3.19.1-NuTyX</li>
+<li>glibc 2.21</li>
+<li>gcc 4.9.2</li>
+<li>binutils 2.25</li>
+<li>cards 0.10.82.96a</li>
+<li>curl 7.41.0</li>
+<li>openssh 6.7p1</li>
+<li>openssl  1.0.2</li>
+    <p>Nouvelles commandes:</p>
+
+<pre class="command"><kbd>cards files <paquet></kbd></pre>
+affiche la liste de(s) fichier(s) du paquet.
+
+<pre class="command"><kbd>cards query <file></kbd></pre>
+affiche tous les paquets et les fichiers contenant le pattern ( equivalent à pkginfo -o <pattern>)
+
+<pre class="command"><kbd>cards install <file></kbd></pre>
+Permet d'installer un fichier si présent sur la machine. Le fichier doit être un paquet téléchargé. Le nom n'est pas important, cards vérifie son contenu avant l'install.
+
+<pre class="command"><kbd>cards install -f &lt;paquet&gt; | &lt;file&gt;</kbd></pre>
+Permet d'installer un paquet si doublon. (équivalent à pkgadd -f <paquet>).
+
+<p>Les commandes:</p>
+
+<pre class="command"><kbd>cards sync -i
+cards list -i
+cards info -i <paquet>
+cards diff -b</kbd></pre>
+
+sont simplifiées et deviennent:
+
+<pre class="command"><kbd>cards sync
+cards list
+cards info <paquet>
+cards diff</kbd></pre>
+
+
+
+<p>L'aide des commandes a complètement été réécrite</p>
+
+<img src="http://downloads.tuxfamily.org/nutyx/archives/cards_0.10.82.96.jpg"  alt="Help summary" title="cards Help summary" width="578"/>
+    <p class="updated">Le 16-03-2015-03-16 23:27</p>
+    <footer>
+        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+        &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
+    <a href="http://www.wtfpl.net/"><img
+       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
+       width="80" height="15" alt="WTFPL" /></a></p>
+    </footer>
+ </body>
+</html>
