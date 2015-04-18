@@ -56,7 +56,7 @@ http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.0.tar.gz
 
 
 https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
-https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.3.xz
+https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.4.xz
 https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.2.tar.gz
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.1.tar.xz
@@ -73,7 +73,7 @@ https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reise
 http://crux.nu/files/pkgutils-5.35.6.tar.gz
 http://crux.nu/files/tools/ports/ports-1.5.tar.gz
 
-http://downloads.nutyx.org/files/aaabasicfs-20150413.tar.xz
+http://downloads.nutyx.org/files/aaabasicfs-20150418.tar.xz
 http://downloads.nutyx.org/files/nutyx-basicfs-20150403.tar.bz2
 http://downloads.nutyx.org/files/file-5.22.tar.gz
 http://downloads.nutyx.org/files/cards-0.10.90.tar.gz
