@@ -4,7 +4,7 @@
 # Depends on: cairo pango atk libtiff cups gdk-pixbuf xorg-libxi xorg-libxcursor hicolor-icon-theme 
 
 name=gtk-update-icon-cache
-version=2.24.24
+version=2.24.27
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
@@ -20,7 +20,5 @@ sed -i 's#.*@man_#man_#' docs/reference/gtk/Makefile.in
 cd gtk
 make gtk-update-icon-cache
 mkdir -p $PKG/usr/{bin,share/man/man1}
-install -c -m 644 $SRC/gtk+-$version/docs/reference/gtk/gtk-update-icon-cache.1 \
-$PKG/usr/share/man/man1/
 install -c gtk-update-icon-cache $PKG/usr/bin/gtk-update-icon-cache
 }
