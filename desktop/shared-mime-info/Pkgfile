@@ -13,6 +13,6 @@ build() {
 unset MAKEFLAGS
 cd $name-$version
 ./configure --prefix=/usr --disable-update-mimedb
-make
+make -j1
 make DESTDIR=$PKG install
 } 
