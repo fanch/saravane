@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 # Depends on: 
 name=pcre
-version=8.35
+version=8.36
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
