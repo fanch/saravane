@@ -1,7 +1,7 @@
 # Description: The GTK+ 3 package contains the libraries used for creating graphical user interfaces for applications.
 # URL: http://www.gtk.org/
 # Packager: pierre at nutyx dot org
-# Depends on: xorg-libxinerama,xorg-libxrandr,xorg-libxcursor,at-spi2-atk,cups,colord,xorg-libxi,atk,cairo,pango,pangox-compat,gdk-pixbuf,gtk-update-icon-cache
+# Depends on: libepoxy xorg-libxinerama,xorg-libxrandr,xorg-libxcursor,at-spi2-atk,cups,colord,xorg-libxi,atk,cairo,pango,pangox-compat,gdk-pixbuf,gtk-update-icon-cache
 
 
 name=gtk3
@@ -30,5 +30,5 @@ cat > $PKG/etc/gtk-3.0/settings.ini << "EOF"
 gtk-fallback-icon-theme = gnome
 EOF
 # Empaqueté ds gtk-update-icon-cache
-rm $PKG/usr/share/man/man1/gtk-update-icon-cache.1
+rm $PKG/{usr/bin/gtk-update-icon-cache,usr/share/man/man1/gtk-update-icon-cache.1}
 }
