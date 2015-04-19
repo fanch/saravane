@@ -1,7 +1,7 @@
 # Description: GTK+ is a multi-platform toolkit (version 2)
 # URL: http://www.gtk.org/
 # Packager: pierre at nutyx dot org
-# Depends on: shared-mime-info,xorg-libxinerama,xorg-libxrandr,cairo,pango,pangox-compat,atk,libtiff,cups,gdk-pixbuf,xorg-libxi,xorg-libxcursor,hicolor-icon-theme,gtk-update-icon-cache
+# Depends on: gtk-doc shared-mime-info,xorg-libxinerama,xorg-libxrandr,cairo,pango,pangox-compat,atk,libtiff,cups,gdk-pixbuf,xorg-libxi,xorg-libxcursor,hicolor-icon-theme,gtk-update-icon-cache
 
 # The run variable define the runtime dependencies
 run=(gtk-update-icon-cache)
@@ -15,7 +15,7 @@ run=(gtk-update-icon-cache)
 PKGMK_GROUPS=(devel man doc)
 
 name=gtk
-version=2.24.25
+version=2.24.27
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
@@ -23,20 +23,19 @@ source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.
 build() {
 cd gtk+-$version
 sed -i 's#l \(gtk-.*\).sgml#& -o \1#' docs/{faq,tutorial}/Makefile.in
-sed -i 's#.*@man_#man_#' docs/reference/gtk/Makefile.in
+sed -i -e '#pltcheck.sh#$(NULL)#g' gtk/Makefile.in
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --infodir=/usr/share/info \
---sysconfdir=/etc \
---with-xinput=yes 
+--sysconfdir=/etc
 make
 make DESTDIR=$PKG install
 mkdir -p $PKG/etc/gtk-2.0
 echo 'gtk-fallback-icon-theme = "Tango"' > $PKG/etc/gtk-2.0/gtkrc
 
 # Construit dans gtk-update-icon-cache
-rm $PKG/usr/bin/gtk-update-icon-cache
-rm $PKG/usr/share/man/man1/gtk-update-icon-cache.1
+rm -f $PKG/usr/bin/gtk-update-icon-cache
+rm -f $PKG/usr/share/man/man1/gtk-update-icon-cache.1
 }
 doc () {
 # Chaque fonction produisant un groupe doit suivre les règles suivantes
