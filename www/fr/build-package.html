@@ -61,8 +61,10 @@
     <p>Voyons en détail chaque scénario mentionné plus haut et comment ajuster le mieux les fichiers de configuration pour chacun d'entre eux.</p>
    <a name='21'></a>
    <h3>Scénario A</h3>
+    <a name='211'></a>
     <h4>Introduction</h4>
      <p>Comme expliqué plus haut, vous ne souhaitez pas compilez dans votre NuTyX. Ce qui est tout à fait possible si vous n'avez pas besoin de programmes particuliers et que les binaires proposés vous suffisent. Ce scenario est aussi valable dans le cas où vous gérer plusieurs installation sur les quelles aucune compilation n'est necessaire.</p>
+    <a name='212'></a>
     <h4>Le fichier /etc/cards.conf</h4>
      <p>Les sections binaires sont activées</p>
      <p>L'arch de la machine est vérfiée</p>
@@ -77,10 +79,12 @@ arch x86_64
 locale fr
 locale de
 base /var/lib/pkg/saravane/base</pre>
-    <p>Les trois sections standards <b>base</b>, <b>console</b> et <b>desktop</b> sont activées. La machine est une 64 bits <b>x86_64</b>. Les langues qui doivent être installées sont le français <b>fr</b> et l'allemand <b>de</b>. Le dossier contenant les paquets de base est celui de la section standard <b>base</b>.</p>
-    <pre class="output">base /var/lib/pkg/saravane/base</b></pre>
+     <p>Les trois sections standards <b>base</b>, <b>console</b> et <b>desktop</b> sont activées. La machine est une 64 bits <b>x86_64</b>. Les langues qui doivent être installées sont le français <b>fr</b> et l'allemand <b>de</b>. Le dossier contenant les paquets de base est celui de la section standard <b>base</b>.</p>
+     <pre class="output">base /var/lib/pkg/saravane/base</b></pre>
+    <a name='213'></a>
     <h4>Le fichier /etc/pkgmk.conf</h4>
      <p>Pour le scénario <b>A</b>, le fichier <b>/etc/pkgmk.conf</b> n'est pas présent puisque vous ne devez rien compiler. Les outils de développement ne sont pas présents.</p>
+    <a name='214'></a>
     <h4>Conclusion</h4>
      <p>C'est tout ce qu'il faut savoir pour la configuration de votre NuTyX. Vous souhaitez mettre à jour votre base de données et voir si il y a des maj disponibles</p>
      <pre class="command"><kbd>check</kbd></pre>
@@ -91,10 +95,12 @@ base /var/lib/pkg/saravane/base</pre>
      <p>C'est tout ce qu'il faut savoir <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />. J'espère que vous allez vous en sortir.</p>
     <a name='22'></a>
     <h3>Scénario B</h3>
+     <a name='221'></a>
      <h4>Introduction</h4>
       <p>Vous êtes satisfait de votre NuTyX, il y a juste un ou deux paquets qui vous manquent, vous décidez donc de les compilez vous-même.</p>
       <p>Armez-vous de courage et de patience <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /><img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
       <p>Un bon conseil, dans ce scénario, <u>évitez à tout prix de compiler des recettes réclamant des dépendances non comprises dans la section <b>base</b></u> de votre NuTyX. Si tel est le cas, vous serez confrontez aux nombreuses erreurs liées aux dépendances devel non installées par défaut. Dans un tel cas, préférez le scenario <b>C</b>.</p>
+     <a name='222'></a>
      <h4>Installation des outils de développement</h4>
       <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.</p>
       <pre class="command"><kbd>cards sync</kbd></pre>
@@ -102,6 +108,7 @@ base /var/lib/pkg/saravane/base</pre>
 /var/lib/pkg/saravane/console/.PKGREPO
 /var/lib/pkg/saravane/base/.PKGREPO</pre>
       <pre class="command"><kbd>cards install cards.devel</kbd></pre>
+     <a name='223'></a>
      <h4>Le fichier /etc/cards.conf</h4>
       <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ne <u> doit jamais</u> être mis à jour par la commande <b>cards sync</b>, donc on ne doit pas spécifier d'adresse URL associées.</p>
       <p>Les sections binaires sont activées, cela me permettra d'ajouter facilement les éventuelles dépendances manquantes...</p>
@@ -118,6 +125,7 @@ arch x86_64
 locale fr
 locale de
 base /var/lib/pkg/saravane/base</pre>
+     <a name='224'></a>
      <h4>Installation des outils de développement</h4>
       <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.. Commençons par créer le dossier <b>/usr/ports/personnel</b>.</p>
       <pre class="command_user"><kbd>sudo mkdir -p /usr/ports/personnel</kbd></pre>
@@ -134,6 +142,7 @@ base /var/lib/pkg/saravane/base</pre>
 /var/lib/pkg/saravane/base/acl/.PKGREPO
 /var/lib/pkg/saravane/base/acl/acl.devel1412540285x86_64.cards.tar.xz
 ...</pre>
+     <a name='225'></a>
      <h4>Le fichier /etc/pkgmk.conf</h4>
       <p>Dans ce scénario, il est bon de vérifier quelques variables:</p>
       <p>Mon processeur est un 8 coeurs, donc autant en profiter:</p>
@@ -180,6 +189,7 @@ PKGMK_LOCALES=(fr de)
 PKGMK_COMPRESSION_PACKAGE="no"
 PKGMK_CLEAN="yes"</pre>
       <p>Voilà pour ce qui est de la configuration du fichier <b>/etc/pkgmk.conf</b>
+     <a name='226'></a>
      <h4>Conclusion</h4>
       <p><a href="#4">On verra plus tard, comment créer, compiler et installer un paquet</a> <u>sans dépendances</u> ou dont les dépendances sont déjà installées. Pour ce scénario, la seule commande à retenir est:
       <pre class="command"><kbd>pkgmk
@@ -187,12 +197,14 @@ pkgadd</kbd></pre>
       <p>Cette commande sera <u>toujours</u> lancée dans le dossier de la recette.</p>
     <a name='23'></a>
     <h3>Scénario C</h3>
+     <a name='231'></a>
      <h4>Introduction</h4>
       <p>Vous avez des envies de compilation à grande échelle, vous êtes convaincu que c'est le meilleur scénario pour gérer une NuTyX. Vous n'avez aucune envie d'utiliser les binaires proposés.</p>
       <p>La plus part des paquets que vous utilisés ne sont pas présent et ceux qui le sont, seront compiler par vous-même.</p>
       <p>Vous souhaitez obtenir les maj des ports disponibles.</p>
       <p> Et bien évidement, vous souhaitez que les dépendances soient compilées automatiquement.</p>
       <p> Vous l'avez compris, ce scenario est sans doute le plus "attirant" et le plus proche des distributions "dite" sources telle que CRUX ou gentoo.</p>
+     <a name='232'></a>
      <h4>Le fichier /etc/cards.conf</h4>
       <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ainsi que les sections ne <u>doivent jamais</u> être mis à jour par la commande <b>cards sync</b>, donc on ne spécifie aucune adresse URL.</p>
       <p>Seule la section <b>base</b> doit rester active afin de pouvoir installer les outils de développement.</p>
@@ -213,6 +225,7 @@ locale fr
 locale it
 base /usr/ports/base
 base /usr/ports/aconserver</pre>
+     <a name='233'></a>
      <h4>Installation des outils de développement</h4>
       <p>On peut maintenant commencer par installer les paquets de développement, cad un compilateur, les librairies C et C++ les outils autoconf, automake, etc etc.. . On commence par créer les dossiers necessaires:</p>
       <pre class="command_user"><kbd>sudo mkdir -p /usr/ports/{personnel,gnome,aconserver}
@@ -230,6 +243,7 @@ sudo mkdir -p /srv/www/sources</kbd></pre>
 ...</pre>
       <pre class="command_user"><kbd>sudo cards install rsync
 sudo cards install ports</kbd></pre>
+     <a name='234'></a>
      <h4>Le fichier /etc/pkgmk.conf</h4>
       <p>Pour ce scénario, il est indispensable de vérifier toutes les variables necessaires pour le bon fonctionnement du duo <b> pkgmk/cards</b></p>
       <p>Mon processeur est un 4 coeurs mais je suis sur une NuTyX 32 bits.</p>
@@ -278,6 +292,7 @@ PKGMK_LOCALES=(fr it)
 PKGMK_COMPRESSION_PACKAGE="yes"
 PKGMK_COMPRESSION_MODE="gz"
 PKGMK_CLEAN="no"</pre>
+     <a name='235'></a>
      <h4>Conclusion</h4>
       <p>On peut maintenant récupérer les ports disponibles de NuTyX:</p>
       <pre class="command_user"><kbd>sudo ports -u</kbd></pre>
@@ -295,8 +310,10 @@ cards depcreate
 cards level</kbd></pre>
     <a name='24'></a>
     <h3>Scénario D</h3>
+     <a name='241'></a>
      <h4>Introduction</h4>
       <p>Vous n'avez pas envie de vouloir tout compiler, vous êtes satisfait avec les binaires disponibles. Vos nouvelles recettes utilisent les dépendances provenant des binaires existants. Ce scénario est probablement le plus long à mettre en oeuvre mais une fois tout en place, l'ajout de paquets personnel se fait très rapidement.</p>
+     <a name='242'></a>
      <h4>Le fichier /etc/cards.conf</h4>
       <p>Un dossier contenant mes recettes personnelles est ajouté, ce dossier ainsi que les sections ne <u>doivent jamais</u> être mis à jour par la commande <b>cards sync</b>. On ne spécifie aucune URL.</p>
       <p>Seule la section <b>base</b> doit rester active le temps de récupérer la commande <b>rsync</b> si pas encore installée.</p>
@@ -314,6 +331,7 @@ arch x86_64
 logdir /var/log/pkgbuild
 base /srv/www/saravane/x86_64/base
 base /srv/www/saravane/aconserver</pre>
+     <a name='243'></a>
      <h4>Installation de rsync et suppression du dossier concerné</h4>
       <p>Pour ce scénario, nous allons synchroniser tous les binaires disponible sur le miroir de NuTyX et allons restés "callés" sur la version de ceux-ci.</p>
       <p>Commençons par installer la commande <b>rsync</b> si ce n'est pas encore le cas:</p>
@@ -328,6 +346,7 @@ arch x86_64
 logdir /var/log/pkgbuild
 base /srv/www/saravane/x86_64/base
 base /srv/www/saravane/aconserver</pre>
+     <a name='244'></a>
      <h4>Synchronisation des binaires via rsync</h4>
       <p>Cette opération consiste à rappatrier les quelques 11000 paquets disponible en binaires. Elle peut durer entre quelques minutes et quelques heures en fonction de votre connection.</p>
       <p>Heureusement, cette opération n'est longue que la première fois <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
@@ -338,6 +357,7 @@ base /srv/www/saravane/aconserver</pre>
       <pre class="command_user"><kbd>sudo rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
 /srv/www/saravane/x86_64/</kbd></pre>
       <p>Allez peut-être boire un café, manger une pizza ou un bon paquet de frites <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />, ça peut-être long...</p>
+     <a name='245'></a>
      <h4>Le fichier /etc/pkgmk.conf</h4>
       <p>Pour ce scénario, il est indispensable de vérifier toutes les variables necessaires pour le bon fonctionnement du duo <b>pkgmk/cards</b>.</p>
       <p>Mon processeur est un double coeur et je suis en 64bits.</p>
@@ -385,15 +405,17 @@ PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)
 PKGMK_COMPRESSION_PACKAGE="yes"
 PKGMK_COMPRESSION_MODE="xz"
 PKGMK_CLEAN="no"</pre>
+     <a name='246'></a>
      <h4>Conclusion</h4>
-     <p>Pour ce scénario, les commandes à retenir sont:</p>
-     <pre class="command"><kbd>cards level
+      <p>Pour ce scénario, les commandes à retenir sont:</p>
+      <pre class="command"><kbd>cards level
 cards base -r
 cards create
 rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
 /srv/www/saravane/x86_64/</kbd></pre>
     <a name='25'></a>
     <h3>Scénario E</h3>
+     <a name='251'></a>
      <h4>Introduction</h4>
       <p>Ce scénario est un peu l'aboutissement de mon travail. Ici on propose un mélange de différents scénarios. On installe une NuTyX dans un dossier dédié dans laquelle on produit nos paquets personnels. Cela signifie que l'on doit parler de DEUX NuTyX</p>
       <p>Ce scénario est donc la combinaison de DEUX scénario, dont un sera ... le scénario A ( <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /> maintenant vous savez pourquoi j'ai tenu à en parler ). Le deuxième scénario qui est celui de votre environnement isolé celui que vous préféré entre les 3 autres (B, C et D). A partir de maintenant on ne parle plus d'environnement isolée mais de la <b>chroot</b>.</p>
@@ -406,6 +428,7 @@ rsync -avz --delete-after rsync://downloads.nutyx.org/nutyx/saravane/x86_64/ \
        <li>Votre <b>chroot</b> peut être un système de base, c'est même vivement recommandé alors que sur votre principale, vous utilisez très probablement une interface graphique.</li>
       </ol>
       <p>Ma machine est une 64 bits à 4 coeurs</p>
+     <a name='252'></a>
      <h4>Les fichiers /etc/cards.conf</h4>
         <u>   *** NuTyX Principale ***   </u>
         <pre class="output">
@@ -432,6 +455,7 @@ logdir /var/log/pkgbuild
 locale fr
 base /usr/ports/base
 base /usr/ports/aconserver</pre>
+     <a name='253'></a>
      <h4>Le fichier /etc/pkgmk.conf</h4>
       <p>Comme dis plus haut, le scenario <b>A</b> n'a pas besoin de fichier de configuration <b>/etc/pkgmk.conf</b>. On peut directement configurer le <b>/etc/pkgmk.conf</b> de notre <b>chroot</b>.</p>
       <u>   *** NuTyX chroot     *** Scénario C ***  </u>
@@ -460,16 +484,17 @@ PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr)
 PKGMK_COMPRESSION_PACKAGE="yes"
 PKGMK_COMPRESSION_MODE="gz"
-PKGMK_CLEAN="no"</pre>      
+PKGMK_CLEAN="no"</pre>
+     <a name='254'></a>      
      <h4>Conclusion</h4>
-     <p>Dans ce scénario, (une petite piqure de rappel ne fait jamais de tord), sur la principale, ce seront les commandes:</p>
-     <pre class="command"><kbd>cards install
+      <p>Dans ce scénario, (une petite piqure de rappel ne fait jamais de tord), sur la principale, ce seront les commandes:</p>
+      <pre class="command"><kbd>cards install
 cards install -u
 cards remove</kbd></pre> et dans la <b>chroot</b>, on utilisera:</p>
-     <pre class="command"><kbd>cards depcreate
+      <pre class="command"><kbd>cards depcreate
 cards level
 cards base -r</kbd></pre>
-     <p><a href="#6">Nous voilà paré, pour créer, compiler et installer un paquet dans un environnement isolé</a></p>
+      <p><a href="#6">Nous voilà paré, pour créer, compiler et installer un paquet dans un environnement isolé</a></p>
   <a name='4'></a>
   <h2>Scénario B: un paquet sans dépendances</h2>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir de cet instant toutes les commandes que vous allez effectuer DOIVENT se faire via le compte root (administrateur). Soyez très attentif lorsque vous tapez les commandes.</div>
@@ -557,11 +582,11 @@ make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
     <p><i>* gtk+ >= 2.10.0</i></p>
     <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> A partir d'ici, nous sommes dans la <b>chroot</b></div>
     <ol>
-     <a name='71'></a>
+     <a name='51'></a>
      <li><h3>Créer le dossier</h3>
       <pre class="command"><kbd>mkdir -p /usr/ports/personnel/clipit</kbd></pre>
      </li>
-     <a name='72'></a>
+     <a name='52'></a>
      <li><h3>Créer le fichier Pkgfile</h3>
        <p>Completez le fichier <b>/usr/ports/personnel/clipit/Pkgfile</b>  avec ceci:</p>
        <pre class="command"><kbd># Description: ClipIt is a lightweight GTK+ clipboard manager.
@@ -580,7 +605,7 @@ cd $name-$version
 make
 make DESTDIR=$PKG install
 }</kbd></pre>
-   <a name='75'></a>
+   <a name='53'></a>
    <li><h3>Compilez le paquet.</h3>
     <pre class="command"><kbd>cards depcreate clipit</kbd></pre>
     <p>La commande <b>cards depcreate</b> compile les dépendances, installe les dépendances, compile le paquet final et l'installe.</p></li>
@@ -655,7 +680,7 @@ Build date     : Sun Oct 26 22:27:45 2014
 Size           : 1117696
 Number of Files: 70
 Arch           : x86_64</pre>
-
+   <a name='61'></a>
    <h3>Installer mon premier paquet sur la NuTyX principale</h3>
     <div><img src="../graphics/wall.gif" alt="wall" /> Super j'ai un nouveau paquet...</div><br />
    <div><img src="../graphics/question.gif" width="16" height="15" alt="?" /> Mais comment je fais pour l'installer dans ma NuTyX principale... ?</div><br />
