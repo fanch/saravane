@@ -6,7 +6,7 @@
 run=(desktop-file-utils gtk-update-icon-cache)
 
 name=midori
-version=0.5.9
+version=0.5.10
 release=1
 
 source=(http://www.midori-browser.org/downloads/midori_${version}_all_.tar.bz2)
