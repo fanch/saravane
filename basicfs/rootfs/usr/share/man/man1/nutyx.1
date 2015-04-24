@@ -1,4 +1,4 @@
-.TH "NuTyX saravane" 8 "Janvier, 2015" ""
+.TH "NuTyX saravane" 8 "Avril, 2015" ""
 
 
 .SH NuTyX
@@ -13,6 +13,9 @@ La configuration de NuTyX comprend: le réglage du clavier, le réglage du rése
 
 .TP
   \fBLe clavier\fR:
+
+La commande \fBsetup-nutyx -ck\fP permet de configurer facilement le clavier à utiliser.
+
 Le fichier \fI/etc/sysconfig/console\fR défini la configuration du clavier en mode console cad non graphique. Un exemple de configuration de la console:
 .P
 
@@ -26,6 +29,9 @@ La variable FONT défini la police utilisée. La variable UNICODE spécifie l'us
 Le fichier \fI/etc/X11/xorg.xonf.d/20-keyboard.conf\fR défini la configuration du clavier en mode graphique. Le sujet étant tellement vaste, veuillez vous rapportez au manuel de Xorg pour sa configuration.
 .TP
   \fBLe réseau\fR:
+
+La commande \fBsetup-nutyx -cn\fP permet de configurer facilement le réseau.
+
 .P
  CONFIGURATION AUTOMATIQUE:
 
@@ -159,7 +165,7 @@ Sous NuTyX, l'affichage de l'horloge peut utiliser 2 methodes:
  - Methode 1: UTC=1, tenir compte du "Temps universel coordonné". Ajustement automatique heure d'été/hiver. Consultez la page wiki http://fr.wikipedia.org/wiki/Temps_universel_coordonn%C3%A9 pour plus d'informations.
  - Methode 2: UTC=0, tenir compte de l'heure locale (celle de votre poignet) uniquement et ignorer le temps universel coordonné. Cette methode ne mettra pas l'horloge de votre machine à jour aux changements heure été/hiver.
 
-L'installation depuis le live configure l'horloge suivant la methode 1. L'installation depuis la MINI configure l'horloge suivant la methode 2
+La commande \fBsetup-nutyx -cc\fP permet de configurer facilement la date et l'heure 
 
 Le fichier \fI/etc/sysconfig/clock\fR défini la methode d'affichage de l'horloge sur la machine. Le fichier contient une seule variable \fBUTC\fR. si \fBUTC=1\fR cela signifie que l'horloge du bios DOIT être règlé sur l'horloge de temps universel  coordonné, et le script de configuration ajustera l'heure du bureau en fonction de la région où vous vous trouvez (Methode 1). Attention, si vous utilisez la methode 1 et que vous êtes en multiboot avec windows, l'heure sous windows sera fausse, ce dernier OS ne tient pas compte de cette difförence entre l'horloge bios et l'horloge de l'OS. Si \fBUTC=0\fR, l'horloge du bios et l'horloge du bureau afficheront l'heure locale, cad l'heure qui est à votre poignet (Methode 2). Si vous ne connaîssez pas le réglage actuelle de votre machine, vous pouvez vérifier le réglage de l'horloge de votre bios.  En root, lancez la commande \fBhwclock -r\fR. Ceci affichera l'horloge matérielle. Si l'heure correspond à ce qui vous dit votre montre, alors l'horloge matérielle est configurée sur l'heure locale. Vous pouvez alors confirmer ceci en mettant \fBUTC=0\fR dans le fichier \fI/etc/sysconfig/clock\fR. Si la sortie n'est pas identique à l'heure de votre poignet, il y a des chances qu'elle est été configurée en UTC. Si la commande \fBhwclock -ru\fR affiche l'heure de votre poignet, l'heure du bios de votre machine est alors correcte.
 
@@ -175,10 +181,10 @@ Le fichier \fI/etc/sysconfig/network\fR défini le nom de la machine. Il défini
 
 .TP
   \fBLa langue utilisée\fR:
-Le fichier \fI/etc/profile.d/i18n.sh\fR défini la langue utilisée.
+Le fichier \fI/etc/profile.d/i18n.sh\fR défini la langue utilisée. La commande \fBsetup-nutyx -cl\fP permet de configurer facilement la langue et la région à utiliser.
 .TP
   \fBLa région\fR:
-Le lien \fI/etc/localtime\fR défini la région où vous vous trouvez et ajustera le fuseau horaire en conséquence. Pour connaître le choix possible des différentes régions pour l'Europe par exemple, utilisez la commande: \fBl /usr/share/zoneinfo/Europe\fR. Ensuite ajustez le lien avec votre ville la plus proche, par exemple la commande: \fBsudo ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime\fR défini Rome comme ville de votre région.
+Le lien \fI/etc/localtime\fR défini la région où vous vous trouvez et ajustera le fuseau horaire en conséquence. Pour connaître le choix possible des différentes régions pour l'Europe par exemple, utilisez la commande: \fBl /usr/share/zoneinfo/Europe\fR. Ensuite ajustez le lien avec votre ville la plus proche, par exemple la commande: \fBsudo ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime\fR défini Rome comme ville de votre région. La commande \fBsetup-nutyx -cl\fP permet de configurer facilement la langue et la région à utiliser.
 .TP
   \fBL'amorçage de la machine\fR:
 Si vous avez utilisez une iso pour l'installation de NuTyX et que vous avez choisi d'installer l'amorçage de la machine, le fichier de configuration de l'amorçage se trouve dans \fI/boot/grub/grub.cfg\fR. Le nom du fichier du kernel de NuTyX s'appelle \fBkernel\fR, et le nom de l'initrd s'appelle \fBnutyx-initrd\fR. Les deux  fichiers se trouvent par défaut dans le dossier \fB/boot\fR. Dans l'exemple qui suit: NuTyX est installée sur la première partition du deuxième disque, grub est installé sur le premier disque. Le fichier de configurations sera:
@@ -233,33 +239,36 @@ La gestion des paquets binaires se fait via la commande \fBcards\fP. Elle compre
 Le fichier \fI/etc/cards.conf\fR définit les règles de fonctionnement de la commande \fBcards\fR. Les lignes commençant par dir définis les dossiers où sont stockés les paquets binaires et l'adresse URL du mirroir utilisé. Les lignes commençant par base définies la liste des paquets que contient une NuTyX de base dans le cas de la commande \fBcards base\fR. Libre à vous d'ajouter les paquets que vous souhaitez garder lors de l'exécution de cette commande. Pour cela, vous ajoutez les dossiers concernés dans un des dossiers specifiés à cette ligne.
 
 .TP
-  \fBcheck\fR ou \fBsudo cards sync -i\fR
+  \fBcheck\fR ou \fBsudo cards sync && cards diff\fR
 synchronisation, voir les mises à jour disponibles
 .TP
-  \fBget paquetX  [paquetY ...]\fR  ou \fBsudo cards install paquetX [paquetY ..]\fR
+  \fBget <paquet>\fR  ou \fBsudo cards install <paquet>\fR
 installe le paquetX et ses dépendances
 .TP
   \fBdel paquetX\fR ou \fBsudo cards remove paquetX\fR
 désinstalle le paquetX. Si vous souhaitez supprimer le paquetX et ses sous-paquets, utilisez l'option -a ou --all \fBcards remove -a paquetX\fR.
 .TP
-  \fBup paquetX\fR ou \fBsudo cards install -u paquetX\fR
-mise à jour du paquetX. Notez que seul le paquetX sera mis à jour
+  \fBup <paquet>\fR ou \fBsudo cards install -u <paquet>\fR
+mise à jour du paquetX. Notez que seul le <paquet> sera mis à jour
 .TP
   \fBsearch <chaîne> ou cards search <chaîne>
 recherche le mots chaine dans le nom et la description des paquets, veuillez spécifier 2 lettres minimums.
 
 .TP
-  \fBcards diff -b\fR
+  \fBcards diff \fR
 affiche la liste des paquets pouvant être mis à jour. La comparaison se fait avec les binaires diponibles.
 
 .TP
   \fBcards diff -p\fR
-affiche la liste des paquets pouvant être mis à jour. La comparaison se fait avec les ports diponibles.
+affiche la liste des paquets pouvant être mis à jour. La comparaison se fait avec les ports diponibles. Elle n'affiche rien si aucun port n'est rapatrié.
 
 .TP
-  \fBcards readme <paquet>\fR
-affiche le README du <paquet> si le fichier README est présent.
+  \fBcards info <paquet>\fR
+affiche les détails du <paquet>, si il est installé.
 
+.TP
+  \fBcards info -b <paquet>\fR
+affiche les détails du <paquet> binaire, si il est disponible.
 
 .SH GESTION DES PAQUETS BINAIRES EN LOCAL
 La gestion des paquets binaires en local se fait via les commandes \fBpkgadd, pkgrm, et pkginfo\fP. Les commandes modifiant votre installation s'utilisent avec votre compte root (su \-)
@@ -314,8 +323,8 @@ voir si paquetX est disponible
   \fBcards info -p paquetX\fR
 obtenir des infos sur un port (deps, paquetr, chemin, ...)
 .TP
-  \fBcards dependent paquetY\fR
-lister les dépendances inverses
+  \fBcards depends <paquet>\fR
+lister les dépendances de compilation du <paquet>
 .TP
   \fBcd /var/lib/pkg/saravane/server/paquetX && pkgmk \-d \-i\fR
 builder et installer un port (necessite les droits du compte root)
