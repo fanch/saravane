@@ -208,9 +208,7 @@ d92ab59aabf5173f2a59089531e30dbf  squashfs4.3.tar.gz
 1e2f3c1ed468dee02d00c534c002ea10  nfs-utils-1.3.2.tar.bz2
 08f72de6751acfbd0892b5f003922701  openssh-6.8p1.tar.gz
 edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
-be8c0bbb0c5ee6ab7cdcffd2c9375fe6  git-2.3.5.tar.xz
-5f4ba23340492548ebf58b0ce7109e69  pkgutils-5.35.6.tar.gz
-a37751f1627a4e0125c8ffadfa85be80  prt-get-5.19.tar.gz
+fe32538df1c6fa10253d77197ba32c9a  git-2.3.6.tar.xz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz
 8809465cd48a202895bc2a12e1923b5d  jfsutils-1.1.15.tar.gz
 d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" >> $LFS/sources/md5sums

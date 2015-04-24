@@ -461,7 +461,7 @@ for i in \
 aaabasicfs acl attr bash bc binutils bzip2 coreutils cpio curl \
 dhcpcd diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
 gettext glibc gmp gperf grep grub gzip dialog mdadm \
-iana-etc inetutils iproute2 kbd kmod \
+iana-etc inetutils iproute2 kbd kmod less groff man-db \
 libarchive libcap libpipeline lvm2 mpc mpfr ncurses openssl pam \
 procps-ng psmisc readline lzo rsync perl ports \
 reiserfsprogs sed shadow squashfs sudo \
