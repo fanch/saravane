@@ -127,9 +127,8 @@ dev   ISO   mnt    proc                                   sbin  sys      tools</
   <h2>Options</h2>
    <ol>
     <li>If you want to produce an iso containing your favorites applications, you can then compile them before creating the iso. In the following exemple, we compile the package <b>xorg</b>
-    <pre class="command"><kbd>cd /root/saravane
-cards depends xorg > .list
-pass</kbd></pre>
+    <pre class="command"><kbd>ports -u
+cards depcreate xorg</kbd></pre>
     <p>The compilation start:</p>
     <pre class="output">=======> PKGMK_INSTALL: install
 =======> PKGMK_WORK_DIR: /root/saravane/console/elfutils/work
@@ -143,17 +142,19 @@ pass</kbd></pre>
 =======> version: 0.161</pre>
      <p>One the compilation finish, you can either choose the option below or continue the generation of the squashfs files at point 5</p>
     <li>If you want to reduce the size of the final ISO, you can remove the binaries archives and the logs, they won't be needed. If you want to keep the archives, give the following command</li>
-    <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
-    <p>no error should be printout</p>
-    <p>We can now delete the binaries from the git</p>
-    <pre class="command"><kbd>find /root/saravane/base/ -name "*.cards.*" -exec rm -v {} \;</kbd></pre>
-    <p>no error should be printout</p>
-    <p>We erase the logs</p>
-    <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
-    <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
+     <pre class="command"><kbd>rsync -a /root/saravane/base /base</kbd></pre>
+     <p>no error should be printout</p>
+     <p>We can now delete the binaries from the git</p>
+     <pre class="command"><kbd>find /root/saravane/base/ -name "*.cards.*" -exec rm -v {} \;</kbd></pre>
+     <p>no error should be printout</p>
+     <p>We erase the logs</p>
+     <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
+     <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
+    <li>The compiled kernel is very big in space. If you want to reduce the size of your iso, you can delete the sources of the kernel:</li>
+     <pre class="command"><kbd>rm -r /usr/src/linux*</kbd></pre>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-03-31 21:19</p>
+  <p class="updated">Last updated on 2015-04-24 23:24</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
