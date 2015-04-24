@@ -313,7 +313,7 @@ cards level</kbd></pre>
       <p>Le dossier contenant les logs de compilation est défini</p>
       <p>Je n'ai pas besoin de spécifier les locales, elles seront toujours toutes installées</p>
       <p>Les dossiers définissant le système de base, en cas de retour à un système de base sont définis</p>
-      <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b> pour le scénario <b>D</b>:
+      <p>Le contenu typique de votre fichier <b>/etc/cards.conf</b> pour le scénario <b>D</b>:</p>
       <pre class="output">dir /srv/www/saravane/personnel
 dir /srv/www/saravane/x86_64/desktop
 dir /srv/www/saravane/x86_64/console
@@ -340,7 +340,7 @@ base /srv/www/saravane/x86_64/base
 base /srv/www/saravane/aconserver</pre>
      <a name='244'></a>
      <h4>Synchronisation des binaires via rsync</h4>
-      <p>Cette opération consiste à rappatrier les quelques 11000 paquets disponible en binaires. Elle peut durer entre quelques minutes et quelques heures en fonction de votre connection.</p>
+      <p>Cette opération consiste à rapatrier les quelques 11000 paquets disponible en binaires. Elle peut durer entre quelques minutes et quelques heures en fonction de votre connection.</p>
       <p>Heureusement, cette opération n'est longue que la première fois <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
       <p>Notez bien le dossier de destination, j'ai choisi de "déposer" les binaires à la racine du serveur http <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" />. </p>
       <p>Il faut commencer par créer les dossiers</p>
@@ -359,17 +359,17 @@ PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="/tmp/work"</pre>
       <p>Je n'ai pas besoin de spécifier la demande de téléchargement des sources si pas disponible.</p>
       <pre class="output">PKGMK_DOWNLOAD="no"</pre>
-      <p>Dans ce scénario, je souhaite que les dépendances soient installées mais non compilées. J'ai besoin du fichier .PKGREPO généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles. La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de ma section personnelle.</p>
+      <p>Dans ce scénario, je souhaite que les dépendances soient installées mais non compilées. J'ai besoin du fichier <b>.PKGREPO</b> généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles. La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de ma section personnelle.</p>
       <pre class="output">PKGMK_IGNORE_REPO="no"
 PKGMK_IGNORE_CATEGORY="no"</pre>
-      <p>Puisque les dépendances proviennent des binaires exisantes et que ces binaires sont splités. Il est préférable de concerver cette fonctionnalitée pour les paquets personnels. Les locales produites seront les 11 locales produites par défaut.</p>
+      <p>Puisque les dépendances proviennent des binaires existantes et que ces binaires sont splités. Il est préférable de conserver cette fonctionnalitée pour les paquets personnels. Les locales produites seront les 11 locales produites par défaut.</p>
       <pre class="output">PKGMK_GROUPS=(devel man doc service)
 PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)</pre>
       <p>Les binaires produits seront dans le même format de compression que les binaires officielles, même si ce n'est pas une obligation, on veut garder une certaine cohérence entre les binaires. Je ne souhaite pas supprimer mes binaires produits une fois installés.</p>
       <pre class="output">PKGMK_COMPRESSION_PACKAGE="yes"
 PKGMK_COMPRESSION_MODE="gz"
 PKGMK_CLEAN="no"</pre>
-     <p>Voici à quoi peut ressembler votre fichier /etc/pkgmk.conf pour le scénario <b>D</b>:
+     <p>Voici à quoi peut ressembler votre fichier <b>/etc/pkgmk.conf</b> pour le scénario <b>D</b>:</p>
      <pre class="output">export CFLAGS="-O2 -pipe"
 export CXXFLAGS="${CFLAGS}"
 case ${PKGMK_ARCH} in
@@ -449,7 +449,7 @@ base /usr/ports/base
 base /usr/ports/aconserver</pre>
      <a name='253'></a>
      <h4>Le fichier /etc/pkgmk.conf</h4>
-      <p>Comme dis plus haut, le scenario <b>A</b> n'a pas besoin de fichier de configuration <b>/etc/pkgmk.conf</b>. On peut directement configurer le <b>/etc/pkgmk.conf</b> de notre <b>chroot</b>.</p>
+      <p>Comme dit plus haut, le scenario <b>A</b> n'a pas besoin de fichier de configuration <b>/etc/pkgmk.conf</b>. On peut directement configurer le <b>/etc/pkgmk.conf</b> de notre <b>chroot</b>.</p>
       <u>   *** NuTyX chroot     *** Scénario C ***  </u>
       <pre class="output">export CFLAGS="-O2 -pipe"
 export CXXFLAGS="${CFLAGS}"
@@ -564,7 +564,7 @@ make[1]: Leaving directory '/usr/ports/personnel/joe/work/src/joe-3.7'
     <pre class="command"><kbd>pkgadd joe1414362465x86_64.cards.tar</kbd></pre>
   <a name='5'></a>
   <h2>Un paquet avec quelques dépendances</h2>
-   <p>Si vous lisez ceci, assurez-vous d'avoir effectué toutes les manipulations pour le scénario concerné, <a href="#23">dans notre exemple il s'agit su scénario <b>C</b></a></p>.
+   <p>Si vous lisez ceci, assurez-vous d'avoir effectué toutes les manipulations pour le scénario concerné, <a href="#23">dans notre exemple il s'agit su scénario <b>C</b></a>.</p>
    <p>Les dépendances d'un paquet sont souvent le casse tête d'un empaqueteur. Il est en effet jamais facile de connaître exactement quelles sont les dépendances indispensables pour que le paquet en chantier se compile sans problème.</p>
    <p>En plus des dépendances indispensables, il y a aussi les dépendance optionnelles qui permettent d'avoir plus de fonctionnalitées. Par principe, sous NuTyX nous essayons de proposer le maximum de fonctionalitées.</p>
    <p>Le paquet que nous allons construire n'apportera certainement pas grand chose à votre NuTyX.  C'est surtout la methode utilisée qui nous intéresse ici: Nous allons donc prendre le paquet <b>clipit</b> qui d'après le README est (en anglais dans le texte)</p>
@@ -608,7 +608,7 @@ make DESTDIR=$PKG install
   <h2>Methode de construction dans un environnement isolé aussi appelé "chroot"</h2>
    <p>Cette methode n'est pas indispensable mais fortement recommandée.</p>
    <p>Elle permet en effet d'éviter de "casser" la NuTyX qu'on utilise tous les jours. Dans un environnement isolé, vous vous assurez de préserver votre NuTyX principale contre toute fausse manoeuvre.</p>
-   <p>On appelera désormais notre environnement isolé: <b> chroot</b>.<p>
+   <p>On appellera désormais notre environnement isolé: <b> chroot</b>.<p>
    <p>On va commencer par récupérer les bon scripts:</p>
    <pre class="command"><kbd>wget http://downloads.nutyx.org/install-saravane{,.md5sum}
 wget http://downloads.nutyx.org/enter-chroot{,.md5sum}
@@ -645,7 +645,6 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
 "*              http://www.nutyx.org               *"
 "*                                                 *"
 "***************************************************"</pre>
-   <p>Une fois l'installation terminée on peut mettre notre chroot en service.</p>
    <p>Pour pouvoir travailler dans la chroot il est necessaire de pouvoir rentrer (et sortir) facilement de l'environnement, pour ce faire, nous allons utiliser le petit script ci dessous. Vous êtes toujours en root tapez donc ceci dans votre terminal:</p>
    <pre class="command"><kbd>bash enter-chroot</kbd></pre>
    <p>Ce petit script vous permet d'entrer et de sortir très simplement de votre chroot.</p>
@@ -654,12 +653,8 @@ ADD: ca-certificates-20141001, 323 files: 100 %                          [  OK  
    <p>Le gros avantage de travailler dans une chroot est que si vous faîtes une manipulation douteuse et comme vous êtes en root, ce ne sera jamais très grave.</p>
    <div class="important"><img src="../graphics/caution.gif" width="10" height="10" alt="!!!" /> En revanche si vous n'êtes pas dans la chroot, et que vous tapez certaines commandes mentionnée dans cet article, je ne peux pas vous garantir le résultat et donc le fonctionnement de votre NuTyX.</div>
    <div><img src="../graphics/yippee.gif" alt="yippee" />Tout est en place, on peut maintenant construire un <a href="#5">un paquet avec quelques dépendances</a>.</div>
-
-
    <div><img src="../graphics/clap.gif" alt="clap" />Ca c'est vraiment cool non <img src="../graphics/clap.gif" alt="clap" /></div>
    <p>Votre premier paquet est compilé et installé. Le gestionnaire de paquet (de votre chroot) l'a intégré dans sa base de données. Petite remarque, si vous avez suivi ce tuto, vous avez sans doute remarquez que toutes les commandes ont été effectuées depuis la racine de votre chroot ... <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" />.</p>
-   <p>Il est temps de se familiariser avec son nouveau paquet installé. Ca tombe bien, on vient d'installer ... un éditeur de texte.</p>
-   <p>Maintenant que l'on a un éditeur de texte, on va s'en servir pour la suite. Fini les cat ...</p>
    <p>Tapez maintenant la commande suivante:</p>
    <pre class="command"><kbd>cards info clipit</kbd></pre>
    <pre class="output">Retrieve info about the 123 packages: 100 %
@@ -699,7 +694,7 @@ Local Directory: /chroot/usr/ports/personnel</pre>
     <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: clipit-1.4.2, 71 files: 100 %</pre>
    <hr>
-  <p class="updated">Dernière mise à jour 19-04-2015 17:53</p>
+  <p class="updated">Dernière mise à jour 24-04-2015 23:07</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
