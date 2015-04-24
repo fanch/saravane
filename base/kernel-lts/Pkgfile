@@ -7,11 +7,11 @@ PKGMK_NO_STRIP="yes"
 
 
 name=kernel-lts
-version=3.18.11
-release=2
+version=3.18.12
+release=1
 _version=${version%.*}
 
-AAABASICFS=20150418
+AAABASICFS=20150424
 
 source=(http://downloads.nutyx.org/files/aaabasicfs-${AAABASICFS}.tar.xz
 	http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
