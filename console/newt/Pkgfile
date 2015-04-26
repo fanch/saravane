@@ -1,0 +1,21 @@
+# Description: Newt is a programming library for color text mode, widget based user interfaces. It can be used to add stacked windows, entry widgets, checkboxes, radio buttons, labels, plain text fields, scrollbars, etc., to text mode user interfaces. Newt is based on the S-Lang library.
+# URL: 
+# Packager: tnut at nutyx dot org
+# Depends on: popt slang
+
+name=newt
+version=0.52.18
+release=1
+
+source=( http://fedorahosted.org/releases/n/e/$name/$name-$version.tar.gz )
+build() {
+cd $name-$version
+sed -e 's/^LIBNEWT =/#&/' \
+    -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \
+    -e 's/$(LIBNEWT)/$(LIBNEWTSONAME)/g' \
+    -i Makefile.in
+
+./configure --prefix=/usr --with-gpm-support &&
+make
+make DESTDIR=$PKG install
+}
