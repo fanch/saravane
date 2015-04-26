@@ -3,14 +3,13 @@
 # Packager: tnut at nutyx dot org
 # Depends on: libjpeg-turbo lcms 
 name=libmng
-version=2.0.2
+version=2.0.3
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
-sed -i "s:#include <jpeg:#include <stdio.h>\n&:" libmng_types.h
 ./configure --prefix=/usr --disable-static
 make
 mkdir -p $PKG/usr/{lib,include,share/man/man{3,5}}
