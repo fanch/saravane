@@ -1,7 +1,6 @@
-# Description: A low-level cryptographic library
+# Description: The Nettle package contains the low-level cryptographic library that is designed to fit easily in many contexts. 
 # URL: http://www.lysator.liu.se/~nisse/nettle/
-# Packager: - www.linuxfromscratch.org/blfs/view/svn/postlfs/nettle.html
-# Depends on: 
+# Packager: tnut at nutyx dot org
 
 name=nettle
 version=2.7.1
