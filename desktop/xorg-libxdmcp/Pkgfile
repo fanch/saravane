@@ -1,11 +1,11 @@
 # Description: libxdmcp, library Xorg
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: xorg-proto 
 _name=libXdmcp
 
 name=xorg-libxdmcp
-version=1.1.1
+version=1.1.2
 release=1
 
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
@@ -15,5 +15,4 @@ cd ${_name}-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install
-#rm -r $PKG/usr/share
 }
