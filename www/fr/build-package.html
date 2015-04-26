@@ -46,7 +46,7 @@
     <p>Ne demandez pas (encore) à google, je ne crois pas que ce concept existe déjà sur d'autres distributions <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" /> <p>
     <p>C'est un concept que j'ai imaginé en crééant le gestionnaire de paquets <b>cards</b>.</p>
     <p>Au fil des années, je me suis rendu compte que le public cible pour l'utilisation d'une distribution comme NuTyX était très très large. Chaque utilisateur (plus ou moins averti) souhaite évoluer sur sa distribution à sa manière.</p> 
-    <p>La plus part des utilisateurs se dirigeant vers NuTyX souhaitent compiler leurs paquets à leur guise. Certains ne choisiront peut-être pas toutes les sections proposées par défaut. D'autres utilisateurs souhaiteront mélanger les paquets standards proposés en binaire avec leur propres paquets. Toutes ces approchent sont différentes, je les appelle <b>scénarios</b> d'utilisation de la NuTyX.</p>
+    <p>La plupart des utilisateurs se dirigeant vers NuTyX souhaitent compiler leurs paquets à leur guise. Certains ne choisiront peut-être pas toutes les sections proposées par défaut. D'autres utilisateurs souhaiteront mélanger les paquets standards proposés en binaire avec leur propres paquets. Toutes ces approchent sont différentes, je les appelle <b>scénarios</b> d'utilisation de la NuTyX.</p>
    <h3>Quels sont les scénarios possibles (cad ce que je peux imaginer aujourd'hui)</h3>
     <ol>
      <li><a href="#21">Scénario <b>A</b></a>: Je ne veux rien compiler, les binaires disponibles me suffisent<img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />. Cela peut vous paraître absurde d'en parler ici, mais comme vous êtes très interessés par le sujet, sachez que ce scénario vous permet de garder votre distribution favorite la plus légère possible.</li>
@@ -516,10 +516,10 @@ version=3.7
 release=1
 source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
 build() {
-cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc
-make
-make DESTDIR=$PKG install
+  cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
 }
 EOF</kbd></pre>
    <a name='43'></a>
@@ -592,11 +592,12 @@ name=clipit
 version=1.4.2
 release=1
 source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
-make
-make DESTDIR=$PKG install
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+  --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
 }</kbd></pre>
    <a name='53'></a>
    <li><h3>Compilez le paquet.</h3>
@@ -694,7 +695,7 @@ Local Directory: /chroot/usr/ports/personnel</pre>
     <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: clipit-1.4.2, 71 files: 100 %</pre>
    <hr>
-  <p class="updated">Dernière mise à jour 25-04-2015 21:27</p>
+  <p class="updated">Dernière mise à jour 26-04-2015 22:30</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

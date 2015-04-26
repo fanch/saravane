@@ -511,10 +511,10 @@ version=3.7
 release=1
 source=( <a href="http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz">http://downloads.sourceforge.net/$name-editor/$name-$version.tar.gz)</a>
 build() {
-cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc
-make
-make DESTDIR=$PKG install
+  cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
 }
 EOF</kbd></pre>
       <a name='43'></a>
@@ -587,11 +587,12 @@ name=clipit
 version=1.4.2
 release=1
 source=(https://github.com/downloads/shantzu/ClipIt/$name-$version.tar.gz)
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
-make
-make DESTDIR=$PKG install
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+  --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
 }</kbd></pre>
       <a name='53'></a>
       <li><h3>Rezept compilation</h3>
@@ -689,7 +690,7 @@ Local Directory: /chroot/usr/ports/personnel</pre>
       <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: clipit-1.4.2, 71 files: 100 %</pre>
      <hr>
-   <p class="updated">Last updated on 2015-04-25 21:25</p>
+   <p class="updated">Last updated on 2015-04-26 22:30</p>
     <footer>
      <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
      &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
