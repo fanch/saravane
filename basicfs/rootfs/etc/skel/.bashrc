@@ -17,7 +17,7 @@ else
         alias del='sudo cards remove'
         alias get='sudo cards install'
         alias up='sudo cards install -u'
-        alias check='sudo cards sync;cards diff'
+        alias check='sudo cards sync;sudo cards diff'
 fi
 alias search='cards search'
 alias ll='ls -l'
