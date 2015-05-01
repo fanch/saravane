@@ -98,52 +98,6 @@ if [ ! -L /home/lfs/config ];then
 fi
 echo "link /home/lfs/config: OK"
 
-for i in  wget-list md5sums
-do wget http://www.linuxfromscratch.org/lfs/view/stable/$i \
-   -O $LFS/sources/$i
-   sed -i "/patch-/d" $LFS/sources/$i
-   sed -i "/expat-/d" $LFS/sources/$i
-   sed -i "/dejagnu-/d" $LFS/sources/$i
-   sed -i "/intltool-/d" $LFS/sources/$i
-   sed -i "/XML-/d" $LFS/sources/$i
-   sed -i "/automake-/d" $LFS/sources/$i
-   sed -i "/bash-/d" $LFS/sources/$i
-   sed -i "/bison-/d" $LFS/sources/$i
-   sed -i "/binutils-/d" $LFS/sources/$i
-   sed -i "/groff-/d" $LFS/sources/$i
-   sed -i "/iproute2-/d" $LFS/sources/$i
-   sed -i "/eudev-/d" $LFS/sources/$i
-   sed -i "/grub-/d" $LFS/sources/$i
-   sed -i "/coreutils/d" $LFS/sources/$i
-   sed -i "/linux.3.16.2/d" $LFS/sources/$i
-   sed -i "/gcc-4.9.1/d" $LFS/sources/$i
-   sed -i "/glibc-/d" $LFS/sources/$i
-   sed -i "/shadow-/d" $LFS/sources/$i
-   sed -i "/shadow_/d" $LFS/sources/$i
-   sed -i "/gettext-/d" $LFS/sources/$i
-   sed -i "/util-linux-/d" $LFS/sources/$i
-   sed -i "/gawk-/d" $LFS/sources/$i
-   sed -i "/gmp-/d" $LFS/sources/$i
-   sed -i "/man-db-/d" $LFS/sources/$i
-   sed -i "/make-/d" $LFS/sources/$i
-   sed -i "/mpc-/d" $LFS/sources/$i
-   sed -i "/tzdata/d" $LFS/sources/$i
-   sed -i "/kbd-/d" $LFS/sources/$i
-   sed -i "/procps-ng-/d" $LFS/sources/$i
-   sed -i "/perl-/d" $LFS/sources/$i
-   sed -i "/file-/d" $LFS/sources/$i
-   sed -i "/e2fsprogs-/d" $LFS/sources/$i
-   sed -i "/grep-/d" $LFS/sources/$i
-   sed -i "/lfs-bootscripts-/d" $LFS/sources/$i
-   sed -i "/check-/d" $LFS/sources/$i
-   sed -i "/libpipeline-/d" $LFS/sources/$i
-   sed -i "/tcl/d" $LFS/sources/$i
-   sed -i "/libtool-/d" $LFS/sources/$i
-   sed -i "/tar-/d" $LFS/sources/$i
-   sed -i "/vim-/d" $LFS/sources/$i
-   sed -i "/sysklogd-/d" $LFS/sources/$i
-   sed -i "/xz-/d" $LFS/sources/$i
-done
 echo "1baa72369f511cfdd1e145a8f04234dc  aaabasicfs-20150424.tar.xz
 9a1ddb0e053474d9d1105cfe39b0c48d  automake-1.15.tar.xz
 a27b3ee9be83bd3ba448c0ff52b28447  bash-4.3.30.tar.gz
@@ -182,9 +136,9 @@ b595bdc4474b8fc1a15cffc67c66025b  tzdata2015d.tar.gz
 d43ab9f680435a7fff35b4ace8d45b80  libcap-2.24.tar.xz
 ba56fb5bfd44acea83fc5dac4a9b7f15  kbd-2.0.2.tar.gz
 f75cca16a38da6caa7d52151f7136895  kbd-2.0.2-backspace-1.patch
-a2a26543ce410eb74bc4a508349ed09a  gawk-4.1.1.tar.xz
+29555d982b8b678b0091010eb7508e4a  gawk-4.1.2.tar.xz
 1e6da4e434553d2811437aa42c7f7c76  gmp-6.0.0a.tar.xz
-2308850946766677f3fabe0685e85de8  util-linux-2.26.1.tar.xz
+9bdf368c395f1b70325d0eb22c7f48fb  util-linux-2.26.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
 d3fc8316d4d4d04b65cbc2d70799e763  linux-3.19.tar.xz
 1fec75551b2f55fced43df8394b1fd9a  patch-3.19.3.xz
@@ -211,14 +165,7 @@ edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
 707c5da5d5907af8f16e137605c82406  git-2.3.7.tar.xz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz
 8809465cd48a202895bc2a12e1923b5d  jfsutils-1.1.15.tar.gz
-d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" >> $LFS/sources/md5sums
-
-for i in `cat $LFS/sources/wget-list`
-do
-   if [ ! -f $LFS/sources/`basename $i` ]; then
-      wget --no-check-certificate $i -P $LFS/sources
-   fi
-done
+d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" > $LFS/sources/md5sums
 
 for i in `cat scripts/wget_nutyx_list`
 do 
