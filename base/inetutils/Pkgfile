@@ -6,7 +6,7 @@ name=inetutils
 version=1.9.2
 release=1
 
-source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz)
+source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.xz)
 
 build()
 {
