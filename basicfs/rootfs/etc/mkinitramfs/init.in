@@ -50,7 +50,6 @@ do_mount_root()
        cat /proc/partitions
        while true ; do sleep 10000 ; done
    fi
-   modprobe $rootfstype
    if ! mount -n -t "$rootfstype" -o "$rootflags" "$device" /.root ; then
        no_mount $device
        cat /proc/partitions
@@ -131,6 +130,7 @@ do_mount_in_ram()
 	do
 		if [ -f ${1}/$DIR.squashfs ];then
 			mkdir /DIR
+			[ "$verbose" == "no" ] || echo "mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR"
 			mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR || problem
 			mkdir -p /$DIR > /dev/null 2>&1
 			cp -a /DIR/* /$DIR/ > /dev/null 2>&1
@@ -146,28 +146,26 @@ do_mount_in_ram()
 	do
 		if [ -f ${1}/$DIR.squashfs ];then
 			mkdir /$DIR > /dev/null 2>&1
+			[ "$verbose" == "no" ] || echo "mount -o loop -t squashfs ${1}/$DIR.squashfs /$DIR"
 			mount -o loop -t squashfs ${1}/$DIR.squashfs /$DIR || problem
 		fi
 	done		
 }
 
 find_media() {
-   modprobe usb-storage
    EXPECT_LABEL="nutyxcd"
-   echo ""
    for SYS in /sys/block/sd* /sys/block/sr* ; do
-	   echo "Looking in $SYS for media"
+	   [ "$verbose" == "no" ] || echo "Looking in $SYS for media"
       if [ ! -d "$SYS" ]; then  continue; fi
       DEV=/dev/${SYS##*/}
       LABEL=`dd if=$DEV bs=1 skip=32808 count=32 2>/dev/null`
       if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
-         ln -s $DEV /dev/nutyx-cd
-         mkdir  -p /media/cdrom 2>/dev/null
-	 modprobe isofs
-         mount -n /dev/nutyx-cd /media/cdrom
-         if [ -d /media/cdrom/depot ]; then
-            echo $DEV > /tmp/depot
-         fi
+	ln -s $DEV /dev/nutyx-cd
+	mkdir  -p /media/cdrom 2>/dev/null
+	[ "$verbose" == "no" ] || echo "mount -n /dev/nutyx-cd /media/cdrom"
+	mount -n /dev/nutyx-cd /media/cdrom
+	[ -d /media/cdrom/depot ] && echo $DEV > /tmp/depot
+	break
       fi
    done
 }
@@ -175,7 +173,8 @@ find_media() {
 MainLoop(){
    while [ ! -f /root/boot ];
    do
-	   /etc/rc.d/init.d/setup-nutyx || problem
+	[ "$verbose" == "no" ] || echo "Launch /etc/rc.d/init.d/setup-nutyx ..."
+	/etc/rc.d/init.d/setup-nutyx || problem
    done
 }
 
@@ -208,6 +207,7 @@ for param in $cmdline ; do
     ro          ) ro="ro"                         ;;
     rw          ) ro="rw"                         ;;
     quiet       ) export verbose="no"             ;;
+    testiso     ) export verbose="yes"             ;;
   esac
 done
 
@@ -221,19 +221,19 @@ if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then
     fi
   fi
 fi
-if [ -d /lib/modules ]; then
-        do_start_localnet
-        do_start_udev
+if [ "$root" != "" ] && [ -d /lib/modules ]; then
+	do_start_localnet
+	do_start_udev
 fi
 if [ -n "$rootdelay" ] ; then
-	echo "... wait $rootdelay seconds"
+	[ "$verbose" == "no" ] || echo "... wait $rootdelay seconds"
 	sleep "$rootdelay"
 fi
 if [ "$root" == "" ]; then
 	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
 		find_media
 		if [ ! -L /dev/nutyx-cd ]; then
-			echo "Media not found yet, trying again in 5 sec"
+			[ "$verbose" == "no" ] || echo "Media not found yet, trying again in 5 sec"
 			sleep 5
 			find_media
 		fi
@@ -248,16 +248,28 @@ if [ "$root" == "" ]; then
 	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
 		no_mount
 		sh
+	else
+		if [ "$verbose" == "yes" ]; then
+			echo "/etc/rc.d/init.d/setup-nutyx exit ..."
+			ls -lt /etc/rc.d/init.d/setup-nutyx
+		fi
 	fi
-	do_stop_udev
+#	TODO This doesn't works FIXME
+#	[ "$verbose" == "no" ] || echo "Stop udev ..."
+#	do_stop_udev
+	 [ "$verbose" == "no" ] || echo "Start udev ..."
         do_start_udev
-	sleep 1
-	clear
+	[ "$verbose" == "no" ] || echo "Wait 5 second ..."
+	[ "$verbose" == "no" ] || sleep 5
+	[ "$verbose" == "no" ]  && clear
 	MainLoop
 	root=`cat /root/boot`
+	[ "$verbose" == "no" ] || echo "Stop udev ..."
 	do_stop_udev
+	killall -w /sbin/udevd
 	for DIR in usr lib sbin bin opt
 	do
+		[ "$verbose" == "no" ] || echo "umount /$DIR ..."
 		umount /$DIR > /dev/null 2>&1
 	done
 fi
@@ -273,4 +285,3 @@ fi
 do_stop_udev
 cd /.root
 exec switch_root /.root "$init" "$@" > /dev/null 2>&1
-
