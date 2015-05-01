@@ -4,7 +4,7 @@
 
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
-
+PKGMK_GROUPS=(devel doc)
 
 name=kernel-lts
 version=3.18.12
@@ -13,8 +13,7 @@ _version=${version%.*}
 
 AAABASICFS=20150424
 
-source=(http://downloads.nutyx.org/files/aaabasicfs-${AAABASICFS}.tar.xz
-	http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
 	$name.config $name.config_64 )
 
