@@ -150,11 +150,12 @@ cards depcreate xorg</kbd></pre>
      <p>We erase the logs</p>
      <pre class="command"><kbd>mv /root/logs /logs</kbd></pre>
      <p>If needed, binaries and logs are stored at the root directory of the new produced NuTyX</p>
-    <li>The compiled kernel is very big in space. If you want to reduce the size of your iso, you can delete the sources of the kernel:</li>
-     <pre class="command"><kbd>rm -r /usr/src/linux*</kbd></pre>
+    <li>The compiled kernel is very big in space. If you want to reduce the size of your iso, you can delete the documentation and the sources of the kernel:</li>
+     <pre class="command"><kbd>pkgrm kernel.doc
+pkgrm kernel.devel</kbd></pre>
   </ol>
   <hr>
-  <p class="updated">Last updated on 2015-04-24 23:24</p>
+  <p class="updated">Last updated on 2015-05-01 20:56</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
