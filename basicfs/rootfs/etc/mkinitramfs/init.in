@@ -221,7 +221,7 @@ if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then
     fi
   fi
 fi
-if [ "$root" != "" ] && [ -d /lib/modules ]; then
+if [ -d /lib/modules ]; then
 	do_start_localnet
 	do_start_udev
 fi
@@ -255,8 +255,8 @@ if [ "$root" == "" ]; then
 		fi
 	fi
 #	TODO This doesn't works FIXME
-#	[ "$verbose" == "no" ] || echo "Stop udev ..."
-#	do_stop_udev
+	[ "$verbose" == "no" ] || echo "Stop udev ..."
+	do_stop_udev
 	 [ "$verbose" == "no" ] || echo "Start udev ..."
         do_start_udev
 	[ "$verbose" == "no" ] || echo "Wait 5 second ..."
