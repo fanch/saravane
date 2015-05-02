@@ -459,14 +459,14 @@ install_base()
 {
 for i in \
 aaabasicfs acl attr bash bc binutils bzip2 coreutils cpio curl \
-dhcpcd diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
+diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
 gettext glibc gmp gperf grep grub gzip dialog mdadm \
 iana-etc inetutils iproute2 kbd kmod less groff man-db \
 libarchive libcap libpipeline lvm2 mpc mpfr ncurses openssl pam \
-procps-ng psmisc readline lzo rsync perl ports \
+procps-ng psmisc readline lzo \
 reiserfsprogs sed shadow squashfs sudo \
 sysklogd sysvinit tar tzdata util-linux xfsprogs xz zlib \
-cards ca-certificates
+cards
 do 
 	install_pkg "$i"
 done
