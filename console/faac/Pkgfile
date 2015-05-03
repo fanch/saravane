@@ -1,9 +1,7 @@
 # Description: Encoder MPEG-4 de AudioCoding.com
 # URL: http://www.audiocoding.com
-http://www.hydrogenaudio.org/
-http://forum.doom9.org/
 # Packager: tnut at nutyx dot org
-# Depends on: 
+
 name=faac
 version=1.28
 release=1

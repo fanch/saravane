@@ -1,6 +1,5 @@
 # Description: A BitTorrent protocol implementation
 # URL: http://ktorrent.pwsp.net/
-http://ktorrent.pwsp.net/
 # Packager: pierre at nutyx dot org
 # Depends on: kde-libs automoc4 boost doxygen qca 
 

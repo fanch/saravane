@@ -1,7 +1,6 @@
 # Description: Extractor/converter for .LIT eBooks
 # URL: http://www.convertlit.com/
-    http://www.convertlit.com/
-# Packager:     pierre at nutyx dot org
+# Packager: pierre at nutyx dot org
 # Depends on: libtommath 
 name=convertlit
 version=1.8

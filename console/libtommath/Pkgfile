@@ -1,8 +1,7 @@
 # Description: Highly optimized and portable routines for integer based number theoretic applications
 # URL:    url=http://www.libtom.org/
-   http://www.libtom.org/
 # Packager:    pierre at nutyx dot org
-# Depends on: 
+
 name=libtommath
 version=0.42.0
 release=1

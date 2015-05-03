@@ -1,10 +1,9 @@
 # Description: The Vamp audio analysis plug-in system
 # URL: http://www.vamp-plugins.org/
-http://www.vamp-plugins.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libsndfile 
-_dir=690
 
+_dir=690
 name=vamp-plugin-sdk
 version=2.5
 release=1

@@ -1,8 +1,7 @@
 # Description: The Hdparm package contains an utility that is useful for controlling ATA/IDE
 # URL: http://hdparm.sourceforge.net/
-http://sourceforge.net/u/ideguy/profile/
-# Packager:  
-# Depends on: 
+# Packager: tnut at nutyx dot org
+
 name=hdparm
 version=9.45
 release=1

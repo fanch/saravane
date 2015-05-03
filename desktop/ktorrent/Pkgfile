@@ -1,6 +1,5 @@
 # Description: A powerful BitTorrent client for KDE
 # URL: http://ktorrent.pwsp.net/
-http://ktorrent.pwsp.net/
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 boost kde-workspace kde-runtime libktorrent taglib 
 

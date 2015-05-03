@@ -1,7 +1,6 @@
 # Description: GLib-based library for talking to WWAN modems and devices which speak the Qualcomm MSM Interface (QMI) protocol.
-# URL: URL:  http://www.freedesktop.org/software/libqmi/
-   http://www.freedesktop.org/software/libqmi/
-# Packager:    pierre at nutyx dot org
+# URL: URL: http://www.freedesktop.org/software/libqmi/
+# Packager: pierre at nutyx dot org
 # Depends on: glib 
 
 name=libqmi

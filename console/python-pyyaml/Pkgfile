@@ -1,8 +1,8 @@
 # Description: Python module that implements the next generation YAML parser and emitter
-# URL:    http://pyyaml.org/
-   http://pyyaml.org/
-# Packager:    pierre at nutyx dot org
+# URL: http://pyyaml.org/
+# Packager: pierre at nutyx dot org
 # Depends on: python python3 yaml 
+
 name=python-pyyaml
 version=3.11
 release=1

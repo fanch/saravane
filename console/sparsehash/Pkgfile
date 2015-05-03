@@ -1,8 +1,6 @@
 # Description: Library that contains several hash-map implementations, including implementations that optimize for space or speed
 # URL: URL: http://code.google.com/p/sparsehash
-  http://code.google.com/p/sparsehash
 # Packager:   pierre at nutyx dot org
-# Depends on: 
 
 name=sparsehash
 version=2.0.2

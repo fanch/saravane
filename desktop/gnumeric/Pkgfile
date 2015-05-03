@@ -4,7 +4,7 @@
 # Packager: tnut at nutyx dot org
 # Depends on : shared-mime-info goffice libglade gconf desktop-file-utils gnome-doc-utils
 
-name= gnumeric
+name=gnumeric
 version=1.12.22
 release=1
 

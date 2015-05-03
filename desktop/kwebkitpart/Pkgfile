@@ -1,6 +1,5 @@
 # Description: WebKit browser component for KDE
 # URL: URL: https://projects.kde.org/projects/extragear/base/kwebkitpart/
-   https://projects.kde.org/projects/extragear/base/kwebkitpart/
 # Packager:    pierre at nutyx dot org
 # Depends on: automoc4 qt kde-libs 
 

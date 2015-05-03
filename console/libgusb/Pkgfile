@@ -1,8 +1,8 @@
 # Description: The libgusb package contains the GObject wrappers for libusb-1.0
 # URL: https://gitorious.org/gusb/
-https://gitorious.org/gusb/community
 # Packager: pierre at nutyx dot org
 # Depends on: libusb gperf glib gobject-introspection udev-extras 
+
 name=libgusb
 version=0.2.4
 release=1

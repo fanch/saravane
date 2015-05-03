@@ -1,6 +1,5 @@
 # Description: Tool to integrate C/C++ code with Lua
 # URL: http://www.codenix.com/~tolua
-http://www.codenix.com/~tolua
 # Packager: pierre at nutyx dot org
 # Depends on: lua51 scons 
 
