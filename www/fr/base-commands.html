@@ -30,7 +30,7 @@
  <hr>
   <h1>Les commandes de base...</h1>
    <h2>Première prise en main</h2>
-    <p>Afin de profiter pleinement de votre NuTyX fraîchement installée, voici les commandes indispensables que vous allez utiliser quotidiennement. Cet article reprend les commandes essentielles et spécifiques à NuTyX. Il est conseillé de les bien les connaître.</p>
+    <p>Afin de profiter pleinement de votre NuTyX fraîchement installée, voici les commandes indispensables que vous allez utiliser quotidiennement. Cet article reprend les commandes essentielles et spécifiques à NuTyX. Il est conseillé de bien les connaître.</p>
     <p>NuTyX ne dispose pas (encore) d'outils graphiques pour son administration. Vous allez donc utiliser le terminal comme interface. Si vous n'y êtes pas habitué, ce n'est pas grave. Cet article vous expliquera pas à pas les commandes à taper au clavier.</p>
     <p>Sous NuTyX (contrairement à d'autres systèmes d'exploitation) la <a href="http://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse">casse</a> doit être respectée, il faut donc toujours veiller à taper les commandes <b>en minuscules</b>.</p>
     <p>Commençons donc par ouvrir un terminal... ça y est ? alors on peut commencer <img src="../graphics/smiley-cool.gif" alt="Cool" title="Cool" /></p>
@@ -40,11 +40,11 @@
     <pre class="command_user"><kbd>nomdelacommande -h</kbd></pre>
     <p>le <i>help</i> permet d'obtenir un aperçu des possibilités de la <b>nomdelacommande</b>, <i>--help</i> ou <i>-h</i> sont aussi des options permettant l'affichage de l'aide.</p>
    <h2>Vérifier si il y a des mises à jour disponible</h2>
-    <p>La commande <b>cards sync -i</b> permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
-    <p>La commande <b>cards diff -b</b> affichera une liste de paquets pouvant être mis à jour</p>
+    <p>La commande <b>cards sync</b> permet d'obtenir le dernier état des mises à jour disponibles sur votre système.</p>
+    <p>La commande <b>cards diff</b> affichera une liste de paquets pouvant être mis à jour</p>
     <p>Essayez les commandes:</p>
-    <pre class="command"><kbd>cards sync -i
-cards diff -b</kbd></pre>
+    <pre class="command"><kbd>cards sync
+cards diff</kbd></pre>
     <pre class="output">Synchronizing /var/lib/pkg/saravane/desktop from http://..<br />/var/lib/pkg/saravane/desktop//MD5SUM<br />..<br />Differences between installed packages and the depot of binaries:<br /><br />Package                        Installed                 Available in the depot of binaries
 
 gcc                             4.9.1                     4.9.2
@@ -90,20 +90,19 @@ if [ $EUID -eq 0 ]; then
          alias del='cards remove'
          alias get='cards install'
          alias up='cards install -u'
-         alias check='cards sync -i;cards diff -b'
-         alias search='cards search'
+         alias check='cards sync;cards diff'
 else
          alias del='sudo cards remove'
          alias get='sudo cards install'
          alias up='sudo cards install -u'
-         alias check='sudo cards sync -i;sudo cards diff -b'
-         alias search='sudo cards search'
+         alias check='sudo cards sync;sudo cards diff'
 fi
+alias search='cards search'
 alias ll='ls -l'
 alias l='ls -alh'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
-alias pkgfind='cards list -i | grep -i'
+alias pkgfind='cards list| grep -i'
 # End ~/.bashrc</pre>
    <h2>Conclusion</h2>
     <p>Vous l'avez compris les seules commandes à connaître pour commencer à utiliser NuTyX sont donc les 2 commandes :</p>
@@ -113,7 +112,7 @@ cards</kbd></pre>
     <pre class="command_user"><kbd>cards help</kbd></pre>
     <p>Je vous souhaite beaucoup de plaisir avec votre nouvelle NuTyX installée.</p>
     <hr>
-    <p class="updated">Dernière mise à jour 15-03-2015 20:08</p>
+    <p class="updated">Dernière mise à jour 03-05-2015 15:35</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
