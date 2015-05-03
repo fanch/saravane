@@ -1,6 +1,5 @@
 # Description:  An open-source HTTP server for modern operating systems.
-# URL: -  http://httpd.apache.org/ABOUT_APACHE.html
-http://httpd.apache.org/
+# URL: http://httpd.apache.org/ABOUT_APACHE.html
 # Packager: http://httpd.apache.org/
 # Depends on: pcre apr-util sqlite expat 
 
