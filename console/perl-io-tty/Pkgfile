@@ -8,8 +8,7 @@ name=perl-io-tty
 version=1.11
 release=1
 
-source=(
-http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Tty-$version.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Tty-$version.tar.gz)
 
 build() {
     cd IO-Tty-$version

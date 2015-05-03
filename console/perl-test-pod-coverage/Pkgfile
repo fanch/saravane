@@ -8,8 +8,7 @@ name=perl-test-pod-coverage
 version=1.08
 release=1
 
-source=(
-http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Pod-Coverage-$version.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Pod-Coverage-$version.tar.gz)
 
 build() {
     cd Test-Pod-Coverage-$version

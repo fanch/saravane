@@ -1,6 +1,5 @@
 # Description: Database of robots.txt-derived permissions
 # URL: http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-uri 
 run=( perl )

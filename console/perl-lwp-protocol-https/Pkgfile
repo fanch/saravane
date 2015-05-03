@@ -1,7 +1,5 @@
 # Description: Provide https support for LWP::UserAgent
 # URL: Provide https support for LWP::UserAgent
-http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-io-socket-ssl perl-mozilla-ca perl-net-http perl-libwww 
 run=( perl )

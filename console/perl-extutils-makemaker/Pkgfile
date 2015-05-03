@@ -8,8 +8,7 @@ name=perl-extutils-makemaker
 version=6.98
 release=1
 
-source=(
-http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$version.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$version.tar.gz)
 
 build() {
     cd ExtUtils-MakeMaker-$version

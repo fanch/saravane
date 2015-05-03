@@ -1,6 +1,5 @@
 # Description: Nearly transparent SSL encapsulation for IO::Socket::INET
 # URL: http://search.cpan.org/dist/IO-Socket-SSL/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-net-ssleay perl-uri 
 run=( perl )

@@ -1,6 +1,5 @@
 # Description: Interface to OpenSSL RSA methods
 # URL: http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-crypt-openssl-random perl-crypt-openssl-bignum 
 run=( perl )

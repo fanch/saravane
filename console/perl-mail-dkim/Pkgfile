@@ -1,6 +1,5 @@
 # Description: Implements DomainKeys Identified Mail (DKIM)
 # URL: http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-crypt-openssl-rsa perl-digest-sha1 perl-mailtools perl-net-dns 
 run=( perl )

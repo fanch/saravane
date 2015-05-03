@@ -1,6 +1,5 @@
 # Description: Perl Module: Interface to the DNS resolver
 # URL: http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl perl-digest-hmac perl-net-ip perl-io-socket-inet6 perl-socket6 
 run=( perl )

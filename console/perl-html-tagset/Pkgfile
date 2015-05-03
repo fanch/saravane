@@ -1,6 +1,5 @@
 # Description: Data tables useful in parsing HTML
 # URL: http://search.cpan.org/
-http://search.cpan.org/
 # Packager: pierre at nutyx dot org
 # Depends on: perl 
 run=( perl )
