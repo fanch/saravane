@@ -1,8 +1,8 @@
 # Description: A disk reporting library. It only supports a subset of the ATA S.M.A.R.T. functionality.
 # URL: http://0pointer.de/blog/projects/being-smart.html
-- http://0pointer.de/lennart/
+# Maintainer: lennart
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 name=libatasmart
 version=0.19
 release=1
