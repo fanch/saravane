@@ -1,8 +1,8 @@
 # Description: A fast compressor/decompressor library
 # URL: http://code.google.com/p/snappy/
-- https://code.google.com/p/snappy/people/list
+# Maintainers: https://code.google.com/p/snappy/people/list
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 name=snappy
 version=1.1.1
 release=1
