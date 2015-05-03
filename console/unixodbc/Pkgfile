@@ -1,8 +1,6 @@
 # Description: ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
 # URL: http://www.unixodbc.org/
-- http://www.linuxfromscratch.org/blfs/view/svn/general/unixodbc.html
 # Packager: pierre at nutyx dot org
-# Depends on: 
 
 name=unixodbc
 version=2.3.2
