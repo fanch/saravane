@@ -1,6 +1,5 @@
 # Description: The Akonadi framework is responsible for providing applications with a centralized database to store, index and retrieve the user's personal information.
 # URL: http://userbase.kde.org/Akonadi
-- http://userbase.kde.org/Special:RecentChanges
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 shared-mime-info boost sqlite mysql 
 run=( mysql )
