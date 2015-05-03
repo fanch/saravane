@@ -1,8 +1,8 @@
 # Description: Contains an IPC library used by some of the other GnuPG related packages
 # URL: http://www.gnupg.org/related_software/libassuan/
-http://www.gnupg.org/index.html
 # Packager: pierre at nutyx dot org
 # Depends on: libgpg-error 
+
 name=libassuan
 version=2.2.0
 release=1
