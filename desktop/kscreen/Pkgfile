@@ -1,6 +1,5 @@
 # Description: KDE's screen management software
 # URL: https://projects.kde.org/kscreen
-- KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 libkscreen kde-runtime 
 
