@@ -1,6 +1,5 @@
 # Description: KDE's screen management library
 # URL: https://projects.kde.org/libkscreen
-- KDE Project : https://projects.kde.org/projects/kde
 # Packager: pierre at nutyx dot org
 # Depends on: automoc4 kde-libs qjson xcb-util-image xcb-util-renderutil libxcb 
 
