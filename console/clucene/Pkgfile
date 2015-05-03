@@ -1,8 +1,8 @@
 # Description: CLucene is a C++ version of Lucene, a high performance text search engine.
 # URL: http://clucene.sourceforge.net
-http://sourceforge.net/p/clucene/wiki/Home/
 # Packager: tnut at nutyx dot org
-# Depends on: 
+# Depends on: cmake
+
 name=clucene
 version=2.3.3.4
 release=1
