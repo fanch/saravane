@@ -1,10 +1,9 @@
 # Description: Independent Open DataBase Connectivity for Linux
 # URL: http://www.iodbc.org
-http://www.iodbc.org
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 name=libiodbc
-version=3.52.9
+version=3.52.10
 release=1
 
 source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
