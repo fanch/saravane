@@ -1,8 +1,8 @@
 # Description: bibliotheque C Yubico
 # URL: http://www.yubico.com/
-- https://github.com/Yubico/yubico-c.git
-# Packager: - https://github.com/Yubico/yubico-c.git
+# Packager: tnut at nutyx dot org
 # Depends on: libusb 
+
 name=libyubikey
 version=1.10
 release=1
