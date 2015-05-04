@@ -31,6 +31,7 @@
    <h1><span>How to build a package ?</span></h1>
     <h2>Introduction</h2>
      <p>We knows  <a href="why-contribute.html">why contribute</a>, the <a href="bash-basics.html">required Know-how</a>, the <a href="base-commands.html">available base commands</a>, the <a href="recept.html">minimum syntax of a receipt</a> and finaly what are the <a href="packages.html">available packages</a>. It's time to give a try and build your first package following the (NuTyX) rules <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
+     <p>If you are using a version of cards older then <b>1.0</b>, it's time to update your package manager.</p>
     <h2>Contents</h2>
      <h3>
       <a href="#1">Which scenario you want ?</a><br />
@@ -45,13 +46,13 @@
       <p>Don't ask google (yet), I guess this concept doen't exist yet on other distributions <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
       <p>This is a concept I imagined while I was creating the <b>cards</b> package manager.</p>
       <p>Over the years, I've realized that the target audience for using a distribution like NuTyX was very extensive. Each user (more or less informed) wants to move on its distribution in its own way</p>
-      <p>Most users heading NuTyX wish to compile their packages at their leisure. Some may not even find it all default proposed sections. Other users will want to mix standard packages available in binary with their own packages. All these are different approach, I call this <b>scenarios</b> of NuTyX.</p>
+      <p>Most users heading NuTyX wish to compile their packages at their leisure. Some may not even find it all default proposed collections. Other users will want to mix standard packages available in binary with their own packages. All these are different approach, I call this <b>scenarios</b> of NuTyX.</p>
      <h3>What are the posssible scenarios (means the one I'm thinking of)</h3>
       <ol>
        <li><a href="#21">Scenario <b>A</b></a>: I do not want to compile anything, the available binary enough for me <img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />. This may seem absurd to talk about it here, but as you are very interested in the subject, know that this scenario allows you to keep your favorite distribution as light as possible.</li>
        <li><a href="#22">Scenario <b>B</b></a>: Binary available are not sufficient, I would like to add one or two packages.</li>
-       <li><a href="#23">Scenario <b>C</b></a>: I do not want to install the <b>console</b> and <b>desktop</b> binaries sections. I compile them myself.</li>
-       <li><a href="#24">Scénario <b>D</b></a>: I want to use the available <b>console</b> and <b>desktop</b> binaries sections. I wish my personal ports use dependencies from binary already available. Only my personal ports must be compiled.</li>
+       <li><a href="#23">Scenario <b>C</b></a>: I do not want to install the <b>console</b> and <b>desktop</b> binaries collections. I compile them myself.</li>
+       <li><a href="#24">Scénario <b>D</b></a>: I want to use the available <b>console</b> and <b>desktop</b> binaries collections. I wish my personal ports use dependencies from binary already available. Only my personal ports must be compiled.</li>
        <li><a href="#25">Scénario <b>E</b></a>: I want to build my recipes in an isolated environment and keep my untouched and pristine distribution of any development packages. My packages products in my isolated environment can be installed on my main NuTyX.</li>
       </ol>
     <a name='2'></a>
@@ -65,7 +66,7 @@
         <p>As explained above, you do not want to compile on your NuTyX. Which is entirely possible if you do not need specific programs and the proposed binary you are enough. This scenario is also true if you manage multiple installation on which no compilation is necessary.</p>
        <a name='212'></a>
        <h4>The /etc/cards.conf file</h4>
-        <p>The binaries section are activated</p>
+        <p>The binaries collection are activated</p>
         <p>The arch of the machine is checked</p>
         <p>The use(d) language(s) are modify</p>
         <p>The folder defining the base system is set and existing.</p>
@@ -77,7 +78,7 @@ dir /var/lib/pkg/saravane/base|http://downloads.nutyx.org/saravane/x86_64/base
 arch x86_64
 locale de
 base /var/lib/pkg/saravane/base</pre>
-        <p>The 3 standards binaries sections <b>base</b>, <b>console</b> and <b>desktop</b> are activated. The processor is a 64 bits <b>x86_64</b>. The language which has to be installed is german <b>de</b>. The folder containing the base packages is the one of the standard <b>base</b> section.</p>
+        <p>The 3 standards binaries collections <b>base</b>, <b>console</b> and <b>desktop</b> are activated. The processor is a 64 bits <b>x86_64</b>. The language which has to be installed is german <b>de</b>. The folder containing the base packages is the one of the standard <b>base</b> collection.</p>
         <pre class="output">base /var/lib/pkg/saravane/base</b></pre>
        <a name='213'></a>
        <h4>The /etc/pkgmk.conf file</h4>
@@ -97,11 +98,11 @@ base /var/lib/pkg/saravane/base</pre>
        <h4>Introduction</h4>
         <p>You are happy with your NuTyX there are just one or two packages missing you, so you decide to compile them yourself.</p>
         <p>Arm yourself with courage and patience <img src="../graphics/smiley-tongue-out.gif" alt="Tongue out" title="Tongue out" /><img src="../graphics/smiley-laughing.gif" alt="Laughing" title="Laughing" />.</p>
-        <p>Good advice, in this scenario, avoid at all costs compile recipes calling for not including outbuildings in <b>base</b> section of your NuTyX. If this is the case, you will be faced with many errors related to dependency devel not installed by default. In such a case, choose the scenario <b>C</b>
+        <p>Good advice, in this scenario, avoid at all costs compile recipes calling for not including outbuildings in <b>base</b> collection of your NuTyX. If this is the case, you will be faced with many errors related to dependency devel not installed by default. In such a case, choose the scenario <b>C</b>
        <a name='222'></a>
        <h4>The /etc/cards.conf file</h4>
         <p>A folder containing my personal recipes is added, this file <u>should never</u> be updated by the command <b>cards sync</b>, so we should not specify an associated URL.</p>
-        <p>Binary sections are enabled, this will allow me to easily add any missing dependencies ...</p>
+        <p>Binary collections are enabled, this will allow me to easily add any missing dependencies ...</p>
         <p>The arch of the machine is verified, we are 64 bits.</p>
         <p>The language used on the machine is adjusted</p>
         <p>The file defines the basic system, in case of return to a basic system is defined.</p>
@@ -143,7 +144,7 @@ PKGMK_WORK_DIR="/tmp/work"</pre>
         <pre class="output">PKGMK_DOWNLOAD="yes"</pre>
         <p>In this scenario, I do not wish to manage dependencies automatically at compile time and so I did not need the <b>.PKGREPO</b> file .. I only use the <b>pkgmk</b> command.</p>
         <pre class="output">PKGMK_IGNORE_REPO="yes"
-PKGMK_IGNORE_CATEGORY="yes"</pre>
+PKGMK_IGNORE_COLLECTION="yes"</pre>
         <p>I do not want the <b>pkgmk</b> command split the binary package and sub packages (devel, doc, man, etc). I am happy with the basic package since I compiled it myself. For local, if any, I will only French and German local <b>fr</b> and <b>de</b>.
         <pre class="output">PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr de)</pre>
@@ -171,7 +172,7 @@ PKGMK_SOURCE_DIR="/tmp"
 PKGMK_KEEP_SOURCES="no"
 PKGMK_WORK_DIR="/tmp/work"
 PKGMK_IGNORE_REPO="yes"
-PKGMK_IGNORE_CATEGORY="yes"
+PKGMK_IGNORE_COLLECTION="yes"
 PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr de)
 PKGMK_COMPRESSION_PACKAGE="no"
@@ -194,8 +195,8 @@ pkgadd</kbd></pre>
         <p>You understood, this scenario is probably the most "attractive" and nearest distributions "called" sources such as CRUX or gentoo.</p>
        <a name='232'></a>
        <h4>The /etc/cards.conf file</h4>
-        <p>A folder containing my personal recepts is added, this folder as well as the sections <u>should never</u> be updated by the command <b>cards sync</b>, so it does not specify any URL.</p>
-        <p>Only the <b>base</b>section must remain active in order to install the development tools</p>
+        <p>A folder containing my personal recepts is added, this folder as well as the collections <u>should never</u> be updated by the command <b>cards sync</b>, so it does not specify any URL.</p>
+        <p>Only the <b>base</b>collection must remain active in order to install the development tools</p>
         <p>The arch of the machine is checked, we are 32 bits.</p>
         <p>The folder containing the build logs is defined</p>
         <p>The folders defining the basic system, when returning to a base system are defined</p>
@@ -241,9 +242,9 @@ PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="$PWD/work"</pre>
         <p>I do not need to specify the download request sources if not available.</p>
         <pre class="output">PKGMK_DOWNLOAD="no"</pre>
-        <p>In this scenario, I would manage dependencies automatically at compile time and so I need the file <b>.PKGREPO</b> generated in the port file. I wish I could use the <b>cards install</b> or <b>get</b> to be able to reinstall my binaries available. The <b>pkgmk</b> must generate the <b>.PKGREPO</b> of the relevant section (parent folder). I use the duo <b>cards / pkgmk</b></p>
+        <p>In this scenario, I would manage dependencies automatically at compile time and so I need the file <b>.PKGREPO</b> generated in the port file. I wish I could use the <b>cards install</b> or <b>get</b> to be able to reinstall my binaries available. The <b>pkgmk</b> must generate the <b>.PKGREPO</b> of the relevant collection (parent folder). I use the duo <b>cards / pkgmk</b></p>
         <pre class="output">PKGMK_IGNORE_REPO="no"
-PKGMK_IGNORE_CATEGORY="no"</pre>
+PKGMK_IGNORE_COLLECTION="no"</pre>
         <p>I do not want <b>pkgmk</b> split the binary package and sub packages (devel, doc, man, etc). I am happy with the basic package since I compiled it myself. For local, if any, I will only the local French and Italian <b>fr</b> and <b>it</b>.</p>
         <pre class="output">PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr it)</pre>
@@ -273,7 +274,7 @@ PKGMK_SOURCE_DIR="/srv/www/sources"
 PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="$PWD/work"
 PKGMK_IGNORE_REPO="no"
-PKGMK_IGNORE_CATEGORY="no"
+PKGMK_IGNORE_COLLECTION="no"
 PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr it)
 PKGMK_COMPRESSION_PACKAGE="yes"
@@ -302,8 +303,8 @@ cards level</kbd></pre>
         <p>You do not want to compile everything you are satisfied with binary available. Your new recipes use dependencies from existing binaries. This scenario is probably the longest to implement, but once everything in place, adding personal packages is done very quickly.</p>
        <a name='242'></a>
        <h4>The /etc/cards.conf file</h4>
-        <p>A folder containing my personal recipes is added, this folder as well as the sections <u>should never</u> be updated by the <b>cards sync</b> command. We do not specify an URL.</p>
-        <p>Only the <b>base</b> section must remain active the time to recover the <b>rsync</b> command if not already installed.</p>
+        <p>A folder containing my personal recipes is added, this folder as well as the collections <u>should never</u> be updated by the <b>cards sync</b> command. We do not specify an URL.</p>
+        <p>Only the <b>base</b> collection must remain active the time to recover the <b>rsync</b> command if not already installed.</p>
         <p>The arch of the machine is checked, we are 64 bits.</p>
         <p>The folder containing the build logs is defined</p>
         <p>I do not need to specify the local, they will always installed all</p>
@@ -354,9 +355,9 @@ PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="/tmp/work"</pre>
         <p>I do not need to specify the download request sources if not available.</p>
         <pre class="output">PKGMK_DOWNLOAD="no"</pre>
-        <p>In this scenario, I wish that the dependencies are installed but not compiled. I need the <b>.PKGREPO</b> file generated in the port file. I wish I could use the <b>cards install</b> or <b>get</b> to be able to reinstall my binaries available. The <b>pkgmk</b> must generate the <b>.PKGREPO</b> file of my personal section.</p>
+        <p>In this scenario, I wish that the dependencies are installed but not compiled. I need the <b>.PKGREPO</b> file generated in the port file. I wish I could use the <b>cards install</b> or <b>get</b> to be able to reinstall my binaries available. The <b>pkgmk</b> must generate the <b>.PKGREPO</b> file of my personal collection.</p>
         <pre class="output">PKGMK_IGNORE_REPO="no"
-PKGMK_IGNORE_CATEGORY="no"</pre>
+PKGMK_IGNORE_COLLECTION="no"</pre>
         <p>Since the existing dependencies from binary and that these binaries are splited. It is best to keep this fonctionnalitée for personal packages. Local produced will be produced by 11 local default.</p>
         <pre class="output">PKGMK_GROUPS=(devel man doc service)
 PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)</pre>
@@ -386,7 +387,7 @@ PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="/tmp/work"
 PKGMK_DOWNLOAD="no"
 PKGMK_IGNORE_REPO="no"
-PKGMK_IGNORE_CATEGORY="no"
+PKGMK_IGNORE_COLLECTION="no"
 PKGMK_GROUPS=(devel man doc service)
 PKGMK_LOCALES=(fr de it es nl pt da nn sv fi)
 PKGMK_COMPRESSION_PACKAGE="yes"
@@ -466,7 +467,7 @@ PKGMK_SOURCE_DIR="/srv/www/sources"
 PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="$PWD/work"
 PKGMK_IGNORE_REPO="no"
-PKGMK_IGNORE_CATEGORY="no"
+PKGMK_IGNORE_COLLECTION="no"
 PKGMK_GROUPS=()
 PKGMK_LOCALES=(fr)
 PKGMK_COMPRESSION_PACKAGE="yes"
