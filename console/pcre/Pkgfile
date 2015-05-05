@@ -1,9 +1,9 @@
-# Description: Perl Compatible Regular Expression libraries.
+# Description: Perl Compatible Regular Expression libraries. These are useful for implementing regular expression pattern matching using the same syntax and semantics as Perl 5. 
 # URL: http://www.pcre.org/
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 name=pcre
-version=8.36
+version=8.37
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
