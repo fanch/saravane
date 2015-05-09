@@ -460,7 +460,7 @@ install_base()
 for i in \
 aaabasicfs acl attr bash bc binutils bzip2 coreutils curl \
 diffutils expat file findutils flex gcc gdbm \
-gettext glibc gmp gperf grep gzip inetutils kbd \
+gettext glibc gmp gperf grep gzip inetutils kbd lzo \
 libarchive libcap libpipeline mpc mpfr ncurses openssl pam \
 procps-ng psmisc readline sed shadow tar util-linux xz zlib \
 cards
