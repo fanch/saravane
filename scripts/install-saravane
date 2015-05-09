@@ -462,7 +462,8 @@ aaabasicfs acl attr bash bc binutils bzip2 coreutils curl \
 diffutils expat file findutils flex gcc gdbm \
 gettext glibc gmp gperf grep gzip inetutils kbd \
 libarchive libcap libpipeline mpc mpfr ncurses openssl pam \
-procps-ng psmisc readline sed shadow tar util-linux xz zlib
+procps-ng psmisc readline sed shadow tar util-linux xz zlib \
+cards
 do 
 	install_pkg "$i"
 done
