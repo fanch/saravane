@@ -55,17 +55,6 @@ get syslinux</kbd></pre>
     <li>
      <h2>Install the saravane base system</h2>
       <pre class="command"><kbd>bash install-saravane</kbd></pre>
-      <p>If you are not on NuTyX saravane and get an error about the version of bash. you can try to update the <b>bash</b> interpreter by doing:</p>
-      <pre class="command"><kbd>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
-tar xf bash-4.3.tar.gz
-wget http://ftp.gnu.org/gnu/bash/bash-4.3-patches/bash43-0{01..33}
-cd bash-4.3
-for i in ../bash43-0* ; do patch -p0 < ${i}; done
-./configure --prefix=/usr
-make
-make install</kbd></pre>
-     <p>Make shure you have all the tools for compilation on your distro. The interpreter will be in <b>/usr/bin/bash</b></p>
-     <pre class="command"><kbd>/usr/bin/bash install-saravane</kbd></pre>
     </li>
     <li>
      <h2>Copy the files for the iso</h2>
@@ -169,14 +158,14 @@ done</kbd></pre>
     </li>
     <li>
      <h2>Conclusion</h2>
-     <p>The size shoul'nd be bigger then 150 MB if you didn't put anything else then a kernel as extra package. You will find the iso in the $LFS directory.</p>
+     <p>The size shoul'nd be bigger then 300 MB if you didn't put anything else then all the packages mentionned above. You will find the iso in the $LFS directory.</p>
      <pre class="command"><kbd>ls $LFS</kbd></pre>
      <pre class="output">bin   dev  home  lib  NuTyX_i686-saravane-20150417.iso     proc  run   srv  tmp  var
 boot  etc  ISO   mnt  NuTyX_i686-saravane-20150417.md5sum  root  sbin  sys  usr</pre>
     </li>
    </ol>
   <hr>
-  <p class="updated">Last updated 2015-05-09 17:25</p>
+  <p class="updated">Last updated 2015-05-09 22:38</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
