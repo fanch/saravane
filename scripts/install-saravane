@@ -11,22 +11,22 @@ if [ -z "${version}" ]; then
 	version='saravane'
 fi
 if [ -z "${URL}" ]; then
-	URL='http://downloads.nutyx.org/'
+	URL='http://downloads.nutyx.org'
 fi
  
-Homepage="${URL}"                ## http://downloads.nutyx.org/
-ARCH=`uname -m`                  ## i686
-Installbase="$version/$ARCH/"    ## saravane/i686
-Package="$Homepage$Installbase"  ## http://downloads.nutyx.org/saravane/i686
+Homepage="${URL}"                 ## http://downloads.nutyx.org
+ARCH=`uname -m`                   ## i686
+Installbase="$version/$ARCH/"     ## saravane/i686
+Package="$Homepage/$Installbase"  ## http://downloads.nutyx.org/saravane/i686
 
-Packagebase="$Package/system"    ## http://downloads.nutyx.org/saravane/i686/system
+Packagebase="$Package/base"       ## http://downloads.nutyx.org/saravane/i686/base
 
 if [ -z "${MountFolder}" ]; then
 	MountFolder="/mnt/hd"
 fi
 
 Depot="/var/lib/pkg/saravane"
-DepotPackages="$Depot/system"
+DepotPackages="$Depot/base"
 DepotCD="/media/cdrom"
 
 
@@ -458,15 +458,11 @@ fi
 install_base()
 {
 for i in \
-aaabasicfs acl attr bash bc binutils bzip2 coreutils cpio curl \
-diffutils e2fsprogs e3 eudev expat file findutils flex gcc gdbm \
-gettext glibc gmp gperf grep grub gzip dialog mdadm \
-iana-etc inetutils iproute2 kbd kmod less groff man-db \
-libarchive libcap libpipeline lvm2 mpc mpfr ncurses openssl pam \
-procps-ng psmisc readline lzo \
-reiserfsprogs sed shadow squashfs sudo \
-sysklogd sysvinit tar tzdata util-linux xfsprogs xz zlib \
-cards
+aaabasicfs acl attr bash bc binutils bzip2 coreutils curl \
+diffutils expat file findutils flex gcc gdbm \
+gettext glibc gmp gperf grep gzip inetutils kbd \
+libarchive libcap libpipeline mpc mpfr ncurses openssl pam \
+procps-ng psmisc readline sed shadow tar util-linux xz zlib
 do 
 	install_pkg "$i"
 done
@@ -593,7 +589,14 @@ if ! [ -d ${MountFolder}${DepotPackages} ]; then
 	mkdir -p ${MountFolder}${DepotPackages}
 
 fi
-
+if ! [ -f ${MountFolder}/etc/cards.conf ]; then
+	mkdir -p  ${MountFolder}/etc
+	echo "dir ${Depot}/desktop|${Package}/desktop
+dir ${Depot}/console|${Package}/console
+dir ${Depot}/base|${Package}/base
+arch ${ARCH}
+base ${DepotPackages}" > ${MountFolder}/etc/cards.conf
+fi
 pkgconf="fail"
 error_value=101
 if [ ! -f $TMP/usr/bin/pkgadd ]; then

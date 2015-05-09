@@ -1,0 +1,11 @@
+REMOTE_BASE=/home/thierry/devel/git/saravane/base
+LOCAL_BASE=/root/saravane/base
+
+rsync -av --delete-after ${REMOTE_BASE}/$1/ \
+${LOCAL_BASE}/$1/
+
+chown -R 0:0 ${LOCAL_BASE}/$1/
+cd ${LOCAL_BASE}/$1/
+
+pkgmk -d -u
+cd -

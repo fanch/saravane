@@ -84,10 +84,56 @@ make install</kbd></pre>
       <pre class="command"><kbd>cards sync</kbd></pre>
     </li>
     <li>
-     <h2>Installer un kernel</h2>
-      <pre class="command"><kbd>get kernel</kbd></pre>
-      <p>ou</p>
-      <pre class="command"><kbd>get kernel-lts</kbd></pre>
+     <h2>Installer les outils pour le bon fonctionnement de l'installateur</h2>
+      <h3>En fonction du système de fichier de votre choix, installez:</h3>
+       <p>Pour ext2, 3 et 4:</p>
+       <pre class="command"><kbd>get e2fsprogs</kbd></pre>
+       <p>Pour reiserfs:</p>
+       <pre class="command"><kbd>get reiserfsprogs</kbd></pre>
+       <p>Pour xfs:</p>
+       <pre class="command"><kbd>get xfsprogs</kbd></pre>
+       <p>Pour jfs:</p>
+       <pre class="command"><kbd>get jfsutils</kbd></pre>
+       <p>Pour btrfs:</p>
+       <pre class="command"><kbd>get btrfs-progs</kbd></pre>
+      <h3>Gestionnaire de mot de passe</h3>
+       <pre class="command"><kbd>get sudo</kbd></pre>
+      <h3>Gestionnaire des inits et logs</h3>
+       <pre class="command"><kbd>get sysklogd
+get sysvinit</kbd></pre>
+      <h3>Service dhcp</h3>
+       <pre class="command"><kbd>get dhcpcd</kbd></pre>
+      <h3>Grub le gestionnaire d'amorçage</h3>
+       <pre class="command"><kbd>get grub</kbd></pre>
+      <h3>Donnée de localisation et de communication</h3>
+       <pre class="command"><kbd>get tzdata
+get iproute2
+get iana-etc</kbd></pre>
+      <h3>Editeur de texte</h3>
+       <pre class="command"><kbd>get e3</kbd></pre>
+       <p>ou</p>
+       <pre class="command"><kbd>get vim</kbd></pre>
+      <h3>Utilitaires pour le kernel et l'initialisation de la machine</h3>
+       <pre class="command"><kbd>get eudev
+get kmod</kbd></pre>
+      <h3>Documentation</h3>
+       <pre class="command"><kbd>get less
+get groff
+get man-db
+get cards.man
+get aaabasicfs.man</kbd></pre>
+      <h3>Utilitaires pour l'iso:</h3>
+       <pre class="command"><kbd>get lvm2
+get mdadm
+get dialog
+get cpio
+get squashfs</kbd></pre>
+      <h3>Firmwares</h3>
+       <pre class="command"><kbd>get linux-firmware</kbd></pre> 
+      <h3>Un kernel</h3>
+       <pre class="command"><kbd>get kernel</kbd></pre>
+       <p>ou</p>
+       <pre class="command"><kbd>get kernel-lts</kbd></pre>
     </li>
     <li>
      <h2>Mettre le kernel et l'initrd au bon endroit</h2>
@@ -129,7 +175,7 @@ boot  etc  ISO   mnt  NuTyX_i686-saravane-20150417.md5sum  root  sbin  sys  usr<
     </li>
    </ol>
   <hr>
-  <p class="updated">Dernière mise à jour 17-04-2015 16:34</p>
+  <p class="updated">Dernière mise à jour 09-05-2015 17:25</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
