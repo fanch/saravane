@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 
 name=xapian
-version=1.2.18
+version=1.2.20
 release=1
 
 source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
