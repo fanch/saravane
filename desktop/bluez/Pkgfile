@@ -2,8 +2,9 @@
 # URL: http://www.bluez.org/
 # Packager: pierre at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+
 name=bluez
-version=5.28
+version=5.30
 release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
