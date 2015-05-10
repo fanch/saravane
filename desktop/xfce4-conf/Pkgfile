@@ -6,15 +6,14 @@
 _name=xfconf
 
 name=xfce4-conf
-version=4.10.0
+version=4.12.0
 release=1
 
-source=(http://archive.xfce.org/xfce/4.10/src/${_name}-$version.tar.bz2)
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 
 build() {
 cd ${_name}-$version
-	./configure --prefix=/usr \
-	--disable-static
+	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install
 find $PKG \
