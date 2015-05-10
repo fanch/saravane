@@ -4,17 +4,14 @@
 # Depends on: exo xfce4-garcon libwnck xfce4-libui 
 
 name=xfce4-panel
-version=4.10.1
+version=4.12.0
 release=1
 
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
-
-./configure --prefix=/usr \
---sysconfdir=/etc \
---disable-static
+./configure --prefix=/usr --sysconfdir=/etc --enable-gtk3
 make
 make DESTDIR=$PKG install
 }
