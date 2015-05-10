@@ -6,10 +6,10 @@
 _name=xfwm4
 
 name=xfce4-wm
-version=4.10.1
+version=4.12.2
 release=1
 
-source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2)
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 
 build() {
 cd ${_name}-$version
