@@ -1,0 +1,21 @@
+# Description: Le paquet LXDE Icon Theme contient le thème d'icônes nuoveXT 2.2 pour LXDE. 
+# URL: http://lxde.org/
+# Maintainer: Hong Jen Yee (PCMan) pcman dot tw at gmail.com
+# Packager: geantbrun at gmail dot com
+# Depends on: gtk
+
+
+name=lxde-icon-theme
+version=0.5.1
+release=1
+
+source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}
+  
