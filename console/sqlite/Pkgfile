@@ -1,13 +1,12 @@
-# Description: A C library that implements an SQL database engine
+# Description: The SQLite package is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine
 # URL: http://www.sqlite.org/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 
 
-_amalgamationver=3080900
+_amalgamationver=3081001
 
 name=sqlite
-version=3.8.9
+version=3.8.10.1
 release=1
 
 source=(http://www.sqlite.org/2015/sqlite-autoconf-$_amalgamationver.tar.gz
@@ -21,7 +20,7 @@ CFLAGS="-g -O2 -DSQLITE_ENABLE_FTS3=1 \
 -DSQLITE_ENABLE_COLUMN_METADATA=1 \
 -DSQLITE_SECURE_DELETE=1 \
 -DSQLITE_ENABLE_UNLOCK_NOTIFY=1"
-make
+make -j1
 make DESTDIR=$PKG install
 install -v -m755 -d $PKG/usr/share/doc/$name-$version
 cd $SRC
