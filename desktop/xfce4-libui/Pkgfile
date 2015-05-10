@@ -6,7 +6,7 @@
 _name=libxfce4ui
 
 name=xfce4-libui
-version=4.10.0
+version=4.12.1
 release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
