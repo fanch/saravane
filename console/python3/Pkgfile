@@ -3,7 +3,7 @@
 # Packager: alienusat nutyx dot org
 # Depends on: sqlite expat 
 name=python3
-version=3.4.2
+version=3.4.3
 release=1
 
 source=(
@@ -18,7 +18,8 @@ build() {
 	./configure --prefix=/usr \
                 --enable-shared     \
                 --with-system-expat \
-                --with-system-ffi
+                --with-system-ffi   \
+				--without-ensurepip
 	make
 	make DESTDIR=$PKG install
 
