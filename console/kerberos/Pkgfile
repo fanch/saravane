@@ -3,16 +3,14 @@
 # Packager: - thierryn1 at hispeed
 # Depends on: 
 name=kerberos
-version=1.13
+version=1.13.1
 release=1
 
-source=(http://web.mit.edu/$name/www/dist/krb5/1.13/krb5-$version-signed.tar
-        http://www.linuxfromscratch.org/patches/blfs/7.5/mitkrb-$version-db2_fix-1.patch)
+source=(http://web.mit.edu/$name/www/dist/krb5/1.13/krb5-$version-signed.tar)
 
 build()  {
         tar xzf krb5-${version}.tar.gz
         cd krb5-$version
-        patch -Np1 -i $SRC/mitkrb-$version-db2_fix-1.patch
         cd src
         sed -e "s@python2.5/Python.h@& python2.7/Python.h@g" \
             -e "s@-lpython2.5]@&,\n  AC_CHECK_LIB(python2.7,main,[PYTHON_LIB=-lpython2.7])@g" \
