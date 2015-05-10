@@ -1,0 +1,18 @@
+# Description: Le paquet LXMenu Data fournit les fichiers requis pour construire les menus compatible avec la spécification freedesktop.org menu pour LXDE. 
+# URL: http://lxde.org/about.html
+# Packager: geantbrun at gmail dot com
+# Depends on: intltool
+
+name=lxde-menu-data
+_name=lxmenu-data
+version=0.1.4
+release=1
+source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+	--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}
