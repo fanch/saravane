@@ -1,9 +1,9 @@
-# Description: Thèmes MATE
+# Description: Themes MATE
 # URL: http://matsusoft.com.ar/projects/mate
 # Maintainer: NuTyX core team
 # Packager: nutyx
 # Depends on: gtk,gtk-engines
-# Run on: 
+
 
 name=mate-themes
 version=1.8.1
