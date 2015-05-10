@@ -5,7 +5,7 @@
 # Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre 
 
 name=imagemagick
-version=6.9.0-0
+version=6.9.1-0
 release=1
 
 source=(
