@@ -3,7 +3,6 @@
 # Maintainer: Hong Jen Yee (PCMan) pcman dot tw at gmail dot com
 # Packager: geantbrun at gmail dot com
 # Depends on: gtk, startup-notification, gnome-menus, menu-cache
-# Run on: gtk,startup-notification,gnome-menus,menu-cache
 
 name=lxde-launcher
 _name=lxlauncher
