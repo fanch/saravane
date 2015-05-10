@@ -13,7 +13,7 @@ build() {
 cd $name-$version
 ./autogen.sh \
         --prefix=/usr \
-        --libexecdir=/usr/lib/${pkgname} \
+        --libexecdir=/usr/lib/${name} \
         --with-gtk=2.0 \
         --sysconfdir=/etc \
         --disable-static
