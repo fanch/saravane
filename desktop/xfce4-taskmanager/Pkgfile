@@ -4,10 +4,10 @@
 # Depends on: gtk 
 
 name=xfce4-taskmanager
-version=1.0.0
+version=1.1.0
 release=1
 
-source=(http://archive.xfce.org/src/apps/$name/1.0/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
         
 build() {
 cd $name-$version
