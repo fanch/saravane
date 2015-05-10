@@ -4,10 +4,10 @@
 # Depends on: gstreamer-plugins-base libunique1 xfce4-libutil xfce4-panel 
 
 name=xfce4-mixer
-version=4.10.0
+version=4.11.0
 release=1
 
-source=(http://archive.xfce.org/src/apps/$name/4.10/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
