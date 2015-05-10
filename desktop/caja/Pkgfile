@@ -3,7 +3,6 @@
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
 # Depends on: dbus,desktop-file-utils,exempi,gtk,gvfs,libexif,libunique,xorg-libxt,mate-desktop,mate-icon-theme,startup-notification
-# Run on: mate-common,gobject-introspection
 
 name=caja
 version=1.8.2
