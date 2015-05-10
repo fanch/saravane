@@ -5,10 +5,10 @@
 
 run=(desktop-file-utils gtk-update-icon-cache)
 name=thunar
-version=1.6.4
+version=1.6.8
 release=1
 
-source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2 )
+source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2)
 build() {
 cd Thunar-$version
 ./configure --prefix=/usr \
