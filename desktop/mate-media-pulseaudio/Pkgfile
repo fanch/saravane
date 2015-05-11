@@ -1,9 +1,8 @@
-# Description: outils multimedia de Mate
+# Description: MATE Media Tools (Pulseaudio)
 # URL: http://matsusoft.com.ar/projects/mate
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
 # Depends on: gstreamer-plugins-base, mate-panel, pulseaudio, mate-settings-daemon, intltool, mate-icon-theme, marco
-# Run on: gstreamer-plugins-base,mate-panel,pulseaudio,mate-settings-daemon,mate-icon-theme
 
 _name=mate-media
 name=mate-media-pulseaudio
