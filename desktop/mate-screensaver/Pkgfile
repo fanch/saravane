@@ -1,9 +1,8 @@
-# Description:  Screensaver pour MATE
+# Description:  Screensaver for MATE
 # URL: http://matsusoft.com.ar/projects/mate
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
 # Depends on: dbus-glib,mate-libkbd,libnotify,mate-desktop,mate-menus,mate-session-manager
-# Run on: mate-common,XML-parser,xmlto,yelp-tools
 
 name=mate-screensaver
 version=1.8.1
