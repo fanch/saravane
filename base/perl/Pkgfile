@@ -3,9 +3,11 @@
 # Packager: pierre at nutyx dot org
 name=perl
 version=5.20.2
-release=1
+release=2
 
-source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2)
+source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2
+http://www.linuxfromscratch.org/patches/lfs/development/perl-5.20.2-gcc5_fixes-1.patch)
+
 build()
 {
 cd $name-$version
@@ -19,6 +21,8 @@ fi
 echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
+
+patch -Np1 -i ../perl-5.20.2-gcc5_fixes-1.patch
 
 sh Configure -des  -Dusethreads \
 	-Dprefix=/usr -Duseshrplib -Dscriptdir=/usr/bin \
