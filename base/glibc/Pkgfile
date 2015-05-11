@@ -5,7 +5,7 @@ kernelversion=4.0
 PKGMK_GROUPS=(devel man doc)
 name=glibc
 version=2.21
-release=3
+release=2
 
 source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-$version-fhs-1.patch
