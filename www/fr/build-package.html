@@ -171,6 +171,7 @@ case ${PKGMK_ARCH} in
        exit 1
        ;;
 esac
+PKGMK_DOWNLOAD="yes"
 PKGMK_SOURCE_DIR="/tmp"
 PKGMK_KEEP_SOURCES="no"
 PKGMK_WORK_DIR="/tmp/work"
@@ -244,8 +245,6 @@ sudo cards install ports</kbd></pre>
       <pre class="output">PKGMK_SOURCE_DIR="/srv/www/sources"
 PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="$PWD/work"</pre>
-      <p>Je n'ai pas besoin de spécifier la demande de téléchargement des sources si pas disponible.</p>
-      <pre class="output">PKGMK_DOWNLOAD="no"</pre>
       <p>Dans ce scénario, je souhaite gérer les dépendances de façon automatique lors de la compilation et donc j'ai besoin du fichier <b>.PKGREPO</b> généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles.  La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de la collection concernée (dossier parent). Je utilise le duo <b>cards/pkgmk</b>:</p>
       <pre class="output">PKGMK_IGNORE_REPO="no"
 PKGMK_IGNORE_COLLECTION="no"</pre>
@@ -357,8 +356,6 @@ base /srv/www/saravane/aconserver</pre>
       <pre class="output">PKGMK_SOURCE_DIR="/srv/www/sources"
 PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="/tmp/work"</pre>
-      <p>Je n'ai pas besoin de spécifier la demande de téléchargement des sources si pas disponible.</p>
-      <pre class="output">PKGMK_DOWNLOAD="no"</pre>
       <p>Dans ce scénario, je souhaite que les dépendances soient installées mais non compilées. J'ai besoin du fichier <b>.PKGREPO</b> généré dans le dossier du port. Je souhaite pouvoir utiliser la commande <b>cards install</b> ou <b>get</b> pour pouvoir réinstaller mes binaires disponibles. La commande <b>pkgmk</b> doit donc générer le <b>.PKGREPO</b> de ma collection personnelle.</p>
       <pre class="output">PKGMK_IGNORE_REPO="no"
 PKGMK_IGNORE_COLLECTION="no"</pre>
@@ -389,7 +386,6 @@ esac
 PKGMK_SOURCE_DIR="/srv/www/sources"
 PKGMK_KEEP_SOURCES="yes"
 PKGMK_WORK_DIR="/tmp/work"
-PKGMK_DOWNLOAD="no"
 PKGMK_IGNORE_REPO="no"
 PKGMK_IGNORE_COLLECTION="no"
 PKGMK_GROUPS=(devel man doc service)
@@ -695,7 +691,7 @@ Local Directory: /chroot/usr/ports/personnel</pre>
     <pre class="output">Retrieve info about the 622 packages: 100 %
 ADD: clipit-1.4.2, 71 files: 100 %</pre>
    <hr>
-  <p class="updated">Dernière mise à jour 26-04-2015 22:30</p>
+  <p class="updated">Dernière mise à jour 12-05-2015 21:51</p>
      <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
