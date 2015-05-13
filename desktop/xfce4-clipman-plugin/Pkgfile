@@ -1,9 +1,9 @@
 # Description: A clipboard plugin for the Xfce4 panel
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-plugin
 # Packager: tyrry at nutyx dot org
-# Depends on: xfce4-panel libunique libxtst qrencode
+# Depends on: xfce4-panel libunique1 xorg-libxtst qrencode
 
-name=xfce4-battery-plugin
+name=xfce4-clipman-plugin
 version=1.2.6
 release=1
 
