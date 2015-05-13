@@ -11,8 +11,23 @@ release=1
 source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2)
 build() {
 cd Thunar-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-gio-unix \
+    --enable-dbus \
+    --enable-startup-notification \
+    --enable-gudev \
+    --enable-notifications \
+    --enable-exif \
+    --enable-pcre \
+    --enable-gtk-doc \
+    --disable-debug
 make
 make DESTDIR=$PKG install
+sed -i 's:x-directory/gnome-default-handler;::' \
+    $PKG/usr/share/applications/Thunar-folder-handler.desktop
 }
