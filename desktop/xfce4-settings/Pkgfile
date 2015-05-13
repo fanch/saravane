@@ -7,13 +7,25 @@ name=xfce4-settings
 version=4.12.0
 release=1
 
-source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2 
+default-xsettings-xml.patch)
+
 build() {
 cd $name-$version
-sed -i "s/\"ThemeName\" type=\"empty\"/\"ThemeName\" type=\"string\" value=\"Xfce-winter\"/" xfsettingsd/xsettings.xml
-sed -i "s/\"IconThemeName\" type=\"empty\"/\"IconThemeName\" type=\"string\" value=\"Xquisite\"/" xfsettingsd/xsettings.xml
-./configure --prefix=/usr \
---sysconfdir=/etc
-make
+patch -Np1 -i $SRC/default-xsettings-xml.patch
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-xrandr \
+    --enable-xcursor \
+    --enable-libnotify \
+    --enable-libxklavier \
+    --enable-pluggable-dialogs \
+    --enable-sound-settings \
+    --disable-upower-glib \
+    --disable-debug
+  make
 make DESTDIR=$PKG install
 }
