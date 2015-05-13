@@ -2,7 +2,7 @@
 # URL: http://matsusoft.com.ar/projects/mate
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
-# Depends on: dconf,liboobs,mate-polkit,system-tools-backends,wireless_tools
+# Depends on: dconf,liboobs,mate-polkit,system-tools-backends,wireless-tools
 
 name=mate-system-tools
 version=1.8.1
