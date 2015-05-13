@@ -11,7 +11,13 @@ source=( http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$ve
 
 build() {
 cd $name-$version
-./configure --prefix=/usr --disable-debug
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
 make
 make DESTDIR=$PKG install
 }
