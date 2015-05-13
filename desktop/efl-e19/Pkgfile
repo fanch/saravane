@@ -1,7 +1,7 @@
 # Description: efl libraries
 # URL: http://www.enlightenment.org/
 # Maintainer: Victor Martinez, pitillo at ono dot com
-# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gst-plugins-base giflib libtiff gstreamer pulseaudio bullet luajit fribidi
+# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer pulseaudio bullet luajit fribidi
 
 name=efl-e19
 version=1.14.0
