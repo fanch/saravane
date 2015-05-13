@@ -11,11 +11,13 @@ source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.
 
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc \
---libexecdir=/usr/lib/xfce4 \
---localstatedir=/var \
---disable-static
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
 make
 make DESTDIR=$PKG install
 	
