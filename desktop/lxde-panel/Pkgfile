@@ -3,7 +3,7 @@
 # Maintainer: Martin Bagge  brother at bsnet dot se
 # Maintainer: NuTyX core team
 # Packager: geantbrun at gmail dot com
-# Depends on: gtk, menu-cache, alsa-lib, libwnck,wireless_tools,keybinder2
+# Depends on: gtk, menu-cache, alsa-lib, libwnck,wireless-tools,keybinder2
 
 name=lxde-panel
 _name=lxpanel
