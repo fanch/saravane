@@ -2,7 +2,7 @@
 # URL: http://lxde.org/about.html
 # Maintainer: Hong Jen Yee (PCMan) pcman dot tw at gmail dot com
 # Packager: geantbrun at gmail dot com
-# Depends on: gtk, startup-notification, gnome-menus, menu-cache
+# Depends on: gtk, startup-notification, lxde-menu-data, menu-cache
 
 name=lxde-launcher
 _name=lxlauncher
