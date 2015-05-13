@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-     <title>NuTyX - Les commandes de base</title>
+     <title>Mise en place d'un pare-feu simple avec Iptables</title>
  </head>
  <body>
     <table>
@@ -70,8 +70,8 @@
 	iptables -A INPUT -p tcp -s 192.168.1.0/24 --dport 22 -j ACCEPT
 	
 	# Autoriser transmission
-	iptables -A INPUT -p tcp --dport 51413 -m state --state NEW -j ACCEPT
-	iptables -A INPUT -p tcp --dport 56969 -m state --state NEW -j ACCEPT
+	iptables -A INPUT -p tcp --dport 51413 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 56969 -j ACCEPT
 	}
 	
 	##------------------------------##
@@ -146,7 +146,7 @@
     <p>Ils correspondent au différents niveaux de init : voir /etc/inittab</p>
     <p>Commençons par rc0.d/ :</p>
     <pre class="command_user"><kbd>
-	d /etc/rc.d/rc0.d/ && l
+	cd /etc/rc.d/rc0.d/ && l
     </kbd></pre>
 
     <pre class="output"><kbd>
@@ -211,14 +211,14 @@
 
     <p>- <a href>http://www.delafond.org/traducmanfr/man/man8/iptables.8.html</a></p>
 
-    <h3>Tester son pare-feu</h3>
-     <p>- <a href>https://www.grc.com/x/ne.dll?bh0bkyd2</a></p>
-     <p>(si vous êtes derrière un box, vous allez tester la box...)</p>
-     <pre class="command_user"><kbd>
+   <h2>Tester son pare-feu</h3>
+    <p>- <a href>https://www.grc.com/x/ne.dll?bh0bkyd2</a></p>
+    <p>(si vous êtes derrière un box, vous allez tester la box...)</p>
+    <pre class="command_user"><kbd>
 	nmap -Pn votre_IP depuis une autre machine
-     </kbd></pre>
+    </kbd></pre>
 
-     <p>--> voir <a href>http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/</a></p>
+    <p>--> voir <a href>http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/</a></p>
   <hr>
   <p class="updated">Dernière mise à jour 11-05-2015 20:34</p>
     <footer>
