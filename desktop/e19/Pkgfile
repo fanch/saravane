@@ -1,7 +1,7 @@
 # Description: Enlightenment DR18 window manager.
 # URL: http://www.enlightenment.org/
 # Maintainer: NuTyX core team
-# Depends on: elementary-e19 evas_generic_loaders-e19 xorg-xcb-util-keysyms
+# Depends on: elementary-e19 evas_generic_loaders-e19 xcb-util-keysyms
 
 name=e19
 version=0.19.5
