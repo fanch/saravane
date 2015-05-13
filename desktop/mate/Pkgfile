@@ -2,7 +2,7 @@
 # URL: http://mate-desktop.org/
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
-# Depends on: xorg,mate-themes,mate-icon-theme,mate-desktop,mate-settings-daemon,mate-polkit,mate-session-manager,mate-dialogs,mate-control-center,mate-panel,mate-window-manager,mate-notification-daemon,mate-backgrounds,mate-terminal,mate-applets,mate-text-editor,mate-screensaver,mate-media,mate-calc,mate-power-manager,mate-system-monitor,mate-system-tools,mate-utils,gtk-doc,mate-polkit,lxdm
+# Depends on: xorg,mate-themes,mate-icon-theme,mate-desktop,mate-settings-daemon,mate-polkit,mate-session-manager,mate-dialogs,mate-control-center,mate-panel,mate-notification-daemon,mate-backgrounds,mate-terminal,mate-applets,mate-screensaver,mate-media,mate-calc,mate-power-manager,mate-system-monitor,mate-system-tools,mate-utils,gtk-doc,mate-polkit,lxdm
 
 name=mate
 version=1.8.1
