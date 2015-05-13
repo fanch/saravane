@@ -11,7 +11,16 @@ source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.
 
 build() {
 cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc --enable-gtk3
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-gio-unix \
+    --enable-gtk-doc \
+    --enable-gtk3 \
+    --disable-debug
 make
 make DESTDIR=$PKG install
 }
