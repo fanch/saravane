@@ -2,7 +2,7 @@
 # URL: http://matsusoft.com.ar/projects/mate
 # Maintainer: NuTyX core team
 # Packager: fanchyannmaria at orange dot fr
-# Depends on: mate-common, mate-doc-utils, vte, gtk, dconf,dbus,xorg-libsm
+# Depends on: mate-common, vte, gtk, dconf,dbus,xorg-libsm
 
 name=mate-terminal
 version=1.8.1
