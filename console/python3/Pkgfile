@@ -1,9 +1,9 @@
 # Description: Next generation of the python high-level scripting language
-# URL: URL: http://www.python.org
-# Packager: alienusat nutyx dot org
+# URL: http://www.python.org
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
 # Depends on: sqlite expat 
 name=python3
-version=3.4.2
+version=3.4.3
 release=1
 
 source=(
@@ -16,9 +16,10 @@ docversion=3.4.0
 build() {
 	cd Python-$version
 	./configure --prefix=/usr \
-                --enable-shared     \
+                --enable-shared \
                 --with-system-expat \
-                --with-system-ffi
+                --with-system-ffi \
+		--without-ensurepip
 	make
 	make DESTDIR=$PKG install
 
@@ -29,7 +30,7 @@ build() {
 
     install -v -dm755 $PKG/usr/share/doc/$name-$docversion/html
     cd $SRC
-    wget -c https://www.python.org/ftp/python/doc/$docversion/python-${docversion}-docs-html.tar.bz2 
+    wget --no-check-certificate -c https://www.python.org/ftp/python/doc/$docversion/python-${docversion}-docs-html.tar.bz2 
     tar --strip-components=1 \
         --no-same-owner \
         --no-same-permissions \
