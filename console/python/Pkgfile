@@ -34,7 +34,7 @@ build() {
 
     install -v -dm755 $PKG/usr/share/doc/$name-$version
     cd $SRC
-    wget http://docs.python.org/ftp/python/doc/$version/python-$version-docs-html.tar.bz2
+    wget --no-check-certificate http://docs.python.org/ftp/python/doc/$version/python-$version-docs-html.tar.bz2
     tar --strip-components=1 -C $PKG/usr/share/doc/$name-$version \
         --no-same-owner -xvf python-$version-docs-html.tar.bz2
 
