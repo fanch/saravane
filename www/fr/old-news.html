@@ -28,7 +28,57 @@
      </tr>
     </table>
  <hr>
-  <h1>Le 2015-03-16</h1>
+  <h1>Le 18-04-2015</h1>
+   <h2>cards 0.10.90 disponible</h2>
+    <p>L'outil a complètement été revu. La synchronisation ne prends que quelques secondes. La séparation entre binaires et ports est désormais beaucoup plus clair.</p>
+    <p>De nouvelles commandes ont été ajoutées:</p>
+
+<pre class="command"><kbd>cards purge</kbd></pre>
+supprime les binaire et autres fichiers obsolètes.
+
+<pre class="command"><kbd>cards help <file></kbd></pre>
+fourni une aide sur cards
+
+<pre class="command"><kbd>cards depcreate</kbd></pre>
+Compile un port ET ses dépendances dans le bon ordre. Similaire à la commande prt-get depinst.
+
+<p>man cards et man cards.conf sont désormais disponibles</p>
+
+<p>Petite piqûre de rappel: Les commandes:</p>
+
+<pre class="command"><kbd>cards sync -i
+cards list -i
+cards info -i <paquet>
+cards diff -b</kbd></pre>
+
+sont simplifiées et deviennent:
+
+<pre class="command"><kbd>cards sync
+cards list
+cards info <paquet>
+cards diff</kbd></pre>
+
+   <h2>Mise à jour de la documentation du site</h2>
+    <p>Les articles <a href="recept.html">Qu'est-ce qu'un port</a>, <a href="build-package.html">Comment construire un paquet</a>, <a href="generate-iso.html">Produire une iso personalisée</a> ont été revus.</p>
+    <h2>Les nouveaux kernels</h2>
+    <p>Un nouveau kernel est enfin disponible, nous passons au kernel 3.19.4, les blocages rencontrés sur les premières versions semblent avoir disparus</p>
+    <p>Un nouveau kernel à long term de la série 3.18. Il peut être installé en parallèle avec le kernel standard. C'est juste deux liens à ajuster ds le dossier boot. (initrd et kernel)</p>
+    <h2>Prochaine ISO</h2>
+    <p>le service openssh ne sera plus implémenté dans l'iso en effet c'est un moyen trop facile pour se connecter à distance si le mot de passe est trop faible. Pour peu que le routeur ne fasse pas son travail de pare feu.</p>
+    <p>Un nouvel article explique comment produire sa propre iso pour un déploiement facilité</p>
+
+    <h2>Le script d'installation install-saravane à nouveau disponible</h2>
+    <p><b>install-saravane</b> à nouveau opérationnel attention, pas de kernel installé. Il vérifie la présence minimale des outils necessaire pour son fonctionnement: bash à jour, gawk, wget</p>
+    <h2>Arrêt du support prt-get / pkgutils</h2>
+    <p>J'abandonne le support en parallèle de cards et de la pair pkgutils / prt-get, certe les recettes crux sont compatibles avec cards mais l'inverse ne l'est pas du tout, sous NuTyX nous gardons la doc, les devel, les man etc. Les pp
+aquets sont alors splités pour qu'ils restent d'une taille raisonnable. Si l'on utile les recettes de NuTyX avec pkgutils, on se retrouve très rapidement avec des paquets énormes (le kernel par ex) et la base de données est alors saturé 
+e Ce qui rend pkgutils très lent.
+L'autre soucis est les pre et post install sous pkgutils, c'est sans le nom du paquet.</p>
+    <h2>Nouvelles sections</h2>
+    <p>Section  system devient la section base</p>
+    <p>Section  server devient la section console</p>
+    <p>Section  desktop reste desktop</p>
+  <h1>Le 16-03-2015</h1>
    <h2>Nouvelles iso en 32 et 64 bits disponible.</h2>
     <p>J'ai le grand plaisir de vous proposer des nouvelles iso 32 bits et 64 bits:</p>
     <a href="http://download.nutyx.org/NuTyX_x86_64-saravane-20150315.iso">en 64 bits</a> et <a href="http://download.nutyx.org/NuTyX_i686-saravane-20150315.iso">en 32 bits</a>

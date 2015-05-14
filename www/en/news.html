@@ -28,63 +28,16 @@
      </tr>
     </table>
  <hr>
-  <h1>Last news 2015-04-18</h1>
-   <h2>cards 0.10.90 available</h2>
-    <p>The tool has been completly review. The synchronisation takes now a few seconds. The separation between binaries and ports is now more clear.</p>
-    <p>News commands added:</p>
-
-<pre class="command"><kbd>cards purge</kbd></pre>
-flush old binaries and other obsolets files.
-
-<pre class="command"><kbd>cards help <file></kbd></pre>
-provide an help about cards.
-
-<pre class="command"><kbd>cards depcreate</kbd></pre>
-Compile a port and its dépendencies in the right order. Similar to the prt-get depinst command.
-
-<p>man cards and man cards.conf are now availables</p>
-
-<p>Remembe: Commands:</p>
-
-<pre class="command"><kbd>cards sync -i
-cards list -i
-cards info -i <paquet>
-cards diff -b</kbd></pre>
-
-are simpler and becomes:
-
-<pre class="command"><kbd>cards sync
-cards list
-cards info <paquet>
-cards diff</kbd></pre>
-
-   <h2>Up to date the documentation on the site</h2>
-    <p>Articles <a href="recept.html">What's a port</a>, <a href="build-package.html">How to build a package</a>, <a href="generate-iso.html">Produce a customised ISO</a> are review.</p>
-    <h2>New kernels</h2>
-    <p>A new kernel is finaly available, we move to the kernel 3.19.4, blocking problems on the first versions are gone.</p>
-    <p>A new long term support kernel from serie 3.18 is also available. It can be installed in parallel on the standard kernel. It's just two links to adjust in the boot folder. (initrd and kernel)</p>
-    <h2>Next ISO</h2>
-    <p>The openssh service will not be implemented in the iso anymore, this is an easy way to connect remotly if the password is too week. Even more when the router is not doing it's firewall job.</p>
-    <p>A new article explain how to produce it's own ISO to make a deploy very easy.</p>
-
-    <h2>The installation script install-saravane available</h2>
-    <p><b>install-saravane</b> is working again. Be aware they are no kernel installed. It checks the minimum requirements: uptodate bash, gawk and wget</p>
-    <h2>Stop  prt-get / pkgutils support</h2>
-    <p>I stop the support of cards and prt-get/pkgutils in parallel. The ports of crux are compatible with cards but not the other way around. Under NuTyX, we keep the doc, we keep man pages devel in separates sub packages. If we use the ports of NuTyX with pkgutils, we quickly end up with big packages (kernel for ex ) and then the DB of pkgutils get saturated which make pkgutils very slow.</p>
-    <p>The other problem is that the pre an post install are not names similar under cards and pkgutils, under pkgutils, they are named without the name of the package (or subpackage).</p>
-    <h2>News sections</h2>
-    <p>Section  system becomes base</p>
-    <p>Section  server becomes console</p>
-    <p>Section  desktop stays desktop</p>
-    <p class="updated"><a href="old-news.html">Olders news</a></p>
-    <hr>
-    <p class="updated">Updated 2015-04-18 18:10</p>
-    <footer>
-        <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
+  <h1>Last news 2015-05-16</h1>
+   <p class="updated"><a href="old-news.html">Olders news</a></p>
+  <hr>
+   <p class="updated">Updated 2015-05-16 18:10</p>
+  <footer>
+   <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
-    <a href="http://www.wtfpl.net/"><img
+   <a href="http://www.wtfpl.net/"><img
        src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
        width="80" height="15" alt="WTFPL" /></a></p>
-    </footer>
+  </footer>
  </body>
 </html>
