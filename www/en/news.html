@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-     <title>NuTyX - Last news 2015-04-18</title>
+     <title>NuTyX - Last news 2015-05-15</title>
  </head>
  <body>
    <table>
@@ -28,10 +28,81 @@
      </tr>
     </table>
  <hr>
-  <h1>Last news 2015-05-16</h1>
+  <h1>Last news 2015-05-15</h1>
+   <h2>NuTyX saravane 15.05 available with cards 1.0</h2>
+    <h3>Introduction for the impatient</h3>
+     <p> Seven months after the release of saravane 14.11 instead of the three months originally planned, I am very proud to annonce you (finally) the release of NuTyX saravane 15.05 which in summary the new features: </p>
+      <ul>
+       <li>glibc 2.21</li>
+       <li>gcc 4.9.2</li>
+       <li>binutils 2.25</li>
+       <li>kernel 3.19.6</li>
+       <li>kernel-lts 3.18.12</li>
+       <li>kernel-iso 3.18.11</li>
+       <li>cards 1.0</li>
+       <li>curl 7.42.1</li>
+       <li>firefox 37.0.2</li>
+       <li>Convenient configuration tool from the command line for the clock, keyboard, network and language: <b>setup-nutyx</b></li>
+       <li>Ready to use User Graphic Interface for installation in any Simplicity (with auto login): KDE 4.14.3 and 4.10.1 Xfce4</li>
+       <li>New iso 15.05 in 32 and 64 bits</li>
+       <li>New completly revised version of <b>cards</b> finaly available in 1.0</li>
+       <li>Documentation completed on the web site</li>
+       <li>Installation script of NuTyX saravane</li>
+       <li>The complete project is available at https://github.com/NuTyX</li>
+      </ul>
+      <p>For full update packages, you can visit:<a href="https://github.com/NuTyX/saravane/commits/master">https://github.com/NuTyX/saravane/commits/master</a></p>
+     <h3>The iso</h3>
+      <p>If the work of partitioning and formatting of the destination partition was made upstream and if the destination partition is unique, the installation is done very quickly since you only have to choose: "<b>install</b>" in the main menu.</p>
+      <p>The installation of the boot process has also been simplified: If you install GRUB <u>BEFORE NuTyX</u>, you can choose the destination partition. If you install NuTyX <u>IMMEDIATELY </u> and choose (at the end of the installation of NuTyX) to GRUB, it will be <u>AUTOMATICALY</u> installed on the partition where NuTyX is installed.</p>
+      <p>The kernel used is a 3.19.6. An LTS release (Long term support) is also available in Version 3.18.12.</p>
+      <p>The iso is now translated to 100% in the following languages: French, Dutch, Finnish, Swedish, Norwegian and German.</p>
+      <p>The file system <b>jfs</b> has been added as possible format. It seems that this is not the best file system we can find today. Performance level, there is the <b>btrfs</b>, stability and control level there is <b>xfs</b>.</p>
+      <p>If you want to install on a formatted NuTyX btrfs partition, you <u>must</u> install grub on a separate and especially not install grub partition (again) on the partition of NuTyX. For example <b>/dev/sda1</b> formatted in <b>ext2</b> will be set to boot from the machine and <b>/dev/sda2</b> formatted in <b>btrfs</b> will be used for install NuTyX.</p>
+     <h3>The installation script</h3>
+     <p>It is now possible to install very easily NuTyX from <u>any distribution</u>. The latest problems with the version of the <b>BASH</b> interpreter have been resolved.</p>
+     <p>Two variables are good to knows:</p>
+     <pre class="output">LFS
+URL</pre>
+     <p>The <b>LFS</b> variable give the possibility to choose a destination folder. Ones define and "exported", the installation command get as simple as:</p>
+     <pre class="output">bash install-saravane</pre>
+     <p>The <b>URL</b> allows you to define a personnal mirror. Ones the installation finish, cards will still used this mirror.</p>
+    <h3>The web site</h3>
+     <p>All articles have been updated for the new functionalities of the package manager <b>cards 1.0</b>.</p>
+     <p>The article on "building a package" has been completely reviewed. It explains in detail what's a scenario under NuTyX, what's a collection, the dependencies for compilation, the configuration for each scenario, etc.</p>
+     <p>An article about configuring a firewall has been written by a user of NuTyX, <b>sh4d0w</b> I thank warmly. I encourage all users to provide their own. If the article is complete and correct, it will be added.</p>
+    <h3>The source code of Saravane is available on github.com/NuTyX, as well a bug tracker. </h3>
+     <p>You can find all of my work on NuTyX at: https://github.com/NuTyX, you will find the source code of cards, ports collection base, console and desktop of saravane, the scripts, the pass 1 and 2 for the NuTyX construction, the files structure that constitutes the basic system NuTyX (the package aaabasicfs), the initrd, the installer and alls the html pages from the web site. There are also ports from the collection "extra".</p>
+     <p>It is now very easy to monitor NuTyX, you can now directly submit your wishes and soupsons bugs on github platform.</p>
+    <h3>The cards package manager is finaly release in 1.0 version</h3>
+     <p>In its final version, <b>cards</b> is now even faster and easier to use. The most common commands have been simplified:</p>
+     <p>To synchronise information with the default mirror:</p>
+     <pre class="command"><kbd>cards sync</kbd></pre>
+     <p>To know the installed packages:</p>
+     <pre class="command"><kbd>cards list</kbd></pre>
+     <p>For details of an installed package:</p>
+     <pre class="command"><kbd>cards info &lt;name_of_my_package&gt;</kbd></pre>
+     <p>To check the obsolete list of installed packages:</p>
+     <pre class="command"><kbd>cards diff</kbd></pre>
+     <p>The command:</p>
+     <pre class="command"><kbd>man cards</kbd></pre>
+     <p>will give you all the details about the available commands, some of which are new:</p>
+     <pre class="command"><kbd>cards query
+cards files
+cards help
+cards purge
+cards depcreate</kbd></pre>
+     <p>As for the packager, new variables have been added:</p>
+     <pre class="output">PKGMK_LOCALES</pre>
+     <p>Default value:</p>
+     <pre class="output">PKGMK_LOCALES=(fr)</pre>
+     <p>Define the locales that we want to keep in the binary, example: PKGMK_LOCALES=(fr nl) will conserve the french and italians locales (if they were available at compile time) in the sub packages <b>&lt;name_package&gt;.fr and &lt;name_package&gt;.it</b></p>
+     <pre class="output">PKGMK_IGNORE_REPO</pre>
+     <p>Default value:</p>
+     <pre class="output">PKGMK_IGNORE_REPO="yes"</pre>
+     <p>If set as <b>"no"</b>, the file <b>.PKGREPO</b> of the collection (means the name of the parent folder of your package) will be (re)generate. This file is needed if you wish to installed some packages outside of your choot</p>
    <p class="updated"><a href="old-news.html">Olders news</a></p>
   <hr>
-   <p class="updated">Updated 2015-05-16 18:10</p>
+   <p class="updated">Updated 2015-05-15 18:37</p>
   <footer>
    <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />

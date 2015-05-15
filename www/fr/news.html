@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
      <link rel="shortcut icon" href="../favicon.ico">
      <link rel="stylesheet" href="../css/nutyx.css" />
-     <title>NuTyX - Dernière nouvelle 18-04-2015</title>
+     <title>NuTyX - Dernière nouvelle 15-05-2015</title>
  </head>
  <body>
    <table>
@@ -28,7 +28,7 @@
      </tr>
     </table>
  <hr>
-  <h1>Dernière nouvelle 16-05-2015</h1>
+  <h1>Dernière nouvelle 15-05-2015</h1>
    <h2>NuTyX saravane 15.05 disponible avec cards 1.0</h2>
    <h3>Introduction pour les plus pressés</h3>
     <p>Septs mois après la sortie de saravane 14.11 au lieu des trois mois prévus à l'origine, je suis très fier de vous annoncer (enfin) la sortie de NuTyX saravane 15.05 dont voici en résumé les nouveautées:</p>
@@ -37,12 +37,13 @@
      <li>gcc 4.9.2</li>
      <li>binutils 2.25</li>
      <li>kernel 3.19.6</li>
-     <li>kernel lts 3.18.12</li>
+     <li>kernel-lts 3.18.12</li>
+     <li>kernel-iso 3.18.11</li>
      <li>cards 1.0</li>
      <li>curl 7.42.1</li>
      <li>firefox 37.0.2</li>
-     <li>Outil de configuration très pratique en ligne de commande pour l'horloge, le clavier, le réseau et la langue: <b>setup-nutyx</b>
-     <li>Interface graphiques prête pour l'installation en toute simplicitée (avec autologin): KDE 4.14.3 et Xfce4 4.10.1</p>
+     <li>Outil de configuration très pratique en ligne de commande pour l'horloge, le clavier, le réseau et la langue: <b>setup-nutyx</b></li>
+     <li>Interface graphiques prête pour l'installation en toute simplicitée (avec autologin): KDE 4.14.3 et Xfce4 4.10.1</li>
      <li>Nouvel iso 15.05 en 32 et 64 bits</li>
      <li>Nouvelle version complètement revue de <b>cards</b> qui passe finalement en 1.0</li>
      <li>Documentation sur le site complètée</li>
@@ -55,7 +56,8 @@
     <p>L'installation de la procédure d'amorçage a été également simplifiée: Si vous installez GRUB <u>AVANT NuTyX</u>, vous pourrez choisir la partition de destination. Si vous installer NuTyX <u>IMMEDIATEMENT</u> et que vous choisissez (à la fin de l'installation de NuTyX) de mettre GRUB, celui-ci sera d'<u>OFFICE</u> sur la partition où est installé NuTyX.</p>
     <p>Le kernel utilisé est un 3.19.6. Une version LTS (support à long termer) est également disponible en version 3.18.12.</p>
     <p>L'iso est désormais traduite à 100 % dans les langues suivantes: le français, le néerlandais, le finlandais, le suédoise, le norvégien et l'allemand.</p>
-    <p>Le système de fichier <b>jfs</b> a été ajouté comme possibilitée de format. Il semble que ce ne soit pas le meilleur système de fichier que l'on peut trouver aujourd'hui. Niveau performance, il y a le <b>btrfs</b>, niveau stabilitée il y a <b>xfs</b>
+    <p>Le système de fichier <b>jfs</b> a été ajouté comme possibilitée de format. Il semble que ce ne soit pas le meilleur système de fichier que l'on peut trouver aujourd'hui. Niveau performance, il y a le <b>btrfs</b>, niveau stabilitée il y a <b>xfs</b></p>
+    <p>Si vous souhaitez installer NuTyX sur une partition formatée en btrfs, vous <u>devez</u> installer grub sur une partition séparée et surtout ne plus installer grub (une deuxième fois) sur la partition de NuTyX. Par exemple sur <b>/dev/sda1</b> formatée en <b>ext2</b> sera installée l'amorçage de la machine et sur <b>/dev/sda2</b> formatée en <b>btrfs</b> sera installée NuTyX.</p>
    <h3>Le script d'installation</h3>
     <p>Il est désormais possible d'installer très facilement NuTyX depuis <u>n'importe quelle distribution</u>. Les derniers problèmes liés à la version de l'interpréteur <b>BASH</b> ont été résolus.</p>
     <p>Deux variables sont très utiles à connaître:
@@ -72,7 +74,7 @@ URL</pre>
     <p>Vous pouvez trouvez l'intégralité de mon travail sur NuTyX sur le site: https://github.com/NuTyX, vous y trouverez le code source de cards, les recettes des collection base, console et desktop de saravane, les scripts, les passes 1 et 2 pour la construction de NuTyX, la structure des fichiers qui constitue le système de base de NuTyX (le paquet aaabasicfs), l'initrd, l'installateur et les pages html du site. Il y a aussi les recettes de la collection "extra".</p>
     <p>Il est désormais très facile de suivre l'évolution de NuTyX, vous pouvez désormais soumettre directement vos souhaits et soupsons de bugs sur la platforme github.</p>
    <h3>Le gestionnaire de paquets cards finalement en version 1.0</h3>
-    <p>Dans sa version définitive, cards est désormais encore plus rapide et plus simple d'utilisation. Les commandes les plus courantes ont été simplifiées:</p>
+    <p>Dans sa version définitive, <b>cards</b> est désormais encore plus rapide et plus simple d'utilisation. Les commandes les plus courantes ont été simplifiées:</p>
     <p>Pour synchroniser les infos</p>
     <pre class="command"><kbd>cards sync</kbd></pre>
     <p>Pour connaître la liste des paquets installés:</p>
@@ -104,7 +106,7 @@ cards depcreate</kbd></pre>
     <p>Si défini comme <b>"no"</b>, le fichier <b>.PKGREPO</b> de la collection (cad le nom du dossier parent de votre paquet) sera (re)généré. Ce fichier est indispensable si vous souhaitez installer des paquets à l'extérieure de votre chroot</p>
   <p class="updated"><a href="old-news.html">Anciennes nouvelles</a></p>
   <hr>  
-   <p class="updated">Le 16-05-2015 17:30</p>
+   <p class="updated">Le 15-05-2015 17:44</p>
     <footer>
         <p id="foot">... <img src="../graphics/logo_nutyx_25.png" alt="nutyx petit logo"> ...<br />
         &copy; 2007 - 2015 <a href="http://nutyx.org">NuTyX</a><br /><br />
