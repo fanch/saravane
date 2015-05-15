@@ -1,4 +1,4 @@
-# Description: The latest stable kernel version adapted for an ISO
+# Description: The latest long term support stable kernel version adapted for an ISO
 # URL: http://www.kernel.org
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
@@ -7,7 +7,7 @@ PKGMK_NO_STRIP="yes"
 PKGMK_GROUPS=(devel doc)
 
 name=kernel-iso
-version=3.19.6
+version=3.18.11
 release=1
 _version=${version%.*}
 
@@ -87,8 +87,7 @@ rm -rf $PKG/lib/firmware
 INITRD_VERSION="`basename $PKG/lib/modules/*`"
 echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
 echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
-echo "[ -f boot/initrd-$version ] && mv boot/initrd{,-iso}-$version" >> $PKGMK_ROOT/$name.post-install
-echo "ln -sf initrd-iso-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
+echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf $name-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
 }
 devel() {
