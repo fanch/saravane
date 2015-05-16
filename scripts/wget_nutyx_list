@@ -76,9 +76,9 @@ https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.t
 https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.2.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-20.tar.xz
 https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-3.19.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-2.4.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-manpages-2.4.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.4.0.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-manpages-2.4.1.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.4.1.tar.xz
 https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.3.1.tar.xz
 https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.3.0.tar.xz
 https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v3.19.tar.xz
