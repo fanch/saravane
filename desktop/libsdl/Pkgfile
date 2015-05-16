@@ -1,7 +1,7 @@
 # Description: SDL, Simple DirectMedia Layer 
 # URL: http://www.libsdl.org
 # Packager: fanch at nutyx dot org
-# Depends on: alsa-lib xorg-mesa3
+# Depends on: alsa-lib xorg-mesa
 
 name=libsdl
 version=1.2.15
