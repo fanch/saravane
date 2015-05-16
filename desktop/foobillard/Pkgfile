@@ -1,7 +1,6 @@
 # Description: OpenGL billard game.
 # URL: http://foobillard.sourceforge.net/
-# Maintainer: Danny Rawlins, crux at romster dot me
-# Packager: Daniel Walpole, daniel at walpole dot id dot au
+# Packager: fanch at nutyx dot org
 # Depends on: libpng sdl_net sdl_mixer freetype xorg-libxaw xorg-libxi
 
 name=foobillard
