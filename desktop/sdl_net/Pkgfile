@@ -1,5 +1,5 @@
 # Description: A cross-platform networking library for SDL.
-# URL: http://www.libsdl.org/projects/SDL_net/
+# URL: http://www.libsdl.org/projects/SDL_net
 # Packager: fanch at nutyx dot org
 # Depends on: libsdl
 
