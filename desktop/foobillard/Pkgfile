@@ -1,5 +1,5 @@
 # Description: OpenGL billard game.
-# URL: http://foobillard.sourceforge.net/
+# URL: http://foobillard.sourceforge.net
 # Packager: fanch at nutyx dot org
 # Depends on: libpng sdl_net sdl_mixer freetype xorg-libxaw xorg-libxi
 
