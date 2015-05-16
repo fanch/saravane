@@ -1,5 +1,5 @@
 # Description: A sample multi-channel audio mixer library.
-# URL: http://www.libsdl.org/projects/SDL_mixer/
+# URL: http://www.libsdl.org/projects/SDL_mixer
 # Packager: fanch at nutyx dot org
 # Depends on: libvorbis smpeg libmikmod flac
 
