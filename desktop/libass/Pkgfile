@@ -1,0 +1,16 @@
+# Description: Portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format that allows for more advanced subtitles than the conventional SRT and similar formats.
+# URL: https://github.com/libass
+# Packager: tnut at nutyx dot org
+# Depends on: freetype fribidi fontconfig harfbuzz
+
+name=libass
+version=0.12.2
+release=1
+source=(https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}
