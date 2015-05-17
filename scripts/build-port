@@ -1,0 +1,31 @@
+if [ $# -lt 1 ]; then
+	echo "need a port name"
+	exit 1
+fi
+
+COLLECTION="`basename $0`"
+
+if [ "$COLLECTION" != "console" ] && [ "$COLLECTION" != "desktop" ] && [ "$COLLECTION" != "base" ] ; then
+   echo "I dont know the collection $COLLECTION"
+   exit 1
+fi
+
+PORT_BASE=/home/thierry/devel/git/saravane/$COLLECTION
+BINARY_BASE=/root/saravane/$COLLECTION
+
+if [ ! -d "$PORT_BASE/$1" ]; then
+	echo "I dont know the port $1"
+	exit 1
+fi
+
+rsync -av --exclude '.*.swp'  --exclude '*~'  --delete-after ${PORT_BASE}/$1/ \
+${BINARY_BASE}/$1/
+
+chown -R 0:0 ${BINARY_BASE}/$1/
+
+if [ "$COLLECTION" == "base" ]; then
+	cd ${BINARY_BASE}/$1/
+	pkgmk -d -u || pkgmk -d -i
+else
+	cards create -r $1
+fi
