@@ -1,7 +1,7 @@
 # Description: libdrm, Interface space user for the services DRM of kernel
 # URL: http://dri.freedesktop.org/
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: docbook-xsl libxslt xorg-libpciaccess 
+# Depends on: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
 _name=libdrm
 
 name=xorg-libdrm
