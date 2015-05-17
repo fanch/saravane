@@ -17,7 +17,7 @@ main() {
 	sed -i "s|#VERSION_KERNEL#|${VERSION_KERNEL}|" isolinux/boot.msg
 	sed -i "s|#VERSION_NUTYX#|${VERSION_NUTYX}|" isolinux/boot.msg
 	sed -i "s|#ARCH#|${ARCH}|" isolinux/boot.msg
-	mkisofs -R -l -L -D -o ${LFS}/${ISO}.iso \
+	mkisofs -R -l -D -o ${LFS}/${ISO}.iso \
 	-b isolinux/isolinux.bin -c isolinux/boot.cat \
 	-no-emul-boot -boot-load-size 4 -boot-info-table \
 	-V "${LABEL}" .
