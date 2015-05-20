@@ -137,7 +137,7 @@ b595bdc4474b8fc1a15cffc67c66025b  tzdata2015d.tar.gz
 d43ab9f680435a7fff35b4ace8d45b80  libcap-2.24.tar.xz
 ba56fb5bfd44acea83fc5dac4a9b7f15  kbd-2.0.2.tar.gz
 f75cca16a38da6caa7d52151f7136895  kbd-2.0.2-backspace-1.patch
-29555d982b8b678b0091010eb7508e4a  gawk-4.1.2.tar.xz
+97f8f44149ea9b9e94be97f68988be87  gawk-4.1.3.tar.xz
 1e6da4e434553d2811437aa42c7f7c76  gmp-6.0.0a.tar.xz
 9bdf368c395f1b70325d0eb22c7f48fb  util-linux-2.26.2.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8  shadow-4.2.1.tar.xz
