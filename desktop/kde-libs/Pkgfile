@@ -1,15 +1,16 @@
 # Description: KDE Core Libraries
 # URL: http://www.kde.org
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: automoc4,phonon,attica,strigi,libdbusmenu-qt,docbook-xml,docbook-xsl,shared-desktop-ontologies,shared-mime-info,polkit-qt,libpng,libjpeg-turbo,giflib,upower,udisks,udisks2,jasper,pcre,avahi,aspell,aspell-fr,enchant,grantlee,kerberos,openexr,media-player-info,udev-extras,xorg-libxscrnsaver,xorg-libice
 
 _name=kdelibs
 
 name=kde-libs
-version=4.14.3
+version=4.14.8
+kde_version=15.04.1
 release=1
 
-source=(http://download.kde.org/stable/$version/src/${_name}-$version.tar.xz)
+source=(http://download.kde.org/stable/applications/${kde_version}/src/${_name}-$version.tar.xz)
 run=(upower udisks udisks2)
 
 build() {
@@ -27,5 +28,3 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
 make
 make DESTDIR=$PKG install
 }
-
-

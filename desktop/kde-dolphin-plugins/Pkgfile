@@ -6,10 +6,10 @@
 _name=dolphin-plugins
 
 name=kde-dolphin-plugins
-version=4.14.3
+# version=4.14.3
 release=1
 
-source=(http://download.kde.org/stable/$version/src/${_name}-$version.tar.xz)
+source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
 	
 build() {
 	cd ${_name}-$version
@@ -22,4 +22,3 @@ build() {
 	make
 	make DESTDIR=$PKG install
 }
-
