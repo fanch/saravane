@@ -1,8 +1,7 @@
 # Description: The Oxygen theme is a photo-realistic icon style, with a high standard of graphics quality. 
 # URL: http://www.kde.org
 # Packager: pierre at nutyx dot org
-# Depends on: automoc4 cmake 
-
+# Depends on: cmake
 
 _name=oxygen-icons
 
@@ -20,5 +19,3 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ..
 make
 make DESTDIR=$PKG install
 }
-
-
