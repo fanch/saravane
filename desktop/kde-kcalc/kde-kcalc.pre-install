@@ -1,3 +1,0 @@
-if ( pkginfo -l kde-calc > /dev/null  2>&1 ) ; then
-	pkgrm kde-calc
-fi
