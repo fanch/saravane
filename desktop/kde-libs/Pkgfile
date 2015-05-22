@@ -23,7 +23,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DSYSCONF_INSTALL_DIR=/etc/kde         \
       -DCMAKE_BUILD_TYPE=Release         \
       -DDOCBOOKXML_CURRENTDTD_DIR=/usr/share/xml/docbook/xml-dtd-4.5 \
-      -DWITH_Soprano=OFF \
+      -DWITH_Soprano=OFF  -DKDE_DISTRIBUTION_TEXT='NuTyX' \
       -Wno-dev .. 
 make
 make DESTDIR=$PKG install
