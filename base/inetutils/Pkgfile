@@ -2,8 +2,9 @@
 # URL: http://www.gnu.org/software/inetutils/
 # Maintainers: Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more
 # Packager: pierre at nutyx dot org
+
 name=inetutils
-version=1.9.2
+version=1.9.3
 release=1
 
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.xz)
@@ -14,11 +15,14 @@ cd  inetutils-$version
 
 echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
 
-./configure --prefix=/usr --libexecdir=/sbin \
---bindir=/bin --sbindir=/sbin \
+./configure --prefix=/usr \
+-libexecdir=/sbin \
+--bindir=/bin \
+--sbindir=/sbin \
 --localstatedir=/var \
---disable-logger --disable-syslogd \
---disable-whois --disable-servers
+--disable-logger \
+--disable-whois \
+--disable-servers
 make
 make check
 make DESTDIR=$PKG install
