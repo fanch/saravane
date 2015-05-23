@@ -4,7 +4,7 @@
 # Depends on: pam
 
 name=sudo
-version=1.8.12
+version=1.8.13
 release=1
 
 source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)

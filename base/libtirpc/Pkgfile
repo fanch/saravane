@@ -1,9 +1,10 @@
 # Description: Transport Independent RPC library (SunRPC replacement)
 # URL: http://downloads.sourceforge.net/project/libtirpc
 # Maintainer: Gilles Quillard gilles dot quillard at bull dot net,
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+
 name=libtirpc
-version=0.2.5
+version=0.3.0
 release=1
 
 source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libtirpc-$version.tar.bz2)
@@ -11,6 +12,13 @@ source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libt
 build()
 {
 cd libtirpc-$version
+
+sed -e '/rpcsec_gss.h/         i #ifdef HAVE_RPCSEC_GSS' \
+    -e '/svc_rpc_gss_parms_t;/ a #endif' \
+    -e '/svc_rpc_gss_parms_t / i #ifdef HAVE_RPCSEC_GSS' \
+    -e '/rpc_gss_rawcred_t /   a #endif' \
+    -i tirpc/rpc/svc_auth.h
+
 ./configure --prefix=/usr     \
             --sysconfdir=/etc \
             --disable-static  \
