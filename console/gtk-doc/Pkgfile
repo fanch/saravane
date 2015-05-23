@@ -1,9 +1,10 @@
-# Description: Code generator documentation
+# Description: Contains a code documenter. This is useful for extracting specially formatted comments from the code to create API documentation. This package is optional; if it is not installed, packages will not build the documentation. This does not mean that you will not have any documentation. If GTK-Doc is not available, the install process will copy any pre-built documentation to your system.
 # URL: http://www.gnome.org/
 # Packager: pierre at nutyx dot org
-# Depends on: libxslt docbook-xsl itstool 
+# Depends on: docbook-xml docbook-xsl itstool libxslt
+
 name=gtk-doc
-version=1.21
+version=1.22
 release=1
 
 source=( http://ftp.gnome.org/pub/gnome/sources/$name/$version/$name-$version.tar.xz)
