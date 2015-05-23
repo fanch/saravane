@@ -1,0 +1,11 @@
+# Depends on: gtk-update-icon-cache
+run=(gtk-update-icon-cache)
+name=lxde-icon-theme
+version=0.5.1
+release=1
+source=( http://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make DESTDIR=$PKG install
+}
