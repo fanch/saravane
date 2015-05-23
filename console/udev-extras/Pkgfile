@@ -5,7 +5,7 @@
 
 name=udev-extras
 _name=eudev
-version=2.1.1
+version=3.0
 release=1
 
 source=(http://dev.gentoo.org/~blueness/eudev/${_name}-$version.tar.gz)
