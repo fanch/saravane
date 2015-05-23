@@ -5,7 +5,7 @@
 PKGMK_GROUPS=(doc devel)
 
 name=dbus
-version=1.8.16
+version=1.8.18
 release=1
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
@@ -29,6 +29,9 @@ build() {
 
 	make
 	make DESTDIR=$PKG install
+	# Adjust some files
+	chown -v root:messagebus $PKG/usr/libexec/dbus-daemon-launch-helper
+	chmod -v      4750       $PKG/usr/libexec/dbus-daemon-launch-helper
         mkdir -p $PKG/etc/dbus-1
         mv ../dbus.system-local.conf $PKG/etc/dbus-1/system-local.conf
 	# service
