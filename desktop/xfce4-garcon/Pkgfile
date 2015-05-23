@@ -1,12 +1,12 @@
-# Description: garcon, implementation of standards Menus of freedesktop.org for Xfce
+# Description: The Garcon package contains a freedesktop.org compliant menu implementation based on GLib and GIO.
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Packager: tyrry at nutyx dot org
-# Depends on: xfce4-libutil 
+# Depends on: gtk3 xfce4-libui xfce4-libutil 
 
 _name=garcon
 
 name=xfce4-garcon
-version=0.2.1
+version=0.5.0
 release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
@@ -14,8 +14,7 @@ source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$versio
 build() {
 cd ${_name}-$version
 ./configure --prefix=/usr \
---sysconfdir=/etc \
---disable-static
+--sysconfdir=/etc
 make
 make DESTDIR=$PKG install
 }

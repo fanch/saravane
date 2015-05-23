@@ -7,10 +7,9 @@ _name=xfdesktop
 run=(gtk-update-icon-cache)
 
 name=xfce4-desktop
-version=4.10.3
 release=1
 
-source=(http://archive.xfce.org/src/xfce/${_name}/4.10/${_name}-$version.tar.bz2
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2
         http://downloads.nutyx.org/FondsEcrans/140203075407731241.png)
 
 build() {

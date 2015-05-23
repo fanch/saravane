@@ -1,12 +1,12 @@
-# Description: libxfce4ui, library of the interface graphic for Xfce4
+# Description: The libxfce4ui package contains GTK+ 2 widgets that are used by other Xfce applications.
 # URL: http://www.xfce.org/projects/libraries/
 # Packager: tyrry at nutyx dot org
-# Depends on: gtk startup-notification xfce4-conf 
+# Depends on: gtk gtk3 startup-notification xfce4-conf gtk-doc
 
 _name=libxfce4ui
 
 name=xfce4-libui
-version=4.10.0
+version=4.12.1
 release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
@@ -19,5 +19,5 @@ cd ${_name}-$version
 	make DESTDIR=$PKG install
 for i in usr/bin/xfce4-about usr/share/applications/xfce4-about.desktop usr/share/icons/hicolor/48x48/apps/xfce4-logo.png
 do rm $PKG/$i
-done	
+done
 }
