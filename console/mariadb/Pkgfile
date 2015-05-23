@@ -4,7 +4,7 @@
 # Depends on: cmake libevent
 
 name=mariadb
-version=10.0.17
+version=10.0.19
 release=1
 
 source=(https://downloads.mariadb.org/interstitial/mariadb-$version/source/mariadb-$version.tar.gz )
@@ -19,7 +19,6 @@ tar xvf $scripts-$scriptsversion.tar.bz2
 cd $name-$version
 
 sed -i "s@data/test@\${INSTALL_MYSQLTESTDIR}@g" sql/CMakeLists.txt
-sed -i "s/srv_buf_size/srv_sort_buf_size/" storage/innobase/row/row0log.cc
 
 mkdir build
 cd build
@@ -48,7 +47,7 @@ make DESTDIR=$PKG install
 
 install -v -dm 755 $PKG/etc/mysql
 
-cat > $PKG/etc/mysql/my.cnf << "EOF"
+cat > $PKG/etc/mysql/my.cnf.example << "EOF"
 # Begin /etc/mysql/my.cnf
 
 # The following options will be passed to all MySQL clients

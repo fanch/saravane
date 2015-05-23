@@ -1,2 +1,5 @@
-mysql_install_db --basedir=/usr --datadir=/srv/mysql --user=mysql
-chown -R mysql:mysql /srv/mysql
+. lib/lsb/init-functions
+log_warning_msg "${WARNING} Create a /etc/mysql/my.cnf  by comparing it with /etc/mysql/my.cnf.example ${NORMAL}"
+log_warning_msg "${WARNING} Create a database if need by run the command: ${NORMAL}"
+printf "#  mysql_install_db --basedir=/usr --datadir=/srv/mysql --user=mysql\n"
+printf "#  chown -R mysql:mysql /srv/mysql\n"
