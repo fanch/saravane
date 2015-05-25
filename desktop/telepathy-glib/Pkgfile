@@ -4,7 +4,7 @@
 # Depends on: dbus-glib libxslt gobject-introspection vala 
 
 name=telepathy-glib
-version=0.20.1
+version=0.22.0
 release=1
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
@@ -17,5 +17,4 @@ cd $name-$version
 --disable-static
 make
 make DESTDIR=$PKG install
-rm -r $PKG/usr/share/gtk-doc
 }
