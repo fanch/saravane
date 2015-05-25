@@ -4,7 +4,7 @@
 # Depends on: dbus-glib libxslt gobject-introspection vala 
 
 name=telepathy-glib
-version=0.22.0
+version=0.24.1
 release=1
 
 source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
