@@ -4,7 +4,7 @@
 # Depends on: pcre 
 
 name=qpdf
-version=5.1.2
+version=5.1.3
 release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz )
