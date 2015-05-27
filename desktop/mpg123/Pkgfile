@@ -1,10 +1,10 @@
-# Description: A console based real time MPEG Audio Player for Layer 1, 2 and 3
+# Description: The mpg123 package contains a console-based MP3 player. It claims to be the fastest MP3 decoder for Unix.
 # URL: http://mpg123.de/
 # Packager: pierre at nutyx dot org
 # Depends on: alsa-lib 
 
 name=mpg123
-version=1.20.1
+version=1.22.2
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
