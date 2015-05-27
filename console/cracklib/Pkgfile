@@ -1,22 +1,29 @@
-# Description: Next generation version of libCrack password checking library.
+# Description: The CrackLib package contains a library used to enforce strong passwords by comparing user selected passwords to words in chosen word lists.
 # URL: http://sourceforge.net/projects/cracklib/
 # Packager: pierre at nutyx dot org
-# Depends on: 
 
 name=cracklib
-version=2.9.2
+version=2.9.4
 release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build()
 {
+if [ "`uname -m`" == "x86_64" ]; then
+        LIB=lib64
+else
+        LIB=lib
+fi
+
 cd $name-$version
+sed -i '/skipping/d' util/packer.c
 ./configure --prefix=/usr \
---with-default-dict=/lib/cracklib/pw_dict
+--with-default-dict=/$LIB/cracklib/pw_dict
 make
 make DESTDIR=$PKG  install
-mkdir $PKG/lib
-mv -v $PKG/usr/lib/libcrack.so.2* $PKG/lib
-ln -v -sf ../../lib/libcrack.so.2.8.1 $PKG/usr/lib/libcrack.so
+
+mkdir $PKG/$LIB
+mv -v $PKG/usr/lib/libcrack.so.2* $PKG/$LIB
+ln -v -sf ../../$LIB/libcrack.so.2.9.0 $PKG/usr/lib/libcrack.so
 }
