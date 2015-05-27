@@ -12,7 +12,8 @@ source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
 build() {
 	cd $name-$version
 	sed -e "s/pthread-stubs//" -i configure
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--docdir='${datadir}'/doc/libxcb-$version
 	make
 	make DESTDIR=$PKG install
 }
