@@ -44,17 +44,13 @@ CXX=$LFS_TGT-g++                                     \
 AR=$LFS_TGT-ar                                       \
 RANLIB=$LFS_TGT-ranlib                               \
 ../gcc-$version/configure                            \
-    --prefix=/tools                                  \
-    --with-local-prefix=/tools                       \
-    --with-native-system-header-dir=/tools/include   \
-    --enable-clocale=gnu                             \
-    --enable-shared                                  \
-    --enable-threads=posix                           \
-    --enable-__cxa_atexit                            \
-    --enable-languages=c,c++                         \
-    --disable-libstdcxx-pch                          \
-    --disable-multilib                               \
-    --disable-bootstrap                              \
+   --prefix=/tools                                \
+    --with-local-prefix=/tools                     \
+    --with-native-system-header-dir=/tools/include \
+    --enable-languages=c,c++                       \
+    --disable-libstdcxx-pch                        \
+    --disable-multilib                             \
+    --disable-bootstrap                            \
     --disable-libgomp
 
 
