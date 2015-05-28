@@ -5,7 +5,7 @@
 
 name=file
 version=5.22
-release=1
+release=2
 
 source=(ftp://ftp.astron.com/pub/file/file-$version.tar.gz)
 
@@ -21,6 +21,6 @@ devel()
 cd $PKG
 bsdtar -cf \
 $PKGMK_PACKAGE_DIR/${name}.devel${PKGMK_BUILDVER}any.$PKGMK_PACKAGE_EXT \
-usr/share/misc usr/include
-rm -r usr/{include,share/misc}
+usr/include
+rm -r usr/include
 }
