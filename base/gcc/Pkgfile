@@ -7,13 +7,13 @@ version=5.1.0
 release=1
 
 source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.bz2
-	)
+gcc-5.1.0-upstream_fixes-1.patch	)
 PKGMK_GROUPS=(devel man doc)
 
 build()
 {
 cd gcc-$version
-
+patch -Np1 -i ../gcc-5.1.0-upstream_fixes-1.patch
 mkdir -v ../gcc-build
 cd ../gcc-build
 
