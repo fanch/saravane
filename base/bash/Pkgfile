@@ -12,7 +12,7 @@ source=(http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz
 build()
 {
 cd bash-$version
-patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
+patch -Np1 -i ../$name-$version-upstream_fixes-2.patch
 ./configure --prefix=/usr --bindir=/bin \
 --htmldir=/usr/share/doc/bash-$version --without-bash-malloc \
 --with-installed-readline
