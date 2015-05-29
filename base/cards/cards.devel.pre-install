@@ -1,6 +1,0 @@
-. lib/lsb/init-functions
-if [ -f etc/pkgmk.conf ]; then 
-	mv etc/pkgmk.conf etc/pkgmk.conf.backup
-	log_success_msg  "${WARNING} /etc/pkgmk.conf saved in /etc/pkgmk.conf.backup ${NORMAL}"
-	log_warning_msg "${WARNING} Double check /etc/pkgmk.conf by comparing it with /etc/pkgmk.conf.backup ${NORMAL}"
-fi
