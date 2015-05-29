@@ -929,34 +929,41 @@ do_load_modules()
 {
   # Assure that the kernel has module support.
   [ -e /proc/modules ] || return 0
-  # Return if there's no modules file or there are no
-  # valid entries
-  [ -r /etc/sysconfig/modules ]|| return 0
-  egrep -qv '^($|#)' /etc/sysconfig/modules || return 0
+  for FILE in /etc/sysconfig/modules /etc/sysconfig/modules.d/*.conf
+  do
+   [ ! -f $FILE ] && continue
+   # Continue with next if there's no modules file or there are no
+   # valid entries
+   [ -r $FILE ] || continue
+   egrep -qv '^($|#)' $FILE || continue
+   log_info_msg "Loading modules:"
+   break
+  done
+  for FILE in /etc/sysconfig/modules /etc/sysconfig/modules.d/*.conf
+    do
+     [ ! -f $FILE ] && continue
+     [ -r $FILE ] || continue
+     egrep -qv '^($|#)' $FILE || continue
 
-  log_info_msg "Loading modules:"
 
-  # Only try to load modules if the user has actually given us
-  # some modules to load.
+     while read module args; do
+         # Ignore comments and blank lines.
+         case "$module" in
+          ""|"#"*) continue ;;
+         esac
 
-  while read module args; do
+         # Attempt to load the module, passing any arguments provided.
+         modprobe ${module} ${args} >/dev/null
 
-    # Ignore comments and blank lines.
-    case "$module" in
-      ""|"#"*) continue ;;
-    esac
-
-    # Attempt to load the module, passing any arguments provided.
-    modprobe ${module} ${args} >/dev/null
-
-    # Print the module name if successful, otherwise take note.
-    if [ $? -eq 0 ]; then
-       log_info_msg2 " ${module}"
-    else
-       failedmod="${failedmod} ${module}"
-    fi
-  done < /etc/sysconfig/modules
-
+         # Print the module name if successful, otherwise take note.
+         if [ $? -eq 0 ]; then
+           log_info_msg2 " ${module}"
+         else
+          failedmod="${failedmod} ${module}"
+         fi
+     done < $FILE
+  done
+ # fi
   # Print a message about successfully loaded modules on the correct line.
   log_success_msg2
 
@@ -964,7 +971,6 @@ do_load_modules()
   # may have failed to load.
   if [ -n "${failedmod}" ]; then
      log_failure_msg "Failed to load modules:${failedmod}"
-     return 1
   fi
   return 0
 }
