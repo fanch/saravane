@@ -11,7 +11,7 @@ source=(http://sourceforge.net/projects/reiser4/files/reiser4-utils/${name}/${na
 
 build() {
 	cd ${name}-${version}
-	./configure --prefix=/usr --sbindir=/usr/bin
+	./configure --prefix=/usr --sbindir=/sbin
 	make
 	make DESTDIR=$PKG install
 }
