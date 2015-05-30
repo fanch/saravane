@@ -4,7 +4,7 @@
 # Depends on: python libtirpc acl cups gamin kerberos libcap 
 
 name=samba
-version=4.2.1
+version=4.2.2
 release=1
 
 source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
@@ -12,8 +12,21 @@ source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
 build() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-
+if [ "`uname -m`" == "x86_64" ]; then
+        LIB=lib64
+else
+        LIB=lib
+fi
 cd $name-$version
+
+sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tls->session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/cert_type_priority/d' \
+    -i source4/lib/tls/tls.c &&
+sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/t cert_type_priority/ s:^:/*:' \
+    -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
+    -i source4/lib/tls/tls_tstream.c
+
 ./configure                             \
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
@@ -21,14 +34,14 @@ cd $name-$version
     --with-piddir=/run/samba            \
     --with-pammodulesdir=/lib/security  \
     --enable-fhs                        \
-    --enable-nss-wrapper  
+    --without-systemd
 make
 make DESTDIR=$PKG install
 
-install -d $PKG/lib       
-mv -v $PKG/usr/lib/libnss_win{s,bind}.so*   $PKG/lib
-ln -v -sf lib/libnss_winbind.so.2 $PKG/usr/lib/libnss_winbind.so
-ln -v -sf lib/libnss_wins.so.2    $PKG/usr/lib/libnss_wins.s
+install -d $PKG/$LIB
+mv -v $PKG/usr/lib/libnss_win{s,bind}.so*   $PKG/$LIB
+ln -v -sf lib/libnss_winbind.so.2 $PKG/usr/$LIB/libnss_winbind.so
+ln -v -sf lib/libnss_wins.so.2    $PKG/usr/$LIB/libnss_wins.s
    
 install -v -m644 examples/smb.conf.default $PKG/etc/samba/smb.conf.default
 
