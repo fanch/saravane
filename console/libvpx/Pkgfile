@@ -15,7 +15,7 @@ sed   -e 's/cp -p/cp/'       \
 chmod -v 644 vpx/*.h 
 mkdir ../libvpx-build
 cd ../libvpx-build
-../libvpx-v$version/configure --prefix=/usr \
+../libvpx-$version/configure --prefix=/usr \
 --enable-shared --disable-static
 make
 
