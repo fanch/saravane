@@ -168,6 +168,7 @@ edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
 0b8dc818ed4766342978d744522aec49  git-2.4.2.tar.xz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz
 8809465cd48a202895bc2a12e1923b5d  jfsutils-1.1.15.tar.gz
+44698d351501cac6a89072dc877eb220  mdadm-3.3.2.tar.xz
 d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" > $LFS/sources/md5sums
 
 for i in `cat scripts/wget_nutyx_list`
