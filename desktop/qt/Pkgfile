@@ -2,13 +2,14 @@
 # URL: http://www.qt.io/
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk gstreamer-plugins-base postgresql pulseaudio unixodbc mysql 
-_name=qt-everywhere-opensource-src-${version}
 
 name=qt
 version=4.8.7
 release=1
 
-source=(http://download.qt-project.org/official_releases/qt/4.8/$version/${_name}.tar.gz)
+_name=qt-everywhere-opensource-src-${version}
+
+source=(http://download.qt-project.org/official_releases/qt/${version%.*}/$version/${_name}.tar.gz)
 
 build() {
 
