@@ -1,9 +1,9 @@
-# Description: Daemons for the bluetooth protocol stack
+# Description: The BlueZ package contains the Bluetooth protocol stack for Linux.
 # URL: http://www.bluez.org/
-# Packager: pierre at nutyx dot org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
 name=bluez
-version=5.28
+version=5.30
 release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
@@ -70,13 +70,7 @@ install -m644 profiles/network/network.conf \
 install -v -dm755 $PKG/usr/share/doc/$name-$version
 install -v -m644 doc/*.txt $PKG/usr/share/doc/$name-$version
 
-mkdir -p $PKG/etc/rc.d/{init.d,rc0.d,rc1.d,rc2.d,rc3.d,rc4.d,rc5.d,rc6.d}
-
-
-
 # Startup Script 
 cd ../$scripts-$scriptsversion
 make DESTDIR=$PKG install-bluetooth
-
-
 }
