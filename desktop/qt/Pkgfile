@@ -1,11 +1,11 @@
-# Description: A cross-platform application and UI framework
-# URL: http://qt.nokia.com/products/
-# Packager: pierre at nutyx dot org
+# Description: Qt is a cross-platform application framework that is widely used for developing application software with a graphical user interface (GUI) (in which cases Qt is classified as a widget toolkit), and also used for developing non-GUI programs such as command-line tools and consoles for servers. One of the major users of Qt is KDE.
+# URL: http://www.qt.io/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk gstreamer-plugins-base postgresql pulseaudio unixodbc mysql 
 _name=qt-everywhere-opensource-src-${version}
 
 name=qt
-version=4.8.6
+version=4.8.7
 release=1
 
 source=(http://download.qt-project.org/official_releases/qt/4.8/$version/${_name}.tar.gz)
@@ -15,14 +15,6 @@ build() {
 export QT4LINK=/usr
 
 cd ${_name}
-sed -i -e '631a if (image->isNull()) { state = Error; return -1; }' \
-    src/gui/image/qgifhandler.cpp
-
-sed -i -e "/#if/d" -e "/#error/d" -e "/#endif/d" \
-     config.tests/unix/libmng/libmng.cpp
-
-sed -i '/CONFIG -/ a\isEmpty(OUTPUT_DIR): OUTPUT_DIR = ../..' \
-     src/3rdparty/webkit/Source/WebKit2/DerivedSources.pro
 
      ./configure -prefix    /usr                 \
             -bindir         /usr/bin             \
@@ -146,7 +138,13 @@ Type=Application
 Categories=Qt;Settings;
 EOF
 
-mkdir -p $PKG/etc/ld.so.conf.d
+mkdir -p $PKG/etc/profile.d
+cat > $PKG/etc/profile.d/qt4.sh << EOF
+# Begin /etc/profile.d/qt4.sh
 
-echo "/usr/lib" > $PKG/etc/ld.so.conf.d/qt4.conf
+QT4DIR=/usr
+export QT4DIR
+
+# End /etc/profile.d/qt4.sh
+EOF
 }
