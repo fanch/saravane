@@ -4,7 +4,7 @@
 # Depends on: json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
 
 name=pulseaudio
-version=5.0
+version=6.0
 release=1
 
 source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
@@ -13,7 +13,6 @@ source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.
 build() {
 unset MAKEFLAGS
 cd pulseaudio-$version
-find . -name "Makefile.in" | xargs sed -i "s|(libdir)/@PACKAGE@|(libdir)/pulse|"
 ./configure --prefix=/usr         \
             --sysconfdir=/etc     \
             --localstatedir=/var  \
