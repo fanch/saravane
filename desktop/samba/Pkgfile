@@ -4,7 +4,7 @@
 # Depends on: python libtirpc acl cups gamin kerberos libcap 
 
 name=samba
-version=4.2.1
+version=4.2.2
 release=1
 
 source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
@@ -21,7 +21,7 @@ cd $name-$version
     --with-piddir=/run/samba            \
     --with-pammodulesdir=/lib/security  \
     --enable-fhs                        \
-    --enable-nss-wrapper  
+    --without-systemd
 make
 make DESTDIR=$PKG install
 
