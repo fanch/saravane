@@ -4,7 +4,7 @@
 # Depends on: 
 
 name=cracklib
-version=2.9.2
+version=2.9.4
 release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)

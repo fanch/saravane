@@ -5,10 +5,10 @@
 
 
 name=lcms2
-version=2.6
+version=2.7
 release=1
 
-source=( http://downloads.sourceforge.net/lcms/$name-$version.tar.gz )
+source=(http://downloads.sourceforge.net/lcms/$name-$version.tar.gz)
 
 build() {
 cd $name*
