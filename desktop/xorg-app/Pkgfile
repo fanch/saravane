@@ -6,12 +6,14 @@
 section="app"
 name=xorg-app
 version=7.7
-release=2
+release=3
 
 source=()
 
 build() {
-unset MAKEFLAGS
+unset MAKEFLAGSsessreg-* )
+      sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    ;;
 cat > list.md5 << "EOF"
 53a48e1fdfec29ab2e89f86d4b7ca902  bdftopcf-1.0.5.tar.bz2
 25dab02f8e40d5b71ce29a07dc901b8c  iceauth-1.0.7.tar.bz2
@@ -29,7 +31,9 @@ b58a87e6cd7145c70346adad551dba48  xcursorgen-1.0.6.tar.bz2
 8809037bd48599af55dad81c508b6b39  xdpyinfo-1.3.2.tar.bz2
 fceddaeb08e32e027d12a71490665866  xdriinfo-1.0.5.tar.bz2
 249bdde90f01c0d861af52dc8fec379e  xev-1.2.2.tar.bz2
-90b4305157c2b966d5180e2ee61262be  xgamma-1.0.6.tar.bz2
+90b4305157c2b966d5180e2ee61262be  xgamma-1.0.6.tar.bzsessreg-* )
+      sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    ;;2
 f5d490738b148cb7f2fe760f40f92516  xhost-1.0.7.tar.bz2
 305980ac78a6954e306a14d80a54c441  xinput-1.6.1.tar.bz2
 0012a8e3092cddf7f87b250f96bb38c5  xkbcomp-1.3.0.tar.bz2
@@ -38,7 +42,9 @@ c747faf1f78f5a5962419f8bdd066501  xkbevd-1.1.4.tar.bz2
 0ae6bc2a8d3af68e9c76b1a6ca5f7a78  xkill-1.0.4.tar.bz2
 5dcb6e6c4b28c8d7aeb45257f5a72a7d  xlsatoms-1.1.2.tar.bz2
 9fbf6b174a5138a61738a42e707ad8f5  xlsclients-1.1.3.tar.bz2
-2dd5ae46fa18abc9331bc26250a25005  xmessage-1.0.4.tar.bz2
+2dd5ae46fa18abc9331bc2sessreg-* )
+      sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    ;;6250a25005  xmessage-1.0.4.tar.bz2
 723f02d3a5f98450554556205f0a9497  xmodmap-1.0.9.tar.bz2
 6101f04731ffd40803df80eca274ec4b  xpr-1.0.4.tar.bz2
 fae3d2fda07684027a643ca783d595cc  xprop-1.2.2.tar.bz2
@@ -61,14 +67,21 @@ for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 
 		pushd $packagedir
 		case $packagedir in
-			luit-[0-9]* )
-				line1="#ifdef _XOPEN_SOURCE"
+			luit-[0-9]* )sessreg-* )
+      sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    ;;
+			sessreg-* )
+      sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    ;;	line1="#ifdef _XOPEN_SOURCE"
 				line2="#  undef _XOPEN_SOURCE"
 				line3="#  define _XOPEN_SOURCE 600"
 				line4="#endif"
 				sed -i -e "s@#ifdef HAVE_CONFIG_H@$line1\n$line2\n$line3\n$line4\n\n&@" sys.c
 				unset line1 line2 line3 line4
-			;;
+		;;
+		sessreg-* )
+      		sed -e 's/\$(CPP) \$(DEFS)/$(CPP) -P $(DEFS)/' -i man/Makefile.in
+    		;;
 		esac
 		./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 		make
