@@ -1,7 +1,7 @@
 # Description: Command line tools that assist applications with a variety of desktop integration tasks
 # URL: http://portland.freedesktop.org/wiki/
 # Packager: pierre at nutyx dot org
-# Depends on: xmlto,xorg-app
+# Depends on: links,xmlto,xorg-app
 
 run=(xorg-app)
 
