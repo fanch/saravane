@@ -5,7 +5,7 @@
 # Depends on: xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk consolekit
 
 name=lxdm
-version=0.5.0
+version=0.5.1
 release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz
         http://downloads.nutyx.org/files/patchs/$name/lxdm-industrial-01.tar.gz
