@@ -9,6 +9,7 @@ source=(http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${ver
 
 
 build() {
+	export CFLAGS="$CFLAGS -std=gnu90"
         cd $name-$version
         ./configure --prefix=/usr \
                 --sbindir=/sbin
