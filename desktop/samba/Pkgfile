@@ -12,7 +12,13 @@ source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
 build() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-
+sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tls->session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/cert_type_priority/d' \
+    -i source4/lib/tls/tls.c &&
+sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/t cert_type_priority/ s:^:/*:' \
+    -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
+    -i source4/lib/tls/tls_tstream.c
 cd $name-$version
 ./configure                             \
     --prefix=/usr                       \
@@ -20,7 +26,13 @@ cd $name-$version
     --localstatedir=/var                \
     --with-piddir=/run/samba            \
     --with-pammodulesdir=/lib/security  \
-    --enable-fhs                        \
+    --enable-fhs  sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tls->session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/cert_type_priority/d' \
+    -i source4/lib/tls/tls.c &&
+sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
+    -e '/t cert_type_priority/ s:^:/*:' \
+    -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
+    -i source4/lib/tls/tls_tstream.c                      \
     --without-systemd
 make
 make DESTDIR=$PKG install
