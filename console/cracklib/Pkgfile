@@ -18,5 +18,5 @@ make
 make DESTDIR=$PKG  install
 mkdir $PKG/lib
 mv -v $PKG/usr/lib/libcrack.so.2* $PKG/lib
-ln -v -sf ../../lib/libcrack.so.2.8.1 $PKG/usr/lib/libcrack.so
+ln -v -sf ../../lib/libcrack.so.2.9.0 $PKG/usr/lib/libcrack.so
 }
