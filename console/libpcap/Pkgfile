@@ -16,5 +16,4 @@ patch -Np1 -i ../libpcap-1.7.3-enable_bluetooth-1.patch
 make
 sed -i '/INSTALL_DATA.*libpcap.a\|RANLIB.*libpcap.a/ s/^/#/' Makefile
 make DESTDIR=$PKG install
-rm $PKG/usr/lib/libpcap.a
 }
