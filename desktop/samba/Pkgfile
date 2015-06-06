@@ -7,7 +7,7 @@ name=samba
 version=4.2.2
 release=1
 
-source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
+source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz tls-use-gnutls_priority_set_direct.patch)
 
 build() {
 source /etc/blfs-bootscripts
@@ -20,6 +20,7 @@ sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORM
     -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
     -i source4/lib/tls/tls_tstream.c
 cd $name-$version
+patch -Np1 -i $SRC/tls-use-gnutls_priority_set_direct.patch
 ./configure                             \
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
@@ -29,6 +30,7 @@ cd $name-$version
     --enable-fhs                        \
     --without-systemd
 make
+sed -i "/samba3.blackbox.failure.failure/i \^samba3.raw.eas" selftest/knownfail
 make DESTDIR=$PKG install
 
 install -d $PKG/lib       
