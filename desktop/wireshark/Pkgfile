@@ -1,7 +1,7 @@
 # Description: Network Sniffer with nice GTK+ UI
 # URL: http://www.wireshark.org
 # Packager: fanch at nutyx dot org
-# Depends on: gtk3 libpcap libpcre
+# Depends on: gtk3 libpcap pcre
 
 name=wireshark
 version=1.12.5
