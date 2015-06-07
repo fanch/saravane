@@ -4,15 +4,18 @@
 # Depends on: yasm 
 
 name=libvpx
-version=1.3.0
+version=1.4.0
 release=1
 
-source=( http://webm.googlecode.com/files/libvpx-v$version.tar.bz2 )
+source=(http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-$version.tar.bz2)
 build() {
-cd $name-v$version
+cd $name-$version
+sed   -e 's/cp -p/cp/'       \
+      -i build/make/Makefile 
+chmod -v 644 vpx/*.h 
 mkdir ../libvpx-build
 cd ../libvpx-build
-../libvpx-v$version/configure --prefix=/usr \
+../libvpx-$version/configure --prefix=/usr \
 --enable-shared --disable-static
 make
 

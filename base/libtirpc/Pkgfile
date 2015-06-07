@@ -4,7 +4,7 @@
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 
 name=libtirpc
-version=0.3.0
+version=0.3.1
 release=1
 
 source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libtirpc-$version.tar.bz2)

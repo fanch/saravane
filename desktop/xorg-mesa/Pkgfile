@@ -12,7 +12,7 @@ source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/mesa-$version.tar.xz
 build() {
 cd mesa-$version
 patch -Np1 -i ../mesa-$version-add_xdemos-1.patch 
-autoreconf -f -i &&
+autoreconf -f -i
 ./configure CFLAGS="-O2" CXXFLAGS="-O2" \
 --prefix=/usr \
 --sysconfdir=/etc \

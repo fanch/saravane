@@ -3,17 +3,15 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 # Depends on: pcre 
+
 name=zsh
-version=5.0.7
+version=5.0.8
 release=1
 
 source=(http://www.zsh.org/pub/$name-$version.tar.bz2)
 
 build(){
     cd $name-$version
-    sed -e '/attr.mdh/ d' -e '/attr.pro/ d' \
-        -e '/include <sys\/xattr.h>/ a\\n#include "attr.mdh"\n#include "attr.pro"' \
-        -i Src/Modules/attr.c
     ./configure --prefix=/usr \
                 --bindir=/bin \
                 --sysconfdir=/etc/zsh \
@@ -32,4 +30,3 @@ build(){
 
 
 
-# NuTyX Pkgfile (http://nutyx.org)

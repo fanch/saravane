@@ -4,7 +4,7 @@
 # Depends on: 
 
 name=tcl
-version=8.6.2
+version=8.6.4
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name$version-src.tar.gz)
@@ -20,9 +20,19 @@ else
 fi
 	
 make
-sed -e "s@^\(TCL_SRC_DIR='\).*@\1/usr/include'@" \
--e "/TCL_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
--i tclConfig.sh
+sed -e "s#$SRCDIR/unix#/usr/lib#" \
+    -e "s#$SRCDIR#/usr/include#"  \
+    -i tclConfig.sh               
+sed -e "s#$SRCDIR/unix/pkgs/tdbc1.0.3#/usr/lib/tdbc1.0.3#" \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3/generic#/usr/include#"    \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3/library#/usr/lib/tcl8.6#" \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3#/usr/include#"            \
+    -i pkgs/tdbc1.0.3/tdbcConfig.sh                        
+sed -e "s#$SRCDIR/unix/pkgs/itcl4.0.3#/usr/lib/itcl4.0.3#" \
+    -e "s#$SRCDIR/pkgs/itcl4.0.3/generic#/usr/include#"    \
+    -e "s#$SRCDIR/pkgs/itcl4.0.3#/usr/include#"            \
+    -i pkgs/itcl4.0.3/itclConfig.sh                        
+unset SRCDIR
 make DESTDIR=$PKG install
 make DESTDIR=$PKG install-private-headers
 ln -svf tclsh8.6 $PKG/usr/bin/tclsh

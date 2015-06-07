@@ -10,8 +10,15 @@ release=1
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-network-manager \
+    --enable-polkit \
+    --disable-debug
 make
 make DESTDIR=$PKG install
 }

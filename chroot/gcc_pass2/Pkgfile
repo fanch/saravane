@@ -1,4 +1,4 @@
-version=4.9.2
+version=5.1.0
 source=(\
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz \
 http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz \
@@ -44,17 +44,13 @@ CXX=$LFS_TGT-g++                                     \
 AR=$LFS_TGT-ar                                       \
 RANLIB=$LFS_TGT-ranlib                               \
 ../gcc-$version/configure                            \
-    --prefix=/tools                                  \
-    --with-local-prefix=/tools                       \
-    --with-native-system-header-dir=/tools/include   \
-    --enable-clocale=gnu                             \
-    --enable-shared                                  \
-    --enable-threads=posix                           \
-    --enable-__cxa_atexit                            \
-    --enable-languages=c,c++                         \
-    --disable-libstdcxx-pch                          \
-    --disable-multilib                               \
-    --disable-bootstrap                              \
+   --prefix=/tools                                \
+    --with-local-prefix=/tools                     \
+    --with-native-system-header-dir=/tools/include \
+    --enable-languages=c,c++                       \
+    --disable-libstdcxx-pch                        \
+    --disable-multilib                             \
+    --disable-bootstrap                            \
     --disable-libgomp
 
 

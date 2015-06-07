@@ -1,7 +1,7 @@
 # Description: Desktop notification library
 # URL: http://www.galago-project.org/news/index.php
 # Packager: pierre at nutyx dot org
-# Depends on: gobject-introspection gdk-pixbuf
+# Depends on: gobject-introspection gdk-pixbuf gtk3
 
 name=libnotify
 version=0.7.6

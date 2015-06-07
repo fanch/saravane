@@ -28,11 +28,11 @@ sed -e 's:/docs/llvm:/share/doc/llvm-$version:' \
 
 CC=gcc CXX=g++ \
 ./configure --prefix=/usr \
---sysconfdir=/etc \
---enable-libffi \
---enable-shared \
---disable-assertions \
---enable-threads
+            --sysconfdir=/etc    \
+            --enable-libffi      \
+            --enable-optimized   \
+            --enable-shared      \
+            --disable-assertions
 make || make -j1
 make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
 for file in '$PKG/usr/lib/lib{clang,LLVM,LTO}*.a'

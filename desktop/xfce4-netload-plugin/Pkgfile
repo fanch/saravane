@@ -4,7 +4,7 @@
 # Depends on: xfce4-panel xfce4-libgui 
 
 name=xfce4-netload-plugin
-version=1.2.0
+version=1.2.4
 release=1
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/1.2/$name-$version.tar.bz2)
@@ -12,11 +12,11 @@ source=(http://archive.xfce.org/src/panel-plugins/$name/1.2/$name-$version.tar.b
 build() {
 cd $name-$version
 	./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-debug
+    	--prefix=/usr \
+    	--sysconfdir=/etc \
+    	--libexecdir=/usr/lib \
+    	--localstatedir=/var \
+    	--disable-debug
 	make
 	make DESTDIR=$PKG install
 }

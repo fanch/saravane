@@ -13,8 +13,14 @@ source=(http://archive.xfce.org/xfce/${version%.*}/src/${_name}-$version.tar.bz2
 
 build() {
 cd ${_name}-$version
-	./configure --prefix=/usr \
-	--disable-static
+./configure \
+	--prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/xfce4 \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-gtk-doc \
+    --disable-debug
 	make
 	make DESTDIR=$PKG install
 find $PKG \

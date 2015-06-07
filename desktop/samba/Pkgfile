@@ -1,13 +1,13 @@
 # Description: SMB Fileserver and AD Domain server
 # URL: http://www.samba.org
 # Packager: pierre at nutyx dot org
-# Depends on: python libtirpc acl cups gamin kerberos libcap 
+# Depends on: python libtirpc acl cups gamin kerberos libcap tdb
 
 name=samba
 version=4.2.2
 release=1
 
-source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz)
+source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz tls-use-gnutls_priority_set_direct.patch)
 
 build() {
 source /etc/blfs-bootscripts
@@ -26,7 +26,6 @@ sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORM
     -e '/t cert_type_priority/ s:^:/*:' \
     -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
     -i source4/lib/tls/tls_tstream.c
-
 ./configure                             \
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
@@ -36,6 +35,7 @@ sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORM
     --enable-fhs                        \
     --without-systemd
 make
+sed -i "/samba3.blackbox.failure.failure/i \^samba3.raw.eas" selftest/knownfail
 make DESTDIR=$PKG install
 
 install -d $PKG/$LIB

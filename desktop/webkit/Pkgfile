@@ -8,7 +8,7 @@ release=1
 
 source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
 build() {
-cd webkitgtk-2.4.8
+cd webkitgtk-$version
 sed -i '/generate-gtkdoc --rebase/s:^:# :' GNUmakefile.in
 
 mkdir -vp build-3 

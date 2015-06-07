@@ -4,15 +4,15 @@
 # Depends on: lvm2 
 
 name=parted
-version=3.1
+version=3.2
 release=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+ http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-devmapper-1.patch)
 
 build() {
 cd $name-$version
-sed -i parted/ui.c \
-    -e "s:(CPPFunction\*) complete:(rl_completion_func_t\*) complete:"
+patch -Np1 -i ../parted-3.2-devmapper-1.patch
 ./configure --prefix=/usr \
 --disable-static
 make

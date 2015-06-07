@@ -9,9 +9,7 @@ source=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$version.tar.x
 
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---mandir=/usr/share/man \
---infodir=/usr/share/info
+./configure --prefix=/usr 
 make
 make DESTDIR=$PKG install
 } 

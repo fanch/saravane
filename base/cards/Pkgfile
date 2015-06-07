@@ -7,12 +7,9 @@ name=cards
 version=1.1
 release=1
 
-source=(http://downloads.nutyx.org/files/$name-$version.tar.gz
-#	http://downloads.nutyx.org/files/patchs/$name/$name-$version-upstream_fixes-1.patch
-	)
+source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 build () {
 cd $name-$version
-# patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
 make all
 make DESTDIR=$PKG install
 }

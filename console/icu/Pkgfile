@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 # Depends on: 
 name=icu
-version=54.1
+version=55.1
 release=1
 
 source=(http://download.$name-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)

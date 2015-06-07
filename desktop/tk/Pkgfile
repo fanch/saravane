@@ -4,7 +4,7 @@
 # Depends on: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
 
 name=tk
-version=8.6.1
+version=8.6.4
 release=1
 
 source=(

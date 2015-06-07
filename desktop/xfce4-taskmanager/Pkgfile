@@ -1,19 +1,19 @@
 # Description: administrator of tasks for Xfce
 # URL: http://goodies.xfce.org/projects/applications/xfce4-taskmanager
 # Packager: tyrry at nutyx dot org
-# Depends on: gtk 
+# Depends on: gtk libwnck
 
 name=xfce4-taskmanager
-version=1.0.0
+version=1.1.0
 release=1
 
-source=(http://archive.xfce.org/src/apps/$name/1.0/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
         
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
---libexecdir=/usr/lib/xfce4 \
+--libexecdir=/usr/lib \
 --localstatedir=/var \
 --disable-static
 make

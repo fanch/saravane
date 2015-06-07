@@ -1,0 +1,21 @@
+# Description: A music player and library organizer.
+# URL: http://www.clementine-player.org/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Danny Rawlins, crux at romster dot me
+# Depends on: boost glew gstreamer-plugins-bad gstreamer-plugins-good gstreamer-plugins-ugly protobuf qca-ossl qjson xorg-glu chromaprint libcdio
+
+name=clementine
+version=1.2.3
+release=1
+source=(https://github.com/clementine-player/Clementine/archive/$version.tar.gz
+	udisks-namespace.patch)
+
+build() {
+	cd Clementine-$version
+
+	patch -p1 -i $SRC/udisks-namespace.patch
+
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WERROR=OFF
+	make
+	make DESTDIR=$PKG install
+}

@@ -2,6 +2,7 @@
 # URL: http://www.bluez.org/
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+
 name=bluez
 version=5.30
 release=1

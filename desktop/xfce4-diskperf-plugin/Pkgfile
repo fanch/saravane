@@ -4,7 +4,7 @@
 # Depends on: xfce4-panel xfce4-libgui 
 
 name=xfce4-diskperf-plugin
-version=2.5.4
+version=2.5.5
 release=1
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/2.5/$name-$version.tar.bz2)

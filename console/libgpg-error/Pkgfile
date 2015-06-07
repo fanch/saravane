@@ -1,11 +1,12 @@
 # Description: Contains a library that defines common error values for all GnuPG components
 # URL: URL: http://www.gnupg.org
 # Packager: pierre at nutyx dot org
+
 name=libgpg-error
-version=1.18
+version=1.19
 release=1
 
-source=( ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2 )
+source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
