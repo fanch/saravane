@@ -114,7 +114,7 @@ b5e2dd95dc8498cea5354377ed89aa65  xz-5.2.1.tar.xz
 57a7a224a822f94789a587ccbcedff69  make-4.1.tar.bz2
 1fb7f3f6bf92ce6c5c9ed9949ae858fe  procps-ng-3.3.10.tar.xz
 8b8c9d85469d8dbe32e51117b8ef11e3  tcl-core8.6.4-src.tar.gz
-237083a1e3c388cde7a115a5724dc72a  iproute2-3.19.0.tar.xz
+3adc263ade4ee76c35032e8f50b54108  iproute2-4.0.0.tar.xz
 452ae548aa0421eee0bf2bfa21000e39  inetutils-1.9.3.tar.xz
 997c9070354eff5517115feaea6038f0  gettext-0.19.4.tar.xz
 abed135279f87ad6762ce57ff6d89c41  coreutils-8.23.tar.xz
@@ -132,7 +132,7 @@ ee4a480d77b341c99e8b1375f8f180c0  Linux-PAM-1.2.0.tar.bz2
 bc759fc62666786f5436e2075beb3265  e2fsprogs-1.42.13.tar.gz
 b595bdc4474b8fc1a15cffc67c66025b  tzdata2015d.tar.gz
 2b958e9f5d200641e6fc9564977aecc5  nasm-2.11.06.tar.xz
-4df8ee253b7f3863ad0b86359cd39c43  gcc-4.9.2.tar.bz2
+d5525b1127d07d215960e6051c5da35e  gcc-5.1.0.tar.bz2
 9cb398828e8f84f57d1f7d5588cf40cd  glibc-2.21.tar.xz
 9a5997c3452909b1769918c759eff8a2  glibc-2.21-fhs-1.patch
 49b6306167724fe48f419a33a5beb857  tar-1.28.tar.xz
@@ -169,7 +169,11 @@ edb76ab11d78df7a5d5981807583acc2  btrfs-progs-v3.19.tar.xz
 c7ffc9a103afe2d1bba0b015e7aa887f  lzo-2.09.tar.gz
 8809465cd48a202895bc2a12e1923b5d  jfsutils-1.1.15.tar.gz
 44698d351501cac6a89072dc877eb220  mdadm-3.3.2.tar.xz
-d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz" > $LFS/sources/md5sums
+d1286b83d4844d5eac3e53a1ed772288  f2fs-tools-1.4.1.tar.gz
+d2e4455781a70140ae83b54ca594ce21  wget-1.16.3.tar.xz
+3dde01a4e90e399b5cdaf9f100b4fb9f  nilfs-utils-2.2.3.tar.bz2
+6fd5c2471e1fd3972fb23ac5dc1b77e3  libaal-1.0.6.tar.gz
+1fe5dce409277d8209ea28f32c6b199f  reiser4progs-1.0.9.tar.gz" > $LFS/sources/md5sums
 
 for i in `cat scripts/wget_nutyx_list`
 do 

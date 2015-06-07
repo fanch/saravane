@@ -87,6 +87,10 @@ rpcbind
 nfs-utils
 btrfs-progs
 jfsutils
+libaal
+reiser4progs
+nilfs-utils
+f2fs-tools
 git
 linux-firmware
 kernel
