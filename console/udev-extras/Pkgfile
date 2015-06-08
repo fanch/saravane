@@ -5,13 +5,13 @@
 
 name=udev-extras
 _name=eudev
-version=3.1
+version=3.1.1
 release=1
 
 source=(http://dev.gentoo.org/~blueness/eudev/${_name}-$version.tar.gz)
 build() {
 cd ${_name}-$version
-sed -r -i 's|/usr(/bin/test)|\1|'         test/udev-test.pl  
+sed -r -i 's|/usr(/bin/test)|\1|'    cards     test/udev-test.pl  
 
 ./configure --prefix=/usr --bindir=/sbin \
 --sbindir=/sbin --libdir=/usr/lib \
