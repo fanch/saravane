@@ -1,12 +1,12 @@
 # Description: The Perl package contains the Practical Extraction and Report Language. Perl was originally a language optimized for scanning arbitrary text files, extracting information from those text files, and printing reports based on that information.
 # URL: http://www.perl.org/
 # Packager: pierre at nutyx dot org
-name=perl
-version=5.20.2
-release=2
 
-source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2
-http://www.linuxfromscratch.org/patches/lfs/development/perl-5.20.2-gcc5_fixes-1.patch)
+name=perl
+version=5.22.0
+release=1
+
+source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2)
 
 build()
 {
@@ -22,7 +22,6 @@ echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
-patch -Np1 -i ../perl-5.20.2-gcc5_fixes-1.patch
 
 sh Configure -des  -Dusethreads \
 	-Dprefix=/usr -Duseshrplib -Dscriptdir=/usr/bin \
