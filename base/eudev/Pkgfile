@@ -4,7 +4,7 @@
 # Packager: tnut at nutyx dot org
 
 name=eudev
-version=3.1
+version=3.1.1
 release=1
 
 source=(http://dev.gentoo.org/~blueness/eudev/$name-$version.tar.gz
@@ -23,11 +23,11 @@ BLKID_LIBS='-lblkid' \
 --with-rootlibdir=/lib \
 --enable-split-usr \
 --enable-hwdb  \
---disable-introspection \
+--disable-introspection \cards
 --disable-gudev \
 --disable-static  \
 --config-cache   \
---disable-gtk-doc-html \
+--disable-gtk-doc-html \cards
 --with-firmware-path=/lib/firmware
 make
 mkdir -pv $PKG/lib/{firmware,udev/devices/pts}
