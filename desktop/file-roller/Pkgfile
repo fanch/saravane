@@ -1,0 +1,20 @@
+# Description: Create and modify archives
+# URL: http://www.gnome.org
+# Packager: fanch at nutyx dot org
+# Depends on: desktop-file-utils,gtk3,hicolor-icon-theme,dconf,libarchive,file,json-glib,libnotify,p7zip
+
+name=file-roller
+version=3.16.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+	 ./configure --prefix=/usr --sysconfdir=/etc \
+      --libexecdir=/usr/lib/file-roller \
+      --localstatedir=/var --disable-static \
+      --disable-schemas-compile
+	make
+	make DESTDIR=$PKG install
+}

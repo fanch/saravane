@@ -1,0 +1,24 @@
+# Description: The GNOME Bluetooth Subsystem.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/gnome-bluetooth/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: intltool, gnome-doc-utils, libnotify, gobject-introspection, nautilus-sendto, bluez, consolekit, obexd
+
+name=gnome-bluetooth
+version=3.16.1
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz 61-gnome-bluetooth-rfkill.rules)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-desktop-update \
+    --disable-icon-update \
+    --disable-schemas-compile
+make
+make DESTDIR=$PKG install
+install -m644 -D ../61-gnome-bluetooth-rfkill.rules \
+      $PKG/usr/lib/udev/rules.d//61-gnome-bluetooth-rfkill.rules
+}

@@ -1,20 +1,23 @@
 # Description: A library for bits of crypto UI and parsing
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
-# Depends on: icu gtk3 intltool libgcrypt libtasn1 p11-kit gobject-introspection desktop-file-utils 
+# Maintainer: git.gnome.org/browse/gcr/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: icu, gtk3, intltool, libgcrypt, libtasn1, p11-kit, gobject-introspection,desktop-file-utils
 
 name=gcr
-version=3.8.2
+version=3.15.92
 release=1
-
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz 10-gcr.conf)
 
 build() {
+unset MAKEFLAGS
 cd $name-$version
 ./configure --prefix=/usr \
---sysconfdir=/etc \
---libexecdir=/usr/lib/gnome-keyring
-make 
+    --libexec=/usr/lib/gcr \
+    --disable-static \
+    --disable-update-mime \
+    --disable-schemas-compile
+  make
 make DESTDIR=$PKG install
-rm -rf $PKG/usr/share/gtk-doc
+install -Dm644 ../10-gcr.conf $PKF/etc/security/limits.d/10-gcr.conf
 }

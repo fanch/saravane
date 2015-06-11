@@ -1,0 +1,19 @@
+# Description: Implementation of CPP. 
+# URL: http://mcpp.sourceforge.net/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: 
+# Run on: 
+
+name=mcpp
+version=2.7.2
+release=1
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz namlen.patch fs28284.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i $SRC/namlen.patch
+patch -Np1 -i $SRC/fs28284.patch
+./configure --prefix=/usr --enable-mcpplib --disable-static
+make
+make DESTDIR=$PKG install
+}

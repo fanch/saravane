@@ -1,0 +1,19 @@
+# Description: Library with common API for various GNOME modules.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/gnome-gnome/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: iso-codes, xorg-app,gtk3,docbook-xml, gnome-doc-utils, gsettings-desktop-schemas, gobject-introspection, startup-notification, yelp-xsl, xorg-xkeyboard-config
+
+name=gnome-desktop
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/$name \
+--localstatedir=/var --disable-static
+make
+make DESTDIR=$PKG install
+}

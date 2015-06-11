@@ -1,0 +1,18 @@
+# Description: Keyboard handling library using XKB data
+# URL: http://xkbcommon.org/
+# Packager: fanch at nutyx dot org
+# Depends on: xorg-xkeyboard-config glibc libxkbcommon
+
+name=libxkbcommon-x11
+_name=libxkbcommon
+version=0.5.0
+release=1
+
+source=(http://xkbcommon.org/download/${_name}-$version.tar.xz)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+mv x11/* $PKG
+}

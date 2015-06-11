@@ -1,0 +1,18 @@
+# Description: Prévisualisateur rapide pour Nautilus.
+# URL: http://git.gnome.org/sushi
+# Maintainer: NutyX core team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: clutter-gtk, clutter-gst, gjs, libmusicbrainz5, webkit, gtksourceview, evince, gobject-introspection
+
+name=sushi
+version=3.16.0
+release=1
+source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--libexecdir=/usr/lib/sushi
+	make
+	make DESTDIR=$PKG install
+}

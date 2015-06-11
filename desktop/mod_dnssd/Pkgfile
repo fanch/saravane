@@ -1,0 +1,19 @@
+# Description: Zeroconf module for Apache2.
+# URL: http://0pointer.de/lennart/projects/mod_dnssd
+# Packager: fanch at nutyx dot org
+# Depends on: avahi apache
+
+name=mod_dnssd
+version=0.6
+release=1
+
+source=(http://0pointer.de/lennart/projects/$name/${name}-${version}.tar.gz
+        fix_undefined_reference.patch)
+build() {
+cd ModemManager-$version
+patch -p1 < $SRC/fix_undefined_reference.patch
+ ./configure --prefix=/usr --disable-lynx
+make
+make DESTDIR=$PKG install
+install -D -m755 src/.libs/mod_dnssd.so ${PKG}/usr/lib/httpd/modules/mod_dnssd.so
+}

@@ -1,0 +1,17 @@
+# Description: X server ressource pour l'utilitaire de données. 
+# URL: http://xorg.freedesktop.org/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: xorg-libx11,xorg-libxmu,mcpp
+# Run on: xorg-util-macros
+
+name=xorg-xrdb
+version=1.1.0
+release=1
+source=(http://xorg.freedesktop.org/archive/individual/app/xrdb-$version.tar.bz2)
+
+build() {
+cd xrdb-$version
+./configure --prefix=/usr --with-cpp=/usr/bin/mcpp
+make
+make DESTDIR=$PKG install
+}

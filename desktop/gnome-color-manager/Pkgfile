@@ -1,0 +1,18 @@
+# Description: Color profile manager for the GNOME desktop
+# URL: http://www.gnome.org/
+# Maintainer: NutyX GNOME team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: libcanberra, libtiff, libexif, exiv2, vte3, clutter-gtk, colord, gnome-doc-utils, desktop-file-utils, gnome-desktop
+
+name=gnome-color-manager
+version=3.16.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+      --libexecdir=/usr/lib/$name --disable-static --disable-man-pages
+	make
+	make DESTDIR=$PKG install
+}

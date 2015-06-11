@@ -1,0 +1,20 @@
+# Description: Library tasked with managing, extracting and handling media art caches
+# URL: https://github.com/curlybeast/libmediaart
+# Packager: fanch at nutyx dot org
+# Depends on: gdk-pixbuf
+
+
+name=libmediaart
+version=1.9.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:3}/$name-$version.tar.xz)
+
+build() {
+ cd $name-$version
+ ./configure --prefix=/usr \
+ 	--disable-static --enable-gdkpixbuf --disable-qt
+  make
+  make DESTDIR=$PKG install
+
+
+}

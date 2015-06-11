@@ -1,0 +1,22 @@
+# Description: Fournit une base unifiée pour des programmes qui fonctionnent avec des informations de contacts, de tâches et de calendrier. Il était développé à l'origine pour Evolution (d'où le nom), mais il est maintenant utilisé aussi par d'autres paquets.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/browse/evolution-data-server/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: db, gnome-online-accounts, gperf, libgdata, libical, nss, libgweather, vala, gobject-introspection, kerberos
+
+
+name=evolution-data-server
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man --with-openldap=yes \
+--libexecdir=/usr/lib/evolution-data-server \
+--with-krb5=/usr --with-libdb=/usr \
+--enable-vala-bindings --disable-uoa
+make
+make DESTDIR=$PKG install
+}

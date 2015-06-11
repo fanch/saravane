@@ -1,0 +1,19 @@
+# Description: Simple scanning utility.
+# URL: https://launchpad.net/simple-scan/
+# Maintainer: N.A.
+# Packager: lesibel at free dot fr
+# Depends on: gtk3,colord,itstool,yelp,sane,dconf,intltool, gnome-doc-utils, xorg-libxcursor, xorg-libxdamage, xorg-libxrandr, xorg-libxinerama
+
+
+name=simple-scan
+version=3.16.1.1
+release=1
+source=(https://launchpad.net/$name/${version:0:4}/$version/+download/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--disable-schemas-compile
+	make
+	make DESTDIR=$PKG install
+}

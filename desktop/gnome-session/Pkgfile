@@ -1,0 +1,24 @@
+# Description: Contient le gestionnaire de session de GNOME.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/gnome-session/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: xorg-libsm, gconf, gtk3, json-glib, startup-notification, upower, xmlto, consolekit, gnome-desktop
+# Run on: xorg-libsm,gconf,gtk3,json-glib,startup-notification,upower,xmlto,consolekit,gtk-update-icon-cache,gnome-desktop
+
+name=gnome-session
+version=3.16.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz timeout.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../timeout.patch
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--libexecdir=/usr/lib/$name \
+--disable-schemas-compile \
+--disable-gconf
+make
+make DESTDIR=$PKG install
+} 

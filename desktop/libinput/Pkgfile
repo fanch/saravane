@@ -1,0 +1,16 @@
+# Description: libinput is a library that handles input devices for display servers and other applications that need to directly deal with input devices. 
+# URL: http://wayland.freedesktop.org/libinput
+# Packager: tnut at nutyx dot org
+# Depends: mtdev libevdev
+
+name=libinput
+version=0.10.0
+release=1
+
+source=( http://www.freedesktop.org/software/$name/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static 
+make
+make DESTDIR=$PKG install
+}

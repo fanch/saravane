@@ -1,0 +1,18 @@
+# Description: A GNOME web browser based on the WebKit rendering engine.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/epiphany/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: libwnck3, avahi, gcr, gnome-desktop, iso-codes, libgnome-keyring, libnotify, webkit, gobject-introspection, nss, xorg-libxkbfile, gnome-desktop
+
+name=epiphany
+version=3.16.1
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+ ./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --libexecdir=/usr/lib/$name
+make
+make DESTDIR=$PKG install
+}

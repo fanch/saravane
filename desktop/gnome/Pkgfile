@@ -1,0 +1,13 @@
+# Description: Gnome desktop.
+# URL: http://www.gnome.org
+# Maintainer: www.linuxfromscratch.org/blfs/view/svn/gnome/core.html
+# Packager: thierrny at hispeed dot ch
+# Depends on: dejavu-ttf, yelp, gnome-user-docs, caribou, gnome-terminal, gnome-clocks, evince, gnome-control-center, gnome-power-manager, gnome-keyring, gnome-video-effects, gnome-themes-standard, gnome-icon-theme-symbolic, gnome-icon-theme-extras, gnome-backgrounds, totem-pl-parser, gtksourceview, libpeas, dbus-python, notification-daemon, epiphany, network-manager-applet, gnome-shell-extensions, gnome-session, gnome-system-monitor, baobab
+
+name=gnome
+version=3.16.2
+release=1
+source=()
+build() {
+mkdir $PKG/usr
+}

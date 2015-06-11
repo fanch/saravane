@@ -1,0 +1,19 @@
+# Description: Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget
+# URL: http://gtkspell.sourceforge.net/
+# Maintainer: NuTyX Core team
+# Packager: fanch <fanch@nutyx.org>
+# Depends on: gtk3, enchant
+
+name=gtkspell
+_name=gtkspell3
+version=3.0.7
+release=1
+source=(http://gtkspell.sourceforge.net/download/${_name}-$version.tar.gz)
+
+build() {
+	cd ${_name}-$version
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+}
+  

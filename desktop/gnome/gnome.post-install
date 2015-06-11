@@ -1,0 +1,3 @@
+update-desktop-database
+sed -i "s/^id:[3-5]/id:5/" /etc/inittab
+sed -i "s/^\(Session=\).*$/\1gnome/g" /etc/skel/.dmrc

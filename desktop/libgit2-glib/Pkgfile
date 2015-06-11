@@ -1,0 +1,19 @@
+# Description: Collection de bibliothèque GObject
+# URL: http://wiki.gnome.org/Projects/Libgit2-glib
+# Maintainer: NutyX core team
+# Packager: fanch <fanch@nutyx.org>
+# Depends on: glib libgit2
+
+
+name=libgit2-glib
+version=0.22.8
+release=1
+source=(https://git.gnome.org/browse/libgit2-glib/snapshot/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	make 
+	make DESTDIR=$PKG install
+}

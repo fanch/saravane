@@ -1,0 +1,16 @@
+# De'_scription: Small library for playing system sounds
+# URL: https://wiki.gnome.org/Projects/GSound
+# Packager: fanch at nutyx dot org
+# Depends on: glib libcanberra
+
+name=gsound
+version=1.0.1
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-$version.tar.xz)
+build() {
+cd ${name}-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

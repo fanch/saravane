@@ -1,0 +1,21 @@
+# Description: GNOME application for managing PGP keys.
+# URL: http://www.gnome.org/
+# Maintainer: NuTyX GNOME team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: gnome-keyring, gpgme, libsoup, desktop-file-utils, openssh, gnome-doc-utils, gobject-introspection
+
+name=seahorse
+version=3.16.0
+release=1
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz seahorse-ssh-askpass.sh)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+      --enable-ldap --enable-hkp \
+      --disable-schemas-compile
+	make
+	make DESTDIR=$PKG install
+install -Dm755 $SRC/seahorse-ssh-askpass.sh \
+    $PKG/etc/profile.d/seahorse-ssh-askpass.sh
+}

@@ -1,0 +1,20 @@
+# Description: Common interface to speech synthesis
+# URL: http://devel.freebsoft.org/speechd/
+# Packager: fanch at nutyx dot org
+# Depends on: libsndfile intltool glib libxml2 dotconf
+
+name=speech-dispatcher
+version=0.8.2
+release=1
+source=(http://devel.freebsoft.org/pub/projects/speechd/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+  ./configure --prefix=/usr \
+              --with-alsa \
+              --disable-nls \
+              --disable-python
+  make
+  make DESTDIR=$PKG install
+}

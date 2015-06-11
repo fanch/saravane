@@ -1,0 +1,18 @@
+# Description: Editeur de menu pour GNOME, qui utilise la spécification de menu de freedesktop.org. 
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/alacarte/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: gnome-menus, python-gobject
+# Run on: gnome-menus,python-gobject
+
+name=alacarte
+version=3.11.91
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

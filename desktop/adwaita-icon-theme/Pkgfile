@@ -1,0 +1,17 @@
+# Description: Adwaita icon theme. 
+# URL: http://www.gnome.org/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: hicolor-icon-theme,gtk-update-icon-cache librsvg
+
+
+name=adwaita-icon-theme
+version=3.16.2.1
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

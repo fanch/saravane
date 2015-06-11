@@ -1,0 +1,21 @@
+# Description: GNOME file manager.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/nautilus/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: libnotify, gnome-desktop, shared-mime-info, gobject-introspection, exempi, libexif, gvfs, gtk-update-icon-cache, desktop-file-utils
+
+name=nautilus
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+--libexecdir=/usr/lib/$name --disable-nst-extension \
+--disable-packagekit --disable-tracker --disable-update-mimedb \
+--disable-schemas-compile
+make
+make DESTDIR=$PKG install
+find $PKG/usr/share/mime/ -maxdepth 1 -type f -print | xargs rm -f
+}

@@ -1,0 +1,18 @@
+# Description: Visual diff and merge tool.
+# URL: http://meld.sourceforge.net/
+# Maintainer: NuTyX GNOME team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: python-gtk,rarian
+
+
+name=meld
+version=3.12.3
+release=1
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	python2 setup.py build
+	python2 setup.py --no-update-icon-cache --no-compile-schemas \
+    install --prefix=/usr --root=$PKG --optimize=1
+}

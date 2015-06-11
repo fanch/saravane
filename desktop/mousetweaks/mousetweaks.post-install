@@ -1,0 +1,7 @@
+/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
+
+if (( $(vercmp $2 2.90.0) < 0 )); then
+    /usr/sbin/gconfpkg --uninstall mousetweaks
+  fi
+
+

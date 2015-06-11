@@ -1,0 +1,18 @@
+# Description: User documentation for GNOME.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/gnome-user-docs/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: gnome-doc-utils, yelp-xsl
+
+name=gnome-user-docs
+version=3.16.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

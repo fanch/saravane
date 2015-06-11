@@ -1,0 +1,20 @@
+# Description: Librairies de gnome libgnomeui
+# URL: http://www.gnome.org/
+# Maintainer: NuTyX GNOME team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: gtk3, perl-xml-parser, gconf, gnome-doc-utils
+
+
+name=gucharmap
+version=3.16.2
+release=1
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static \
+      --disable-schemas-compile  --enable-introspection
+        make
+        make DESTDIR=$PKG install
+}

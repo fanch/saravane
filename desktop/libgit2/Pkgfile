@@ -1,0 +1,32 @@
+# Description: A linkable library for Git
+# URL: https://libgit2.github.com/
+# Maintainer: NutyX core team
+# Packager: fanch <fanch@nutyx.org>
+# Depends on: zlib openssl libssh2
+
+
+name=libgit2
+version=0.22.6
+release=1
+source=()
+_gitroot=https://github.com/libgit2/libgit2.git
+_gitname=libgit2
+build() {
+	cd $SRC
+if [[ -d $_gitname ]]; then
+		cd $_gitname && git pull origin
+	else
+		git clone $_gitroot $_gitname
+	fi
+
+
+	rm -rf $SRC/$_gitname-build
+	git clone $SRC/$_gitname $SRC/$_gitname-build
+	cd $SRC/$_gitname-build	
+	export LANG=en_US.UTF-8
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON
+	make
+	make DESTDIR=$PKG install
+}
+
+

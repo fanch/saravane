@@ -1,16 +1,24 @@
-# Description: A configuration database system
+# Description: Contient un système de base de données de configuration utilisé par beaucoup des applications GNOME. 
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
-# Depends on: dbus-glib intltool libxml2 gobject-introspection gtk3 polkit 
+# Maintainer: git.gnome.org/browse/gconf/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: dbus-glib, intltool, libxml2, gobject-introspection, gtk3, polkit
+# Run on: dbus-glib,intltool,libxml2,gobject-introspection,gtk3,polkit
 
 name=gconf
 version=3.2.6
 release=1
-
-source=(http://ftp.gnome.org/pub/gnome/sources/GConf/${version%.*}/GConf-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-$version.tar.xz
+gconf-merge-schema
+        gconfpkg
+        gconf-reload.patch
+        01_xml-gettext-domain.patch)
 
 build() {
 cd GConf-$version
+patch -Np1 -i $SRC/gconf-reload.patch
+patch -Np1 -i $SRC/01_xml-gettext-domain.patch
+sed -i '1s|#!/usr/bin/env python$|&2|' gsettings/gsettings-schema-convert
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --disable-static \
@@ -19,6 +27,7 @@ cd GConf-$version
 --disable-orbit
 make 
 make DESTDIR=$PKG install
-rm -rf $PKG/usr/share/gtk-doc
-ln -s gconf.xml.defaults $PKG/etc/gconf/gconf.xml.system
+install -m755 -d $PKG/etc/gconf/gconf.xml.system
+  install -m755 $SRC/gconf-merge-schema $PKG/usr/bin/
+  install -m755 $SRC/gconfpkg $PKG/usr/bin/gconfpkg
 }

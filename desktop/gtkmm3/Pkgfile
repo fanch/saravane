@@ -1,0 +1,16 @@
+# Description: C++ bindings for gtk2
+# URL: http://gtkmm.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk pangomm cairomm atkmm 
+name=gtkmm3
+_name=gtkmm
+version=3.16.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.xz)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

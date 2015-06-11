@@ -1,0 +1,22 @@
+# Description: Plugins for gedit
+# URL: http://live.gnome.org/GeditPlugins 
+# Maintainer: NuTyX GNOME team
+# Packager: zatmania at gotofreedom dot org 
+# Depends on: gedit, gtksourceview, gucharmap, vte3
+
+name=gedit-plugins
+version=3.16.0
+release=1
+source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--with-plugins=all \
+		--disable-schemas-compile
+	make
+	make DESTDIR=$PKG install
+}
+

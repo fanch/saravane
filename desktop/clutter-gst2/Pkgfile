@@ -1,0 +1,19 @@
+# Description: GStreamer bindings for clutter
+# Maintainer: NutyX core team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: gtk3, clutter, gstreamer1-plugins-base, gobject-introspection
+
+name=clutter-gst2
+_name=clutter-gst
+version=2.0.14
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

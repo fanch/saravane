@@ -1,0 +1,17 @@
+# Description: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs.
+# URL: http://www.gnome.org
+# Packager: fanch at nutyx dot org
+# Depends on: libsoup gnome-online-accounts
+
+name=libzapojit
+version=0.0.3
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:3}/$name-$version.tar.xz)
+
+build() {
+cd ${name}-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

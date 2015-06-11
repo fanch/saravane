@@ -1,0 +1,19 @@
+# Description:Modular geoinformation service built on the D-Bus messaging system
+# URL: https://launchpad.net/geoclue/
+# Maintainer: cgit.freedesktop.org/geoclue
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: libsoup, json-glib,modemmanager
+# Run on: libsoup, json-glib
+
+name=geoclue2
+version=2.2.0
+release=1
+source=(http://freedesktop.org/software/geoclue/releases/${version:0:3}/geoclue-$version.tar.xz)
+
+build() {
+cd geoclue-$version
+ ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --libexecdir=/usr/lib/$name --disable-static
+make
+make DESTDIR=$PKG install
+} 

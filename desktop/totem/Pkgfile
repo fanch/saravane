@@ -1,0 +1,22 @@
+# Description: GNOME3 movie player based on GStreamer.
+# URL: http://www.gnome.org/projects/totem/
+# Maintainer: NuTyX GNOME team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: grilo,libpeas,python-gobject,gnome-icon-theme,iso-codes,gnome-doc-utils,python-xdg,clutter-gst,clutter-gtk,xorg-libsm,libpeas,python-gobject,libgdata,gstreamer1-plugins-good,gstreamer1-plugins-bad,totem-pl-parser,nautilus
+
+name=totem
+version=3.16.1
+release=1
+source=(http://pub.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/totem \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-python \
+    --enable-nautilus
+make
+make DESTDIR=$PKG install
+}

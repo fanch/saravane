@@ -1,0 +1,32 @@
+# Description: An iTunes-like music playback and management application
+# URL: http://www.rhythmbox.org
+# Maintainer: NuTyX GNOME team
+# Packager: fanch at nutyx dot org
+# Depends on: libsoup,totem-pl-parser,libmtp,libnotify,desktop-file-utils,gstreamer-plugins-base,gstreamer-plugins-good,python-gtk,gvfs,hicolor-icon-theme,tdb
+
+name=rhythmbox
+version=3.2.1
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib/rhythmbox \
+		--localstatedir=/var \
+		--disable-schemas-compile \
+		--disable-schemas-install \
+		--disable-scrollkeeper \
+		--enable-python=yes \
+		--enable-vala \
+		--enable-browser-plugin \
+		--enable-musicbrainz \
+		--with-gudev \
+		--with-mtp \
+		--with-gnome-keyring \
+		--with-brasero \
+		--with-webkit
+	make
+	make DESTDIR=$PKG install
+}

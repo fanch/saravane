@@ -1,0 +1,17 @@
+# Description: Seveur d'accès au contrôle des programmes pour X. 
+# URL: http://xorg.freedesktop.org/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: xorg-libxmu,xorg-libx11
+# Run on: xorg-util-macros
+
+name=xorg-xhost
+version=1.0.6
+release=1
+source=(http://xorg.freedesktop.org/archive/individual/app/xhost-$version.tar.bz2)
+
+build() {
+cd xhost-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

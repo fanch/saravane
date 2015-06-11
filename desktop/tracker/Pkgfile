@@ -1,0 +1,28 @@
+# Description: semantic data storage.
+# URL:        http://www.gnome.org
+# Packager:  fanch at nutyx dot org
+# Depends on: dbus exempi libgee gdk-pixbuf glib gnome-keyring gobject-introspection gstreamer-plugins-base gtk3 icu libjpeg-turbo libexif libgsf libmediaart libosinfo libpng networkmanager pango poppler python sqlite libtiff totem-pl-parser upower util-linux vala zlib		
+
+name=tracker
+version=1.4.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build(){
+	cd $name-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/tracker \
+    --disable-unit-tests \
+    --enable-libflac \
+    --enable-libvorbis
+make
+   make DESTDIR=$PKG install
+
+  make DESTDIR=$PKG      -C src/libtracker-sparql uninstall
+  make DESTDIR=$PKG      -C src/libtracker-sparql-backend uninstall
+  make DESTDIR=$PKG      -C src/libtracker-data uninstall-libtracker_dataLTLIBRARIES
+  make DESTDIR=$PKG      -C src/libtracker-common uninstall-libtracker_commonLTLIBRARIES
+}

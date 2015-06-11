@@ -1,0 +1,20 @@
+# Description: a VNC server for the GNOME desktop
+# Maintainer: NuTyX GNOME team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: gconf, libsoup, telepathy-glib, desktop-file-utils
+
+
+name=vino
+version=3.16.0
+release=1
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+      --libexecdir=/usr/lib/vino \
+      --localstatedir=/var \
+      --disable-http-server --with-secret
+	make
+	make DESTDIR=$PKG install
+}

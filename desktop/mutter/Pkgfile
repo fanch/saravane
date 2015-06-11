@@ -1,0 +1,20 @@
+# Description: A window manager for GNOME.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/mutter/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: xorg-libxinerama, clutter, gnome-doc-utils, gobject-introspection, gtk3, libcanberra, startup-notification, zenity, gsettings-desktop-schemas, libxkbcommon
+
+name=mutter
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+      --libexecdir=/usr/lib/mutter \
+      --localstatedir=/var --disable-static \
+      --disable-schemas-compile --enable-compile-warnings=minimum
+make
+make DESTDIR=$PKG install
+}

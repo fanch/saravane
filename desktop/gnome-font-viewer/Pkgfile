@@ -1,0 +1,18 @@
+# Description: GNOME font viewer and thumbnailer.
+# URL: http://live.gnome.org/GnomeUtils
+# Maintainer: NuTyX GNOME team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: gtk3, freetype
+
+
+name=gnome-font-viewer
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr 
+	make
+	make DESTDIR=$PKG install
+}

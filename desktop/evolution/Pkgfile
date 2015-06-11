@@ -1,0 +1,28 @@
+# Description: Manage your email, contacts and schedule.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/evolution/
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: bogofilter, evolution-data-server, gnome-desktop, gnome-icon-theme, shared-mime-info, gstreamer1, libcanberra, libgweather, libcryptui, gtkspell, highlight, libpst
+
+name=evolution
+version=3.16.2
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var \
+      --libexecdir=/usr/lib \
+      --enable-nss=yes \
+      --with-openldap=yes \
+      --enable-smime=yes \
+      --disable-schemas-compile \
+      --disable-autoar
+make
+make DESTDIR=$PKG install
+mkdir ../plugins
+  mv "$PKG/usr/lib/evolution/modules/module-bogofilter.so" ../plugins/
+  mv "$PKG/usr/lib/evolution/modules/module-spamassassin.so" ../plugins/
+  mv "$PKG/usr/share/appdata/evolution-bogofilter.metainfo.xml" ../plugins/
+  mv "$PKG/usr/share/appdata/evolution-spamassassin.metainfo.xml" ../plugins/
+}

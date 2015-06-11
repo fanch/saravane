@@ -1,0 +1,19 @@
+# Description: Library and interpreter for JavaScript with GObject type system bindings.
+# URL: http://live.gnome.org/Seed/
+# Packager: fanch at nutyx dot org
+# Depends on: webkit gobject-introspection gnome-js-common mpfr
+
+name=seed
+version=3.8.1
+release=1
+source=(http://ftp.gnome.org/pub/GNOME/sources/${name}/3.8/${name}-${version}.tar.xz
+        GLib.js rl63.patch)
+
+build() {
+	cd $name-$version
+	patch -p1 -i $SRC/rl63.patch 
+  cp $SRC/GLib.js extensions/
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+}

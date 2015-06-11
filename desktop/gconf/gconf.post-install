@@ -1,2 +1,11 @@
-chmod 755 /etc/gconf/gconf.xml.system
-/usr/bin/gio-querymodules /usr/lib/gio/modules
+ldconfig -r .
+  chmod 755 etc/gconf/gconf.xml.system
+  usr/bin/gio-querymodules usr/lib/gio/modules
+
+ldconfig -r .
+  chmod 755 etc/gconf/gconf.xml.system
+  usr/bin/gio-querymodules usr/lib/gio/modules
+
+  pkill /usr/lib/GConf/gconfd-2 || return 0
+
+  usr/bin/gio-querymodules usr/lib/gio/modules
