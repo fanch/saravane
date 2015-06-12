@@ -5,8 +5,8 @@
 run=( xdg-utils )
 PKGMK_GROUPS=(man devel)
 name=cups
-version=2.0.2
-release=2
+version=2.0.3
+release=1
 
 source=( http://cups.org/software/$version/cups-$version-source.tar.gz)
 
@@ -15,11 +15,10 @@ build() {
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
         tar xvf $scripts-$scriptsversion.tar.bz2
 	cd $name-$version
-	sed -i 's:555:755:g;s:444:644:g' Makedefs.in
-	sed -i '/MAN.*.EXT/s:.gz::g' \
-	configure config-scripts/cups-manpages.m4
-	sed -i '/LIBGCRYPTCONFIG/d' config-scripts/cups-ssl.m4
-	aclocal -I config-scripts
+	sed -i 's:555:755:g;s:444:644:g' Makedefs.in                                  
+	sed -i '/MAN.EXT/s:.gz::g' configure config-scripts/cups-manpages.m4          
+	sed -i '/LIBGCRYPTCONFIG/d' config-scripts/cups-ssl.m4                        
+	sed -i 's@else /\* HAVE_AVAHI \*/@elif defined(HAVE_AVAHI)@' test/ippserver.c 
 	autoconf -I config-scripts
 	./configure --libdir=/usr/lib \
 		--disable-systemd \
