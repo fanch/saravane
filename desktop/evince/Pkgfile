@@ -5,7 +5,7 @@
 # Depends on: gtk3, gnome-icon-theme, gsettings-desktop-schemas, yelp-xsl, gobject-introspection, libgnome-keyring, nautilus, poppler-glib,adwaita-icon-theme
 
 name=evince
-version=3.16.0
+version=3.16.1
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
