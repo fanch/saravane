@@ -1,5 +1,5 @@
 version=5.22.0
-source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.gz
+source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.bz2
 	)
 build()
 {
