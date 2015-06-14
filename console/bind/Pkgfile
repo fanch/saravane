@@ -3,10 +3,11 @@
 # Packager: tnut at nutyx dot org
 # Depends on: kerberos libxml2 
 name=bind
-version=9.10.2
+version=9.10.2-P1
 release=1
 
-source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
+source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz
+ http://www.linuxfromscratch.org/patches/blfs/svn/bind-9.10.2-P1-use_iproute2-1.patch)
 
 build(){
     # blfs-bootscript
@@ -16,6 +17,7 @@ build(){
 
     # pkg
     cd $name-$version
+    patch -Np1 -i ../bind-9.10.2-P1-use_iproute2-1.patch
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
@@ -29,7 +31,7 @@ build(){
 	make -C lib/lwres &&
 	make -C bin/dig
 	make DESTDIR=$PKG -C bin/dig install
-
+	chmod -v 0755 $PKG/usr/lib/lib{bind9,dns,isc{,cc,cfg},lwres}.so
     # doc
     install -v -m755 -d $PKG/usr/share/doc/bind-$version/{arm,misc} &&
     install -v -m644 doc/arm/*.html \
