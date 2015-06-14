@@ -3,13 +3,14 @@
 # Packager: pierre at nutyx dot org
 # Depends on: pth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl 
 name=gnupg
-version=2.0.26
+version=2.1.5
 release=1
 
 source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
 
 build() {
 cd gnupg-$version
+    
 ./configure --prefix=/usr \
 --enable-symcryptrun \
 --docdir=/usr/share/doc/gnupg-$version
