@@ -4,7 +4,7 @@
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
 
 name=bluez
-version=5.30
+version=5.31
 release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
@@ -17,32 +17,19 @@ tar xvf $scripts-$scriptsversion.tar.bz2
 cd $name-$version
 patch -Np1 -i ../$name-$version-obexd_without_systemd-1.patch
 
-./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/lib \
-    --disable-systemd \
-    --enable-gstreamer \
-    --enable-alsa \
-    --enable-usb \
-    --enable-tools \
-    --enable-bccmd \
-    --enable-dfutool \
-    --enable-hid2hci \
-    --enable-hidd \
-    --enable-pand \
-    --enable-dund \
-    --enable-cups \
-    --disable-test \
-    --enable-library \
-    --without-systemdunitdir
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --localstatedir=/var  \
+            --enable-library      \
+            --disable-systemd 
 make
 make DESTDIR=$PKG install
 
 install -v -dm755 $PKG/{etc/bluetooth,usr/sbin}
 
 ln -svf ../libexec/bluetooth/bluetoothd $PKG/usr/sbin
-
+install -v -dm755 /etc/bluetooth 
+install -v -m644 src/main.conf $PKG/etc/bluetooth/main.conf
 
 cat > $PKG/etc/bluetooth/rfcomm.conf << "EOF"
 # rfcomm.conf
