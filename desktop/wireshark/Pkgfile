@@ -4,13 +4,14 @@
 # Depends on: gtk3 libpcap pcre
 
 name=wireshark
-version=1.12.5
+version=1.12.6
 release=1
-source=(http://www.$name.org/download/src/all-versions/$name-$version.tar.bz2)
+source=(http://www.$name.org/download/src/all-versions/$name-$version.tar.bz2
+ http://www.linuxfromscratch.org/patches/blfs/svn/wireshark-1.12.6-lua_5_3_0-1.patch)
 
 build() {
   cd $name-$version
-
+patch -Np1 -i ../wireshark-1.12.6-lua_5_3_0-1.patch
   ./configure --prefix=/usr \
               --mandir=/usr/man \
               --with-plugins=/usr/lib/$name/plugins \
