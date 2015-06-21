@@ -1,0 +1,19 @@
+# Description: The base MIME and Application database for GNOME
+# URL: http://www.gnome.org/
+# Packager: fanch at nutyx dot org
+# Depends on: shared-mime-info
+
+name=gnome-vfs
+version=2.18.0
+release=1
+source=(ftp://ftp.gnome.org/pub/gnome/sources/${name}/2.18/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	make
+	make DESTDIR=$PKG install
+
+  install -m755 -d ${PKG}/usr/lib
+  mv ${PKG}/usr/share/pkgconfig ${PKG}/usr/lib/
+}
