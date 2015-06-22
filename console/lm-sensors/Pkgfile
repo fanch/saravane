@@ -7,14 +7,18 @@ name=lm-sensors
 version=3.3.5
 release=1
 
-source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2)
+source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2
+ http://www.linuxfromscratch.org/patches/blfs/svn/lm_sensors-3.3.5-upstream_fixes-1.patch)
 
 build() {
 	cd lm_sensors-$version
+	patch -Np1 -i ../lm_sensors-$version-upstream_fixes-1.patch
+	make PREFIX=/usr        \
+     BUILD_STATIC_LIB=0 \
+     MANDIR=/usr/share/man install
 	make
 	make user_install PREFIX=/usr DESTDIR=$PKG
-	mkdir -p $PKG/usr/share/man
-	mv $PKG/usr/man $PKG/usr/share/man
-	rm -rf $PKG/usr/lib/libsensors.a
-	rm -rf $PKG/usr/include/linux
+	install -v -m755 -d $PKG/usr/share/doc/lm_sensors-$version
+	cp -rv  README INSTALL doc/* \
+                    $PKG/usr/share/doc/lm_sensors-$version
 }
