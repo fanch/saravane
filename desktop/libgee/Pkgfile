@@ -1,0 +1,19 @@
+# Description: GObject collection library.
+# URL: http://live.gnome.org/Libgee
+# Maintainer: NutyX core team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: glib, gobject-introspection
+# Run on: glib
+
+name=libgee
+version=0.18.0
+release=1
+
+source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+}
