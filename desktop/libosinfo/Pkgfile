@@ -1,0 +1,20 @@
+# Description: The Operating System information database
+# URL: http://libosinfo.org
+# Packager: fanch at nutyx dot org
+# Depends on: libsoup check
+
+
+name=libosinfo
+version=0.2.12
+release=1
+source=(https://fedorahosted.org/releases/l/i/libosinfo/libosinfo-0.2.12.tar.gz)
+
+build() {
+ cd $name-$version
+ ./configure --prefix=/usr \
+ 	--disable-nls
+  make
+  make DESTDIR=$PKG install
+
+
+}
