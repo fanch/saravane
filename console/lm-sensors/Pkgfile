@@ -1,18 +1,16 @@
 # Description: Collection of user space tools for general SMBus access and hardware monitoring
 # URL: http://dl.lm-sensors.org/lm-sensors/
 # Packager: pierre at nutyx dot org
-# Depends on: 
+# Depends on: which rrdtool
 
 name=lm-sensors
-version=3.3.5
+version=3.4.0
 release=1
 
-source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2
- http://www.linuxfromscratch.org/patches/blfs/svn/lm_sensors-3.3.5-upstream_fixes-1.patch)
+source=(http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-$version.tar.bz2)
 
 build() {
 	cd lm_sensors-$version
-	patch -Np1 -i ../lm_sensors-$version-upstream_fixes-1.patch
 	make PREFIX=/usr        \
      BUILD_STATIC_LIB=0 \
      MANDIR=/usr/share/man install
