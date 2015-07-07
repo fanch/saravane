@@ -5,7 +5,7 @@
 run=( python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd )
 
 name=wicd
-version=1.7.2.4
+version=1.7.3
 release=1
 
 source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
@@ -14,7 +14,10 @@ build() {
 unset MAKEFLAGS
 cd $name-$version
 patch -Np0 -i ../dbus_string_fix.patch
-sed -i '/wpath.logrotate\|wpath.systemd/d' setup.py
+	sed -e "/wpath.logrotate\|wpath.systemd/d" \
+    -e "/detection failed/ a\                self.init=\'init\/default\/wicd\'" \
+    -i setup.py                                     
+	rm po/*.po                                          
 python setup.py configure --no-install-kde \
                           --no-install-acpi \
                           --no-install-pmutils \

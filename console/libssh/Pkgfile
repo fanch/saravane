@@ -4,10 +4,10 @@
 # Depends on: doxygen 
 
 name=libssh
-version=0.6.3
+version=0.7.0
 release=1
 
-source=( https://red.libssh.org/attachments/download/87/$name-$version.tar.xz)
+source=( https://red.libssh.org/attachments/download/140/$name-$version.tar.xz)
 	
 build() {
 	mkdir build

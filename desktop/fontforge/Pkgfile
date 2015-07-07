@@ -4,17 +4,20 @@
 # Depends on: xorg-libxi libxml2 pango giflib libtiff 
 
 name=fontforge
-version=20141126
+version=20150612
 release=1
 
-source=(https://github.com/fontforge/fontforge/releases/download/${version}/fontforge-2014-11-26-Unix-Source.tar.gz)
+source=(https://github.com/fontforge/fontforge/releases/download/${version}/fontforge-20150612.tar.gz)
 
 build() {
 	cd $name-$version
-	./bootstrap
-	./configure --prefix=/usr    \
-            --disable-static \
-            --docdir=/usr/share/doc/fontforge-$version
+	rm -rf libltdl 
+	rm m4/argz.m4  
+	./bootstrap    
+	./configure --prefix=/usr     \
+            --enable-gtk2-use \
+            --disable-static  \
+            --docdir=/usr/share/doc/$version
 	make
 	make DESTDIR=$PKG install
 }

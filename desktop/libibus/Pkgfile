@@ -1,0 +1,31 @@
+# Description: Collection de bibliothèque GObject
+# URL: http://live.gnome.org/Libgee
+# Maintainer: NutyX core team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: dconf gtk gtk3 hicolor-icon-theme libnotify dbus-python python-gobject iso-codes python-gobject2 python-gobject librsvg 
+# Run on: gobject-introspection vala intltool git gnome-common gtk-doc gconf
+
+name=libibus
+version=1.5.5
+release=1
+
+source=(https://ibus.googlecode.com/files/ibus-$version.tar.gz)
+
+build() {
+	cd ibus-$version
+	./autogen.sh \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/ibus \
+    --sysconfdir=/etc \
+    --disable-gconf \
+    --enable-dconf \
+    --enable-gtk-doc \
+    --disable-memconf \
+    --enable-ui \
+    --enable-python-library \
+    --with-python=python3
+  make
+make -C src DESTDIR="${PKG}" install
+  make -C bindings DESTDIR="${PKG}" install
+  make DESTDIR="${PKG}" install-pkgconfigDATA
+}

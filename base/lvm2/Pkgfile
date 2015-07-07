@@ -3,7 +3,11 @@
 # Packager: pierre at nutyx dot org 
 
 name=lvm2
+<<<<<<< HEAD
 version=2.02.124
+=======
+version=2.02.122
+>>>>>>> fafb9b02ef9de6bc752c45ac208b87e4e58a86b1
 release=1
 
 source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
