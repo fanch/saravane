@@ -3,16 +3,16 @@
 # Packagers: alienus at nutyx dot org, tnut at nutyx dot org
 
 name=btrfs-progs
-version=3.19
+version=4.1
 release=1
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz \
+        http://downloads.nutyx.org/files/$name-man-v$version.tar.xz))
 
-source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz
-	http://downloads.nutyx.org/files/$name-man-v$version.tar.xz)
-
-build(){
-cd $name-v$version
-./configure --prefix=/usr libdir=/lib \
-bindir=/sbin
-make
-make DESTDIR=$PKG install
+build() {
+    cd $name-v$version
+    ./configure --prefix=/usr --mandir=/usr/man --bindir=/sbin
+    make
+    make DESTDIR=$PKG install
+    mv $PKG/usr/share/man $PKG/usr/man
+    rm -r $PKG/usr/share
 }
