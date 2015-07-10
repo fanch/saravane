@@ -15,7 +15,7 @@ cd iproute2-$version
 sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
 sed -i /ARPD/d Makefile
 sed -i 's/arpd.8//' man/man8/Makefile
-
+sed -i 's/tipc //' Makefile
 make SBINDIR=/sbin MANDIR=/usr/share/man INFODIR=/usr/share/info \
 	DESTDIR=$PKG 
 make SBINDIR=/sbin MANDIR=/usr/share/man \
