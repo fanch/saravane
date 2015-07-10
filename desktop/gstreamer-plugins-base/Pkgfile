@@ -7,13 +7,10 @@ name=gstreamer-plugins-base
 version=0.10.36
 release=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/blfs/svn/gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch)
+source=(http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz)
 
 build() {
 cd gst-plugins-base-$version
-
-[ "`uname -m`" == "i686" ] && patch -Np1 -i ../gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
