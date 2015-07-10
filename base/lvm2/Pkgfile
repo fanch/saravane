@@ -6,7 +6,7 @@ name=lvm2
 version=2.02.124
 release=1
 
-source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
+source=(ftp://sources.redhat.com/pub/lvm2/releases/LVM2.$version.tgz)
 build() {
 cd LVM2.$version
 ./configure \
