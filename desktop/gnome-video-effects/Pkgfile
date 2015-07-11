@@ -2,7 +2,7 @@
 # URL: http://www.gnome.org/
 # Maintainer: git.gnome.org/brownse/gnome-terminal/
 # Packager: thierryn1 at hispeed dot ch
-# Depends on: 
+# Depends on: intltool
 
 name=gnome-video-effects
 version=0.4.1

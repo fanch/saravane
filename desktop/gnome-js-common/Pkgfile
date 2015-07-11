@@ -1,7 +1,7 @@
 # Description:GNOME JavaScript common modules.
 # URL: http://live.gnome.org/Seed/
 # Packager: fanch at nutyx dot org
-# Depends on: 
+# Depends on: intltool
 
 name=gnome-js-common
 version=0.1.2

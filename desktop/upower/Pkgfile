@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 # Depends on: dbus-glib libusb intltool polkit gobject-introspection udev-extras 
 name=upower
-version=0.99.2
+version=0.99.3
 release=1
 
 source=(http://upower.freedesktop.org/releases/$name-$version.tar.xz)

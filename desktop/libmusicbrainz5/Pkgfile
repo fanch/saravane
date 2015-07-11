@@ -1,0 +1,25 @@
+# Description: Library That Provides Access to the MusicBrainz Server
+# URL: http://musicbrainz.org/doc/libmusicbrainz
+# Packager: pierre at nutyx dot org
+# Depends on: expat neon 
+
+name=libmusicbrainz5
+_name=libmusicbrainz
+version=5.1.0
+release=1
+
+source=( https://github.com/downloads/metabrainz/libmusicbrainz/${_name}-$version.tar.gz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/${_name}-$version-build_system-1.patch)
+
+build() {
+	cd ${_name}-$version
+	patch -Np1 -i ../libmusicbrainz-5.0.1-build_system-1.patch
+	mkdir build
+  	cd build
+  	cmake .. \
+      		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+      		-DBUILD_SHARED_LIBS:BOOL=ON \
+      		-DBUILD_STATIC_LIBS:BOOL=OFF
+  	make
+	make DESTDIR=$PKG install
+}

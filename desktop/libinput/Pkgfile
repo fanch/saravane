@@ -4,12 +4,13 @@
 # Depends: mtdev libevdev
 
 name=libinput
-version=0.10.0
+version=0.17.0
 release=1
 
 source=( http://www.freedesktop.org/software/$name/$name-$version.tar.xz)
 build() {
 cd $name-$version
+patch -Np1 -i ../0001-filter-require-minimum-acceleration-factor-of-0.3.patch
 ./configure --prefix=/usr --disable-static 
 make
 make DESTDIR=$PKG install

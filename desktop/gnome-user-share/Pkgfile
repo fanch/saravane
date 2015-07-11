@@ -2,7 +2,7 @@
 # URL: http://www.gnome.org/
 # Maintainer: git.gnome.org/brownse/gnome-user-share/
 # Packager: thierryn1 at hispeed dot ch
-# Depends on: gconf, gnome-bluetooth, libcanberra, nautilus, mod-dnssd
+# Depends on: gconf, gnome-bluetooth, libcanberra, nautilus, mod_dnssd
 
 name=gnome-user-share
 version=3.14.2
