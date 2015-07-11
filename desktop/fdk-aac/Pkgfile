@@ -1,0 +1,17 @@
+# Description: fdk-aac package provides the Fraunhofer FDK AAC library, which is purported to be a high quality Advanced Audio Coding implementation. 
+# URL:  http://wiki.linuxfromscratch.org/blfs/wiki/fdk-aac
+# Packager: fanch at nutyx dot org
+# Depends on: 
+
+name=fdk-aac
+version=0.1.4
+release=1
+
+source=( http://downloads.sourceforge.net/opencore-amr/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}
