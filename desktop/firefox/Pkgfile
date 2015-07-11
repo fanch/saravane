@@ -5,7 +5,7 @@
 
 
 name=firefox
-version=38.0.6
+version=39.0
 release=1
 
 source=(ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.bz2)
@@ -101,7 +101,7 @@ ac_add_options --with-system-zlib
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
-test $(uname -m) = "i686" && sed -i '/^ftglyph.h/ i ftfntfmt.h' config/system-headers
+test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
 
 SHELL=/bin/sh  make -f client.mk build
 
