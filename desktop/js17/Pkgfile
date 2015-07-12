@@ -18,8 +18,8 @@ sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
             --with-system-nspr
   make
 make DESTDIR=$PKG install
-find /usr/include/js-17.0/            \
-     /usr/lib/libmozjs-17.0.a         \
-     /usr/lib/pkgconfig/mozjs-17.0.pc \
+find $PKG/usr/include/js-17.0/            \
+     $PKG/usr/lib/libmozjs-17.0.a         \
+     $PKG/usr/lib/pkgconfig/mozjs-17.0.pc \
      -type f -exec chmod -v 644 {} \;
 }
