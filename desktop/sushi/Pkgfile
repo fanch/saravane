@@ -2,7 +2,7 @@
 # URL: http://git.gnome.org/sushi
 # Maintainer: NutyX core team
 # Packager: piernov <piernov@piernov.org>
-# Depends on: clutter-gtk, clutter-gst, gjs, libmusicbrainz5, webkit, gtksourceview, evince, gobject-introspection
+# Depends on: clutter-gtk, clutter-gst, gjs, libmusicbrainz, webkit, gtksourceview, evince, gobject-introspection
 
 name=sushi
 version=3.16.0
