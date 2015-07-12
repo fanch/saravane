@@ -1,0 +1,18 @@
+# Description: A utility to show the full path of commands.
+# URL: http://savannah.gnu.org/projects/which
+# Packager: fanch at nutyx dot org
+# Depends on: 
+
+name=which
+version=2.21
+release=1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
+
