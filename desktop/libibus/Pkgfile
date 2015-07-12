@@ -2,7 +2,7 @@
 # URL: http://live.gnome.org/Libgee
 # Maintainer: NutyX core team
 # Packager: piernov <piernov@piernov.org>
-# Depends on: dconf gtk gtk3 hicolor-icon-theme libnotify dbus-python python-gobject iso-codes python-gobject2 python-gobject librsvg 
+# Depends on: dconf gtk gtk3 hicolor-icon-theme libnotify dbus-python python-gobject iso-codes python-gobject2 python-gobject librsvg gnome-common
 # Run on: gobject-introspection vala intltool git gnome-common gtk-doc gconf
 
 name=libibus
