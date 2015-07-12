@@ -6,21 +6,16 @@
 # Run on:  atk,cogl,json-glib,xorg-libxi,gtk3
 
 name=clutter
-version=1.22.2
+version=1.22.4
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr 
+./configure --prefix=/usr \
     --sysconfdir=/etc \
     --enable-introspection \
-    --enable-egl-backend \
-    --enable-gdk-backend \
-    --enable-wayland-backend \
-    --enable-x11-backend \
-    --enable-evdev-input \
-    --enable-wayland-compositor
+    --enable-egl-backend 
 make
 make DESTDIR=$PKG install
 }
