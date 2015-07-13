@@ -1,17 +1,16 @@
 # Description: High-Performance CORBA Object Request Broker.
 # URL: http://www.gnome.org
 # Packager : fanch at nutyx dot org
-# Depends on: libidl, libffi, glib
+# Depends on: 
 
 name=orbit
-version=2.14.19
+version=0.5.17
 release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/ORBit2/%{version%.*}/ORBit2-$version.tar.bz2 git-fixes.patch)
+source=(http://ftp.gnome.org/pub/gnome/sources/ORBit/${version%.*}/ORBit-$version.tar.bz2)
 
 build() {
-	cd ORBit2-$version
-	patch -Np1 -i ../git-fixes.patch
-	./configure --prefix=/usr --disable-static
+	cd ORBit-$version
+	./configure --prefix=/usr 
 	make
 	make DESTDIR=$PKG install
 }
