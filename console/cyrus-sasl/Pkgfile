@@ -7,8 +7,7 @@ name=cyrus-sasl
 version=2.1.26
 release=1
 
-source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz
-	http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-$version-fixes-3.patch)
+source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz cyrus-sasl-$version-fixes-3.patch)
 
 build() {
 	cd $name-$version
