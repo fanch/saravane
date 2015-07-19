@@ -6,10 +6,21 @@ name=gstreamer-plugins-bad
 version=0.10.23
 release=1
 
-source=(http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-$version.tar.bz2 )
+source=(http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-$version.tar.bz2 
+fix-libmodplug-include.patch
+drop-vpx-compat-defs.patch
+disable-assrender-test.patch
+disable-camerabin-test.patch
+faad2-version-check.patch)
 
 build() {
 cd gst-plugins*
+sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
+patch -Np1 -i ../fix-libmodplug-include.patch
+patch -Np1 -i ../drop-vpx-compat-defs.patch
+patch -Np1 -i ../disable-assrender-test.patch
+patch -Np1 -i ../disable-camerabin-test.patch
+patch -Np1 -i ../faad2-version-check.patch
 ./configure --prefix=/usr \
 --with-gtk=3.0 \
 --disable-examples
