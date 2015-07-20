@@ -7,7 +7,7 @@ PKGMK_NO_STRIP="yes"
 PKGMK_GROUPS=(devel doc)
 
 name=kernel
-version=4.1.1
+version=4.1.2
 release=1
 _version=${version%.*}
 
