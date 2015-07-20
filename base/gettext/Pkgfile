@@ -3,7 +3,7 @@
 # Maintainer: Ulrich Drepper
 # Packager: pierre at nutyx dot org
 name=gettext
-version=0.19.4
+version=0.19.5.1
 release=1
 
 source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
@@ -11,6 +11,7 @@ build()
 {
 cd gettext-$version
 ./configure --prefix=/usr \
+--disable-static \
 --docdir=/usr/share/doc/gettext-$version
 make
 make check||true
