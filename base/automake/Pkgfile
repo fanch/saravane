@@ -9,6 +9,7 @@ release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 build() {
 cd automake-$version
+sed -i 's:/\\\${:/\\\$\\{:' bin/automake.in
 ./configure --prefix=/usr \
 --docdir=$PKG/usr/share/doc/automake-$version
 make
