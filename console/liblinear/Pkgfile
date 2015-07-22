@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 
 name=liblinear
-version=1.96
+version=2.01
 release=1
 
 source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
