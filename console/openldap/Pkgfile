@@ -2,15 +2,16 @@
 # URL: http://www.openldap.org
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
 name=openldap
-version=2.4.40
+version=2.4.41
 release=1
 
 source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
-	  http://www.linuxfromscratch.org/patches/blfs/svn/openldap-2.4.40-consolidated-1.patch)
+	  http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-consolidated-1.patch)
 build() {
 cd $name-$version
-patch -Np1 -i ../openldap-2.4.40-consolidated-1.patch
+patch -Np1 -i ../$name-$version-consolidated-1.patch
 autoconf
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
