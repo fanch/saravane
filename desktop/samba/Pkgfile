@@ -4,7 +4,7 @@
 # Depends on: python libtirpc acl cups gamin kerberos libcap tdb openldap
 
 name=samba
-version=4.2.2
+version=4.2.3
 release=1
 
 source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz tls-use-gnutls_priority_set_direct.patch)
@@ -18,14 +18,6 @@ else
         LIB=lib
 fi
 cd $name-$version
-
-sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tls->session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
-    -e '/cert_type_priority/d' \
-    -i source4/lib/tls/tls.c &&
-sed -e 's/.*set_priority.*/\tgnutls_priority_set_direct(tlss->tls_session, "NORMAL:+CTYPE-OPENPGP", NULL);/' \
-    -e '/t cert_type_priority/ s:^:/*:' \
-    -e '/t cert_type_priority/{n;N;N;N;s:$:*/:}' \
-    -i source4/lib/tls/tls_tstream.c
 ./configure                             \
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
@@ -46,6 +38,7 @@ ln -v -sf ../../lib/libnss_wins.so.2    $PKG/usr/$LIB/libnss_wins.so
 install -v -m644 examples/smb.conf.default $PKG/etc/samba/smb.conf.default
 
 mkdir -pv $PKG/etc/openldap/schema
+
 install -v -m644 examples/LDAP/README \
 $PKG/etc/openldap/schema/README.LDAP
 
