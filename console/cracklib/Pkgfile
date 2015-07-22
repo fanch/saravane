@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 
 name=cracklib
-version=2.9.4
+version=2.9.5
 release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
@@ -18,8 +18,9 @@ fi
 
 cd $name-$version
 sed -i '/skipping/d' util/packer.c
-./configure --prefix=/usr \
---with-default-dict=/$LIB/cracklib/pw_dict
+./configure --prefix=/usr    \
+            --disable-static \
+            --with-default-dict=/lib/cracklib/pw_dict
 make
 make DESTDIR=$PKG  install
 
