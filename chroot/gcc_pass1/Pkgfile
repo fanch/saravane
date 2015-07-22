@@ -1,4 +1,4 @@
-version=5.1.0
+version=5.2.0
 source=(\
 http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz \
 http://www.mpfr.org/mpfr-current/mpfr-3.1.3.tar.xz \
@@ -26,12 +26,11 @@ do
   touch $file.orig
 done
 
-
 mkdir -v ../gcc-build
 cd ../gcc-build
 
 ../gcc-$version/configure         \
-    --target=$LFS_TGT                              \
+   --target=$LFS_TGT                              \
     --prefix=/tools                                \
     --with-glibc-version=2.11                      \
     --with-sysroot=$LFS                            \
@@ -46,13 +45,10 @@ cd ../gcc-build
     --disable-threads                              \
     --disable-libatomic                            \
     --disable-libgomp                              \
-    --disable-libitm                               \
     --disable-libquadmath                          \
-    --disable-libsanitizer                         \
     --disable-libssp                               \
     --disable-libvtv                               \
-    --disable-libcilkrts                           \
-    --disable-libstdc++-v3                         \
+    --disable-libstdcxx                            \
     --enable-languages=c,c++
 make
 
