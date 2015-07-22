@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 # Depends on: libwebp libsecret geoclue gperf gtk gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby gtk-doc 
 name=webkit+
-version=2.8.3
+version=2.8.4
 release=1
 
 source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
@@ -21,6 +21,7 @@ cmake -DCMAKE_BUILD_TYPE=Release  \
       -DCMAKE_SKIP_RPATH=ON       \
       -DPORT=GTK                  \
       -DLIB_INSTALL_DIR=/usr/lib  \
+      -DENABLE_MINIBROWSER=ON     \
       -Wno-dev .. 
 make
 make DESTDIR=$PKG install 
