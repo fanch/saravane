@@ -5,7 +5,7 @@
 
 
 name=gtk3
-version=3.16.4
+version=3.16.5
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
@@ -20,6 +20,7 @@ cd gtk+-$version
 --enable-x11-backend \
 --enable-broadway-backend \
 --enable-gtk2-dependency \
+--disable-wayland-backend \
 --disable-schemas-compile
 
 make || make -j1
