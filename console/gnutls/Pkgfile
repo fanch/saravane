@@ -4,7 +4,7 @@
 # Depends on: libtasn1 nettle libidn p11-kit 
 
 name=gnutls
-version=3.4.1
+version=3.4.3
 release=1
 
 source=(ftp://ftp.gnutls.org/gcrypt/$name/v${version%.*}/$name-$version.tar.xz)
@@ -14,13 +14,8 @@ cd $name-$version
 ./configure --prefix=/usr \
 --with-zlib \
 --with-default-trust-store-file=/etc/ssl/ca-bundle.crt \
+--enable-openssl-compatibility \
 --disable-guile
-sed -e '/FUNCS=/ s/-d/&|uniq/'    \
-    -e '/get_x509_crt/ {n;d}'     \
-    -e '/get_x509_key/ {n;d}'     \
-    -e '/get_verify_flags/ {n;d}' \
-    -i doc/manpages/Makefile
 make
 make DESTDIR=$PKG install
-rm $PKG/usr/share/info/dir
 }
