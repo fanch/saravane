@@ -1,7 +1,7 @@
 skip|http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-20150304.tar.bz2
 fd2d7ca532f9ea53d678a6bc79354681|http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3.30-upstream_fixes-2.patch
 6a5ac7e89b791aae556de0f745916f7f|http://www.linuxfromscratch.org/patches/downloads/bzip2/bzip2-1.0.6-install_docs-1.patch
-587051bc411e0da9b3bf8984b49b364e|http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.23-i18n-1.patch
+c6a5ccda1ca61de7c93b09d27a9a26d5|http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.24-i18n-1.patch
 f75cca16a38da6caa7d52151f7136895|http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
 skip|http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
 f9015f670940350a3fc3c2ef347e2b33|http://www.linuxfromscratch.org/patches/downloads/ncurses/ncurses-5.9-gcc5_buildfixes-1.patch
@@ -9,8 +9,6 @@ f9015f670940350a3fc3c2ef347e2b33|http://www.linuxfromscratch.org/patches/downloa
 877e81fba316fe487ec23501059d54b8|http://www.linuxfromscratch.org/patches/downloads/bc/bc-1.06.95-memory_leak-1.patch
 9a5997c3452909b1769918c759eff8a2|http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.21-fhs-1.patch
 0b7b5ea568a878fdcc4057b2bf36e5cb|http://www.linuxfromscratch.org/patches/downloads/sysvinit/sysvinit-2.88dsf-consolidated-1.patch
-f4d9c1a9c73c542a79e24780b1318533|http://www.linuxfromscratch.org/patches/downloads/gcc/gcc-5.1.0-upstream_fixes-1.patch
-skip|http://www.linuxfromscratch.org/patches/downloads/openssl/openssl-1.0.2c-fix_parallel_build-1.patch
 skip|http://www.linuxfromscratch.org/patches/downloads/libtirpc/libtirpc-0.3.2-api_fixes-1.patch
 
 38263d115d784c17aa3b959ce94be8b8|http://downloads.sourceforge.net/sourceforge/check/check-0.9.14.tar.gz
@@ -32,8 +30,8 @@ d92ab59aabf5173f2a59089531e30dbf|http://downloads.sourceforge.net/sourceforge/sq
 a27b3ee9be83bd3ba448c0ff52b28447|http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz
 d9f3303f802a5b6b0bb73a335ab89d66|http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 c342201de104cc9ce0a21e0ad10d4021|http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.xz
-997c9070354eff5517115feaea6038f0|http://ftp.gnu.org/gnu/gettext/gettext-0.19.4.tar.xz
-abed135279f87ad6762ce57ff6d89c41|http://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
+9b7c37e410df4bd1bf854e8c897cf937|http://ftp.gnu.org/gnu/gettext/gettext-0.19.5.1.tar.xz
+40efdbce865d2458d8da0a9dcee7c16c|http://ftp.gnu.org/gnu/coreutils/coreutils-8.24.tar.xz
 5bda2cdb1af51a80aecce58d6e42bd2f|http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.5.3.tar.gz
 99180208ec2a82ce71f55b0d7389f1b3|http://ftp.gnu.org/gnu/diffutils/diffutils-3.3.tar.xz
 351cc4adb07d54877fa15f75fb77d39f|http://ftp.gnu.org/gnu/findutils/findutils-4.4.2.tar.gz
@@ -44,7 +42,7 @@ cc825fa64bc7306a885f2fb2268d3ec5|http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.g
 c1f1db32fb6598d6a93e6e88796a8632|http://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
 1e6da4e434553d2811437aa42c7f7c76|http://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.xz
 da981f86677d58a106496e68de6f8995|http://ftp.gnu.org/gnu/gzip/gzip-1.6.tar.xz
-d5525b1127d07d215960e6051c5da35e|http://ftp.gnu.org/gnu/gcc/gcc-5.1.0/gcc-5.1.0.tar.bz2
+a51bcfeb3da7dd4c623e27207ed43467|http://ftp.gnu.org/gnu/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2
 9cb398828e8f84f57d1f7d5588cf40cd|http://ftp.gnu.org/gnu/glibc/glibc-2.21.tar.xz
 87fef1fa3f603aef11c41dcc097af75e|http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz
 12a3c829301a4fd6586a57d3fcf196dc|http://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.xz
@@ -70,18 +68,18 @@ a61415312426e9c2212bd7dc7929abda|http://download.savannah.gnu.org/releases/acl/a
 6eda8a97b86e0a6f59dabbf25202aa6f|http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.88dsf.tar.bz2
 
 fe9dc0f6729f36400ea81aa41d614c37|https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-7766291e05ecf0b53d79c532cb44db6c|https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.xz
-87475eb78b1d6e6ab06686dd323ad4ba|https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.2.tar.xz
+6a388f552b05243ae4165735da839e24|https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.xz
+231b46e7142eb41ea3ae06d2ded3c208|https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.3.tar.xz
 d43ab9f680435a7fff35b4ace8d45b80|https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz
 9bdf368c395f1b70325d0eb22c7f48fb|https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.2.tar.xz
 ee246fab2e1cba9fbdcad6a86ec31531|https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-21.tar.xz
-3adc263ade4ee76c35032e8f50b54108|https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.0.0.tar.xz
+39290cb3a55d38dd8d10e19a3094109f|https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.1.1.tar.xz
 74b2fa7451f7888bf2902d12e7b89f3c|https://www.kernel.org/pub/software/scm/git/git-2.4.5.tar.xz
 e3faabf81961110a0c44c75ff8a6c9b1|https://www.kernel.org/pub/software/scm/git/git-manpages-2.4.5.tar.xz
 4b0c8b9634ee469d8b718d616f338e1b|https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.4.5.tar.xz
 44698d351501cac6a89072dc877eb220|https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.3.2.tar.xz
 4c340a317987d61a11ee2cf139ef1191|https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.3.1.tar.xz
-edb76ab11d78df7a5d5981807583acc2|https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v3.19.tar.xz
+ff451f4a40ec0c1bdecf3224465a3376|https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v4.1.tar.xz
 66787380fb418ff7d88a23e47cda7af6|https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
 1f178e2bb1beab9782993931c9832280|http://crux.nu/files/tools/ports/ports-1.5.tar.gz
 
@@ -93,7 +91,7 @@ a5c995661c62429ceff2c23ea322393b|http://downloads.nutyx.org/files/patchs/libarch
 9bf80940bd3ce861137a0a8dcacf5705|http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-limit-write-requests-to-at-most-INT_MAX-01.patch
 fda89c145bbcd793a96b06b463ef6a72|http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-mtree-fix-line-filename-length-calculation-01.patch
 cb344a879b3c4550fe3faf86c3826f23|http://downloads.nutyx.org/files/patchs/libarchive/libarchive-3.1.2-sparce-mtree-01.patch
-ad3b529dfd14d445b8c94a3c3216aa1f|http://downloads.nutyx.org/files/btrfs-progs-man-v3.19.tar.xz
+cc2f27dac7d88f115f87e30e5d7e2df2|http://downloads.nutyx.org/files/btrfs-progs-man-v4.1.tar.xz
 809eb8684bd9851242aa4dfbf1a49dd5|http://downloads.nutyx.org/files/ca-certificates-20150530.tar.gz
 6da868e8f587ee2eb1a4e36f94a0e15c|http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch
 
@@ -116,7 +114,7 @@ b5e2dd95dc8498cea5354377ed89aa65|http://tukaani.org/xz/xz-5.2.1.tar.xz
 2bfafe7d4962682d31b5eba65dba4fc8|http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 0120bb073133ad26a054b35f88333183|http://sites.google.com/site/e3editor/Home/e3-2.8.tgz
 efad5a503f66329bb9d2f4308b5de98a|http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
-8c8d81a9ae7005276e486702edbcd4b6|http://www.openssl.org/source/openssl-1.0.2c.tar.gz
+38dd619b2e77cbac69b99f52a053d25a|http://www.openssl.org/source/openssl-1.0.2d.tar.gz
 11bddbb452a8b766b932f859aaeeed39|http://curl.haxx.se/download/curl-7.43.0.tar.bz2
 374fcac1877078a2fc0ef8cd1617a869|http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.9.0.tar.bz2
 ee4a480d77b341c99e8b1375f8f180c0|http://linux-pam.org/library/Linux-PAM-1.2.0.tar.bz2
@@ -127,4 +125,4 @@ f61577ec330ad1bd504c0e2eec6ea2d8|http://www.sudo.ws/sudo/dist/sudo-1.8.13.tar.gz
 a88bf7d68955635d009a5aec1ffecc48|ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.122.tgz
 c7ffc9a103afe2d1bba0b015e7aa887f|http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
 08f72de6751acfbd0892b5f003922701|ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.8p1.tar.gz
-61db35209ce71a6d576392ce6e1d2f80|ftp://ftp.astron.com/pub/file/file-5.23.tar.gz
+ec161b5a0d2aef147fb046e5630b1408|ftp://ftp.astron.com/pub/file/file-5.24.tar.gz
