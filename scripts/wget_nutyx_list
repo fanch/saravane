@@ -2,7 +2,7 @@ skip|http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-2015030
 fd2d7ca532f9ea53d678a6bc79354681|http://www.linuxfromscratch.org/patches/downloads/bash/bash-4.3.30-upstream_fixes-2.patch
 6a5ac7e89b791aae556de0f745916f7f|http://www.linuxfromscratch.org/patches/downloads/bzip2/bzip2-1.0.6-install_docs-1.patch
 c6a5ccda1ca61de7c93b09d27a9a26d5|http://www.linuxfromscratch.org/patches/downloads/coreutils/coreutils-8.24-i18n-1.patch
-f75cca16a38da6caa7d52151f7136895|http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-backspace-1.patch
+f75cca16a38da6caa7d52151f7136895|http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.3-backspace-1.patch
 skip|http://www.linuxfromscratch.org/patches/downloads/kbd/kbd-2.0.2-no_tests-1.patch
 f9015f670940350a3fc3c2ef347e2b33|http://www.linuxfromscratch.org/patches/downloads/ncurses/ncurses-5.9-gcc5_buildfixes-1.patch
 6b0d9f4e79319d56a7fee9b35e5cfd1b|http://www.linuxfromscratch.org/patches/downloads/readline/readline-6.3-upstream_fixes-3.patch
